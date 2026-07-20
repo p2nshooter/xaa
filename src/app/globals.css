@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Per-site palette — the only theme knobs, mirrored from tailwind colors. */
+:root {
+  --paper: #f9f7f2;
+  --ink: #0f1e3d;
+  --accent: #bf983c;
+  --accent-soft: rgba(191, 152, 60, 0.32);
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); }
+
+/* ————— Shared premium ornament kit ————— */
+.ornament-rule {
+  position: relative; height: 1.2rem;
+  background:
+    linear-gradient(to right, transparent, var(--accent-soft) 20%, var(--accent-soft) 80%, transparent) center 0.35rem / 100% 1px no-repeat,
+    linear-gradient(to right, transparent, var(--accent-soft) 30%, var(--accent-soft) 70%, transparent) center 0.8rem / 100% 1px no-repeat;
+}
+.ornament-rule::after {
+  content: '❖'; position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%); color: var(--accent);
+  background: var(--paper); padding: 0 0.7rem; font-size: 0.78rem;
+}
+.paper-motif { background-image: radial-gradient(var(--accent-soft) 0.6px, transparent 1.4px); background-size: 22px 22px; opacity: 1; }
+.accent-text {
+  background: linear-gradient(120deg, var(--accent), #f0dca0 45%, var(--accent) 70%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.premium-card {
+  position: relative; border: 1px solid var(--accent-soft); border-radius: 0.75rem;
+  background: #fffdf8; box-shadow: 0 1px 2px rgba(15, 30, 61, 0.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.premium-card::before { content: ''; position: absolute; inset: 5px; border: 1px solid var(--accent-soft); border-radius: 0.5rem; opacity: 0.55; pointer-events: none; }
+.premium-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(15, 30, 61, 0.13); }
+.dropcap > p:first-of-type::first-letter {
+  float: left; font-size: 3.1em; line-height: 0.82; padding-right: 0.1em;
+  color: var(--accent); font-weight: 700; font-family: var(--font-serif), Georgia, serif;
+}
+.article-body p { margin-bottom: 1.1rem; line-height: 1.9; font-size: 1.06rem; }
+.article-body h2 { margin-top: 2.1rem; margin-bottom: 0.85rem; font-size: 1.4rem; font-weight: 700; }
