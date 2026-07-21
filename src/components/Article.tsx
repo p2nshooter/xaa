@@ -23,7 +23,6 @@ export function ArticleCard({ article }: { article: Article }) {
  * paragraph, never stacked; spacing stays reader-first and AdSense-compliant.
  */
 export function ArticleBody({ article }: { article: Article }) {
-  const mid = Math.max(2, Math.floor(article.sections.length / 2) + 1);
   return (
     <article className="mx-auto max-w-prose2 px-4">
       <h1 className="font-serif text-3xl font-black leading-tight sm:text-4xl">{article.title}</h1>
@@ -37,7 +36,8 @@ export function ArticleBody({ article }: { article: Article }) {
         {article.sections.map((s, i) => (
           <section key={i}>
             {i === 1 && <AdSlot placement="in_article_1" />}
-            {i === mid && mid !== 1 && <AdSlot placement="in_article_2" />}
+            {i === 3 && <AdSlot placement="in_article_2" />}
+            {i === 5 && <AdSlot placement="in_article" />}
             {s.h && <h2>{s.h}</h2>}
             {s.p.map((para, j) => (
               <p key={j}>{para}</p>
