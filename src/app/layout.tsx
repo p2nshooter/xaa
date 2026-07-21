@@ -30,6 +30,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.adClient}`}
           crossOrigin="anonymous"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                { '@type': 'Organization', '@id': `${SITE.url}#org`, name: SITE.name, url: SITE.url, logo: `${SITE.url}/icon.svg` },
+                { '@type': 'WebSite', '@id': `${SITE.url}#site`, name: SITE.name, url: SITE.url, publisher: { '@id': `${SITE.url}#org` }, inLanguage: 'en' },
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="font-sans">
         <SiteHeader />
