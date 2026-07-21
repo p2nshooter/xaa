@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: { default: `${SITE.name} — ${SITE.tagline}`, template: `%s · ${SITE.name}` },
   description: SITE.description,
   alternates: { canonical: '/' },
+  icons: { icon: '/icon.svg', shortcut: '/icon.svg', apple: '/icon.svg' },
   robots: { index: true, follow: true },
   openGraph: { siteName: SITE.name, type: 'website', locale: 'en_US' },
   other: { 'google-adsense-account': SITE.adClient }

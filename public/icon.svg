@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Xaa">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4d98a"/><stop offset="1" stop-color="#c99a34"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="#0f2740"/>
+  <!-- shield: insurance / protection -->
+  <path d="M32 12 L48 18 V33 C48 43 41 49 32 52 C23 49 16 43 16 33 V18 Z" fill="none" stroke="url(#g)" stroke-width="3" stroke-linejoin="round"/>
+  <text x="32" y="39" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="700" fill="url(#g)">X</text>
+</svg>
