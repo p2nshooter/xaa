@@ -4,6 +4,7 @@ import './globals.css';
 import { SITE } from '@/lib/site';
 import { SiteHeader, SiteFooter } from '@/components/Site';
 import { Analytics } from '@/components/Analytics';
+import { GlobalAds } from '@/components/Ads';
 
 const serif = Playfair_Display({ subsets: ['latin'], weight: ['400', '700', '900'], variable: '--font-serif', display: 'swap' });
 const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="min-h-[60vh]">{children}</main>
         <SiteFooter />
         <Analytics />
+        <GlobalAds />
       </body>
     </html>
   );

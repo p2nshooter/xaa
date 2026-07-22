@@ -128,3 +128,16 @@ body { background: var(--paper); color: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
   .wc-ball, .wc-ball-spin { animation: none !important; }
 }
+/* ── Adsterra ad units (Ads.tsx) — labeled, centered, reader-first spacing ── */
+.ad-wrap { margin: 1.75rem auto; text-align: center; max-width: 100%; overflow: hidden; }
+.ad-label { display: block; margin-bottom: 0.35rem; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.45; }
+.ad-frame { border: 0; display: block; margin: 0 auto; }
+.ad-sponsored {
+  display: inline-block; max-width: 100%; padding: 0.7rem 1.1rem;
+  border: 1px solid var(--accent-soft, rgba(0,0,0,0.12));
+  border-radius: 0.6rem; font-size: 0.85rem; font-weight: 600;
+  text-decoration: none; color: var(--accent, currentColor);
+  background: color-mix(in srgb, var(--accent, #888) 8%, transparent);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.ad-sponsored:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--accent, #888) 16%, transparent); }
