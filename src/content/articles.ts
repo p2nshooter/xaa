@@ -1,5 +1,6 @@
 import type { Article, Category } from './types';
 import { ARTICLES_BATCH2 } from './articles-batch2';
+import { ARTICLES_BATCH3 } from './articles-batch3';
 
 /**
  * xaa.es — World Cup 2026 football magazine. Original, independent editorial:
@@ -686,3 +687,4 @@ export function getArticlesByCategory(cat: string): Article[] {
 // Batch 2 joins the same library (one ARTICLES array keeps every consumer —
 // home, category pages, sitemap, related articles — automatically complete).
 ARTICLES.push(...ARTICLES_BATCH2);
+ARTICLES.push(...ARTICLES_BATCH3);
