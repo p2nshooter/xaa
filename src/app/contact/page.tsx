@@ -11,8 +11,8 @@ export default function ContactPage() {
         <p>Have a correction, a topic request, or a partnership enquiry? We read every message and usually reply within
           a few days.</p>
         <p><strong>Email:</strong> <a href={`mailto:${email}`} className="text-gold-600 underline">{email}</a></p>
-        <p>Please note that we publish general educational information only and cannot provide personalised financial,
-          insurance, tax or legal advice.</p>
+        <p>Please note that we publish independent football analysis and opinion only. Match schedules, squads and
+          results change constantly — always confirm fixtures and times with official sources.</p>
       </div>
     </div>
   );

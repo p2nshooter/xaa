@@ -6,9 +6,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: { 950: '#0a1428', 900: '#0f1e3d', 800: '#16294f', 700: '#213a68' },
-        ivory: { 50: '#f9f7f2', 100: '#f1ede2', 200: '#e4dcc8' },
-        gold: { 300: '#e6cd86', 400: '#d4b25a', 500: '#bf983c', 600: '#9c7a2c' }
+        ink: { 950: '#06210f', 900: '#0a2818', 800: '#0f3a22', 700: '#17512f' },
+        ivory: { 50: '#f2faf3', 100: '#e3f3e6', 200: '#cbe8d1' },
+        gold: { 300: '#4ade80', 400: '#22c55e', 500: '#16a34a', 600: '#15803d' }
       },
       fontFamily: {
         serif: ['var(--font-serif)', 'Georgia', 'serif'],

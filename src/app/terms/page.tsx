@@ -7,8 +7,8 @@ export default function TermsPage() {
       <h1 className="font-serif text-3xl font-black">Terms of Use</h1>
       <div className="ornament-rule mt-4 max-w-sm" />
       <div className="article-body mt-6">
-        <p>All content on {SITE.name} is general educational information only. It is not personalised financial,
-          insurance, tax or legal advice, and it is not an offer of any product. Rules, rates and figures change over
+        <p>All content on {SITE.name} is independent football journalism, analysis and opinion. Fixtures, squads and
+          results change constantly, and nothing here is affiliated with FIFA or any official body. Details change over
           time; verify current details with official sources and consult a qualified professional before acting.</p>
         <p>Content is copyright {SITE.domain}. Quotation with attribution and a link is welcome; wholesale republication
           is not. We provide the site "as is" and are not liable for decisions made on the basis of general information

@@ -49,8 +49,8 @@ export function ArticleBody({ article }: { article: Article }) {
       <AdSlot placement="footer" />
       <div className="ornament-rule mt-8" />
       <p className="mt-4 text-xs leading-relaxed text-ink-800/60">
-        This article is educational and general in nature — not personalised advice. Verify current rules and
-        figures with official sources, and consult a qualified professional before making decisions.
+        Independent football analysis and opinion. Fixtures, squads and results change constantly — confirm
+        match times and line-ups with official FIFA and broadcaster sources before you plan around a game.
       </p>
     </article>
   );
@@ -72,32 +72,78 @@ export function RelatedArticles({ articles }: { articles: Article[] }) {
 
 export function HomeContent() {
   const latest = [...ARTICLES].sort((a, b) => (a.date < b.date ? 1 : -1));
+  const featured = latest[0];
+  const featuredCat = featured ? CATEGORIES.find((c) => c.slug === featured.category) : undefined;
   return (
     <div>
-      <section className="paper-motif border-b border-[color:var(--accent-soft)]">
-        <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-600">Independent · Jargon-free</p>
-          <h1 className="mx-auto mt-4 max-w-3xl font-serif text-4xl font-black leading-tight sm:text-5xl">
-            {SITE.heroLead} <span className="accent-text">{SITE.heroAccent}</span>
-          </h1>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink-800/75">{SITE.description}</p>
-          <div className="ornament-rule mx-auto mt-8 max-w-md" />
+      {/* Hero — animated orbs + grid ornament + the newest piece as the splash. */}
+      <section className="relative overflow-hidden border-b border-[color:var(--accent-soft)]">
+        <div className="pitch-stripes absolute inset-0" aria-hidden />
+        <div className="pitch-motif absolute inset-0 opacity-40" aria-hidden />
+        <div className="mk-orb" style={{ width: 360, height: 360, left: -130, top: -90, background: 'var(--accent)' }} aria-hidden />
+        <div className="mk-orb mk-orb-2" style={{ width: 300, height: 300, right: -70, bottom: -130, background: 'var(--accent)' }} aria-hidden />
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-20">
+          <div className="mk-fade-up">
+            <span className="trophy-chip"><span className="wc-ball" aria-hidden>⚽</span> World Cup 2026 · USA · Canada · Mexico</span>
+            <h1 className="mt-5 font-serif text-4xl font-black leading-tight sm:text-6xl">
+              {SITE.heroLead} <span className="accent-text">{SITE.heroAccent}</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-800/75 sm:text-lg">{SITE.description}</p>
+            <div className="mt-8 flex flex-wrap gap-8">
+              <div>
+                <p className="font-serif text-3xl font-black text-gold-600">{ARTICLES.length}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-ink-800/60">Original guides</p>
+              </div>
+              <div>
+                <p className="font-serif text-3xl font-black text-gold-600">{CATEGORIES.length}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-ink-800/60">Topic desks</p>
+              </div>
+              <div>
+                <p className="font-serif text-3xl font-black text-gold-600">100%</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-ink-800/60">Reader-first, no hype</p>
+              </div>
+            </div>
+          </div>
+          {featured && (
+            <div className="relative self-center">
+              <div className="mk-ring" style={{ width: 340, height: 340, right: -40, top: -40 }} aria-hidden />
+              <Link href={`/articles/${featured.slug}`} className="premium-card mk-fade-up mk-d2 relative block p-7">
+                <span className="mk-chip text-gold-600">★ Featured · {featuredCat?.name}</span>
+                <h2 className="mt-4 font-serif text-2xl font-black leading-snug">{featured.title}</h2>
+                <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-ink-800/70">{featured.excerpt}</p>
+                <p className="mt-4 text-sm font-bold text-gold-600">Read the full story →</p>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {CATEGORIES.map((c) => (
-            <Link key={c.slug} href={`/category/${c.slug}`} className="premium-card p-4 text-center">
-              <span className="text-2xl">{c.icon}</span>
-              <p className="mt-2 font-serif text-sm font-bold">{c.name}</p>
+      {/* Topic desks */}
+      <section className="mx-auto max-w-6xl px-4 py-12">
+        <div className="flex items-end justify-between">
+          <h2 className="font-serif text-2xl font-bold">Explore by topic</h2>
+          <span className="text-xs font-semibold uppercase tracking-widest text-gold-600">{CATEGORIES.length} desks</span>
+        </div>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {CATEGORIES.map((c, i) => (
+            <Link key={c.slug} href={`/category/${c.slug}`} className={`premium-card mk-lift mk-fade-up mk-d${Math.min(i + 1, 6)} p-5`}>
+              <span className="mk-icon-bubble" aria-hidden>{c.icon}</span>
+              <p className="mt-3 font-serif text-base font-bold">{c.name}</p>
+              <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-ink-800/60">{c.tagline}</p>
+              <p className="mt-2 text-[11px] font-semibold text-gold-600">{ARTICLES.filter((a) => a.category === c.slug).length} guides →</p>
             </Link>
           ))}
         </div>
       </section>
 
+      {/* Latest */}
       <section className="mx-auto max-w-6xl px-4 pb-10">
-        <h2 className="font-serif text-2xl font-bold">Latest guides</h2>
+        <div className="flex items-end justify-between">
+          <h2 className="font-serif text-2xl font-bold">Latest guides</h2>
+          <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-gold-600">
+            <span className="mk-live-dot" /> Updated often
+          </span>
+        </div>
         <div className="ornament-rule mt-3 max-w-xs" />
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {latest.map((a) => (
