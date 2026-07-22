@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SiteBeacon } from "@/components/SiteBeacon";
 import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 import { SITE } from '@/lib/site';
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans">
+        <SiteBeacon />
         <SiteHeader />
         <main className="min-h-[60vh]">{children}</main>
         <SiteFooter />
