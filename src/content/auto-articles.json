@@ -44,5 +44,28 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "world-cup-2026-fans-travel-guide",
+    "category": "world-cup-2026",
+    "title": "The Ultimate World Cup 2026 Fans Travel Guide",
+    "excerpt": "Plan your trip to the 2026 FIFA World Cup with our expert guide to the host cities, stadiums, and travel essentials.",
+    "date": "2026-07-23",
+    "minutes": 7,
+    "author": "The Xaa Desk",
+    "sections": [
+      {
+        "h": "",
+        "p": [
+          "The 2026 FIFA World Cup is just around the corner, and millions of football fans from around the world are eagerly planning their trip to the tournament. With three host countries – the United States, Canada, and Mexico – the World Cup will be held in 16 cities across North America. In this guide, we'll take you through the essential travel information you need to know, from getting to the host cities to navigating the stadiums and enjoying the local culture."
+        ]
+      },
+      {
+        "h": "Getting to the Host Cities",
+        "p": [
+          "The host cities for the 2026 FIFA World Cup are located in the United States, Canada, and Mexico. The closest international airport to the host cities is usually the best option, but some cities also have domestic airports that offer more convenient connections. For example, in the United States, fans can fly into Los Angeles International Airport (LAX) for the LA-hosted matches or Chicago O'Hare International Airport (ORD) for the Chicago-hosted matches. In Canada, Toronto Pearson International Airport (YYZ) is the primary airport for fans traveling to Toronto, while in Mexico, Mexico City International Airport (MEX) is the main airport for fans heading to Mexico City."
+        ]
+      }
+    ]
   }
 ]
