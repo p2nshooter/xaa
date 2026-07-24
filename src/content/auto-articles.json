@@ -464,5 +464,51 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "world-cup-2026-venue-profiles",
+    "category": "world-cup-2026",
+    "title": "A Profile of the 2026 FIFA World Cup Venues: Architecture, Capacity, and History",
+    "excerpt": "Get to know the 2026 FIFA World Cup venues, each with its unique character and history.",
+    "date": "2026-07-24",
+    "minutes": 7,
+    "author": "The Xaa Desk",
+    "sections": [
+      {
+        "h": "",
+        "p": [
+          "The 2026 FIFA World Cup is set to take place in the United States, Canada, and Mexico, with a total of 16 host cities and 11 new venues. In this article, we'll delve into the profiles of each venue, exploring their architecture, capacity, and rich history.",
+          "From the iconic Rose Bowl in Pasadena to the state-of-the-art Allegiant Stadium in Las Vegas, each venue has its own unique character and story to tell."
+        ]
+      },
+      {
+        "h": "The Historic Venues",
+        "p": [
+          "The Rose Bowl in Pasadena, California, is one of the most iconic venues in the world, hosting numerous high-profile events, including the Super Bowl and the Olympics. With a seating capacity of over 88,000, it will host the opening match of the 2026 World Cup.",
+          "Another historic venue is the Azteca Stadium in Mexico City, which has hosted three World Cup finals and has a seating capacity of over 87,000. It will host a total of six matches during the tournament."
+        ]
+      },
+      {
+        "h": "The Modern Marvels",
+        "p": [
+          "In contrast, the Allegiant Stadium in Las Vegas is a state-of-the-art venue that opened in 2020. With a seating capacity of over 65,000, it will host several high-profile matches during the tournament, including a quarterfinal.",
+          "The Mercedes-Benz Stadium in Atlanta, Georgia, is another modern venue that will host several matches during the tournament. With a seating capacity of over 71,000, it features a unique retractable roof and a massive video board."
+        ]
+      },
+      {
+        "h": "The Venues in the North",
+        "p": [
+          "In Canada, the BMO Field in Toronto will host several matches during the tournament, including a round of 16 match. With a seating capacity of over 30,000, it is a state-of-the-art venue that features a natural grass field.",
+          "In the United States, the Gillette Stadium in Foxborough, Massachusetts, will host several matches during the tournament, including a round of 16 match. With a seating capacity of over 65,000, it is a modern venue that features a natural grass field."
+        ]
+      },
+      {
+        "h": "Conclusion",
+        "p": [
+          "Each of the 2026 FIFA World Cup venues has its own unique character and history, from the iconic Rose Bowl to the state-of-the-art Allegiant Stadium. As we look forward to the tournament, it's exciting to think about the matches that will take place at each of these venues.",
+          "Whether you're a football fan or just interested in architecture and history, the 2026 FIFA World Cup venues are sure to impress."
+        ]
+      }
+    ]
   }
 ]
