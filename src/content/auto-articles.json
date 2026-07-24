@@ -601,5 +601,51 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "world-cup-2026-tournament-format",
+    "category": "world-cup-2026",
+    "title": "A Guide to the 2026 FIFA World Cup Tournament Format",
+    "excerpt": "Understand the knockout format and seeding rules that will determine the 2026 World Cup champion.",
+    "date": "2026-07-24",
+    "minutes": 7,
+    "author": "The Xaa Desk",
+    "sections": [
+      {
+        "h": "",
+        "p": [
+          "The 2026 FIFA World Cup will feature a total of 32 teams competing in a knockout tournament format. The competition will begin with a group stage, where teams will be divided into eight groups of four, with the top two teams from each group advancing to the knockout stage.",
+          "The knockout stage will consist of a series of single-elimination matches, with the winner advancing to the next round and the loser being eliminated. The tournament will culminate in the final match, where the winner will be crowned the 2026 FIFA World Cup champion."
+        ]
+      },
+      {
+        "h": "Seeding and Group Stage",
+        "p": [
+          "Teams will be seeded into the groups based on their performance in the qualifying rounds. The top teams will be placed in the top two pots, with the highest-ranked teams in Pot 1 and the next highest-ranked teams in Pot 2. The remaining teams will be placed in Pot 3 and Pot 4.",
+          "The group stage will be played in a round-robin format, with each team playing the other teams in their group once. The teams will earn three points for a win, two points for a draw, and one point for a loss. The team with the most points at the end of the group stage will be awarded the top spot in their group, with the next highest points total determining the second spot."
+        ]
+      },
+      {
+        "h": "Knockout Stage",
+        "p": [
+          "The knockout stage will begin with the Round of 16, where the winners of the group stage will face off against each other. The winners of each match will advance to the next round, while the losers will be eliminated.",
+          "The knockout stage will continue with the Quarterfinals, Semifinals, and Final. The winner of each match will advance to the next round, with the winner of the Final match being crowned the 2026 FIFA World Cup champion."
+        ]
+      },
+      {
+        "h": "Tiebreakers",
+        "p": [
+          "In the event of a tie in the group stage or knockout stage, the winner will be determined by a series of tiebreakers. The tiebreakers will be applied in the following order: goal difference, number of goals scored, away goals scored, and finally, a penalty shootout.",
+          "The tiebreakers will be used to determine the winner of each match, with the winner advancing to the next round and the loser being eliminated."
+        ]
+      },
+      {
+        "h": "Conclusion",
+        "p": [
+          "The 2026 FIFA World Cup tournament format will provide an exciting and unpredictable competition, with the top teams in the world competing for the championship. The knockout format and seeding rules will ensure that the best teams have a fair chance of advancing to the next round, and ultimately, the Final match.",
+          "The tournament format will provide plenty of opportunities for upsets and surprises, making it a must-watch event for football fans around the world."
+        ]
+      }
+    ]
   }
 ]
