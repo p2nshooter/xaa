@@ -6836,6 +6836,632 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'defending-set-pieces',
+    sections: [
+      {
+        h: 'The goalkeeper decides how the box is organised',
+        p: [
+          "Defensive set-piece organisation is built around what the goalkeeper can and cannot reach. A keeper confident in claiming crosses allows his team to defend with fewer bodies on the line and more marking in the danger zones; one less comfortable requires defenders posted on both posts and a more conservative arrangement throughout.",
+          "This is why goalkeepers are heavily involved in setting up the box before every corner, physically positioning teammates and directing the arrangement. The organisation visible in those few seconds before a delivery is largely his design, and watching who is doing the directing tells you where the authority in a defence actually sits.",
+        ],
+      },
+      {
+        h: 'Blocking, screening and the limits of legality',
+        p: [
+          "Attacking routines depend heavily on blocking — attackers positioning themselves to impede defenders' movement without appearing to foul — and the line between a legitimate screen and an illegal obstruction is genuinely fine. Defences respond by assigning players specifically to fight through blocks or to attack the space a block is protecting.",
+          "The grappling visible in penalty areas before every corner is this contest in progress, and officials tolerate a considerable amount of it. Understanding that both sides are executing rehearsed physical strategies, rather than simply wrestling, makes those chaotic pre-delivery seconds substantially more legible than they appear.",
+        ],
+      },
+      {
+        h: 'The near post and the front zone',
+        p: [
+          "Nearly every defensive setup assigns somebody specifically to attack the near post, because the near-post flick described elsewhere in this collection is among the most productive attacking routines available. That defender's job is to reach the ball first and clear it, and failing to do so frequently produces exactly the chaos the attacking side wanted.",
+          "A related assignment covers the front zone at the edge of the six-yard area, where a delivery falling short becomes dangerous. These are individually specified jobs rather than general instructions, and a set-piece goal conceded can usually be traced to one of them not being performed.",
+        ],
+      },
+      {
+        h: 'The second phase is where teams get caught',
+        p: [
+          "A defence that successfully clears the first delivery has solved only half the problem. The ball frequently returns immediately — a headed clearance falling to an attacker at the edge of the area, a cross recycled from the flank — and defences that have collapsed toward the goal to deal with the first ball are poorly positioned for the second.",
+          "Well-drilled teams push out immediately after a clearance to compress the space and to put attackers offside, which is why the seconds after a corner is cleared involve a sudden coordinated advance. Teams that fail to do this concede repeatedly from second phases, and it is among the most common identifiable set-piece weaknesses.",
+        ],
+      },
+      {
+        h: 'Scouting the opponent routines',
+        p: [
+          "Modern preparation includes detailed analysis of what an opponent actually does at set pieces: which deliveries they favour, which players attack which zones, whether they use short corners, and what their signature routines are. This is compiled from footage and presented to defenders before every match.",
+          "The practical effect is that a well-prepared defence knows roughly what is coming before the ball is struck. This is why teams occasionally abandon a familiar routine against a specific opponent — the coaching staff has concluded the other side has scouted it — and why set-piece innovation has become a genuine ongoing arms race.",
+        ],
+      },
+      {
+        h: 'Long throws require a bespoke plan',
+        p: [
+          "Facing a genuine long-throw specialist demands a different defensive arrangement from a corner, since the ball arrives flatter, faster and from a different angle, and the usual zonal assignments do not map onto it cleanly. Defences frequently prepare a specific setup used only against the handful of opponents who possess this weapon.",
+          "Because so few teams have such a player, most defences encounter the situation rarely and are correspondingly under-rehearsed. This is exactly why the long throw retains its value, and why teams possessing one at 2026 will find opponents visibly improvising against it in a way they never would against an ordinary corner.",
+        ],
+      },
+      {
+        h: 'Concentration is the actual skill',
+        p: [
+          "The physical and organisational elements described here are prerequisites; the quality that separates good defensive set-piece teams from poor ones is sustained concentration. A defence must execute its assignments correctly at every one of perhaps eight or ten set pieces per match, and a single lapse produces a goal.",
+          "This is why fatigue is so dangerous here specifically. A defence in the eighty-fifth minute, having defended a siege for twenty minutes, is precisely the defence most likely to lose a runner or ball-watch — which is why so many set-piece goals arrive late, and why the teams that avoid them have prepared for exactly that condition.",
+        ],
+      },
+      {
+        h: 'The clean sheet nobody notices',
+        p: [
+          "A team that defends eleven corners across a knockout match without conceding has done something genuinely difficult, and it will be mentioned nowhere. The absence of a set-piece goal is not an event, and the collective concentration that produced it registers with nobody outside the coaching staff.",
+          "Watching for it deliberately during 2026 — counting a team's set pieces conceded and noticing that none of them produced anything — is one way to appreciate a discipline that is otherwise entirely invisible, and that will nevertheless keep at least one team in the tournament longer than its football alone deserved.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'transitions-the-key-moments',
+    sections: [
+      {
+        h: 'Rest attack, the mirror of rest defence',
+        p: [
+          "Just as teams hold players back while attacking to insure against counter-attacks, well-organised sides also maintain positions while defending that are designed to launch attacks the instant possession is won. This is sometimes called rest attack: keeping one or two players high and wide rather than pulling everybody behind the ball.",
+          "The trade-off is direct — a player left forward is a player not defending — and the decision reveals a team's confidence. Sides that keep a forward high while under pressure are signalling that they intend to counter rather than merely survive, and the presence or absence of that player is visible throughout any period of sustained defending.",
+        ],
+      },
+      {
+        h: 'The first defender buys the time',
+        p: [
+          "In defensive transition, the most important action is frequently performed by whichever player is nearest the ball: not winning it back but delaying the carrier long enough for teammates to recover position. A well-executed delay of three seconds can be worth more than an attempted tackle that, if beaten, removes the defender entirely.",
+          "This is a coached skill with specific technique — approaching at an angle that shows the carrier away from goal, staying on the feet, matching pace rather than committing. Watching for whether a team's nearest player delays or dives in during a transition is one of the clearest indicators of how well-drilled its defensive organisation actually is.",
+        ],
+      },
+      {
+        h: 'The tactical foul as a transition tool',
+        p: [
+          "Where delay is impossible, teams frequently resort to a deliberate foul to stop a transition before it develops. This is cynical, effective and universally practised at elite level, and the calculation is explicit: a yellow card and a free kick in a harmless area is a better outcome than a three-against-two break toward goal.",
+          "Officials have become stricter about cautioning these fouls precisely because they are so effective, and the balance between the cost of the card and the value of the attack prevented is now a genuine in-match calculation. Teams frequently designate which players are permitted to commit these fouls based on who can least afford a suspension.",
+        ],
+      },
+      {
+        h: 'Not every turnover should be attacked',
+        p: [
+          "A team that wins possession does not automatically launch a counter-attack, and the decision to slow down instead is frequently correct. If the opponent has recovered its shape, if the team's own attackers are not yet forward, or if the match situation favours control, the right response to winning the ball is to keep it rather than to run with it.",
+          "The players who make this judgement well are highly valued precisely because the alternative — attempting a counter that is not available — surrenders possession immediately and invites the opposite transition. Watching how often a team correctly declines a counter is a subtler measure of tactical maturity than counting the counters it attempts.",
+        ],
+      },
+      {
+        h: 'How teams actually train this',
+        p: [
+          "Transition work in training typically uses small-sided games with deliberately imbalanced numbers and rules that reward speed after a turnover — a limited number of seconds to finish an attack, or extra value for goals scored within a defined window. The constraint forces the behaviour the coach wants until it becomes automatic.",
+          "This is why transitional quality correlates so strongly with training time, and why club sides typically execute it better than national teams. A pattern rehearsed daily for months becomes instinctive; one covered in a handful of international camps remains a conscious decision, and conscious decisions are too slow for a five-second window.",
+        ],
+      },
+      {
+        h: 'The carrier has three options and one second',
+        p: [
+          "For the player who wins the ball, the decision is immediate and consequential: pass forward to a runner, carry the ball himself into the space ahead, or retain possession and slow down. Each is correct in different circumstances and the assessment must be completed almost instantly.",
+          "The best transitional players make this decision before receiving the ball, having scanned the pitch while the opponent still had it. This is precisely the habit that scouting departments look for and that this collection's article on watching football recommends observing — the shoulder check that precedes the reception is what makes the correct decision available at all.",
+        ],
+      },
+      {
+        h: 'Where on the pitch it happens matters enormously',
+        p: [
+          "A transition beginning in the attacking third and one beginning in the defensive third are entirely different events. The former has a short distance to goal and a disorganised defence; the latter requires seventy metres of progress against opponents who have time to recover. The same tactical concept produces wildly different expected outcomes depending on location.",
+          "This is why teams that press high are effectively manufacturing better transitions rather than simply winning the ball more often. The location of a recovery matters more than its frequency, and a team with fewer turnovers won in better positions is generating more danger than one with more won in its own half.",
+        ],
+      },
+      {
+        h: 'The concept that reorganised modern coaching',
+        p: [
+          "Transitions have moved in a few decades from an unremarked feature of matches to one of the organising concepts of professional coaching, with dedicated training time, specific personnel selection and detailed analysis attached. It is among the clearest examples of an idea reshaping how the sport is taught rather than merely how it is described.",
+          "For a viewer, absorbing this framing changes what a match looks like. The periods of settled possession that once seemed like the substance of football become the intervals between the moments that matter, and the scrappy seconds after a turnover — previously experienced as noise — become the signal.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-low-block-explained',
+    sections: [
+      {
+        h: 'Low block, mid block and high block',
+        p: [
+          "The term describes one of three positions a defensive structure can adopt. A high block defends near the opponent's goal, pressing aggressively; a mid block sits around the halfway line, conceding the opponent's own half but contesting the middle; a low block retreats close to its own penalty area and concedes everything outside it.",
+          "Teams shift between these within a single match according to the score, the opponent and their own fatigue. A side that begins in a mid block and drops into a low block after taking the lead has made a deliberate decision rather than simply retreating under pressure, and identifying which of the three a team currently occupies is among the more useful things a viewer can track.",
+        ],
+      },
+      {
+        h: 'Compactness is measured in metres',
+        p: [
+          "A functioning low block maintains specific distances: roughly twenty-five to thirty metres between the defensive line and the most advanced defender, and a horizontal width narrow enough that opponents cannot pass through the middle. Every player's position is defined relative to teammates rather than to opponents.",
+          "The failure mode is stretching. When a defensive line drops but the midfield does not follow, the gap between them becomes the pocket that creative players live in — and once that space opens, a low block stops being a wall and becomes a series of individual defenders. Watching the distance between the lines is watching whether the structure is actually holding.",
+        ],
+      },
+      {
+        h: 'How a favourite tries to break one',
+        p: [
+          "Attacking a low block has an established toolkit: switching play rapidly from side to side to force lateral movement and create momentary gaps, using players between the lines to draw defenders out of shape, delivering early crosses before the defence settles, and shooting from distance to force the block higher.",
+          "The most effective of these is usually the switch. A defensive block can slide across efficiently once, less well twice, and frequently not at all a third time in quick succession — which is why possession teams facing a deep defence spend so long circulating the ball apparently harmlessly before a sudden diagonal produces an opening.",
+        ],
+      },
+      {
+        h: 'It costs more energy than it looks',
+        p: [
+          "The perception that defending deep is the lazy option is straightforwardly wrong. A low block requires constant small adjustments across ninety minutes, repeated sprints to close down shots, and sustained concentration under pressure, and tracking data consistently shows that defensively-oriented teams cover comparable total distances to possession sides.",
+          "The distribution differs — more short repositioning movements and fewer long attacking runs — but the physical cost is real, and it accumulates. A low block that holds for seventy minutes and collapses in the last twenty has usually run out of legs rather than concentration, and the two are difficult to separate at that stage.",
+        ],
+      },
+      {
+        h: 'What it feels like from inside',
+        p: [
+          "Players who have defended long sieges describe a specific psychological experience: a narrowing of attention to immediate tasks, an acute awareness of the clock, and a strange combination of exhaustion and adrenaline that makes the final minutes feel considerably longer than they are.",
+          "They also describe the relief of a clearance that finds a teammate, or of winning a throw-in near the halfway line, as disproportionate to its apparent significance. These small escapes are what makes the block survivable, and understanding that helps explain why a team defending a lead celebrates a corner won at the other end as though it were a goal.",
+        ],
+      },
+      {
+        h: 'Not only underdogs use it',
+        p: [
+          "Although the tactic is associated with weaker teams, strong sides use it deliberately in specific circumstances: protecting a lead, playing with ten men, managing a second leg, or facing an opponent whose main threat is the space behind a high line. It is a situational tool rather than an identity.",
+          "This matters at a World Cup because several favourites will find themselves defending deep at some point, and doing so competently requires having practised it. A team that only knows how to dominate is genuinely vulnerable in the situations where domination is not available, which is a recurring cause of favourites exiting earlier than expected.",
+        ],
+      },
+      {
+        h: 'The counter is what makes it work',
+        p: [
+          "A low block without an attacking threat is simply a delay of the inevitable, since a team that never threatens allows its opponent to commit everybody forward without risk. The counter-attack described elsewhere in this collection is the mechanism that keeps the block viable, by imposing a cost on over-commitment.",
+          "This is why the two tactics are almost always found together, and why assessing a low block requires watching what happens when possession is won as much as what happens while it is being defended. A team that clears aimlessly is enduring; one that breaks with three players is competing.",
+        ],
+      },
+      {
+        h: 'Judge it by execution, not by philosophy',
+        p: [
+          "The fair standard for a low block is whether it is being performed well, not whether one would prefer to watch something else. A disciplined, compact, well-organised defensive performance against superior opposition is a genuine achievement, and dismissing it as negative confuses aesthetic preference with analytical judgement.",
+          "Several matches at 2026 will feature exactly this, and the ones where the block holds will be among the tournament's more tense and dramatic ninety minutes. That the drama comes from resistance rather than from attacking flourish does not make it lesser, and watching it as a contest rather than as an inconvenience is the difference between enjoying those matches and enduring them.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-false-nine',
+    sections: [
+      {
+        h: 'How defences learned to counter it',
+        p: [
+          "The false nine's effectiveness declined as defences developed specific answers. The most common is for the holding midfielder rather than a centre-back to track the dropping forward, which removes the dilemma entirely — the defensive line stays intact and the false nine is picked up by a player whose absence from midfield matters less.",
+          "A second answer is simply to let him drop unmarked and defend the space he vacates, accepting that he will receive the ball in a deep position where he is less dangerous. Both responses require discipline and prior preparation, which is why the tactic remains effective against teams that have not specifically planned for it.",
+        ],
+      },
+      {
+        h: 'It requires very specific teammates',
+        p: [
+          "The false nine cannot function alone. Its entire logic depends on other players attacking the space the dropping forward creates, which means the wide attackers must be willing and able to make diagonal runs into the centre rather than holding width.",
+          "This is why the tactic is associated with particular squads rather than being universally available. A team with wingers who stay wide and cross has no mechanism for exploiting the space, and deploying a false nine in front of them simply removes a striker from the penalty area without creating anything in exchange.",
+        ],
+      },
+      {
+        h: 'When it fails, it fails badly',
+        p: [
+          "The characteristic failure is a team that ends up with nobody in the penalty area at all. The false nine has dropped, the wide players have not made their runs, and possession in the final third produces no target — a situation that can look like sterile domination for long periods and generates almost no genuine chances.",
+          "This is the risk that makes managers cautious about the approach, particularly at international level where the coordinated movement it depends on is harder to install. A false nine without the accompanying runs is simply a team playing without a striker, which is a considerably worse idea than it sounds.",
+        ],
+      },
+      {
+        h: 'The hybrid version is now more common',
+        p: [
+          "Pure false nines are relatively rare today; the more common modern arrangement is a striker who drops into midfield during build-up and then attacks the penalty area during the final phase of an attack. This captures much of the creative benefit while retaining a genuine goal threat.",
+          "Recognising this hybrid is a matter of watching where a striker is at different points in the same attack. A forward who receives the ball thirty metres from goal and is then in the six-yard box eight seconds later is performing both jobs — and this pattern, rather than the classical version, is what most 2026 viewers will actually see.",
+        ],
+      },
+      {
+        h: 'Using it as a surprise rather than a system',
+        p: [
+          "Some coaches deploy the false nine specifically as a one-off against a particular opponent, on the reasoning that its main value is disruption and disruption works best when unexpected. A defence that has prepared all week for a conventional centre-forward and encounters something else has been handed a genuine problem to solve in real time.",
+          "This situational use suits tournament football particularly, where each match is prepared for individually and there is no ongoing season during which an opponent could adapt. Watching for a team fielding an unfamiliar shape at 2026 is watching for exactly this — a manager spending a surprise he can only use once.",
+        ],
+      },
+      {
+        h: 'The intelligence required is the limiting factor',
+        p: [
+          "The scarcity of players capable of the role is the practical constraint on its use. It requires a forward comfortable receiving under pressure in congested midfield, capable of creating for others, and disciplined enough to judge when to drop and when to threaten the goal — a combination that is genuinely rare.",
+          "Most forwards are optimised for one half of this, and asking a poacher to operate as a false nine produces a player out of position rather than a tactical innovation. This is why the approach appears in phases attached to specific generations of players rather than as a permanently available option.",
+        ],
+      },
+      {
+        h: 'What it demonstrates about football',
+        p: [
+          "The idea's enduring appeal is that it attacks a defence's assumptions rather than its personnel — a purely conceptual advantage requiring no superior athlete or technique, only a rearrangement of expectations. That is an unusual kind of tactical idea and it is why the concept retains such affection among people who think about the sport.",
+          "It also illustrates something general: most defensive organisation is built on predicting where opponents will be, and any tactic that makes those predictions wrong generates an advantage before anybody has done anything skilful. Several of football's most effective ideas share that structure.",
+        ],
+      },
+      {
+        h: 'Watch the centre-backs, not the forward',
+        p: [
+          "The practical viewing advice is counterintuitive: when a team fields a false nine, watch the opposing centre-backs rather than the forward himself. Their behaviour — whether they follow, hesitate or hold — is where the tactic either works or does not, and the confusion it produces is visible in them long before it produces a chance.",
+          "A pair of centre-backs repeatedly glancing at each other while nobody occupies the space between them is a defence in the middle of exactly the dilemma this article describes, and it is one of the more satisfying things to be able to identify while it is happening.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'game-management-in-knockouts',
+    sections: [
+      {
+        h: 'The rules have moved against it',
+        p: [
+          "Officiating has become considerably stricter about time-wasting in recent years, with added time calculated more rigorously and cautions issued more readily for delays at restarts. A goalkeeper who once could consume forty seconds over a goal kick now faces a caution for substantially less.",
+          "This has genuinely changed the arithmetic. Time removed from play is now largely returned, which means the value of delaying has shifted from consuming the clock to disrupting rhythm — a real but smaller benefit. Teams that have not adjusted, and continue delaying as though the time will not be added back, are accumulating cards for very little return.",
+        ],
+      },
+      {
+        h: 'Added time is now substantial',
+        p: [
+          "The practical consequence of stricter timekeeping is that knockout matches frequently include six, eight or more minutes of added time, which is a materially different proposition from the three or four that were standard for decades. A team managing a lead must now manage a meaningfully longer closing period.",
+          "This has produced more late goals and more dramatic finishes, which is presumably the intention. It also means that a team leading by one goal at ninety minutes is considerably less safe than the same team was a decade ago, and game management has had to extend correspondingly.",
+        ],
+      },
+      {
+        h: 'Substitutions are clock management',
+        p: [
+          "With five changes available across three windows, substitutions have become a legitimate tool for controlling the closing stages: each one consumes time at a restart, breaks the opponent's rhythm, and introduces a fresh player. A manager holding two changes at the eighty-fifth minute has an entirely legal method of interrupting the final period twice.",
+          "The trade-off is that changes held back for this purpose are changes not used earlier for tactical reasons, and a manager who has saved substitutions purely for time management has forgone the chance to alter the match while it could still be altered. It is a genuine judgement rather than an obvious tactic.",
+        ],
+      },
+      {
+        h: 'One goal ahead and two are different games',
+        p: [
+          "The management approach changes sharply with the size of the lead. At one goal, a single mistake produces an equaliser and the team must remain fully organised; at two, there is genuine margin, and a team can afford to concede possession and territory more freely without the same risk of losing the result.",
+          "This is why the second goal in a knockout match is worth more than the first in practical terms — it converts a fragile position into a defensible one and permits an entirely different, more comfortable form of management. Teams leading by one frequently take more risks in pursuit of a second than the scoreline alone would suggest is rational, precisely for this reason.",
+        ],
+      },
+      {
+        h: 'Managing a match while losing',
+        p: [
+          "The mirror discipline receives far less attention: a team that is behind must also manage the clock, but in the opposite direction — taking restarts quickly, refusing to let the opponent slow the tempo, and applying pressure without abandoning structure so early that a second goal becomes likely.",
+          "This requires genuine discipline, since the instinct when trailing is to rush everything and commit everybody forward. Teams that manage a deficit well maintain a controlled urgency for twenty minutes rather than a chaotic assault for five, and the equalisers that arrive late are usually produced by the former.",
+        ],
+      },
+      {
+        h: 'Where it becomes cynical',
+        p: [
+          "There is a boundary beyond which game management stops being control and becomes gamesmanship: feigning injury, deliberately provoking opponents into cautions, obstructing restarts, and other behaviours that exploit the referee's tolerance. These are widely practised, widely criticised and difficult to eliminate.",
+          "The honest position is that the line is genuinely blurred and that most teams operate somewhere along it. What separates the versions people find acceptable from those they do not is usually whether it looks like an attempt to control the match or an attempt to prevent it being played at all, which is a distinction of degree rather than kind.",
+        ],
+      },
+      {
+        h: 'Different football cultures judge it differently',
+        p: [
+          "Attitudes toward game management vary substantially between footballing cultures, with some regarding it as an admired professional skill and others as unsporting. These differences produce genuine friction at international tournaments, where teams from opposing traditions encounter each other and each considers the other's behaviour unreasonable.",
+          "This is worth knowing before attributing bad faith to any 2026 team that slows a match down. Much of what one audience experiences as cynicism is, in the team's own footballing culture, straightforwardly what competent professionals do when leading — and neither view is obviously correct.",
+        ],
+      },
+      {
+        h: 'The champions all have it',
+        p: [
+          "Across tournament history, the teams that win are almost invariably capable of closing out a tight match, and a team that cannot is eventually eliminated by one that can. Whatever one thinks of the aesthetics, the correlation between this skill and progression is close to unarguable.",
+          "For a viewer, that suggests watching the closing twenty minutes of tight 2026 matches with some analytical interest rather than frustration. The team demonstrating this competence is showing you something genuinely predictive about how far it will go, which is more than most of the preceding seventy minutes will have revealed.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'defending-set-pieces',
+    sections: [
+      {
+        h: 'The offside line at a corner',
+        p: [
+          "A detail that surprises casual viewers: players cannot be offside from a corner, which is why defences do not attempt to catch attackers offside at corners and why the penalty area becomes so crowded. The restriction that shapes open play simply does not apply.",
+          "It does apply immediately afterward, however, which is why the coordinated push out described earlier matters so much. A defence that advances quickly after clearing can catch attackers offside in the second phase, converting a dangerous situation into a free kick — and this transition from no-offside to offside within a couple of seconds is one of the more technically demanding moments in defending.",
+        ],
+      },
+      {
+        h: 'The statistic worth tracking',
+        p: [
+          "Set-piece goals conceded is among the more actionable defensive statistics available, because unlike most defensive metrics it isolates a specific repeatable situation. A team conceding disproportionately from dead balls has an identifiable, fixable problem rather than a general defensive weakness.",
+          "Coaching staffs monitor this closely and address it directly when it appears. For a viewer, noticing that a 2026 team has conceded twice from corners in the group stage is a genuine predictor of vulnerability heading into the knockout rounds, where opponents will have seen exactly the same footage.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'transitions-the-key-moments',
+    sections: [
+      {
+        h: 'The historical shift',
+        p: [
+          "Transitions have always existed, but the deliberate coaching of them is relatively recent. Earlier tactical eras treated the moments after a turnover as incidental — the ball changed hands and play resumed — whereas modern coaching treats them as a distinct phase requiring specific preparation and personnel.",
+          "The change accompanied broader improvements in defensive organisation. As settled defences became harder to break down, the disorganised moments became proportionally more valuable, and coaching attention followed. It is a good illustration of how tactical emphasis shifts in response to what has become difficult rather than through fashion alone.",
+        ],
+      },
+      {
+        h: 'What to count during a match',
+        p: [
+          "A concrete exercise: across one half, count how many times each team creates a genuine chance within ten seconds of winning possession. The numbers are usually small and the disparity between teams is frequently large, and it maps closely onto which side looks more dangerous regardless of possession statistics.",
+          "This is a more informative measure of attacking threat than shots or possession, and it is available to anybody willing to pay attention for forty-five minutes. It also reveals which team has actually prepared for this phase, which is not always the one dominating the ball.",
+        ],
+      },
+      {
+        h: 'The seconds that will decide 2026',
+        p: [
+          "Everything in this article compresses into a single instruction for the tournament: when the ball changes hands, that is the moment worth your full attention. The goals will disproportionately come from there, the coaching will be most visible there, and the difference between well-prepared teams and improvising ones is starkest there.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-low-block-explained',
+    sections: [
+      {
+        h: 'The keeper is busier than the scoreline suggests',
+        p: [
+          "A goalkeeper behind a low block faces a specific workload: fewer clear one-on-ones, considerably more crosses to judge, more deflected shots arriving from congested areas, and constant organisational communication with a defence under sustained pressure.",
+          "The saves that matter in these matches are frequently not spectacular but positional — being in the right place for a deflected effort, claiming a cross under pressure to relieve a siege, or coming to punch clear when a corner arrives into a crowded box. It is a distinct goalkeeping profile from the one required behind a high line.",
+        ],
+      },
+      {
+        h: 'Why the first twenty minutes matter most',
+        p: [
+          "Teams defending deep are most vulnerable early, before the block has settled and while adrenaline is producing over-commitment, and again very late, once fatigue has arrived. The long middle period is generally the most controlled, which is counterintuitive given that the pressure is often heaviest then.",
+          "A favourite that fails to score in the opening twenty minutes against a low block has usually surrendered its best window and is facing a long, patient afternoon. Watching for whether early chances materialise is a reasonable early predictor of whether the block will hold for the full ninety.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-false-nine',
+    sections: [
+      {
+        h: 'A tactic that suits tournament football',
+        p: [
+          "International football's conditions favour this idea for a specific reason: opponents have less preparation time, defensive coordination is less rehearsed than at club level, and a novel problem posed on the day is therefore harder to solve. A false nine deployed at a World Cup meets a defence with fewer answers available.",
+          "This is why the concept has repeatedly surfaced at major tournaments even during periods when it was unfashionable at club level. The circumstances that make it effective — limited opposition preparation, a single decisive match, a need for something unexpected — are precisely the circumstances a knockout tournament produces.",
+        ],
+      },
+      {
+        h: 'One of football\'s genuinely elegant ideas',
+        p: [
+          "The reason this tactic attracts such affection is that it is essentially an idea rather than a resource. It requires no superior athlete, no financial advantage and no physical dominance — only a rearrangement of where somebody stands and a shared understanding of what that creates.",
+          "Football produces relatively few genuinely elegant tactical concepts, and this is among the clearest. Whether or not it appears at 2026, it is worth understanding as an example of what tactical thinking can achieve when it attacks assumptions rather than opponents.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'game-management-in-knockouts',
+    sections: [
+      {
+        h: 'Keeping the ball is the cleanest version',
+        p: [
+          "The least controversial and most effective form of game management is simply retaining possession. A team that can keep the ball in safe areas for extended periods is running down the clock without any of the delay tactics that attract criticism, and it is doing so in a way officials cannot penalise.",
+          "This requires genuine technical quality under pressure, which is why it is more available to stronger teams. A side that cannot retain possession must resort to the cruder methods, which is part of why game management looks more cynical when weaker teams do it — they are using the only version available to them.",
+        ],
+      },
+      {
+        h: 'The corner flag and other classics',
+        p: [
+          "The standard repertoire is well known: taking the ball to the corner flag and shielding it, winning throw-ins deep in the opponent's half, drawing fouls in harmless areas, and encouraging the ball out of play near the opposition's technical area. Each consumes time and moves play away from danger.",
+          "None of these is against the laws, and all of them are taught. A team executing them competently in the final ten minutes of a knockout match is doing exactly what its coaching staff prepared, and the crowd frustration they produce is, from the team's perspective, evidence that they are working.",
+        ],
+      },
+      {
+        h: 'The skill nobody admits to admiring',
+        p: [
+          "Supporters criticise game management when opponents do it and appreciate it when their own team does, which is a reliable enough pattern to be worth acknowledging honestly. It is among the clearest examples in the sport of a behaviour judged entirely by allegiance rather than on its merits.",
+          "The consistent position is that it is a legitimate skill, that its cynical extremes are genuinely unpleasant, and that the boundary between them is a matter of degree. Watching the closing minutes of 2026's tight knockout matches with that framing produces a more interesting experience than simply objecting to whichever team happens to be ahead.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'defending-set-pieces',
+    sections: [
+      {
+        h: 'The discipline that keeps campaigns alive',
+        p: [
+          "This article's central claim deserves restating: across a seven-match knockout run, a team will defend perhaps seventy or eighty set pieces, and conceding from one of them can end everything. The margin between a competent defensive set-piece operation and a careless one is therefore measured in tournaments rather than in goals.",
+          "It is genuinely unglamorous preparation, it produces no highlights, and the teams still playing in the tournament's final week will almost all have done it properly. That is about as clear a summary of tournament football's actual priorities as the sport offers.",
+        ],
+      },
+      {
+        h: 'Height helps and does not settle it',
+        p: [
+          "Physical stature obviously matters when defending crosses, and several teams at 2026 will be noticeably shorter than their opponents. This is a genuine disadvantage and it is not decisive, because timing, positioning and attacking the ball early frequently beat raw height.",
+          "Shorter teams compensate with more aggressive zonal setups designed to reach the ball before an aerial contest develops, and with taking their goalkeeper's command of the area more seriously. It is a solvable problem rather than a permanent handicap, and the teams that have solved it will not look obviously disadvantaged at all.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'transitions-the-key-moments',
+    sections: [
+      {
+        h: 'Individual attributes that matter here',
+        p: [
+          "Certain player qualities are specifically transitional rather than generally useful: acceleration over the first ten metres rather than top speed, the ability to carry the ball at pace under pressure, and the scanning habit that makes an immediate forward pass available. Teams building for transitions recruit for these specifically.",
+          "This explains selections that can look eccentric on general quality grounds. A player who is unremarkable in settled possession and devastating in transition has a genuine tournament role, particularly as a substitute introduced against tiring opponents, and the coaching staff selecting him is solving a specific problem rather than misjudging his ability.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-low-block-explained',
+    sections: [
+      {
+        h: 'What breaking one actually requires',
+        p: [
+          "For the favourite, the honest requirement is patience plus one moment of genuine quality. Systematic approaches — switching play, working the flanks, sustained pressure — create the conditions, and the goal itself usually arrives from an individual doing something a well-organised defence could not have prevented regardless.",
+          "This is why teams with a low block are so dangerous against opponents lacking a match-winner. A side that can create pressure but has nobody capable of the decisive moment will circulate the ball for ninety minutes and lose to a counter-attack, which is precisely the outcome the block was designed to produce.",
+        ],
+      },
+      {
+        h: 'It will produce some of 2026 best drama',
+        p: [
+          "Matches between a favourite and a committed low block are among the tensest the tournament offers, because the tension builds continuously rather than resolving. Every minute that passes without a goal shifts the balance toward the defending side, and both sets of supporters feel that shift simultaneously in opposite directions.",
+          "Watching one of these with an understanding of what both teams are attempting turns what could seem like a one-sided non-event into a genuine contest with a clock running through it. Several will occur during the 2026 group stage alone, and they are worth approaching as chess rather than as an inconvenience.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-false-nine',
+    sections: [
+      {
+        h: 'Where to look for it in 2026',
+        p: [
+          "The teams most likely to use this at the tournament are those with an abundance of creative midfielders and no outstanding conventional striker — a squad composition that occurs regularly at international level, where a manager selects from whoever a country happens to have produced rather than from a transfer market.",
+          "This is arguably the tactic's most common origin: not a manager pursuing an elegant idea but one solving the practical problem of having five good attacking midfielders and no centre-forward. Several 2026 squads will face exactly that situation, and it is worth watching how each of them responds.",
+        ],
+      },
+      {
+        h: 'The idea outlives its fashion',
+        p: [
+          "Whatever its current standing, the false nine has now been rediscovered often enough across different eras to be considered a permanent part of football's tactical vocabulary rather than a passing trend. It recurs whenever defences become sufficiently organised that attacking their assumptions is more productive than attacking their players.",
+          "Given how well-drilled modern international defences are, the conditions favouring it are arguably as strong now as they have been. Whether any 2026 manager takes the opportunity is a genuinely open question, and it is one of the more interesting tactical things to watch for across the group stage.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'game-management-in-knockouts',
+    sections: [
+      {
+        h: 'The team that cannot do it goes home',
+        p: [
+          "The final observation is a blunt one. Across every World Cup, several teams take a lead in a knockout match and fail to protect it, and their tournaments end there. Whatever the aesthetic objections, the inability to control a match once ahead is among the most reliable ways for a good team to be eliminated.",
+          "Watching for which 2026 teams demonstrate this competence during the group stage is therefore genuinely predictive. A side that has already shown it can see out a narrow win under pressure has demonstrated something that its more attractive but less controlled rivals may not be able to do when it matters.",
+        ],
+      },
+      {
+        h: 'Both perspectives are legitimate',
+        p: [
+          "The tension this article identifies does not resolve, and pretending otherwise would be dishonest. Neutral viewers want a contest and a leading team wants a result, and those two desires are directly opposed in the closing twenty minutes of every tight knockout match ever played.",
+          "The most defensible position is to hold both: recognise that the team slowing the match down is doing something difficult and rational, and also acknowledge that watching it is less enjoyable than watching football. Neither observation cancels the other, and the sport has never found a way to satisfy both parties simultaneously.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'defending-set-pieces',
+    sections: [
+      {
+        h: 'Communication is the failure point',
+        p: [
+          "When set-piece marking breaks down, the cause is most frequently communication rather than ability: two defenders each assuming the other had a runner, a switch of assignment that one player did not hear, or a substitute entering without being told his responsibility.",
+          "This is why the vocal organisation visible before every corner matters so much, and why substitutes are briefed on set-piece duties before entering the pitch. A defence that concedes shortly after a substitution has frequently been undone by exactly this, and it is among the most preventable ways to lose a knockout match.",
+        ],
+      },
+      {
+        h: 'A quiet way to judge a team',
+        p: [
+          "If you want a single quick indicator of how well-organised a 2026 team is, watch it defend its first corner. The speed with which players take up positions, the visible assignment of responsibilities, and whether anybody appears uncertain are all apparent within a few seconds and tell you a great deal about the preparation behind the team.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'transitions-the-key-moments',
+    sections: [
+      {
+        h: 'Substitutes tilt the balance',
+        p: [
+          "Fresh players introduced late affect transitions more than any other phase, because the entire contest depends on relative speed over short distances. A substitute sprinting against defenders who have run for eighty minutes creates transitional advantages that were simply unavailable earlier in the match.",
+          "This is the mechanism behind a substantial share of late tournament goals, and it is why the substitution patterns described elsewhere in this collection matter so much. A manager introducing pace at seventy minutes is explicitly targeting the five-second windows this article describes, and the goals that follow are the predictable result.",
+        ],
+      },
+      {
+        h: 'One habit, one tournament',
+        p: [
+          "If a single viewing change is worth carrying through 2026, it is this: at every turnover, resist following the ball for a count of three and watch the players instead. It takes a handful of repetitions to become automatic and it permanently changes what a football match looks like.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-low-block-explained',
+    sections: [
+      {
+        h: 'A legitimate way to compete',
+        p: [
+          "The argument this article makes is finally about fairness rather than tactics. A team with fewer resources, less individual quality and no realistic prospect of controlling a match against a stronger opponent is entitled to compete in the way most likely to produce a result, and dismissing that as negative is asking it to lose more attractively.",
+          "The low block is what competitive football looks like when the resources are unequal, and at a World Cup the resources are unequal in most matches. Understanding it as a plan rather than as a failure of ambition is the difference between watching those matches with interest and watching them with irritation.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-false-nine',
+    sections: [
+      {
+        h: 'What to take from it',
+        p: [
+          "The false nine is worth understanding less as a tactic you will definitely see and more as an illustration of how tactical advantage is actually created: by identifying what an opponent's organisation assumes and then declining to satisfy the assumption. Most genuine innovations in football share that structure.",
+          "Carrying that framing into 2026 makes a great deal of tactical commentary more legible, since it supplies the underlying question — what is this team's shape assuming, and what happens if that assumption fails — that most specific tactical ideas are answers to.",
+        ],
+      },
+      {
+        h: 'A note on the name',
+        p: [
+          "The term itself is worth a sentence: the nine is false because the shirt number traditionally denoting a central striker is worn by somebody performing a different job entirely. The name is a small joke about a mismatch between label and function, which is a reasonably accurate description of the tactic as well.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'defending-set-pieces',
+    sections: [
+      {
+        h: 'It is coachable, which is the point',
+        p: [
+          "The encouraging conclusion is that defensive set-piece performance is among the most improvable things in football. It requires no additional talent, no transfer spending and no new tactical philosophy — only assignment clarity, rehearsal and concentration, all of which any coaching staff can install with sufficient training time.",
+          "Teams that concede repeatedly from dead balls are therefore failing at something entirely within their control, which is why coaching staffs treat it as a genuine indictment rather than as misfortune. It is also why a team's set-piece record can improve dramatically within a single tournament once the problem has been identified and addressed.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'transitions-the-key-moments',
+    sections: [
+      {
+        h: 'Why this article exists',
+        p: [
+          "Most football coverage still describes matches in terms of possession, chances and individual moments of quality, which is a vocabulary inherited from an earlier era of the sport. The transitional framing described here is closer to how the game is actually coached now, and adopting it closes a genuine gap between how football is played and how it is discussed.",
+          "That gap is worth closing for a viewer, because it explains outcomes that the older vocabulary cannot. A team that dominated possession and lost has not been unlucky; it has usually been beaten in a phase that the possession statistic does not measure at all.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-low-block-explained',
+    sections: [
+      {
+        h: 'The most common shape at a World Cup',
+        p: [
+          "With forty-eight teams and a substantial spread of quality, the low block will be the most frequently deployed defensive structure of the entire 2026 tournament. Most matches will feature at least one team defending deep for meaningful periods, which makes understanding it close to a prerequisite for following the group stage.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'game-management-in-knockouts',
+    sections: [
+      {
+        h: 'The craft champions almost always possess',
+        p: [
+          "This article's closing claim is the strongest one available: look at the teams that have won World Cups and nearly all of them could close out a tight match. It is not sufficient on its own and it is very close to necessary, which places it among the small number of genuinely load-bearing tournament competences.",
+          "It is also, unlike most of what decides tournaments, entirely learnable. A squad can be drilled in it, and several have improved noticeably within a single tournament after an early lesson — which makes its absence in a team that has had years to prepare a genuine coaching failure rather than bad luck.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-false-nine',
+    sections: [
+      {
+        h: 'Worth recognising when it appears',
+        p: [
+          "The practical value of understanding this tactic is not that it will feature heavily at 2026 but that when it does appear — in a single match, as a surprise against a specific opponent — you will recognise what is happening rather than concluding that a team has simply left its striker out.",
+          "That recognition changes the match from confusing to legible, and it applies to the hybrid versions too, which are considerably more common. A forward repeatedly dropping into midfield during build-up is running a version of this idea, and knowing what he is trying to create makes his apparently peripheral involvement make sense.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
