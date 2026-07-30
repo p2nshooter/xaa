@@ -1048,6 +1048,1183 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'what-scouts-watch-in-a-player',
+    sections: [
+      {
+        h: 'Data scouting versus the traditional eye test',
+        p: [
+          "Modern scouting departments now run on two parallel tracks that used to be entirely separate: the traditional eye test described elsewhere in this piece, and a growing body of statistical analysis measuring things the naked eye cannot easily quantify — expected goals, pressing intensity per ninety minutes, pass completion under pressure, distance covered in the defensive third. Neither track has replaced the other; the best modern scouting departments use data to flag a player worth a closer human look, then use the trained eye described throughout this article to judge the qualities no spreadsheet captures, like temperament and decision-making under pressure.",
+          "The tension between the two approaches occasionally surfaces publicly when a data-beloved player disappoints on the eye test, or a scout's gut-feel favourite fails to show up in any statistical model — and the honest state of the art is that neither source alone is reliable enough to trust exclusively, which is exactly why every major footballing nation's scouting setup for a tournament like 2026 now blends both rather than picking a side in what was, a decade ago, a genuinely contentious internal debate.",
+        ],
+      },
+      {
+        h: 'Scouting under tournament conditions specifically',
+        p: [
+          "World Cup scouting is a fundamentally compressed version of the year-round process club scouts perform, and it forces different priorities. A club scout may watch a target across an entire season before recommending a signing; an opposition scout preparing a national team for its next World Cup match may have only the tournament's own earlier matches, plus whatever qualifying footage exists, to build a complete picture of an opponent it has perhaps never faced before.",
+          "This compressed timeline rewards scouts who can extract a reliable read from a small sample size, a genuinely different skill from the patient, season-long profiling club scouting allows — and it is part of why national federations increasingly employ specialist opposition analysts distinct from the scouts who recruit players, since preparing for Thursday's opponent under a five-day turnaround is a different job entirely from building a five-year recruitment strategy.",
+        ],
+      },
+      {
+        h: 'A famous scouting miss worth remembering',
+        p: [
+          "Football history is full of players rejected by scouting departments early in their careers for reasons that look almost comic in hindsight — too small, too slow, not physically imposing enough for the level — only to go on to become some of the sport's greatest players once given a chance elsewhere. These stories circulate widely within scouting departments themselves precisely as cautionary tales, a standing reminder that the traits scouts are trained to prize are correlations, not laws, and that the eye test described throughout this article remains fallible no matter how experienced the scout doing it.",
+          "Good scouting departments build in structural humility around exactly this risk, seeking a second and third opinion on any player rejected primarily for physical rather than footballing reasons, since the sport's history suggests that specific bias — undervaluing a smaller or less physically imposing player who ultimately reads the game brilliantly — recurs often enough to warrant deliberate correction rather than trusting a single scout's first impression.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goalkeeper-became-a-playmaker',
+    sections: [
+      {
+        h: 'How goalkeepers actually train for this now',
+        p: [
+          "The shift described in this article shows up concretely in how young goalkeepers are trained today compared to a generation ago: modern goalkeeping academies now include structured outfield technical work — first touch under pressure, scanning before receiving, short and long passing range — that would once have been considered irrelevant to a position defined purely by shot-stopping and handling. Some academies have goalkeepers train passing drills alongside outfield players for a portion of every session, treating ball-playing ability as a core competency rather than a bonus skill.",
+          "This has real selection consequences at international level: a goalkeeper with excellent reflexes but limited passing range is now a harder sell for a national team built around playing out from the back, regardless of how good his shot-stopping is, since a team's entire attacking structure can be undermined by one weak link in what is effectively the first pass of every possession.",
+        ],
+      },
+      {
+        h: 'The specific decision every modern keeper faces from a goal kick',
+        p: [
+          "Few moments better capture the modern goalkeeper's dual identity than a routine goal kick against a team that presses aggressively. The keeper must decide, in seconds, whether to play short into a crowded, high-risk zone in hopes of building through the press, or go long and cede the exact patient possession his coaching staff wants him to establish — a decision that did not meaningfully exist for keepers a generation ago, when the long kick was simply the default, unremarkable choice.",
+          "Watching how a goalkeeper handles this specific, repeated decision across a match tells you as much about a team's tactical identity as almost anything else on the pitch, since it reveals how much genuine trust a coaching staff places in their keeper's feet under the exact pressure that a mistake there is most costly.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'changing-job-of-the-number-nine',
+    sections: [
+      {
+        h: 'What the statistics actually reveal about strikers today',
+        p: [
+          "Advanced statistics have made visible a shift in striker evaluation that eye-test punditry was slower to catch onto: raw goal totals, once the only number that mattered for judging a centre-forward, are now routinely set against expected-goals models that measure the quality of chances a player receives, revealing that some strikers celebrated for their finishing are actually converting a normal share of high-quality chances, while others quietly outperform expectation by a meaningful margin, season after season, in a way that raw totals alone obscure.",
+          "This has changed which forwards national federations and scouts consider genuinely elite, sometimes surprising fans attached to raw scoring charts — a striker averaging fewer goals but consistently outperforming his underlying chance quality is, by this more rigorous measure, often the rarer and more valuable talent than one simply playing in a system that manufactures more shots overall.",
+        ],
+      },
+      {
+        h: 'Where the false nine actually came from',
+        p: [
+          "The false nine is often discussed as a recent tactical innovation, but its lineage stretches back much further than most casual fans realise, with early versions of the concept appearing in specific historical matches decades before the term itself became fashionable pundit vocabulary. What changed more recently was not the idea itself but the tactical sophistication surrounding it — the specific patterns of rotation and space creation that make a false nine devastating rather than merely unconventional, refined over successive footballing eras rather than invented whole in a single moment.",
+          "Knowing this history matters because it reframes the false nine correctly: not a gimmick unique to one specific era or manager, but a recurring solution that resurfaces whenever a defence becomes too comfortable marking a fixed, predictable striker — a tactical idea old enough to have proven itself durable across multiple very different periods of the sport's history.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-tournaments-launch-young-stars',
+    sections: [
+      {
+        h: 'The academy pipeline behind the breakout moment',
+        p: [
+          "A World Cup breakout can look spontaneous to a casual viewer, but it is almost always the visible tip of years of largely invisible development work: an academy system that identified the player young, a club pathway that gave him senior minutes earlier than his peers, and often a specific youth international tournament a year or two earlier where scouts and federation staff first flagged him as a special talent worth fast-tracking into the senior setup.",
+          "Nations with the strongest, best-funded academy systems consistently produce a disproportionate share of these breakout stars, not because their footballing culture is inherently more youth-friendly in spirit, but because their development pipeline is structurally built to identify and accelerate rare talent years before a World Cup ever arrives — the breakout moment is the payoff of that investment becoming visible to the wider world all at once.",
+        ],
+      },
+      {
+        h: 'The burnout risk nobody warns the player about beforehand',
+        p: [
+          "Overnight global fame at nineteen or twenty comes with a real and well-documented cost that the celebratory tournament coverage rarely mentions: a sudden, enormous jump in transfer speculation, media scrutiny and public expectation, landing on a player often still adjusting to first-team football at club level, let alone international superstardom. Sports psychologists who work with young professional footballers specifically flag the period immediately following a breakout tournament as a uniquely high-risk window for burnout, poor decision-making around transfers, and a decline in form driven as much by psychological overload as anything tactical.",
+          "The federations and clubs that manage this transition best tend to deliberately shield a young breakout star from the full weight of the resulting attention in the months immediately following, rather than maximising the commercial opportunity the moment presents — a genuine tension between what is good for a young player's long-term development and what is commercially tempting in the short term, and one that has derailed more than one promising young career when handled badly.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'How a captain actually gets chosen',
+        p: [
+          "The process behind who wears the armband varies more than fans typically assume: some national teams have the captaincy effectively decided by the manager alone, based on seniority, form, and personal judgement about leadership qualities; others involve a genuine informal consultation with senior players in the squad, treating the decision as one the dressing room itself should have real input into rather than one imposed purely from above.",
+          "Neither approach is obviously superior, and different footballing cultures have historically favoured different models — but the choice itself sends a signal to the rest of the squad about how that particular national team is run, and a captaincy decision that clearly lacks the dressing room's genuine respect, regardless of how it was arrived at, tends to surface as a visible problem exactly at the moments described elsewhere in this article, when the team most needs its captain's authority to actually mean something.",
+        ],
+      },
+      {
+        h: 'The vice-captain role that almost nobody discusses',
+        p: [
+          "Every squad also names a vice-captain, a role that receives a small fraction of the attention the captaincy itself does despite doing much of the same invisible work described throughout this piece whenever the actual captain is substituted, suspended, or simply needs support managing a large squad's morale across a long tournament. A strong vice-captain relationship with the captain — rather than a purely ceremonial backup arrangement — is part of what allows the leadership work of a World Cup campaign to be sustained across a full month rather than resting entirely on one individual's shoulders.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'offside-law-finally-made-simple',
+    sections: [
+      {
+        h: 'Semi-automated offside technology, explained plainly',
+        p: [
+          "The latest evolution beyond manual video review is semi-automated offside technology, which uses tracking cameras and, in some implementations, a sensor inside the match ball itself to detect the exact moment of the pass and calculate every relevant player's position automatically, generating a broadcast-ready three-dimensional graphic within seconds rather than the several minutes a purely manual video review often required. The goal is speed and consistency: removing human error from the millimetre-level line-drawing that previously varied slightly between different video assistant referees judging the same kind of decision.",
+          "It has not eliminated the controversy the earlier video-review era introduced, since a marginal, correctly-detected offside by a toe or a shoulder still feels jarring to fans raised on a more forgiving, naked-eye version of the sport — but it has meaningfully reduced disputes over whether the technology itself measured correctly, shifting the remaining argument toward whether the rule's current precision is actually good for the sport, a genuinely different and more interesting debate than arguing about measurement accuracy.",
+        ],
+      },
+      {
+        h: 'How defences deliberately exploit the rule',
+        p: [
+          "Beyond simply avoiding an offside offence, well-coached defences actively use the offside rule as an offensive weapon of their own, coordinating a deliberate high defensive line that steps forward in unison at a specific, rehearsed trigger to catch an unprepared attacker in an offside position — a genuine tactic, drilled on the training ground like any set piece, rather than a passive byproduct of normal defending.",
+          "This 'offside trap,' as it is commonly known, requires precise coordination across an entire back line, since a single defender stepping a fraction late undoes the whole trap and can gift the attacking team a clean run through an now-disorganised defence — which is exactly why it remains a high-risk, high-reward tactic that only the most disciplined defensive units attempt with any real confidence at World Cup level.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-high-press-explained',
+    sections: [
+      {
+        h: 'Man-oriented versus zonal pressing systems',
+        p: [
+          "Not all high presses are built the same way, and the distinction between man-oriented and zonal pressing schemes explains much of the tactical variety visible across different teams attempting broadly the same idea. A man-oriented press assigns specific defenders to track specific opponents wherever they move, aiming to deny any easy pass by covering every individual option; a zonal press instead assigns defenders to specific areas of the pitch, trusting the team's structure and coordinated movement to close passing lanes rather than shadowing individuals directly.",
+          "Each carries different risks: man-oriented pressing can be dragged out of shape by clever opposition movement designed specifically to pull markers into unfavourable positions, while zonal pressing can be beaten by a well-timed run into a gap between zones that no single defender was ever responsible for covering. The best pressing teams often blend both principles situationally, which is part of why elite pressing systems look deceptively simple to a casual viewer while actually representing years of tactical refinement.",
+        ],
+      },
+      {
+        h: 'The counter-press: pressing the moment you lose the ball',
+        p: [
+          "A specific, particularly demanding variant of pressing — sometimes called counter-pressing or by its German name, gegenpressing — focuses not on the general high press described elsewhere in this piece but on the specific seconds immediately after a team loses possession, when the opponent has just won the ball and is, for a brief moment, disorganised and thinking about attacking rather than defending its new possession. Pressing intensely in exactly that window, rather than retreating to a defensive shape first, aims to win the ball back before the opponent can even organise an attack with it.",
+          "This is widely considered among the most physically demanding tactical approaches in the modern game, since it requires committing significant numbers forward to press immediately after losing the ball rather than resting into a settled defensive block — a trade-off that only squads with exceptional collective fitness and tactical discipline can sustain across the length of a World Cup match, let alone across an entire tournament's worth of matches played in a short span.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'playing-out-from-the-back',
+    sections: [
+      {
+        h: 'The rule change that quietly forced this evolution',
+        p: [
+          "The tactic's rise is not purely a matter of coaching fashion — a specific rule change decades ago, banning goalkeepers from picking the ball up with their hands from a deliberate pass back from a teammate, removed the easiest escape valve for a team under pressure near its own goal, and forced goalkeepers to become genuinely comfortable using their feet under duress rather than simply catching the ball and resetting play whenever a back-pass arrived. Everything this article describes about the modern ball-playing goalkeeper traces back, in part, to that single administrative decision.",
+          "It is a useful reminder that tactical evolution in football is not purely organic — a rule written for one specific reason, reducing time-wasting, ended up reshaping an entire generation of goalkeeper development and, by extension, how the whole team builds attacks from deep, entirely as an unintended consequence of a change aimed at a completely different problem.",
+        ],
+      },
+      {
+        h: 'What teams without elite technical quality actually do instead',
+        p: [
+          "Not every national team at a World Cup has the individual technical quality to play out from the back reliably against the tournament's best pressing sides, and the honest, pragmatic response for such a team is not to blindly copy a tactic better-resourced opponents can execute more safely, but to adapt the principle to its own players' actual capabilities — building out only in specific, lower-risk situations, mixing in more direct play when the technical gap against a particular opponent is too wide to risk, and reserving the full version of the tactic for matches against opposition that presses less intensely.",
+          "This kind of honest self-assessment, rather than dogmatic commitment to a fashionable tactical trend regardless of squad quality, is itself a mark of good coaching, and it is worth watching for in the 2026 group stage: which nations adjust their approach sensibly match to match, and which rigidly attempt the same high-risk build-up regardless of the opponent in front of them.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-set-pieces-decide-tournaments',
+    sections: [
+      {
+        h: 'The rise of the dedicated set-piece coach',
+        p: [
+          "What was once a minor part of a head coach's broader tactical planning has, over the past decade, become its own specialist coaching role: many national federations and top clubs now employ a dedicated set-piece coach whose entire job is designing, drilling and constantly refreshing the corner and free-kick routines this article describes, treating dead-ball situations with the same rigour once reserved only for open-play tactics.",
+          "This professionalisation reflects a simple recognition of the statistics discussed elsewhere in this piece: if a large share of goals in tight tournament football genuinely comes from set pieces, then the marginal return on investing serious coaching resource into that specific phase of the game can rival or exceed the return on refining open-play patterns that may only be relevant for a fraction of a match's actual key moments.",
+        ],
+      },
+      {
+        h: 'Man-marking versus zonal defending at corners',
+        p: [
+          "Defending a corner splits into two competing philosophies that have argued their relative merits for decades: man-marking assigns each defender a specific attacker to track regardless of where the ball ultimately goes, while zonal marking assigns each defender a specific area of the six-yard box or penalty area to control, trusting positioning over individual tracking. Man-marking can be exploited by blocking runs that separate a marker from his assignment; zonal marking can be beaten by a well-timed run arriving in a gap between zones that overlapping responsibilities failed to cover.",
+          "Most elite teams today use a hybrid of the two rather than committing fully to either extreme, assigning key aerial threats to specific man-markers while covering the remaining space zonally — a compromise that reflects decades of accumulated lessons about where each pure approach tends to fail, and one worth watching for specifically during the tension of a tightly-defended 2026 knockout corner.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'plain-guide-to-football-formations',
+    sections: [
+      {
+        h: 'A brief history of how formations evolved',
+        p: [
+          "Formations have a genuine evolutionary history worth knowing, not just a current menu of numbers to memorise. Early football was played with attacking-heavy shapes that look almost reckless by modern standards; a mid-twentieth-century defensive innovation then swung the pendulum hard toward caution, prioritising defensive solidity above all else; and the sport has spent the decades since gradually rebalancing, borrowing ideas from both extremes into the more fluid, hybrid systems common today.",
+          "Understanding this history matters because it shows formations are not neutral, timeless categories but responses to the tactical problems of their era — a formation considered daringly attacking in one decade might be considered cautiously defensive by the standards of the next, as the sport's baseline expectations for tempo, pressing and possession keep shifting the frame of reference underneath the same static numbers.",
+        ],
+      },
+      {
+        h: 'The inverted full-back: a genuinely new wrinkle',
+        p: [
+          "One of the more distinctive recent tactical developments involves full-backs — traditionally positioned wide, overlapping down the touchline — instead tucking inside into central midfield positions when their team has possession, effectively turning a back four into a back two plus two auxiliary central midfielders once the ball is won. This 'inverted full-back' role adds central passing options and defensive cover against counter-attacks simultaneously, at the cost of width that has to be provided by other players instead.",
+          "It is a good illustration of this article's central point about formations hiding as much as they reveal: a team lined up in a conventional-looking back four on the team sheet may function, in actual possession, as something that looks nothing like a traditional back four at all — which is exactly why the printed formation number is only ever a starting vocabulary, never the full tactical picture.",
+        ],
+      },
+      {
+        h: 'Reading a formation battle like a chess match',
+        p: [
+          "Experienced tactical observers describe the interaction between two opposing formations as a genuine rock-paper-scissors dynamic: a back three is often specifically chosen to overload a rival's back four out wide, a diamond midfield is often chosen to dominate a rival's flatter three-man midfield through the centre, and a manager who sees the opponent's likely shape in advance will frequently shape his own team as a direct tactical answer to it, rather than simply fielding a fixed, preferred system regardless of the opponent.",
+          "This is why the same manager can select genuinely different formations from one World Cup match to the next despite having a clear, stated overall footballing philosophy — the formation is the specific tactical answer to that match's opponent, while the underlying principles about pressing, possession and risk usually stay far more constant across the whole tournament than the printed numbers on the team sheet suggest.",
+        ],
+      },
+      {
+        h: 'Why some formations suit some players and not others',
+        p: [
+          "A formation is ultimately a vessel for the specific players available, and the same shape can look completely different depending on who is asked to fill it — a back three built around ball-playing central defenders looks like a possession-dominant system, while the identical back three built around physically dominant, less technical defenders looks like a defensively cautious one, even though the underlying numerical shape on paper is identical in both cases.",
+          "This is why simply copying a successful rival nation's formation rarely produces the same results elsewhere: a formation's effectiveness depends enormously on whether the specific players available are actually suited to the demands that shape places on their particular positions, which is a squad-building and player-development question, not merely a tactical-diagram one.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-scouts-watch-in-a-player',
+    sections: [
+      {
+        h: 'The specific checklist a scout runs for each position',
+        p: [
+          "Experienced scouts do not watch every position looking for the same qualities, and the specific checklist changes meaningfully depending on the role being assessed. For a central defender, the priority list tends to run through positioning and anticipation before pace, since a defender who reads the game well rarely needs to rely on recovery speed in the first place. For a winger, scouts weigh the ability to beat a defender in a one-on-one situation heavily, but increasingly also track defensive work rate, since modern wide players are expected to track back and press as much as they are expected to attack.",
+          "For a goalkeeper, as this collection's dedicated piece on the position discusses, the checklist has expanded considerably to include passing range and composure under pressure alongside the traditional shot-stopping and command of the box. Knowing which specific qualities matter for which position turns generic, adjective-heavy scouting talk — 'good positioning', 'reads the game well' — into something a genuinely informed viewer can actually verify by watching the right moments for the right role.",
+        ],
+      },
+      {
+        h: 'Why age matters differently for different positions',
+        p: [
+          "Scouts also weigh age very differently depending on position, a nuance easy to miss when reading generic transfer speculation. A young, raw winger's explosive pace and fearlessness, discussed elsewhere in this collection's piece on breakout young stars, is often considered close to a peak physical attribute already present; a young central defender, by contrast, is typically considered a longer-term project, since positional reading and game intelligence — the qualities that matter most for that role — usually take years of senior football experience to fully develop regardless of natural talent.",
+          "This is part of why breakout stories at a World Cup skew toward attacking positions and away from central defence: the specific qualities a young forward or winger needs to shine are more likely to already be present at nineteen or twenty than the specific qualities a top-class central defender needs, which is a scouting insight worth remembering the next time a tournament's breakout narrative focuses almost entirely on attacking players.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goalkeeper-became-a-playmaker',
+    sections: [
+      {
+        h: 'A position that now demands two almost opposite skill sets',
+        p: [
+          "It is worth pausing on just how unusual it is, within the whole of professional sport, to ask one player to combine two almost opposite skill sets at the highest level: the explosive, reactive athleticism of a shot-stopper reading a strike from twelve yards in a fraction of a second, and the calm, considered technical passing range of a deep-lying playmaker under no immediate physical threat but real tactical pressure. Very few positions in any sport demand such a wide and, in some ways, contradictory range of qualities from a single player.",
+          "This dual demand is part of why genuinely elite modern goalkeepers are rarer, relatively speaking, than in previous eras, despite the position receiving more specialist coaching attention than ever before — the pool of players who combine both skill sets at an international level remains smaller than the pool of, say, technically excellent central midfielders, simply because the specific combination the modern game demands is unusually difficult to develop in one person.",
+        ],
+      },
+      {
+        h: 'How this changes national team recruitment',
+        p: [
+          "The shift documented throughout this article has real consequences for how national federations plan their goalkeeping depth heading into a tournament: a federation with two capable shot-stoppers but only one who is genuinely comfortable in possession under a modern high press faces a real selection dilemma that simply did not exist a generation ago, when shot-stopping ability alone would have settled the debate clearly.",
+          "This is part of why goalkeeper selection at the 2026 tournament will likely draw more tactical scrutiny and public debate than in previous eras — the choice is no longer purely about who makes the best individual saves, but about which goalkeeper's overall skill set actually fits the specific way that particular national team wants to build its attacks from the back.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'changing-job-of-the-number-nine',
+    sections: [
+      {
+        h: 'Why some leagues keep producing different striker archetypes',
+        p: [
+          "The specific type of striker a footballing culture tends to produce is not random — it correlates closely with the dominant tactical style of that nation's domestic league, since young forwards develop within whatever system their formative years of first-team football actually demand of them. A league built around direct, physical, high-tempo football tends to develop target men and poachers who thrive in exactly those conditions; a league built around patient possession and technical build-up tends to produce forwards more comfortable dropping deep and combining, closer to the false-nine or complete-forward archetypes discussed elsewhere in this article.",
+          "This has real implications for how a national team's attack looks at a World Cup, since a squad drawing its strikers predominantly from one domestic league's stylistic tradition often plays a recognisably different brand of centre-forward football than a squad whose strikers were developed across several different leagues with different demands — the international team, in effect, inherits some of the tactical DNA of wherever its individual players learned the position.",
+        ],
+      },
+      {
+        h: 'The forwards who thrived without fitting any archetype cleanly',
+        p: [
+          "For all the usefulness of the poacher, target man, false nine and complete forward categories this article describes, football's history includes a meaningful number of genuinely elite strikers who do not cleanly fit any single archetype, blending elements of several in a personal, idiosyncratic way that resists tidy classification. These players are often the hardest for opposition scouts to prepare for precisely because they do not conform to a known pattern, and defenders trained to counter one specific striker type find their usual plan does not neatly apply.",
+          "This is a useful caution against treating the archetypes in this article as a complete map rather than a useful starting vocabulary — the truly exceptional forwards a World Cup occasionally produces tend to be exactly the ones who defy easy categorisation, which is often part of what makes them so difficult to defend against and so memorable once the tournament is over.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-tournaments-launch-young-stars',
+    sections: [
+      {
+        h: 'How opponents adjust for a breakout star\'s second tournament',
+        p: [
+          "The surprise-factor advantage described earlier in this piece has a well-documented expiry date, and understanding it explains a common pattern in how breakout stars perform at their second World Cup compared to their first. By the time a player returns four years later, every serious opponent has extensive footage, detailed scouting reports and a specific tactical plan built around neutralising exactly the qualities that made the player so effective the first time — the element of surprise that fuelled the original breakout is structurally gone, and the player now has to prove they can succeed without it.",
+          "The players who go on to have genuinely sustained international careers, rather than a single unforgettable tournament, are typically the ones who develop new dimensions to their game in the intervening years specifically to compensate for that lost surprise factor — a wider range of finishes, a new position, an added physical or tactical dimension that opponents' now-detailed scouting reports had not accounted for.",
+        ],
+      },
+      {
+        h: 'What separates a breakout that sustains from one that fades',
+        p: [
+          "Looking across many breakout stories, a consistent pattern separates the ones whose careers kept climbing from the ones who never quite recaptured that first unencumbered brilliance: the sustained careers tended to belong to players whose breakout was built on genuine, repeatable technical and tactical qualities, while the faded ones more often relied disproportionately on the specific surprise-factor and fearlessness this article describes — real qualities in the moment, but ones time and opposing scouting inevitably erode.",
+          "This distinction is one experienced talent evaluators specifically look for in the tournament immediately after a breakout: not whether the same magical moments repeat, since they rarely do in exactly the same form, but whether the underlying technical foundation the breakout was built on has genuinely held up once the element of surprise has gone.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'Captaincy across different footballing cultures',
+        p: [
+          "The cultural weight attached to the captaincy varies meaningfully across different footballing nations, shaped by each country's broader relationship with hierarchy, seniority and public leadership. In some footballing cultures, the captaincy carries an almost ceremonial gravity comparable to a genuine national institution, with the selection process itself becoming a matter of significant public and media interest; in others, the armband rotates more freely between senior players and attracts comparatively little public scrutiny, treated as a practical rather than symbolic role.",
+          "Understanding this cultural variation matters for correctly reading how much weight to place on captaincy decisions and controversies as they surface during the 2026 tournament — a captaincy change that would be a minor footnote in one national team's press coverage might be treated as a major, symbolically loaded story in another's, purely because of how differently each footballing culture has historically regarded the role.",
+        ],
+      },
+      {
+        h: 'A specific example of an armband controversy, in general shape',
+        p: [
+          "Nearly every football-following nation has, at some point, experienced a genuine public controversy over who should captain the national team — sometimes triggered by a change in form, sometimes by an off-field incident, sometimes simply by a new manager's differing judgement about leadership qualities than his predecessor's. These controversies tend to reveal, more clearly than almost any other single decision a manager makes, how a particular national federation actually balances seniority, form, and dressing-room politics when they conflict with each other.",
+          "Watching how a captaincy decision is received by a squad, rather than only by the media and public, is often the more informative signal — a squad that visibly rallies around a new or unconventional captaincy choice suggests the decision reflects genuine internal respect, while visible discomfort or public commentary from senior players suggests a decision made over the dressing room's own instincts, which tends to resurface as friction exactly when the pressure described throughout this article is highest.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'offside-law-finally-made-simple',
+    sections: [
+      {
+        h: 'How the rule has actually changed over the decades',
+        p: [
+          "The offside law as described in this article is not the version football has always played under — the rule has been rewritten and reinterpreted repeatedly across the sport's history, with earlier versions requiring considerably more defenders between an attacker and the goal line before an offence could even be considered, and later revisions specifically narrowing the definition of 'interfering with play' to make marginal decisions less punishing for attackers than they once were.",
+          "Each rewrite responded to a specific concern of its era: too many stoppages, too much cynical defensive gamesmanship, too little attacking flow. Understanding that the current law is simply the latest iteration in a long chain of adjustments, rather than a fixed, ancient rule the sport has always used unchanged, makes the ongoing debate over semi-automated technology's precision feel less like a radical break from tradition and more like the newest chapter in a much longer, recurring argument about where exactly to draw this particular line.",
+        ],
+      },
+      {
+        h: 'The psychology of a disallowed goal',
+        p: [
+          "Few moments in football produce as immediate and visceral a swing of emotion as a goal being celebrated, then disallowed for offside seconds later once a review confirms it — the crowd's roar collapsing into confusion and then anger is one of the more psychologically brutal experiences the modern video-review era has introduced, precisely because the initial celebration already happened before the correction arrived.",
+          "Sports psychologists studying player and fan reactions to this specific sequence note that the delay itself, not just the reversed decision, is what makes it feel so much worse than a goal being disallowed in real time by an on-field official's immediate flag — the brain has already processed the goal as real and rewarding before being told to reverse that judgement, a uniquely modern emotional whiplash that older, pre-video-review generations of fans never had to experience.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-high-press-explained',
+    sections: [
+      {
+        h: 'How a team actually trains to press for ninety minutes',
+        p: [
+          "Sustaining a genuine high press across a full match, let alone across a five-week tournament, requires a specific kind of physical preparation that goes well beyond generic fitness training. Elite pressing teams build training sessions specifically around repeated high-intensity sprint intervals mimicking match conditions, since the demand of a high press is not steady running but repeated, explosive bursts followed by brief recovery — a fundamentally different physical profile than the more evenly-paced running demanded by a team that presses only occasionally and defends deep for long stretches instead.",
+          "This specific physical demand is part of why squad rotation becomes so important for pressing teams across a long tournament: asking the same eleven players to press at full intensity match after match, in the space of five weeks, risks a physical decline that shows up exactly in the late stages of matches or in the tournament's final rounds, which is why the deepest squads described elsewhere in this collection's piece on genuine title contenders so often belong to teams built around this exact tactical approach.",
+        ],
+      },
+      {
+        h: 'Where the tactic actually originated',
+        p: [
+          "Pressing as a coordinated defensive principle, rather than simply individual effort, has a specific and traceable coaching lineage, developed and refined by particular influential coaches across specific eras and specific leagues before spreading more broadly into the international game that a World Cup showcases today. Tracing that lineage explains why certain footballing nations and leagues adopted pressing as a core principle earlier and more thoroughly than others, producing a generational gap in pressing sophistication between national teams that is still visible, if narrowing, at the highest level of tournament football today.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'playing-out-from-the-back',
+    sections: [
+      {
+        h: 'The specific defensive skill this tactic actually demands',
+        p: [
+          "Beyond the goalkeeper's passing range already discussed elsewhere in this collection, playing out from the back places unusual demands on central defenders specifically, who must now combine traditional defensive qualities — positioning, aerial ability, tackling — with a genuine passing range and the composure to receive the ball under direct pressure from an attacker without panicking into a rushed clearance. This dual skill set was far less common among central defenders a generation ago, when the position was selected almost purely for defensive qualities and passing ability was, at best, a bonus rather than a core requirement.",
+          "National teams now specifically scout and develop central defenders with this combination in mind, which has measurably changed the profile of player considered elite at the position — a defender who is excellent at defending but genuinely uncomfortable receiving the ball under pressure is now a much harder fit for a national team built around this style, regardless of how strong his purely defensive qualities are.",
+        ],
+      },
+      {
+        h: 'The moment television coverage changed how fans see the risk',
+        p: [
+          "Broadcast coverage has evolved specifically to capture the tension this article describes, with camera angles and graphics increasingly built to show viewers the exact passing options and press shape a defender under pressure near his own goal is actually facing, rather than a wide shot that leaves the viewer simply reacting to the outcome after the fact. This has made the tactic considerably more legible to casual fans than it once was, turning what used to look like unexplained, reckless risk-taking into a visibly deliberate, high-stakes decision the viewer can now follow in something close to real time.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-set-pieces-decide-tournaments',
+    sections: [
+      {
+        h: 'The long throw specialist as a genuine competitive advantage',
+        p: [
+          "The long throw-in, mentioned briefly elsewhere in this article, deserves its own closer look given how specifically it has been weaponised by teams that identify a player with the rare physical ability to launch a throw the full distance into the penalty area with power comparable to a corner kick. Because so few players anywhere in the world possess this specific physical skill, a team that has one gains a repeatable attacking weapon most opponents have simply never had to prepare for in any of their previous matches that tournament.",
+          "Opposition coaching staff facing a genuine long-throw specialist for the first time at a World Cup often have to design entirely bespoke defensive instructions just for that specific in-game situation, since it does not resemble a normal corner or free-kick defensively in several important ways — the ball arrives from a different angle and a different, less rehearsed distance than defenders are used to preparing for, and even organised, well-drilled defences have been caught underprepared by it.",
+        ],
+      },
+      {
+        h: 'The free-kick taker\'s craft, beyond raw power',
+        p: [
+          "A genuinely elite direct free-kick taker is judged on far more than the power of the strike, and the craft involved is closer to a specialist discipline within the sport than casual viewers often appreciate: reading the wall's likely gaps, choosing between curl and dip depending on the wall's height and the goalkeeper's positioning, and disguising the intended technique until the last possible instant so the goalkeeper cannot anticipate the shot's shape before it is struck.",
+          "This is why a team's designated free-kick taker is chosen through extensive, repeated practice rather than simply handed to the most powerful striker in the squad — the specific technical skill of consistently threading a direct free kick over or around a wall from varying distances and angles is rare enough that most squads at a World Cup have, at most, one or two players genuinely trusted with the responsibility in a high-stakes knockout moment.",
+        ],
+      },
+      {
+        h: 'Why defending a direct free kick is its own specialist skill',
+        p: [
+          "Building an effective defensive wall is a more technical exercise than it looks from the stands: the number of players in the wall, their exact spacing, and where precisely the wall is positioned relative to the goal all shift depending on the specific angle and distance of the free kick, and a poorly organised wall can leave a gap a good taker will exploit instantly. Goalkeepers typically take an active, vocal role in physically arranging the wall themselves during the delay before a dangerous free kick, since they alone can see the full picture of where a gap in the wall would actually expose the goal.",
+          "The goalkeeper's own positioning relative to the wall introduces a further layer of calculation — stand too close to the wall and a shot curled just around it becomes unstoppable; stand too far and a shot straight through a gap in the wall becomes unstoppable instead. Elite goalkeepers make this exact trade-off dozens of times across a tournament, and the split-second judgement involved is a skill in its own right, largely invisible to a viewer who has never had to think about where precisely to stand relative to a moving wall of teammates.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-scouts-watch-in-a-player',
+    sections: [
+      {
+        h: 'The recruitment meeting nobody sees',
+        p: [
+          "Beyond the on-pitch observation described throughout this article, a player's path onto a national team's radar typically runs through extensive internal recruitment meetings that never reach public view — competing written reports from multiple scouts who watched the same player independently, debates over conflicting assessments, and a final collective judgement that rarely rests on any single scout's opinion alone, however experienced that scout might be.",
+          "This layered, deliberately redundant process exists specifically because individual scouting judgement, however skilled, carries real blind spots and biases, and the federations that make the fewest costly recruitment mistakes tend to be the ones that have built genuine structural checks into this process, rather than trusting the instincts of one influential figure regardless of how good that person's reputation for spotting talent happens to be.",
+        ],
+      },
+      {
+        h: 'Scouting your own players versus scouting the opposition',
+        p: [
+          "It is worth distinguishing two related but genuinely different scouting jobs this article has touched on somewhat interchangeably: recruitment scouting, aimed at identifying talent to bring into a squad, and opposition scouting, aimed at understanding how a specific upcoming rival actually plays in order to prepare a tactical plan against them. The skills overlap considerably, but the second task under World Cup conditions is compressed into days rather than months, and it demands a different kind of urgency and focus than the more patient, long-term work of recruitment.",
+          "A national federation's scouting department at a tournament like 2026 typically runs both operations simultaneously and separately, since the questions each answers are genuinely different: one is asking who should be on this team in future years, the other is asking how do we beat the specific team standing in front of us on Thursday — and conflating the two disciplines, however related they sound, tends to produce weaker answers to both questions.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goalkeeper-became-a-playmaker',
+    sections: [
+      {
+        h: 'What happens when a keeper\'s pass actually goes wrong',
+        p: [
+          "It is worth examining the specific anatomy of the disaster this article's opening section warns about, because understanding exactly how it happens clarifies why the position carries the pressure it now does. A goalkeeper receiving a back-pass under a fast-approaching presser has a fraction of a second to choose between a first-time pass, a controlled touch and pass, or an aerial clearance — and choosing the ambitious option under that specific pressure, then miscontrolling or misplacing it, hands the opponent a shooting chance from almost point-blank range with no defender in position to recover.",
+          "This is precisely why coaching staff now spend real, dedicated training time on exactly this scenario — simulated pressing drills specifically targeting the goalkeeper receiving a pass under time pressure — rather than treating it as an occasional in-game risk to be managed purely through the keeper's individual talent. The scenario is common enough across a full season of football that it has become its own trainable skill, not an unpredictable accident to simply hope does not happen.",
+        ],
+      },
+      {
+        h: 'The keeper as an extra outfield body, numerically',
+        p: [
+          "Beyond the specific passing skill required, the tactical logic of using a goalkeeper as an auxiliary passer rests on simple, countable numbers: a team pressed by an opponent's front three or four attackers gains a genuine numerical advantage in its own defensive third the moment the goalkeeper is treated as an eleventh outfield option rather than a purely defensive figure standing apart from the buildup. That extra body, even one restricted to a smaller area of the pitch, can be the exact difference between being trapped by a press and playing calmly through it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'changing-job-of-the-number-nine',
+    sections: [
+      {
+        h: 'How a striker\'s value is now measured beyond goals alone',
+        p: [
+          "Modern statistical analysis has introduced measures specifically designed to capture a striker's contribution beyond goals and assists — metrics tracking how often a forward's movement and positioning create space for teammates even when the striker himself never touches the ball in that sequence, and measures of defensive work rate that quantify the pressing contribution top forwards are now expected to provide as a matter of course.",
+          "These broader measures have changed how national team coaches justify selecting a forward who does not top the tournament's scoring charts, giving a data-backed vocabulary for exactly the point this article makes about complete forwards contributing on nights the goals do not come — a coach can now point to a specific number showing a striker's pressing or space-creation contribution, rather than relying purely on subjective, harder-to-defend praise for a player's less visible qualities.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-tournaments-launch-young-stars',
+    sections: [
+      {
+        h: 'The commercial explosion that follows a breakout, quantified',
+        p: [
+          "Beyond the football itself, a genuine World Cup breakout triggers a measurable commercial transformation almost overnight: shirt sales for a previously obscure name can jump by orders of magnitude within days, sponsorship inquiries multiply, and a player's market value in the eyes of the game's wealthiest clubs can shift dramatically before the tournament has even finished, based purely on a handful of standout performances against elite opposition on the sport's biggest stage.",
+          "This commercial dimension adds real pressure on top of the psychological burnout risk discussed earlier in this article, since a young player is often simultaneously managing genuine footballing development, sudden global fame, and a wave of significant financial decisions — transfer offers, agent changes, sponsorship deals — that even experienced adults would find overwhelming, all compressed into the same few weeks that made the breakout happen in the first place.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'Why the armband sometimes goes to a surprising choice',
+        p: [
+          "Occasionally a manager hands the captaincy to a player who is neither the squad's most experienced member nor its most talismanic on-pitch figure, a decision that can look puzzling from outside the camp until the specific reasoning becomes clear: some managers prioritise a specific interpersonal skill — the ability to manage a fractious dressing room, fluency across the multiple languages a diverse modern squad might speak, or simply an even temperament under pressure — over the more traditional criteria of seniority or star quality.",
+          "These less conventional captaincy choices are, in a sense, the clearest evidence for this article's broader argument that the armband represents genuine functional leadership rather than a ceremonial reward for status — a manager confident enough to hand the role to an unconventional choice is explicitly prioritising the invisible, off-field work this article describes over the more visible, easily understood criteria a casual observer might expect the decision to rest on instead.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'offside-law-finally-made-simple',
+    sections: [
+      {
+        h: 'A worked example, step by step',
+        p: [
+          "Concrete examples fix the rule in memory better than abstract description, so consider a specific sequence: a midfielder plays a through ball at the exact instant a teammate is standing level with the last defender — that teammate is onside at the moment the ball is played, and remains onside for the rest of that phase of play even if he sprints ten yards beyond the defensive line before the ball actually reaches him, because the only moment that matters for the offside judgement was the pass itself, not the reception.",
+          "Now compare a near-identical situation where that same attacker was standing a single yard ahead of the last defender at the exact instant of the pass — offside, by the same rule, despite looking almost identical to a slow-motion replay viewer watching the eventual run rather than the precise moment of the pass. This single-yard, single-frame distinction is exactly what semi-automated technology now measures with a precision the human eye never could, which is both the rule's genuine fairness and the source of its most visible modern controversy.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-high-press-explained',
+    sections: [
+      {
+        h: 'Reading a match to spot the pressing triggers in real time',
+        p: [
+          "Once you know pressing is triggered rather than random, watching for the specific triggers becomes one of the more rewarding ways to follow a match tactically: notice how a pressing team often holds back slightly until an opponent's pass goes sideways or backward, or until a defender receives the ball on his weaker foot, then surges collectively the instant that specific cue appears rather than chasing the ball indiscriminately from the first moment their opponent gains possession.",
+          "Spotting these triggers turns pressing from something that looks like chaotic, high-energy chasing into something legible and almost choreographed — a genuinely different way of watching the same match that rewards attentive viewers with a clearer sense of exactly why a pressing team wins the ball where and when it does, rather than experiencing it simply as an unexplained turnover deep in the opponent's half.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'playing-out-from-the-back',
+    sections: [
+      {
+        h: 'A specific in-game signal worth watching for',
+        p: [
+          "One reliable, concrete signal of a team's confidence in playing out from the back is how it responds to a failed first attempt: a team truly committed to the principle will calmly try again on its next build-up phase even after being forced into a rushed clearance or nearly punished by a press, while a team merely imitating the tactic without genuine conviction will abandon it after one scare and revert to long, direct clearances for the rest of the half.",
+          "Watching for that specific response — does the team stick to its principles under pressure, or does it visibly lose its nerve — tells a viewer more about a team's actual tactical identity and coaching conviction than the mere fact that they attempted to play out from the back in the first place, since the attempt itself is now common at the highest level; the resilience to keep trying it after a scare is considerably rarer.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'plain-guide-to-football-formations',
+    sections: [
+      {
+        h: 'Why some managers refuse to name a fixed formation at all',
+        p: [
+          "A small but growing number of top coaches have begun publicly resisting the entire premise of naming a single fixed formation before a match, arguing that a genuinely fluid modern team occupies too many different shapes across the ninety minutes — in possession, out of possession, in transition — for any single set of numbers to meaningfully describe what the team actually does. These coaches prefer to describe their team through principles and player roles rather than a static diagram, treating the formation number itself as a media convenience rather than a genuine description of how the team plays.",
+          "This resistance is, in its own way, the logical endpoint of everything this article has argued about formations hiding as much as they reveal — if a shape genuinely changes multiple times within a single passage of play, insisting on a single fixed label for it arguably obscures more about the team's actual football than it explains, however convenient that single number remains for a television graphic or a newspaper preview.",
+        ],
+      },
+      {
+        h: 'What to actually look for in a 2026 team sheet',
+        p: [
+          "Armed with everything this article has covered, the most useful habit for watching 2026 is treating the pre-match formation graphic as a hypothesis rather than an answer: note the shape, then spend the opening ten minutes specifically checking whether it holds up once the team actually has and then loses the ball, since that early observation window tends to reveal far more about a team's real tactical identity than the static numbers ever could on their own.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-scouts-watch-in-a-player',
+    sections: [
+      {
+        h: 'The follow-up viewings that separate a real judgement from a first impression',
+        p: [
+          "No competent scout builds a genuine recommendation from a single viewing, however impressive that first match happened to be, because any player can have one outstanding performance for reasons that have nothing to do with their underlying quality — a weak opponent, a lucky run of finishing, a match where the game simply opened up in their favour. Serious scouting reports are built from multiple viewings across different opponents and different match contexts specifically to separate a genuine, repeatable quality from a single flattering performance that does not represent the player's real level.",
+          "This is part of why a breakout performance at a World Cup, however spectacular, tends to be treated by professional scouts with more caution than the excited media coverage surrounding it suggests — one brilliant tournament match is data, not proof, and the scouts whose judgement is actually trusted with real recruitment decisions know the difference between the two far better than the headlines that follow a single standout display.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goalkeeper-became-a-playmaker',
+    sections: [
+      {
+        h: 'The specific save that still decides more matches than any pass',
+        p: [
+          "For all this article's focus on the goalkeeper's evolving passing responsibilities, it is worth ending exactly where the position began: the single, decisive reflex save in a one-on-one situation, or the crucial intervention in a crowded box, remains the moment that most reliably wins or loses a tight World Cup match, exactly as it always has. The modern goalkeeper has gained an entire additional skill set without losing the older one — the position has expanded, not been replaced, and a keeper who mastered passing but lost his shot-stopping edge would still fail at the job's oldest and most fundamental requirement.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'changing-job-of-the-number-nine',
+    sections: [
+      {
+        h: 'The one quality that has never actually changed',
+        p: [
+          "Amid all the tactical reinvention this article describes, one quality has remained constant across every era and every archetype: composure in front of goal under pressure. The poacher of decades past and the complete forward of today are separated by almost everything else about how the position is played, but both are ultimately judged, in the moment that matters most, on the same unchanging skill — staying calm enough to finish a genuine chance when the whole tournament is watching and the stakes could not be higher.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-tournaments-launch-young-stars',
+    sections: [
+      {
+        h: 'A final thought for anyone watching 2026\'s youngest players',
+        p: [
+          "Every one of the traits this article describes — fearlessness, physical peak, the surprise factor of relative anonymity — is present in some measure among the youngest players named to squads for 2026, which is exactly why it is worth deliberately paying attention to unfamiliar, teenage or early-twenties names on team sheets rather than skipping past them toward the players you already recognise. Somewhere in that group of relative unknowns, the tournament's next breakout story is almost certainly already sitting, quietly waiting for its moment.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'The armband as a mirror of the whole squad',
+        p: [
+          "Perhaps the clearest way to summarise everything this article has covered is that a captain's real job is to be a kind of mirror for the whole squad's emotional state — reflecting calm back when the group needs steadying, reflecting urgency back when complacency creeps in, and absorbing pressure that would otherwise land unevenly across two dozen anxious teammates living together under intense scrutiny for a month. It is a genuinely difficult job disguised, to the casual viewer, as simply the player who happens to be wearing a slightly different armband.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'offside-law-finally-made-simple',
+    sections: [
+      {
+        h: 'One rule, understood, changes how you watch everything',
+        p: [
+          "Once the distinction between the moment of the pass and the moment of reception genuinely clicks, offside stops being football's most confusing rule and becomes one of its more elegant ones — a simple, single-instant judgement dressed up by decades of controversy and, more recently, millimetre-precise technology, but resting underneath all of that complexity on an idea a newcomer to the sport can grasp in a single explanation, exactly as this article has aimed to provide.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-high-press-explained',
+    sections: [
+      {
+        h: 'The single trade-off this whole tactic comes down to',
+        p: [
+          "Strip away every tactical detail this article has covered and the high press reduces to one fundamental trade-off repeated constantly across a World Cup: risk conceding space behind a committed defensive line in exchange for a genuine chance at winning the ball in the most dangerous area of the pitch. Every pressing team, every match, is making a version of that same bet — and watching which teams make it wisely, adjusting to the specific moment and opponent, separates the tournament's genuinely elite pressing sides from the ones merely imitating a fashionable idea.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'playing-out-from-the-back',
+    sections: [
+      {
+        h: 'Bravery and madness were never actually opposites',
+        p: [
+          "The question in this article's own title turns out to have a slightly unsatisfying but honest answer: playing out from the back is both bravery and madness simultaneously, depending entirely on the specific moment, the specific opponent, and the specific quality of the players executing it — the same pass that looks like calm, controlled bravery when it succeeds looks like reckless madness the instant it fails, and the footage looks identical either way until the ball actually reaches its destination or does not.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-set-pieces-decide-tournaments',
+    sections: [
+      {
+        h: 'The unglamorous truth worth remembering',
+        p: [
+          "It is worth ending on an unglamorous but important truth this article has built toward throughout: the team that wins the 2026 World Cup is entirely likely to owe at least one crucial goal, somewhere across its run to the final, to a corner routine drilled for hours on a training pitch weeks earlier — not the flowing, photogenic team goal most fans dream about, but the dead ball, delivered exactly where it was always planned to go.",
+        ],
+      },
+      {
+        h: 'Practising the routine that almost never gets used',
+        p: [
+          "One of the stranger realities of set-piece coaching is how much time gets invested in routines that may only be attempted once or twice across an entire tournament, if the specific in-game situation that calls for them ever arises at all — a rehearsed short-corner variation designed for a particular kind of tightly-marked situation, or a specific free-kick routine built around exploiting one exact type of defensive wall, sits dormant in the team's playbook for weeks, ready to be deployed the single moment it becomes the right tool for the situation in front of them.",
+          "This investment in low-frequency, high-precision preparation reflects a broader truth about tournament football that this whole article has been building toward: in a competition this tight and this short, a team cannot afford to leave any repeatable source of goals unprepared, however rarely a specific routine might actually get used, because the entire tournament can turn on the single occasion it finally does.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-scouts-watch-in-a-player',
+    sections: [
+      {
+        h: 'How international scouting differs from club scouting structurally',
+        p: [
+          "National team scouting operates under a structural constraint club scouting does not share: a national federation can only select from players eligible to represent that specific country, a pool defined by nationality, ancestry rules and sometimes residency, rather than the entire global market a wealthy club can draw from freely. This means international scouts often spend considerable effort tracking eligible players across multiple countries' domestic leagues and even lower divisions, searching specifically within a nationally-bounded pool rather than simply identifying the best available talent anywhere in the world regardless of passport.",
+          "This structural difference is part of why some national teams actively scout emerging leagues and diaspora communities abroad with unusual intensity — a federation that can identify and successfully persuade an eligible dual-national playing in a foreign league to represent their country gains a player a rival scouting department focused purely on domestic talent might never have found at all.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goalkeeper-became-a-playmaker',
+    sections: [
+      {
+        h: 'The generational divide still visible among current keepers',
+        p: [
+          "Even within the current era, a visible generational divide remains among goalkeepers active at the highest level: some, trained under an older coaching philosophy earlier in their development, remain excellent shot-stoppers with only adequate passing ability, while younger goalkeepers coming through more recently reformed academy systems increasingly arrive as genuinely comfortable passers from the very start of their careers, having never known a version of the position that did not demand it.",
+          "This divide is likely to narrow further as the generation trained entirely under the newer coaching philosophy fully replaces the one trained under the old, but for now it means national teams selecting between goalkeepers at 2026 are sometimes genuinely choosing between two different eras of goalkeeper development philosophy, not simply between two individuals of differing raw talent.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'changing-job-of-the-number-nine',
+    sections: [
+      {
+        h: 'What a coach actually asks a striker to study before a match',
+        p: [
+          "Modern striker preparation extends well beyond generic finishing practice into detailed, opponent-specific study: forwards are now routinely shown video of the specific goalkeeper they will face, the exact positioning tendencies of the centre-backs they will be matched against, and the precise gaps a particular opponent's defensive shape tends to leave in behind — preparation that treats goalscoring as a solvable tactical problem specific to each match rather than a purely instinctive, general skill applied identically match after match.",
+          "This individualised preparation is part of why the same striker can look devastating against one opponent and anonymous against another across the same tournament — much of the difference lies not in the player's underlying quality changing, but in how precisely the specific weaknesses of that match's opponent happened to align with the striker's own particular strengths.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-tournaments-launch-young-stars',
+    sections: [
+      {
+        h: 'How federations now try to manage the aftermath deliberately',
+        p: [
+          "Having watched enough previous breakout stories go both well and badly, several national federations have begun building formal support structures specifically for a young player who has just experienced a breakout tournament — media training, deliberate limits on public appearances in the immediate aftermath, and closer psychological support than a young player would have received a generation ago, when a breakout star was largely left to navigate the sudden attention alone.",
+          "This growing institutional awareness reflects a genuine, hard-earned lesson from the sport's own history: raw talent alone does not guarantee that a breakout translates into a sustained career, and the specific handling of the months immediately following a young player's biggest moment can meaningfully shape whether that moment becomes the start of a great career or, sadly, close to the peak of it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'What happens when the captain is having a poor tournament personally',
+        p: [
+          "One of the harder tests of captaincy arrives when the armband-wearer himself is struggling with form or confidence during the tournament — a situation that asks the captain to continue performing the steadying, off-field leadership work this article describes even while managing his own personal difficulty, without letting that private struggle visibly undermine the calm he is meant to project to the rest of the squad.",
+          "The captains most respected by teammates in these situations tend to be the ones who are honest about their own form within the dressing room rather than pretending nothing is wrong, since a squad generally senses the gap between a captain's outward composure and an unacknowledged personal struggle anyway — genuine, quiet honesty with the group usually sustains trust in the leadership better than an unconvincing performance of unaffected confidence ever could.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'offside-law-finally-made-simple',
+    sections: [
+      {
+        h: 'The one exception that surprises even regular viewers',
+        p: [
+          "A detail that catches out even fairly experienced fans: a player cannot be offside directly from a throw-in, a corner, or a goal kick, regardless of how far ahead of the last defender he happens to be standing when the ball is delivered — a specific carve-out written into the law precisely to keep those restart situations simple and free of the exact controversy this article otherwise describes at length.",
+          "This exception is worth knowing specifically because it explains why a player can appear to loiter in a clearly offside-looking position at a corner without any flag being raised — the rule genuinely does not apply in that specific restart situation, and what looks like an officiating oversight to an unfamiliar viewer is, in fact, the law working exactly as written.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-high-press-explained',
+    sections: [
+      {
+        h: 'Substitutions as a pressing team\'s secret weapon',
+        p: [
+          "Because sustaining a genuine high press for a full ninety minutes is so physically demanding, substitutions carry a specific tactical purpose for pressing teams that goes beyond simply replacing a tired player: introducing a fresh presser in the final third of a tight match can restore an intensity the starting eleven has physically lost by that point, sometimes catching an opponent who has grown used to a slightly diminished press over the previous hour completely off guard.",
+          "Watching which pressing teams use their substitutions specifically to refresh pressing intensity late in a match, rather than purely for tactical or attacking reasons, is one of the more subtle but genuinely useful things to track during the knockout rounds — it often signals a coaching staff that has deliberately planned the match's physical arc in advance, rather than simply reacting to how the game happens to be unfolding.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'playing-out-from-the-back',
+    sections: [
+      {
+        h: 'What happens when both teams commit to the same principle',
+        p: [
+          "The tactic becomes especially fascinating when both teams in a match are genuinely committed to playing out from the back, since it produces a specific kind of high-stakes, patient standoff near each team's own goal — both sides simultaneously trying to draw the other's press forward while building their own attack calmly, aware that the first team to panic or misjudge the moment risks handing the other a clear chance in the most valuable area of the pitch to concede one.",
+          "These matchups tend to reward the more technically composed and better-coached side rather than the more talented one in isolation, since the outcome depends less on individual brilliance and more on which coaching staff has better prepared its players for the specific, repeated decision-making this article has described throughout — a genuinely different kind of contest than the more familiar spectacle of two teams simply attacking each other in open play.",
+        ],
+      },
+      {
+        h: 'The commentator\'s tell for a team losing its nerve',
+        p: [
+          "Experienced commentators often flag the exact instant a team's conviction in this tactic starts to waver before a viewer might consciously notice it themselves: passes between defenders grow slightly faster and less precise, the goalkeeper begins opting for longer, safer clearances instead of the short pass just offered to him, and body language across the back line visibly tightens. Learning to spot that shift is one of the more rewarding small skills a regular viewer can develop, since it often predicts a team abandoning the principle several minutes before it happens outright and obviously on screen.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goalkeeper-became-a-playmaker',
+    sections: [
+      {
+        h: 'What youth coaches now prioritise from the very first sessions',
+        p: [
+          "The shift in what the position demands has trickled all the way down to how children are taught to play in goal in the first place: youth coaching curricula in leading footballing nations now introduce ball-playing drills for young goalkeepers from a considerably earlier age than a generation ago, treating comfort on the ball as a foundational skill to build alongside shot-stopping from the very start rather than something to layer on only once a young keeper has already specialised purely in stopping shots.",
+          "This earlier introduction means the next generation of international goalkeepers, the ones who will define the position at World Cups well beyond 2026, are being developed with genuinely balanced technical foundations from childhood — a structural change in youth development whose full effects will likely become most visible only once an entire generation trained this way from the start reaches senior international football.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-set-pieces-decide-tournaments',
+    sections: [
+      {
+        h: 'How much time a squad actually spends on this in training',
+        p: [
+          "It would surprise many casual fans to learn just how large a share of a national team's limited training time during a tournament gets devoted to set pieces specifically, given how little of a ninety-minute broadcast a corner or free kick actually occupies. With only a handful of training sessions available between matches during a compressed tournament schedule, coaching staffs often protect a meaningful, disproportionate block of that scarce time purely for dead-ball rehearsal, reflecting the statistical reality this article has described about how often these situations actually decide the outcome of a tight match.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'changing-job-of-the-number-nine',
+    sections: [
+      {
+        h: 'A prediction worth testing across 2026',
+        p: [
+          "Given everything this article has traced about the position's evolution, a reasonable prediction for 2026 is that the tournament's most talked-about striker will not necessarily be whoever tops the goalscoring charts by the final, but whoever most completely embodies the complete-forward archetype this article has described — contributing to pressing, creating for others, and still finishing the chances that come — since that broader, harder-to-quantify contribution increasingly seems to be what modern tournament football rewards most at the very highest level.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-tournaments-launch-young-stars',
+    sections: [
+      {
+        h: 'Why this romance shows no sign of fading',
+        p: [
+          "Despite increasingly sophisticated scouting, video analysis and squad preparation across every competing nation, the specific conditions this article describes — fearlessness, a fleeting window of relative anonymity, physical peak arriving young — remain structurally embedded in how a World Cup works, which is exactly why the breakout young star shows no sign of becoming a thing of the past even as every other part of the sport grows more professionalised and predictable. Some romances in football turn out to be genuinely durable, and this appears to be one of them.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'The armband after the final whistle',
+        p: [
+          "A captain's responsibilities do not end when the referee blows the final whistle, whether in victory or elimination — he is typically the player expected to speak first to media on behalf of the whole squad, to set the tone of how a defeat is processed within the camp in the hours immediately following, and in victory, to represent the collective achievement of two dozen teammates in a single, often exhausted and emotional public moment. This final piece of the role, rarely discussed alongside the more obvious on-field duties, is itself a genuine skill many talented footballers never have to develop, precisely because they were never asked to carry it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'offside-law-finally-made-simple',
+    sections: [
+      {
+        h: 'Why commentators still disagree even with the technology',
+        p: [
+          "Even with semi-automated technology providing an ostensibly objective, precise answer, television pundits and commentators continue to disagree, sometimes sharply, about specific offside calls — a reminder that a small remaining category of decisions involves genuine judgement calls, like whether a player in an offside position was actually interfering with an opponent's ability to play the ball, that no camera system can fully automate away, however precise the underlying positional measurement becomes.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-high-press-explained',
+    sections: [
+      {
+        h: 'A tactic that has changed how fans themselves talk about football',
+        p: [
+          "Beyond its effect on the pitch, the widespread adoption of pressing has genuinely changed the vocabulary ordinary fans use to discuss football, with terms like 'pressing trigger' and 'counter-press' moving from specialist coaching jargon into mainstream matchday conversation over roughly a decade — a linguistic shift that reflects just how thoroughly this single tactical idea has reshaped not only how the game is played, but how the wider football-watching public has learned to talk and think about the sport it follows.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'plain-guide-to-football-formations',
+    sections: [
+      {
+        h: 'The takeaway worth carrying into every match of the tournament',
+        p: [
+          "If this guide leaves you with one habit rather than a memorised list of numbers, let it be this: treat the formation announced before kickoff as the opening line of a story rather than its ending, and spend the match watching how that starting shape actually moves, stretches and reforms once the ball is in play — because that movement, not the static diagram, is where the real tactical story of every World Cup match in 2026 will actually be told.",
+        ],
+      },
+      {
+        h: 'The most common mistake newcomers make with this vocabulary',
+        p: [
+          "New fans learning these numbers for the first time often make one specific, understandable mistake: assuming a higher number of attackers in the formation automatically signals a more attacking, higher-scoring team, when in practice a nominal three-forward formation played cautiously can produce a far more defensive match than a nominal one-striker formation played by a team committed to relentless attacking pressure and possession. The formation's numbers describe starting positions, not intent, ambition, or actual attacking output, and separating those two things is the single most useful correction a newcomer to this vocabulary can make early on.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-set-pieces-decide-tournaments',
+    sections: [
+      {
+        h: 'A statistic worth keeping in mind for every knockout match',
+        p: [
+          "Analysts who track this closely across multiple tournaments have consistently found that knockout-stage matches, where the stakes are highest and open-play chances are scarcest, see an even larger share of their goals originate from set pieces than the group stage does — meaning the deeper 2026 progresses, the more this article's central argument compounds, and the more a viewer should expect any given corner or free kick to carry genuine, tournament-altering weight rather than routine, low-stakes procedure.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goalkeeper-became-a-playmaker',
+    sections: [
+      {
+        h: 'The pressure this places on goalkeeper coaching specifically',
+        p: [
+          "Because the position now demands genuine excellence across two historically separate skill sets, goalkeeper coaching itself has had to specialise further than ever before — many top national teams now employ separate specialist coaches for shot-stopping technique and for distribution and ball-playing ability, rather than relying on a single goalkeeping coach to cover the position's entire, now much broader, technical demands. This division of coaching labour is itself a quiet but telling signal of how far the position has genuinely expanded from its original, narrower definition.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'changing-job-of-the-number-nine',
+    sections: [
+      {
+        h: 'Why fans still argue about which archetype is genuinely best',
+        p: [
+          "Despite the tactical and statistical sophistication now surrounding striker evaluation, fans continue to argue passionately over which archetype described in this article is genuinely superior, and the honest answer is that the debate itself is somewhat misconceived — the right striker profile depends entirely on the team and system around him, meaning a poacher dropped into a team built for a complete forward will look like a poor fit regardless of his individual finishing quality, and the reverse holds just as true for a false nine forced to play as a stationary target man.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-tournaments-launch-young-stars',
+    sections: [
+      {
+        h: 'The specific window that makes a breakout possible at all',
+        p: [
+          "It is worth being precise about timing: the breakout window this article describes exists specifically because a World Cup arrives only once every four years, giving a talented teenager or young player just one or two realistic opportunities across an entire career to catch this exact, unrepeatable combination of circumstances — youthful fearlessness, physical peak, and relative anonymity — all aligning at once. Miss that narrow window through injury or omission, and a player may simply never get an equivalent stage again, which is part of why every single breakout story feels, even to hardened football observers, like something close to lightning striking.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'Why some of the sport\'s greatest players were poor captains',
+        p: [
+          "Football history includes several genuinely great individual players who, by most honest accounts, were not especially effective captains despite their extraordinary ability on the pitch — a reminder that the specific interpersonal and psychological skills this article describes are simply a different talent than footballing brilliance, and possessing one in abundance carries no guarantee of possessing the other. The best national teams recognise this distinction explicitly, sometimes deliberately separating the armband from their most gifted individual player in favour of a teammate better suited to the specific, largely invisible demands of leadership this article has described throughout.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'offside-law-finally-made-simple',
+    sections: [
+      {
+        h: 'The rule\'s core idea, stripped to one sentence',
+        p: [
+          "After all the detail this article has covered, the entire law compresses into a single sentence worth memorising above everything else: you are judged by where you were the instant the ball was played, not by where you end up — and every confusing offside controversy the sport has ever produced ultimately traces back to a viewer, a player, or occasionally even a broadcaster forgetting that one distinction in the heat of a genuinely exciting moment.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-high-press-explained',
+    sections: [
+      {
+        h: 'What to watch for in the opening minutes of any 2026 match',
+        p: [
+          "Given everything this article has explained, the single most useful early signal in any 2026 match is watching how the team without the ball behaves in the very first minute: does it retreat immediately into a settled defensive shape, or does it surge forward the instant possession is lost, hunting to win the ball back high up the pitch? That opening minute, more reliably than any pre-match prediction, usually reveals which of this article's two fundamental approaches that particular team has committed to for the whole match ahead.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'playing-out-from-the-back',
+    sections: [
+      {
+        h: 'The final word on a genuinely divisive tactic',
+        p: [
+          "Whatever side of the debate a viewer ultimately lands on, the tactic is not going away — it has become too deeply embedded in how the highest level of the sport now trains its players and structures its build-up play to simply revert to the long-ball era this article opened by describing. The more productive question for 2026 is not whether teams should play out from the back at all, but which teams have genuinely mastered the specific composure and technical quality the tactic demands, and which are merely attempting a fashionable idea their personnel are not actually built to execute safely.",
+        ],
+      },
+      {
+        h: 'One habit worth adopting as a viewer this tournament',
+        p: [
+          "The next time you watch a 2026 match, try consciously resisting the urge to look away during a seemingly routine goalkeeper build-up phase, since this article's entire argument is that these unremarkable-looking passing sequences near a team's own goal carry more tactical substance, tension and risk than their visual calm suggests — the drama is simply quieter than a last-minute winner, not smaller.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goalkeeper-became-a-playmaker',
+    sections: [
+      {
+        h: 'A closing thought for anyone who grew up watching an older era',
+        p: [
+          "For viewers who remember an earlier version of the sport, watching a modern goalkeeper calmly thread a pass through a high press can still look faintly absurd against decades of instinct that says the keeper's only job is to keep the ball out — but that instinct, however deeply ingrained, describes a version of the position that has genuinely and permanently moved on, and 2026 will offer a full month of evidence for exactly how far.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'changing-job-of-the-number-nine',
+    sections: [
+      {
+        h: 'What this means for how you watch 2026\'s strikers',
+        p: [
+          "Carrying this article's argument into the tournament itself, the most rewarding way to watch any given striker is to stop asking only 'did he score' and start also asking 'what did he do in the ten minutes before and after his team's best chances' — since that broader, harder question is increasingly what actually separates the forwards who define a World Cup from the ones who simply appear on its scoresheet.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-tournaments-launch-young-stars',
+    sections: [
+      {
+        h: 'The one prediction this article is confident making',
+        p: [
+          "Without knowing a single name in advance, this article can make one confident prediction about 2026: somewhere in the tournament's first two weeks, a player almost nobody outside their own country currently follows closely will produce a performance that changes how the entire football world talks about them by the time the group stage ends — it happens with such reliability, tournament after tournament, that betting against it would be the riskier wager.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'Watching for the armband\'s real work in 2026',
+        p: [
+          "The next time a broadcast camera lingers on a captain gathering teammates during a stoppage, or gesturing calmly to slow the tempo of a match slipping away, recognise it for what this article has described throughout: not a photogenic camera moment, but the actual, substantive work of the job happening in plain sight, doing more for his team's tournament than most of what appears in a highlights reel.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'offside-law-finally-made-simple',
+    sections: [
+      {
+        h: 'Bringing a friend up to speed in under a minute',
+        p: [
+          "If a friend new to football asks you to explain offside during a 2026 match, this article's entire argument fits into a single, quick explanation: picture the exact moment the ball leaves a teammate's foot, freeze that frame, and check whether the receiving player was already ahead of the last defender at that instant — everything else about the rule, VAR, and the controversies that follow are just detail layered on top of that one simple picture.",
+        ],
+      },
+      {
+        h: 'A last practical tip for watching the replay yourself',
+        p: [
+          "When a broadcast shows its own replay of a close offside call, pause mentally on the exact frame the passer's foot strikes the ball, not the more dramatic frame moments later showing the attacker breaking clear — training your own eye to find that specific earlier frame is the single skill that turns a confusing decision into an obviously correct one almost every time.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-high-press-explained',
+    sections: [
+      {
+        h: 'The tactic in one sentence, for anyone in a hurry',
+        p: [
+          "Reduced to its essence: pressing is the collective decision to fight for the ball where losing it hurts the opponent most, rather than waiting to defend where losing it hurts you least — a single strategic choice with consequences for fitness, risk and reward that ripple through literally every phase of how a team plays across a World Cup.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-set-pieces-decide-tournaments',
+    sections: [
+      {
+        h: 'The corner that gets replayed for years',
+        p: [
+          "Every World Cup produces at least one iconic set-piece goal that gets replayed for years afterward — a specific, rehearsed corner routine executed perfectly at the exact moment it mattered most, remembered less for the drama of open play and more for the quiet, precise choreography this article has spent its length trying to make visible to a viewer who might otherwise look away the moment the ball goes out for a corner.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'changing-job-of-the-number-nine',
+    sections: [
+      {
+        h: 'The one constant amid all this reinvention',
+        p: [
+          "For all the tactical reinvention this article has traced, one thing has never changed: every national team still builds its entire attacking plan around whoever wears that number, and the weight of that responsibility, regardless of which specific archetype a given striker happens to fit, remains exactly as heavy at a World Cup as it has ever been in the sport's history.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-tournaments-launch-young-stars',
+    sections: [
+      {
+        h: 'Why this makes the group stage worth watching closely',
+        p: [
+          "This is, in the end, the strongest possible argument against skipping the group stage in favour of only the knockouts: the breakout moment this article describes almost always happens early, in a match against modest opposition that a highlights-only viewer would be tempted to skip entirely, which means missing the group stage risks missing the exact moment a future global star was actually born.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'The one question worth asking about any captain',
+        p: [
+          "Rather than judging a captain by the trophy his team eventually wins or fails to win, the fairer question this article suggests is simpler: did this squad look like a genuine team, cohesive under pressure, right through to its final match — because that outcome, more than any single armband gesture, is the real measure of whether the invisible work described throughout this piece actually got done.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'plain-guide-to-football-formations',
+    sections: [
+      {
+        h: 'A quick reference worth keeping nearby during the tournament',
+        p: [
+          "For anyone who wants a fast reference during 2026 rather than a full re-read: four numbers means four defenders, three means a back three, the middle figures are midfield lines read from defence to attack, and the final figure is forwards — memorise just that reading order, and every formation graphic a broadcaster puts on screen this tournament becomes instantly legible rather than a piece of unfamiliar code.",
+        ],
+      },
+      {
+        h: 'Sharing this vocabulary with someone new to the sport',
+        p: [
+          "Teaching this reading order to someone watching their first World Cup is one of the quickest ways to make them feel genuinely included in the tactical conversation happening around them rather than lost in jargon, and it costs about thirty seconds of explanation — a small kindness that turns an intimidating wall of numbers into a shared, common language for the whole tournament ahead.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'changing-job-of-the-number-nine',
+    sections: [
+      {
+        h: 'A final note on judging a striker fairly',
+        p: [
+          "Before writing off any single striker's tournament based purely on a quiet scoring return, it is worth applying everything this article has covered and asking the fuller question first — did he create space, hold up play, press relentlessly — because a fair, informed judgement of the position now genuinely requires looking well past the one number a scoreboard actually shows.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-tournaments-launch-young-stars',
+    sections: [
+      {
+        h: 'The romance that keeps drawing new fans to the sport',
+        p: [
+          "For newcomers wondering why longtime fans speak about the World Cup with such affection beyond simply the football, this specific ritual — the unknown teenager who becomes a household name within a fortnight — is a large part of the answer, a genuinely rare kind of story modern professional sport, with all its data and preparation, still cannot fully script or predict in advance.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'A role worth respecting even when it looks quiet',
+        p: [
+          "The next time a captain's contribution to a match looks unremarkable on the surface — no goal, no headline tackle, nothing highlight-reel worthy — remember everything this article has argued: the armband's real value is most visible in exactly the moments that never make it onto a highlights package at all.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'offside-law-finally-made-simple',
+    sections: [
+      {
+        h: 'The confidence this understanding actually buys you',
+        p: [
+          "Armed with everything in this article, the next marginal offside call in 2026 need not trigger the confused frustration it once might have — you will know exactly which frame the officials are examining, exactly what they are measuring, and exactly why the answer, however tight, is genuinely fair rather than an arbitrary intrusion into the match.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-high-press-explained',
+    sections: [
+      {
+        h: 'Why this tactic rewards patient viewers most of all',
+        p: [
+          "Casual viewers who tune in only for goals often miss the slow build of tension a genuine high press creates over an entire half, but patient viewers who watch for the specific triggers, traps and physical toll this article has described tend to find pressing among the most consistently fascinating tactical stories the tournament has to offer, goal or no goal.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'playing-out-from-the-back',
+    sections: [
+      {
+        h: 'A closing image worth watching for',
+        p: [
+          "Picture a goalkeeper, ball at his feet, a striker bearing down, three passing options each carrying real risk — that single image, repeated dozens of times across 2026, captures more of modern football's essential tension than almost any other single moment the tournament will offer.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-set-pieces-decide-tournaments',
+    sections: [
+      {
+        h: 'The habit this article hopes you take into 2026',
+        p: [
+          "If nothing else sticks, let it be this small habit: the next time the ball goes out for a corner, lean in rather than away, because everything this article has described suggests that unassuming stoppage is exactly as likely to decide the match as anything that happens in open play around it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'What this all adds up to across a whole tournament',
+        p: [
+          "Across a five-week World Cup, dozens of quiet, unglamorous moments of exactly the kind this article has catalogued accumulate into something that genuinely shapes whether a talented squad becomes a cohesive team capable of surviving the pressure of a knockout run — which is, in the end, the entire, largely invisible job the armband represents.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'playing-out-from-the-back',
+    sections: [
+      {
+        h: 'The nerve this tactic ultimately tests',
+        p: [
+          "In the end, this is a story about nerve as much as technique — the same composure this whole collection keeps returning to in different guises, here concentrated into the single, repeated decision of whether to trust your own feet with the ball a few yards from the one goal you absolutely cannot afford to concede.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'plain-guide-to-football-formations',
+    sections: [
+      {
+        h: 'Why broadcasters still lead with the formation graphic anyway',
+        p: [
+          "Given everything this article has argued about the limits of a static formation number, it is worth asking why broadcasters still open every match with exactly that graphic rather than something more genuinely descriptive — and the honest answer is simply that it is the fastest, most universally understood shorthand available, instantly communicating a rough shape to millions of viewers with wildly different levels of tactical background in under two seconds of screen time.",
+          "That practical need for a shared, quick shorthand is precisely why the vocabulary endures despite its real limitations, and understanding both halves of that trade-off — genuinely useful shorthand, genuinely incomplete picture — is what separates a viewer who has actually absorbed this article's argument from one who has simply memorised a list of numbers without grasping what they do and do not tell you, which is exactly the gap this guide set out to close from its very first paragraph.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-captain-really-does',
+    sections: [
+      {
+        h: 'One last thought on how to watch for it',
+        p: [
+          "Try, in your next match, watching one player deliberately for a full stoppage in play rather than the ball — the armband-wearer, specifically — and notice how much quiet organisational work happens in exactly those unremarkable seconds.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'plain-guide-to-football-formations',
+    sections: [
+      {
+        h: 'The last word',
+        p: [
+          "Formations are a language worth learning, but never mistake the vocabulary for the story it is telling — the numbers open the conversation about a match; the ninety minutes that follow are where the real answer actually gets written.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
