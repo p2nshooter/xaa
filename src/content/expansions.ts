@@ -2225,6 +2225,909 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'art-of-the-counter-attack',
+    sections: [
+      {
+        h: 'The first five seconds decide everything',
+        p: [
+          "Coaches who build teams around the counter-attack tend to speak about the same narrow window: the five or six seconds immediately after possession changes hands. That window exists because a team that was attacking cannot instantly become a team that is defending — bodies are committed forward, the defensive line is high, and the players nearest the ball are the ones least prepared to chase back. Every yard covered inside those seconds is worth several yards covered later, once the opponent has recovered its shape and the space has closed.",
+          "This is why the best counter-attacking sides are drilled to move the ball forward before they look up, rather than taking a safe touch to settle. A single controlled touch backwards, however sensible it looks, can cost the entire opportunity, because the defensive recovery runs happen faster than most viewers realise. The teams that convert counters at a high rate are almost never the ones with the fastest players in isolation; they are the ones whose first decision after winning the ball is the quickest.",
+        ],
+      },
+      {
+        h: 'Why counter-attacking gets unfairly called negative',
+        p: [
+          "There is a persistent and somewhat lazy assumption in football commentary that a team which cedes possession and waits to strike is playing negatively, as though the only legitimate ambition is to dominate the ball. This framing confuses method with intent. A counter-attacking side is not refusing to attack; it is choosing to attack in the specific circumstances where its attacks are most likely to produce clear chances, which is a strategic decision rather than a defensive one.",
+          "The evidence tends to support the counter-attackers on this point. Chances created in transition are, on average, of considerably higher quality than chances created against a set, organised defence, because the defenders are fewer, less positioned and further from goal. A team that generates six transition chances may well finish a match with better underlying numbers than one that generates twenty laboured attempts against a packed penalty area — and at a World Cup, where matches are decided by one or two moments, that difference matters more than possession statistics ever will.",
+        ],
+      },
+      {
+        h: 'Rest defence: the insurance policy against being countered',
+        p: [
+          "The mirror image of counter-attacking is preparing not to be counter-attacked, a concept coaches call rest defence — the shape a team maintains while it is in possession, specifically to cover the transition it hopes will not happen. In practice this means designating certain players who do not join the attack no matter how promising it looks, holding positions that would intercept or delay a break rather than adding another body in the box.",
+          "Watching for rest defence during 2026 is one of the more revealing habits available to an attentive viewer. When a team attacks, count how many players stay behind the ball. A side leaving four or five back is explicitly acknowledging the opponent's counter-attacking threat and buying insurance against it; a side committing seven or eight forward is making a genuine gamble, and the moments those gambles fail are exactly where the tournament's most spectacular breakaway goals come from.",
+        ],
+      },
+      {
+        h: 'The specific personnel a counter needs',
+        p: [
+          "A counter-attack is a chain, and each link demands a different kind of player. It begins with a ball-winner capable of not just tackling but of retaining possession under contact rather than merely hacking the ball clear. It runs through a passer with the vision to spot the forward option instantly and the technique to execute it accurately at speed, often over distance. It ends with runners who possess genuine acceleration rather than merely good top-end pace, since the space they are attacking closes within seconds.",
+          "The rarest and most valuable link is the last one: composure. A player who has sprinted sixty yards at maximum effort arrives at the penalty area with a raised heart rate, burning legs and the tournament watching, and is then asked to make a calm, precise decision. Many quick, willing forwards can create the chance and comparatively few can convert it in that state, which is precisely why counter-attacking teams prize a finisher who stays cold at the end of a long run above almost any other attribute.",
+        ],
+      },
+      {
+        h: 'Why tournaments suit this approach better than leagues',
+        p: [
+          "Over a long league season, a purely counter-attacking approach has a structural weakness: opponents eventually stop attacking you. A team known for punishing transitions will find that lesser sides sit deep against it too, denying it the space its whole method depends upon, and it must then find a way to break down a low block week after week. Across thirty-eight matches, this problem becomes unavoidable.",
+          "A World Cup does not last thirty-eight matches. A team can plausibly reach a final having faced opponents who, for reasons of pride, ranking or tournament situation, felt obliged to come forward against it — and each of those matches offers exactly the conditions a counter-attacking side wants. The compressed format rewards a specialised approach in a way a league never does, which is a large part of why so many of the great underdog runs described elsewhere in this collection were built on precisely this tactical foundation.",
+        ],
+      },
+      {
+        h: 'How to watch a counter unfold in real time',
+        p: [
+          "Most viewers experience a counter-attack retrospectively — the ball is in the net, and the replay explains how. Watching it prospectively is a genuinely different pleasure and takes only a small shift in attention: at the moment a team loses the ball high up the pitch, look away from the ball for a beat and at the space behind the defensive line instead. If that space is large and there are attackers moving into it, you are watching a counter begin, several seconds before the commentary catches up.",
+          "The same habit reveals why some counters die immediately. A break that looks promising but ends in a sideways pass usually failed because the runner was a half-second late, or the passer chose safety, or the covering defender delayed the carrier just long enough for four teammates to recover. Noticing those small failures makes the successful ones considerably more impressive, since it becomes clear how narrow the margin actually was.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'psychology-of-the-penalty-shootout',
+    sections: [
+      {
+        h: 'What the numbers actually say',
+        p: [
+          "Analysts who have studied large samples of shootouts consistently find patterns that a pure lottery would not produce. Conversion rates differ measurably depending on the situation a taker walks into: kicks taken to keep a team alive, with defeat following a miss, convert at a noticeably lower rate than kicks taken with the scores level or a lead in hand. If shootouts were random, that gap would not exist, because the physical act of the kick has not changed at all between those two situations.",
+          "The same data shows meaningful differences between teams and between individual takers over time, which again a lottery would not generate. What all of this points to is the article's central claim stated numerically: the technical difficulty of a penalty is low and roughly constant, while the psychological difficulty varies enormously with context, and it is that varying psychological load, not chance, that produces most of the variation in outcomes.",
+        ],
+      },
+      {
+        h: 'The goalkeeper does homework nobody sees',
+        p: [
+          "Long before a shootout begins, a well-prepared goalkeeper has studied the opposing squad's penalty history in detail — which foot each likely taker uses, which corner they favour under pressure, whether they tend to open their body or disguise their intention until the final step, and whether they have changed their habits after a previous miss. Some goalkeepers carry a physical note of this into the shootout itself, occasionally visible tucked into a sock or a water bottle.",
+          "The value of this preparation is not that it lets a goalkeeper guess correctly every time; no amount of research makes that possible. Its value is that it converts a pure fifty-fifty guess into a slightly weighted one, and over five kicks a small edge is often enough to produce a single save. Given that shootouts are frequently decided by exactly one save, a goalkeeper who has done the reading has genuinely shifted the odds in a way that looks, from the stands, indistinguishable from luck.",
+        ],
+      },
+      {
+        h: 'Choosing the order is a real strategic decision',
+        p: [
+          "Managers approach the batting order of a shootout with more deliberation than most viewers assume. The conventional logic places a reliable, confident taker first to establish momentum, then distributes the remaining takers so that the fifth kick — historically the one most likely to decide the outcome — falls to a player with the temperament to handle it. Some managers prefer to front-load their very best takers on the reasoning that a shootout may never reach five kicks at all.",
+          "Complicating this is the fact that the players who are objectively the best finishers in open play are not always the best takers under shootout conditions, and every manager knows it. The decision therefore blends technical assessment with a judgement about character that is difficult to defend publicly if it goes wrong. A manager who omits a famous striker from the first five and then loses will face questions for years, which is why some managers privately admit to choosing the safer, more defensible order rather than the one they believe is optimal.",
+        ],
+      },
+      {
+        h: 'Practising the pressure, not the kick',
+        p: [
+          "Teams that take shootouts seriously have largely stopped simply practising penalties in an empty training session, because the technical act was never the problem. The more sophisticated approach attempts to reproduce the conditions instead: taking kicks at the end of an exhausting session rather than the start, walking the full distance from the halfway line each time, having teammates and staff watch and create noise, and in some setups introducing genuine consequences for a miss so that the kick carries some stake.",
+          "None of this fully replicates a World Cup shootout, and the honest coaches admit as much. What it does is narrow the gap between the familiar and the unfamiliar, so that when a player finally makes that walk in front of a stadium and a global audience, at least the physical sensation of striking a penalty on tired legs after a long wait is something he has felt before rather than something entirely new arriving at the worst possible moment.",
+        ],
+      },
+      {
+        h: 'The weight a miss carries afterwards',
+        p: [
+          "One reason the shootout produces such visible distress is that its consequences are unusually durable. A defensive error in the sixtieth minute is absorbed into the general flow of a match and largely forgotten; a missed penalty in a shootout is isolated, replayed, and attached to a player's name for the remainder of their career and sometimes beyond it. Players who have experienced this describe the aftermath as harder than the moment itself.",
+          "Football has become somewhat better at handling this than it once was, with squads more willing to publicly close ranks around a player who missed and federations more attentive to the psychological support that follows. It remains, however, one of the sport's genuinely cruel features that an individual can be permanently defined by a single instance of a skill they have executed successfully thousands of times, and it is worth remembering when watching the 2026 shootouts that the player walking up has this fully in mind.",
+        ],
+      },
+      {
+        h: 'What has changed in recent preparation',
+        p: [
+          "The most notable shift in recent tournaments has been the move from treating shootouts as an unfortunate possibility to treating them as a foreseeable phase of the game deserving dedicated planning. Some federations now involve sports psychologists in taker selection, use data analysts to build goalkeeper dossiers, and rehearse the full sequence — including the walk and the wait — as a defined routine rather than an improvisation.",
+          "The teams that adopted this approach earliest have, over subsequent tournaments, tended to perform better from the spot than their previous record suggested they should, which is about as close to proof as football offers that preparation matters here. Expect the 2026 shootouts to feature more visible routine than shootouts of a generation ago: takers with a fixed pre-kick sequence, goalkeepers with prepared notes, and squads that clearly rehearsed exactly this scenario.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'greatest-world-cup-finals',
+    sections: [
+      {
+        h: 'Why so many finals are cagey rather than classic',
+        p: [
+          "For every final remembered as a classic there are several remembered as tense, tight and faintly disappointing, and the reason is structural rather than accidental. Both teams have survived six or seven matches to arrive, both are aware that a single error decides everything, and both know there is no second leg and no next round in which to recover. The rational response to those conditions is caution, and two rationally cautious teams produce a careful match.",
+          "This is worth knowing before the 2026 final in order to calibrate expectations honestly. A final that takes an hour to open up is not evidence that the teams are poor or that the tournament has declined; it is the predictable product of the highest stakes in the sport meeting two well-organised sides. The classics happen when something breaks that equilibrium early — an unexpected goal, a red card, an injury — and forces at least one team to abandon caution before it wanted to.",
+        ],
+      },
+      {
+        h: 'The referee has the hardest night of anyone',
+        p: [
+          "Officiating a World Cup final is among the most scrutinised assignments in sport, and the officials selected for it are chosen through a process almost as competitive as the one the teams went through. The specific challenge is that every decision carries amplified consequence: a penalty awarded or declined in a final is discussed for decades, and the referee knows this while making the call in real time.",
+          "Referees who have worked finals describe a deliberate approach of establishing a clear, consistent threshold early and holding it, on the reasoning that consistency is more defensible than perfection and that players adapt quickly to a standard they can read. The finals remembered as well-officiated are rarely the ones with no controversial moments at all; they are the ones where both sets of players appeared to understand what would and would not be permitted from the opening minutes onward.",
+        ],
+      },
+      {
+        h: 'When a final carries a history of its own',
+        p: [
+          "Some finals arrive pre-loaded with meaning because of what happened between the two nations previously — an earlier final, a famous elimination, a disputed decision that one country never forgot. When that history exists, the match becomes a continuation of an argument rather than a fresh encounter, and the emotional temperature rises accordingly for players who grew up hearing about the previous chapter.",
+          "This layer of significance is largely invisible to neutral viewers unfamiliar with the specific rivalry, which is part of why some finals feel enormous in two countries and merely important everywhere else. It is worth doing a little reading on the two finalists' shared history once the 2026 final is set, because a match that looks like a straightforward contest on the surface may carry decades of accumulated meaning that entirely reframes how the players themselves experience it.",
+        ],
+      },
+      {
+        h: 'The week before, which shapes the ninety minutes',
+        p: [
+          "The gap between a semi-final and a final is short, and how a squad spends it has a measurable effect on the match itself. Managers must manage a fortnight of accumulated fatigue, an explosion of media obligation, ticket requests from families, and the psychological problem of keeping players calm without letting them go flat. Some squads deliberately restrict media access and maintain their ordinary routine precisely to make the final feel like an ordinary match day.",
+          "Others take the opposite approach, acknowledging the occasion openly on the reasoning that pretending a World Cup final is a normal fixture insults the players' intelligence and creates its own tension. There is no consensus on which method works better, and the same manager will sometimes choose differently with different squads — but the choice is genuinely consequential, and teams that look tight or oddly subdued in a final have sometimes been undone in the days before it rather than during it.",
+        ],
+      },
+      {
+        h: 'Two entirely different memories of the same match',
+        p: [
+          "A World Cup final produces two permanent and completely incompatible memories. For the winning nation it becomes a fixed reference point in the national story, replayed on anniversaries, referenced by people who never watch football, and attached to the personal biographies of everyone who saw it. For the losing nation the same ninety minutes become something closer to a wound, revisited mainly through the moments that might have gone differently.",
+          "This asymmetry is worth holding in mind when reading any retrospective account of a great final, because the framing usually reflects whose account it is. The matches this article calls classics are classics largely from a neutral vantage point; from inside the losing dressing room, a thrilling end-to-end final that finished on penalties is not remembered as a great advertisement for the sport but as the specific night a generation of players lost the only match that mattered.",
+        ],
+      },
+      {
+        h: 'What would make the 2026 final one of the great ones',
+        p: [
+          "Applying everything above, the ingredients for a classic in 2026 are identifiable in advance even if the teams are not. It would need an early goal or some other disruption to break the natural caution both finalists will bring, at least one genuine world-class individual willing to try something decisive rather than safe, and ideally a swing — a lead surrendered, a comeback attempted — that prevents the match from settling into a controlled procession.",
+          "It also helps enormously if the two teams have contrasting styles rather than mirrored ones, since a final between a possession-dominant side and a sharp counter-attacking side tends to produce a more open and legible contest than two similar teams cancelling each other out. None of this can be arranged, which is precisely why classics remain rare and why the ones that do occur are remembered with such disproportionate affection.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goals-that-defined-the-world-cup',
+    sections: [
+      {
+        h: 'The commentary becomes part of the goal',
+        p: [
+          "A striking number of the goals that live longest in memory are inseparable, for the people who remember them, from the words spoken over them. A commentator's spontaneous reaction — a phrase, a shout, a sudden silence — attaches itself to the footage so completely that later generations encounter the goal and the call as a single artefact, and replays that strip the audio feel oddly incomplete to anyone who grew up with the original.",
+          "This matters more than it might appear, because it means the goals that endure are partly selected by whoever happened to be describing them. A brilliant goal called flatly may fade while a slightly lesser one accompanied by an unforgettable reaction survives, which introduces a genuine element of chance into which moments become canonical. Several nations have their own commentary of the same goal, and each country's version is the one its people consider definitive.",
+        ],
+      },
+      {
+        h: 'Television framing decides what we remember',
+        p: [
+          "The camera angle available at the moment of a goal shapes its afterlife substantially. A strike captured from behind the goal, showing the ball's flight and the goalkeeper's helplessness in one frame, reads as more spectacular than the identical strike captured from a high wide angle where the ball becomes a small dot. Goals scored at venues with better camera coverage have, historically, enjoyed an advantage in becoming iconic that has nothing whatever to do with their quality.",
+          "Modern coverage has narrowed this gap considerably, with dozens of cameras at every World Cup venue ensuring that essentially any goal can be shown from a flattering angle. One consequence is that the 2026 tournament will produce more visually spectacular goal footage than earlier eras could, even if the goals themselves are no better — a reminder that the archive of great World Cup goals is partly an archive of broadcast technology's development.",
+        ],
+      },
+      {
+        h: 'Goals that changed how the game was played',
+        p: [
+          "A small category of World Cup goals matters less for the match they decided than for the idea they demonstrated. A goal that arrives from a rehearsed set-piece routine nobody had seen before, or from a pressing trap executed at a level opponents had not previously faced, functions as a proof of concept broadcast to every coach on earth simultaneously — and such goals tend to be imitated within months across leagues that had never considered the approach.",
+          "This is one of the underappreciated functions of the World Cup as an institution. Because it gathers the world's footballing ideas into one place and shows them to everybody at once, a single successful innovation can propagate globally at a speed no league competition can match. Some of the most consequential goals in the tournament's history were not the most beautiful or the most decisive, but the ones that made a new idea suddenly seem obvious.",
+        ],
+      },
+      {
+        h: 'The goal that means everything in one country',
+        p: [
+          "For every goal with global recognition there are dozens that are monumentally important within a single nation and essentially unknown outside it. A goal that secured a small country's first ever World Cup point, or eliminated a regional rival, or arrived from a player who had overcome something the wider world knew nothing about, can occupy a place in that nation's collective memory comparable to the most famous strikes in the sport, while a neutral fan elsewhere would not recognise it at all.",
+          "This is worth keeping in mind when any publication ranks the greatest World Cup goals, since such lists inevitably reflect the vantage point of whoever compiled them and skew heavily toward the largest footballing nations and their broadcasters. The genuine map of meaningful World Cup goals is far larger and more distributed than any ranking suggests, and the 2026 tournament will add many entries to it that most of the world will never hear about.",
+        ],
+      },
+      {
+        h: 'Why the modern era produces a different kind of icon',
+        p: [
+          "The characteristic iconic goal of football's earlier decades was often the individual dribble — a player carrying the ball past several opponents in a way that modern defensive organisation makes considerably rarer. Contemporary defences are more compact, better drilled and far more disciplined about not diving into tackles, which has made the long weaving solo run a genuinely less available route to goal than it once was.",
+          "What has replaced it is a different aesthetic: goals of collective construction, where the memorable element is a sequence of one-touch passes through a compressed space, or goals of extraordinary individual striking technique from distance. Neither is better or worse than the old archetype, but the shift is real, and it means comparing modern iconic goals to those of earlier eras is partly comparing two different sports separated by decades of defensive evolution.",
+        ],
+      },
+      {
+        h: 'Controversy keeps a goal alive longer than beauty does',
+        p: [
+          "There is a paradox worth noting in how goals survive: the ones that remain most vigorously discussed decades later are frequently not the finest but the most disputed. A goal wrapped in an unresolved question — did the ball cross the line, was there a handball, should the flag have gone up — generates recurring argument, and argument is a far more powerful preservative than admiration, which tends to settle into quiet consensus and then fade.",
+          "Video technology has, somewhat ironically, begun to reduce the supply of these immortal controversies by resolving in seconds the questions that once fuelled decades of debate. It is entirely possible that the 2026 tournament produces fewer permanently disputed goals than any before it, and that future generations will consequently remember its goals through beauty and stakes alone rather than through the arguments that sustained so many earlier ones.",
+        ],
+      },
+      {
+        h: 'Watching for the next one',
+        p: [
+          "Nobody watching live ever knows in the moment that they are witnessing a goal that will outlast them, which is part of the pleasure. The goals that became immortal looked, as they happened, like goals — the significance accumulated afterwards, through replay, retelling and the eventual outcome of the tournament around them.",
+          "The practical implication for 2026 is simply an argument for watching matches live where possible rather than only through highlights. The specific experience of not knowing what a moment will become, and of reacting to it in real time alongside everyone else on earth, is the thing that cannot be reconstructed later — and it is what separates having watched a famous goal from having merely seen it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'great-world-cup-underdog-runs',
+    sections: [
+      {
+        h: 'What a deep run does to a country afterwards',
+        p: [
+          "The effects of an unexpected World Cup run rarely stop when the team flies home. Football federations in nations that have gone unexpectedly deep typically report substantial increases in youth registration in the following seasons, greater commercial interest in the domestic league, and improved access to friendly fixtures against stronger opposition — all of which compound into genuine developmental advantages that outlast the emotional glow.",
+          "Some of these effects are durable and some are not. Participation spikes tend to fade unless a federation has the infrastructure to absorb the new players, which is precisely the constraint that separates the nations who converted a famous run into sustained improvement from those for whom it remained a beautiful one-off. The run creates an opportunity; whether it becomes a foundation depends on decisions made in the years that follow, far from any television camera.",
+        ],
+      },
+      {
+        h: 'The single match that turns a curiosity into a story',
+        p: [
+          "Every great underdog run has an identifiable hinge match, and it is almost never the first win. The opening victory registers as a mild surprise; the hinge is the match where the team eliminates or defeats a genuine favourite, at which point the neutral world stops treating them as a novelty and starts treating them as a live threat. Players from such teams often describe an audible change in how they were discussed within twenty-four hours of that specific result.",
+          "That hinge match tends to share a recognisable shape: the underdog concedes territory and possession, defends with extraordinary collective discipline, survives at least one significant scare through goalkeeping, and converts one or two of the few chances it creates. It is rarely a performance of dominance, and it is almost always a performance of organisation — which is exactly why the runs are built on the structural qualities described elsewhere in this collection rather than on sudden bursts of individual brilliance.",
+        ],
+      },
+      {
+        h: 'Why the next tournament is so much harder',
+        p: [
+          "A team that has completed a famous run arrives at the following World Cup facing an entirely different set of conditions. Opponents now prepare specifically for them, the element of being underestimated is gone, the squad is four years older with the same limited depth behind it, and the domestic expectation has shifted from hope to demand. Several nations have gone from a celebrated run to a group-stage exit in a single cycle for exactly these reasons.",
+          "The federations that handle this transition best generally accept quickly that the run is not repeatable on the same terms and begin rebuilding rather than attempting to preserve the squad that produced it. This is difficult politically, since the heroes of a famous campaign are national figures whose omission is unpopular, and it is a smaller-scale version of the same problem this collection's article on defending champions describes — success creating a sentimental obstacle to the renewal that would sustain it.",
+        ],
+      },
+      {
+        h: 'The continuity that makes these runs possible',
+        p: [
+          "Behind nearly every surprise run sits a period of unusual stability that predates it by years. A manager kept in post through a mediocre qualifying campaign, a core group of players who came through youth international levels together, a federation that resisted pressure to change direction after a disappointing result — these unglamorous decisions are the actual foundation on which the eventual, celebrated fortnight is built.",
+          "This is the least romantic and most useful lesson available from the great underdog stories. They are frequently narrated as spontaneous magic, and they are in fact almost always the visible payoff of a slow accumulation of continuity that nobody outside the country noticed while it was happening. Any nation hoping to produce such a run is better served by patience than by ambition, which is a genuinely difficult thing for a football federation under public pressure to sustain.",
+        ],
+      },
+      {
+        h: 'How the 48-team format reshapes the underdog path',
+        p: [
+          "The expanded tournament alters the arithmetic of a surprise run in two opposing directions at once. It becomes easier to reach the knockout stage, since the best-third-place mechanism this collection covers elsewhere gives a well-organised smaller nation an additional route through. But it also becomes harder to reach the final, because there is now an extra knockout round to survive, and each additional round is another single match in which the quality gap can finally tell.",
+          "The likely practical consequence is more nations experiencing a modest version of the underdog story — reaching a round of 32 or a round of 16 for the first time in their history — and possibly fewer completing the full, spectacular run to a semi-final or beyond. Whether that trade is an improvement depends entirely on whether one values a broader distribution of meaningful moments or a smaller number of extraordinary ones.",
+        ],
+      },
+      {
+        h: 'The neutral fan is part of the phenomenon',
+        p: [
+          "Underdog runs are unusual among sporting stories in that the audience participates in creating them. As a run develops, neutral support accumulates globally, and players consistently report that this awareness affects them — the sense of carrying not just a nation but a large share of everyone watching is described as energising rather than burdensome, unlike the pressure carried by favourites.",
+          "This creates a genuine feedback loop with no equivalent for a tournament favourite. A giant progresses under scrutiny and expectation; an underdog progresses under affection. It is one of the more attractive features of the World Cup as an event that the audience's emotional investment can measurably improve the experience of the team least equipped to succeed, and it is worth participating in deliberately rather than waiting to be swept along late.",
+        ],
+      },
+      {
+        h: 'Choosing one before everyone else does',
+        p: [
+          "The practical suggestion this article builds toward is to select an underdog before the tournament begins rather than adopting whichever team is already succeeding by the second week. Look for the traits identified throughout: a settled squad with years of shared history, a clearly defined defensive structure, a goalkeeper capable of a hot streak, and a manager who has survived long enough to have genuinely built something.",
+          "The pleasure of this approach is that it works even when the prediction fails. A chosen team that exits in the group stage still gave you three matches you would otherwise have ignored and a reason to care about them, which is a better return than watching the same three matches with no stake at all. And on the occasions when the pick does come good, the experience of having identified it in advance is one of the more genuinely satisfying things available to a neutral football fan.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-the-world-cup-began',
+    sections: [
+      {
+        h: 'The Olympic tournament that came first',
+        p: [
+          "Before any World Cup existed, the closest thing to a global football championship was the Olympic tournament, which for a period drew genuine international interest and produced teams regarded as the best in the world. Its fatal limitation was the amateur requirement: as professionalism spread through European and South American football, the Olympics increasingly excluded precisely the players who defined the sport, and its claim to crown world champions became progressively harder to sustain.",
+          "That gap between the tournament that existed and the tournament the sport actually needed is the specific problem the World Cup was invented to solve. Understanding this explains why the founders were so insistent that the new competition be open to professionals — it was not an incidental detail but the entire point, the thing that would allow the winner to claim something the Olympic champion could not.",
+        ],
+      },
+      {
+        h: 'Why the first tournament nearly did not happen',
+        p: [
+          "The practical obstacles facing the inaugural competition were severe enough that its success was genuinely uncertain. Travel between Europe and South America meant a sea voyage of weeks in each direction, which required players to take extended leave from clubs and employers who had no obligation to grant it and no particular incentive to do so. Several European federations declined outright, and those that participated did so after considerable internal argument.",
+          "The tournament went ahead with a small and geographically lopsided field, and it worked — not because the organisation was flawless but because enough people wanted it to exist. That fragility at the origin is worth remembering when the modern tournament's scale makes it seem inevitable. There was a point at which the World Cup was one difficult decision away from being an interesting idea that never took hold.",
+        ],
+      },
+      {
+        h: 'The interruption that could have ended it',
+        p: [
+          "The tournament's development was halted entirely by the Second World War, creating a gap of twelve years between editions during which the competition existed only as a memory and an intention. A newer institution might not have survived such a break; the momentum of a young event is not easily preserved across more than a decade of global catastrophe.",
+          "That it resumed at all, and resumed with more participants rather than fewer, says something durable about what the tournament had already come to mean to the countries that had played in it. The post-war editions carried an additional weight for exactly this reason, functioning partly as a demonstration that international sporting life could be reassembled, which gave the competition a significance beyond football that it has never entirely lost.",
+        ],
+      },
+      {
+        h: 'Television turned it into a global event',
+        p: [
+          "The single largest factor in the World Cup's transformation from a significant football competition into a planetary event was the arrival of television coverage capable of reaching across continents. Before it, the tournament was experienced by the people in the stadiums and, elsewhere, through newspaper reports and radio; after it, a match could be witnessed simultaneously by audiences with no connection to either competing nation.",
+          "This changed the competition's character as well as its size. Once a global audience existed, the tournament acquired neutral fans in enormous numbers — people with no national stake who watched for the football itself and who could be captivated by an underdog run or an individual performance. Almost everything this collection discusses about the World Cup's cultural function depends on that audience, which television created and which had simply not existed in the tournament's first decades.",
+        ],
+      },
+      {
+        h: 'Expansion has always followed the same script',
+        p: [
+          "The pattern accompanying every enlargement of the field has been remarkably consistent across the tournament's history. An expansion is announced; critics argue it will dilute quality and produce lopsided matches; the expanded tournament takes place; some lopsided matches duly occur alongside several memorable stories that the smaller format would have excluded; and within a cycle or two the new size is simply regarded as the normal shape of the competition.",
+          "This does not automatically mean the 48-team expansion will follow the same arc, and it would be lazy to assume the pattern guarantees a good outcome. It does, however, suggest that immediate reactions to the 2026 format — whether triumphant or damning — should be treated with some caution, since the historical record shows that first impressions of an expanded World Cup have consistently been poor predictors of how that format was eventually regarded.",
+        ],
+      },
+      {
+        h: 'The founding ambition, measured against 2026',
+        p: [
+          "The original argument for a World Cup was that football belonged to the entire world and therefore deserved a competition open to all of it. Judged strictly against that standard, the 2026 tournament is the closest the competition has come to fulfilling its founding purpose: more nations, more continents meaningfully represented, and a genuine qualification pathway for federations that spent decades regarded as permanent outsiders.",
+          "Whether the tournament is better as a spectacle is a separate question from whether it is truer to its founding idea, and the two can point in different directions. What is not really arguable is that the people who pushed the original, improbable proposal through a sceptical footballing establishment would recognise the 2026 edition as an extension of what they were arguing for rather than a departure from it.",
+        ],
+      },
+      {
+        h: 'Why any of this matters to a viewer',
+        p: [
+          "History of this kind can feel like decoration around the actual football, but it does real work in how a tournament is experienced. Knowing that the competition was fragile at its origin, interrupted by war, transformed by television and repeatedly expanded against objection gives the familiar four-year rhythm a different texture — it becomes something built and maintained rather than something that simply exists.",
+          "It also supplies context for the arguments that will surround 2026, most of which are recognisably older than they appear. The debates about size, commercialism, quality and inclusion have all been had before, in almost the same terms, by people who could not have imagined the scale the tournament would eventually reach. That continuity is itself a reason to take the current arguments seriously without treating any of them as unprecedented.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'story-of-the-world-cup-trophy',
+    sections: [
+      {
+        h: 'What the object actually is',
+        p: [
+          "The trophy is smaller than television suggests — comfortably liftable by one person, considerably shorter than the celebratory images imply — and it is made of solid gold of high purity with a base incorporating bands of semi-precious malachite. That combination of dense material and modest dimensions gives it a substantial weight relative to its size, which is why players lifting it for the first time often adjust their grip in the moment.",
+          "The design depicts two human figures rising and holding up the world, and it was chosen from a large field of submitted proposals with the explicit intention of representing the act of triumph rather than the sport specifically. There is no football on the trophy, no player, no goal — a deliberate choice that has allowed the object to remain visually timeless across decades in which football's own aesthetics have changed considerably.",
+        ],
+      },
+      {
+        h: 'Why champions do not keep it',
+        p: [
+          "Unlike its predecessor, the current trophy is never given away permanently. A winning nation holds it for the period between tournaments and returns it before the next one begins, receiving in exchange a gold-plated bronze replica that it keeps for good. This arrangement was adopted specifically to prevent a repeat of the earlier situation in which a nation's third victory retired the original trophy from circulation entirely.",
+          "The consequence is a single physical object that connects every modern champion to every other. When a captain lifts it, he is holding the same trophy lifted by the winning captains of previous decades, which is a form of continuity that a series of individual replicas could never provide. Most of what makes the moment resonate depends on this fact, even for viewers who have never consciously thought about it.",
+        ],
+      },
+      {
+        h: 'The theft that became folklore',
+        p: [
+          "The original trophy's history includes at least one genuine theft, which triggered a widely publicised search and a recovery story that has been retold, embellished and disputed ever since. The details vary depending on the account, but the episode established the trophy as an object with a biography of its own rather than merely a prize handed over at the end of a tournament.",
+          "The original's ultimate fate after being retired into permanent private possession has itself been the subject of enduring reporting and speculation, and the uncertainty surrounding it has only added to the mythology. Few sporting prizes have accumulated this much narrative away from the competitions they were made for, and the modern trophy's carefully controlled custody arrangements are, in part, a direct institutional response to that turbulent history.",
+        ],
+      },
+      {
+        h: 'Who is actually allowed to touch it',
+        p: [
+          "Access to the genuine trophy is tightly restricted under long-standing convention: only players and coaching staff from a nation that has won the tournament, along with certain heads of state and senior football officials, may handle the original. Everyone else, including players from teams that have never won it, is permitted only to look — and at the various public displays the trophy makes, that restriction is enforced.",
+          "This rule creates a specific and slightly poignant reality within the sport. A player can have an extraordinary career, win everything available at club level, appear at several World Cups, and never be permitted to place his hands on the trophy itself. The restriction is often cited by players as one of the things that gives lifting it its particular meaning, precisely because no amount of achievement short of winning the tournament grants access.",
+        ],
+      },
+      {
+        h: 'The names underneath',
+        p: [
+          "Engraved on the underside of the base are the names of the winning nations, added after each tournament in the language of the winning country. It is a deliberately understated feature, invisible during every celebration image ever taken, and it means the record of champions is carried physically by the object rather than only in the record books.",
+          "There is a practical limit to this: the base can accommodate only a finite number of entries, and the trophy as currently constituted is expected to run out of space at a foreseeable future tournament, at which point the sport will face a genuinely interesting decision about whether to modify the object, replace it, or accept that the engraved record ends. It is a small detail that quietly guarantees the trophy's story is not finished.",
+        ],
+      },
+      {
+        h: 'Where it goes between tournaments',
+        p: [
+          "In the years between World Cups the trophy does not simply sit in a case. It undertakes extensive international tours, appearing in dozens of countries — including many with no realistic prospect of winning it — as part of a deliberate programme to make the object physically present in places where the tournament is otherwise experienced only through screens.",
+          "These tours are frequently the only occasion on which people in smaller footballing nations see the actual trophy rather than an image of it, and the reported reactions suggest the object retains a surprising power in person. Whatever one thinks of the commercial machinery surrounding modern football, the practice of taking the sport's central symbol to places that will probably never host a World Cup match is one of the more defensible things the institution does with it.",
+        ],
+      },
+      {
+        h: 'What players say about the moment',
+        p: [
+          "Players who have lifted it tend to describe the experience in oddly similar terms across different generations and nationalities: a sense of the object being heavier and smaller than expected, a difficulty in registering the moment as real while it is happening, and a strong subsequent memory of the physical texture rather than the emotion. Several have said they remember how cold the metal was more clearly than anything else about the presentation.",
+          "This is worth bearing in mind while watching the 2026 presentation. The images will show unrestrained celebration, and the accounts suggest that what is actually being experienced by the person holding it is closer to disorientation — the culmination of a career arriving in a form too concentrated to process at the time, and only becoming comprehensible to them much later.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-technology-changed-the-world-cup',
+    sections: [
+      {
+        h: 'How goal-line technology actually knows',
+        p: [
+          "The systems used to determine whether a ball has fully crossed the line rely on multiple high-speed cameras positioned around each goal, tracking the ball continuously and computing its position in three dimensions many times per second. When the calculation indicates the whole ball has passed the whole line, a signal is transmitted to a device worn by the referee within a fraction of a second, requiring no review, no stoppage and no discussion.",
+          "This near-instantaneous, entirely automatic operation is precisely why the technology is uncontroversial in a way that later interventions are not. It answers a binary factual question, delivers the answer faster than a human could ask it, and never requires anybody to exercise judgement about intent or severity. Every subsequent technological addition to officiating has been more contested for exactly the reasons this one is not.",
+        ],
+      },
+      {
+        h: 'What video review can and cannot examine',
+        p: [
+          "A frequent source of frustration among viewers is the belief that video review can address any incident, when in fact it operates within a deliberately narrow scope: goals and the immediate build-up to them, penalty decisions, direct red cards, and cases of mistaken identity. Incidents outside those categories, however apparently unjust, are not reviewable regardless of how clearly a replay shows an error.",
+          "Layered on top of that scope is a threshold — the review is meant to intervene only for clear and obvious errors, not to relitigate marginal judgement calls where a reasonable official could have gone either way. A great many of the arguments about video review are really arguments about where that threshold sits, and they are not resolvable by better technology because the disagreement is about interpretation rather than about what happened.",
+        ],
+      },
+      {
+        h: 'Why the referee still walks to the screen',
+        p: [
+          "The procedure in which a referee leaves play to view a pitchside monitor is sometimes criticised as theatre that lengthens delays, but it exists for a specific and defensible reason: for subjective decisions, the authority to decide is deliberately retained by the on-field official rather than transferred to a colleague in a video room. The video assistant recommends a review; the referee makes the call.",
+          "Preserving that arrangement matters for the integrity of the role. A system in which the decisive judgement was made remotely, by someone who was not present and not accountable in the stadium, would change the nature of refereeing considerably and would likely erode the on-field official's authority over the rest of the match. The walk to the monitor is the visible cost of keeping the decision where the sport decided it belongs.",
+        ],
+      },
+      {
+        h: 'A ball that reports on itself',
+        p: [
+          "Recent tournaments have introduced match balls containing an internal sensor transmitting positional data at a very high frequency, which allows officials to determine the precise instant a ball is struck. This has proved unexpectedly consequential for two decisions in particular: establishing the exact moment of the pass for offside purposes, and identifying whether a player made any contact with the ball at all in a contested handball or deflection situation.",
+          "Combined with limb-tracking camera systems, this makes it possible to generate an offside determination substantially faster and more consistently than a human operator drawing lines on a freeze frame ever could. The technology does not resolve the philosophical question of whether such fine margins should decide goals, but it does largely remove the separate complaint that the measurement itself was unreliable or inconsistently applied.",
+        ],
+      },
+      {
+        h: 'The problems no system will solve',
+        p: [
+          "It is worth being clear about the limits. Whether a challenge was reckless, whether a handball was natural, whether contact in the penalty area was sufficient to justify a penalty — these are questions of interpretation, and no amount of camera coverage converts them into questions of fact. Technology can show every angle of an incident with perfect clarity and still leave two reasonable people in complete disagreement about what should follow.",
+          "This explains why the introduction of video review reduced complaints about missed incidents while doing very little to reduce complaints overall. The arguments simply migrated: instead of disputing what happened, viewers now dispute what the clearly visible thing that happened ought to mean. That is not a failure of the technology so much as evidence that a meaningful share of football's controversies were never actually about visibility.",
+        ],
+      },
+      {
+        h: 'The cost that gets discussed least',
+        p: [
+          "The most significant loss attributed to video review is not delay but the erosion of unqualified celebration. Supporters in a stadium now frequently hesitate after a goal, waiting for confirmation before committing to joy, and players have adapted with muted celebrations pending a check. Something genuinely valuable was traded away there, and the trade was largely unexamined at the time it was made.",
+          "Whether that cost is worth paying is a real question rather than a rhetorical one. A fan asked to choose between a tournament with more correct decisions and one with more uninhibited celebration would not answer uniformly, and both answers are defensible. The current arrangement has effectively chosen accuracy, and the newer systems aimed at speeding up reviews are best understood as an attempt to buy back some of the spontaneity that choice cost.",
+        ],
+      },
+      {
+        h: 'Where this is heading',
+        p: [
+          "The trajectory is toward automating the factual questions completely while leaving the interpretive ones with human officials — faster offside determinations, automatic detection of ball-out-of-play, and potentially automated flagging of incidents for review rather than relying on a video official spotting them. Each of these narrows the delay without expanding the machine's authority over judgement.",
+          "The harder question ahead is not technical but philosophical: how precise should the sport want to be? A rule enforced to the millimetre is not obviously fairer than one enforced to the nearest reasonable margin, particularly when the millimetre in question is a shoulder that conferred no advantage. That debate will outlast the 2026 tournament, and it is genuinely unresolved rather than merely awaiting better equipment.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'fans-guide-to-2026-host-cities',
+    sections: [
+      {
+        h: 'Thinking in clusters rather than cities',
+        p: [
+          "The most useful mental adjustment for anyone planning to attend matches is to stop thinking about individual host cities and start thinking about regional clusters. The venues group naturally into a western group, a central group, an eastern group, a northern Canadian pairing and a Mexican group, and travel within any one of these is manageable while travel between them is a genuine long-haul undertaking.",
+          "Organisers have deliberately arranged much of the group stage so that individual teams remain within a cluster for their first three matches, specifically to limit travel burden. For a supporter, this means the sensible plan is usually to base yourself in one cluster and accept the matches available there, rather than attempting to follow a single team across the continent — an approach that sounds romantic and in practice consumes most of the tournament in transit.",
+        ],
+      },
+      {
+        h: 'Climate varies more than at any previous World Cup',
+        p: [
+          "The spread of venues produces genuinely different conditions from one match to another. Some southern venues will be hot and humid enough that heat management becomes a factor in the football itself; northern venues will be considerably milder; and Mexico City's altitude presents an entirely separate physiological consideration for visitors as well as players.",
+          "For anyone travelling, this means preparation cannot be uniform. Hydration and sun protection matter enormously in some locations and hardly at all in others, and visitors flying into high altitude should expect a day or two of adjustment before feeling normal. It is a genuinely unusual situation for a single tournament, and it rewards checking the specific conditions for your specific venues rather than packing for a generic North American summer.",
+        ],
+      },
+      {
+        h: 'Watching without a ticket',
+        p: [
+          "Match tickets are limited and expensive, and the large majority of people who travel to a World Cup host city do not attend a match. Official fan zones — large public viewing areas with screens, food and organised atmosphere — exist precisely for this, and in many previous tournaments they have produced better collective experiences than some matches inside the stadiums.",
+          "Beyond official sites, host cities with large diaspora communities reliably produce concentrated informal viewing culture around particular neighbourhoods, bars and community venues. For a visitor, finding the neighbourhood where a particular nation's supporters gather is frequently the single best way to experience a match, and it costs nothing beyond the effort of asking locally where people are actually going to watch.",
+        ],
+      },
+      {
+        h: 'Tickets, and the scams that surround them',
+        p: [
+          "The only reliable route to genuine tickets is the official sales process, and everything outside it carries meaningful risk. World Cups consistently attract sophisticated ticket fraud, including convincing fake resale sites, counterfeit physical tickets, and sellers who take payment for tickets that do not exist. The scale of demand relative to supply makes this among the most heavily targeted consumer environments in sport.",
+          "The practical protections are straightforward and worth stating plainly: buy only through official channels, treat any offer that arrives unsolicited as fraudulent by default, be sceptical of prices that seem achievable, and never complete a transaction through an irreversible payment method with a stranger. A great deal of the misery reported at every tournament traces back to people bypassing these rules under time pressure.",
+        ],
+      },
+      {
+        h: 'Accessibility and travelling with children',
+        p: [
+          "All 2026 venues are required to provide accessible seating and facilities, and official ticketing includes specific processes for supporters with accessibility requirements and their companions. These allocations are limited and are best pursued early in the sales process rather than close to the tournament, since they cannot be expanded once assigned.",
+          "For families, the practical considerations are less about the stadium than the surrounding day. Matches in some venues fall at times that make a full day out demanding for young children, security queues are long, and the distances involved in North American cities can make what looks like a short journey substantially longer. Planning around one match rather than several, and treating the fan zone as an easier alternative for younger children, tends to produce a considerably better experience.",
+        ],
+      },
+      {
+        h: 'What the armchair viewer should look for',
+        p: [
+          "Most people experiencing the host cities will do so entirely through television, and there is more available in that experience than it might appear. Broadcast coverage between matches routinely includes substantial material about the host locations, and the visual differences between venues — the altitude haze in Mexico City, the architecture visible beyond a northern stadium, the crowd composition in cities with particular diaspora populations — are genuinely informative about where the football is being played.",
+          "Paying attention to this converts what could be a generic sequence of stadiums into an actual tour, which was always part of the point of a World Cup. It also makes the tournament's three-country structure legible in a way that simply following the scores never will, since the differences between the host nations are considerably more visible in the surrounding coverage than in the matches themselves.",
+        ],
+      },
+      {
+        h: 'Verify everything, close to the date',
+        p: [
+          "The single most practical piece of advice for a tournament of this scale is to confirm details against official sources late rather than relying on early information. Kick-off times, venue assignments for knockout fixtures, transport arrangements and entry requirements are all subject to change, and a plan built on information gathered months in advance can quietly become wrong without anybody notifying you.",
+          "This matters more in 2026 than in previous tournaments precisely because of the three-country structure, where an error about which city, country or time zone a match falls in has considerably larger consequences than a similar mistake at a single-host tournament. A final check in the week before travel is a small habit that prevents most of the genuinely expensive mistakes supporters make.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-the-world-cup-unites-the-planet',
+    sections: [
+      {
+        h: 'The scale, in context',
+        p: [
+          "The audience figures attached to World Cup finals are large enough to be difficult to intuit, routinely cited in the hundreds of millions watching live and in the billions engaging with the tournament across its duration. Whatever the precise methodology behind any specific figure, the comparative point is not seriously disputed: no other recurring event assembles a simultaneous global audience of this size.",
+          "What makes this remarkable is less the number than its distribution. Large audiences exist for other events, but they are usually concentrated within one country or region. The World Cup's audience is genuinely spread across every inhabited continent, which is why it functions as a shared reference point in a way that a nationally-concentrated event of similar size cannot.",
+        ],
+      },
+      {
+        h: 'The lowest barrier to entry in sport',
+        p: [
+          "Football's global reach rests on a genuinely unusual accessibility. The game requires one ball and any open space; it needs no specialised equipment, no facility, no minimum number of players, and no particular physical type to participate meaningfully. Children in wildly different economic circumstances can play the same game to a recognisable standard, which is not true of most sports that require equipment or dedicated surfaces.",
+          "This accessibility compounds over generations into something structural. A sport that any community can play becomes a sport every community understands, and a sport every community understands can host a tournament that every community has a reason to watch. The World Cup's universality is downstream of a ball being cheap, which is a mundane explanation for a genuinely extraordinary phenomenon.",
+        ],
+      },
+      {
+        h: 'What diaspora communities do to the atmosphere',
+        p: [
+          "One of the more distinctive features of the 2026 tournament will be the effect of North America's diaspora populations on the matches themselves. Nations from every continent have substantial communities across the host countries, which means visiting teams will frequently play in front of large, passionate blocks of their own supporters despite being thousands of miles from home.",
+          "This produces a genuinely unusual dynamic in which a match nominally played on neutral ground can feel decisively partisan for one side. It also creates an experience specific to this tournament: the possibility of watching a nation's supporters celebrate in a city on a different continent, among neighbours who may not share their nationality but are entirely willing to join the celebration. That is a version of the unity this article describes that is unusually literal.",
+        ],
+      },
+      {
+        h: 'The measurable effect on a city',
+        p: [
+          "Anybody who has been in a country while its national team plays a knockout World Cup match will recognise the phenomenon: streets emptying, traffic thinning, workplaces informally pausing, and a sound audible across an entire neighbourhood at the moment of a goal. These are not universal — plenty of people are indifferent — but the aggregate effect is genuinely observable in cities of every size.",
+          "What makes this notable is how rare synchronised public attention has become. Media consumption has fragmented enormously, and the number of things that a substantial share of a population experiences at the same moment has declined steeply. The World Cup is one of the last reliable producers of that synchrony, which is a meaningful part of why it feels significant beyond the football.",
+        ],
+      },
+      {
+        h: 'A calendar that outlasts individual memory',
+        p: [
+          "The four-year rhythm produces an effect worth naming: people frequently locate periods of their own lives by which World Cup was happening. A tournament becomes a marker for where somebody lived, who they watched with, what was happening around them — and because the intervals are long enough to span life changes, the sequence of tournaments functions as an informal personal chronology.",
+          "This is why older supporters discussing past World Cups so often drift into discussing the circumstances surrounding them. The football is the anchor, but what is actually being recalled is a period of life, which is a kind of significance that very few recurring events accumulate and which explains why the tournament matters to many people who are not otherwise interested in the sport.",
+        ],
+      },
+      {
+        h: 'The honest limits of the claim',
+        p: [
+          "It is worth being straightforward about the boundaries of this argument, because unity is a large word and the tournament does not deliver it without qualification. World Cups have occasioned genuine hostility between rival supporters, have been used politically by host nations and participants, and have taken place amid serious and legitimate criticism of the circumstances surrounding them. Presenting the event as an uncomplicated force for harmony would be an overstatement.",
+          "The defensible version of the claim is narrower and still substantial: for a few weeks, an enormous and genuinely global population pays attention to the same thing at the same time, and a meaningful proportion of that attention produces shared enjoyment across lines that usually separate people. That is not world peace, and it does not need to be in order to be worth something.",
+        ],
+      },
+      {
+        h: 'How to get the most out of the shared summer',
+        p: [
+          "The practical implication of everything above is that the tournament rewards participation more than observation. Watching alone is perfectly valid, but the specific quality this article describes — the sense of a shared experience — requires being in some way present with other people, whether in a stadium, a fan zone, a bar, a living room or a group conversation following along remotely.",
+          "For anyone whose interest in football is casual, this is the argument for engaging with 2026 anyway. The tournament is not really asking for expertise, and the parts of it that stay with people are rarely tactical. It is asking for attention at the same time as everybody else, which is the entire mechanism by which a football competition manages to become, briefly, something the whole world is doing together.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'art-of-the-counter-attack',
+    sections: [
+      {
+        h: 'The counter-attack against a low block',
+        p: [
+          "A genuine tactical problem arises when two counter-attacking teams meet, or when a counter-attacking side faces an opponent equally content to sit deep. Neither wants possession, neither wants to commit players forward, and the match can settle into a strange stalemate in which both teams are waiting for a transition that neither will initiate. These matches are frequently criticised as dull, and from a neutral standpoint the criticism is often fair.",
+          "The resolution usually comes from tournament circumstance rather than tactical courage. A team that needs a result — because of the group table, because it is the higher-ranked side facing elimination, because time is running out — is eventually forced to commit forward, and the moment it does the match transforms instantly into exactly the kind of transition-heavy contest both teams were built for. Watching for the specific minute at which one side abandons its patience is often the most interesting thing about these fixtures.",
+        ],
+      },
+      {
+        h: 'A style with a lower ceiling but a higher floor',
+        p: [
+          "The honest assessment of counter-attacking as a tournament strategy is that it raises a team's floor considerably while capping its ceiling somewhat. A well-drilled counter-attacking side is very hard to beat comfortably, will rarely be embarrassed, and can defeat almost anybody on a given day — but it is also dependent on opponents behaving in a particular way, and against a disciplined side that refuses to over-commit it can struggle to create anything at all.",
+          "For most nations at a World Cup, that trade is straightforwardly worth making, because the realistic ambition is to progress rather than to dominate. It is only the handful of genuine favourites, who will face several opponents content to sit deep against them, for whom a purely counter-attacking identity becomes a limitation rather than an asset — which is precisely why the tournament's strongest teams tend to need a second method alongside it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'psychology-of-the-penalty-shootout',
+    sections: [
+      {
+        h: 'The rules around the kick itself',
+        p: [
+          "A number of specific regulations shape the shootout in ways viewers do not always register. The goalkeeper must retain at least part of one foot on or in line with the goal line until the ball is struck, which permits some lateral movement but not the forward charge that would otherwise make saving trivial. Encroachment by other players, feinting after completing the run-up, and a taker touching the ball twice all carry defined consequences.",
+          "These rules exist because every one of them was previously exploited. The shootout's regulatory history is essentially a record of participants finding advantages and the laws closing them, and the current framework represents an accumulated attempt to keep the contest between taker and goalkeeper as close to a fair duel as the situation allows. Knowing them makes the officiating decisions during a tense 2026 shootout considerably easier to follow.",
+        ],
+      },
+      {
+        h: 'What happens after the first five',
+        p: [
+          "If the initial five kicks each fail to separate the teams, the shootout moves to sudden death, and the character of the event changes markedly. Every kick now carries immediate elimination, the recognised takers have been used, and players who are not penalty specialists — often defenders, sometimes the goalkeeper — must step forward. The technical standard visibly drops while the tension rises.",
+          "This phase is where the depth of a squad's preparation shows most clearly. Teams that identified and rehearsed takers beyond the first five arrive here with a plan; teams that did not are effectively improvising at the moment of maximum pressure. It is also, not coincidentally, where the most memorable shootout moments in World Cup history have tended to occur, because sudden death concentrates everything the earlier kicks distributed.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'greatest-world-cup-finals',
+    sections: [
+      {
+        h: 'Extra time changes the shape of a final',
+        p: [
+          "A final that reaches extra time becomes a substantially different contest from the one that preceded it. Legs are gone after four weeks of tournament football, substitutions are largely spent, and both teams face a genuine strategic question: push for a winner and risk conceding, or manage the thirty minutes toward a shootout that at least offers a coin-flip rather than a defeat.",
+          "The finals remembered as classics are frequently the ones in which at least one team refused the safer option in extra time. It is a decision that looks brave in victory and reckless in defeat, and managers know that the judgement of it will depend entirely on an outcome they cannot control — which is why the ones who go for it are rarer than neutral viewers would prefer.",
+        ],
+      },
+      {
+        h: 'The occasion swallows some players and reveals others',
+        p: [
+          "One consistent feature across great finals is that the match reliably produces at least one performance nobody anticipated, in both directions. A player of established world class can be visibly diminished by the occasion, playing within himself and disappearing from a match he was expected to define; simultaneously, a squad player or a less celebrated name produces the outing of his life.",
+          "This unpredictability is part of why pre-final analysis is so frequently wrong about which individuals will matter. The variable that decides it is not talent, which is already known, but how a specific person responds to the largest single occasion in the sport — and that is genuinely not knowable in advance, including by the players themselves, most of whom will never have experienced anything comparable before walking out.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goals-that-defined-the-world-cup',
+    sections: [
+      {
+        h: 'The celebration is half the memory',
+        p: [
+          "For a substantial number of the goals that endure, the image people actually carry is not the strike but what followed it — a specific run, a gesture, a face, a pile of teammates. The celebration frequently outlives the finish in collective memory, and some goals are recognised instantly by their aftermath by people who could not describe how the ball went in.",
+          "Players are aware of this, and the relationship between spontaneity and performance in goal celebrations has become genuinely complicated at elite level. The moments that resonate longest are almost always the ones that appear unplanned, which creates an awkward incentive: a celebration designed to be memorable rarely is, while an unguarded reaction to a decisive goal frequently becomes the defining image of an entire tournament.",
+        ],
+      },
+      {
+        h: 'How a goal gets certified as great',
+        p: [
+          "There is an informal process by which a goal moves from impressive to canonical, and it takes years rather than minutes. It must survive the immediate news cycle, be selected repeatedly for retrospective packages, get referenced by commentators during later matches as a comparison point, and eventually be shown to people who were not alive when it happened. Only goals that clear all of those filters become permanently established.",
+          "This means the 2026 tournament's genuinely iconic goals will not be identifiable at the time, and any confident declaration during the tournament that a particular strike is one of the greatest ever should be treated with scepticism. The judgement is made by accumulated repetition over a long period, not by the reaction in the first hour, and plenty of goals that felt historic in the moment quietly faded within a cycle.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'great-world-cup-underdog-runs',
+    sections: [
+      {
+        h: 'The squad that never gets rebuilt in time',
+        p: [
+          "A recurring and somewhat melancholy pattern follows many famous runs: the specific group of players who produced it stays together too long, because breaking up a squad that achieved the greatest result in a nation's history is close to politically impossible. The players are national heroes, the manager is untouchable, and the federation has no appetite for the argument that renewal would require.",
+          "The cost usually arrives two cycles later, when the golden group has aged out simultaneously and there is no prepared succession behind it, producing a sharp decline rather than a gradual transition. The nations that avoided this were generally the ones that began integrating younger players immediately after the run, while the celebration was still ongoing and before anybody could argue convincingly that nothing needed to change.",
+        ],
+      },
+      {
+        h: 'Why neutral affection concentrates so quickly',
+        p: [
+          "The speed at which a global neutral audience converges on a single underdog is one of the more striking features of a modern World Cup. Within roughly a day of a significant upset, the team acquires supporters on every continent, its players' names circulate widely, and its next fixture becomes appointment viewing for people who could not have located the country on a map a week earlier.",
+          "Part of this is simple narrative appetite, but part is structural: a tournament with a single simultaneous global audience creates conditions where attention compounds rapidly, because everybody is watching the same thing and can therefore all notice the same story at once. It is another effect that depends entirely on the synchrony described in this collection's article about why the tournament unites the planet.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-the-world-cup-began',
+    sections: [
+      {
+        h: 'The trophy and the tournament grew up together',
+        p: [
+          "The original prize was commissioned specifically for the new competition, and the decision to create a distinctive physical object rather than award an existing cup was itself part of establishing the tournament's seriousness. A competition claiming to crown world champions needed a prize that looked like it meant something, and the choice to commission one signalled an institutional confidence the event had not yet earned.",
+          "That the trophy subsequently accumulated its own dramatic history — retirement, theft, replacement — is covered in this collection's dedicated article on the subject, but it is worth noting here that the object and the competition were designed together as a single statement of intent. The tournament's founders were building an institution, not organising a fixture, and the prize was part of the argument.",
+        ],
+      },
+      {
+        h: 'What the early tournaments would look like to a modern viewer',
+        p: [
+          "Football of the tournament's founding era is genuinely difficult to compare with the modern game. Pitches were heavier, balls absorbed water and became substantially heavier during play, boots were rigid and high-cut, tactical organisation was rudimentary by contemporary standards, and substitutions were not permitted, meaning an injured player either continued or his team played short.",
+          "A modern viewer watching footage from those decades is watching a recognisably related but materially different sport, which is worth keeping in mind whenever cross-era comparisons of players or teams are made. The competition's continuity is institutional rather than technical: what connects the first World Cup to the 2026 edition is the idea and the trophy, not the football, which has changed almost beyond recognition.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'story-of-the-world-cup-trophy',
+    sections: [
+      {
+        h: 'Security around an object this valuable',
+        p: [
+          "The trophy's material value is substantial but its symbolic value is effectively unquantifiable, and the security arrangements reflect the second rather than the first. It travels with dedicated protection, its movements are tightly controlled, and public appearances are managed with restrictions that go well beyond what the gold content alone would justify.",
+          "This apparatus exists because of the historical precedent covered earlier: an object that has been stolen once is treated permanently as an object that could be stolen again. The elaborate custody arrangements around the modern trophy are, in effect, a lesson learned the hard way and never forgotten, and they are the reason the current prize has passed between champions for decades without incident.",
+        ],
+      },
+      {
+        h: 'The replica nobody outside the sport notices',
+        p: [
+          "Because winning nations keep only a replica, the trophies displayed in national football museums and federation headquarters around the world are almost all reproductions rather than the object itself. They are made to a high standard and are, to a casual observer, indistinguishable — but they are not the thing that was lifted, and the distinction matters to the people who lifted it.",
+          "There is something quietly appropriate about this arrangement. The genuine trophy remains in circulation, passing from champion to champion and belonging permanently to none of them, while every winner keeps a faithful copy of a moment rather than the moment itself. It is a fair description of what a World Cup victory actually leaves behind.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-technology-changed-the-world-cup',
+    sections: [
+      {
+        h: 'The communication problem inside the stadium',
+        p: [
+          "A recurring complaint about video review has less to do with the decisions than with the information available to the people physically present. A television viewer sees the replays, hears the analysis and understands the delay; a supporter in the stadium has historically seen a referee standing still with a finger to an earpiece and no explanation whatsoever, sometimes for minutes.",
+          "Improvements have been introduced in response — stadium screens showing the footage under review, and announcements explaining the outcome — and they have measurably reduced frustration where implemented. It is a useful illustration of a broader point: a substantial share of the resistance to officiating technology has been about the experience of the process rather than the correctness of the outcomes it produces.",
+        ],
+      },
+      {
+        h: 'Technology has changed how players behave',
+        p: [
+          "A less-discussed consequence is behavioural. Players who know that every incident is captured from multiple angles and reviewable have measurably adjusted: off-the-ball retaliation has become rarer, shirt-pulling at set pieces is more restrained, and the deliberate deceptions that once relied on the referee having only one viewpoint are considerably harder to attempt.",
+          "This is arguably the technology's largest and least examined benefit. Correcting individual decisions matters, but deterring the conduct that would have required correction matters more across a whole tournament — and it happens invisibly, in incidents that never occur and therefore never get discussed. Whatever the arguments about delay and celebration, the cleaner conduct is a real gain that shows up nowhere in any highlights package.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'fans-guide-to-2026-host-cities',
+    sections: [
+      {
+        h: 'Getting around once you are there',
+        p: [
+          "Local transport varies enormously across the host cities, and assumptions carried from one do not transfer to another. Some venues are well served by rail or metro systems that will comfortably absorb matchday crowds; others sit in locations where the realistic options are driving, organised shuttles or ride-hailing, with the congestion that implies when tens of thousands of people leave simultaneously.",
+          "The practical advice is to research the specific venue rather than the city, since a metropolitan area with excellent public transport may still have a stadium poorly connected to it. Allowing substantially more time than seems necessary for the journey to the ground, and having a decided plan for leaving afterwards rather than improvising among a departing crowd, prevents most of the avoidable stress of attending a match.",
+        ],
+      },
+      {
+        h: 'Costs, and where they concentrate',
+        p: [
+          "Accommodation is where a World Cup trip's budget is usually decided, and prices in host cities rise sharply around match dates in a way that surprises first-time attendees. Booking well in advance, or staying outside the immediate host city and travelling in, are the two reliable strategies, and the second is frequently more practical in North American metropolitan areas than it would be elsewhere.",
+          "Beyond accommodation, the costs that accumulate fastest tend to be internal flights between clusters and food and drink inside venues. A trip planned around one cluster, with tickets secured through official channels and accommodation booked early, is achievable on a considerably more modest budget than the headline figures associated with World Cup attendance suggest — the expensive version is mostly the version that involves following one team across a continent.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-the-world-cup-unites-the-planet',
+    sections: [
+      {
+        h: 'A tournament people watch without supporting anyone',
+        p: [
+          "One unusual feature of the World Cup's audience is how much of it has no rooting interest at all. Enormous numbers of people watch matches between two nations they have no connection to, which is comparatively rare in sport — most competitions are watched overwhelmingly by partisans of the teams involved, with neutrals a small minority.",
+          "This produces an audience that is genuinely there for the football and the story rather than for a result, and it changes what the tournament rewards. Teams that play attractively, individuals who produce something memorable, and underdogs with a compelling narrative accumulate global affection that has nothing to do with anybody's national loyalty — which is a large part of why the World Cup generates shared reference points that domestic competitions, however popular, do not.",
+        ],
+      },
+      {
+        h: 'The month afterwards',
+        p: [
+          "Something worth noting about the shared attention this article describes is how completely it disperses once the tournament ends. Within weeks, the synchrony is gone, domestic seasons resume, and the global conversation fragments back into its normal thousands of separate channels. The unity is genuine while it lasts and it does not persist.",
+          "That impermanence is arguably the point rather than a limitation. The tournament works precisely because it is rare, concentrated and finite — a month every four years in which an enormous number of people happen to be paying attention to the same thing. Something permanent would not produce the same effect, and the fact that it ends is part of why people remember where they were.",
+        ],
+      },
+      {
+        h: 'One suggestion for 2026',
+        p: [
+          "If there is a single practical recommendation this article leads to, it is to watch at least one match of the 2026 tournament somewhere other than alone at home — a friend's living room, a public screening, a bar with strangers supporting a country you have no connection to. The football will be identical; the experience will not be, and the difference is precisely the thing this entire article has been describing.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'story-of-the-world-cup-trophy',
+    sections: [
+      {
+        h: 'A prize that outranks everything else a player can win',
+        p: [
+          "Football offers a considerable number of trophies, several of them contested by squads far wealthier and arguably stronger than most national teams. Yet players who have won everything available at club level consistently describe the World Cup as categorically different, and the reason is structural rather than sentimental: it can only be attempted once every four years, only alongside players born in the same country, and for most careers only two or three times in total.",
+          "That scarcity is what the object concentrates. A club trophy can be won again next season with a different squad assembled through transfers; the World Cup cannot be bought into, cannot be attempted next year, and depends on a generation of compatriots happening to be good enough at the same time. The trophy is small and unremarkable-looking, and it represents the least repeatable achievement in the sport.",
+        ],
+      },
+      {
+        h: 'What happens to it in the hours after the final',
+        p: [
+          "The trophy's journey immediately following a final is more chaotic than the formal presentation suggests. It passes through every member of a winning squad, is carried into the dressing room, is photographed continuously for hours, and typically accompanies the team through celebrations that continue well into the night — all under the supervision of officials whose job is to ensure it survives the evening intact and is eventually returned.",
+          "Players have described this period as the only time the object stops feeling ceremonial and becomes something ordinary, passed around a room like any other shared possession. It is a peculiar detail of the sport's most exalted prize that its most intimate hours are spent being handled carelessly by exhausted people in a dressing room, which is arguably the most fitting possible use for it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'greatest-world-cup-finals',
+    sections: [
+      {
+        h: 'Why the losing finalist is remembered so poorly',
+        p: [
+          "Football is unusually unkind to World Cup runners-up. A team that finished second among forty-eight nations has, by any reasonable measure, achieved something extraordinary, and yet the losing finalist is remembered largely as a footnote to somebody else's triumph — rarely celebrated at home, seldom referenced afterwards, and frequently subjected to more criticism than teams eliminated far earlier.",
+          "This is worth resisting as a viewer, because it distorts how the tournament is understood. Several of the finest teams in the competition's history lost finals, sometimes narrowly and sometimes to a single moment, and treating the result as a verdict on their quality is a misreading of what a single knockout match can actually establish about two evenly matched sides.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-technology-changed-the-world-cup',
+    sections: [
+      {
+        h: 'A generational split in how this is received',
+        p: [
+          "Attitudes toward officiating technology divide fairly cleanly along the line of what somebody grew up watching. Supporters whose formative football predates video review tend to weigh the loss of spontaneity heavily and to remember the famous injustices as part of the sport's texture; younger supporters, for whom review has always existed, tend to find the idea of a clearly wrong decision simply standing uncorrected genuinely baffling.",
+          "Neither position is obviously right, and the disagreement is not really about evidence. It is about what people believe football is for — a contest that should be decided correctly, or a shared spectacle whose imperfections were part of what made it human. The 2026 tournament will be watched by both groups simultaneously, and they will experience the same review sequences in meaningfully different ways.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'fans-guide-to-2026-host-cities',
+    sections: [
+      {
+        h: 'The cities keep going after the tournament leaves',
+        p: [
+          "A World Cup passes through a host city in a matter of weeks, and what it leaves behind varies enormously. Some previous hosts have converted the infrastructure and attention into durable benefits; others have been left with stadiums that outsized any realistic ongoing use. The 2026 hosts are in the unusual position of almost entirely using existing venues built for other sports, which sidesteps the most common version of that problem.",
+          "For a visitor, this has a pleasant consequence: the host cities are not temporary constructions assembled for the occasion but functioning places with their own established life, most of which will be visible around the edges of the tournament. Treating a trip as a visit to a real city that happens to be hosting football, rather than to a World Cup that happens to have a city attached, generally produces the better week.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'art-of-the-counter-attack',
+    sections: [
+      {
+        h: 'The moment worth waiting for',
+        p: [
+          "For all the tactical detail, the appeal of the counter-attack ultimately rests on a simple experience: the four or five seconds in which a match that appeared entirely under one team's control is suddenly, irreversibly not. Few things in sport compress so much reversal into so little time, and the 2026 tournament will produce a handful of these that people remember for years — usually against a favourite, usually from a team that had spent an hour defending, and usually finished by somebody who had run seventy yards to arrive.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-the-world-cup-began',
+    sections: [
+      {
+        h: 'A short institution by most measures',
+        p: [
+          "It is worth registering how young the World Cup actually is. The tournament is not an ancient tradition but an invention of the twentieth century, younger than plenty of national leagues and considerably younger than several of the clubs whose players fill its squads. What feels like a permanent fixture of global culture has existed for less than a century and reached its current scale only recently.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'psychology-of-the-penalty-shootout',
+    sections: [
+      {
+        h: 'The one thing worth remembering while watching',
+        p: [
+          "When a 2026 shootout arrives and the commentary reaches for the word lottery, remember what this article has laid out: the kick is easy, the circumstances are not, and the teams that handle it best are almost always the ones who took the possibility seriously long before the match reached this point.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'great-world-cup-underdog-runs',
+    sections: [
+      {
+        h: 'The reason these stories last',
+        p: [
+          "Underdog runs endure in memory longer than most tournament victories because they are finite, complete narratives with a beginning, a peak and an ending, all contained within a single month — which is a shape that human memory holds far more readily than the accumulation of steady success that a champion's campaign usually represents.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'goals-that-defined-the-world-cup',
+    sections: [
+      {
+        h: 'A closing thought',
+        p: [
+          "Somewhere in the 104 matches of the 2026 tournament, a goal will be scored that people are still watching in fifty years. Nobody will know which one it was at the time, including the player who scores it. That is worth remembering during even the least promising group fixture.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-the-world-cup-unites-the-planet',
+    sections: [
+      {
+        h: 'What the tournament asks of a first-time viewer',
+        p: [
+          "For anyone approaching a World Cup for the first time, it is worth saying plainly that no preparation is required. The rules can be absorbed in a single match, the teams introduce themselves as the tournament progresses, and the emotional content — hope, tension, injustice, elation — needs no explanation from anybody. Football's global reach was built on exactly this: a game that explains itself while you watch it.",
+          "The only genuine barrier is the assumption that enjoying it requires knowing things. It does not, and a substantial share of the billions who follow each tournament could not name half the squads involved. Arriving with curiosity and no expertise is a perfectly ordinary way to experience a World Cup, and it is how most of the tournament's audience actually watches.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'art-of-the-counter-attack',
+    sections: [
+      {
+        h: 'A last note on watching for it',
+        p: [
+          "Counter-attacks reward viewers who watch space rather than the ball, which is a habit worth practising deliberately during the group stage so that it is second nature by the time the knockout rounds arrive and the stakes make every transition potentially decisive.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'psychology-of-the-penalty-shootout',
+    sections: [
+      {
+        h: 'Sympathy for whoever walks up',
+        p: [
+          "Whatever happens in the 2026 shootouts, it is worth extending some generosity to the player making that walk, whichever team you support — the act is far harder than it looks, and the person doing it volunteered for the hardest job available on the night.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'greatest-world-cup-finals',
+    sections: [
+      {
+        h: 'Watching one live is its own reward',
+        p: [
+          "Whether the 2026 final becomes a classic or a cautious, forgettable contest, watching it live remains worth doing, because the alternative is learning the outcome secondhand and permanently losing the experience of not yet knowing how it ends.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'great-world-cup-underdog-runs',
+    sections: [
+      {
+        h: 'The final word',
+        p: [
+          "Pick one early, follow it properly, and accept in advance that it will almost certainly end in defeat — that is the entire arrangement, and it remains one of the best deals available to a football supporter.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-the-world-cup-began',
+    sections: [
+      {
+        h: 'Where the story goes next',
+        p: [
+          "The tournament's history is still comparatively brief, which means the 2026 edition is not a late chapter in a long book but a relatively early one in something that will presumably continue expanding, changing and provoking argument for considerably longer than it has already existed.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-technology-changed-the-world-cup',
+    sections: [
+      {
+        h: 'The balance nobody has settled',
+        p: [
+          "Every technological addition so far has traded a measure of spontaneity for a measure of accuracy, and the sport has never explicitly decided how much of the first it is willing to spend on the second — which is why the argument recurs at every tournament.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
