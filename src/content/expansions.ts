@@ -4007,6 +4007,527 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'reading-a-football-match-basics',
+    sections: [
+      {
+        h: 'The four phases coaches actually think in',
+        p: [
+          "Professional coaching divides a match into four phases rather than two: in possession, out of possession, and the two transitions between them. This taxonomy is worth adopting as a viewer because it maps directly onto how teams are actually coached — sessions are built around specific phases, and a team's strengths and weaknesses are typically phase-specific rather than general.",
+          "Once you watch in these terms, a lot of confusing football becomes legible. A team can be excellent in settled possession and catastrophic in defensive transition, which explains why it dominates a match and loses it. Identifying which of the four phases a team is genuinely good at, within the first twenty minutes, is the single most useful analytical habit available to a non-specialist viewer.",
+        ],
+      },
+      {
+        h: 'Where to look during a goal kick',
+        p: [
+          "A goal kick is the most information-dense pause in football and the moment most viewers look away. Everything is visible at once: how high the pressing team commits, whether the goalkeeper has short options, how many players the defending team keeps back, and whether the full-backs push wide or tuck inside.",
+          "Spend one goal kick per half deliberately watching the whole pitch rather than the ball, and you will learn more about both teams' intentions than from ten minutes of following play. It is the closest football offers to a set formation you can study at leisure, and it repeats a dozen times a match.",
+        ],
+      },
+      {
+        h: 'Lines, and the distance between them',
+        p: [
+          "The most useful single measurement an amateur eye can take is the vertical distance between a team's defensive line and its most advanced player — what coaches call compactness. A compact team occupies perhaps thirty to thirty-five metres between its deepest defender and its furthest forward; a stretched team can be pulled to fifty or more.",
+          "Compactness explains an enormous amount. A stretched team leaves gaps between its lines for opponents to receive in, and it happens most often when a side is chasing a game or when its forwards stop tracking back. Watching for the moment a team's shape stretches — usually around the seventieth minute, usually under pressure — is watching the exact mechanism by which late goals become available.",
+        ],
+      },
+      {
+        h: 'The pass before the pass',
+        p: [
+          "Assists get recorded and the pass that created the assist does not, which distorts how creativity is understood. Very often the decisive intervention is two passes before the goal: the ball that shifted the defence from one side to the other, or the pass that beat a pressing line and turned a slow attack into a fast one.",
+          "Training yourself to look one pass earlier than the highlight does is a genuine analytical upgrade. When a goal is replayed during 2026, watch the sequence from four or five passes out rather than from the final ball, and the structure of how the chance was actually manufactured usually becomes visible in a way the assist statistic entirely conceals.",
+        ],
+      },
+      {
+        h: 'What the substitutions tell you',
+        p: [
+          "Substitutions are a coaching staff's clearest public statement of their assessment, and they can be read in real time. A like-for-like change signals satisfaction with the plan and concern only about legs. A positional change — a defender off for a forward, or a shape switch — signals that the staff believes the current approach is not working.",
+          "The timing matters as much as the personnel. A change before the hour is a correction; one after the eightieth minute is usually either desperation or game management. Reading the substitutions as commentary on the match, rather than as routine housekeeping, adds a running analytical narrative to the second half that most viewers never notice.",
+        ],
+      },
+      {
+        h: 'Watch one player for ten minutes',
+        p: [
+          "The single most effective exercise for developing tactical vision is also the simplest: pick one outfield player and follow only him for ten minutes, ignoring the ball entirely when it is elsewhere. It feels unnatural and mildly boring for the first two minutes and then becomes genuinely revealing.",
+          "You will see how often he scans over his shoulder, whether he moves before or after the ball, how his position changes in each phase, and how much of his work is preparatory rather than active. Doing this once for a defensive midfielder and once for a striker teaches more about football's structure than any amount of watching highlights, and it costs one group-stage match.",
+        ],
+      },
+      {
+        h: 'Statistics that mislead, and ones that help',
+        p: [
+          "Possession percentage is the most prominently displayed and least informative statistic in football broadcasting, since it says nothing about where the ball was held or what was done with it. A team with seventy percent possession spread harmlessly across its own half has told you nothing about its dominance.",
+          "More useful, where available: shots from inside the penalty area rather than total shots, final-third entries, and the location of turnovers. These map onto the things that actually produce goals. If a broadcast offers any of them during 2026, they are worth substantially more attention than the possession bar that leads every graphic.",
+        ],
+      },
+      {
+        h: 'It gets easier faster than you expect',
+        p: [
+          "The reassuring part of all this is how quickly it becomes automatic. The habits described here feel effortful for perhaps three or four matches and then stop requiring conscious attention, at which point you are simply watching football differently rather than performing an exercise.",
+          "With more than a hundred matches available across five weeks, the 2026 tournament is an unusually good opportunity to make that transition. A viewer who spends the group stage deliberately practising these habits will watch the knockout rounds seeing things that were genuinely invisible to them a month earlier, which is a rare and quite satisfying kind of progress.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-transitions-decide-modern-games',
+    sections: [
+      {
+        h: 'Where the turnover happens matters most',
+        p: [
+          "Not all turnovers are equal, and analysts map them by location for exactly that reason. A ball won inside the opponent's defensive third leads to a shot far more frequently than one won in your own half, because the distance to goal is short and the defensive structure is at its least prepared. The value of a recovery declines steeply the further from the opponent's goal it occurs.",
+          "This is the entire logic behind pressing high despite the risk, and it explains a coaching instruction that looks reckless: teams are not chasing the ball indiscriminately but hunting for recoveries in specific zones where the expected value is highest. Watching where a team actually wins possession, rather than how often, reveals whether its pressing scheme is functioning as designed.",
+        ],
+      },
+      {
+        h: 'The decision every player makes in a fraction of a second',
+        p: [
+          "At the instant possession is lost, every player in the team must independently make the same binary choice — press immediately or retreat into shape — and the outcome is catastrophic if they choose differently from each other. Half a team pressing while the other half drops creates precisely the stretched, disconnected shape that transitions punish.",
+          "This is why counter-pressing requires so much drilling despite looking like simple effort. The difficulty is not the running but the collective decision, made without communication, under time pressure, based on shared triggers everybody has learned. When a team is repeatedly caught in transition, the cause is frequently this coordination failure rather than any individual's laziness.",
+        ],
+      },
+      {
+        h: 'The second ball is its own contest',
+        p: [
+          "A substantial proportion of transitions begin not from a clean interception but from a loose ball following a header, a blocked clearance or a challenge — what coaches call the second ball. Whoever anticipates and arrives first gains possession in a moment when both teams are already disorganised, which makes second-ball recovery a genuine tactical priority rather than a matter of luck.",
+          "Teams coach for this explicitly, positioning midfielders to occupy the zones where second balls statistically land following long clearances and set pieces. Watching who is standing in those areas — usually twenty to thirty metres from where the first contact occurs — reveals a layer of preparation that looks entirely like chance to an untrained eye.",
+        ],
+      },
+      {
+        h: 'Goalkeepers now start transitions deliberately',
+        p: [
+          "The modern goalkeeper's distribution has become a transition weapon rather than merely a restart. A keeper who catches a cross and releases the ball within three seconds to a forward already running has converted a defensive moment into an attack while the opponent still has players committed forward — and several teams coach this as a specific rehearsed pattern.",
+          "This is why goalkeeper distribution speed has become a scouted attribute, and why some keepers are visibly instructed to hold the ball while others release immediately. Watching what a goalkeeper does in the two seconds after claiming possession tells you whether his team is built to counter-attack or to slow the game and rebuild.",
+        ],
+      },
+      {
+        h: 'Throw-ins are transitions in disguise',
+        p: [
+          "A throw-in is a restart with no defensive wall, no offside restriction and frequently a disorganised opponent, and teams have begun treating it accordingly. Rehearsed throw-in routines designed to release a runner or create a quick numerical advantage in a wide area have become genuine tactical tools rather than a means of simply returning the ball to play.",
+          "Some clubs now employ specialists specifically for this, and the ideas have filtered into international football. During 2026, watch what happens in the four seconds after an attacking throw-in in the final third — the movement is frequently choreographed, and the situation is closer to a transition than to the routine restart it appears.",
+        ],
+      },
+      {
+        h: 'How fatigue changes the calculation',
+        p: [
+          "The five-second window described throughout this article widens as legs tire. A fresh team can recover its shape within those seconds; a team in the eightieth minute of its fourth match in twelve days frequently cannot, and the effective transition window stretches to eight or ten seconds. Attacks that would have been closed down comfortably in the first half arrive at goal in the last twenty minutes.",
+          "This is the mechanical reason so many tournament goals cluster late, and it interacts directly with the substitution strategies discussed elsewhere in this collection. A manager introducing fresh runners in the seventieth minute is not only adding energy but shortening his own transition-recovery window while the opponent's is lengthening.",
+        ],
+      },
+      {
+        h: 'Why national teams cannot rely on the counter-press',
+        p: [
+          "Counter-pressing requires the most training time of any modern tactical concept, because it depends on shared triggers and collective timing that only repetition produces. National teams, working in short camps a few times a year, frequently cannot install it to the standard club sides achieve with daily sessions.",
+          "The practical consequence at a World Cup is that more teams choose the retreat-and-organise response to losing possession, which produces the deeper defensive blocks and slower rhythms that characterise tournament football. It also means the teams that do counter-press effectively at international level — usually those with a settled squad and a long-serving manager — enjoy a genuine advantage in the transition phase this article describes.",
+        ],
+      },
+      {
+        h: 'Training your eye for the five seconds',
+        p: [
+          "The practical exercise is simple and worth doing once per match. When possession changes hands, resist following the ball for a count of three and instead watch the players furthest from it — who sprints, who walks, who turns to check their shoulder, and how many defenders were already positioned to cover.",
+          "That three-second discipline reveals the entire structure of both teams' transition plans within a few repetitions. It is also, once learned, impossible to unsee, and it converts what looks like chaotic scrambling into one of the most tactically legible moments football offers.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'defending-a-lead-art-or-crime',
+    sections: [
+      {
+        h: 'The moment a manager decides',
+        p: [
+          "The decision to protect a lead is usually made at a specific, identifiable moment rather than gradually, and it is visible from the stands. A double substitution introducing a defensive midfielder and a defender, a switch from a back four to a back five, and a visible instruction for the forwards to drop ten metres — these arrive together and mark the point at which a coaching staff has changed the objective from winning to not losing.",
+          "The timing of that decision is among the most consequential judgements in tournament management. Made too early, it invites forty minutes of pressure a team may not survive; made too late, it wastes the opportunity to consolidate while the opponent is still disorganised. Managers get criticised for both errors, frequently by the same people, and there is no reliable formula for the correct moment.",
+        ],
+      },
+      {
+        h: 'What the goalkeeper is actually doing',
+        p: [
+          "A goalkeeper defending a narrow lead late in a match is performing a substantial tempo-management job alongside his shot-stopping. Every goal kick, every save held rather than parried, every treatment for a minor knock consumes seconds, and the accumulation across twenty minutes can remove several minutes of genuine playing time from the opponent.",
+          "Officials now add this time back with considerably more rigour than in previous eras, which has reduced but not eliminated the tactic's value — a goalkeeper who breaks the opponent's rhythm at three consecutive restarts has disrupted momentum in a way that added time does not fully restore. Watching the goalkeeper's behaviour after the eightieth minute is watching a deliberate strategy rather than incidental slowness.",
+        ],
+      },
+      {
+        h: 'The set piece is the enemy',
+        p: [
+          "A team defending deep concedes territory, and territory converts directly into corners and free kicks in dangerous areas. This is the specific mechanism by which low blocks fail: not through open play being broken down, but through the accumulation of set pieces that a defending team must survive one after another, each carrying an independent probability of a goal.",
+          "This is why the best low blocks treat conceding a corner as a genuine failure rather than an acceptable outcome, and why clearing to the corner flag — deliberately conceding a throw-in far from goal — is preferred to a hurried clearance that goes out for a corner. The distinction looks trivial and is the difference between resetting the siege and inviting the most dangerous single situation in the sport.",
+        ],
+      },
+      {
+        h: 'The counter-attack is the pressure valve',
+        p: [
+          "The single strongest predictor of whether a low block survives is whether it retains a credible counter-attacking threat. A defending team that occasionally breaks forward forces the attacking side to keep players back, which reduces the number committed to the siege and lowers the pressure meaningfully.",
+          "A team that has abandoned the counter entirely, keeping eleven players behind the ball at all times, has removed its opponent's only reason for caution — and the attacking side responds by pushing its full-backs and centre-backs higher, adding two or three more players to the assault. The counter-attack in this situation is worth far more as a deterrent than as a genuine scoring opportunity.",
+        ],
+      },
+      {
+        h: 'Why the crowd makes it harder',
+        p: [
+          "Defending a lead in a hostile stadium is measurably harder than doing so in neutral or friendly conditions, and the mechanisms are specific: communication between defenders becomes difficult, referees under crowd pressure show a documented tendency toward the attacking side on marginal decisions, and the psychological experience of sustained noise erodes composure over time.",
+          "For 2026, this interacts with the diaspora effect discussed elsewhere in this collection. A team defending a lead against opposition with large local support may face conditions closer to an away match than a neutral one, which is a genuine and largely unremarked competitive factor in a tournament played across three countries with enormous immigrant populations.",
+        ],
+      },
+      {
+        h: 'The referee decides how long the siege lasts',
+        p: [
+          "Added time has grown substantially at recent tournaments as officials became stricter about compensating for stoppages, and this has materially changed the arithmetic of defending a lead. A block that once had to survive four minutes of added time may now face eight or more, which is a fifty percent increase in the period of maximum danger.",
+          "Teams have adjusted, but the psychological effect is real: a defending side that has organised itself for a known duration and then discovers the duration is doubled faces a specific test of concentration. Several late equalisers at recent tournaments have arrived deep into extended added time, against teams that had visibly prepared to survive a shorter siege.",
+        ],
+      },
+      {
+        h: 'The honest defence of the tactic',
+        p: [
+          "It is worth stating the case plainly, because the sneering is so reflexive. A team with fewer resources, less individual quality and no realistic prospect of controlling a match against a superior opponent has a limited number of routes to a result, and defending a narrow lead is among the few that has ever worked reliably.",
+          "Criticising this as cowardice is criticising a team for accurately assessing its own capabilities. The alternative — attempting to trade blows with a stronger side because it produces better entertainment — is a strategy that loses more often and leaves the same critics describing the team as naive. The low block is what competitive football looks like when the resources are unequal, which at a World Cup is most of the time.",
+        ],
+      },
+      {
+        h: 'What to watch for in the closing minutes',
+        p: [
+          "Applying this article during 2026: when a team goes ahead late, watch three specific things. Does the defensive line hold its height or drop steadily? Do clearances find a teammate or simply leave the box? And does anybody sprint forward when possession is won, or do all eleven remain behind the ball?",
+          "A team scoring well on those three measures is executing something difficult and deliberate, and deserves to be watched as a tactical performance rather than endured as an interruption of entertainment. A team failing all three is not defending a lead so much as hoping the whistle arrives first — and the difference is usually apparent several minutes before the outcome confirms it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'heat-travel-and-tactics-2026',
+    sections: [
+      {
+        h: 'Cooling breaks are a formal provision',
+        p: [
+          "When conditions exceed a defined threshold, officials are required to provide cooling breaks — typically a short pause around the thirtieth minute of each half — for player welfare. These are not discretionary and have become routine at tournaments played in significant heat, and they have consequences well beyond hydration.",
+          "Tactically, a cooling break functions as an additional team talk at a point in each half when a manager would otherwise have no access to his players. A coaching staff can correct a problem forty minutes earlier than would otherwise be possible, which occasionally reverses the course of a match. Watching what changes immediately after a cooling break is watching a coaching intervention with unusually clear before-and-after evidence.",
+        ],
+      },
+      {
+        h: 'What altitude does to the ball',
+        p: [
+          "The physics at significant altitude are straightforward and their effects are dramatic. Thinner air produces less drag, which means the ball travels faster, dips less on long shots, and swerves less predictably on crosses and free kicks. Goalkeepers accustomed to sea level frequently misjudge shots from distance in their first match at height.",
+          "The effect extends to tactics. Long-range shooting becomes a genuinely more viable option, defensive lines must account for balls carrying further than expected, and the reduced swerve alters set-piece delivery. Teams playing a group match at altitude after two at sea level face a genuine recalibration, and the first twenty minutes frequently show it.",
+        ],
+      },
+      {
+        h: 'Domes remove the variable entirely',
+        p: [
+          "Several 2026 venues are climate-controlled indoor stadiums where temperature and humidity are held constant regardless of external conditions. For a team whose group includes both a dome and an open-air afternoon fixture in significant heat, the physical demands of consecutive matches differ more than at any previous World Cup.",
+          "This creates a scheduling asymmetry with real competitive consequences. A team drawn into predominantly indoor venues will play in laboratory conditions while a rival plays the equivalent fixtures in punishing heat, and neither had any influence over the allocation. It is among the more genuinely unequal features of the 2026 format and has attracted comparatively little attention.",
+        ],
+      },
+      {
+        h: 'Kick-off times are a broadcast decision',
+        p: [
+          "The schedule that determines whether a match is played at noon or in the evening is shaped substantially by global broadcast markets rather than by playing conditions, and this has been a recurring source of criticism at tournaments held in hot climates. A midday kickoff serving prime-time viewing on another continent imposes conditions no coaching staff would choose.",
+          "Players and unions have raised this repeatedly, and it represents an unresolved tension between the tournament's commercial model and its participants' welfare. For a viewer, it is worth registering that the conditions in which a match is played were frequently decided by television schedules rather than by anybody's assessment of what constitutes reasonable playing conditions.",
+        ],
+      },
+      {
+        h: 'Hydration is managed with more precision than it looks',
+        p: [
+          "Modern squads approach fluid replacement individually rather than uniformly, measuring each player's sweat rate and sodium loss during training and building personalised hydration plans from the results. Players lose fluid at substantially different rates, and a single team-wide protocol systematically over-serves some players and under-serves others.",
+          "The practical output is visible in the sideline detail: individually labelled bottles with different formulations rather than a shared crate. It is a small illustration of how comprehensively sports science has professionalised something that was, within living memory, a matter of drinking water at half-time and hoping.",
+        ],
+      },
+      {
+        h: 'The base camp is chosen years ahead',
+        p: [
+          "Federations select their tournament base camps long before knowing their group opponents, which makes the decision an exercise in probability. The considerations include climate similarity to likely venues, altitude, time zone relative to expected kick-offs, flight times to plausible match locations, and training facility quality — weighted against a schedule nobody yet knows.",
+          "A federation that guessed well arrives acclimatised and with short travel legs; one that guessed badly is flying three hours to every fixture from a camp in the wrong climate. Given that the choice is made under genuine uncertainty, some of what looks like superior preparation at 2026 will in fact be a base camp decision that happened to align with the draw.",
+        ],
+      },
+      {
+        h: 'The tactical signature of a hot afternoon',
+        p: [
+          "A match played in significant heat has a recognisable shape once you know what to look for: fewer high presses, longer periods of controlled possession that function partly as rest, more direct play to avoid extended defensive work, and a visible drop in intensity around the thirty-minute mark of each half that the cooling break partially resets.",
+          "None of this means the football is worse, though it is frequently slower. It means the teams are solving a different problem from the one they solve in temperate evening conditions, and judging a side's quality on a performance in punishing heat without accounting for that is a straightforward analytical error — one that pundits make at every tournament played in a hot climate.",
+        ],
+      },
+      {
+        h: 'Geography will show up in the results',
+        p: [
+          "The cumulative argument of this article is that the 2026 tournament will produce outcomes partly determined by variables that have nothing to do with footballing quality: which venues a team drew, how far it travelled between them, what time its matches kicked off, and how well its base camp guess aligned with the eventual schedule.",
+          "This is worth holding in mind when assessing performances. A favourite that underperforms may have been physically compromised by a draw that scattered it across four time zones; an unfancied side that exceeds expectations may have benefited from a compact regional group. Neither says as much about the teams as the results will be taken to say.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-third-place-match-story',
+    sections: [
+      {
+        h: 'Why the football is genuinely more open',
+        p: [
+          "The reason the bronze match produces more goals than the final is not merely emotional; it is structural. Both teams have been eliminated from contention for the trophy, which removes the specific fear that produces caution — the knowledge that a single error ends everything. Without that, teams defend higher, commit more players forward and take risks they would never take with a place in a final at stake.",
+          "The absence of jeopardy also changes selection. Managers rotate freely, giving minutes to squad players and resting anybody carrying a knock, which produces line-ups with less defensive organisation and more attacking intent than either side has fielded all tournament. The combination reliably generates the open football the fixture is quietly known for.",
+        ],
+      },
+      {
+        h: 'The fixture that keeps surviving abolition attempts',
+        p: [
+          "Proposals to scrap the third-place play-off have been raised repeatedly across the tournament's history and have never succeeded. The arguments against it are straightforward: it asks exhausted, disappointed players for one more competitive match at the end of a punishing tournament, for a prize nobody set out to win.",
+          "The arguments for it have proved more durable. It fills a broadcast slot and a stadium with genuine commercial value, it provides a defined ending for two squads who would otherwise simply disperse after a defeat, and it awards a medal that players consistently report valuing more than the pre-match discourse suggests. The fixture survives because the case against it is aesthetic and the case for it is practical.",
+        ],
+      },
+      {
+        h: 'What it means to the players themselves',
+        p: [
+          "The gap between how the fixture is discussed publicly and how participants describe it afterwards is striking. Players frequently report that the days between the semi-final defeat and the bronze match were among the hardest of their careers, and that winning the match provided a genuine sense of completion that simply going home would not have.",
+          "For squad members who barely played, it is often the only substantial tournament appearance they will ever have. For veterans in a final international tournament, it is a farewell in front of a full stadium rather than a substitution in a losing semi-final. These are not trivial things, and they explain why the players' assessment of the fixture consistently differs from the public one.",
+        ],
+      },
+      {
+        h: 'Fourth place is football\'s loneliest position',
+        p: [
+          "The team that loses the third-place match occupies a genuinely unusual position: it has outperformed forty-four of the forty-eight participants and finishes with nothing at all — no medal, no trophy, and a final memory of a defeat in a match it did not want to play. Third place brings bronze; fourth brings the specific emptiness of having come close twice and lost both times.",
+          "There is a case that this makes the fixture cruel, and it is the strongest argument the abolitionists have. Asking two eliminated teams to produce one more loser, at the end of five weeks, is a design choice that serves the broadcast schedule more clearly than it serves anybody on the pitch — and the losing squad flies home with a distinction nobody wants.",
+        ],
+      },
+      {
+        h: 'A stage for the players who waited',
+        p: [
+          "The rotation this fixture invites means the bronze match is frequently where a tournament's reserve goalkeeper finally plays, where a young squad member wins a first cap, and where a veteran gets a farewell appearance arranged by a manager who wanted to honour him. These are the tournament's quiet human moments, and they happen almost exclusively in this one match.",
+          "Watching for them is worthwhile. A substitution in the eightieth minute of a third-place play-off is occasionally the end of a career that spanned four World Cups, marked with a handshake and an ovation from a crowd that came for something else. It is not the football the fixture is criticised for lacking, but it is worth being present for.",
+        ],
+      },
+      {
+        h: 'The crowd is different too',
+        p: [
+          "The atmosphere at a bronze match differs markedly from every other knockout fixture. The supporters present frequently booked for a different match, the two sets of fans have no rivalry stake, and the tension that characterises tournament crowds is entirely absent. What remains is an audience watching football for its own sake without a knot in the stomach.",
+          "Several attendees have described it as the most purely enjoyable stadium experience of a World Cup, precisely because nothing hangs on it. Both anthems get applauded, both teams get supported, and the goals — of which there are usually several — are celebrated by a crowd that mostly just wanted to see some. It is the tournament with its guard down.",
+        ],
+      },
+      {
+        h: 'Where it sits in the 2026 schedule',
+        p: [
+          "The bronze match is conventionally played the day before the final, in a different venue, which gives it its own broadcast window rather than competing with anything. For a viewer following the tournament properly, it functions as the beginning of the closing weekend rather than as an afterthought to a semi-final several days earlier.",
+          "Given the expanded 2026 format, only four squads out of forty-eight will still be playing at that point, which is a useful frame for how much this fixture actually represents. Two of the four best teams in a tournament of forty-eight nations will be on the pitch, and the fact that neither reached the final does not make the football that follows unworthy of an afternoon.",
+        ],
+      },
+      {
+        h: 'The argument for watching it',
+        p: [
+          "The practical case is simple. The bronze match reliably produces more goals than the final, features rotated attacking line-ups, carries no tension, and contains farewells and debuts that occur nowhere else in the tournament. Skipping it because it lacks stakes is skipping the one knockout fixture where the football is allowed to be enjoyable rather than survived.",
+          "It also functions as a decompression before the final, which arrives the following day carrying everything this collection's article on great finals describes. Watching the bronze match first is a genuinely pleasant way to enter the last weekend of a World Cup, and it costs ninety minutes of a Saturday that most people are spending waiting anyway.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'reading-a-football-match-basics',
+    sections: [
+      {
+        h: 'The overload, and why it produces goals',
+        p: [
+          "One concept worth adding to the vocabulary is the overload: creating a temporary numerical advantage in a specific area of the pitch. Most attacking patterns in modern football are ultimately mechanisms for producing three attackers against two defenders in a particular zone, usually wide, and then exploiting the extra man before the defence recovers.",
+          "Once you know to look for it, you will see teams deliberately shifting the ball from one flank to the other to create exactly this situation, since a defence sliding across cannot always cover the far side quickly enough. The switch of play that looks like circulation is frequently a deliberate attempt to manufacture a two-against-one on the opposite touchline.",
+        ],
+      },
+      {
+        h: 'Watch the first ten minutes differently',
+        p: [
+          "The opening ten minutes of any match contain a disproportionate amount of diagnostic information, because both teams are executing their prepared plan before it has been disrupted. Pressing height, defensive line position, who has license to attack and who does not — all of it is on display before the first substitution or tactical adjustment muddies it.",
+          "Committing to watching those ten minutes analytically rather than waiting for something to happen is the highest-return investment of attention available in a match. Everything afterward is easier to interpret once you have established what both teams intended to do, and the intentions are never clearer than in the opening exchanges.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-transitions-decide-modern-games',
+    sections: [
+      {
+        h: 'Substitutes are transition weapons',
+        p: [
+          "A fresh player introduced in the seventieth minute has a specific advantage that has little to do with skill: he can sprint repeatedly in transition against opponents who cannot. The finisher role described elsewhere in this collection exists largely to exploit exactly this, and the goals it produces cluster in precisely the transitional moments this article describes.",
+          "This makes the substitution window a transition event in its own right. When a manager introduces two fresh attackers simultaneously, he is not simply adding energy but deliberately altering the balance of the five-second window for the remainder of the match — and the opposing manager frequently responds within minutes for exactly that reason.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'defending-a-lead-art-or-crime',
+    sections: [
+      {
+        h: 'The specialist defender who exists for this',
+        p: [
+          "Most tournament squads carry at least one player selected substantially for his value in exactly this situation: an experienced defender or holding midfielder whose primary function is to be introduced with fifteen minutes remaining and a lead to protect. His attributes are positional discipline, aerial ability and composure rather than anything creative.",
+          "These players rarely start and rarely feature in tournament retrospectives, and their contribution is genuinely decisive across a knockout run. A squad without one is asking players optimised for other tasks to perform a specialised job under maximum pressure, which is precisely how leads get surrendered in the closing minutes.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'heat-travel-and-tactics-2026',
+    sections: [
+      {
+        h: 'The advantage of an early group finish',
+        p: [
+          "A team that secures qualification after two group matches gains something worth more in this tournament than in any previous one: the ability to rest key players for a third fixture and, crucially, to avoid whatever travel that fixture would have demanded of them. In a tournament with continental flights between venues, that is a genuine recovery advantage.",
+          "This makes fast starts more valuable in 2026 than the table alone suggests. Two wins from the opening pair of matches buys not just qualification but the option to protect legs before the knockout rounds, and the teams that achieve it will arrive at the round of 32 in measurably better condition than those still fighting for a result on the final matchday.",
+        ],
+      },
+      {
+        h: 'What to expect from the coverage',
+        p: [
+          "Broadcast coverage during 2026 will report pitch-side temperature and humidity considerably more often than at temperate tournaments, and those figures are worth attending to rather than treating as filler. A match played in conditions above certain thresholds is a materially different contest, and knowing the number contextualises what follows.",
+          "It is also worth noting when a match is being played indoors, since the absence of any weather commentary usually means a controlled environment. A tournament in which some teams play in laboratory conditions and others in punishing afternoon heat is not offering every participant the same competition, and the coverage rarely makes that comparison explicit.",
+        ],
+      },
+      {
+        h: 'Geography as a coaching staff member',
+        p: [
+          "The argument this article has built is that at the 2026 World Cup, the map belongs on the tactics board. Heat suppresses pressing, altitude alters ball flight, domes neutralise both, and travel steals recovery — and every one of those is a variable a coaching staff must plan around as deliberately as it plans around an opponent's formation.",
+          "The staffs that treated geography as a genuine planning problem rather than a logistical inconvenience will show it in the closing rounds, in the specific form of players who can still sprint. It is the least visible preparation any team does and, in this particular tournament, likely among the most consequential.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-third-place-match-story',
+    sections: [
+      {
+        h: 'The medal that gets valued in retrospect',
+        p: [
+          "A pattern worth noting from players' later accounts: the bronze medal is frequently dismissed at the time and valued considerably more years afterward. Immediately following a semi-final defeat, third place feels like confirmation of failure; a decade later, having watched subsequent squads fail to reach the same stage, it reads as evidence of a genuinely exceptional tournament.",
+          "This retrospective revaluation is one of the better arguments for keeping the fixture. It awards something that will matter to the people who won it long after the disappointment has faded, and the alternative — sending both semi-final losers home with nothing — would permanently remove a distinction that many former players describe as meaningful.",
+        ],
+      },
+      {
+        h: 'How managers approach the week',
+        p: [
+          "The three or four days between a semi-final defeat and the bronze match present a genuine management problem with no established solution. A squad that has just lost the biggest match of its collective career must be reassembled, motivated for a fixture nobody wanted, and prevented from either sulking through it or treating it as meaningless.",
+          "Managers handle this very differently. Some frame it explicitly as a farewell and a chance to honour the squad; others insist on competitive standards to avoid an embarrassing performance; a few effectively hand it to the coaching staff and the reserves. Watching which approach a manager visibly took is among the more revealing things the fixture offers about how a camp has been run all tournament.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-transitions-decide-modern-games',
+    sections: [
+      {
+        h: 'The phase that separates good teams from great ones',
+        p: [
+          "If a single measure distinguished elite tournament teams from merely competent ones, it would be performance in defensive transition — how rarely a team concedes a clear chance in the seconds after losing possession. Attacking transition can be produced by individual pace; defending it requires collective discipline that only genuinely well-organised teams possess.",
+          "This is why the tournament's eventual winner is frequently not the side that produced the most spectacular counter-attacks but the one that conceded the fewest. The phase is symmetrical and the attention paid to it is not: everybody watches the counter-attack that scores and almost nobody watches the twenty that were snuffed out before they began.",
+        ],
+      },
+      {
+        h: 'A summary worth carrying into the tournament',
+        p: [
+          "Everything in this article reduces to a single instruction for watching 2026: when possession changes hands, that is the moment worth your attention, not the settled play either side of it. The goals cluster there, the tactical preparation is most visible there, and the difference between a well-coached team and a poorly-coached one is more legible in those five seconds than in any other phase of the match.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'defending-a-lead-art-or-crime',
+    sections: [
+      {
+        h: 'The version that gets praised instead of mocked',
+        p: [
+          "It is worth noticing that the identical tactic receives entirely different treatment depending on who executes it. When a smaller nation defends a lead against a favourite it is described as heroic and organised; when a favourite does the same against a smaller nation it is described as negative and disrespectful.",
+          "The football is the same. What differs is the expectation the audience brought, and that is a commentary on how we watch rather than on what the teams did. Applying a consistent standard — judging the execution rather than the identity of the team executing it — is a small correction that makes the closing stages of tight 2026 matches considerably more interesting to watch.",
+        ],
+      },
+      {
+        h: 'The final verdict on the tactic',
+        p: [
+          "Defending a lead is not a moral failing and not an art form; it is a specific, difficult skill with identifiable techniques and a high failure rate. Teams that do it well have prepared for it deliberately, and teams that do it badly are usually improvising something they never practised.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'reading-a-football-match-basics',
+    sections: [
+      {
+        h: 'Where to point the remote',
+        p: [
+          "One final practical note: wide camera angles, where a broadcast offers them, show substantially more of what this article describes than the standard following shot, which is framed for the ball rather than for the pitch. Some coverage provides a tactical camera option, and where it exists it is worth using for at least part of a match.",
+          "Failing that, the moments when the standard broadcast pulls back — goal kicks, set pieces, restarts after stoppages — are the windows in which the whole shape is visible. Using those specific moments deliberately, rather than treating them as dead time, is how to apply everything in this guide without needing any special access at all.",
+        ],
+      },
+      {
+        h: 'The reward for the effort',
+        p: [
+          "None of this makes watching football more work. It makes matches that would previously have registered as tedious become interesting, because a goalless first half in which one team is systematically dismantling the other's pressing structure is genuinely absorbing once you can see it happening. The habits in this guide mostly convert boredom into interest.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-third-place-match-story',
+    sections: [
+      {
+        h: 'A fixture that reflects the whole tournament',
+        p: [
+          "There is something fitting about a World Cup ending with two matches rather than one: a final carrying every ounce of pressure the sport can generate, and the day before it, a match with none at all. Between them they cover the full range of what tournament football can be, and watching only the first is watching only half of the closing weekend.",
+          "For a tournament that will have spent five weeks across three countries producing every possible kind of football, that dual ending is oddly appropriate. The bronze match is the World Cup remembering, briefly, that the sport is also supposed to be fun — and then the final arrives the next day to remind everybody why it usually is not.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-transitions-decide-modern-games',
+    sections: [
+      {
+        h: 'One number worth knowing',
+        p: [
+          "If a single figure captures this article's argument, it is that a substantial share of goals at recent tournaments have arrived within roughly ten seconds of a change of possession — a proportion large enough that any analysis of how a match will be decided which ignores the transition phase is missing the largest single category of goalscoring in the modern game.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'defending-a-lead-art-or-crime',
+    sections: [
+      {
+        h: 'The scoreline that will be decided this way',
+        p: [
+          "Across the 2026 knockout rounds, several matches will finish one-nil, and in most of them the decisive period will be the twenty minutes in which the leading team was defending rather than the moment it scored. That is where the tournament will actually be won, and it will attract a fraction of the attention the goals receive.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'heat-travel-and-tactics-2026',
+    sections: [
+      {
+        h: 'The variable nobody chose',
+        p: [
+          "It bears repeating that no team selected its venues, its kick-off times or its travel schedule. The geographic hand each side was dealt is entirely arbitrary, and it will nonetheless influence results in a tournament decided by fine margins — which is worth remembering before attributing an underperformance entirely to the football.",
+        ],
+      },
+      {
+        h: 'A tournament unlike any before it',
+        p: [
+          "Every previous World Cup has been played within one country and, usually, within one broad climatic band. The 2026 edition asks teams to compete at altitude and at sea level, indoors and in open summer heat, across four time zones, inside five weeks — a set of conditions no squad has ever had to solve simultaneously.",
+          "That novelty is worth appreciating rather than merely enduring. Whatever the results, this tournament will generate a body of practical knowledge about managing footballers across extreme environmental variation that simply does not currently exist, and the federations paying attention will carry it into every tournament that follows.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-third-place-match-story',
+    sections: [
+      {
+        h: 'The recommendation, plainly',
+        p: [
+          "Watch it. It is ninety minutes, it usually has goals, it contains farewells you will not get another chance to see, and the alternative is spending the same afternoon waiting for a final that arrives regardless of whether you filled the time. The fixture asks very little and reliably repays it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-transitions-decide-modern-games',
+    sections: [
+      {
+        h: 'What this changes about watching',
+        p: [
+          "Adopting this article's central habit costs nothing and changes a great deal: for the rest of the tournament, the moments you previously experienced as scrappy interruptions between periods of proper football become the periods in which the match is actually being decided.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
