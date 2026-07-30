@@ -4528,6 +4528,537 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'world-cup-balls-history',
+    sections: [
+      {
+        h: 'Why panel geometry changes flight',
+        p: [
+          "The aerodynamics are genuinely counterintuitive. A ball's surface texture and the pattern of its seams determine where airflow separates from the surface, and that separation point governs how much the ball swerves and how predictably. Smoother balls with fewer seams tend to enter an unstable flight regime at certain speeds, producing the erratic, late-swerving movement goalkeepers complain about.",
+          "This is why adding surface texture — dimples, micro-ridges, deliberately roughened panels — became standard after the smoothest designs proved so unpopular. The manufacturers were not adding decoration; they were reintroducing the turbulence that makes flight predictable. It is one of the rare cases where a sport's equipment controversy turned out to have a precise physical explanation rather than a psychological one.",
+        ],
+      },
+      {
+        h: 'What goalkeepers actually object to',
+        p: [
+          "Goalkeeper complaints about new balls are frequently dismissed as ritual grumbling, but the specific objection is consistent and reasonable: unpredictability in the final metres. A keeper reads a shot's trajectory early and commits based on that read, and a ball that deviates late invalidates a decision already made — which is a fundamentally different problem from a ball that simply moves a lot.",
+          "This is why keepers rarely object to balls that swerve heavily but predictably, and object strongly to balls that appear stable and then move. The complaint is about the reliability of the information, not the difficulty of the save, and understanding that distinction makes the recurring four-yearly argument considerably less tedious than it appears.",
+        ],
+      },
+      {
+        h: 'The tournament ball is a manufacturing feat',
+        p: [
+          "Producing several thousand match balls to a tolerance where any two behave identically is a genuinely difficult industrial problem. Every ball used at a World Cup is tested against defined standards for circumference, weight, sphericity, water absorption, pressure retention and rebound consistency, and balls that fail any measure are rejected before reaching a tournament.",
+          "This matters because inconsistency between balls within the same tournament would be far more damaging than any particular flight characteristic. A player who has adapted to how the ball behaves must be able to rely on the next one behaving the same way, and the certification process exists specifically to guarantee that — a quiet, unglamorous prerequisite for everything else.",
+        ],
+      },
+      {
+        h: 'The sensor and what it actually measures',
+        p: [
+          "The inertial measurement unit suspended at the ball's centre reports acceleration data at a very high frequency, which allows the exact instant of any contact to be identified. This is what enables the precise determination of when a pass was played for offside purposes, and it also resolves questions about whether a player touched the ball at all.",
+          "The technology's most publicised use has been settling handball and deflection questions that video alone could not resolve, since a graze producing no visible movement still generates a distinct acceleration signature. It represents a genuine shift: the ball has stopped being purely an object the match acts upon and become a source of evidence about the match.",
+        ],
+      },
+      {
+        h: 'Teams practise with it beforehand',
+        p: [
+          "Match balls are distributed to participating federations well in advance precisely so squads can adapt, and this is treated seriously. Goalkeepers spend dedicated sessions facing shots with the tournament ball, free-kick specialists recalibrate their technique, and outfield players adjust to differences in how it comes off the foot.",
+          "A team that neglects this preparation is asking its players to adapt during competitive matches, which is a self-inflicted disadvantage. The four-yearly complaints about a new ball come disproportionately from players who encountered it late, and federations have increasingly treated early familiarisation as a basic preparatory obligation rather than an optional refinement.",
+        ],
+      },
+      {
+        h: 'The ball is also a commercial object',
+        p: [
+          "It is worth acknowledging the obvious: the elaborate ceremony around each new World Cup ball — the name, the launch film, the design narrative — exists because the ball is among the tournament's most successful merchandising products, sold in enormous volumes to people who will never play with it competitively.",
+          "This does not make the engineering less real, and the technical development described throughout this article is genuine rather than marketing. But the four-year redesign cycle is driven at least partly by the commercial need for a new product rather than by any footballing requirement, which is a fair thing to notice when the 2026 launch arrives with its inevitable accompanying film.",
+        ],
+      },
+      {
+        h: 'The design that never gets replaced',
+        p: [
+          "Despite decades of subsequent redesign, the black-and-white panelled pattern from 1970 remains the universal shorthand for a football in illustration, signage, emoji and the drawing any child produces on request. No ball actually used at a World Cup has looked like that for many years, and the image persists regardless.",
+          "This is a genuinely unusual case of an industrial design achieving complete symbolic capture and then outliving its own use. Every ball since has been technically superior and none has displaced the picture in people's heads, which suggests the 1970 design solved a visual problem so completely that subsequent versions could only be better footballs, not better symbols.",
+        ],
+      },
+      {
+        h: 'Watching for it in 2026',
+        p: [
+          "When the 2026 ball appears, the useful things to watch for are specific: how it behaves on long-range shots, whether goalkeepers appear to misjudge flight in the opening matches, and whether free-kick takers seem to adjust their technique over the first week. These are observable and they tell you whether the design succeeded.",
+          "It is also worth watching for the moment the sensor data resolves something in a review, since these decisions are now routine and pass without comment. A ball that testifies about its own contacts remains a genuinely strange development, and it is worth registering the first time it settles a 2026 decision that no camera could have.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'hosts-who-changed-the-world-cup',
+    sections: [
+      {
+        h: 'Hosting is a decade-long project',
+        p: [
+          "The gap between a hosting being awarded and the tournament kicking off typically runs to a decade or more, which means every host is executing a plan drawn up under conditions that have since changed — different governments, different economic circumstances, sometimes different stadium plans entirely. The tournament that arrives is rarely the one that was bid for.",
+          "This long horizon explains a great deal about why hosting outcomes vary so much. A host that remained politically and economically stable across the preparation period delivers something close to what it promised; one that experienced disruption delivers something improvised. The result is frequently attributed to the country's competence when it is substantially a matter of what happened during the intervening years.",
+        ],
+      },
+      {
+        h: 'The stadium question every host faces',
+        p: [
+          "The most consequential decision any host makes is whether to build new venues or adapt existing ones, and the record strongly favours adaptation. Purpose-built stadiums in cities without a resident club to fill them afterwards have repeatedly become the most visible symbols of hosting gone wrong — expensive, empty and difficult to repurpose.",
+          "The 2026 hosts are unusual in relying almost entirely on stadiums built for other resident sports with established tenants, which structurally avoids this problem. It is among the clearest advantages of awarding a tournament to countries with existing large-venue infrastructure, and it means the legacy question for 2026 will be about participation and interest rather than about concrete.",
+        ],
+      },
+      {
+        h: 'The tournament changes the host as much as the reverse',
+        p: [
+          "The relationship described in this article runs in both directions. A World Cup reliably produces a measurable surge in domestic interest, participation and infrastructure investment in the host nation, and in several cases has established a professional league or transformed an existing one.",
+          "Whether that effect persists depends almost entirely on what the host does in the following five years rather than during the month itself. The hosts that converted a tournament into durable growth had a plan for the aftermath; those that treated the tournament as the objective found interest receding to roughly its prior level within a few seasons. The tournament creates an opportunity; it does not deliver a legacy on its own.",
+        ],
+      },
+      {
+        h: 'Politics has never been absent',
+        p: [
+          "It is worth stating plainly that no World Cup has been apolitical. Hosts have used the tournament to project national image, governments have attached themselves to results, and awarding decisions have been shaped by considerations well beyond footballing readiness. The idea that the event was once purely sporting and has recently become political does not survive contact with its history.",
+          "What has changed is visibility. Modern media scrutiny surfaces the political dimensions of a hosting in real time rather than leaving them to historians, which makes contemporary tournaments feel more politically freighted than earlier ones. Any honest account of hosting has to engage with this rather than treating it as an unfortunate recent intrusion.",
+        ],
+      },
+      {
+        h: 'The precedent 2026 is setting',
+        p: [
+          "Every transformative hosting described in this article normalised something previously considered impossible, and the three-country model is 2026's contribution to that sequence. If it works logistically, joint bids involving multiple neighbouring nations become substantially more viable for regions where no single country could realistically host alone.",
+          "That would represent a genuine widening of where the World Cup can go, in the same way earlier firsts widened it. The tournament's history suggests that whatever 2026 demonstrates is possible will be attempted again within a cycle or two, which makes this edition's organisational outcome consequential well beyond the football played during it.",
+        ],
+      },
+      {
+        h: 'What the host country actually experiences',
+        p: [
+          "For people living in a host city, a World Cup is a month of significant disruption alongside the celebration: transport arrangements altered, security operations expanded, prices raised, and a temporary population influx that local infrastructure must absorb. The experience is genuinely mixed, and support for hosting within host populations has historically declined during preparation before recovering during the tournament itself.",
+          "This pattern is consistent enough to be predictable, and it is worth knowing when reading coverage of local opposition during the build-up. Discontent during preparation is close to universal and says relatively little about how the hosting will ultimately be regarded — the assessment that matters is made afterward, and it usually differs from the one made six months before.",
+        ],
+      },
+      {
+        h: 'The measure that actually matters',
+        p: [
+          "Researchers who study the effects of major sporting events consistently find that the durable outcomes are social rather than economic: participation rates, the visibility of the sport among young people, and the place the game occupies in a country's cultural life. Direct economic returns are considerably more modest than bid documents typically project.",
+          "This is the standard against which 2026 should eventually be judged, and it cannot be assessed for years. The atmosphere in the stadiums during the tournament will tell you very little about it; what will tell you is whether football in North America occupies a different position in 2035 than it did in 2025, which is a question nobody will be able to answer until then.",
+        ],
+      },
+      {
+        h: 'Watching the host as a subject in its own right',
+        p: [
+          "The suggestion this article ends on is to watch 2026 partly as a story about three countries rather than only about forty-eight teams. The crowds, the venues, the local coverage and the visible enthusiasm are all evidence about what the tournament is doing to the places staging it, and that story runs continuously underneath the football.",
+          "It is also a story with a genuinely uncertain outcome, which is rarer than it sounds. Nobody knows whether the three-country model will be remembered as an ambitious success or an unwieldy experiment, and watching that question resolve across five weeks is one of the more interesting subplots available to anybody following the tournament closely.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-watch-party-guide',
+    sections: [
+      {
+        h: 'Work out the time zones once, properly',
+        p: [
+          "The single most common failure in following a tournament staged abroad is a time-zone error, and it is entirely preventable with twenty minutes of preparation. Convert the full fixture list into your own local time before the tournament begins, put it into a calendar with alerts, and stop doing the arithmetic match by match under pressure.",
+          "The 2026 schedule makes this unusually important, since matches are spread across four host time zones rather than one. A fixture listed as an evening kickoff may be in a zone three hours removed from another the same day, and a single assumption carried across the tournament will eventually cost somebody a match they intended to watch.",
+        ],
+      },
+      {
+        h: 'The technical setup is worth ten minutes',
+        p: [
+          "A surprising amount of watch-party disappointment traces to preventable technical problems: a streaming service that requires a login nobody has, buffering that puts the picture forty seconds behind a neighbour's celebration, or audio routed through a television's built-in speakers when better options were available.",
+          "Test the whole chain before the day rather than during the anthems. If several people are watching the same match in different places while messaging each other, agree on a service in advance, because differing stream delays turn a shared experience into a sequence of spoilers arriving from whoever is furthest ahead.",
+        ],
+      },
+      {
+        h: 'The sweepstake is the best social technology in football',
+        p: [
+          "The office or household sweepstake — everyone draws a nation at random, small stakes or none — is disproportionately effective at generating interest among people with no existing attachment. It gives every participant a team to follow within thirty seconds and produces exactly the kind of arbitrary loyalty this collection keeps recommending.",
+          "With forty-eight teams, the 2026 draw supports larger groups than any previous tournament, meaning almost nobody needs to share. It is worth organising in the days after the group draw rather than the week the tournament starts, since the anticipation of following your randomly assigned nation through qualifying coverage is part of the pleasure.",
+        ],
+      },
+      {
+        h: 'Feeding people across a month',
+        p: [
+          "Hosting repeatedly across five weeks becomes expensive and exhausting if one household absorbs it. The arrangements that survive a full tournament are almost always distributed: rotating venues between friends, everybody bringing something, or explicitly agreeing that most matches are casual and only a handful are catered events.",
+          "The food itself matters less than its compatibility with watching. Anything requiring attention during play, or cutlery, or a table, competes with the match. The near-universal watch-party menu of things eaten with hands from a shared bowl is not a lack of ambition; it is a design solution refined by decades of people trying to eat and watch simultaneously.",
+        ],
+      },
+      {
+        h: 'Managing mixed allegiances in one room',
+        p: [
+          "A room containing supporters of both teams is the best and most volatile watch-party configuration. The convention that makes it work is simple and worth stating aloud at the start: celebrate freely during the match, and stop entirely at the final whistle. Most of the friendships damaged by football are damaged after the ninety minutes rather than during them.",
+          "It is also worth being deliberate about who is invited to which match. A knockout fixture involving two people's national teams is a different social event from a group-stage match between nations nobody in the room supports, and treating them identically is how somebody ends up quietly upset in a kitchen.",
+        ],
+      },
+      {
+        h: 'The matches worth clearing a schedule for',
+        p: [
+          "Not every fixture deserves a party, and the ones that reliably do are identifiable in advance. The simultaneous final round of group matches produces the tournament's best pure drama; the round of 16 weekend concentrates elimination football; and the quarter-final weekend is, by consensus, the peak — four matches across two days with genuine contenders eliminated in each.",
+          "The semi-finals are frequently tenser than they are enjoyable, and the final carries so much weight that it is often a worse spectacle than the matches preceding it. Planning the month around the quarter-final weekend rather than around the final is, counterintuitively, the better strategy for maximising actual enjoyment.",
+        ],
+      },
+      {
+        h: 'Watching alone is not the consolation prize',
+        p: [
+          "For all the emphasis on gathering, some matches are better watched alone. A neutral group-stage fixture with nobody to explain anything to, no conversation to manage and no host duties is the setting in which the tactical habits this collection describes actually become learnable, and it is genuinely enjoyable in a different register from a party.",
+          "The healthiest approach to a five-week tournament is probably a mix: social viewing for the fixtures that carry stakes, solitary viewing for the ones that carry interest. Attempting to make every match an event exhausts the enthusiasm long before the knockout rounds, which is the most common way people end a World Cup relieved rather than sorry.",
+        ],
+      },
+      {
+        h: 'Keep something from it',
+        p: [
+          "A small suggestion that costs nothing: keep some artefact of the month — a completed wall chart, a group chat exported, photographs from the gatherings, a note of who you watched each significant match with. The football is comprehensively documented elsewhere; your experience of it is not, and it fades faster than people expect.",
+          "Every tournament produces a handful of moments people describe decades later, and almost nobody can reconstruct the surrounding detail afterward. Ten minutes of deliberate record-keeping across five weeks preserves something that no amount of archived footage will, and the 2026 tournament is a reasonable place to start doing it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'football-phrases-for-new-fans',
+    sections: [
+      {
+        h: 'The officiating vocabulary',
+        p: [
+          "Broadcast coverage now leans heavily on refereeing terminology that assumes familiarity. An advantage is the referee declining to stop play for a foul because the fouled team benefits from continuing; a professional foul is a deliberate infringement committed to prevent a promising attack; a second yellow means a player has been cautioned twice and is therefore sent off.",
+          "You will also hear about the technical area, which is the marked zone where coaching staff must remain, and about a player being in an offside position rather than simply offside — a distinction covered in detail in this collection's dedicated article, and one commentators use precisely because the difference genuinely matters.",
+        ],
+      },
+      {
+        h: 'The words for space',
+        p: [
+          "A cluster of terms describes areas of the pitch rather than actions, and they recur constantly in tactical commentary. The half-space is the vertical channel between the centre of the pitch and the touchline, prized because attacks launched from there can go either way. In behind means the area past the defensive line; the pocket means the space between an opponent's midfield and defence.",
+          "The channel is the gap between a centre-back and a full-back, which strikers attack diagonally. The final third is the attacking third of the pitch. None of these are technical jargon in any meaningful sense — they are just names for places — and learning six of them makes tactical commentary substantially more comprehensible.",
+        ],
+      },
+      {
+        h: 'Phrases that sound like criticism but are not',
+        p: [
+          "Several common expressions are easily misread by newcomers as insults. Calling a player workmanlike, or describing a performance as unspectacular but effective, is genuine praise in football's register. Saying a team ground out a result means they won without playing well, which is regarded as a virtue rather than an admission.",
+          "Conversely, describing a player as a luxury, or a team as easy on the eye, frequently carries an implied criticism about substance. Football commentary is full of this inversion, where the language of modest competence is approving and the language of aesthetic pleasure is faintly sceptical — and it confuses new viewers reliably until somebody explains it.",
+        ],
+      },
+      {
+        h: 'The numbers as job descriptions',
+        p: [
+          "Commentators frequently refer to players by number as a shorthand for role rather than for the shirt they are wearing. A six is a defensive midfielder, an eight a box-to-box central midfielder, a ten an attacking creator, a nine a central striker. A false nine is a nine who behaves like a ten.",
+          "This convention long predates squad numbering and survives it, which is why you will hear a player described as the team's six while wearing eighteen. It is among the most confusing conventions for newcomers and among the most useful once absorbed, since it lets a commentator describe a tactical arrangement in three words.",
+        ],
+      },
+      {
+        h: 'Words that mean different things in different countries',
+        p: [
+          "Football's vocabulary is not uniform across the English-speaking world, and a global tournament produces commentary from several traditions. What one broadcaster calls a cross another may call a centre; a pitch is a field; a fixture is a game; boots are cleats. Neither vocabulary is more correct and both will appear across 2026 coverage.",
+          "This extends to tactical description, where the same shape may be described using different numbering conventions depending on the commentator's background. It is worth knowing that apparent contradictions between broadcasts are frequently terminological rather than analytical, and that neither party is wrong about what is happening on the pitch.",
+        ],
+      },
+      {
+        h: 'The insults, briefly',
+        p: [
+          "A complete glossary should acknowledge the derogatory register, since it appears constantly. A player who dives is accused of simulation or of going down easily; one who commits a cynical foul is professional in the pejorative sense; a team that time-wastes is described as managing the game if you approve and as antifootball if you do not.",
+          "The consistent pattern is that the same behaviour attracts different vocabulary depending on allegiance, which is worth recognising early because it explains most apparent disagreements between commentators from different countries about identical incidents. The words are frequently arguing about loyalty rather than about facts.",
+        ],
+      },
+      {
+        h: 'You do not need all of this',
+        p: [
+          "It is worth saying clearly that none of this vocabulary is required to enjoy a World Cup. Millions of people follow the tournament happily without knowing what a half-space is, and understanding the terminology adds detail rather than access. The football is comprehensible without any of it.",
+          "The reason a glossary helps is social rather than technical: the vocabulary is how conversations about football are conducted, and being locked out of the conversation is a considerably bigger barrier than being unable to name a tactical zone. Learning fifteen phrases is less about understanding the sport and more about being able to talk about it with people who already do.",
+        ],
+      },
+      {
+        h: 'The phrase you will hear most in 2026',
+        p: [
+          "Given the format, expect to hear a great deal about goal difference, third-placed teams and permutations, which this collection covers in detail elsewhere. The expanded tournament has made the arithmetic of qualification a central part of commentary in a way it never was under the previous format.",
+          "Expect also the recurring appearance of group of death, which will be applied to at least two groups regardless of whether either deserves it, and which this collection has an entire article about. Some football vocabulary describes the sport; some of it is simply what broadcasters say every four years, and telling the two apart is part of the education.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'taking-kids-to-their-first-world-cup-summer',
+    sections: [
+      {
+        h: 'Match the approach to the age',
+        p: [
+          "A four-year-old and a ten-year-old need entirely different versions of this. Younger children generally cannot follow ninety minutes and should not be expected to: the colours, the crowd noise, the flags and the goals are the accessible parts, and twenty minutes of a match plus the celebration afterward is a complete and successful experience at that age.",
+          "Older children can follow a full match and are ready for the tournament's structure — the group tables, the arithmetic of qualification, the knockout bracket. This is where the wall chart earns its keep, because it turns an abstract competition into something visibly progressing. Pitching either version at the wrong age is the most common way a first World Cup fails to land.",
+        ],
+      },
+      {
+        h: 'Let the questions interrupt the football',
+        p: [
+          "The instinct to shush a child asking why the referee stopped play is understandable and counterproductive. A first tournament is precisely when the rules get learned, and every question answered patiently is a piece of the sport becoming legible. Offside in particular will need explaining several times, and this collection's dedicated article contains a version simple enough to relay.",
+          "It helps to accept in advance that watching with a child who is learning is a different activity from watching alone, and to choose accordingly which matches are for teaching and which are for concentrating. Attempting both simultaneously during a knockout match tends to frustrate everybody.",
+        ],
+      },
+      {
+        h: 'Get them playing during the tournament',
+        p: [
+          "The strongest predictor of whether a first World Cup produces a lasting interest is whether the child plays during it. A tournament watched entirely from a sofa can be enjoyable and passive; a tournament watched alongside kicking a ball in a garden, a park or a hallway attaches the excitement to something they do rather than something they observe.",
+          "This does not require organised football. Copying a celebration, attempting a skill seen on television, or simply having a ball available during the five weeks is sufficient, and the connection forms without anybody engineering it. The tournament supplies the motivation; the ball supplies the participation.",
+        ],
+      },
+      {
+        h: 'Handling the elimination',
+        p: [
+          "Almost every adopted team goes out, and a child's first experience of genuine sporting disappointment usually arrives during a first World Cup. It is worth preparing for rather than improvising, since the reaction can be considerably more intense than adults anticipate for something ostensibly trivial.",
+          "The useful framing is that the disappointment is the evidence the whole thing mattered, and that the tournament continues and can still be enjoyed. Children who are told their upset is silly learn to disengage; children whose disappointment is taken seriously and then gently redirected toward the remaining football tend to be the ones still watching four years later.",
+        ],
+      },
+      {
+        h: 'Make the geography part of it',
+        p: [
+          "A World Cup is the most effective geography lesson available to a household, and it works entirely by accident. Forty-eight countries appear over five weeks with flags, anthems and locations, and a child following the tournament absorbs a map of the world without any of it feeling instructional.",
+          "Adding a physical map or a globe with pins for the teams being followed converts this into something deliberate without making it feel like homework. It is among the more genuine educational benefits of the tournament, and one that parents who dismiss football as frivolous consistently underestimate.",
+        ],
+      },
+      {
+        h: 'Late kick-offs and the school-night problem',
+        p: [
+          "Depending on where you live, a substantial share of 2026 matches will fall at times unsuitable for children on school nights, and the North American schedule means very late or very early viewing across much of the world. Pretending this is not a constraint produces exhausted children and irritated parents.",
+          "The workable solution is selective: identify in advance the handful of matches worth a late night, permit those explicitly as an occasion, and use recordings or highlights for everything else. A child who was allowed to stay up for three specific matches across a tournament remembers those three; one who was allowed to stay up for everything remembers being tired.",
+        ],
+      },
+      {
+        h: 'The parent is the memory',
+        p: [
+          "Adults recalling a first World Cup rarely describe the football in any detail. They describe who they watched with, where they were, and how the adults around them behaved — the reaction to a goal, the shouting at a television, the specific atmosphere of a household paying attention to the same thing.",
+          "This is worth knowing because it removes most of the pressure. The tournament does not have to be curated expertly or explained perfectly. It has to be shared, visibly and with genuine feeling, and the rest of it — the results, the tactics, the eventual champion — is very largely beside the point as far as the child's eventual memory is concerned.",
+        ],
+      },
+      {
+        h: 'Four years is a long time in a childhood',
+        p: [
+          "One reason first World Cups land so heavily is the interval. A child who is seven in 2026 will be eleven at the next tournament and fifteen at the one after — entirely different people at each. The four-year gap means every tournament is experienced by a substantially changed person, which is why the sequence functions as a kind of personal chronology for so many adults.",
+          "That is the argument for making 2026 count for whoever in the household is the right age for it. There will be other tournaments, and none of them will be the first one, and the specific quality of a first World Cup — total, uncomplicated, overwhelming — is genuinely not repeatable afterward.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-balls-history',
+    sections: [
+      {
+        h: 'The one-ball rule that had to be invented',
+        p: [
+          "The 1930 final's split-ball compromise now reads as charming, and it was actually a genuine governance failure that the sport had to fix. The idea that both teams should compete with identical equipment, supplied and certified by the organisers rather than by the participants, was not obvious at the time and had to be established through exactly this kind of dispute.",
+          "Everything described in this article — the certification standards, the advance distribution to federations, the single official match ball — descends from that original problem. It is a small illustration of how much of a sport's apparently natural infrastructure was actually built in response to specific arguments that somebody had to lose first.",
+        ],
+      },
+      {
+        h: 'Why the ball keeps being blamed',
+        p: [
+          "When shooting looks wayward or goalkeeping looks uncertain early in a tournament, the ball absorbs a disproportionate share of the blame, and some of it is deserved while much of it is not. Players are also adjusting to unfamiliar opponents, tournament pressure, different pitches and in 2026 substantially varying altitude and climate.",
+          "Attributing an early wave of long-range goals or goalkeeping errors solely to the ball is therefore usually premature. The honest test is whether the pattern persists once teams have had two or three matches to adapt, and in most tournaments it does not — which suggests the ball is frequently a convenient explanation for the ordinary disorientation of a competition's opening week.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'hosts-who-changed-the-world-cup',
+    sections: [
+      {
+        h: 'The tournament that proved football could be built',
+        p: [
+          "Among all the precedents described in this article, the most consequential for how hosting decisions are now made was the demonstration that a World Cup could be awarded to a country in order to develop the sport there rather than as recognition of an existing footballing culture. That reframing changed the criteria permanently.",
+          "It is the logic underneath most subsequent expansions of where the tournament goes, and it is genuinely contested. Awarding a World Cup as an investment rather than a reward means accepting more organisational risk and more scepticism from traditional footballing nations, in exchange for growth that may or may not materialise — and the record on whether it does is mixed enough to keep the argument alive.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-watch-party-guide',
+    sections: [
+      {
+        h: 'The group chat is part of the infrastructure',
+        p: [
+          "For anybody following the tournament alongside friends who are physically elsewhere, a dedicated group chat is a genuine part of the viewing setup rather than an incidental extra. It replicates a substantial share of what makes watching together enjoyable — the shared reaction, the immediate commentary, the collective disbelief — across any distance.",
+          "The one rule that makes it work is agreeing on stream delays, since a message reacting to a goal that somebody has not yet seen removes the entire point. Establishing at the start that everybody announces their delay, and that nobody reacts instantly to a decisive moment, costs one message and preserves five weeks of shared viewing.",
+        ],
+      },
+      {
+        h: 'Plan the final differently',
+        p: [
+          "The final deserves separate planning from everything preceding it, both because it is the one match almost everybody will want to watch and because it is frequently the most tense and least enjoyable fixture of the tournament. A gathering assembled for a spectacle can find itself watching a cautious, nervous match that does not open up until late.",
+          "The version that works best tends to be smaller and more committed than the group-stage parties — people who genuinely want to watch rather than a broad social event — with the understanding that conversation stops for the ninety minutes. It is the one match of the month where treating the football as the priority rather than the backdrop is unambiguously correct.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'football-phrases-for-new-fans',
+    sections: [
+      {
+        h: 'The phrases that describe a match unfolding',
+        p: [
+          "A final cluster worth knowing describes the shape of a match over time. A team is on top when it is dominating without necessarily leading; a match is scrappy when it is disjointed and full of turnovers; a game opens up when both teams abandon caution and chances multiply, usually late.",
+          "You will also hear that a team is playing for penalties, meaning it has stopped attempting to win in normal time, and that a match has petered out, meaning both sides have accepted the result before the whistle. These narrative phrases are how commentators describe momentum, and they are among the most useful terms for following a match's arc rather than just its events.",
+        ],
+      },
+      {
+        h: 'A glossary is a welcome, not a test',
+        p: [
+          "It is worth ending where this article began: the vocabulary exists to include people, not to gatekeep. Every phrase collected here was invented by somebody trying to describe something quickly, and the sport has always absorbed new speakers by simply letting them listen until the words made sense.",
+          "The 2026 tournament will recruit an enormous number of new followers, as every World Cup does, and the only genuinely important thing about the language is that nobody should feel excluded by it. Ask what a word means during a match. Everybody in the room learned it the same way.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'taking-kids-to-their-first-world-cup-summer',
+    sections: [
+      {
+        h: 'The sticker album still works',
+        p: [
+          "For all the digital alternatives available, the physical sticker album remains remarkably effective with children, and the reason is that it makes an abstract tournament tangible. Forty-eight squads become several hundred individual faces to be collected, sorted, duplicated and traded, and a child who has spent weeks assembling them arrives at the tournament already knowing names.",
+          "The trading is arguably more valuable than the collecting. Swapping duplicates with friends or siblings creates a small social economy around the tournament, produces negotiation and disappointment in manageable doses, and connects the World Cup to a peer group rather than only to a household. It is a decades-old ritual that has survived every attempt to replace it.",
+        ],
+      },
+      {
+        h: 'Watching in a crowd, safely',
+        p: [
+          "For families near a host city, an official fan zone is generally a better first live experience than a stadium: no ticket cost, more freedom to move, easier exit if a child has had enough, and considerably lower stakes if the whole thing turns out to be overwhelming after forty minutes.",
+          "If attending an actual match, the practical considerations are the ones that apply to any large-crowd event with children — agreeing a meeting point, ear protection for younger children given how loud stadiums become, and accepting in advance that leaving early is a legitimate outcome rather than a failure. A child's first stadium experience is about the crowd and the scale, and both are fully available in the first half.",
+        ],
+      },
+      {
+        h: 'The tournament is a shared reference forever',
+        p: [
+          "One quiet benefit worth mentioning: a child who follows the 2026 tournament properly acquires a shared reference point with essentially every adult they will ever meet who follows football, across every country. World Cups function as a common cultural vocabulary in a way very few things do, and having one of your own to remember is a small permanent social asset.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'hosts-who-changed-the-world-cup',
+    sections: [
+      {
+        h: 'What the crowds will actually look like',
+        p: [
+          "One specific way the 2026 hosts will shape the tournament is through the composition of the crowds. The three host countries contain very large communities originating from most of the competing nations, which means matches between two visiting teams may be attended overwhelmingly by supporters of both rather than by neutrals.",
+          "This is genuinely unusual. Most host nations supply a large neutral local audience for fixtures not involving them; these hosts will frequently supply partisan audiences for both sides instead. The atmosphere generated by that is closer to a home fixture for both teams simultaneously, and it may be the most distinctive experiential feature of this particular tournament.",
+        ],
+      },
+      {
+        h: 'The precedent that matters most for the future',
+        p: [
+          "If one lesson from the history of transformative hostings applies to 2026, it is that the tournaments remembered as successful were the ones that solved a problem the sport did not previously know how to solve. Staging a World Cup across three countries at unprecedented scale is exactly that kind of problem.",
+          "Success here would establish that the tournament's size is no longer constrained by any single nation's capacity, which is a genuinely significant change in what is possible. Failure would establish the opposite and probably close the question for a generation. Either way this hosting will be referenced in every subsequent bidding conversation, which is the definition of the transformative hostings this article set out to describe.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-balls-history',
+    sections: [
+      {
+        h: 'The referee also depends on it now',
+        p: [
+          "A consequence worth noting of the ball becoming an instrument is that officiating now depends on equipment functioning correctly. A sensor failure or a data dropout removes a category of decision-making the officials have come to rely on, and protocols exist for reverting to conventional video review when the ball's data is unavailable.",
+          "This is a new kind of fragility in the sport's decision-making, and it is worth being aware of during 2026. When a review takes noticeably longer than usual for what appears to be a straightforward offside, the explanation is occasionally that the automated system produced no usable answer and the officials are doing it the older, slower way.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-watch-party-guide',
+    sections: [
+      {
+        h: 'Do not try to watch everything',
+        p: [
+          "The final piece of advice repeats what this collection has said elsewhere because it is the mistake almost everybody makes: attempting to watch all 104 matches will not produce a better tournament experience, it will produce exhaustion by the second week and a knockout stage watched through a fog of accumulated fatigue.",
+          "Deliberately deciding, early, which matches you are simply going to miss is what makes the ones you keep feel like occasions. The people who most enjoy a World Cup are consistently the ones who treated it as a curated month rather than a comprehensive one, and that decision is considerably easier to make in the first week than the third.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'football-phrases-for-new-fans',
+    sections: [
+      {
+        h: 'The one term worth learning before the first match',
+        p: [
+          "If there is time for only a single piece of preparation before your first 2026 match, make it offside, since it is the rule that most frequently produces a stoppage a newcomer cannot interpret and the one commentators explain least. Everything else in this glossary can be picked up as it arrives; that one is worth knowing in advance.",
+        ],
+      },
+      {
+        h: 'Words for the things that go wrong',
+        p: [
+          "A working vocabulary needs the failure terms too. A player is caught in possession when dispossessed while dwelling on the ball; a defence is caught square when its defenders are in a flat line with nobody covering behind; a team is opened up when a single pass removes several defenders from the play at once.",
+          "You will also hear that a shot was dragged wide, meaning pulled across the goal by the striking foot, and that a pass was overhit or underhit, meaning the weight rather than the direction was wrong. Football's vocabulary for error is unusually precise, which reflects how much of the sport's conversation consists of diagnosing exactly which thing somebody did incorrectly.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'taking-kids-to-their-first-world-cup-summer',
+    sections: [
+      {
+        h: 'What to do when the child loses interest',
+        p: [
+          "It is entirely normal for a child's engagement to fluctuate across five weeks, and treating a lapse as a problem to be solved usually makes it worse. A tournament this long contains natural gaps — several days between a group ending and a knockout round beginning, matches at inconvenient times, stretches involving nobody they care about.",
+          "The approach that works is simply to let interest come and go without commentary, and to make sure the genuinely compelling moments — the adopted team's matches, the simultaneous final group round, the quarter-finals — are available and shared. A child who drifted away in week two and returned for a quarter-final has had a successful first World Cup, and pressing for consistent attention across the whole month tends to produce resistance rather than enthusiasm.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-balls-history',
+    sections: [
+      {
+        h: 'A small object carrying a great deal',
+        p: [
+          "It is worth appreciating the oddity of the whole situation: the sport's central object is redesigned every four years, generates genuine controversy each time, is now an instrument that reports on its own movements, and is simultaneously the most recognisable piece of sporting equipment on earth. Very few things carry that much simultaneous function and symbolism.",
+          "The 2026 ball will do all of it again — arrive with a name and a film, attract goalkeeper complaints, settle several decisions with data no camera could capture, and be drawn by children who have never seen a ball that actually looks like the picture in their heads. That is a strange amount of work for a sphere.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'hosts-who-changed-the-world-cup',
+    sections: [
+      {
+        h: 'The month is not the legacy',
+        p: [
+          "The single most important thing to hold onto from this article is that a successful tournament and a successful hosting are different achievements measured on different timescales. A month of full stadiums and good football says almost nothing about whether the hosting was worthwhile, and the assessment that matters cannot be made until years afterward.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-watch-party-guide',
+    sections: [
+      {
+        h: 'The month ends faster than it seems',
+        p: [
+          "Five weeks feels enormous at the start and disappears with surprising speed once the knockout rounds begin, since the fixture volume collapses from four matches a day to one every few days. People who intended to organise something and kept postponing it frequently find the tournament over before they did.",
+          "The practical implication is to front-load the plans. The group stage is where there is enough football to build a routine around, and the gatherings that happen tend to be the ones arranged in the first fortnight rather than the ones intended for later. By the semi-finals there are only three matches remaining, and the month has effectively already happened.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'football-phrases-for-new-fans',
+    sections: [
+      {
+        h: 'How the vocabulary keeps growing',
+        p: [
+          "Football's language is not fixed, and a noticeable share of the terms in common use today entered the vocabulary within the past two decades, largely from tactical analysis becoming mainstream. Words like half-space, counter-press and rest defence were specialist coaching terms recently and are now standard broadcast usage.",
+          "This means anybody learning the language now is learning a version that will itself be partly obsolete in twenty years, and that the fluent speakers around you also acquired much of it recently. Football's dialect feels ancient and traditional and is in fact absorbing new words continuously, which is a reasonable reason not to feel behind.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'taking-kids-to-their-first-world-cup-summer',
+    sections: [
+      {
+        h: 'Girls and boys, without distinction',
+        p: [
+          "One thing worth being deliberate about is treating the tournament as equally theirs regardless of the child's gender, since the assumption that a World Cup is primarily for boys still transmits itself through small signals — who gets asked about it, who gets the sticker album, whose interest gets encouraged.",
+          "Women's football has grown enormously and the pathways now exist, but a child's sense of whether a sport belongs to them forms early and largely from the adults around them. Making the 2026 tournament visibly shared among everybody in the household costs nothing and removes a barrier that is entirely a matter of habit rather than interest.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
