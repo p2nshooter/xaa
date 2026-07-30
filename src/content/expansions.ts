@@ -5627,6 +5627,596 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'what-makes-a-tournament-team',
+    sections: [
+      {
+        h: 'Three matches in ten days is a different sport',
+        p: [
+          "The group stage compresses three competitive fixtures into roughly ten days, which is a schedule almost no domestic competition asks for outside a cup congestion period. The physical and tactical consequences are specific: limited recovery, minimal training time between matches, and effectively no opportunity to work on anything substantial once the tournament has started.",
+          "This rewards teams that arrived with their patterns already established and punishes those still building. A side that needed a strong pre-tournament camp to install its ideas has that camp; a side hoping to improve during the group stage generally does not get the chance, because the days between matches are consumed almost entirely by recovery and opponent-specific preparation.",
+        ],
+      },
+      {
+        h: 'The ability to change during a match, not just between them',
+        p: [
+          "Adaptability at tournament level means something more specific than having several tactical options. It means recognising within twenty minutes that the prepared plan is not working against this particular opponent and having both the authority and the shared understanding to change it while the match is running.",
+          "This requires a squad that has practised alternative shapes sufficiently for them to be executable under pressure, and a manager willing to abandon a plan he spent three days preparing. Teams that can only change at half-time have effectively given away forty-five minutes, and in a knockout match that margin is frequently the entire difference.",
+        ],
+      },
+      {
+        h: 'Different referees, different matches',
+        p: [
+          "A tournament team faces officials drawn from confederations with meaningfully different traditions about physicality and what constitutes a foul, and a side that cannot adjust its aggression to the standard being applied will accumulate cards or concede repeated free kicks it did not expect.",
+          "Well-prepared squads identify this within the opening minutes and calibrate accordingly, which is a genuine and rarely discussed tournament skill. It is also why the disciplinary record of teams sometimes shifts sharply between matches — the players did not become more reckless, they encountered an official applying a different threshold and adjusted too slowly.",
+        ],
+      },
+      {
+        h: 'Momentum is real but poorly understood',
+        p: [
+          "Teams describe momentum constantly and the evidence for it as a measurable force is thin, but there is a defensible mechanism underneath the folklore: a team that has won produces confident decision-making, and confident decision-making produces better execution of things the team could already do. It is less mystical than the language suggests.",
+          "This means momentum can be interrupted by circumstance rather than performance — a long gap between matches, an injury to a key player, an unconvincing win. A tournament team is partly one that maintains its standards across those interruptions rather than depending on an emotional state that any external event can dissipate.",
+        ],
+      },
+      {
+        h: 'Handling the different pressure of each round',
+        p: [
+          "The psychological demands change shape as a tournament progresses. Group matches carry the pressure of expectation; a round of 16 carries the fear of an early exit; a quarter-final carries the weight of a genuine opportunity; a semi-final carries the knowledge that a final is one result away. These are genuinely different pressures and teams handle them unevenly.",
+          "Squads with players who have experienced the later rounds before have a real advantage here, which is part of why experienced tournament teams frequently outperform their apparent quality. Not having been there is a disadvantage that no amount of preparation entirely removes, and it is the clearest argument for continuity in squad selection across cycles.",
+        ],
+      },
+      {
+        h: 'Winning without playing well is a skill',
+        p: [
+          "Every deep tournament run includes at least one match in which the team plays badly and wins anyway. This is not luck so much as a specific competence: retaining structure when the football is not flowing, taking the one chance that arrives, and defending a narrow lead with discipline for the final half hour.",
+          "Teams built entirely around playing well have no answer when the football deserts them, which happens to everybody at some point across seven matches. The tournament teams this article describes are precisely the ones with a functioning fallback, and the fallback is usually unglamorous, defensive and entirely effective.",
+        ],
+      },
+      {
+        h: 'The squad has to believe the plan',
+        p: [
+          "Beyond tactical merit, a plan only works if the players believe it will. A pragmatic defensive approach implemented by a squad that thinks it should be attacking produces a half-committed version of the tactic that combines the disadvantages of both. Conviction is a genuine prerequisite rather than a motivational nicety.",
+          "This is why managers spend so much effort explaining rather than instructing, and why squads that publicly express confidence in an unfashionable approach are frequently more dangerous than more talented ones with internal doubts. The tournament teams that succeed are almost always visibly unified around a method, whatever the method happens to be.",
+        ],
+      },
+      {
+        h: 'Identifying one before the tournament starts',
+        p: [
+          "Applying this article to 2026: look for a settled squad with a manager in place for at least a full cycle, evidence of more than one workable tactical approach, genuine depth in the physically demanding positions, and a recent record of winning matches in which the team did not play well.",
+          "Teams meeting those criteria are dangerous regardless of ranking, and teams failing them are vulnerable regardless of talent. It is a considerably better predictor than the pre-tournament favourites list, and it can be assembled from public information in about twenty minutes per team.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'managing-a-squad-over-a-month',
+    sections: [
+      {
+        h: 'What a day in camp actually looks like',
+        p: [
+          "The daily structure inside a World Cup camp is more regimented than most people imagine. A typical non-match day runs to a fixed schedule of breakfast, treatment and gym work, a single main training session, lunch, an afternoon rest period that is genuinely enforced, video analysis, dinner and an early curfew.",
+          "The repetition is deliberate. Routine reduces decision fatigue, supports sleep quality, and gives a group living in unusual circumstances something stable to organise around. Squads that maintain a consistent daily rhythm across five weeks report substantially fewer problems than those whose schedule shifts constantly around travel and fixtures.",
+        ],
+      },
+      {
+        h: 'The staff nobody sees',
+        p: [
+          "A modern World Cup delegation runs to a considerable number of people beyond the players: coaches, analysts, physiotherapists, doctors, sports scientists, nutritionists, chefs, kit staff, security, media officers and administrators. Each has a defined function and the whole operation requires its own management.",
+          "This is a genuine organisational challenge in itself, and federations that run it well tend to have appointed somebody specifically to manage the delegation rather than leaving it to the head coach. A manager consumed by logistics is not coaching, and the squads that function best across a month are usually the ones where that division of labour was established before anybody arrived.",
+        ],
+      },
+      {
+        h: 'Food is a bigger operation than it sounds',
+        p: [
+          "Most national teams travel with their own chefs and, frequently, their own ingredients, because nutrition at this level is too specific to be left to a hotel kitchen. Meal timing around matches, individual dietary requirements, and the familiarity of food for players far from home are all treated as performance factors rather than comforts.",
+          "The familiarity element is underrated. A squad eating food it recognises, prepared the way it expects, is being supported psychologically as well as nutritionally across five weeks abroad — and federations that have economised on this have consistently reported it as a false saving.",
+        ],
+      },
+      {
+        h: 'Family visits are scheduled, not spontaneous',
+        p: [
+          "Most squads build defined windows for family contact into the tournament schedule, typically after group matches, rather than allowing open access. The reasoning is that isolation across five weeks is genuinely difficult and family contact helps, but unstructured access disrupts the routine the camp depends on.",
+          "Getting this balance wrong in either direction causes problems. Squads kept in complete isolation report morale difficulties; squads with unmanaged family presence report distraction and logistical chaos. The arrangements that work are explicitly agreed in advance so that nobody is negotiating during the tournament.",
+        ],
+      },
+      {
+        h: 'Managing a defeat is the hardest week',
+        p: [
+          "The days following a bad result are the sternest test of squad management. A group that has just lost must be given an honest account of what went wrong without being demoralised, and must arrive at the next fixture with belief intact — usually within seventy-two hours.",
+          "Managers approach this differently, but the common thread among those who handle it well is speed and specificity: address it fully and immediately rather than letting it fester, identify concrete correctable causes rather than general failings, and then move the group's attention explicitly onto the next opponent. Squads that ruminate for three days rarely recover in time.",
+        ],
+      },
+      {
+        h: 'Media obligations are a genuine burden',
+        p: [
+          "Tournament media requirements are substantial and mandatory: pre-match and post-match press conferences, mixed-zone access, and additional commitments to rights-holding broadcasters. For a squad in the later rounds, this consumes real time and exposes players to questioning designed to generate stories rather than information.",
+          "Well-run camps manage this by rotating obligations across the squad, preparing players for predictable difficult questions, and shielding anybody currently under particular scrutiny. The alternative — allowing media pressure to reach players unmediated during a tournament — has visibly destabilised campaigns before.",
+        ],
+      },
+      {
+        h: 'Discipline problems are a management failure',
+        p: [
+          "Tournaments occasionally produce disciplinary incidents inside camps, and these are almost always downstream of management rather than of individual character. A squad with clear expectations, engaged non-playing members and a functioning internal leadership group rarely generates these problems; one with idle, resentful players and unclear standards frequently does.",
+          "This is why the seemingly minor work of keeping the unused squad members occupied and valued is treated so seriously by experienced staff. The alternative is a group of highly competitive athletes with nothing to do, considerable frustration and five weeks of enforced proximity, which is a reliably combustible arrangement.",
+        ],
+      },
+      {
+        h: 'The month is the unit of management',
+        p: [
+          "The argument this article makes is that a World Cup should be planned as a single five-week campaign rather than as seven separate matches, and that the decisions which determine how a squad finishes are made continuously across that period rather than on match days.",
+          "By the semi-finals, the difference between a squad that is fresh, united and confident and one that is depleted, fractious and running on adrenaline is enormous — and it was created by hundreds of small management decisions across the preceding month, almost none of which anybody outside the camp ever saw.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-role-of-the-captain',
+    sections: [
+      {
+        h: 'The rituals the armband carries',
+        p: [
+          "A tournament captain performs a specific set of ceremonial functions that are easy to dismiss and genuinely matter to the people involved: leading the team out, exchanging pennants before a match, participating in the coin toss, and representing the squad at the trophy presentation whatever the outcome.",
+          "These rituals are largely for the audience, but they are also markers of responsibility that squads take seriously. The player who walks out first is understood by everybody present to be carrying the group's representation, and the small formality of that reinforces a status the rest of the role depends on.",
+        ],
+      },
+      {
+        h: 'The referee only talks to one player',
+        p: [
+          "One genuinely functional privilege of the armband is that officials will generally engage with the captain when they will engage with nobody else. A referee under pressure from several players will typically instruct all but the captain to withdraw, which makes that one player the team's only sanctioned channel to the decision-maker.",
+          "This is a real tactical asset if used well. A captain who has established a calm, respectful relationship with an official over the opening half hour retains access at the moment a contentious decision arrives; one who has spent the same period complaining has usually forfeited it. The difference occasionally decides how a marginal call goes.",
+        ],
+      },
+      {
+        h: 'The leadership group has largely replaced the single leader',
+        p: [
+          "Modern squads increasingly operate with a formal leadership group of four or five players rather than relying on a single captain, and the reason is practical: one player cannot maintain relationships across a squad of twenty-six, cover every internal issue, and also concentrate on his own performance.",
+          "This distributed model means the armband is the visible top of a structure rather than the whole of it, and the players carrying substantial leadership responsibility frequently include several who never wear it. When assessing whether a squad is well led, the composition and functioning of that wider group matters considerably more than who was named captain.",
+        ],
+      },
+      {
+        h: 'What happens in the shootout',
+        p: [
+          "During a penalty shootout the captain carries specific responsibilities beyond taking a kick: standing with teammates in the centre circle, meeting each taker on their return regardless of outcome, and managing the emotional state of a group watching its tournament resolve one kick at a time.",
+          "Players who have missed decisive penalties consistently identify the immediate reaction of their captain and teammates as significant in how they experienced the aftermath. It is among the most genuinely consequential thirty seconds of leadership available in the sport, and it happens in full view of a global audience with no preparation possible beyond having already established the relationships.",
+        ],
+      },
+      {
+        h: 'Captaincy and the substituted player',
+        p: [
+          "A recurring awkwardness of modern football is what happens when the captain is substituted, which with five changes available is considerably more common than it once was. The armband passes to another player mid-match, and the transition is occasionally visibly untidy.",
+          "Well-organised squads agree the succession in advance so that the handover is immediate and unambiguous. It is a small thing that becomes conspicuous when neglected, and a team that appears momentarily unclear about who is leading it during a tense final twenty minutes has revealed something about its internal organisation.",
+        ],
+      },
+      {
+        h: 'The captain who does not start',
+        p: [
+          "A genuinely difficult scenario arises when the recognised captain loses his place in the team. Managers handle this variously — retaining him as captain when he plays, transferring the armband permanently, or creating an explicit off-field leadership role — and none of the options is comfortable.",
+          "How a squad handles this is unusually revealing about its internal health. A group in which a dropped captain continues to lead constructively from the bench is functioning well; one in which the situation becomes a running story is usually experiencing broader problems that the captaincy question is merely the visible symptom of.",
+        ],
+      },
+      {
+        h: 'The armband as a statement',
+        p: [
+          "Captains have periodically used the armband to make statements — commemorative designs, campaign colours, gestures of solidarity — and these have occasionally brought them into conflict with competition regulations governing what may be worn. The tension between an individual's expression and a governing body's rules has produced several genuinely difficult moments at recent tournaments.",
+          "Whatever one's view of any specific instance, it illustrates that the armband is understood by everybody as carrying representational weight beyond the football. A captain speaks for a squad and, in the public imagination, for a country, and that visibility is precisely why the object becomes a site for these arguments.",
+        ],
+      },
+      {
+        h: 'Judging captaincy fairly',
+        p: [
+          "Because most of the role happens where nobody can see it, public assessment of captains is unusually unreliable, generally reducing to whether the team won and whether the captain played well individually. Neither is a measure of leadership.",
+          "The honest position is that outsiders are poorly placed to evaluate this, and that the assessments worth attending to come from teammates years afterward rather than from anybody watching. Bearing that in mind while the inevitable 2026 captaincy debates unfold is a reasonable corrective to a discussion conducted almost entirely without the relevant evidence.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'small-nations-big-dreams',
+    sections: [
+      {
+        h: 'What qualification does to a federation financially',
+        p: [
+          "Reaching a World Cup transforms a small federation's finances. Participation payments alone can exceed several years of a small association's normal income, and the accompanying increases in sponsorship, broadcast interest and government support compound the effect substantially.",
+          "The consequences are concrete and long-lasting: pitches built, coaching qualifications funded, youth programmes established, and in several cases the first full-time professional staff a federation has ever employed. This is the least romantic and possibly most important thing the expanded tournament has done, and it happens regardless of how the team performs once it arrives.",
+        ],
+      },
+      {
+        h: 'Squads assembled from several countries',
+        p: [
+          "Many smaller nations field squads composed substantially of players born or developed abroad, eligible through ancestry, who play their club football in stronger leagues. This is entirely legitimate and has become a defining feature of how smaller federations compete at this level.",
+          "It creates a specific coaching challenge: assembling a coherent team from players who have never lived in the country they represent, may not share a fluent common language, and arrive from very different footballing cultures. The squads that manage this well have usually invested years in building genuine connection rather than simply recruiting eligible names shortly before qualification.",
+        ],
+      },
+      {
+        h: 'Some of these players are not full professionals',
+        p: [
+          "At the smaller end of the tournament, squads occasionally include players who are semi-professional or who combine football with other employment — a genuinely remarkable fact given they are competing against athletes whose entire lives are professionally optimised.",
+          "These players' presence is worth registering rather than treating as a curiosity. Somebody who trained around a job for years to reach a World Cup has done something extraordinary, and the gap between their preparation and their opponents' is a more meaningful measure of the achievement than the eventual scoreline in any single match.",
+        ],
+      },
+      {
+        h: 'The preparation gap is enormous',
+        p: [
+          "Beyond the players, smaller federations face structural disadvantages that no amount of effort closes entirely: fewer competitive friendlies against strong opposition, less analytical support, smaller medical and sports-science teams, and base camp facilities allocated at the less favourable end of the range.",
+          "This is worth holding in mind before judging any performance. A team that competes respectably against a well-resourced opponent has overcome a preparation deficit that would be considered disqualifying in almost any other professional context, and the results these teams achieve are frequently more impressive than the scoreline conveys.",
+        ],
+      },
+      {
+        h: 'The first appearance is the achievement',
+        p: [
+          "For a nation reaching a World Cup for the first time, the tournament's outcome is genuinely secondary to the fact of arriving. The qualification itself becomes a permanent national reference point, celebrated at home in a way that overshadows whatever happens in the group stage.",
+          "This is worth remembering when a debutant loses three matches and is described as having been outclassed. The country involved is not experiencing the tournament as a failure; it is experiencing the culmination of decades of work, and the group-stage results are a footnote to a story that was completed months earlier when the final qualifier was won.",
+        ],
+      },
+      {
+        h: 'Coaches who take these jobs',
+        p: [
+          "Smaller federations frequently appoint experienced foreign coaches, and the arrangement suits both parties: the coach gets to lead a national team at a World Cup, and the federation gets expertise it could not develop internally. Several such appointments have produced genuinely transformative results.",
+          "The associated risk is discontinuity. A foreign coach who departs after a tournament takes the accumulated knowledge with him unless the federation deliberately built local capacity alongside, and the nations that converted a good tournament into sustained progress are consistently those that used the appointment to develop domestic coaching rather than simply to import a result.",
+        ],
+      },
+      {
+        h: 'What they contribute to the tournament itself',
+        p: [
+          "Beyond their own results, smaller nations shape a World Cup by forcing favourites into matches they cannot approach casually. A well-organised underdog that defends properly obliges a stronger team to solve a genuine problem, and that solving is frequently more interesting football than a comfortable win over similar opposition would have been.",
+          "They also supply the tournament's most emotionally legible stories, which is what draws in viewers with no prior interest. The commercial and cultural value the tournament derives from having forty-eight nations rather than thirty-two is generated substantially by exactly these teams.",
+        ],
+      },
+      {
+        h: 'Give one of them your attention',
+        p: [
+          "The suggestion this article ends on is simply to watch a debutant nation's opening match deliberately rather than incidentally. There will be several in 2026, and each represents something that has never happened before in that country's history.",
+          "It costs ninety minutes and it provides context that no amount of following the favourites can. The World Cup describes itself as a global competition, and the teams that make that description true rather than aspirational are precisely the ones most viewers will otherwise skip.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'rebuilding-after-a-golden-generation',
+    sections: [
+      {
+        h: 'The fallow period is unavoidable and politically fatal',
+        p: [
+          "Every genuine rebuild involves a period of worse results, because integrating inexperienced players into a senior international team costs something in the short term regardless of how well it is done. This is unavoidable arithmetic, and it is also the single hardest thing for a federation to survive politically.",
+          "Managers attempting rebuilds are therefore frequently dismissed during exactly the period their strategy required, replaced by somebody who reverts to older, more familiar players and produces a temporary improvement followed by a steeper decline. The nations that rebuilt successfully were almost always the ones whose federation absorbed the poor results rather than reacting to them.",
+        ],
+      },
+      {
+        h: 'Youth tournaments are the visible pipeline',
+        p: [
+          "The clearest advance indicator of a nation's rebuilding prospects is its performance at youth international level, which shows several years ahead of time whether a generation capable of competing is arriving. Federations with strong under-age results have something to build on; those without are usually hoping rather than planning.",
+          "This is measurable and public, which makes it a genuinely useful thing for supporters to track during a fallow period. A senior team performing poorly while its youth sides are competing strongly is in a substantially different position from one where both are struggling, even though the senior results look identical.",
+        ],
+      },
+      {
+        h: 'Rebuilding needs a different kind of manager',
+        p: [
+          "The coaching profile required for a rebuild differs from the one required to win with an established generation. A rebuilder needs patience, a demonstrated record of developing young players, and a tolerance for short-term results that a trophy-chasing appointment does not.",
+          "Federations frequently get this wrong by appointing a decorated winner to a rebuilding job, on the reasonable-sounding logic that success attracts success. The mismatch tends to surface within a cycle, as a manager accustomed to working with finished players finds himself asked to develop unfinished ones, and neither party enjoys the result.",
+        ],
+      },
+      {
+        h: 'Measuring progress when results are bad',
+        p: [
+          "The practical difficulty of a rebuild is that its progress is invisible in the only metric anybody watches. A team may be substantially better positioned than a year earlier — younger players integrated, a clearer identity, a settled spine emerging — while its results have not improved at all.",
+          "Federations that navigate this well generally define alternative markers in advance and communicate them publicly: number of debutants integrated, average squad age, performance against specific benchmark opponents. It does not stop the criticism, but it gives the strategy a defensible shape rather than leaving it looking like a run of bad results with an excuse attached.",
+        ],
+      },
+      {
+        h: 'Keeping one or two from the old guard',
+        p: [
+          "The most successful rebuilds rarely involve a clean break. Retaining two or three players from the previous generation — typically in defence or defensive midfield, where experience is most valuable — gives the incoming group a spine and a transmission mechanism for whatever standards the previous team established.",
+          "Choosing which veterans to keep is genuinely difficult, since the correct answer is usually not the most famous but the most functional. A federation that retains its most marketable veteran rather than its most useful one has made a decision about publicity rather than about football, and the consequences surface two years later.",
+        ],
+      },
+      {
+        h: 'The domestic league matters here more than anywhere',
+        p: [
+          "A rebuild depends entirely on a supply of young players getting meaningful senior minutes somewhere, and where that happens shapes the outcome. Nations whose domestic leagues play young players have a natural pipeline; those whose leagues prefer experienced imports must rely on players moving abroad early, which is less reliable and less controllable.",
+          "This is why several federations have worked directly with their domestic leagues on rules or incentives encouraging the selection of young home-grown players. It is slow, unglamorous, structural work, and it is the difference between a nation that renews itself reliably and one that waits for another fortunate cluster of talent.",
+        ],
+      },
+      {
+        h: 'What a good rebuild looks like from outside',
+        p: [
+          "The signs are identifiable during a fallow period: a manager retained through poor results, a steadily falling average squad age, the same young players accumulating caps across multiple campaigns rather than being rotated in and out, and a recognisable style persisting even when results do not.",
+          "A nation showing those signs is probably two cycles from being competitive again. One that changes manager annually, recalls veterans after every defeat and has no consistent identity is not rebuilding but simply declining with activity, and the distinction is visible well before the results eventually confirm it.",
+        ],
+      },
+      {
+        h: 'Somebody at 2026 is in the middle of this',
+        p: [
+          "Several teams at this tournament will be somewhere in the process described here — either just past a peak and beginning to decline, or emerging from a fallow period with a young squad ahead of schedule. Both are more interesting to watch than a settled contender, precisely because the outcome is genuinely uncertain.",
+          "Identifying them is straightforward: look at squad ages and cap counts. A team with an unusually young squad and few experienced players is at the start of something; one with an ageing spine and no obvious succession is at the end of it. Neither is likely to win the tournament, and both are worth following for reasons that have nothing to do with who does.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-role-of-the-captain',
+    sections: [
+      {
+        h: 'Leadership shows most clearly when things go wrong',
+        p: [
+          "The captaincy is essentially invisible when a team is winning comfortably. Its value appears specifically in adversity: a bad refereeing decision, a red card, conceding an early goal, a match slipping away in the final twenty minutes — moments when a group can either hold its structure or fragment.",
+          "This means that assessing a captain requires watching the specific minutes after something has gone wrong. Does the team reorganise quickly, do the players' heads stay up, does somebody visibly take responsibility for restoring order? Those are the observable outputs of the role, and they are available to anybody watching attentively during a difficult passage of a 2026 match.",
+        ],
+      },
+      {
+        h: 'A job that continues after the tournament',
+        p: [
+          "The captaincy does not end with the final whistle of a squad's last match. The captain typically speaks publicly on behalf of the group afterward, sets the tone for how a disappointment is processed, and in the case of elimination frequently manages the transition for younger players experiencing it for the first time.",
+          "For a squad exiting earlier than expected, this final piece of the role matters considerably. How a defeat is framed within the group in the hours afterward shapes what the players carry into the next cycle, and a captain who handles that period well has done something genuinely useful long after the football has stopped.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'small-nations-big-dreams',
+    sections: [
+      {
+        h: 'The home reception is the real event',
+        p: [
+          "Whatever happens on the pitch, a smaller nation's World Cup typically culminates in a homecoming reception that dwarfs anything the football produced — public celebrations, official receptions, and a squad treated as national figures regardless of having lost three matches.",
+          "This can look disproportionate from outside and is entirely proportionate from inside. The country is not celebrating results; it is celebrating having been present at the sport's central event alongside its largest nations, which for a small federation is a genuine and rare form of recognition.",
+        ],
+      },
+      {
+        h: 'Expansion made this possible for more of them',
+        p: [
+          "Everything in this article is a direct consequence of the format expansion covered elsewhere in this collection. The additional places went disproportionately to confederations whose members had historically been excluded, which means the number of nations able to experience what this article describes has increased substantially.",
+          "Whether that improves the tournament as a spectacle is genuinely arguable. What is not arguable is that it has extended a specific and significant experience to a considerably larger number of countries, and for the federations concerned that is the entire point of the change.",
+        ],
+      },
+      {
+        h: 'The upset that everybody remembers',
+        p: [
+          "Every World Cup produces at least one result in which a smaller nation defeats a substantially stronger one, and these are consistently among the most replayed moments of any tournament. The football involved is rarely spectacular — usually a disciplined defensive performance, a goalkeeper in exceptional form and one taken chance — and the significance is entirely in the mismatch.",
+          "For the winning nation these results become permanent national reference points, remembered and re-narrated for generations. It is worth watching the smaller nations' fixtures partly in the knowledge that one of them, somewhere in the 2026 group stage, is about to become that kind of memory for an entire country.",
+        ],
+      },
+      {
+        h: 'Not filler, by any reasonable measure',
+        p: [
+          "The dismissal of smaller nations as making up the numbers assumes that a World Cup's value lies solely in the quality of football at its very top end. By that standard the expansion is a dilution. By almost any other standard — global participation, the range of stories available, the number of countries with a genuine stake — it is straightforwardly an improvement.",
+          "Which standard matters is a legitimate disagreement rather than a settled question, and people on both sides of it are describing something real. But anybody arguing that the smaller nations contribute nothing has not looked at what their presence does for the countries involved, which is considerably more than it does for anybody's viewing experience either way.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-makes-a-tournament-team',
+    sections: [
+      {
+        h: 'The knockout round is a different competition',
+        p: [
+          "A team that navigates a group stage successfully has demonstrated one set of qualities; the knockout rounds test a different set. Group matches reward consistency and the ability to beat weaker opposition efficiently, while knockouts reward the capacity to survive a single bad ninety minutes against a good team without being eliminated by it.",
+          "This is why group-stage form is such a poor predictor of knockout performance. Teams that cruised through their group with three comfortable wins are frequently eliminated in the first knockout match by opponents who scraped through, because the qualities being examined changed entirely between one round and the next.",
+        ],
+      },
+      {
+        h: 'Luck exists and nobody likes admitting it',
+        p: [
+          "An honest account of tournament teams has to acknowledge that a substantial amount of variance is simply chance: a deflection, an injury at the wrong moment, a marginal offside call, the half of the bracket a team landed in. Two identical teams can produce very different tournaments through nothing either did.",
+          "This does not make the qualities described in this article irrelevant. It means they shift probabilities rather than determining outcomes, and that the winning team is best understood as one that gave itself good odds and then had them come in. Analysts who present a champion's qualities as a complete explanation are overfitting to a single outcome.",
+        ],
+      },
+      {
+        h: 'The composite picture',
+        p: [
+          "Assembling everything: a tournament team is adaptable enough to handle varied opponents, deep enough to absorb attrition, experienced enough to recognise the changing pressure of each round, unified enough to commit fully to a plan, and durable enough to win when playing badly. None of these is glamorous and none appears in a highlights package.",
+          "The consistency with which champions display them, across very different eras and footballing cultures, is the strongest argument that these qualities are genuinely causal rather than retrospectively imposed. Talent gets a team to the tournament; this list is what determines how long it stays.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'managing-a-squad-over-a-month',
+    sections: [
+      {
+        h: 'The base camp becomes the squad\'s world',
+        p: [
+          "For five weeks a squad's entire existence is compressed into a training facility, a hotel and a series of airports and stadiums. The physical environment of the base camp therefore matters more than its facilities list suggests — natural light, communal spaces, somewhere to be alone, distance from constant supporter presence.",
+          "Federations that have been through this repeatedly select bases with these considerations weighted heavily alongside pitch quality. A technically excellent facility where players feel confined produces a worse month than a slightly inferior one where they do not, and squads have reported base camp environment as a genuine factor in how a tournament felt.",
+        ],
+      },
+      {
+        h: 'Boredom is a real management problem',
+        p: [
+          "Between the structured training, treatment and travel, a World Cup camp contains a substantial amount of unfilled time, and managing it is a genuine issue. Players describe long afternoons with nothing to do, in a hotel, far from home, for weeks — conditions that erode mood regardless of how the football is going.",
+          "Squads address this with organised activities, communal games, competitions between players and structured downtime, all of which sounds trivial and consistently appears in accounts of well-functioning camps. The alternative is twenty-six competitive people alone with their phones for five weeks, which is not a recipe for collective resilience.",
+        ],
+      },
+      {
+        h: 'The whole month, judged in one week',
+        p: [
+          "The cruel arithmetic of squad management is that a month of excellent work is judged entirely by what happens in the final week, and a month of poor management can be obscured by a fortunate run. The relationship between the process and the outcome is real but noisy, and it is measured by everybody using the only number available.",
+          "This is worth bearing in mind when a manager is praised or condemned after a tournament. Much of what determined how his squad finished happened in hotel corridors and training-ground scheduling decisions across five weeks, and almost none of it is visible in the evidence anybody is using to make the judgement.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'rebuilding-after-a-golden-generation',
+    sections: [
+      {
+        h: 'Rebuilding is the normal state, not the exception',
+        p: [
+          "It is worth reframing the whole subject: for most footballing nations, most of the time, some version of rebuilding is simply what is happening. Golden generations are rare and brief, and the years between them — developing players, integrating them, establishing an identity — constitute the overwhelming majority of any nation's footballing history.",
+          "Treating the rebuild as an unfortunate interlude between peaks therefore inverts the actual proportions. The work described in this article is the ordinary condition of international football, and the tournaments a nation genuinely contends in are the exceptional periods that the ordinary work occasionally produces.",
+        ],
+      },
+      {
+        h: 'The nations that never really rebuilt',
+        p: [
+          "Football history includes several countries that reached a genuine peak, failed to manage the transition, and spent decades subsequently trying to recover — appointing managers in rapid succession, recalling veterans, changing direction with each disappointing campaign, and never establishing the continuity that a rebuild requires.",
+          "These are the cautionary examples that make the patient approach worth defending. A nation that accepts four difficult years can be competitive again within a cycle; one that refuses to accept any difficult years can spend twenty in the same place. The choice is genuinely between short-term pain and long-term decline, and it is made by federations rather than by coaches.",
+        ],
+      },
+      {
+        h: 'The supporters have a role in this',
+        p: [
+          "A rebuild requires public patience, and public patience is not something a federation can manufacture. Supporters who understand that a fallow period is the price of renewal make a difficult strategy survivable; supporters who demand immediate improvement after every defeat make it politically impossible regardless of the federation's intentions.",
+          "This is one of the few areas where the audience genuinely affects outcomes. A national football culture that has internalised how rebuilding works, and that judges a transitional team on the right markers rather than purely on results, gives its federation room to do the thing that actually produces the next competitive generation.",
+        ],
+      },
+      {
+        h: 'A cycle rather than a story',
+        p: [
+          "The framing that helps most is thinking in cycles rather than in narratives of rise and fall. A nation is always somewhere in a repeating process — developing, integrating, peaking, declining, rebuilding — and identifying where a team sits in that cycle is considerably more informative than knowing its current ranking.",
+          "Applied to 2026, this means several teams whose results look disappointing are exactly where they should be, and several whose results look strong are closer to the end of something than the beginning. Knowing the difference is what separates informed disappointment from the kind that gets managers sacked at precisely the wrong moment.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-role-of-the-captain',
+    sections: [
+      {
+        h: 'Two captains, one match',
+        p: [
+          "Something rarely noticed: every match features two captains performing the same role in opposition, and the interaction between them shapes how the match is conducted. Captains who establish an early mutual understanding — about protests, about time-wasting, about how disputes will be handled — frequently preside over calmer matches than those who do not.",
+          "Referees are acutely aware of this and will occasionally bring both captains together to address an escalating situation, on the reasoning that two players who can control their own teams are more effective than an official attempting to control twenty-two. It is one of the more genuinely functional pieces of authority the armband carries.",
+        ],
+      },
+      {
+        h: 'The captain in a squad of stars',
+        p: [
+          "A specific difficulty arises in squads containing several players of enormous individual stature, where the captain may not be the most influential figure in the dressing room regardless of who wears the armband. Formal and informal authority can sit with different people, and the gap between them is a recognised source of dysfunction.",
+          "Managers handle this by either aligning the two — giving the armband to whoever actually commands the room — or by establishing the leadership group described earlier so that influence is formally distributed. What does not work is appointing a nominal captain while genuine authority sits elsewhere unacknowledged, which produces exactly the ambiguity a squad under pressure cannot afford.",
+        ],
+      },
+      {
+        h: 'Why it matters more at a World Cup',
+        p: [
+          "At club level a captain works with a group he sees daily across a season, with time to build relationships gradually and correct mistakes. A tournament captain has weeks, under maximum pressure, with a squad assembled from players who spend most of the year elsewhere — which compresses the same job into a fraction of the time.",
+          "This is why international captaincy is genuinely harder than the club equivalent, and why the players who do it well are frequently those with long tenure in the national squad rather than those with the most impressive club credentials. Accumulated relationships are the resource the role runs on, and they cannot be assembled quickly.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'small-nations-big-dreams',
+    sections: [
+      {
+        h: 'The pressure they do not carry',
+        p: [
+          "One genuine asymmetry favouring smaller nations is that failure carries no cost. A team expected to lose three matches and losing three matches has met expectations, while its opponents face genuine consequences for dropping points — which produces the fearlessness this article describes and which is entirely rational rather than merely spirited.",
+          "This asymmetry is worth understanding because it explains why upsets cluster in specific circumstances: a favourite needing a result against an opponent with nothing to lose, late in a group stage, is the standard configuration for the tournament's most memorable results. The psychology is structural rather than accidental.",
+        ],
+      },
+      {
+        h: 'A tournament that includes everybody',
+        p: [
+          "The founding argument for the World Cup, discussed elsewhere in this collection, was that football belongs to the whole world. The presence of smaller nations is not a concession to that principle but its actual implementation, and a tournament restricted to the strongest thirty-two teams would be a different and considerably narrower event.",
+          "Whether the expanded field produces better football is a fair question with a genuinely contested answer. Whether it produces a more complete expression of what the competition was created to be is not really in doubt, and the smaller nations are precisely where that distinction is visible.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-makes-a-tournament-team',
+    sections: [
+      {
+        h: 'The eleven that finishes matters as much as the eleven that starts',
+        p: [
+          "With five substitutions available, a tournament team is genuinely selecting two teams: the one that starts and the one that finishes. Champions increasingly get decisive contributions from players introduced after the hour, and squads built with that in mind field different personnel in the final third of matches by design rather than by necessity.",
+          "This is worth watching for during 2026 as a marker of how well a squad has been constructed. A team whose substitutions visibly raise its level is deep in the way this article describes; one whose changes are damage limitation is relying on eleven players in a competition that no longer permits it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'managing-a-squad-over-a-month',
+    sections: [
+      {
+        h: 'What the players remember afterwards',
+        p: [
+          "Accounts from squads that went deep into tournaments consistently emphasise the camp rather than the matches — the atmosphere among the group, the small rituals that developed, the sense of a shared undertaking. The football is described in detail; the month is described with affection.",
+          "This is a reasonable measure of whether squad management worked. A group that finished a tournament genuinely closer than it started, regardless of results, was well managed; one that dispersed with relief was not, however far it progressed. The month is what the players actually live through, and it is largely the manager's construction.",
+        ],
+      },
+      {
+        h: 'Everything compounds',
+        p: [
+          "The central insight of squad management is that nothing in it produces a visible effect on its own. One well-managed recovery day, one substitution that saved twenty-five minutes of load, one afternoon that kept an unused player engaged — none of these decides anything, and the accumulation of several hundred of them across five weeks decides a great deal.",
+          "This makes it the least satisfying kind of work to do and the easiest to under-resource, since no individual decision can be shown to have mattered. It is also, on the evidence of successive tournaments, close to the strongest single predictor of which squads are still functioning properly when the tournament reaches its final week.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-makes-a-tournament-team',
+    sections: [
+      {
+        h: 'Why the best side does not always win, restated',
+        p: [
+          "The article's title question has an answer that becomes clearer once all of this is assembled: the World Cup does not measure which team is best in general, it measures which team best solves the specific problem of seven matches in five weeks against varied opponents under maximum pressure. Those are different questions with different answers.",
+          "A team could plausibly be the strongest in the world on any given day and still be poorly equipped for that specific problem — insufficiently deep, tactically inflexible, psychologically brittle in knockout football. The trophy goes to whoever answers the question the tournament actually asks, which is why the answer regularly surprises people who were assessing something else.",
+        ],
+      },
+      {
+        h: 'A short list to keep during 2026',
+        p: [
+          "Reduced to something usable: adaptability, depth, temperament, tactical continuity, and the ability to win badly. Any team clearing all five is a genuine contender; any team failing two or more is likely to exit earlier than its reputation suggests, regardless of what the pre-tournament rankings say.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'rebuilding-after-a-golden-generation',
+    sections: [
+      {
+        h: 'How long a proper rebuild actually takes',
+        p: [
+          "The realistic timescale is longer than most public discussion allows. Integrating a new generation into a senior international team, establishing an identity and reaching genuine competitiveness typically spans two full tournament cycles — roughly eight years — rather than the single cycle federations frequently allocate before losing patience.",
+          "This mismatch between the required timescale and the tolerated one is the central structural problem of international football management. Managers are appointed on four-year horizons to complete eight-year projects, which guarantees that most rebuilds change hands partway through and lose exactly the continuity they depend on.",
+        ],
+      },
+      {
+        h: 'What to watch for in a transitional team',
+        p: [
+          "A team in mid-rebuild at 2026 will show recognisable markers: several players with fewer than fifteen caps in the starting eleven, a visible gap in experience between a small veteran core and everybody else, and performances that are structurally sound but lack the composure that only tournament exposure provides.",
+          "These teams frequently lose narrowly to better opposition and then look transformed two cycles later with essentially the same players. Watching one in 2026 is watching a preview of a team that may be genuinely dangerous by the tournament after next, which is a different and quite satisfying kind of interest.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-role-of-the-captain',
+    sections: [
+      {
+        h: 'The armband is not the leadership',
+        p: [
+          "The conclusion this article arrives at is that the armband marks leadership rather than conferring it. A player who commands genuine respect leads whether or not he is wearing it, and one who does not is not transformed by the strip of fabric — which is why captaincy appointments that ignore the dressing room's actual authority structure so reliably fail.",
+          "For a viewer, this means the interesting question during 2026 is not who is captain but who the players actually look to when a match is slipping. Those are frequently the same person and not always, and the gap between them tells you more about a squad than any team sheet does.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'small-nations-big-dreams',
+    sections: [
+      {
+        h: 'Where the next great story comes from',
+        p: [
+          "Every celebrated underdog run in the tournament's history began with a team that arrived expected to lose. The nations capable of producing 2026's version are already present in the draw, indistinguishable in advance from the ones that will simply lose three matches — which is precisely what makes the group stage worth watching properly.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'managing-a-squad-over-a-month',
+    sections: [
+      {
+        h: 'The work nobody credits',
+        p: [
+          "When a team wins a World Cup the credit goes to the players and the head coach, and a substantial share of the actual work was done by physiotherapists, chefs, analysts and administrators whose names never appear anywhere. That is the normal and probably unavoidable distribution of recognition in the sport.",
+          "It is worth registering anyway, particularly during the closing rounds of 2026 when the visible difference between squads will be how much energy they have left. That difference was manufactured over five weeks by people who will not be on the pitch when it pays off, and who mostly prefer it that way.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
