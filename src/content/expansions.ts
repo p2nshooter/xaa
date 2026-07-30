@@ -3569,6 +3569,444 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'what-makes-a-golden-generation',
+    sections: [
+      {
+        h: 'Who actually applies the label',
+        p: [
+          "It is worth noticing that no golden generation has ever named itself. The phrase is applied from outside — by media, by federation marketing, occasionally by a president looking to sell optimism — and it is applied to players who are typically in their early twenties and have achieved nothing at senior international level yet. The label describes potential and is then judged against results.",
+          "This matters because the players carry a burden they did not create and cannot decline. Several members of famously unfulfilled generations have spoken afterwards about the specific difficulty of being publicly designated as historically significant before having done anything, and about how each subsequent tournament was framed not as an opportunity but as another chance to fail an expectation somebody else set.",
+        ],
+      },
+      {
+        h: 'Peaking together is the structural trap',
+        p: [
+          "The mechanical problem at the heart of most failures is simple: a cohort born within a few years of each other reaches its physical peak within a few years of each other, which gives a federation roughly two tournament cycles to convert. If the first attempt comes too early and the second comes just past the peak, the window closes without ever having been properly open.",
+          "This is why the successful generations discussed in this article looked less like a single cohort and more like a spine with continuous replacement around it. A squad in which the golden players are aged across six or seven years, rather than three, has a substantially longer effective window and does not decline all at once — and that spread is a deliberate selection choice made years before anybody knows whether it was correct.",
+        ],
+      },
+      {
+        h: 'The manager who has to drop a national hero',
+        p: [
+          "The most reliable predictor identified in this article — whether the coach has genuine authority to omit a star — is worth examining as a practical matter. It requires a federation prepared to back a manager through the resulting public reaction, a dressing room in which the omitted player does not become a destabilising presence, and a manager willing to spend enormous personal capital on a single selection.",
+          "Very few managers of golden generations have possessed all three conditions simultaneously. Where they have, the results have been striking; where the manager has instead built a team designed to accommodate every reputation, the outcome has been consistent and disappointing. It is less a tactical insight than an institutional one: the question is really about who holds power inside a federation, and that is decided long before a tournament begins.",
+        ],
+      },
+      {
+        h: 'The role players nobody writes about',
+        p: [
+          "Every generation that delivered contained several players who were not part of the golden narrative at all — a holding midfielder whose job was to run and destroy, a full-back selected for defensive reliability over attacking output, a striker who pressed relentlessly and scored modestly. These selections are frequently criticised at the time as evidence that the manager is not maximising the available talent.",
+          "They are usually the reason it worked. A team composed entirely of players who want the ball has nobody to win it, and a squad of creators produces a shape in which everybody occupies the same attractive spaces. The unglamorous selections are not a dilution of a golden generation but the structure that permits it to function, and their absence is among the clearest early warning signs of a campaign heading toward disappointment.",
+        ],
+      },
+      {
+        h: 'The accumulating psychological cost',
+        p: [
+          "Sports psychologists who have worked with international squads describe tournament failure as cumulative rather than discrete. A generation that has lost a quarter-final on penalties, then a semi-final to a late goal, then a group-stage match it should have won, arrives at its next tournament carrying all three — and the specific damage is not to confidence in ability but to belief that the outcome is controllable.",
+          "This produces a recognisable in-match signature: a team that plays well until the score becomes tight, then visibly reverts to caution and starts protecting rather than pursuing. Watching for that moment during 2026 in the squads carrying this history is one of the more genuinely revealing things available to a viewer, because it exposes something the pre-match analysis cannot measure.",
+        ],
+      },
+      {
+        h: 'When the label finally comes off',
+        p: [
+          "There is a specific and slightly poignant moment at which a golden generation stops being one. It is not a defeat but a squad announcement — the first tournament list in which the core names have thinned to two or three, surrounded by players who were children when the label was applied. The generation ends administratively rather than dramatically.",
+          "Federations handle this transition with wildly varying grace. Some manage a genuine handover in which the remaining veterans mentor the incoming group; others cling on for one cycle too long and then clear the squad abruptly, leaving no continuity at all. The 2026 tournament will feature at least one squad visibly in the middle of this process, and how it is being handled is legible from the team sheet.",
+        ],
+      },
+      {
+        h: 'The unfair comparison at the heart of it',
+        p: [
+          "It is worth stating plainly that the golden generation framing is analytically poor. It compares squads across eras and confederations, ignores the strength of contemporaneous rivals, and treats knockout football's substantial randomness as a verdict on quality. A generation that lost three tournaments on penalties has not demonstrated a character flaw; it has demonstrated the variance of coin flips.",
+          "A fairer assessment would weigh performance against the difficulty of the specific draws, the quality of the opponents who eliminated them, and the margins involved. Applied honestly, that assessment redeems several generations remembered as failures — which does nothing for the players who lived through it, but is worth keeping in mind before repeating the standard verdict about any squad at the 2026 tournament.",
+        ],
+      },
+      {
+        h: 'What to watch for this time',
+        p: [
+          "Applying everything above to 2026 produces a short diagnostic. Look at the age spread of the key players: clustered or distributed? Look at whether the shape survived qualifying unchanged or was rebuilt to accommodate a returning star. Look at whether the squad contains genuine role players or only talent. And look at how the team behaves in the seventy-fifth minute of a tight match, which reveals whatever scar tissue the previous cycle left.",
+          "A generation answering well to those questions is a genuine contender regardless of how it is ranked. One answering badly will probably produce a tournament that gets discussed for years in exactly the terms this article has been describing — and the diagnosis will have been available to anybody watching carefully from the opening fixture.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-national-teams-build-identity',
+    sections: [
+      {
+        h: 'The coaching curriculum is the real mechanism',
+        p: [
+          "If national styles come from infrastructure rather than temperament, the specific infrastructure is worth naming: coaching education. What a federation requires its youth coaches to learn, what it certifies, and what it tells them to prioritise at each age group determines what a generation of children practises thousands of times before anybody has selected them for anything.",
+          "This is why federations that undertook deliberate stylistic reinvention did so by rewriting coaching qualifications rather than by hiring a national team manager with a philosophy. The manager works with players already formed; the curriculum forms them. A federation genuinely committed to changing how its country plays is looking at a fifteen-year project, and the ones that have succeeded understood that from the outset.",
+        ],
+      },
+      {
+        h: 'What a national league teaches without meaning to',
+        p: [
+          "Beyond formal coaching, the dominant domestic league shapes players continuously through the demands it makes. A league that rewards physical intensity and direct play develops players optimised for those conditions; one that rewards technical retention under pressure develops a different profile — and this happens regardless of what any curriculum specifies, simply because players adapt to what succeeds around them weekly.",
+          "This creates a tension for federations attempting stylistic change: the academy can teach one thing while the senior domestic game rewards another, and the senior game usually wins. Nations that have successfully shifted identity generally changed both together, which is considerably harder than changing either alone and explains why genuine stylistic reinvention is rare rather than routine.",
+        ],
+      },
+      {
+        h: 'Where the players actually learn matters more than ever',
+        p: [
+          "A complication for the whole notion of national identity is that a modern international squad is frequently developed almost entirely abroad. A player who left at sixteen for a foreign academy and has spent a decade in another country's league has been formed by that system, not his passport country's — and a squad composed largely of such players is, developmentally speaking, an assembly of several different footballing educations.",
+          "This is the mechanism behind the blurring described in this article, and it operates unevenly. Nations that retain their best young players domestically preserve a more coherent identity; those that export them at fifteen assemble squads that must find a shared language during short international camps. Neither is better, but they produce measurably different teams, and the difference is visible in how quickly a squad settles into a recognisable pattern of play.",
+        ],
+      },
+      {
+        h: 'The clichés were never wholly accurate',
+        p: [
+          "It is worth pushing back on the received national stereotypes even as historical description. Nations remembered for defensive caution produced periods of adventurous, attacking football; nations celebrated for flair have fielded some of the most pragmatic teams in the tournament's history. The stereotype typically fixes on one famous team from one era and then gets applied to everything that country has done since.",
+          "This matters practically because the stereotypes actively mislead viewers about what to expect. A team arriving at 2026 will play the way its current coach and current squad dictate, which may bear no relation whatsoever to what its country is famous for. Approaching each side with the assumption that the cliché applies is a reliable way to misread the opening twenty minutes of a match.",
+        ],
+      },
+      {
+        h: 'Identity as something a crowd enforces',
+        p: [
+          "A national style persists partly because supporters expect it and punish departures from it. A manager who abandons a country's traditional approach faces criticism that is not about results but about betrayal of an idea, and that pressure is real enough to constrain genuine tactical choices — several managers have reverted to a more familiar style after public reaction rather than after any footballing failure.",
+          "This makes national identity partly a negotiated settlement between a coaching staff and a public rather than a purely technical decision. It also explains why identity changes so often follow a humiliating defeat: only a sufficiently painful result creates the public permission for a manager to attempt something the country would otherwise refuse to accept.",
+        ],
+      },
+      {
+        h: 'Diaspora players and the widening pool',
+        p: [
+          "An increasingly significant factor in national identity is the growing number of players eligible for multiple countries through ancestry or residence, and the active recruitment that follows. A federation that successfully attracts players developed in stronger foreign systems gains quality immediately, and simultaneously imports the footballing education those players received elsewhere.",
+          "The effect on identity is genuinely double-edged. It can accelerate a national team's technical development substantially, and it can also produce a squad whose style has little continuity with the domestic game beneath it. Several nations at 2026 will field teams substantially shaped by this dynamic, and it is one of the more consequential ways in which the old idea of a national style being grown at home has weakened.",
+        ],
+      },
+      {
+        h: 'What survives the blurring',
+        p: [
+          "Despite everything above, differences persist in places that are harder to coach away: tempo preferences, how a team behaves when protecting a narrow lead, whether risk in possession is culturally acceptable, and how a crowd reacts to caution. These are dispositions rather than tactics, and they survive globalisation better than specific patterns of play do.",
+          "This is what remains worth watching for in 2026. The formations will look increasingly similar across the tournament, but how a team chooses between a safe pass and an ambitious one at 1-0 up in the eightieth minute still reveals something specific about where it comes from — and that particular tell has proven remarkably durable against every homogenising force the modern game has applied to it.",
+        ],
+      },
+      {
+        h: 'Why this makes the group stage worth watching',
+        p: [
+          "The practical argument this article builds toward is for watching group matches involving teams you know nothing about. The knockout rounds concentrate the strongest sides, who increasingly share a common tactical language; the group stage is where the widest variety of footballing approaches is on display, including from nations whose domestic game most viewers will never otherwise encounter.",
+          "With forty-eight teams, the 2026 group stage offers more of this variety than any previous tournament. Treating it as a survey of how different parts of the world have chosen to play football, rather than as a qualifying obstacle before the interesting rounds, is both a better description of what it actually is and a considerably more rewarding way to spend the first fortnight.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-players-peak-for-a-tournament',
+    sections: [
+      {
+        h: 'The data national staffs now demand from clubs',
+        p: [
+          "The relationship between national federations and clubs over player data has changed substantially in the past decade. Load metrics that clubs once treated as proprietary — training volumes, high-speed running distances, accumulated sprint counts, injury history in granular detail — are now routinely shared with national medical departments under formal agreements, because both parties have concluded that a player breaking down helps nobody.",
+          "This cooperation is not universal and remains a genuine source of friction, particularly where a club is in a title race while a national team wants a player rested. But the direction of travel is clear, and the national staffs arriving at 2026 will have considerably more information about their players' accumulated season load than equivalent staffs had a decade ago — which is the necessary foundation for everything else in this article.",
+        ],
+      },
+      {
+        h: 'Heat acclimatisation is a real protocol',
+        p: [
+          "Adapting to significant heat is a specific physiological process with a defined timeline: the body increases plasma volume, begins sweating earlier and at a higher rate, and loses less salt, with the bulk of the adaptation occurring across roughly ten to fourteen days of controlled exposure. It cannot be rushed and it partially reverses if exposure stops.",
+          "For 2026 this makes base camp location a genuine performance decision rather than a logistical one, given how substantially conditions vary between the tournament's venues. A squad basing itself somewhere cool and then playing in significant heat is arriving unadapted; one that spends the pre-tournament period in comparable conditions to its group venues has completed a process its opponent may not have started.",
+        ],
+      },
+      {
+        h: 'Sleep is the intervention with the largest effect',
+        p: [
+          "Among all the recovery interventions available, sleep has the strongest evidence base and receives the most attention from modern performance staff. Squads travel with familiar bedding, control room temperature and light exposure carefully, manage caffeine timing around late kickoffs, and treat post-match sleep disruption — a genuine problem after an evening match ending near midnight — as a specific issue requiring management rather than an unavoidable cost.",
+          "The 2026 schedule complicates this considerably. Kickoff times built around global broadcast markets, combined with travel across multiple time zones between matches, produce circadian disruption that no protocol fully solves. Teams whose group draw keeps them within one time zone have an advantage over those criss-crossing the continent that is entirely invisible in any tactical analysis.",
+        ],
+      },
+      {
+        h: 'The player who arrives already finished',
+        p: [
+          "Every tournament features at least one high-profile player who is visibly unable to reproduce his club form, and the explanation is usually accumulated load rather than anything psychological. A player who has completed a long domestic season, a deep continental campaign and a full international qualifying schedule may have logged well over sixty competitive matches before the World Cup begins.",
+          "There is very little a national staff can do about this by the time the player reports. The taper can preserve what remains but cannot restore what has been spent, and a manager facing this situation is choosing between a diminished star and a fresher alternative — a decision with substantial political consequences and no reliable right answer. Watching for which managers make that call early in 2026 is genuinely instructive.",
+        ],
+      },
+      {
+        h: 'Why the friendlies matter more than they look',
+        p: [
+          "The pre-tournament friendlies that many supporters treat as meaningless serve a specific physiological purpose: they provide controlled competitive load at a point in the taper where a squad needs match intensity without match risk. Their results are close to irrelevant; their function is to give starters a defined number of minutes at a defined intensity on defined dates.",
+          "This explains selection patterns that otherwise look strange — a first-choice player removed at half-time of a friendly his team is losing, or a squad that appears to be experimenting when a cohesive performance would seem more useful. The staff is not trying to win; it is administering a dose. Understanding this makes the pre-tournament period considerably less confusing to follow.",
+        ],
+      },
+      {
+        h: 'The second week is where fitness separates',
+        p: [
+          "Physical differences between squads are rarely visible in the opening fixtures, when everybody is relatively fresh and adrenaline covers a great deal. They emerge in the second and third group matches and become decisive by the quarter-finals, at which point the accumulated effects of travel, heat, minutes and recovery quality produce visibly different levels of intensity between teams.",
+          "This is why judgements formed in the first week of a World Cup age so badly. A team that looked electric in its opening match and laboured by the round of 16 was probably not tactically found out; it was probably physically spent, having arrived at the tournament with less margin than its early performance suggested. The fitness story only becomes readable once enough football has accumulated to reveal it.",
+        ],
+      },
+      {
+        h: 'What five substitutions changed about all this',
+        p: [
+          "The expanded substitution allowance discussed elsewhere in this collection interacts directly with peaking. A manager can now distribute load across a match in a way that materially reduces the accumulated cost to his starters, taking a key player off after sixty-five minutes in a comfortable match rather than asking for ninety.",
+          "Across a seven-match run to a final, this represents a substantial saving — potentially the equivalent of two full matches of load removed from a first-choice player's tournament. The teams that use substitutions this way, rather than only reactively when a match demands it, arrive at the closing rounds in measurably better condition, and it is among the clearest examples of a rule change quietly rewarding the staffs who thought hardest about it.",
+        ],
+      },
+      {
+        h: 'What a viewer can actually see',
+        p: [
+          "The observable signals of condition are more reliable than they might seem. Watch the intensity of the first defensive action after a team loses possession, which fatigue degrades before anything else. Watch whether players are still making second and third recovery runs late in matches. Watch the body language during stoppages — a genuinely tired squad uses every available second.",
+          "By the knockout rounds these signals become quite stark, and a viewer paying attention can frequently identify the fresher team within twenty minutes regardless of the score. Given that freshness is among the strongest predictors of who progresses in the closing week of a World Cup, it is one of the more practically useful things to learn to see.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-modern-full-back-explained',
+    sections: [
+      {
+        h: 'The distance covered is genuinely the highest on the pitch',
+        p: [
+          "Tracking data across competitions consistently places full-backs at or near the top of total distance covered, and well ahead of most positions in high-intensity running specifically. The reason is structural: the position requires repeatedly covering the full length of the flank in both directions, and unlike a central midfielder's high total distance, much of the full-back's is sprinting rather than accumulating steadily.",
+          "This physical profile explains a great deal about how the position is managed. It is the role most aggressively rotated across a tournament, the one where a squad's depth is tested most severely, and the one where a decline in the closing twenty minutes is most visible — which is why so many goals in tournament football arrive from an attacking move down a flank in the final quarter of a match.",
+        ],
+      },
+      {
+        h: 'Full-back and wing-back are different jobs',
+        p: [
+          "The terminology gets used loosely, but the distinction matters. A full-back operates in a back four with a centre-back inside covering him and a defensive line to hold. A wing-back operates in a back three, has substantially more territory to cover vertically, and is expected to function as an auxiliary winger in attack while retreating to form a back five in defence.",
+          "The consequence is that these are not interchangeable players. A defensively excellent full-back may lack the engine or the attacking instincts for a wing-back role; an attacking wing-back may be positionally exposed in a back four with more defensive responsibility. When a manager switches between a back three and a back four during a 2026 match, watch specifically whether the wide players change, because frequently they must.",
+        ],
+      },
+      {
+        h: 'The one-on-one is a technical discipline',
+        p: [
+          "Defending a wide attacker in isolation is a specific craft that rewards technique over athleticism more than viewers assume. The core skills are body positioning that shows the attacker toward the touchline rather than the centre, delaying rather than committing, maintaining a distance close enough to contest but far enough to react, and resisting the instinct to dive in at the first feint.",
+          "This is why some full-backs who are not especially fast defend one-on-one extremely well, while quicker players are beaten repeatedly. Pace provides recovery insurance for mistakes; positioning prevents the mistakes. Coaches assessing a full-back for tournament football look first at the positional discipline, because recovery pace is worth less against elite attackers who need only half a yard.",
+        ],
+      },
+      {
+        h: 'Crossing is a more precise skill than it appears',
+        p: [
+          "The traditional attacking output of the position — the cross — has become considerably more specialised. Modern coaching distinguishes clearly between the early cross played behind a defensive line, the cut-back from the byline into the penalty spot, and the deep hanging delivery to the far post, and each is used against different defensive setups rather than being interchangeable.",
+          "Data on cross outcomes has driven this precision, with the cut-back from close to the byline consistently producing better chance quality than the deeper cross that dominated earlier eras. A full-back who can reach the byline and pull the ball back is therefore substantially more valuable than one who crosses from deeper positions, which has changed both how the position is coached and which players are selected for it.",
+        ],
+      },
+      {
+        h: 'Set pieces add another job',
+        p: [
+          "Full-backs frequently carry set-piece responsibilities that go unnoticed. Many are the designated deliverers for corners and wide free kicks, since the position develops precisely the crossing technique required. Defensively, they are commonly assigned to the near post or to guarding against the short corner, and increasingly to holding a position at the halfway line as counter-attack insurance while everybody else attacks the box.",
+          "That last role is a genuine tactical assignment rather than an oversight, and it is worth watching for during 2026 corners: the two players standing alone in the middle of the pitch while twenty others contest a set piece are there deliberately, and one of them is usually a full-back chosen for exactly the recovery pace that makes him useful in that specific job.",
+        ],
+      },
+      {
+        h: 'Where these players come from',
+        p: [
+          "A striking proportion of elite full-backs were something else first — converted wingers who added defensive discipline, or central midfielders moved wide for their passing range, or centre-backs shifted out for their pace. Genuinely native full-backs, developed in the position from childhood, are less common than for most roles.",
+          "This reflects how recently the position's requirements expanded. A player developed as a defender a decade ago was not necessarily taught the attacking skills the modern role demands, which created a supply gap that conversions filled. Academies have since adjusted, and the generation of full-backs emerging now is more likely to have been developed for the composite role from the start — which should, over the next cycles, raise the standard further.",
+        ],
+      },
+      {
+        h: 'Why four is the magic number in a squad',
+        p: [
+          "The recommendation to carry four full-backs in a twenty-six-player squad follows directly from everything above: the position is the most physically punishing, the most rotated, the most likely to accumulate suspensions through the tackles it requires, and the hardest to cover with a player from another position if both specialists on one side are unavailable.",
+          "A squad with two full-backs per side has genuine resilience; one with three total is one injury from improvising. When the 2026 lists are published, counting the full-backs is among the quickest reliable reads available on how seriously a coaching staff has thought about surviving seven matches in five weeks, and it takes about ten seconds.",
+        ],
+      },
+      {
+        h: 'The position that decides more matches than it gets credit for',
+        p: [
+          "For all the attention given to forwards and playmakers, a disproportionate share of tournament goals originate from the flanks, and a disproportionate share of defensive breakdowns occur in the space a full-back left or failed to cover. The position sits at the junction of a team's attacking width and its defensive vulnerability, which is precisely why it is so tactically overloaded.",
+          "Watching a 2026 match with attention specifically on the two full-backs — where they position in possession, who covers behind them, how they handle the wide duel — is among the most efficient ways to understand what both teams are actually trying to do. The information density in that one position is remarkable, and almost nobody watches it deliberately.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-number-ten-means-now',
+    sections: [
+      {
+        h: 'The pocket is a specific piece of ground',
+        p: [
+          "The space this role occupies — usually called the pocket or the half-space — is a definable area rather than a vague notion: the zone between the opponent's midfield line and defensive line, and between the centre-back and the full-back rather than directly central. It is valuable precisely because it sits in the seam between two defenders' responsibilities.",
+          "A defender stepping out of the back line to press it opens the space behind him; a midfielder dropping back to cover it abandons his own line. Well-organised defences have rehearsed answers to this problem, and the modern creator's job is largely about arriving in that seam at the moment the rehearsed answer is momentarily unavailable — which is why timing matters more in this role than raw technique.",
+        ],
+      },
+      {
+        h: 'How defences try to erase the role',
+        p: [
+          "The standard countermeasure is to compress the space vertically: hold a high defensive line, keep the midfield line close to it, and reduce the gap between them until there is no pocket to occupy. Executed well, this can remove a creator from a match almost entirely without anybody marking him, simply by eliminating the ground he needs.",
+          "The counter-counter is for the creator's teammates to attack the space behind that compressed line, forcing the defence to drop and reopening the gap. This is the invisible negotiation happening throughout most tournament matches involving a genuine playmaker, and watching whether the pocket exists at all — rather than watching the player himself — frequently explains why a celebrated creator has had a quiet evening.",
+        ],
+      },
+      {
+        h: 'The defensive tax, quantified',
+        p: [
+          "The claim that modern creators must earn their freedom through work is measurable rather than rhetorical. Pressing data across elite competitions shows attacking midfielders now recording pressure and counter-pressing numbers that would have been unthinkable for the equivalent role a generation ago, and coaches select partly on these figures.",
+          "The consequence is that genuinely gifted creators who cannot or will not perform this work have become substantially harder to select, and several players of obvious talent have found themselves excluded from squads for reasons that have nothing to do with their ability on the ball. It is the clearest example in modern football of a role's entry requirements changing faster than the popular conception of what the role is.",
+        ],
+      },
+      {
+        h: 'Why international football is a softer environment',
+        p: [
+          "The article's point about tournaments being kinder to pure creators deserves elaboration, because the mechanism is specific. Sophisticated pressing systems require enormous amounts of repetitive collective drilling — the triggers, the coordinated movements, the coverage behind — and national teams simply do not have the training time to install them to club standard.",
+          "The result is that international matches frequently feature less coordinated pressing and more settled defensive blocks, which produces exactly the slower, more positional football in which a between-the-lines passer flourishes. This is why players whose club managers deploy them cautiously sometimes look transformed for their countries, and it is a genuine structural difference rather than a matter of motivation.",
+        ],
+      },
+      {
+        h: 'The free kick specialist is usually this player',
+        p: [
+          "A practical footnote that matters more than it sounds: the creative midfielder is very often also the team's primary set-piece taker, which materially increases his influence on tournament football given how many knockout matches turn on dead balls. A player who is quiet in open play against a compressed defence may still decide a match from twenty-five yards.",
+          "This dual value is part of why managers persist with creators even in tactical systems that do not obviously accommodate them. The player is not only a source of open-play invention but the team's most reliable route to a goal in exactly the low-chance, tightly-contested matches where invention is hardest — which makes the selection considerably more defensible than the pressing statistics alone would suggest.",
+        ],
+      },
+      {
+        h: 'The shirt number stopped meaning anything',
+        p: [
+          "It is worth stating explicitly that the number on the back is now essentially decorative. Squad numbering at national level follows convention, seniority and availability rather than position, and the player performing the role this article describes will frequently wear something else entirely while the actual number ten is worn by a winger or a striker.",
+          "This is a small thing that causes real confusion for casual viewers, who reasonably assume the number indicates the job. The role is identified by behaviour, not by kit — the player teammates look for under pressure, who occupies the seam, who takes the free kicks — and learning to spot it by function rather than by number is the difference between following the tactical conversation and being puzzled by it.",
+        ],
+      },
+      {
+        h: 'The tournament tends to produce one',
+        p: [
+          "Across recent World Cups, a consistent pattern has emerged in which the tournament's most decisive individual has frequently been a creator operating in exactly this role rather than a pure goalscorer. Knockout football's structural properties — settled defences, low chance volume, matches decided by single moments — reward the player capable of manufacturing something from nothing more than they reward a finisher who needs chances created for him.",
+          "This makes identifying the likely candidates before 2026 begins a genuinely interesting exercise. The teams carrying a trusted creator with the license to operate in the pocket, and a manager willing to build around him rather than sacrificing him for an extra runner, are the teams best equipped for the specific kind of match that decides tournaments.",
+        ],
+      },
+      {
+        h: 'Watching for the moment it matters',
+        p: [
+          "The role's decisive contributions frequently arrive after long periods of apparent anonymity, which makes it easy to conclude a creator has been ineffective right up until the moment he settles the match. A player can have twenty-five quiet touches and one that produces a goal, and the twenty-five were often the mechanism by which the one became available.",
+          "The practical viewing advice is therefore patience with this specific position. Judging a creator on his involvement rate is a category error; the correct measure is what happens in the small number of moments when the pocket opens, and those moments are unevenly distributed across ninety minutes in a way that no other position's contribution is.",
+        ],
+      },
+      {
+        h: 'Why the role keeps being declared dead',
+        p: [
+          "Football has announced the extinction of the classical playmaker at least three separate times across recent decades, and each pronouncement was followed within a cycle or two by a tournament in which one decided everything. The pattern suggests the announcements were describing a temporary tactical fashion rather than a permanent structural change.",
+          "The underlying reason the role persists is that no system has yet solved the problem it exists to address: a well-organised defence must eventually be unlocked by somebody making a decision that the opposition did not anticipate, and no amount of collective structure manufactures that. As long as tightly-contested matches exist, teams will find room for a player whose specific job is imagining the pass nobody else saw.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-makes-a-golden-generation',
+    sections: [
+      {
+        h: 'The comparison to the teams they actually faced',
+        p: [
+          "Any honest assessment of a generation has to account for who else was playing at the time. A squad that reached three consecutive semi-finals during an era containing two of the strongest national teams in the sport's history has achieved something quite different from an identical record achieved against weaker contemporaneous fields, and the standard narrative almost never makes this adjustment.",
+          "Several generations remembered as underachievers were competing directly against the most dominant sides of their era, and lost to them narrowly and repeatedly. That is not the same as failing, and the distinction gets lost because the retrospective framing focuses on the trophy count rather than on the specific obstacles that stood between the squad and it.",
+        ],
+      },
+      {
+        h: 'A note for whoever gets labelled next',
+        p: [
+          "The label will be applied again during 2026, probably to a young squad that performs above expectation, and the cycle described in this article will begin afresh. What the history suggests is that the outcome will be determined less by the players so identified than by a series of decisions made around them over the following eight years — coaching continuity, willingness to refresh, whether the structure serves the talent or accommodates it.",
+          "That is worth remembering both as a viewer and, one hopes, inside the federations concerned. The gold is genuine and is rarely the variable that decides anything; what happens to it depends almost entirely on the setting it is placed in, and that setting is built by administrators rather than footballers.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-national-teams-build-identity',
+    sections: [
+      {
+        h: 'Identity is easiest to see when a team is losing',
+        p: [
+          "A team's genuine footballing identity is most visible when it is behind and running out of time, because that is the moment coaching instructions give way to instinct. Some teams accelerate and take risks; others become more controlled and patient; others abandon their structure entirely and revert to something older and simpler. What a side does at 1-0 down with fifteen minutes left is a considerably better guide to what it actually is than anything it does at 0-0.",
+          "This is worth watching for specifically during the 2026 group stage, when several teams will find themselves in exactly that position. The tactical identity a manager describes in press conferences is a statement of intent; the behaviour under pressure is what a generation of coaching and domestic football has actually produced, and the two are frequently not the same thing.",
+        ],
+      },
+      {
+        h: 'A tournament is a snapshot, not a portrait',
+        p: [
+          "One caution about everything in this article: a single tournament shows one squad under one manager across at most seven matches, which is thin evidence for conclusions about a country's footballing character. Nations change approach between cycles, sometimes radically, and the team that appears in 2026 may bear little resemblance to the one that appears in 2030.",
+          "The identities that genuinely persist do so across decades rather than tournaments, and identifying them requires a longer view than any single World Cup provides. Enjoy the variety on display in 2026 for what it is — a snapshot of where forty-eight footballing cultures happen to be right now — without mistaking it for a permanent statement about any of them.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-players-peak-for-a-tournament',
+    sections: [
+      {
+        h: 'The calendar problem nobody has solved',
+        p: [
+          "Everything in this article is ultimately a set of mitigations for a structural problem: the international match calendar asks players to contest a major tournament immediately after the most demanding club season in the sport's history, with no meaningful recovery period between them. Sports science can manage the consequences; it cannot remove the cause.",
+          "Player unions have raised this with increasing force, and the expansion of both club and international competitions has made the argument sharper rather than settling it. The 2026 tournament, with its additional knockout round, adds to the load rather than easing it — which means the peaking problem described throughout this article is getting harder, not easier, and the teams that manage it best will be rewarded accordingly.",
+        ],
+      },
+      {
+        h: 'The final week belongs to whoever is left standing',
+        p: [
+          "If one claim in this article deserves emphasis, it is that the team lifting the trophy is almost never the most impressive side of the opening fortnight. It is the one that arrived with enough physical margin to still be running in the closing week, which is a product of decisions made across the preceding eight months by people whose names never appear in match reports.",
+          "Recognising this changes how the early rounds should be watched. A dominant group-stage performance is genuinely less predictive than it feels, and a team grinding out modest results while visibly holding something back is frequently in a better position than the scoreline suggests. The tournament rewards endurance, and endurance is invisible until it is decisive.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-modern-full-back-explained',
+    sections: [
+      {
+        h: 'The overlap and underlap, briefly',
+        p: [
+          "Two specific attacking movements are worth being able to name. The overlap is the familiar one: the full-back runs outside his winger toward the touchline, stretching the defence horizontally and offering a crossing option. The underlap is the reverse — the full-back runs inside the winger, into the seam between full-back and centre-back, arriving in a more dangerous central area but with less width created.",
+          "Which one a team uses reveals its intentions. Overlaps suit teams looking to cross; underlaps suit teams looking to combine through the half-space and arrive at the byline for cut-backs. A side that uses both, alternating according to how the defence has adjusted, is displaying a genuinely sophisticated wide attacking plan, and it is visible to anybody who knows to watch which side of the winger the full-back runs.",
+        ],
+      },
+      {
+        h: 'The position with the shortest peak',
+        p: [
+          "Because the role is so physically demanding, full-backs tend to have a narrower peak window than most positions and frequently move inside to centre-back or into midfield as they age. A player who is world-class in the role at twenty-six can be visibly diminished at thirty-one, not through decline in technique but through the loss of the repeated high-speed running the job requires.",
+          "This has squad-building consequences for national teams, which cannot simply buy replacements. A federation whose two first-choice full-backs are the same age is facing a simultaneous decline it may struggle to cover, and the ones managing this well are integrating younger players in the position several cycles before the need becomes urgent.",
+        ],
+      },
+      {
+        h: 'The least appreciated position in the sport',
+        p: [
+          "For all the tactical significance described throughout this article, full-back remains the position least likely to win individual awards, least discussed in transfer speculation relative to its importance, and least understood by casual viewers. A full-back has an outstanding tournament by being unnoticed, which is a genuinely difficult basis on which to build a public reputation.",
+          "That obscurity is worth correcting deliberately during 2026, if only because the position rewards attention so richly. The full-backs will cover more ground than anybody else on the pitch, face the opposition's most dangerous attackers alone, and carry a substantial share of both teams' attacking output — and almost nobody watching will be looking at them.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-number-ten-means-now',
+    sections: [
+      {
+        h: 'What replaced the role in teams that abandoned it',
+        p: [
+          "Teams that genuinely dispensed with a creative midfielder did not simply remove the function; they distributed it. The creative burden was spread across a deep-lying passer who initiates from further back, wide forwards who cut inside to combine, and a striker who drops to link play — three partial creators replacing one specialist.",
+          "The trade is legible: distributed creativity is harder for an opponent to neutralise, since there is no single player to mark out of the match, but it is also less likely to produce the individual moment of invention that unlocks a genuinely well-organised defence. Teams choose according to what they expect to face, and at a World Cup — where they will face several well-organised defences — the specialist retains real value.",
+        ],
+      },
+      {
+        h: 'The player everybody remembers afterwards',
+        p: [
+          "There is a reason this role generates so much affection despite its declining tactical fashionability. The contributions it produces — the pass nobody anticipated, the touch that changes a match's direction — are exactly the kind that lodge in memory, while the diligent pressing and positional discipline that modern football values more highly are, by nature, forgettable.",
+          "This creates a persistent gap between how coaches value the role and how supporters do, and it is worth being aware of when reading any argument about whether a particular creator should start. Both sides are usually measuring something real; they are simply measuring different things, and the disagreement is about what football is for rather than about the player.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-national-teams-build-identity',
+    sections: [
+      {
+        h: 'What the manager can and cannot change',
+        p: [
+          "A national manager inherits a player pool formed over fifteen years and has perhaps twenty training days per year to work with it. This constrains identity change severely: he can adjust shape, emphasis, pressing height and risk appetite, but he cannot install a fundamentally different technical culture in players who were developed elsewhere.",
+          "This is why appointing a manager with a strong footballing philosophy does not reliably change how a country plays. The philosophy meets a player pool that may or may not be capable of executing it, and the result is frequently a compromise that satisfies nobody. The managers who succeed internationally tend to be the ones who diagnosed what their pool could actually do and built toward that rather than toward an ideal.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-players-peak-for-a-tournament',
+    sections: [
+      {
+        h: 'Recovery between matches is the real constraint',
+        p: [
+          "The tournament schedule allows roughly three to four days between group matches and similar gaps in the knockout rounds, which is enough for partial but not complete recovery from a full ninety minutes at tournament intensity. The deficit accumulates, which is precisely why the rotation and substitution strategies described throughout this article matter so much.",
+          "For a squad travelling between venues in different time zones between those matches, the effective recovery window shrinks further, since a proportion of it is spent in transit. This is the specific mechanism by which the 2026 geography converts into a competitive variable, and it will be most visible in the teams whose group draw scattered them across the continent.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
