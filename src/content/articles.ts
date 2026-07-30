@@ -2,6 +2,7 @@ import type { Article, Category } from './types';
 import AUTO_ARTICLES from "./auto-articles.json";
 import { ARTICLES_BATCH2 } from './articles-batch2';
 import { ARTICLES_BATCH3 } from './articles-batch3';
+import { applyExpansions } from './expansions';
 
 /**
  * xaa.es — World Cup 2026 football magazine. Original, independent editorial:
@@ -692,3 +693,5 @@ ARTICLES.push(...ARTICLES_BATCH3);
 
 // Autonomous content bot output (committed by the ulyah.com Orchestra).
 ARTICLES.push(...(AUTO_ARTICLES as unknown as Article[]));
+
+applyExpansions(ARTICLES);
