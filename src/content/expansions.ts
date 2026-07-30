@@ -3128,6 +3128,447 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'how-var-works-at-the-world-cup',
+    sections: [
+      {
+        h: 'Who is actually in the room',
+        p: [
+          "The phrase video assistant referee describes a team rather than an individual. A typical World Cup review operation involves a lead video assistant, one or more assistant video assistants with defined specialisms — one dedicated to offside, another monitoring the broadcast feed for incidents the others may miss — and a group of replay operators whose job is to locate and queue the relevant angles within seconds of an incident occurring.",
+          "All of these people are themselves qualified referees, not technicians, which is a deliberate design choice: interpreting whether a challenge was reckless requires refereeing judgement rather than video expertise. They work from a centralised facility with feeds from every camera at the venue, and the speed of a review depends substantially on how quickly the replay operators can surface the decisive angle rather than on how long anybody spends deliberating.",
+        ],
+      },
+      {
+        h: 'The check that happens on every single goal',
+        p: [
+          "A detail many viewers miss is that every goal is reviewed, always, whether or not anything appeared contentious. The moment a goal is scored, the video team silently examines the attacking phase for offside, handball, a foul in the build-up and whether the ball left the field — and in the overwhelming majority of cases this check completes within a few seconds and nobody watching ever learns it happened.",
+          "This explains a phenomenon that otherwise looks arbitrary: why some goals are confirmed instantly and others produce a lengthy delay. The process is identical in both cases; what differs is whether the silent check found something worth examining more closely. The visible reviews are the small minority in which the routine background check surfaced a genuine question.",
+        ],
+      },
+      {
+        h: 'How far back the review can reach',
+        p: [
+          "One of the more misunderstood elements is how far into the build-up a review may look. The relevant concept is the attacking possession phase: officials may examine back to the point at which the attacking team gained control of the ball, but not further. If a defender committed a foul three passes earlier while his team still had possession, that incident sits outside the reviewable window regardless of how clearly a replay shows it.",
+          "The boundary exists to prevent reviews from unravelling indefinitely, and it produces occasional outcomes that feel unjust — a goal standing despite a visible earlier infringement, because the infringement fell on the wrong side of the phase boundary. Understanding where that line sits removes a substantial share of the confusion viewers experience when a review appears to ignore something obvious.",
+        ],
+      },
+      {
+        h: 'The principle of the referee call',
+        p: [
+          "Refereeing instruction places heavy weight on a concept usually described as the referee's call: where an incident is genuinely marginal and the on-field official has made a defensible decision, that decision stands regardless of what the video team would have decided independently. The threshold for intervention is deliberately set high, and it is set that way to preserve the on-field referee's authority over the match.",
+          "Viewers frequently experience this as inconsistency, because two similar incidents can produce different outcomes when both original decisions were defensible. It is more accurately understood as the system working exactly as designed: the objective was never to make every marginal call identical, but to remove the small number of decisions that no reasonable official could support.",
+        ],
+      },
+      {
+        h: 'Factual and subjective are handled differently',
+        p: [
+          "The single most useful distinction for following a review is whether the question at hand is factual or interpretive. Offside position, whether the ball crossed a line, and whether an incident occurred inside or outside the penalty area are factual: they have correct answers, the video team determines them, and the referee normally accepts the finding without visiting the monitor.",
+          "Whether a challenge merits a red card, whether a handball was natural, and whether contact was sufficient for a penalty are interpretive, and these require the referee to view the footage personally before deciding. This is why some reviews conclude with the referee simply signalling a decision and others involve the walk to the screen — the difference reveals what kind of question was being asked.",
+        ],
+      },
+      {
+        h: 'The delays are added back, mostly',
+        p: [
+          "A common complaint is that reviews steal playing time, and the formal answer is that time lost to a review is added to the end of the half. In practice this has contributed to the substantially longer periods of added time now routine at major tournaments, which is one reason 2026 matches will frequently run considerably beyond the nominal ninety minutes.",
+          "There is a legitimate secondary concern that the accounting does not fully capture: a review interrupts rhythm and momentum in a way that returning the same number of seconds later does not restore. A team pressing hard when a lengthy review halts play does not resume in the same physical or psychological state, and no amount of added time compensates for that particular loss.",
+        ],
+      },
+      {
+        h: 'Consistency across a genuinely global refereeing pool',
+        p: [
+          "The specific challenge for 2026 is scale. A 104-match tournament requires far more refereeing crews than previous editions, drawn from every confederation and from officiating cultures with meaningfully different traditions about physicality, advantage and card thresholds. Producing consistent application across that pool is the hardest administrative problem the officiating operation faces.",
+          "The response has been extensive pre-tournament seminar work in which officials review the same clips and align on thresholds together, alongside centralised video operations that provide a common reference point throughout. It reduces variation without eliminating it, and any perceived inconsistency between matches early in the tournament is at least as likely to reflect this genuine coordination challenge as any individual error.",
+        ],
+      },
+      {
+        h: 'What review still cannot reach',
+        p: [
+          "It is worth restating the limits plainly, because most frustration with the system stems from expecting it to do things it was never permitted to do. A second yellow card cannot be reviewed. A foul in midfield that led to nothing cannot be reviewed. A corner wrongly awarded cannot be reviewed, even if a goal follows directly from it, because the error occurred outside the reviewable categories.",
+          "These exclusions are choices rather than technical limitations, made to keep the system from stopping the game continuously. Whether the boundaries sit in the right place is a reasonable argument to have; what is not reasonable is treating an unreviewed error as evidence that the system failed, when the system was explicitly designed never to look there in the first place.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'group-stage-tiebreakers-explained',
+    sections: [
+      {
+        h: 'Why goal difference comes before head-to-head',
+        p: [
+          "The ordering of the criteria is not arbitrary, and the decision to place overall goal difference above head-to-head results is a genuine philosophical choice with consequences. It means a team that lost to a direct rival can still finish above them by having performed better against the rest of the group, which strikes some observers as unjust and others as entirely correct.",
+          "The argument for the current order is that a group is a single competition of three matches rather than a series of individual duels, and that a team which beat the group's weakest side 4-0 has demonstrated something real that a team which won 1-0 has not. Other competitions, including several continental championships, order these criteria differently — so a team's fate can genuinely depend on which rulebook the tournament happens to use.",
+        ],
+      },
+      {
+        h: 'Fair play points, and the tournament that used them',
+        p: [
+          "The fair play criterion — comparing accumulated yellow and red cards, with fewer being better — is widely treated as a curiosity that never actually matters, right up until it does. It has decided a World Cup group placing at least once in the tournament's modern history, sending one team through and another home on the basis of disciplinary record after every footballing criterion had been exhausted.",
+          "That precedent changed how coaches think about late-group discipline. A cautious tactical foul in the eightieth minute of a match already won is no longer free if the group is tight, and staff genuinely monitor card counts against rivals during the final round of fixtures. It is among the least glamorous forms of tournament management and occasionally among the most consequential.",
+        ],
+      },
+      {
+        h: 'The parallel kickoff exists because of one scandal',
+        p: [
+          "The requirement that the final round of group matches kick off simultaneously is not a scheduling convenience but a direct institutional response to a notorious historical episode in which two teams, both aware that a particular scoreline would send both through at a third team's expense, played out precisely that result in front of an appalled crowd.",
+          "Every subsequent World Cup has scheduled the last group fixtures at the same time specifically to make that kind of collusion impossible, since neither team can know the other group result while playing. It is a good example of how a competition's rules accumulate as scar tissue from specific incidents, and the simultaneous kickoff that now feels natural was a deliberate remedy rather than an obvious design.",
+        ],
+      },
+      {
+        h: 'The arithmetic that decides which half of the bracket',
+        p: [
+          "Beyond survival, the tiebreakers determine group position, and group position determines the knockout path. Winning a group versus finishing second frequently means facing a materially different opponent in the next round and landing in a different half of the bracket, potentially avoiding a tournament favourite until a semi-final rather than meeting them immediately.",
+          "This produces genuinely complicated incentives in the final round of matches, and occasionally the theoretical possibility that a team is better served by a specific lesser result. Coaches almost never act on this openly, both because the bracket calculation is unreliable that far out and because the reputational cost of appearing to manipulate a result is severe — but the arithmetic is real and analysts discuss it openly during the final group matchday.",
+        ],
+      },
+      {
+        h: 'How broadcasters make this legible in real time',
+        p: [
+          "Following twelve parallel groups with an eight-slot third-place ranking running underneath is beyond what any viewer can compute unaided, which is why broadcast graphics have become genuinely essential rather than decorative. Modern coverage maintains live qualification tables that update on every goal across every simultaneous match, showing not just current standings but which specific result would change them.",
+          "For anyone following the 2026 group stage seriously, finding a broadcaster or app that presents this well is worth doing before the final matchday rather than during it. The difference between watching the last round of group fixtures with a live permutation table and watching without one is roughly the difference between following a thriller and watching a film in a language you do not speak.",
+        ],
+      },
+      {
+        h: 'Goal difference makes early matches matter later',
+        p: [
+          "A structural consequence of goal difference sitting so high in the order is that the first round of group matches retains influence right through to the third. A team that conceded four in its opening fixture carries that deficit into every subsequent calculation, and may need not merely to win its final match but to win it by a specific margin that a cleaner opening would not have required.",
+          "This is why apparently one-sided early fixtures are rarely as meaningless as they appear. A favourite pressing for a fifth goal against overmatched opposition in the eighty-eighth minute is not running up a score for its own sake; it is banking a margin that may decide the group ten days later, and the crowd booing the pursuit usually has not done the arithmetic.",
+        ],
+      },
+      {
+        h: 'The drawing of lots, and why federations dread it',
+        p: [
+          "The final tiebreaker, should every other criterion fail to separate two teams, is a literal draw. It has been required once in World Cup history and remains a genuine possibility rather than a theoretical footnote, particularly given that twelve groups produce far more comparison pairs than eight ever did.",
+          "The reason federations find the prospect so uncomfortable is that it converts two years of qualification and three matches of tournament football into a coin toss administered in an office. There is no defensible alternative — a competition must resolve every possible scenario — but it remains the one outcome in the rulebook that nobody involved in the sport would defend as satisfying.",
+        ],
+      },
+      {
+        h: 'What to actually memorise',
+        p: [
+          "The practical takeaway is a short ordered list worth committing to memory before the group stage: points, then goal difference, then goals scored, then the same three criteria applied only to matches between the tied teams, then disciplinary record, then the draw. Everything else in this article is elaboration on that sequence.",
+          "Knowing it converts the final matchday from a confusing blur of updating tables into one of the most genuinely engaging evenings the tournament offers, because you can compute the consequences of a goal as it goes in rather than waiting to be told. It is perhaps the highest return available on ten minutes of preparation anywhere in following a World Cup.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'extra-time-and-penalties-rules',
+    sections: [
+      {
+        h: 'The additional substitution nobody remembers',
+        p: [
+          "A rule that regularly catches out even attentive viewers: teams receive an extra substitution if a match goes to extra time, over and above those already used in normal time. This exists because thirty additional minutes on legs that have already played ninety, at the end of a tournament, represents a genuine welfare issue rather than merely a tactical inconvenience.",
+          "The extra window matters strategically as well. A manager who has exhausted his changes by the eightieth minute is not stranded if the match goes long, which subtly encourages bolder use of substitutions late in normal time. It also means a specialist penalty taker can be introduced in the final moments of extra time specifically for a shootout — a tactic used openly at recent tournaments and entirely within the rules.",
+        ],
+      },
+      {
+        h: 'Bringing on a goalkeeper for the shootout',
+        p: [
+          "One of the more striking uses of a late substitution is replacing a goalkeeper immediately before a shootout with a specialist regarded as a superior penalty stopper. It is legal, has been done successfully at major tournaments, and represents a coldly rational decision that nonetheless carries substantial emotional weight for the goalkeeper being removed after two hours of work.",
+          "The tactic is rarer than its logic would suggest, and the reason is human rather than technical. Removing a first-choice goalkeeper implies a public judgement about his ability at the highest-pressure moment available, and the damage to a dressing room if the substitution fails is difficult to repair. Most managers who have considered it have concluded the marginal gain is not worth the certainty of that cost.",
+        ],
+      },
+      {
+        h: 'Why the coin toss matters more than it should',
+        p: [
+          "The toss that determines which team kicks first in a shootout is, statistically, a meaningful advantage rather than a formality. Analysis of large samples of shootouts across competitions consistently finds that the team kicking first wins somewhat more often, with the leading explanation being cumulative psychological pressure: the second team is repeatedly kicking to stay alive rather than to extend a lead.",
+          "This finding has produced serious proposals to change the sequence — most notably an alternating order borrowed from tennis tiebreaks, designed to distribute the pressure more evenly. Trials have been conducted at some competitions without yet being adopted at World Cup level, so 2026 will use the conventional format, and a captain winning that toss should be understood to have won something genuine.",
+        ],
+      },
+      {
+        h: 'Everybody has to take one eventually',
+        p: [
+          "The requirement that all eligible players take a kick before anyone takes a second is more consequential than it sounds. A shootout that reaches sudden death and continues will eventually work through the entire eleven, including centre-backs whose penalty technique may be genuinely untested and the goalkeeper himself, who at that point must take a kick and then immediately face one.",
+          "Managers who prepare only a first five are gambling that the shootout resolves early, and shootouts at World Cups have on occasion run considerably deeper than that. The teams who plan for the full rotation — establishing an order for all eleven, having every player practise, knowing who takes the eleventh kick before a ball is struck — are eliminating a scenario that has genuinely decided matches.",
+        ],
+      },
+      {
+        h: 'Where the shootout is taken, and why it is rarely neutral',
+        p: [
+          "The referee selects which goal hosts the shootout, and the decision is guided by pitch condition, floodlighting, security assessment and crowd segregation rather than by fairness to the two sets of supporters. The consequence is that shootouts frequently take place in front of one team's fans, which is a genuine environmental difference that nobody has found a satisfactory way to remove.",
+          "Whether the crowd behind the goal materially affects outcomes is debated, with the evidence less conclusive than intuition suggests. What is not disputed is that players notice, and takers have described the specific experience of walking toward a wall of hostile noise as meaningfully different from walking toward supportive noise — regardless of what the aggregate conversion statistics eventually show.",
+        ],
+      },
+      {
+        h: 'The golden goal era and why it ended',
+        p: [
+          "For a period around the turn of the century, extra time operated under sudden-death rules in which the first goal ended the match immediately. The intention was to encourage attacking play by making a goal decisive; the actual effect ran the other way, as teams became so terrified of conceding the fatal goal that extra time grew markedly more cautious than before.",
+          "A modified version, in which a lead at half-time of extra time ended the match, was also tried and abandoned. The reversion to two full periods represents a fairly clear admission that the experiment failed — and it means the 2026 rules, in which a team conceding in the final seconds of extra time still has the opportunity to respond, are the product of that specific lesson.",
+        ],
+      },
+      {
+        h: 'What thirty extra minutes actually costs',
+        p: [
+          "The physical consequence of extra time extends well beyond the night itself. A team that plays 120 minutes in a round of 16 fixture arrives at the quarter-final with meaningfully less recovery than an opponent who finished inside ninety, and with the accumulated load of an additional third of a match in the legs of players already deep into a compressed tournament.",
+          "Analysts tracking this across tournaments have found a modest but real disadvantage carried into the following round by teams that went the distance, particularly where the turnaround is short. It is one of the underappreciated ways in which the knockout bracket rewards efficiency — winning inside ninety minutes is worth more than the identical result achieved after two hours, and the difference compounds across a deep run.",
+        ],
+      },
+      {
+        h: 'The rules around feinting',
+        p: [
+          "A specific and frequently misunderstood provision governs the taker's run-up. Feinting during the approach is permitted and is a legitimate technique for inducing the goalkeeper to commit early; feinting after completing the run-up, at the point of striking, is not, and results in the kick being disallowed and cautioned.",
+          "The distinction is genuinely fine and has produced controversial decisions at major tournaments. The underlying principle is that a taker may disguise intent while approaching but may not stop and restart at the final instant, which would leave the goalkeeper with no possible response. Knowing where that boundary sits makes an otherwise baffling disallowed penalty comprehensible when it occurs during a 2026 shootout.",
+        ],
+      },
+      {
+        h: 'Preparing for a night that may never come',
+        p: [
+          "Everything in this article describes contingencies most teams at a World Cup will never actually use — the majority of knockout matches resolve inside ninety minutes, and only a handful of shootouts occur across an entire tournament. Preparing thoroughly for extra time and penalties is therefore an investment with a substantial probability of yielding nothing at all.",
+          "That is precisely why some federations neglect it, and precisely why the ones who do not gain an edge. With eight knockout rounds across the expanded 2026 bracket, the probability that at least one team's tournament is decided by these rules approaches certainty, and the teams that treated a low-probability scenario as worth genuine preparation will be the ones best placed when it arrives.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'squad-size-and-substitutions-2026',
+    sections: [
+      {
+        h: 'The concussion substitute sits outside the count',
+        p: [
+          "Alongside the five tactical changes, competitions including the World Cup permit additional permanent substitutions specifically for suspected concussion, which do not count against a team's normal allocation. The opposing team receives a corresponding additional substitution to prevent the provision from creating a tactical advantage for whichever side happens to suffer a head injury.",
+          "The rule exists because the previous arrangement created an appalling incentive: a manager weighing a suspected concussion against a scarce substitution had a reason to leave a potentially injured player on. Removing that calculation entirely is among the more straightforwardly positive rule changes football has made in recent years, and it is worth knowing about when an apparently sixth substitution occurs during a 2026 match.",
+        ],
+      },
+      {
+        h: 'Three windows, not five interruptions',
+        p: [
+          "A detail that shapes how substitutions are actually used: the five changes must be made within three stoppages, plus half-time, which does not count against the window allocation. A manager who makes one change at a time will exhaust his windows after three substitutions and cannot use the remaining two at all.",
+          "This constraint exists to prevent five separate interruptions and it produces distinctly visible coaching behaviour — the double or triple substitution made simultaneously, often at a slightly awkward moment, because the manager is preserving windows rather than optimising the timing of each individual change. Recognising this explains a great deal of substitution behaviour that otherwise looks strangely bunched.",
+        ],
+      },
+      {
+        h: 'Registering a squad, and what happens after an injury',
+        p: [
+          "Squad lists must be submitted before a defined deadline, and replacements for injured players are permitted only under specified conditions and typically only before a team's first match. After that point, a squad that loses players to injury simply plays with fewer available, which is why the composition decisions made weeks in advance carry more weight than they might appear to.",
+          "This is the practical argument for the versatile selections mentioned elsewhere in this article. A squad containing three players capable of covering four positions is genuinely more robust against attrition than one with more specialists, and managers building a 2026 list are trading raw quality against positional flexibility with the knowledge that no correction is available once the tournament begins.",
+        ],
+      },
+      {
+        h: 'The players who never get on',
+        p: [
+          "Every twenty-six-player squad contains several people who will not play a competitive minute across five weeks, and managing that group is a genuine and largely invisible part of a successful campaign. These players train fully, travel everywhere, endure the same restrictions and receive none of the release, and a squad in which they become disengaged or resentful is measurably harder to keep functional deep into a tournament.",
+          "Coaching staff address this with structured internal roles — leading warm-up groups, specific training responsibilities, deliberate inclusion in tactical preparation — and with honesty about the situation rather than false encouragement. Players from winning squads frequently identify the mood among the non-playing group as a decisive factor, which is a striking claim given they are describing people who contributed nothing on the pitch.",
+        ],
+      },
+      {
+        h: 'Why the third goalkeeper is chosen differently',
+        p: [
+          "The third-choice goalkeeper occupies the most statistically improbable position in any squad, requiring an extraordinary sequence of events to play at all. Because the footballing likelihood is so low, selection frequently weights non-footballing qualities heavily: experience, temperament, standing within the group, and a demonstrated willingness to occupy a role that offers essentially no prospect of participation.",
+          "It is one of the few selections where a manager can openly acknowledge choosing partly for character, and squads have frequently named an older, respected goalkeeper for precisely this reason. Watching for who occupies this slot in the 2026 lists is a genuine insight into how each staff thinks about the dressing room, since it is the one place where that consideration can dominate without apology.",
+        ],
+      },
+      {
+        h: 'The finisher has become a defined job',
+        p: [
+          "Five substitutions have created a role that barely existed a decade ago: a player selected specifically to change matches from the sixty-fifth minute against defenders who have already run ten kilometres. The attributes are distinct from a starter's — explosive pace, directness, willingness to take risks — and a player who might be a liability across ninety minutes can be devastating across twenty-five.",
+          "Squads increasingly carry two or three such players deliberately, and the tournament's late goals now disproportionately involve them. For a viewer, this reframes the substitution as a planned phase of the match rather than a reaction to it, and the bench at a 2026 match should be read as the second half of the manager's team sheet rather than as insurance against something going wrong.",
+        ],
+      },
+      {
+        h: 'Rotation in the group stage is now standard',
+        p: [
+          "The combination of larger squads and a compressed three-country schedule has made group-stage rotation routine rather than risky. A team that secures qualification after two matches will now frequently field a substantially changed side in the third, resting key players for the knockout rounds and giving minutes to squad members who need them.",
+          "This has a consequence worth anticipating: the final round of group fixtures will feature noticeably weakened teams wherever qualification is already settled, which occasionally produces surprising results and creates genuine complications for the third-placed calculations described elsewhere in this collection. A team fighting for its tournament life may find itself facing a rotated version of a favourite, which is either fortunate or unfortunate depending entirely on how well that favourite's reserves play.",
+        ],
+      },
+      {
+        h: 'Reading the bench during a match',
+        p: [
+          "A practical viewing habit: when a match is tight after an hour, watch which players a manager sends to warm up rather than waiting to see who actually comes on. The warm-up group signals intention several minutes before the substitution, and the composition of it — two attackers, or a defender and a holding midfielder — tells you whether the manager is preparing to chase the match or to protect what he has.",
+          "This is among the more reliable ways to read a coaching staff's assessment of a match in real time, since it reveals a decision that has been made but not yet executed. It also frequently reveals disagreement between what a manager is doing and what the crowd wants, which is one of the more interesting subplots available during a tense knockout fixture.",
+        ],
+      },
+      {
+        h: 'What the rule change has cost',
+        p: [
+          "There is a reasonable criticism of five substitutions worth acknowledging: it widens the gap between wealthy federations with genuine depth and smaller ones whose quality falls away sharply after the first eleven. A rule that lets a manager introduce five players of comparable standard to his starters advantages precisely the nations that already had the deepest talent pools.",
+          "The counterargument, made earlier in this article, is that the same rule protects smaller squads from being destroyed by a single injury. Both are true, and which effect dominates probably depends on the specific squad. What is clear is that the change was not competitively neutral, and any assessment of it should acknowledge that it altered the balance between the tournament's richest participants and the rest.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-confederation-slots-work-2026',
+    sections: [
+      {
+        h: 'The mini-tournament that decides the last two places',
+        p: [
+          "The intercontinental play-off is structured as a compressed six-team knockout staged in the host region shortly before the finals, with the two highest-ranked participants seeded directly into deciding matches while the remaining four contest single-elimination fixtures for the right to face them. Two World Cup places emerge from roughly a week of football.",
+          "The format's defining characteristic is that it pits teams from confederations that essentially never meet competitively, meaning neither side arrives with meaningful recent evidence about the other. Preparation relies on limited footage of opponents who have spent a qualifying cycle playing an entirely different calibre and style of opposition, and the resulting unpredictability is exactly what makes it compelling to watch and agonising to participate in.",
+        ],
+      },
+      {
+        h: 'Oceania finally has a guaranteed place',
+        p: [
+          "Among the least discussed but most consequential elements of the 2026 allocation is that Oceania receives a direct automatic qualifying berth for the first time in the tournament's history. Previously the region's champion faced an intercontinental play-off against opposition from a far stronger confederation, a barrier that proved close to insurmountable across decades.",
+          "The practical effect is that a Pacific footballing nation will appear at a World Cup as a matter of course rather than as an extraordinary exception, with all the developmental consequences described elsewhere in this collection about what tournament participation does to a small federation. It is the single clearest example of the expansion delivering exactly what its advocates argued it would.",
+        ],
+      },
+      {
+        h: 'What the hosts receive automatically',
+        p: [
+          "The three host nations qualify automatically, which is standard practice, but the 2026 arrangement is unusual in that those three places are drawn from within a single confederation's allocation rather than being additional. That confederation's remaining members therefore compete for a reduced number of open places, a detail that generated genuine internal debate during the allocation process.",
+          "There is also a subtler consequence: because the hosts do not play qualifying matches, they arrive with substantially less competitive preparation than every other participant, having spent two years in friendlies while opponents ground through meaningful campaigns. Host nations have historically addressed this with ambitious friendly schedules, but the gap in genuine competitive rhythm is real and has affected host performances before.",
+        ],
+      },
+      {
+        h: 'Africa and Asia gained the most in relative terms',
+        p: [
+          "Measured as a proportional increase rather than raw numbers, the confederations covering Africa and Asia gained the most from the expansion, which reflects a long-standing argument that their previous allocations were badly out of proportion to their membership and playing populations. Both now send substantially larger contingents than under the 32-team format.",
+          "The consequence worth watching in 2026 is whether this translates into competitive results or merely representation. Advocates predicted that guaranteed access would raise standards over successive cycles by giving federations something concrete to build toward; sceptics predicted a wider spread of group-stage exits. This tournament provides the first substantial evidence either way, and the answer will shape the argument about any future expansion.",
+        ],
+      },
+      {
+        h: 'Qualifying is the largest competition in sport',
+        p: [
+          "It is easy to forget that the finals are the small visible end of something enormous. World Cup qualifying involves more than two hundred national teams playing across roughly three years, which makes it comfortably the largest sporting competition on earth by participant count and by matches played, and the vast majority of it happens without international coverage.",
+          "For a supporter of a nation that will never qualify, this is where their World Cup actually takes place — a home fixture against a regional rival with a theoretical path to the finals still alive. The expansion has made those paths meaningfully less theoretical for a substantial number of federations, which is the least visible and possibly most significant thing the 48-team format has changed.",
+        ],
+      },
+      {
+        h: 'Why the allocation will be argued about again',
+        p: [
+          "The current distribution is a negotiated settlement rather than a formula, and negotiated settlements get renegotiated. Confederations that consider themselves underrepresented will point to any strong 2026 showing as evidence for a larger share next time; those defending their allocation will point to group-stage exits as evidence against.",
+          "Both arguments will be made from a small sample and neither will be conclusive, which is the normal condition of this debate. What is worth understanding as a viewer is that the number of teams each continent sends to a World Cup is a political outcome as much as a sporting one, and that the results of 2026 will be immediately deployed as ammunition by every side of an argument that never fully ends.",
+        ],
+      },
+      {
+        h: 'Following a qualifying campaign you have no stake in',
+        p: [
+          "A recommendation that costs nothing: pick a confederation whose qualifying you have never followed and read through how its campaign actually unfolded before the finals begin. The structures differ enormously — some regions use long round-robin marathons, others multi-stage group systems with play-offs layered on top — and each produces a distinct kind of drama.",
+          "The payoff arrives during the tournament itself, when a team you would otherwise have regarded as anonymous becomes a side whose journey you know something about. Given that the expanded format means more unfamiliar nations than any previous World Cup, the return on this small amount of preparation is higher in 2026 than it has ever been.",
+        ],
+      },
+      {
+        h: 'The allocation shapes the group draw too',
+        p: [
+          "A downstream effect of the allocation worth understanding is its influence on the finals draw. Because the draw applies constraints preventing most same-confederation pairings within a group, the number of teams each confederation sends directly determines how those constraints operate — and with sixteen European teams distributed across twelve groups, several groups must necessarily contain two of them.",
+          "This produces a structural asymmetry that has nothing to do with team quality: some groups will contain two European sides by mathematical necessity, others none, and the resulting difficulty differences are a product of allocation arithmetic rather than misfortune. It is one more reason the group of death discussed elsewhere in this collection is partly manufactured by the format before the draw balls are ever touched.",
+        ],
+      },
+      {
+        h: 'A reminder of what a place actually represents',
+        p: [
+          "It is worth closing on the human scale underneath the arithmetic. Each of the forty-eight places discussed in this article represents a federation, a generation of players, a domestic league and a public that spent years working toward it, and the difference between the last team to qualify and the first to miss out is frequently one result across a two-year campaign.",
+          "The allocation debate is conducted in the language of slots and percentages, which is necessary but obscures this. When an unfamiliar nation walks out for its opening 2026 fixture, what is actually being witnessed is the end of an extremely long process that almost did not succeed — and that is true of every team in the tournament, including the ones whose presence is taken for granted.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-var-works-at-the-world-cup',
+    sections: [
+      {
+        h: 'How officials are trained for the video role',
+        p: [
+          "Working as a video assistant is treated as a distinct qualification rather than an extension of on-field refereeing, and officials complete dedicated training covering the technology, the protocol and — most importantly — the discipline of not intervening. The hardest skill taught is restraint: a qualified referee watching replays will frequently form a different opinion from the on-field official, and the training is largely about learning not to act on that.",
+          "Some competitions now use specialists who work primarily in the video role rather than rotating officials between both jobs, on the reasoning that the two require genuinely different temperaments. The 2026 tournament draws on a pool trained specifically for this, which is part of why the process has become noticeably more consistent than in the technology's earliest tournament appearances.",
+        ],
+      },
+      {
+        h: 'How football compares with other sports',
+        p: [
+          "It is instructive that football arrived at video review considerably later than several comparable sports and adopted a notably more restrictive version. Sports that allow teams a limited number of challenges, or that review incidents on request rather than automatically, made different design choices — and football deliberately rejected the challenge model on the grounds that it would introduce tactical timeouts into a continuous game.",
+          "Whether that was the right call remains genuinely debatable. A challenge system would give teams agency over which decisions get examined and would cap the number of interruptions, at the cost of importing a stop-start rhythm from sports that already have one. Football chose continuity and centralised control, and most of the specific frustrations described in this article follow from that single foundational decision.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'group-stage-tiebreakers-explained',
+    sections: [
+      {
+        h: 'The rule that the third-place ranking cannot use',
+        p: [
+          "A structural quirk worth noting: the head-to-head criteria that apply within a group cannot be used when ranking third-placed teams against each other, because those teams played in different groups and never met. The comparison is therefore forced to rely entirely on overall record — points, goal difference, goals scored — with no recourse to any direct evidence.",
+          "This means a third-placed team's fate depends on results achieved against a completely different set of opponents from its rivals for the same qualification spot. A team that finished third in a brutal group with four strong sides is compared directly against one that finished third in a weak group, on identical criteria, with no adjustment for difficulty. It is the format's least satisfying feature and there is no obvious remedy.",
+        ],
+      },
+      {
+        h: 'Why coaches keep a laminated card',
+        p: [
+          "Coaching staff on the touchline during a final group match are frequently working from prepared scenario sheets listing exactly what result is required under each possible outcome elsewhere. These are compiled in advance by analysts precisely because computing the permutations live, under pressure, with incomplete information about parallel matches, is beyond what anybody can reliably do from memory.",
+          "The existence of these sheets is a useful signal of how seriously professional staffs take the arithmetic that casual viewers dismiss as trivia. A manager who does not know whether his team currently needs one goal or two is making substitution decisions blind, and the teams that handle final matchdays well are almost always the ones who prepared the arithmetic as thoroughly as the tactics.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'extra-time-and-penalties-rules',
+    sections: [
+      {
+        h: 'What the officials are managing during a shootout',
+        p: [
+          "The referee's job during a shootout involves considerably more than watching kicks. Players not taking part must remain in the centre circle, the two goalkeepers occupy defined positions, encroachment must be monitored on every kick, and the officiating team is simultaneously managing a highly charged environment in which any perceived inconsistency will be seized upon immediately.",
+          "Video review remains active throughout, and a kick can be retaken if the goalkeeper is judged to have infringed materially or a saved penalty is affected by encroachment. These interventions are rare but genuinely occur, and a shootout that pauses for a review carries a specific horror for the players involved that ordinary review delays do not approach.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'squad-size-and-substitutions-2026',
+    sections: [
+      {
+        h: 'The list is a document about a manager',
+        p: [
+          "Read carefully, a twenty-six-name squad list reveals more about a coaching staff's intentions than any pre-tournament interview. The positional balance shows the intended shape, the presence or absence of specialists shows how much rotation is planned, and the inclusion of an uncapped young player alongside a veteran with limited recent minutes shows how the staff is weighing the present against the group's internal culture.",
+          "This is why the release of the lists functions as the first genuine event of a World Cup cycle. Every subsequent tactical decision has already been constrained by the twenty-six names submitted weeks earlier, and a manager who selected badly at that point cannot correct it however well he coaches once the tournament begins.",
+        ],
+      },
+      {
+        h: 'Watch the bench, not just the eleven',
+        p: [
+          "The single habit this article recommends for 2026 is to look at who is sitting down before kickoff rather than only at who is standing up. With five changes available and a defined finisher role now standard, roughly half of a manager's plan is on that bench, and reading it in advance makes the second hour of every match considerably easier to follow.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-confederation-slots-work-2026',
+    sections: [
+      {
+        h: 'The nations who will never appear in this article',
+        p: [
+          "For every federation the expansion brought within reach, there remain many for whom qualification stays a genuinely remote prospect — small associations with tiny playing populations, limited facilities and no realistic pathway regardless of how the slots are distributed. The 48-team format widened the door considerably; it did not open it to everybody.",
+          "This is worth stating because the expansion is frequently discussed as though it settled the question of global inclusion. It moved the boundary rather than removing it, and the arguments about where that boundary should sit will continue as long as the tournament has a finite size. Any honest account of what the allocation achieved should acknowledge both what it changed and what it left exactly as it was.",
+        ],
+      },
+      {
+        h: 'The quiet economics behind a qualification',
+        p: [
+          "Reaching a World Cup carries substantial financial consequences for a federation, including participation payments that can exceed a smaller association's entire annual budget by a considerable margin. For federations operating close to the margin, a single qualification can fund facilities, coaching education and youth programmes for years afterward.",
+          "This is why the allocation debate is conducted with an intensity that a purely sporting argument would not generate. What is being distributed is not only prestige and matches but genuine developmental capital, and a confederation arguing for an additional place is arguing, quite reasonably, for resources that will reshape football in its member nations for the better part of a decade.",
+        ],
+      },
+      {
+        h: 'What to take from all of this',
+        p: [
+          "The allocation is the least glamorous topic in World Cup coverage and among the most consequential, because it determines who is present before any football is played. Understanding roughly how the places are distributed, and why the distribution is contested, converts the tournament's participant list from an arbitrary given into the visible outcome of a long argument about what the competition is for.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'group-stage-tiebreakers-explained',
+    sections: [
+      {
+        h: 'A final piece of advice for the last matchday',
+        p: [
+          "When the final round of 2026 group fixtures arrives, resist watching only your own team's match. The whole point of the simultaneous kickoff is that the groups resolve against each other in real time, and following a single fixture in isolation is watching one instrument in an orchestra — technically complete, and missing everything that makes the arrangement work.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'extra-time-and-penalties-rules',
+    sections: [
+      {
+        h: 'The rules exist so somebody has to win',
+        p: [
+          "Underneath every provision described here sits one requirement: a knockout match must produce a winner on the night, and the rulebook is simply the accumulated machinery for guaranteeing that outcome as fairly as anybody has managed to devise. Every awkward edge case, every disputed technicality, exists because the alternative — a match that does not resolve — is not available to the competition.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
