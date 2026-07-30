@@ -5059,6 +5059,574 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'venues-and-stadiums-2026',
+    sections: [
+      {
+        h: 'The pitch surface problem nobody expected',
+        p: [
+          "Several 2026 venues are stadiums whose resident sports are played on artificial surfaces, and World Cup matches require natural grass. This has necessitated genuine engineering work: growing turf off-site in trays, transporting it, and installing it over the existing surface in the weeks before the tournament, then maintaining it under stadium conditions never designed for living grass.",
+          "The technical challenge is significant, particularly in enclosed venues where natural light and airflow are limited. Agronomists have been working on this for years, with trial installations tested at earlier events, because a pitch that degrades during a tournament would affect the football directly — an uneven or loose surface changes ball behaviour, increases injury risk and visibly reduces the quality of play.",
+        ],
+      },
+      {
+        h: 'Stadiums built for a different shape of game',
+        p: [
+          "The venues drawn from other sports were designed around fields with different dimensions and different sightline geometry, which means the football pitch installed inside them does not always sit where the seating was optimised to view. Some conversions place the pitch further from the lower stands than a purpose-built football ground would, subtly changing the spectator experience.",
+          "There is also a pitch-dimension consideration. Football permits a range of pitch sizes, and a venue with constrained space may install toward the smaller end, which measurably affects play — a narrower pitch compresses space and suits compact defensive teams, while a wider one rewards teams that stretch the field. Two matches in different 2026 venues may be played on meaningfully different-sized surfaces.",
+        ],
+      },
+      {
+        h: 'Acoustics change what a crowd sounds like',
+        p: [
+          "Enclosed and roofed stadiums retain and amplify crowd noise in a way open bowls do not, which has a genuine effect on the experience for both spectators and players. A moderately full enclosed venue can sound considerably louder than a fuller open one, and communication between players becomes measurably harder.",
+          "This matters tactically. Teams that rely on verbal organisation — a defensive line coordinating an offside trap, a goalkeeper directing a wall — face a harder task in the loudest venues, and coaching staff prepare non-verbal alternatives for exactly this reason. It is among the more genuinely underrated ways a venue shapes what happens on the pitch.",
+        ],
+      },
+      {
+        h: 'Capacity is not the same as atmosphere',
+        p: [
+          "Several 2026 venues have very large capacities, and the assumption that a bigger crowd produces a better atmosphere is not reliably true. Atmosphere depends more on crowd density, proximity to the pitch, and the proportion of the audience that is genuinely invested than on raw numbers, and a vast stadium with dispersed neutral spectators can feel flatter than a smaller full one.",
+          "The venues likely to produce the most memorable atmospheres are therefore not necessarily the largest but the ones where a passionate support base is concentrated close to the action. This is worth anticipating when the fixture list is published, since it means the matches worth attending for atmosphere may not be the ones in the most prestigious stadiums.",
+        ],
+      },
+      {
+        h: 'Training facilities matter more than match venues',
+        p: [
+          "A team spends far more time at its training base than at match venues, and the quality of that facility — pitch condition, gym provision, recovery equipment, privacy from media and supporters — affects preparation across five weeks in a way that a single match venue cannot.",
+          "Federations select these bases through an allocation process, and the differences between what teams end up with are substantial. A squad training on excellent surfaces with full recovery facilities and genuine privacy is in a materially better position than one in a compromised setup, and this is among the least visible and most consequential inequalities of any World Cup.",
+        ],
+      },
+      {
+        h: 'What happens to the venues afterwards',
+        p: [
+          "Because 2026 relies almost entirely on existing stadiums with established tenants, the tournament avoids the abandoned-venue problem that has followed several previous hostings. The stadiums return to their usual sports within weeks, the temporary grass is removed, and the physical footprint of the World Cup largely disappears.",
+          "This is genuinely unusual and worth noting as a model. Previous tournaments have left behind venues with no viable long-term use, at substantial public cost; this one leaves behind essentially nothing to maintain. Whatever else is debated about the 2026 hosting, the stadium legacy problem that has dogged the event for decades has been sidestepped almost entirely.",
+        ],
+      },
+      {
+        h: 'The venue is part of how a match is remembered',
+        p: [
+          "Great World Cup matches are remembered partly through where they happened — the particular light, the shape of the stands, the specific sound of that crowd. With sixteen venues across three countries in wildly varying settings, 2026 will produce a more visually varied archive than any previous tournament.",
+          "This is a small pleasure worth attending to. A knockout match at altitude in a historic stadium and a group match in a climate-controlled arena will look and feel like different sports, and both will be part of the same tournament. Noticing the setting rather than only the football is part of what makes a World Cup a portrait of the places that staged it.",
+        ],
+      },
+      {
+        h: 'Reading the fixture list for venue effects',
+        p: [
+          "Once the schedule is published, it is worth checking which venues each team has drawn, because the pattern reveals genuine competitive information. A team playing all three group matches in similar conditions can prepare specifically; one moving between altitude, heat and a climate-controlled dome must prepare for three different problems.",
+          "This is the kind of detail that rarely appears in tournament previews and that measurably affects outcomes. A viewer who spends ten minutes mapping teams to venues before the tournament starts will have a genuinely better-informed sense of which groups are harder than the rankings alone suggest.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-final-in-2026',
+    sections: [
+      {
+        h: 'The week before is a logistical operation',
+        p: [
+          "The days between the semi-finals and the final involve a substantial organisational effort that has nothing to do with football. Both finalists relocate to the final venue's city, security operations scale up considerably, media accreditation is at its peak, and the two federations manage an enormous volume of ticket requests from players' families, officials and sponsors.",
+          "For the squads, the practical effect is a week of unfamiliar routine at precisely the moment routine matters most. Managers who have kept a settled camp for a month must now absorb disruption, which is why several approach the final week by deliberately preserving as much normality as possible — same training times, same meal schedule, restricted media access.",
+        ],
+      },
+      {
+        h: 'Choosing the officials for the biggest match',
+        p: [
+          "Appointing a referee for a World Cup final is a decision taken with considerable care and, inevitably, some politics. The official must come from a confederation with no interest in either finalist, must have performed consistently throughout the tournament, and must be judged capable of handling the specific pressure — which not every excellent referee is.",
+          "The appointment is announced only shortly before the match, and it carries genuine career weight: refereeing a World Cup final is the pinnacle of the profession, and the officials selected are typically at the peak of long careers. It is worth noticing who is appointed, since the choice reflects an assessment of the entire tournament's officiating.",
+        ],
+      },
+      {
+        h: 'The ceremony and what it does to the players',
+        p: [
+          "A World Cup final is preceded by a closing ceremony, an extended anthem sequence and a longer-than-usual wait in the tunnel, all of which extends the period during which players are standing still, fully aware of what is coming. Several finalists have described this stretch as the hardest part of the day — considerably harder than the football itself.",
+          "This is not trivial. Physiologically, an extended pre-match wait after warming up allows muscles to cool and adrenaline to spike and settle unhelpfully; psychologically, it provides time for the occasion to become fully real. Teams prepare for it specifically, and the sides that start finals well are frequently the ones who managed those particular twenty minutes best.",
+        ],
+      },
+      {
+        h: 'What the losing team goes through',
+        p: [
+          "The World Cup final produces the sport's most difficult immediate aftermath: the losing team must remain on the pitch and watch the trophy ceremony, collect runners-up medals, and stand through the winners' celebration. There is no route off the field, and the images of that period are among the most enduring the tournament produces.",
+          "Several former players have described this as the worst experience of their careers, worse than the defeat itself. It is a genuinely brutal piece of ceremonial design that persists because the alternative — allowing the losers to leave — would look worse still, and because the medal presentation to both teams is part of what a final is.",
+        ],
+      },
+      {
+        h: 'The tactical shape a final usually takes',
+        p: [
+          "Beyond the caution described in this article, finals tend to follow a recognisable arc: a tense opening thirty minutes with few chances, a gradual opening as the initial nerves settle, a critical period around the hour when substitutions and fatigue begin to alter the balance, and a final twenty minutes in which whichever team is behind must abandon caution.",
+          "This shape is worth knowing because it means a dull opening half-hour is not evidence that the match will be dull. Finals that eventually became classics frequently began exactly the same way as finals that stayed cagey, and the distinguishing period is generally the third quarter of the match rather than the first.",
+        ],
+      },
+      {
+        h: 'One match that outweighs the whole tournament',
+        p: [
+          "A genuine unfairness sits at the centre of the format: a team that has played superbly for a month can lose one match and be remembered as a runner-up, while a team that laboured through its group can win the final and be remembered as champions. The final does not weigh the tournament; it replaces it.",
+          "This is worth stating because it complicates the retrospective judgement of every World Cup. The champion is the team that won the last match, which is not necessarily the best team of the five weeks, and treating the trophy as a comprehensive verdict on quality is a misreading of what a single-elimination final actually measures.",
+        ],
+      },
+      {
+        h: 'Where the 2026 final sits in the schedule',
+        p: [
+          "The final falls at the end of the tournament's closing weekend, the day after the third-place match discussed elsewhere in this collection, and it is the eighth match for whichever teams reach it — one more than at any previous World Cup, given the expanded bracket.",
+          "That extra match is worth registering. The teams walking out for the 2026 final will have played more tournament football than any finalists in history, on top of the club seasons described elsewhere in this collection, and whatever the match looks like will be shaped substantially by how much either side has left.",
+        ],
+      },
+      {
+        h: 'Watch it properly',
+        p: [
+          "The advice for the final is simply to give it your full attention, because it is the one match of the tournament that is genuinely unrepeatable as an experience. Whatever the quality of the football, several hundred million people will be watching simultaneously, and the specific texture of not yet knowing how it ends is available exactly once.",
+          "Everything else about a World Cup can be caught up on later. The final cannot, in any meaningful sense, and the people who watched it live are describing something different from the people who learned the result afterward — which is worth a cleared afternoon regardless of who is playing.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'opening-match-what-to-expect',
+    sections: [
+      {
+        h: 'Who plays it, and why that matters',
+        p: [
+          "The opening fixture conventionally involves a host nation, which loads it with an additional layer of significance beyond simply being first. A host opening its own tournament in front of its own crowd carries expectations that no other participant faces on the first day, and the result sets the emotional temperature for that country's entire month.",
+          "With three hosts in 2026, the arrangement is more complicated than usual, and the choice of which host opens where becomes a genuine decision with symbolic weight. Whichever nation is given the first fixture is being handed both an honour and a considerable burden, and the way it handles that is worth watching as a story in itself.",
+        ],
+      },
+      {
+        h: 'The historical record of opening matches',
+        p: [
+          "Opening fixtures have a documented tendency toward low scores and cautious football, and the pattern is consistent enough across tournaments to be more than coincidence. Nerves, ceremony, unfamiliarity with tournament conditions and the specific reluctance to make the first significant error all push in the same direction.",
+          "There have been dramatic exceptions, including opening matches that produced genuine upsets and are remembered decades later precisely because they defied the expectation. But the base rate favours caution, and a viewer approaching the first match of 2026 hoping for a spectacle is more likely to be disappointed than one approaching it as an occasion to be present for.",
+        ],
+      },
+      {
+        h: 'What the first match reveals tactically',
+        p: [
+          "Despite its nervousness, the opening fixture provides the tournament's first genuine evidence about several things: how the officials are interpreting the laws this tournament, how the pitch and conditions are behaving, and how the new match ball moves. Coaching staffs across the competition watch it closely for exactly this reason.",
+          "It also establishes the tone of officiating standards. Referees at a tournament tend toward consistency with each other, and the thresholds applied in the opening match — for physicality, for time-wasting, for the card threshold — are a genuine early signal of what will be permitted across the following five weeks.",
+        ],
+      },
+      {
+        h: 'The ceremony that precedes it',
+        p: [
+          "The opening match is preceded by an opening ceremony, which is a considerably larger production than anything else during the tournament and which has its own history of being either memorable or awkward. It exists to mark the beginning formally and to present the host nations to a global audience.",
+          "For viewers, it is worth deciding in advance whether to watch it or arrive at kickoff, since the ceremony frequently runs long and is a genuinely different kind of entertainment from the football. For the players, it is another contributor to the extended pre-match wait that this collection's article on the final describes as a real physiological factor.",
+        ],
+      },
+      {
+        h: 'The anticipation is the point',
+        p: [
+          "There is a specific quality to the hours before a World Cup begins that does not recur at any other point in the four-year cycle: everything is still possible, no team has been eliminated, no favourite has been exposed, and every one of the forty-eight participants still has a theoretically intact tournament ahead of them.",
+          "That state ends permanently at the first whistle and does not return for four years. The opening match is worth watching partly as a marker of that transition — the moment a tournament stops being an anticipated event and becomes an actual sequence of results, with everything that entails.",
+        ],
+      },
+      {
+        h: 'What a bad opener does not mean',
+        p: [
+          "A tedious opening match generates a predictable wave of commentary suggesting the tournament will be disappointing, and this reaction has been wrong at essentially every World Cup where it has occurred. The opener is structurally unrepresentative: nervous teams, ceremonial context, and the first competitive football most participants have played in weeks.",
+          "By the third round of group matches, when qualification is at stake and teams have settled, the football is reliably different. Judging a tournament by its first ninety minutes is roughly as useful as judging a season by its opening fixture, and the people doing it loudly on the first evening are almost always quietly revising within a week.",
+        ],
+      },
+      {
+        h: 'The 2026 opener carries extra weight',
+        p: [
+          "This particular opening match has a burden previous ones did not: it is the first competitive evidence about whether the 48-team format works. Every argument about expansion, dilution and quality described elsewhere in this collection will be projected onto it, fairly or otherwise, within minutes of the final whistle.",
+          "This makes it worth watching with a degree of deliberate calm. One match cannot settle a question about a tournament format, and the conclusions drawn on the first evening will be heavily coloured by whatever people already believed. The genuine evidence about the format accumulates across the group stage, not in the first ninety minutes.",
+        ],
+      },
+      {
+        h: 'Mark the occasion somehow',
+        p: [
+          "A small suggestion: do something to mark the opening match rather than letting it happen in the background. Watch it with somebody, or at least watch it deliberately rather than while doing something else. It is the beginning of a month that will produce memories, and beginnings are easier to remember when they were treated as beginnings.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-mascot-and-identity-of-a-world-cup',
+    sections: [
+      {
+        h: 'Where the tradition came from',
+        p: [
+          "World Cup mascots are a relatively recent addition, arriving decades after the tournament itself and initially as a straightforwardly commercial idea. What began as a merchandising device has become an expected component of every tournament's identity, to the point that its absence would now be noticed.",
+          "The early mascots were generally human figures in national dress or simplified sporting imagery; the later ones have trended toward animals, abstract creatures and characters designed for animation. The shift tracks the growth of children's merchandising and television animation as revenue streams, which is a fairly clear illustration of what has actually driven the tradition's evolution.",
+        ],
+      },
+      {
+        h: 'Designing for a global audience is genuinely hard',
+        p: [
+          "A World Cup mascot must work across every culture that will watch the tournament, which is a considerably harder brief than a domestic sporting mascot faces. Imagery that reads as friendly in one culture can read as odd or unappealing in another, colours carry different associations, and animal symbolism varies enormously between regions.",
+          "The result is that mascots tend toward a designed inoffensiveness that attracts criticism for blandness — and the criticism, while fair, underestimates the constraint. A design that genuinely delights one host nation's audience and confuses half the world has failed at its actual job, and the safe, broadly legible outcome is frequently the correct answer to the brief rather than a failure of imagination.",
+        ],
+      },
+      {
+        h: 'The emblem does more work than the mascot',
+        p: [
+          "The tournament emblem — the logotype appearing on every pitch-side board, every broadcast graphic and every piece of official material — is seen vastly more often than the mascot and does considerably more to establish a tournament's visual memory. It is also more constrained, needing to work at every size from a lapel pin to a stadium wrap.",
+          "Emblems that succeed tend to do so by being simple enough to recognise instantly and distinctive enough to date precisely. Years later, seeing a particular emblem places a viewer in a specific summer immediately, which is exactly the function this article describes — and it is achieved through graphic restraint rather than through the character design that gets more attention.",
+        ],
+      },
+      {
+        h: 'Three hosts, one identity',
+        p: [
+          "The 2026 tournament faces a branding challenge no previous edition has: expressing a single coherent identity across three countries with distinct cultures, two dominant languages plus French, and no shared visual tradition. A design that leans too heavily on any one host slights the others; one that avoids all specificity says nothing at all.",
+          "The solution attempted has generally been to establish a unified tournament identity while allowing host-city and host-nation variations within it, which is a reasonable compromise and an inherently harder problem than any single-host tournament has faced. Whether it produces something memorable is a genuine question, and one that will only be answerable retrospectively.",
+        ],
+      },
+      {
+        h: 'Why old mascots become beloved',
+        p: [
+          "Mascots that were dismissed as unimpressive at the time frequently acquire genuine affection decades later, and the mechanism is nostalgia rather than reassessment of the design. The mascot becomes a container for the memory of a summer, and the summer's emotional weight transfers to the object attached to it.",
+          "This means the 2026 mascot's eventual reputation is largely out of the designers' hands. If the tournament produces a memorable month, the mascot will be remembered fondly regardless of its merits; if the tournament is forgettable, the best design in the world will not rescue it. The symbol inherits whatever the football gives it.",
+        ],
+      },
+      {
+        h: 'The commercial machinery, stated plainly',
+        p: [
+          "It is worth being direct about scale: tournament branding supports an enormous licensing operation covering everything from replica kits and toys to sticker albums and confectionery, and the revenue involved is substantial. The mascot exists in significant part because it sells things to children.",
+          "Acknowledging this does not require dismissing the cultural function described throughout this article — both are true simultaneously. The sticker album that teaches a child forty-eight national flags is also a product designed to be bought repeatedly, and the fact that it works commercially is precisely why it exists to work culturally.",
+        ],
+      },
+      {
+        h: 'The identity outlives the tournament',
+        p: [
+          "One measure of a tournament's visual identity is whether it survives in circulation afterward, and some have persisted remarkably: emblems reproduced on retro merchandise decades later, mascots referenced by people too young to have watched the tournament, colour schemes that instantly signal a particular era of football.",
+          "This afterlife is unplanned and unpredictable. Designers cannot engineer nostalgic longevity, and the tournaments whose identities endured are not obviously the ones with the best design. What they generally share is a memorable competition attached, which returns to the same conclusion: the football does most of the work, and the symbols carry it.",
+        ],
+      },
+      {
+        h: 'Notice it while it is happening',
+        p: [
+          "The practical suggestion is minor and worth doing anyway: pay a little attention to the 2026 identity while the tournament is live, since it will be everywhere for five weeks and then largely disappear. The emblem, the mascot, the colour scheme and the typography will all become, for people who watched, a reliable trigger for the memory of this specific summer.",
+          "That is worth a moment's notice now rather than only in twenty years when it turns up unexpectedly and produces a rush of recollection that seems disproportionate to the object causing it. The design is doing that work whether or not anybody registers it at the time.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'following-a-tournament-as-a-neutral',
+    sections: [
+      {
+        h: 'The neutral sees more football',
+        p: [
+          "The most immediate practical advantage is volume. A committed supporter of one nation watches that team's three group matches with enormous investment and treats much of the rest as filler; a neutral has no such hierarchy and consequently watches a far wider spread of the tournament, including matches a partisan would never consider.",
+          "Across a 104-match tournament this difference is substantial. The neutral encounters more teams, more styles, more unfamiliar players and more of the tournament's actual variety, which means their experience of the competition is genuinely broader even if it lacks the intensity that comes with having something at stake.",
+        ],
+      },
+      {
+        h: 'How to choose what to watch without an anchor',
+        p: [
+          "The absence of a default team creates a genuine problem: with four matches on some days and no obvious priority, a neutral can end up watching nothing in particular. The solution is to build a lightweight set of interests early — two or three adopted teams, a style of play you want to see more of, a specific player you have decided to follow.",
+          "This does not need to be elaborate. A neutral who decided before the tournament that they wanted to watch every match involving debutant nations has a coherent viewing plan requiring no emotional investment, and it will lead them to fixtures a scheduling algorithm would never have suggested.",
+        ],
+      },
+      {
+        h: 'Neutral does not mean detached',
+        p: [
+          "A common misconception is that watching without allegiance means watching without feeling. In practice, neutrals develop attachments rapidly and often intensely — a team that plays well in an opening match, a player who does something memorable, an underdog whose story emerges over a fortnight — and by the knockout rounds most neutrals are supporting somebody.",
+          "The difference is that these attachments are chosen and provisional rather than inherited and permanent. A neutral can transfer allegiance when their team goes out, which a partisan cannot, and this makes the tournament emotionally sustainable across five weeks in a way that following one nation to elimination in week two does not.",
+        ],
+      },
+      {
+        h: 'The freedom to admire the opponent',
+        p: [
+          "Perhaps the most underrated neutral advantage is the ability to genuinely enjoy something done well by a team you would otherwise be against. A partisan watching their side concede a brilliant goal experiences it almost entirely as loss; a neutral experiences it as the thing itself — a piece of football executed beautifully.",
+          "Over a tournament this adds up to a substantially different relationship with the sport. The neutral accumulates a month of admired moments while the partisan accumulates a month of anxiety punctuated by relief, and while nobody would trade away the intensity of genuine support, it is worth recognising that the neutral experience has real compensations.",
+        ],
+      },
+      {
+        h: 'Learning the game is easier without a stake',
+        p: [
+          "Everything this collection recommends about watching football analytically — the shapes, the transitions, the pressing triggers — is considerably easier to practise when you do not care who wins. Anxiety about a result crowds out the attention that tactical observation requires, which is why partisan supporters frequently watch their own team least analytically.",
+          "For anybody wanting to genuinely improve at reading matches, the neutral fixtures of a World Cup group stage are the ideal training ground: high-quality football, no emotional stake, and a hundred matches to practise on. It is the single best opportunity available in any four-year cycle.",
+        ],
+      },
+      {
+        h: 'The risk of watching nothing properly',
+        p: [
+          "The genuine failure mode of neutral viewing is dilution: watching a great deal of football distractedly, following none of it closely, and reaching the end of the tournament having consumed an enormous volume while remembering very little. Without a stake, attention drifts easily.",
+          "The correction is deliberate commitment to specific matches rather than ambient consumption of all of them. A neutral who watched twenty matches properly will have a richer tournament than one who half-watched sixty, and choosing which is which requires the kind of advance decision that a partisan never has to make because their fixtures choose themselves.",
+        ],
+      },
+      {
+        h: 'Neutrality is the tournament\'s default audience',
+        p: [
+          "It is worth noting that the overwhelming majority of the World Cup's global audience is neutral for the overwhelming majority of matches. A tournament of forty-eight teams means any given viewer has no stake in the vast bulk of fixtures, and the competition is therefore designed and broadcast substantially for people watching without allegiance.",
+          "This is a reason to take neutral viewing seriously as a way of following the tournament rather than treating it as a consolation for not having a team involved. The World Cup's global reach depends entirely on people watching matches between countries they have no connection to, and finding that worthwhile is the normal condition rather than the exception.",
+        ],
+      },
+      {
+        h: 'The best possible outcome',
+        p: [
+          "The neutral's ideal tournament is one in which they arrive with no attachment, acquire two or three over the group stage, lose most of them in the knockouts, and end up genuinely invested in a final between teams they had barely considered a month earlier. That trajectory is available to essentially anybody willing to watch with some deliberateness.",
+          "It is also, in its way, a purer version of what the tournament is for. A World Cup that produces genuine emotional investment in a person with no prior connection to either finalist has demonstrated exactly the thing this collection's article on global unity describes — and the neutral is the person best placed to experience it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'opening-match-what-to-expect',
+    sections: [
+      {
+        h: 'The tournament that has to be built',
+        p: [
+          "Something worth appreciating about the opening match is how much has to be functioning correctly for it to happen at all: venues converted, pitches installed, security operations coordinated across three countries, broadcast infrastructure connected, and forty-eight squads transported and accommodated. The first whistle is the moment a decade of preparation is finally tested.",
+          "Most of that machinery remains invisible if it works, which is precisely the intention. But the opening match is genuinely the first evidence that the whole apparatus functions, and for the thousands of people who spent years building it, the first ninety minutes are being watched for entirely different reasons than the football.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-mascot-and-identity-of-a-world-cup',
+    sections: [
+      {
+        h: 'The song, briefly',
+        p: [
+          "Alongside the visual identity sits an official tournament song, which follows a similar pattern: widely criticised at the time, occasionally beloved decades later, and functioning primarily as an audio trigger for the memory of a specific summer. Some have become genuinely enduring; most are forgotten within a cycle.",
+          "The same logic applies as to the mascot. A song attached to a memorable tournament acquires the tournament's emotional weight regardless of its musical merits, which is why the ones people still play years later correlate more closely with which World Cups were good than with which songs were.",
+        ],
+      },
+      {
+        h: 'The kits are part of the identity too',
+        p: [
+          "Every World Cup produces a wave of new national team kits, and these frequently outlast every other visual element of a tournament in circulation. A shirt from a memorable campaign remains wearable for decades and is reproduced in retro ranges long afterward, which makes it arguably the most durable piece of tournament imagery any host or federation produces.",
+          "Kits also carry meaning the official branding cannot, since they belong to nations rather than to the tournament and connect to a continuous history rather than a single month. A team appearing in a design that references a famous previous campaign is making a deliberate statement, and noticing those references is a small pleasure available throughout the group stage.",
+        ],
+      },
+      {
+        h: 'What the host cities do with it',
+        p: [
+          "The tournament identity extends well beyond broadcast graphics into the physical fabric of host cities: banners, street decoration, transport livery, fan zone design and the wrapping of buildings. For residents, this is the most visible sign that something is happening, and it arrives weeks before the football does.",
+          "Across sixteen cities in three countries, the scale of this is considerable, and it is one of the more genuinely transformative things a hosting does to a place temporarily. It is also entirely removed within weeks of the final, which gives the whole exercise a deliberately ephemeral quality — a city dressed up for a month and then returned to itself.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'venues-and-stadiums-2026',
+    sections: [
+      {
+        h: 'Sixteen venues is more than any tournament has used',
+        p: [
+          "The venue count for 2026 exceeds any previous World Cup, which is a direct consequence of the expanded field and the 104-match schedule. More venues means more cities involved, more infrastructure to coordinate, and a tournament whose physical footprint is genuinely continental rather than national.",
+          "It also means a substantially larger share of the population of three countries lives within reasonable travelling distance of a match, which was part of the argument for this hosting model. The trade is that no single city hosts enough matches to be transformed by the tournament in the way a single-host World Cup transforms its principal venue city.",
+        ],
+      },
+      {
+        h: 'Where the knockout matches go',
+        p: [
+          "Venue allocation for the later rounds is decided in advance and follows a mixture of capacity, symbolic significance and logistical practicality. The largest and most prestigious venues are reserved for the semi-finals and final, which means some excellent stadiums host only group fixtures and some teams may never play in the tournament's marquee grounds at all.",
+          "For a supporter planning travel, this matters: knowing which venues host which rounds allows a trip to be built around a stage of the tournament rather than a team, which is frequently the more reliable approach given that no team's progression can be predicted when tickets are being purchased.",
+        ],
+      },
+      {
+        h: 'The venue nobody will forget',
+        p: [
+          "Every tournament produces one stadium that becomes inseparable from a defining moment, and it is rarely predictable in advance. A modest venue hosting a famous upset acquires permanent significance while a magnificent one hosting three unremarkable group matches disappears from memory entirely.",
+          "This is worth keeping in mind against the temptation to rank the 2026 venues before the football is played. The stadium that ends up mattering most will be determined by what happens inside it, and by the final weekend at least one of the sixteen will have become a name that carries something the architecture never could.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-final-in-2026',
+    sections: [
+      {
+        h: 'Getting a ticket is close to impossible',
+        p: [
+          "Demand for World Cup final tickets exceeds supply by an enormous multiple, and the allocation is distributed across participating federations, sponsors, officials and a public ballot that receives applications in the millions for a fraction of that number of seats. The practical probability of an ordinary supporter attending is very low.",
+          "This is worth stating because it shapes what the final actually is as an event: a match watched by hundreds of millions and attended by a crowd substantially composed of people with institutional connections rather than lifelong supporters of the two teams. The atmosphere is frequently reported as flatter than earlier knockout rounds for precisely this reason.",
+        ],
+      },
+      {
+        h: 'What happens in the two countries involved',
+        p: [
+          "While the stadium hosts a controlled event, the two finalist nations experience something considerably less contained. Public viewing sites fill, streets empty, and the collective attention described in this collection's article on global unity reaches its most concentrated point for those two populations specifically.",
+          "For most people in the finalist countries, the final is experienced communally in a public space or a crowded home rather than individually, and the images that circulate afterward are frequently of those crowds rather than of the match. That is arguably the truer record of what a World Cup final is: not ninety minutes in a stadium, but two countries stopping simultaneously.",
+        ],
+      },
+      {
+        h: 'And then it is over',
+        p: [
+          "The abruptness of a World Cup's ending is genuinely disorienting. A month of daily football, accumulated routines and shared attention stops completely within hours of the final whistle, and the following day contains nothing. Supporters frequently describe a distinct flatness in the days afterward that has little to do with which team won.",
+          "This is worth anticipating rather than being surprised by. The tournament's rhythm becomes a structure people organise weeks around, and its removal leaves a gap that no ordinary football fixture fills. It is also, of course, exactly why the next one matters so much — and why four years turns out to be almost precisely long enough.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'opening-match-what-to-expect',
+    sections: [
+      {
+        h: 'The first goal of the tournament',
+        p: [
+          "Whoever scores the opening goal of a World Cup acquires a small piece of permanent trivia, and the moment carries a disproportionate charge for exactly that reason. It is the first goal of a tournament that will produce several hundred, and it is the only one that can be first.",
+          "Players are aware of this. The celebrations following opening goals of World Cups tend toward the unrestrained even when the scorer is not a notable name, because everybody on the pitch understands what has just been claimed. It is among the more purely enjoyable small moments the tournament produces.",
+        ],
+      },
+      {
+        h: 'Where to watch the beginning',
+        p: [
+          "Given everything above about the opener rarely being a classic, the argument for watching it is entirely about occasion rather than quality. That suggests watching it somewhere with other people, since the value being sought is the shared sense of a beginning rather than the football itself.",
+          "For anybody planning a tournament's viewing, the opening match and the final are the two fixtures most worth treating as events regardless of who is playing, and for the same underlying reason: they are the boundaries of the thing, and boundaries are what make a month feel like a month rather than a series of matches.",
+        ],
+      },
+      {
+        h: 'What follows immediately',
+        p: [
+          "One structural feature of the modern World Cup worth knowing: the opening match is quickly followed by a dense sequence of fixtures, with multiple matches daily within days of the start. The tournament accelerates from a single ceremonial fixture to full volume almost immediately.",
+          "This means the opener's atmosphere of anticipation is genuinely brief. Within seventy-two hours the tournament is in full flow, groups are taking shape, and the sense of a beginning has been entirely replaced by the sense of a competition underway. It is worth savouring the first evening precisely because that particular feeling does not last.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'following-a-tournament-as-a-neutral',
+    sections: [
+      {
+        h: 'Neutrality has limits, and that is fine',
+        p: [
+          "Complete neutrality is not really achievable and is not worth striving for. Most people watching without a team in the tournament still find themselves preferring certain outcomes — against a team they find cynical, in favour of an underdog, for a player they admire — and these preferences are what make the football engaging rather than a compromise of some ideal detachment.",
+          "The useful version of neutrality is simply the absence of a fixed, inherited allegiance rather than the absence of preference altogether. A viewer with no national stake who nevertheless very much wants a particular team to win a particular match is having exactly the experience this article recommends.",
+        ],
+      },
+      {
+        h: 'The neutral watches the tournament, not a campaign',
+        p: [
+          "A partisan supporter experiences a World Cup as their team's campaign, which ends when the team does. A neutral experiences the whole tournament as a single narrative arc — forty-eight teams narrowing to one across five weeks — and that arc continues to the end regardless of individual eliminations.",
+          "This is why neutrals frequently report enjoying the closing rounds most, when a partisan whose team went out in the group stage has often disengaged entirely. The neutral has been following the competition rather than a participant in it, and the competition is at its most compelling precisely at the point where most partisans have nothing left invested.",
+        ],
+      },
+      {
+        h: 'Try it deliberately in 2026',
+        p: [
+          "For anybody who does have a team in the tournament, there is still a case for adopting the neutral posture for the matches that do not involve them, rather than treating those fixtures as background. It is the same tournament either way; the difference is entirely in how much attention gets paid to the ninety-something matches that are not yours.",
+          "With 104 fixtures across five weeks, the volume of football available to somebody willing to watch it without a stake is greater than at any previous World Cup. That is a substantial amount of high-quality sport being offered to anybody prepared to be interested, and choosing to be interested is genuinely all the preparation required.",
+        ],
+      },
+      {
+        h: 'The matches nobody else is watching',
+        p: [
+          "One specific pleasure available only to neutrals is the group-stage fixture between two teams that most of the world will ignore — an unfashionable pairing, an inconvenient kickoff time, no obvious stakes. These matches frequently produce excellent football precisely because both sides are playing without the weight of global attention.",
+          "There is also a small satisfaction in having watched something that most people did not, and in being the person who can say a particular unfancied team was genuinely good three weeks before anybody noticed. A World Cup with forty-eight participants produces a great many of these fixtures, and the neutral is the only viewer with any reason to seek them out.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'venues-and-stadiums-2026',
+    sections: [
+      {
+        h: 'The travel is the story for supporters too',
+        p: [
+          "Everything this article says about teams managing the map applies equally to supporters, and with fewer resources. A fan following one nation through the group stage may face internal flights between three cities in different countries, with accommodation, border crossings and time-zone changes at each stop.",
+          "This is a genuinely different proposition from previous tournaments, where a supporter could often base themselves in one city and travel by train. Anybody planning to follow a team through 2026 should treat it as three separate trips rather than one, and should probably decide in advance which matches are worth attending rather than assuming all three are feasible.",
+        ],
+      },
+      {
+        h: 'A tournament you could never see all of',
+        p: [
+          "It is worth registering the scale plainly: no single person will attend matches at all sixteen venues, and no supporter will experience more than a fraction of the tournament's geography directly. The World Cup has become large enough that it can only be experienced whole through a screen.",
+          "That is a genuine change in what the event is. Earlier tournaments could plausibly be followed in person by a determined supporter travelling continuously; this one cannot. The complete tournament exists only as a broadcast object, and everybody attending in person is by definition experiencing a small selected portion of something considerably larger.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-final-in-2026',
+    sections: [
+      {
+        h: 'What the winning players describe afterwards',
+        p: [
+          "Accounts from players who have won a World Cup final share a consistent oddity: very few describe the final whistle as joyful in the moment. The more common description is of relief, disorientation and an inability to process what has happened, with the actual enjoyment arriving hours or days later.",
+          "This is worth knowing while watching the celebrations, which look like unrestrained joy and are frequently something more complicated. The people on the pitch have spent years working toward a single outcome that has just occurred, and the immediate psychological response to that is apparently closer to shock than to happiness.",
+        ],
+      },
+      {
+        h: 'The match that gets replayed forever',
+        p: [
+          "Whatever happens in the 2026 final, it will be among the most-watched and most-replayed ninety minutes of football ever recorded, shown in retrospectives for decades and referenced by people who were not born when it was played. Very few sporting events carry that kind of archival permanence.",
+          "That permanence is itself a reason to watch it live. The match will be available forever; the experience of watching it without knowing the outcome will not be, and that specific and unrepeatable version of it is only available to the people present on the day.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'opening-match-what-to-expect',
+    sections: [
+      {
+        h: 'A useful frame for the whole tournament',
+        p: [
+          "The opening match is, in a sense, a preview of a lesson the whole tournament teaches: expectations set in advance are frequently wrong, and the most memorable moments arrive from fixtures nobody flagged. The opener is where that pattern begins, by reliably failing to be the classic everybody hoped for.",
+          "Approaching the rest of the tournament with that frame — low expectations for the fixtures everybody is excited about, genuine openness to the ones nobody mentions — is probably the single best predictor of enjoying a World Cup, and the opening match is where it can usefully be practised first.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-mascot-and-identity-of-a-world-cup',
+    sections: [
+      {
+        h: 'Why any of this deserves an article',
+        p: [
+          "A reasonable objection to everything above is that it concerns marketing rather than football, and is therefore beneath serious attention. The answer is that the symbols are how the tournament is remembered by people who were not analysing the football — which is most people, including most of the children for whom a World Cup becomes formative.",
+          "A tournament is not only its matches. It is also the visual language surrounding it, which is what people carry out of the month and recognise decades later. Dismissing that as commerce is accurate as far as it goes and misses what the images actually end up doing, which is holding a summer in place for anybody who lived it.",
+        ],
+      },
+      {
+        h: 'The child in the replica shirt',
+        p: [
+          "The image that best captures this article's argument is an entirely ordinary one: a child wearing a tournament shirt or clutching a mascot toy during a match they will remember for the rest of their life. The object is mass-produced and commercially motivated and will nevertheless become, for that specific person, an artefact of something genuinely important.",
+          "Multiply that across the tens of millions of children who will encounter the 2026 tournament, and the branding stops looking like a marketing exercise and starts looking like the physical residue of a shared global event. Both descriptions are accurate; the second is the one that survives.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'opening-match-what-to-expect',
+    sections: [
+      {
+        h: 'Four years of waiting ends in one whistle',
+        p: [
+          "The final thing worth saying about the opening match is the simplest: it ends the wait. Four years of qualification, speculation, squad debates and anticipation resolve into an actual football match being played by actual players, and that transition happens exactly once per cycle.",
+          "Whatever the quality of the ninety minutes that follow, the first whistle of a World Cup is among the more genuinely satisfying moments available to anybody who follows the sport. It is worth being present for, and it is worth allowing yourself to feel slightly disproportionate about, because the alternative is treating a rare thing as routine.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'following-a-tournament-as-a-neutral',
+    sections: [
+      {
+        h: 'A month that belongs to everybody',
+        p: [
+          "The deepest argument for neutral viewing is that the World Cup was designed for it. A tournament gathering forty-eight nations for a global audience is explicitly built on the expectation that most viewers will be watching teams they have no connection to, and finding that worthwhile is not a compromise but the intended experience.",
+          "For five weeks in 2026, an enormous quantity of the best football on earth will be played and broadcast to anybody who wants it, with no requirement of loyalty, expertise or prior investment. Turning up with curiosity is genuinely sufficient, and it is arguably the purest way the tournament can be experienced at all.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'opening-match-what-to-expect',
+    sections: [
+      {
+        h: 'One more note on expectations',
+        p: [
+          "Set them low for the football and high for the feeling, and the opening match will deliver on both counts — which is roughly the opposite of how most people approach it, and reliably the more satisfying arrangement.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-mascot-and-identity-of-a-world-cup',
+    sections: [
+      {
+        h: 'A last thought',
+        p: [
+          "In twenty years, somebody will see the 2026 emblem unexpectedly and be returned instantly to wherever they watched a particular match. That is a considerable amount of work for a piece of graphic design, and it happens without anybody deciding it should.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
