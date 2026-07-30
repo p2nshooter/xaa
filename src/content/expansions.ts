@@ -6217,6 +6217,625 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'the-modern-full-back',
+    sections: [
+      {
+        h: 'The evolution happened in identifiable stages',
+        p: [
+          "The transformation this article describes did not occur all at once. For decades the position was purely defensive; then wing-backs emerged in back-three systems, asking wide defenders to cover the entire flank; then the attacking full-back became standard in back fours as wingers moved inside; and most recently the inverted full-back began stepping into midfield during possession.",
+          "Each stage added responsibilities without removing the previous ones, which is precisely why the modern role is so demanding. A contemporary full-back is expected to perform every job the position has accumulated across sixty years of tactical development, and the physical and technical requirements have compounded accordingly at every stage.",
+        ],
+      },
+      {
+        h: 'The relationship with the winger in front',
+        p: [
+          "A full-back's job is defined substantially by whoever plays ahead of him. A winger who holds width and stays high leaves the full-back to underlap or stay home; one who cuts inside habitually requires the full-back to supply all the width on that flank; one who tracks back diligently reduces the defensive load enormously.",
+          "This means the same full-back can look excellent in one system and exposed in another with no change in his own ability. Assessing wide defenders without accounting for the winger in front of them is one of the most common analytical errors casual observers make, and it explains a great deal of apparently inconsistent form when players move between teams.",
+        ],
+      },
+      {
+        h: 'Left-footed players are genuinely scarce',
+        p: [
+          "A persistent structural problem across international football is the shortage of quality left-footed defenders, which affects the left-back position more acutely than any other. Right-footed players filling in on the left face real difficulties: crossing from the wrong foot, an unnatural first touch when receiving on the touchline, and a body shape that invites pressure from the wrong side.",
+          "Several national teams at every World Cup field a converted right-footer at left-back for exactly this reason, and it is worth watching for. A team whose left-back consistently comes inside onto his stronger foot rather than reaching the byline is telling you something about its squad depth rather than about its tactical intentions.",
+        ],
+      },
+      {
+        h: 'How the position is judged statistically',
+        p: [
+          "Full-backs are difficult to assess with numbers because their most valuable actions are preventive. Tackles and interceptions are recorded, but a defender whose positioning means the pass into his zone is never attempted registers nothing, and can appear statistically less active than a weaker player who is constantly having to make recoveries.",
+          "Analysts have partially addressed this with possession-adjusted metrics and by tracking how often opponents attack a particular flank at all. A team that systematically avoids one side of the pitch is paying a compliment to whoever is defending it, and that avoidance is a more meaningful measure than any tackle count.",
+        ],
+      },
+      {
+        h: 'Development takes longer than for other positions',
+        p: [
+          "Because the modern role combines defensive, athletic and technical demands, young full-backs typically take longer to become internationally reliable than young attackers. A twenty-year-old winger can be devastating on pace and instinct alone; a twenty-year-old full-back with the same attributes will be exposed positionally by good opponents.",
+          "This is why national teams tend to field older, more experienced players in the position than elsewhere, and why the youngest members of a World Cup squad are rarely full-backs. The position's learning curve is genuinely steeper, and the reading of the game it requires only comes from having been beaten repeatedly and learned from it.",
+        ],
+      },
+      {
+        h: 'International football asks something different',
+        p: [
+          "At club level a full-back plays within a system rehearsed daily, with teammates whose movements he knows precisely. At international level the same player must perform the same role with less rehearsal, alongside players he sees a few weeks a year, frequently within a shape different from his club's.",
+          "The adjustment is harder for full-backs than for most positions because so much of the job depends on coordinated movement with the players around them. A full-back who looks positionally flawless for his club can appear uncertain internationally purely because the automatic understanding has not been built — which is worth remembering before judging one harshly at 2026.",
+        ],
+      },
+      {
+        h: 'The wide areas decide more than they used to',
+        p: [
+          "Modern defensive organisation has made central penetration increasingly difficult, which has pushed more attacking activity into the wide channels by necessity. The consequence is that a larger share of chances now originate from the flanks than in earlier tactical eras, and the players occupying those flanks have become correspondingly more important.",
+          "This is the structural reason behind everything else in this article. The position did not become more important because coaches decided it should; it became more important because central defences got better and the attacking game relocated to where the full-backs live.",
+        ],
+      },
+      {
+        h: 'One thing to watch across the tournament',
+        p: [
+          "A single habit worth adopting: at the start of each match, identify which full-back on each team is attacking and which is holding, because it is almost never symmetrical. Teams routinely send one wide defender forward while the other tucks in to form a back three in possession.",
+          "That asymmetry is one of the clearest windows into a coach's plan available to a viewer, and it is visible within the first ten minutes. It also tells you which flank the team intends to attack down, which frequently predicts where its goals will come from across the whole match.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-holding-midfielder-does',
+    sections: [
+      {
+        h: 'The single pivot and the double pivot',
+        p: [
+          "A fundamental structural choice sits behind this position: whether a team uses one holding midfielder or two. A single pivot gives an extra body further forward and asks one player to cover the whole area in front of the defence; a double pivot provides mutual cover and rotational security at the cost of an attacking option.",
+          "Teams that play a single pivot are making a genuine bet on that individual's reading of the game, since being beaten leaves the defence directly exposed. It is worth identifying which arrangement each 2026 team uses, because it reveals how much risk the coach is willing to carry in the most consequential defensive zone on the pitch.",
+        ],
+      },
+      {
+        h: 'Screening is not the same as tackling',
+        p: [
+          "The core defensive skill in this role is screening — positioning to make a pass into a dangerous area unattractive or impossible — rather than winning the ball through challenges. A holding midfielder who makes many tackles is frequently one who was positioned poorly enough to need them.",
+          "This is why the most respected players in the position often have unremarkable defensive statistics. Their contribution is the pass that was never attempted, the run that was covered before it began, the attack that was redirected sideways. It is genuinely difficult to see unless you are watching for it, and it is the majority of what the job consists of.",
+        ],
+      },
+      {
+        h: 'The first pass out of defence',
+        p: [
+          "In possession, the holding midfielder is frequently a team's primary route from defence into attack, and the quality of that first forward pass shapes everything downstream. A holder who can consistently break a line with a single pass converts sterile possession into genuine attacks; one who can only play sideways leaves his team circulating harmlessly.",
+          "This is why the position has increasingly been filled by technically excellent players rather than by purely destructive ones. The modern requirement is to defend a zone and to initiate attacks from within it, and players capable of both at international level are among the most valuable and scarce commodities in the sport.",
+        ],
+      },
+      {
+        h: 'Receiving under pressure is the hardest part',
+        p: [
+          "The specific technical demand that separates elite holders from adequate ones is the ability to receive the ball with an opponent behind them, in a congested area, and turn or release it cleanly. The zone this player occupies is where opposition pressing is most concentrated, and a loss of possession there is close to the most dangerous turnover available.",
+          "Coaches assess this specifically through what is sometimes called press resistance: how often a player retains possession when closed down immediately after receiving. It is a considerably better indicator of suitability for the role than passing accuracy, which is inflated by sideways passes made under no pressure at all.",
+        ],
+      },
+      {
+        h: 'The player who organises everybody else',
+        p: [
+          "Beyond his own actions, a holding midfielder frequently functions as the team's on-field organiser, positioned centrally with a view of the entire pitch and the defensive line ahead of him. He directs the midfield's shifting, signals when to press and when to hold, and manages the connection between defence and midfield.",
+          "This is why the role is so often filled by an experienced player and why teams look noticeably less coherent when he is absent. Replacing his defensive actions is achievable; replacing the constant organisational communication is considerably harder, and its absence shows up as a team that seems collectively less certain of its shape.",
+        ],
+      },
+      {
+        h: 'Cards are an occupational hazard',
+        p: [
+          "Holding midfielders accumulate yellow cards at a higher rate than most positions, because their job frequently requires stopping a promising attack in a central area where a foul is the only remaining option. The tactical foul is an accepted part of the role and it carries a predictable disciplinary cost.",
+          "At a tournament this becomes a genuine management issue, since suspension for accumulated cautions can remove a team's organisational anchor before a knockout match. Squads track this carefully, and a holder on a caution in a match that has already been won will occasionally be substituted early for precisely this reason.",
+        ],
+      },
+      {
+        h: 'Watching the space rather than the player',
+        p: [
+          "The practical viewing advice for this position is to watch the zone rather than the individual. Look at the area directly in front of the back four and notice how frequently opposition players receive the ball there facing forward — if the answer is almost never, the holding midfielder is doing his job well regardless of whether he has touched the ball recently.",
+          "This is among the more genuinely satisfying analytical habits available, because it makes visible a contribution that is otherwise entirely invisible. A team that concedes repeatedly through that zone has a problem there, and identifying it before the commentary does is a reasonable measure of having learned to watch football properly.",
+        ],
+      },
+      {
+        h: 'The position that wins tournaments quietly',
+        p: [
+          "Champions almost invariably have an excellent player in this role, and almost invariably that player receives a fraction of the attention given to the forwards. Tournament football rewards control of central midfield above nearly anything else, and control of central midfield begins with the player screening the defence.",
+          "Watching for who occupies that position in each 2026 squad, and how good they are, is probably a better predictor of how far a team will progress than assessing its attackers. It is also the position where absence through injury or suspension does the most damage, which is itself a measure of how much the role was carrying.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-complete-striker',
+    sections: [
+      {
+        h: 'Movement in the box is a rehearsed craft',
+        p: [
+          "The poacher's apparently instinctive positioning is considerably more trained than it appears. Strikers rehearse specific patterns repeatedly: attacking the near post to meet a cross early, checking away from a defender before darting back across him, holding a run to stay onside then accelerating, and occupying the space a defender vacates when the ball is delivered.",
+          "What looks like being in the right place is usually the product of thousands of repetitions of a small number of movements, executed at the correct moment. This is why strikers who appear to have a mysterious sense for where the ball will arrive are frequently the ones who worked hardest on a very unglamorous part of the game.",
+        ],
+      },
+      {
+        h: 'Hold-up play is a technical discipline',
+        p: [
+          "The complete striker's ability to receive with a defender behind him and retain the ball involves specific technique rather than merely physical strength: using the arm to establish and feel the defender's position, taking the first touch away from pressure, and shielding with the body between defender and ball while looking for the supporting run.",
+          "Done well, this single skill relieves pressure on an entire team, giving a defence under siege a reliable outlet and allowing midfielders time to advance. It is among the most valuable things a forward can offer a team that spends periods defending deep, which at a World Cup is most teams for at least part of most matches.",
+        ],
+      },
+      {
+        h: 'Two strikers changes both of their jobs',
+        p: [
+          "Teams playing with two forwards typically pair contrasting profiles rather than duplicating one, which produces a genuine partnership dynamic: one drops to link play while the other runs beyond, one attacks the near post while the other holds the far, one presses the ball while the other covers the centre-back's escape pass.",
+          "This mutual understanding takes time to develop and is one reason strike partnerships are frequently described in terms of chemistry. At international level, where preparation time is short, partnerships that already exist from club football or from years of shared national-team appearances carry a real advantage over pairings assembled on selection merit alone.",
+        ],
+      },
+      {
+        h: 'The first touch decides the chance',
+        p: [
+          "In the penalty area, the quality of a striker's first touch frequently determines whether a chance exists at all. A touch that takes the ball into space produces a shooting opportunity; an identical chance with a heavy touch produces a blocked effort or a lost possession, and the difference is measured in centimetres and fractions of a second.",
+          "This is why finishing statistics can be misleading about ability. Two strikers may have identical shot conversion rates while one is consistently manufacturing better chances for himself through control and the other is dependent on the ball arriving perfectly. The first touch is where a large share of the actual skill in the position lives.",
+        ],
+      },
+      {
+        h: 'Scoring droughts are psychological as well as technical',
+        p: [
+          "Strikers universally experience periods without goals, and the effect compounds: confidence declines, decision-making in the box becomes hurried, and chances that would ordinarily be taken instinctively are overthought. At a tournament, where a striker may only get three or four genuine opportunities across several matches, this spiral can develop quickly.",
+          "Managers and teammates manage this deliberately, frequently by emphasising a striker's non-scoring contributions to keep him engaged in the match rather than fixated on the drought. It is also why a scrappy, unconvincing goal is so valuable to a forward in poor form — the technical merit is irrelevant, the psychological effect is substantial.",
+        ],
+      },
+      {
+        h: 'Who takes the penalties',
+        p: [
+          "Strikers are frequently but not automatically their team's penalty takers, and the selection involves genuine judgement. A striker in poor form may benefit from the confidence a penalty provides, or may be the worst possible choice precisely because of that form — and managers weigh this differently.",
+          "There is also a squad-harmony dimension, since penalties inflate goal tallies and a forward chasing a scoring record has an interest that may not align with the team's. Well-run squads settle this explicitly before a tournament rather than leaving it to be negotiated on the pitch, which is a conversation that has visibly gone wrong at previous World Cups.",
+        ],
+      },
+      {
+        h: 'Pressing from the front changed the position',
+        p: [
+          "The most significant addition to the striker's job in recent decades is defensive: leading the press, cutting passing lanes between centre-backs, and working to force a defence toward one side. A forward who does not do this is a genuine liability in most modern systems regardless of his finishing.",
+          "This has changed who gets selected. Strikers with excellent finishing and no defensive contribution have become considerably harder to accommodate, particularly at international level where a team may spend long periods without the ball. The complete striker this article describes is complete substantially because the requirements expanded to include work that was previously somebody else's problem.",
+        ],
+      },
+      {
+        h: 'Judging a striker across a tournament',
+        p: [
+          "The fair assessment of a forward at a World Cup accounts for the chances he actually received. A striker in a team that creates little may finish the tournament with one goal from three opportunities, which is an excellent return, while another with five goals from twenty chances has been comparatively wasteful in a far better team.",
+          "Watching for how many genuine opportunities a striker gets, rather than only how many he converts, produces a considerably more accurate picture. It also identifies the forwards worth watching in teams that will not go far, whose contribution is frequently more impressive than their goal tally will ever suggest.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-versatility-wins-tournaments',
+    sections: [
+      {
+        h: 'The versatile player pays for himself twice',
+        p: [
+          "In a twenty-six-place squad, a player who covers two positions competently is effectively occupying one place while providing two options, which means the coach can carry an additional specialist elsewhere. The arithmetic compounds: two such players free up two places, which is a meaningful proportion of a tournament squad.",
+          "This is why versatility is valued so far above its apparent contribution. It is not that adaptable players are individually better; it is that each one increases the total number of scenarios the squad can cover, and squad-building for a tournament is fundamentally an exercise in covering scenarios with a fixed number of places.",
+        ],
+      },
+      {
+        h: 'Suspensions are the underrated argument',
+        p: [
+          "Injury gets discussed as the main risk a squad must insure against, and suspension is at least as consequential and considerably more predictable. Yellow-card accumulation removes players for specific matches, frequently knockout fixtures, and unlike injury it arrives with no warning period in which to prepare.",
+          "A squad with versatile cover absorbs this comfortably; one without faces an enforced change in a knockout match with no natural replacement. Given that card accumulation is essentially guaranteed to affect several players across a seven-match run, this is a scenario every squad will encounter rather than a possibility it might avoid.",
+        ],
+      },
+      {
+        h: 'The cost of versatility is rarely acknowledged',
+        p: [
+          "An honest account has to note the trade-off: a player who can perform three roles competently is frequently not the best available option in any of them, and a team that fields several such players may find itself adequate everywhere and excellent nowhere.",
+          "The resolution most successful squads reach is to specialise in the spine — goalkeeper, centre-back, holding midfielder, striker — and to prize versatility in the positions around it. That distribution provides the flexibility a tournament demands without diluting the roles where being genuinely excellent matters most.",
+        ],
+      },
+      {
+        h: 'Where versatility is most useful',
+        p: [
+          "Certain combinations are disproportionately valuable. A player who covers both full-back positions is worth more than one who covers two central roles, because full-back is the most physically punishing position and the one most likely to require rotation. A centre-back who can play holding midfield provides cover in two areas where injuries are most damaging.",
+          "By contrast, a forward who can play across the front three is useful but less critical, since attacking positions are typically the deepest-covered in any squad. Reading a 2026 squad list for which specific versatilities it contains, rather than merely noting that it has some, is the more informative exercise.",
+        ],
+      },
+      {
+        h: 'The players who resist it',
+        p: [
+          "Versatility is not universally welcomed by the players who possess it. A footballer known for covering several positions frequently finds it harder to establish himself as first choice in any of them, and several have spoken about the label limiting rather than advancing their careers at club level.",
+          "At international level the calculation differs, since versatility substantially improves the odds of squad selection. A player who might not make a World Cup squad as the third-choice option in one position will make it as the second-choice option in two — which is a genuine and frequently decisive advantage in the final selection meeting.",
+        ],
+      },
+      {
+        h: 'Mid-match reshaping without substitutions',
+        p: [
+          "The most sophisticated use of versatility is changing a team's shape without changing its personnel. A coach who can move a midfielder to full-back and shift the defence accordingly has altered his structure while retaining all five substitutions, which is a genuine resource preserved for later.",
+          "This is visible during matches if you know to look: a team that appears to change formation without any substitution has performed exactly this manoeuvre, and it usually indicates a coaching staff that prepared the alternative arrangement in advance. It is among the clearest signs of a well-drilled tournament team.",
+        ],
+      },
+      {
+        h: 'How coaches identify it',
+        p: [
+          "The attributes that make a player genuinely versatile rather than merely willing are specific: tactical intelligence sufficient to understand several roles' responsibilities, a technical base broad enough to execute different demands, and a temperament that accepts being moved without treating it as a demotion.",
+          "The last is more important than it sounds. A player who resents being deployed out of position performs poorly there regardless of ability, which converts a squad asset into a squad problem. Coaches select versatile players substantially on character for exactly this reason, and it is one of the few areas where a manager will openly admit that temperament outweighed technical merit.",
+        ],
+      },
+      {
+        h: 'Watch for the player who keeps moving',
+        p: [
+          "During 2026, notice the player who appears in a different position from one match to the next without any apparent drop in performance. He will rarely be discussed as a standout and will frequently be central to how his coach solved several different problems across the tournament.",
+          "These are also, historically, among the players most warmly remembered by their teammates and coaching staff long afterward — the ones who did whatever was required without complaint across five weeks. Usefulness is not a glamorous quality and at a World Cup it is genuinely close to decisive.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-set-piece-specialist',
+    sections: [
+      {
+        h: 'Inswinging and outswinging are different weapons',
+        p: [
+          "The single most consequential technical choice in corner delivery is whether the ball curves toward the goal or away from it. An inswinging corner moves toward the keeper, creating danger from any touch and pressuring the goalkeeper to commit; an outswinger moves away, arriving on attackers running onto it with more power but requiring a cleaner contact.",
+          "Which a team uses depends on personnel and on the opposing goalkeeper's willingness to leave his line. Because the delivery must curve in a specific direction, the choice also determines which foot is required from which side — an inswinger from the left needs a right-footed taker, and vice versa, which constrains selection in a way most viewers never consider.",
+        ],
+      },
+      {
+        h: 'The near-post flick and the crowded six-yard box',
+        p: [
+          "Among the most common rehearsed routines is the near-post flick: a delivery aimed at an attacker attacking the near post whose job is not to score but to redirect the ball across the six-yard area, where teammates arriving late can convert from close range against a scrambling defence.",
+          "It works because defending it requires anticipating the flick rather than the initial delivery, and defenders committed to the first ball are poorly placed for the second. Recognising this routine when it appears during 2026 is straightforward once you know it exists, and it accounts for a substantial share of the tournament's corner goals.",
+        ],
+      },
+      {
+        h: 'Short corners are a genuine tactic',
+        p: [
+          "The short corner attracts groans from crowds and is frequently a deliberate and effective choice. It draws a defender out of the penalty area, creating space inside; it produces a better crossing angle from closer to the byline; and it can catch a defence that has set up for an aerial delivery in entirely the wrong shape.",
+          "Teams with height disadvantages use it particularly, since contesting a conventional delivery against taller opponents is a poor bet. When a 2026 team repeatedly takes short corners, it is usually solving a specific problem rather than lacking ambition, and the crowd reaction is generally less informed than the decision.",
+        ],
+      },
+      {
+        h: 'The data behind taking these seriously',
+        p: [
+          "Analytical work on set pieces has produced a clear finding: the average chance quality from a corner is modest, but the volume is high and the cost of attempting one is essentially zero. Across a tournament, a team that converts corners at even a slightly above-average rate accumulates a meaningful goal advantage.",
+          "This is why the specialist coaching described elsewhere in this collection became widespread. Small percentage improvements applied to a large number of repeated situations produce reliable returns, which is precisely the kind of edge that analytics is good at identifying and that coaching can actually act on.",
+        ],
+      },
+      {
+        h: 'Who actually practises',
+        p: [
+          "Set-piece delivery is a skill maintained through constant repetition, and specialists typically practise it separately from team training — dozens of deliveries after sessions, targeting specific zones, frequently with a goalkeeper and a couple of teammates rather than the full squad.",
+          "This individual work is what separates a genuinely reliable deliverer from a player who occasionally produces a good ball. At tournament level the difference is measurable in the proportion of corners that beat the first defender at all, which is the basic threshold a delivery must clear before any routine can function.",
+        ],
+      },
+      {
+        h: 'The penalty taker is chosen, not assumed',
+        p: [
+          "In-match penalties are typically assigned to a designated taker decided before the tournament, and the choice is based on training conversion rates, temperament under pressure and recent form rather than on seniority or scoring record. Some teams designate a hierarchy of three or four in advance to avoid any on-pitch negotiation.",
+          "This preparation matters because a penalty awarded in a tense knockout match is not the moment to discover that two players both expect to take it. Squads that have failed to settle this clearly have produced visibly awkward scenes at previous tournaments, and it is an entirely avoidable problem with an entirely administrative solution.",
+        ],
+      },
+      {
+        h: 'A weapon available to any team',
+        p: [
+          "The most attractive feature of set-piece proficiency is that it is not restricted by budget or talent depth. A modestly resourced national team can be genuinely excellent at dead balls through coaching, rehearsal and selecting one player with a good delivery — none of which requires the squad depth or individual quality that open-play excellence demands.",
+          "This makes it the single most accessible route to competitiveness for a smaller nation, and it is precisely why underdog runs so frequently feature set-piece goals. A team that cannot outplay an opponent can still out-prepare it in the one phase of the game where preparation reliably transfers to outcomes.",
+        ],
+      },
+      {
+        h: 'Watch the routine, not the delivery',
+        p: [
+          "The practical viewing suggestion is to watch the attacking players' movement in the two seconds before a corner is taken rather than watching the taker. Blockers positioning themselves, decoy runs starting early, and a group breaking from a cluster are all visible if you look, and they reveal the routine before the ball is struck.",
+          "Doing this a handful of times converts corners from a moment to look away into one of the more legible pieces of choreography in the sport. Given how many of the 2026 knockout goals will originate from exactly these situations, it is a small habit with a good return.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-modern-full-back',
+    sections: [
+      {
+        h: 'The position now produces genuine stars',
+        p: [
+          "A meaningful marker of how much has changed is that full-backs now appear regularly in discussions of the world's best players, which would have been close to unthinkable a few decades ago. The role's expanded creative output — assists, key passes, chances created — has made its best practitioners statistically comparable to attacking players.",
+          "This has consequences for recruitment and for how young players choose to develop. A position that was once where a coach placed the least gifted child is now one that ambitious young players actively pursue, which over time raises the standard further and accelerates exactly the evolution this article describes.",
+        ],
+      },
+      {
+        h: 'The hinge, restated',
+        p: [
+          "The article's central image — the full-back as a hinge on which a team's balance turns — is worth holding onto because it explains why the position rewards attention so richly. Every decision a full-back makes about whether to advance affects his team's attacking width and its defensive exposure simultaneously, and no other position carries that dual consequence so directly.",
+          "Watching for those decisions across a 2026 match is watching a team's risk appetite being expressed continuously by two players. When both full-backs are high, the team is committed; when both are deep, it is protecting something; when one is high and one is deep, the coach has a specific asymmetric plan worth identifying.",
+        ],
+      },
+      {
+        h: 'The recovery run nobody applauds',
+        p: [
+          "Perhaps the single most characteristic full-back action is the sprint back after an attack breaks down — sixty or seventy metres at maximum effort, performed repeatedly across ninety minutes, with the only reward being that nothing bad happens. It is the least celebrated repeated action in football and among the most consequential.",
+          "A team whose full-backs stop making those runs in the final twenty minutes is a team about to concede, and the decline is visible before the goal arrives. Watching for whether those recovery sprints are still happening at the eightieth minute is a genuinely reliable indicator of both fitness and commitment, and it requires no tactical knowledge at all.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-holding-midfielder-does',
+    sections: [
+      {
+        h: 'Two contrasting archetypes',
+        p: [
+          "The role divides broadly into two profiles. The destroyer prioritises physical presence, tackling and disruption, breaking up attacks aggressively and leaving distribution to others. The deep-lying playmaker prioritises passing range and control, dictating tempo from a position where he has the whole pitch in front of him.",
+          "Most teams want elements of both, and the rare players who genuinely combine them are among the most valuable in the sport. Where a team cannot find one, it must decide which quality it needs more — which is frequently determined by whether the rest of the midfield can defend or can create, and the holder is selected to supply whichever is missing.",
+        ],
+      },
+      {
+        h: 'The position that ages well',
+        p: [
+          "Unlike the full-back role discussed elsewhere in this collection, holding midfield tends to reward experience over athleticism, and players frequently perform in it at the highest level into their thirties. The core skills — positioning, anticipation, distribution under pressure — improve with accumulated match understanding rather than declining with physical peak.",
+          "This is why national teams often field one of their oldest outfield players here, and why a veteran holder can extend an international career several years past the point at which he would have been replaced in a more physically demanding position. For a squad, that continuity is valuable well beyond the individual's own performance.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-complete-striker',
+    sections: [
+      {
+        h: 'The striker and the goalkeeper, briefly',
+        p: [
+          "The one-on-one against a goalkeeper is among the most-analysed situations in the sport and is genuinely harder than it looks. The keeper's job is to delay committing while narrowing the angle; the striker's is to force the commitment before deciding. Whoever moves first has generally lost the exchange.",
+          "Elite finishers overwhelmingly wait for the keeper to commit rather than deciding in advance, which requires composure at exactly the moment adrenaline argues against it. It is one of the clearest examples of a skill that is technically simple and psychologically difficult, which describes a great deal of what separates strikers at the highest level.",
+        ],
+      },
+      {
+        h: 'Which profile 2026 will reward',
+        p: [
+          "Given tournament conditions — deep defences, scarce chances, heavy defensive workloads — the balance probably favours the complete striker over the pure poacher, since a forward who contributes only in the box will spend long periods contributing nothing at all in matches where his team is under pressure.",
+          "That said, the tournament will also produce at least one match settled by a striker who did nothing for eighty-nine minutes and then converted the one chance that arrived. Both types will justify themselves across five weeks, which is precisely why this article declines to name a better one.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-versatility-wins-tournaments',
+    sections: [
+      {
+        h: 'Versatility in the coaching staff too',
+        p: [
+          "The principle extends beyond players. Tournament coaching staffs are small relative to club setups, and the assistants who can cover several functions — analysis and set-piece coaching, or goalkeeping and recovery work — give a head coach the same kind of flexibility that adaptable players provide on the pitch.",
+          "This is rarely discussed publicly and is a genuine consideration in how delegations are assembled. A tournament staff is a fixed group for five weeks with no possibility of reinforcement, which is exactly the constraint that makes versatility valuable in the squad, applied to the people organising it.",
+        ],
+      },
+      {
+        h: 'The quiet argument for continuity',
+        p: [
+          "Versatility is largely built through familiarity: a player can only be trusted in an unfamiliar position if the coaching staff has seen him there, which requires having deployed him experimentally during qualifying or in friendlies. Squads assembled shortly before a tournament have no such evidence and must guess.",
+          "This connects back to a theme running through this collection: continuity of squad and manager across a cycle produces advantages that appear in unexpected places. The flexibility a coach enjoys at a World Cup was created two years earlier by decisions to try a player somewhere unusual in a match that did not matter.",
+        ],
+      },
+      {
+        h: 'Not a substitute for quality',
+        p: [
+          "A final caution: versatility earns its value as an addition to a squad with a strong spine, not as a replacement for one. A squad of adaptable players lacking genuine excellence anywhere will cover every scenario adequately and win nothing, which is the failure mode this quality can produce when over-prioritised.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-set-piece-specialist',
+    sections: [
+      {
+        h: 'The free kick that is really a cross',
+        p: [
+          "A substantial share of free kicks in dangerous areas are not shooting opportunities but delivery opportunities, and treating them as the latter is frequently the better decision. A direct attempt from a wide free kick has a low conversion rate; a well-delivered ball into a rehearsed routine produces a considerably better chance.",
+          "Crowds tend to want the shot, and takers occasionally oblige against the coaching instruction. Watching for whether a team consistently delivers from wide free kicks rather than shooting is a small window into how disciplined it is about following prepared plans rather than chasing the spectacular.",
+        ],
+      },
+      {
+        h: 'The specialist is often not a star',
+        p: [
+          "Set-piece delivery does not correlate strongly with general footballing quality, and teams frequently find their best deliverer is a squad player rather than a headline name. This creates an occasional selection argument: a player whose open-play contribution is modest may be worth a place specifically for what he offers from dead balls.",
+          "In tournament football, where set pieces carry the weight this collection describes, that argument is considerably stronger than it sounds. A place spent on a genuine specialist is a place spent on a reliable route to goals in exactly the tight matches that decide knockout rounds.",
+        ],
+      },
+      {
+        h: 'Defending them is the other half of the job',
+        p: [
+          "A team's set-piece profile has two sides, and being excellent at attacking dead balls while conceding regularly from them produces no net advantage. The defensive side involves its own specialists: the tallest players assigned to the most dangerous zones, a designated player on the goalkeeper, and somebody positioned to clear the first ball out of the area.",
+          "Squads increasingly track their set-piece goal difference as a distinct metric, and a team performing well on both sides of it has effectively created a reliable advantage across a tournament. It is among the least glamorous forms of preparation available and, over seven matches of fine margins, among the most dependable.",
+        ],
+      },
+      {
+        h: 'The moment worth waiting for',
+        p: [
+          "Somewhere in the 2026 knockout rounds, a match will be locked at nil-nil deep into the second half and a free kick will be awarded twenty-five yards out. Everything this article describes — the specialist, the rehearsal, the routine, the delivery — will resolve into a single strike, and a tournament will turn on it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-modern-full-back',
+    sections: [
+      {
+        h: 'Why the position rewards attention',
+        p: [
+          "The argument this article makes is not that full-backs are underrated in some abstract sense but that watching them specifically is unusually informative. Their positioning reveals a team's intentions, their duel with the winger frequently determines where chances originate, and their fitness late in matches predicts what is about to happen.",
+          "For a viewer wanting a single change of habit that improves how much of a match they actually see, deliberately watching the full-backs for a few minutes each half is close to the highest-return option available — and almost nobody does it, which is why so much of what happens there goes unremarked.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-holding-midfielder-does',
+    sections: [
+      {
+        h: 'The teams that go furthest usually control here',
+        p: [
+          "Across tournament history, the correlation between controlling central midfield and progressing deep into knockout rounds is among the strongest patterns available. Teams that concede the centre can win individual matches through transitions or set pieces; teams that control it win more consistently across a run.",
+          "Since control of that area begins with the player screening the defence, the holding midfielder is arguably the position most predictive of tournament success. It is also the one least likely to be discussed in any pre-tournament preview, which is a reasonable summary of the gap between how the sport is analysed and how it is covered.",
+        ],
+      },
+      {
+        h: 'Learn one name',
+        p: [
+          "A small suggestion for 2026: pick one team you expect to go deep and learn the name of whoever plays this role for them. You will then spend the tournament noticing a player most viewers never register, and you will have a considerably better sense of why that team is or is not functioning than the scoreline provides.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-complete-striker',
+    sections: [
+      {
+        h: 'Judging the number nine fairly',
+        p: [
+          "The conclusion this article arrives at is that assessing a striker requires knowing what his team asked of him. A poacher in a side that creates thirty chances should be judged on conversion; a complete striker in a side that creates six should be judged on how much of the team's attacking function he sustained while barely shooting.",
+          "Applying one standard to both produces consistently wrong conclusions, and it is the standard most public discussion applies. Watching a 2026 striker for what his role actually is, rather than counting goals against an implied universal benchmark, is a modest correction that makes the position considerably more interesting to follow.",
+        ],
+      },
+      {
+        h: 'The moment that justifies everything',
+        p: [
+          "Whatever the archetype, the position ultimately resolves into a single recurring instant: the ball arrives in the penalty area and one player has a fraction of a second to decide what to do with it. Everything else in this article — the movement, the touch, the hold-up play, the pressing — exists to manufacture that instant and to keep manufacturing it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-versatility-wins-tournaments',
+    sections: [
+      {
+        h: 'The squad list tells you who they trust',
+        p: [
+          "When the 2026 lists are published, the versatile selections are identifiable immediately: the players listed with a position that does not match where they have played most recently, the defenders who have appeared across three roles during qualifying, the midfielders who covered a full-back position in a friendly.",
+          "Each of those names represents a coaching staff having decided that flexibility outweighs specialism in that particular squad place. Counting how many such selections a team has made is a quick and surprisingly informative measure of how much the staff expects to have to improvise across the coming five weeks.",
+        ],
+      },
+      {
+        h: 'The tournament will prove it again',
+        p: [
+          "At some point during 2026, a team will lose a first-choice player to injury or suspension before a knockout match and will either cope comfortably or visibly struggle. The difference will come down entirely to whether the squad contained somebody who had already played that position competently, which was decided months earlier during selection.",
+          "That moment is the entire argument of this article compressed into a single substitution. It will pass with minimal comment, and it will be one of the more consequential things that happens to whichever team it happens to — which is roughly the definition of an underrated quality.",
+        ],
+      },
+      {
+        h: 'The player who never complains',
+        p: [
+          "Worth ending on the human element: the versatile player is frequently the one asked to sacrifice his own preferences for the squad's needs, playing out of position in matches where a specialist teammate is rested, and rarely receiving credit when it works. It is a genuinely selfless role within a squad and it is recognised almost exclusively by the people inside it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-modern-full-back',
+    sections: [
+      {
+        h: 'From afterthought to indispensable',
+        p: [
+          "The trajectory this article traces is close to complete. A position once used to accommodate the least capable player in a team is now among the most demanding on the pitch, requiring the stamina of a winger, the defensive discipline of a centre-back and increasingly the passing range of a midfielder.",
+          "Whether the evolution continues further is genuinely open. Some analysts expect the inverted role to become standard and the traditional overlapping full-back to become the exception; others expect a swing back toward width as defences adapt. Either way, the position will look different again in a decade, which has been true of it continuously for sixty years.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-holding-midfielder-does',
+    sections: [
+      {
+        h: 'The compliment that never comes',
+        p: [
+          "A holding midfielder's best matches are the ones nobody discusses. No tackles worth replaying, no passes worth highlighting, no moments at all — just an opponent's attack that never quite functioned and a team that looked comfortable throughout without anybody being able to say precisely why.",
+          "That is the shape of excellence in this position, and it is fundamentally incompatible with recognition. The players who do it best have generally made peace with that, and the teammates and coaches who understand what it involves supply whatever appreciation the role receives.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-complete-striker',
+    sections: [
+      {
+        h: 'Both types will decide matches in 2026',
+        p: [
+          "The tournament will produce goals from both archetypes: a poacher converting a rebound from two yards to settle a knockout tie, and a complete striker holding the ball up under pressure to launch the attack that produces a winner he never touches. Neither will be more valuable than the other on the night it happens.",
+          "The useful thing this article offers is simply the vocabulary to recognise which is which, and the understanding that a team's choice between them was a deliberate decision about how it intends to score rather than an accident of who was available.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-set-piece-specialist',
+    sections: [
+      {
+        h: 'The most coachable advantage in football',
+        p: [
+          "The reason set pieces reward attention is that they are the one phase of the game where preparation converts most reliably into outcomes. Open play is chaotic and depends on individual quality; a dead ball is a controlled restart in which a rehearsed plan can be executed almost exactly as designed.",
+          "For any team wanting to improve its chances at a tournament without acquiring better players, this is the available route — and it is why the smaller nations at 2026 that have taken it seriously will trouble opponents who assumed the gap in individual quality would settle matters.",
+        ],
+      },
+      {
+        h: 'Watch for the team that has clearly worked on this',
+        p: [
+          "It becomes obvious within two or three corners whether a team has invested in set-piece preparation. Rehearsed movement, players arriving from prepared starting positions, deliveries consistently reaching the intended zone — all of it is visible, and its absence is equally visible in teams that simply send everybody forward and hope.",
+          "Identifying which 2026 teams fall into which category during the group stage is genuinely predictive of how they will fare in tight knockout matches, where the ability to score without playing well becomes the difference between progressing and going home.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-modern-full-back',
+    sections: [
+      {
+        h: 'Where the difference gets made',
+        p: [
+          "The article's closing claim deserves restating plainly: a substantial share of 2026's matches will be decided in the wide channels, by players whose names most viewers will not recall a year later. The wide duel between a full-back and a winger is repeated dozens of times per match and decides where chances originate.",
+          "Nobody watching casually will register this, and everybody analysing the matches professionally will. The gap between those two experiences of the same ninety minutes is largely a matter of where the eyes go — and the full-back is probably the single most rewarding place to redirect them.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-a-holding-midfielder-does',
+    sections: [
+      {
+        h: 'The foundation metaphor is accurate',
+        p: [
+          "Descriptions of this position invariably reach for structural metaphors — foundation, anchor, base — and the imagery is apt for a specific reason: like a building's foundation, the holding midfielder's contribution is entirely invisible when functioning and catastrophically obvious when it fails.",
+          "A team without control in front of its defence does not look slightly worse; it looks fundamentally unstable, conceding chances through the middle repeatedly and unable to establish any rhythm in possession. That failure mode is why the position matters, and why the teams that go furthest at 2026 will almost all have solved it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-complete-striker',
+    sections: [
+      {
+        h: 'The pressure the position carries',
+        p: [
+          "Worth acknowledging in closing: no position at a World Cup carries scrutiny comparable to the centre-forward's. A striker who does not score across three group matches faces a level of public examination that a defender making the same number of errors would never attract, regardless of what else he contributed.",
+          "This is unfair and entirely predictable, and it is part of what the role involves. The forwards who handle tournaments best are frequently those who have made peace with the fact that they will be judged on one number, and who keep making the runs and holding the ball up during the periods when that number refuses to move.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-versatility-wins-tournaments',
+    sections: [
+      {
+        h: 'Usefulness wins, restated',
+        p: [
+          "The article's closing line deserves the emphasis: at a World Cup, usefulness wins. A squad is a fixed resource facing five weeks of unpredictable demands, and the players who expand what that resource can do are worth more than their individual highlight reels will ever indicate.",
+          "It is among the least romantic conclusions available about tournament football and one of the better-supported ones. The teams still standing in the final week will almost all have been held together at some point by somebody playing out of position and doing it well.",
+        ],
+      },
+      {
+        h: 'One name worth noticing',
+        p: [
+          "Pick any squad at 2026 and there will be a player listed as a defender who has played midfield, or a midfielder who has covered both flanks. He will not be discussed in the previews and there is a reasonable chance his coach considers him among the three most important names on the list.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-set-piece-specialist',
+    sections: [
+      {
+        h: 'A discipline that repays its investment',
+        p: [
+          "Every element covered here — the delivery technique, the routines, the defensive organisation, the designated takers — costs training time that could have been spent on open play, and the evidence from successive tournaments is that the trade is worth making. Set pieces are the most reliable return on preparation available in football.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
