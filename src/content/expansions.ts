@@ -7462,6 +7462,1380 @@ export const EXPANSIONS: Expansion[] = [
       },
     ],
   },
+  {
+    slug: 'evolution-of-the-ball-and-boots',
+    sections: [
+      {
+        h: 'What the old ball did to players',
+        p: [
+          "The heavy leather ball of football's earlier decades had consequences beyond technique. Heading a saturated ball repeatedly was genuinely punishing, and the long-term health consequences for players of that era have become a serious subject of medical research and, in several countries, of formal policy changes around heading in youth football.",
+          "This is a more sombre note than equipment history usually carries and it belongs in any honest account. The lighter modern ball is not merely a technical improvement; it is a meaningful reduction in a physical risk that earlier generations of players absorbed without anybody understanding what it was costing them.",
+        ],
+      },
+      {
+        h: 'Boots changed how players are shaped',
+        p: [
+          "Modern boots are engineered for specific playing surfaces and specific movement patterns, with stud configurations designed for firm ground, soft ground or artificial surfaces, and constructions optimised variously for touch, striking power or acceleration. Players routinely own several pairs for different conditions.",
+          "The weight reduction has been dramatic — modern boots weigh a fraction of their mid-century predecessors — and the effect on acceleration and agility is genuine. Some of the increase in the sport's speed across generations is attributable to nothing more romantic than lighter footwear, which is worth noting when comparing eras.",
+        ],
+      },
+      {
+        h: 'The trade-off nobody expected',
+        p: [
+          "Lighter, more minimal boots have attracted criticism from medical staff for offering less protection and support than their heavier predecessors, and there is an ongoing discussion within the sport about whether the pursuit of lightness has come at a cost in injury risk, particularly to the metatarsals and ankle.",
+          "The evidence is contested and the commercial pressure toward ever-lighter designs is substantial. It is a genuine unresolved question rather than a settled one, and it illustrates that equipment evolution optimises for performance rather than for player welfare unless somebody specifically intervenes.",
+        ],
+      },
+      {
+        h: 'Goalkeeper gloves deserve a mention',
+        p: [
+          "Among the least discussed equipment revolutions is goalkeeping gloves, which barely existed for the sport's first several decades and are now highly engineered products with specific latex compounds for different weather conditions, finger protection systems and varying cuts for different hand shapes.",
+          "The effect on goalkeeping has been substantial. Grip in wet conditions, the ability to hold rather than parry a powerful shot, and confidence in claiming crosses have all improved measurably, and some of the apparent improvement in goalkeeping standards across eras is attributable to equipment rather than to technique.",
+        ],
+      },
+      {
+        h: 'Shirts became technical garments too',
+        p: [
+          "Playing kit has moved from heavy cotton to engineered synthetic fabrics designed for moisture management, weight and ventilation, which matters considerably in the conditions several 2026 venues will present. A shirt that becomes saturated and heavy in humid heat is a genuine performance factor across ninety minutes.",
+          "Teams also now use different kit specifications for different conditions, with lighter, more ventilated versions for hot matches. It is an unglamorous detail and one more example of how much of modern preparation consists of removing small disadvantages that earlier generations simply accepted.",
+        ],
+      },
+      {
+        h: 'Why cross-era comparison is genuinely hard',
+        p: [
+          "The cumulative effect of everything in this article is that comparing players across generations is considerably more complicated than it appears. A player from an earlier era operating with a heavier ball, heavier boots and heavier kit, on worse pitches, was performing a materially different physical task.",
+          "This does not settle arguments about who was better and it should probably temper them. The honest position is that each generation excelled at the version of the sport available to them, and that the equipment differences are large enough that direct statistical comparison across decades is measuring at least two different games.",
+        ],
+      },
+      {
+        h: 'The pitches changed as much as the equipment',
+        p: [
+          "Worth adding to the picture: playing surfaces have improved as dramatically as the equipment. Pitches that became mud baths by midwinter have been replaced by hybrid grass surfaces with drainage and heating systems, producing consistent, true surfaces that permit the technical football modern audiences expect.",
+          "A great deal of what looks like improved technique across generations is partly improved surfaces. A player attempting a first-time pass on an even, dry pitch is doing something meaningfully easier than the same pass on a rutted surface, and the 2026 tournament's carefully installed pitches represent the current endpoint of that development.",
+        ],
+      },
+      {
+        h: 'Notice the tools during the tournament',
+        p: [
+          "The suggestion this article ends on is simply to register the equipment occasionally during 2026 rather than looking through it entirely. The ball's flight, the boots' colours, the goalkeeper's gloves, the way a shirt behaves in heat — all of it is the product of long development and all of it is shaping what you are watching.",
+          "It is a small shift of attention and it adds a genuine layer to the viewing, particularly during replays of long-range shots or free kicks where the equipment's contribution to what happened is unusually visible.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-shocks-and-upsets',
+    sections: [
+      {
+        h: 'Football produces more upsets than most sports',
+        p: [
+          "The structural reason is low scoring. In a sport where a typical match produces two or three goals, the variance around any single result is enormous, and a weaker team needs only one favourable moment to change the outcome. Sports with higher scoring converge much more reliably toward the better team winning.",
+          "This is not a flaw. It is the specific property that makes football's single matches worth watching regardless of the disparity between the teams, and it is why a knockout format in this sport produces genuinely unpredictable tournaments where a similar format in a higher-scoring sport would not.",
+        ],
+      },
+      {
+        h: 'The upset requires a specific kind of performance',
+        p: [
+          "Shocks almost never come from an underdog outplaying a favourite. They come from a defensive performance of extraordinary discipline, a goalkeeper having the match of his life, and a single chance taken — a combination that is genuinely reproducible through preparation rather than dependent on inspiration.",
+          "This is why the great upsets tend to be organised rather than chaotic. A team that abandons structure and attacks a superior opponent openly loses heavily; one that defends with discipline and strikes once wins. The romance of the underdog is real and the mechanism underneath it is thoroughly unromantic.",
+        ],
+      },
+      {
+        h: 'The favourite has to cooperate',
+        p: [
+          "Every shock requires the stronger team to underperform in identifiable ways: taking the opponent lightly, becoming frustrated as chances fail to arrive, over-committing and exposing itself to the counter, or simply failing to convert the openings its superiority created. The underdog cannot produce the result alone.",
+          "This is why favourites' managers spend so much energy on attitude before matches against weaker opposition. The tactical problem is straightforward; the psychological one — persuading players to treat an apparently easy fixture with full seriousness — is considerably harder and is where most upsets actually originate.",
+        ],
+      },
+      {
+        h: 'Expansion probably means more of them',
+        p: [
+          "A larger tournament with a wider spread of quality produces more matches between mismatched teams, which arithmetically produces more opportunities for an upset. It also produces more one-sided results, and both effects follow from the same change.",
+          "Whether this makes for a better tournament depends on how one weighs the memorable shocks against the forgettable mismatches. Both will occur more frequently in 2026 than in previous editions, and it is worth being consistent about accepting both rather than celebrating the upsets while complaining about the format that made them more likely.",
+        ],
+      },
+      {
+        h: 'What happens to a giant afterwards',
+        p: [
+          "The consequences for the losing favourite are typically severe and disproportionate: managers dismissed, senior players retired from international football, federations restructured, and a national inquest that can last years. A single ninety minutes can redirect a country's footballing decade.",
+          "This is worth remembering when a shock occurs at 2026. The celebration on one side is matched by something considerably heavier on the other, and the players involved will carry that specific match for the remainder of their careers regardless of what else they achieve.",
+        ],
+      },
+      {
+        h: 'The word upset does some work',
+        p: [
+          "Language matters here. Describing a result as an upset presumes a hierarchy that was itself an assumption, frequently based on reputation, ranking and historical performance rather than on any assessment of the two teams as currently constituted.",
+          "Several famous shocks look considerably less shocking on closer examination — a well-organised team with good players defeating an overrated one in poor form. The label reflects expectations rather than reality, and expectations at a World Cup are formed substantially by narrative rather than by analysis.",
+        ],
+      },
+      {
+        h: 'Where to look for one in 2026',
+        p: [
+          "The conditions for a shock are identifiable in advance: a favourite in the third group match with qualification already secured, a well-organised underdog needing a result, and a rotated line-up facing a fully committed opponent. That specific configuration produces a disproportionate share of tournament upsets.",
+          "Watching the final round of group matches with this in mind is genuinely rewarding, since the scenario recurs across multiple groups simultaneously and at least one of them usually delivers. The upsets are not random; they cluster in identifiable circumstances, and the circumstances are visible on the fixture list beforehand.",
+        ],
+      },
+      {
+        h: 'The reason we keep watching',
+        p: [
+          "The deepest argument for the upset's importance is that its possibility is what makes every match worth watching. If results were reliably determined by quality, the group stage would be an administrative formality and only the closing rounds would matter.",
+          "Because a shock is always possible, every one of the 2026 tournament's 104 matches carries genuine uncertainty. That is a considerable amount of value generated by a phenomenon that occurs perhaps two or three times per tournament, and it is why the sport's tolerance for randomness is a feature rather than a defect.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'host-nations-through-history',
+    sections: [
+      {
+        h: 'The automatic qualification is a mixed blessing',
+        p: [
+          "Host nations qualify automatically, which spares them a demanding campaign and simultaneously deprives them of two years of competitive matches against opponents trying to beat them. The preparation gap this creates is genuine and has visibly affected host performances before.",
+          "Federations address it by arranging ambitious friendly schedules against strong opposition, but friendlies are not qualifiers: the intensity differs, the consequences differ, and players approach them differently. A host arriving at its own tournament without having played a genuinely meaningful match in two years is at a subtle but real disadvantage.",
+        ],
+      },
+      {
+        h: 'The pressure arrives long before the tournament',
+        p: [
+          "A host nation's players spend years being asked about the tournament, appearing in promotional material and carrying public expectation through a period when their opponents are simply playing football. The psychological load described in this article begins well before the opening match.",
+          "This is one reason some hosts have managed the build-up by deliberately limiting their squads' promotional commitments, occasionally at commercial cost. A squad that has spent two years being told it must succeed at home arrives carrying something that no amount of tactical preparation addresses.",
+        ],
+      },
+      {
+        h: 'Three hosts divides the story',
+        p: [
+          "The 2026 arrangement produces something no previous tournament has: three separate host narratives running in parallel, each with its own domestic pressure and each experiencing a different version of the home tournament depending on where its matches fall and how far it progresses.",
+          "It also dilutes the phenomenon this article describes. None of the three will experience the singular national focus that a sole host receives, since the tournament's identity is shared and the domestic media attention in each country is competing with two other host stories. Whether that reduces the pressure or merely fragments it will be visible during the group stage.",
+        ],
+      },
+      {
+        h: 'Hosts have a good historical record',
+        p: [
+          "Across the tournament's history, host nations have consistently outperformed their pre-tournament expectations, with several winning the tournament outright and many more reaching later rounds than their ranking suggested. The effect is real enough to appear clearly in the aggregate record.",
+          "The interpretation is contested. Some of it is genuine home advantage; some is that hosts have historically been strong footballing nations awarded the tournament partly for that reason; and some may be a benefit of automatic qualification allowing longer preparation. Disentangling these is difficult, and 2026's three-way split may help clarify it.",
+        ],
+      },
+      {
+        h: 'What happens when a host goes out early',
+        p: [
+          "A host nation's elimination has consequences beyond the football, since the remaining tournament proceeds in a country whose primary emotional investment has ended. Attendance and atmosphere generally hold up, but the domestic media focus shifts sharply and the national mood changes noticeably.",
+          "With three hosts, 2026 is partially insulated from this — the tournament continues in two other host nations regardless — but the country affected will experience it fully. It is worth watching for, since the contrast between a host city before and after its national team's exit is one of the more visible ways a tournament's mood shifts.",
+        ],
+      },
+      {
+        h: 'The crowd is not automatically an advantage',
+        p: [
+          "An assumption worth examining: a home crowd lifts a team when things are going well and can turn on it when they are not. Host players have described the specific difficulty of playing badly in front of an expectant home stadium, where the mood shifts audibly and the atmosphere becomes a pressure rather than a support.",
+          "This is the mechanism by which home advantage inverts. A host that starts poorly faces a crowd that arrived expecting success, and the resulting anxiety compounds rather than relieves the problem. Several host nations have described their opening match as the most nervous performance of the campaign for exactly this reason.",
+        ],
+      },
+      {
+        h: 'Watching the hosts in 2026',
+        p: [
+          "All three hosts will be worth following as narratives regardless of their footballing quality, since each is experiencing something rare and each is handling it differently. The contrast between three countries navigating the same unusual situation simultaneously is genuinely novel.",
+          "It is also, for once, a comparison with some analytical value. Three hosts in one tournament provides more evidence about what home advantage actually does than any previous World Cup could offer, and the results will be scrutinised well beyond the countries involved.",
+        ],
+      },
+      {
+        h: 'The burden and the gift',
+        p: [
+          "The honest summary is that hosting gives a national team a genuine competitive advantage and a genuine psychological burden, and which dominates depends substantially on how the team starts. A host that wins its opening match converts the crowd into an asset for the remainder; one that does not may spend the tournament carrying it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'evolution-of-the-ball-and-boots',
+    sections: [
+      {
+        h: 'The commercial engine behind the change',
+        p: [
+          "Equipment evolution has been driven substantially by manufacturers competing for a large consumer market rather than purely by player requirements. New boot designs are launched on a commercial cycle, endorsed by prominent players, and sold in enormous volumes to people who will never play professionally.",
+          "This is not a criticism so much as an explanation of the pace. The rate of equipment development in football considerably exceeds what player performance requirements alone would justify, and the four-yearly World Cup ball described elsewhere in this collection is the clearest example of a product cycle rather than an engineering necessity.",
+        ],
+      },
+      {
+        h: 'Some things have barely changed',
+        p: [
+          "Amid all this development, several elements of football equipment remain essentially as they were: the dimensions of the goal, the size and weight range of the ball, the basic requirement for shin protection. The laws specify these tightly and they have proved remarkably stable.",
+          "This stability is what makes the sport recognisably continuous across a century despite everything this article describes. The tools improved substantially and the fundamental parameters did not, which is why footage from very different eras still shows a game that is unmistakably the same one.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-shocks-and-upsets',
+    sections: [
+      {
+        h: 'The result that outlives everything else',
+        p: [
+          "For the nation that produces a genuine shock, the result frequently becomes the single most referenced moment in its footballing history, retold across generations and known by people with no interest in the sport. It can outlast every subsequent achievement the country manages.",
+          "This permanence is disproportionate to a single ninety minutes and entirely understandable. A country that beat one of the sport's giants on the largest available stage has something that cannot be taken back or diminished by later results, which is a rare kind of possession in a sport where almost everything is provisional.",
+        ],
+      },
+      {
+        h: 'Enjoy them when they arrive',
+        p: [
+          "Shocks are rare enough that a tournament may produce only one or two, and they are impossible to anticipate. The practical advice is simply to be watching enough of the group stage that you catch one live rather than learning about it afterward, since the experience of the two differs enormously.",
+          "This is one of the better arguments for the broad, low-intensity viewing this collection has recommended throughout. The person watching four matches a day casually will see the shock happen; the person watching only the fixtures that looked important will read about it later, which is a genuinely lesser version of the same event.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-goalkeepers-tournament',
+    sections: [
+      {
+        h: 'The error that is never forgotten',
+        p: [
+          "Goalkeeping carries an asymmetry no other position faces: a mistake almost always produces a goal, and there is no teammate to absorb it. An outfield player's error is usually one link in a chain that somebody else might break; a goalkeeper's is terminal, immediately visible, and endlessly replayable.",
+          "This asymmetry shapes how goalkeepers are selected and how they think. It is why temperament weighs so heavily in the choice of a tournament number one, and why the ability to continue performing normally after conceding a soft goal is regarded as among the most important qualities the position requires.",
+        ],
+      },
+      {
+        h: 'What shot-stopping actually involves',
+        p: [
+          "The visible dive is the last part of a longer sequence. Before it comes positioning relative to the ball and the goal, a set position taken at the moment of the strike, and a read of the shooter's body shape that begins before contact. A goalkeeper who is well positioned makes difficult saves look routine; one who is not makes routine saves look spectacular.",
+          "This is why the most reliable goalkeepers frequently appear to make fewer impressive saves. Their positioning has removed the need for them, which is a considerably better outcome and one that generates no highlights whatsoever — a pattern this collection has now identified in several positions.",
+        ],
+      },
+      {
+        h: 'The sweeper-keeper takes on real risk',
+        p: [
+          "A goalkeeper operating high off his line to sweep behind a high defensive line is performing a genuinely dangerous job. The reward is that his team can defend further up the pitch; the cost is that a misjudgement leaves an empty goal, and those misjudgements are among the most punished errors in football.",
+          "Teams that play a high line are asking their goalkeeper to accept this risk repeatedly across a match, and the ones who do it well are enabling an entire tactical approach. Watching how far off his line a goalkeeper operates is one of the quickest reads available on how high his team intends to defend.",
+        ],
+      },
+      {
+        h: 'Choosing the number one is a genuine decision',
+        p: [
+          "Unlike outfield positions, goalkeeping offers no rotation: one player plays every match and the others do not play at all. This makes the selection unusually consequential and unusually difficult to reverse, since changing goalkeeper mid-tournament is read publicly as a loss of confidence in the incumbent.",
+          "Managers therefore settle this well in advance where possible, and squads where the choice remains genuinely open into a tournament frequently report it as a source of tension. It is one of the few selections that cannot be softened by giving both candidates minutes, which is precisely what makes it fraught.",
+        ],
+      },
+      {
+        h: 'The research behind shootout saves',
+        p: [
+          "Goalkeepers preparing for shootouts work with analysts on documented tendencies: which side a taker favours, whether he changes after a previous kick, whether his run-up length correlates with placement, and how he behaves under specific pressure situations. Some carry written notes onto the pitch.",
+          "The honest assessment is that this converts a pure guess into a slightly informed one, which across five kicks may produce a single additional save. Given that shootouts are frequently decided by exactly one save, that marginal edge is worth the preparation — and it is why goalkeepers who appear to guess correctly repeatedly are usually not guessing.",
+        ],
+      },
+      {
+        h: 'The position ages differently',
+        p: [
+          "Goalkeepers routinely play at the highest level considerably later than outfield players, because the position depends less on repeated sprinting and more on positioning, reading and technique — all of which improve with experience. A goalkeeper in his mid-thirties may be at his peak.",
+          "This is why national teams frequently field their oldest player in goal, and why goalkeeping careers can span four or five World Cup cycles. The continuity that provides is valuable beyond the individual's own performance, since a goalkeeper who has played across multiple tournaments carries organisational knowledge that a squad cannot otherwise access.",
+        ],
+      },
+      {
+        h: 'A lonely job within a team sport',
+        p: [
+          "Goalkeepers train separately for much of the week, occupy a distinct role within the squad, and experience matches differently from everybody else — long periods of inactivity punctuated by moments of total consequence. Many describe a specific isolation within an otherwise collective environment.",
+          "Squads that manage this well integrate their goalkeepers deliberately rather than treating them as a separate unit, and the goalkeeping group within a tournament squad frequently develops a strong internal bond precisely because of this shared apartness. It is a small human detail of tournament life that rarely surfaces publicly.",
+        ],
+      },
+      {
+        h: 'Watch for the tournament-defining performance',
+        p: [
+          "Every World Cup features at least one goalkeeper whose form carries a team further than its outfield quality justified, and identifying it early is genuinely satisfying. The signs are a run of matches in which a side is repeatedly outplayed and repeatedly survives, with the same player responsible each time.",
+          "By the knockout rounds this becomes obvious to everybody; noticing it during the group stage is the more interesting exercise, and it is frequently a better predictor of an unexpected deep run than anything happening at the other end of the pitch.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'wing-play-and-width',
+    sections: [
+      {
+        h: 'The inverted winger changed the geometry',
+        p: [
+          "The most significant recent development in wide play is the inverted winger: a left-footed player on the right or vice versa, who cuts inside onto his stronger foot rather than driving to the byline. This produces a shooting threat from the half-space and pulls a defender inside with him.",
+          "The consequence is that width must come from somewhere else, which is precisely why the attacking full-back became indispensable. The two developments are causally linked — moving the winger inside created a vacancy on the touchline, and the full-back was the available player to fill it.",
+        ],
+      },
+      {
+        h: 'Isolation is a deliberate creation',
+        p: [
+          "Many teams work specifically to create a one-against-one situation for their best dribbler on the flank, by switching play rapidly to the opposite side before a defence can provide cover. The winger then faces a single defender in space, which is among the highest-value situations in attacking football.",
+          "This is why the switch of play matters so much: its purpose is frequently not to attack the far side directly but to buy the two seconds of isolation before support arrives. Watching for teams that repeatedly engineer this, rather than merely circulating possession, distinguishes a deliberate wide strategy from aimless sideways passing.",
+        ],
+      },
+      {
+        h: 'The cut-back has overtaken the cross',
+        p: [
+          "Analytical work on chance quality has produced a clear finding: a ball pulled back from the byline into the area in front of goal generates substantially better chances than a conventional cross delivered from deeper. Defenders facing their own goal cannot easily clear it, and attackers arrive facing the goal with momentum.",
+          "This has changed how teams coach wide play. Reaching the byline before delivering, rather than crossing early from a deeper position, has become the explicit instruction at many levels, and the players best at getting to that position have become correspondingly more valuable regardless of their crossing technique.",
+        ],
+      },
+      {
+        h: 'Overloading one side to attack the other',
+        p: [
+          "A common pattern involves deliberately concentrating players on one flank to draw the defence across, then switching rapidly to the opposite side where a lone attacker now faces a stretched, undermanned defence. The overload is a decoy rather than the intended point of attack.",
+          "Recognising this requires watching away from the ball, since the meaningful action is the isolated player on the far side waiting for a switch that may not come for thirty seconds. It is one of the more rewarding things to spot, because it reveals a coordinated plan operating across the full width of the pitch.",
+        ],
+      },
+      {
+        h: 'Different widths for different blocks',
+        p: [
+          "How much width a team uses is a response to what it faces. Against a compact low block, maximum width is essential to stretch the defence horizontally; against a high pressing team, extreme width can isolate wide players and make them easy to trap against the touchline.",
+          "Teams therefore vary their width within matches according to the opponent's structure, which is visible if you watch where the wide players position themselves during build-up. A team hugging the touchline against one opponent and tucking inside against another is solving two different problems rather than being inconsistent.",
+        ],
+      },
+      {
+        h: 'The touchline is a defender',
+        p: [
+          "A frequently overlooked tactical point: the touchline functions as an extra defender for the pressing team, since a player receiving with his back to it has half the escape routes available to a player in central areas. Pressing schemes are frequently designed specifically to force possession wide for this reason.",
+          "This is why the same wide areas that offer attacking width also represent a trap. A team playing wide against an aggressive press is accepting the risk of being pinned against the boundary, and the decision about whether to build through the middle or the flanks weighs exactly this against the space available.",
+        ],
+      },
+      {
+        h: 'Wingers now defend',
+        p: [
+          "The modern wide attacker's job includes substantial defensive work: tracking the opposing full-back, pressing from the front, and dropping into a defensive line when the team is under pressure. A winger who does not perform this is difficult to accommodate at international level.",
+          "This has changed the profile of players selected in wide areas, favouring those with the stamina to attack and defend across a full match. It is also why substitutions so often involve wide players — the role's combined demands make it among the most physically taxing on the pitch, second only to full-back.",
+        ],
+      },
+      {
+        h: 'The oldest idea still works',
+        p: [
+          "The endurance of wing play across every tactical era is worth noting. Despite enormous changes in how football is coached, the fundamental geometry has not moved: the pitch is wider than a defence can cover, and stretching a defence horizontally opens space centrally.",
+          "That is a structural property of the sport rather than a fashion, which is why every 2026 team will use width in some form regardless of its broader philosophy. The specific mechanisms vary considerably; the underlying idea has survived unchanged for over a century.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-language-of-fan-chants',
+    sections: [
+      {
+        h: 'Borrowed tunes and rewritten words',
+        p: [
+          "A defining feature of the tradition is that almost no chant has an original melody. Supporters take existing tunes — folk songs, hymns, pop hits, advertising jingles — and fit new words to them, which is precisely how folk music has always worked and which allows a new chant to spread through a crowd within minutes.",
+          "This borrowing is functional rather than lazy. A tune everybody already knows requires no teaching, and a chant that a stadium can join on first hearing spreads immeasurably faster than one demanding rehearsal. The tradition selects for melodies that are simple, repetitive and already lodged in collective memory.",
+        ],
+      },
+      {
+        h: 'How a chant actually spreads',
+        p: [
+          "The mechanics are worth describing: a small group begins, a section nearby picks it up, and if the tune and words are simple enough the sound propagates across a stand within perhaps twenty seconds. Chants that fail to spread die within a few repetitions and are never heard again.",
+          "This is a genuine selection process operating in real time, and it explains why surviving chants share particular properties — short, repetitive, rhythmically simple, and usually built around a single memorable phrase. The ones that last have been filtered by thousands of crowds over decades.",
+        ],
+      },
+      {
+        h: 'The songs a nation brings to a tournament',
+        p: [
+          "National team chanting differs from club chanting in an important respect: it must work for a crowd assembled from supporters of many different domestic clubs who share no local repertoire. The songs that function at international level are therefore broader, simpler and frequently tied to national symbols rather than to football specifics.",
+          "This is why national anthems, patriotic songs and very simple rhythmic chants dominate international crowds while the elaborate, in-joke-laden repertoire of club support largely does not travel. A World Cup crowd is a different social object from a club crowd, and its singing reflects that.",
+        ],
+      },
+      {
+        h: 'Rhythm without words',
+        p: [
+          "Several of the most globally recognisable football crowd sounds involve no lyrics at all: coordinated clapping patterns, rhythmic chanting of a single word, or percussion-driven sequences that require no shared language whatsoever. These travel across linguistic boundaries in a way that verbal chants cannot.",
+          "This is part of why certain crowd sounds have spread worldwide from their national origins. A rhythm requires no translation, which makes it the most portable element of the tradition and the one most likely to be adopted by supporters of entirely unrelated teams on other continents.",
+        ],
+      },
+      {
+        h: 'Songs also do tactical work',
+        p: [
+          "Crowd singing is not purely expressive. It functions to sustain a team through difficult periods, to increase pressure on opponents at set pieces, to intimidate a goalkeeper taking a goal kick, and to signal collective persistence when a match is going badly. Players consistently describe it as genuinely affecting.",
+          "The most valuable crowd singing frequently occurs when a team is losing, which is precisely when it is hardest to sustain. Support that continues through a deficit is doing something measurably different from celebratory singing after a goal, and supporters generally understand this distinction well.",
+        ],
+      },
+      {
+        h: 'Where the tradition goes wrong',
+        p: [
+          "Any honest account has to acknowledge that chanting has also carried abuse — racist, sectarian and otherwise discriminatory — and that governing bodies have taken increasingly serious action against it, including sanctions on federations for their supporters' conduct at international matches.",
+          "This is not a marginal footnote. The same collective mechanism that produces the tradition's best qualities also enables its worst, since a crowd singing together is not required to be singing something defensible. Progress in addressing this has been real and incomplete, and it belongs in any description of the culture.",
+        ],
+      },
+      {
+        h: 'Recording a folk form that resists recording',
+        p: [
+          "Because chants are unauthored and transmitted orally, documenting them is genuinely difficult, and considerable amounts of the tradition have simply disappeared as the crowds that sang them dispersed. Some supporter organisations and academics have begun collecting them for exactly this reason.",
+          "A World Cup is an unusually good opportunity for this, since it assembles singing traditions from dozens of countries in one place across five weeks. Much of what will be heard in 2026's stadiums has never been recorded anywhere and exists only in the memories of the people singing it.",
+        ],
+      },
+      {
+        h: 'Listen deliberately during 2026',
+        p: [
+          "The practical suggestion is to spend a few minutes of some match listening to the crowd rather than the commentary — most broadcasts carry ambient stadium audio underneath, and it is frequently possible to hear what is actually being sung if you attend to it.",
+          "With forty-eight nations present, the range of singing traditions on display will be wider than at any previous tournament. It is a genuinely global folk archive assembled in one place for five weeks, and it costs nothing to notice while watching football you were watching anyway.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-the-world-cup-unites-cities',
+    sections: [
+      {
+        h: 'The fan zone is the city version of the tournament',
+        p: [
+          "Official fan zones — large public viewing areas with screens, food and organised programming — have become the primary way most people in a host city actually experience the tournament, since match tickets reach only a small fraction of those present.",
+          "These spaces frequently produce better collective atmosphere than the stadiums, since they gather people who came specifically to be part of something rather than corporate and institutional ticket holders. Several host cities have found their fan zones remembered more fondly than the matches themselves.",
+        ],
+      },
+      {
+        h: 'Residents experience something more complicated',
+        p: [
+          "For people who live in a host city rather than visiting it, the tournament brings genuine disruption alongside the celebration: altered transport, closed roads, elevated prices, crowds in ordinary neighbourhoods, and an extensive security presence. Support among residents typically dips during preparation and recovers during the event.",
+          "This pattern is consistent enough to be predictable, and it is worth remembering when reading coverage of local discontent. Complaints during the build-up are close to universal and say relatively little about how a hosting is ultimately regarded by the people who lived through it.",
+        ],
+      },
+      {
+        h: 'The security operation is enormous and invisible',
+        p: [
+          "Hosting World Cup matches involves a security operation that extends well beyond the stadium into transport networks, fan zones, team hotels and the wider city, coordinated across agencies and running for weeks. Most of it is designed to be unobtrusive and most visitors never register its scale.",
+          "For 2026 this operation spans three countries with different policing structures and legal frameworks, which is a coordination problem no previous tournament has faced at this scale. That it will most likely pass unnoticed is precisely the measure of whether it worked.",
+        ],
+      },
+      {
+        h: 'Local business gains unevenly',
+        p: [
+          "The economic effects on a host city are more uneven than headline figures suggest. Businesses near venues and in tourist districts benefit substantially; those elsewhere frequently see reduced trade as residents avoid the centre and normal activity is displaced. Aggregate figures obscure a considerable redistribution.",
+          "Researchers studying major events consistently find the net economic benefit smaller than bid projections claim, with the genuine gains concentrated in specific sectors and locations. This is worth knowing as context for the enthusiastic economic claims that accompany every hosting announcement.",
+        ],
+      },
+      {
+        h: 'Volunteers make the whole thing function',
+        p: [
+          "Every World Cup depends on a large volunteer workforce handling wayfinding, accreditation, hospitality and countless practical tasks across venues and cities. They are recruited and trained over many months and their contribution is largely invisible in coverage of the tournament.",
+          "Volunteers consistently report the experience as memorable and formative, and the programme functions as one of the more genuine ways a hosting connects to its resident population. For many people in a host city, volunteering is how they actually participated in the tournament rather than merely observing it.",
+        ],
+      },
+      {
+        h: 'The mixing is the point',
+        p: [
+          "The specific thing this article identifies — supporters from distant countries encountering each other in an unfamiliar city — is genuinely uncommon. Most international travel is not organised around a shared enthusiasm, and the World Cup produces a temporary environment where strangers have an immediate, obvious common interest.",
+          "The 2026 hosts add a further layer, since the resident diaspora communities mean visiting supporters frequently meet people from their own country who live locally. That combination of visitor and resident sharing a national attachment in a third country is genuinely specific to this tournament's circumstances.",
+        ],
+      },
+      {
+        h: 'Sixteen cities, sixteen versions',
+        p: [
+          "Because the tournament is spread so widely, each host city will experience a different fraction of it: some hosting several group matches, others a knockout fixture, others a semi-final. The intensity and duration of the transformation described here varies considerably between them.",
+          "This is a genuine difference from single-host tournaments, where one city typically carries the tournament's centre of gravity throughout. In 2026 there is no such centre, and each host city gets a discrete, self-contained version of the experience rather than a share of a continuous one.",
+        ],
+      },
+      {
+        h: 'What remains afterwards',
+        p: [
+          "The lasting mark this article describes is mostly not physical. Cities retain memories, a sense of having been part of something global, occasional infrastructure improvements, and a cohort of residents whose relationship with the sport changed. The stadiums, in 2026's case, simply return to their previous use.",
+          "That is arguably the healthiest version of a hosting legacy: no debt-financed venues standing empty, and whatever persists doing so in the form of interest, participation and memory rather than concrete. Whether it materialises will not be assessable for years.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-friendlies-before-a-world-cup',
+    sections: [
+      {
+        h: 'Choosing the opponents is itself a decision',
+        p: [
+          "Federations select warm-up opponents deliberately, and the choice reveals intent. A team that has drawn a physical, direct opponent in its group will seek a friendly against a side that plays similarly; one expecting to face a low block will arrange a match against an opponent likely to defend deep.",
+          "This makes the fixture list itself informative before a ball is kicked. When a national team arranges an unusual friendly against an unfamiliar opponent, the explanation is frequently that the opponent resembles somebody in their group — and identifying that connection tells you which specific problem the coaching staff is preparing for.",
+        ],
+      },
+      {
+        h: 'The final squad cut happens around them',
+        p: [
+          "Warm-up matches are frequently the last competitive evidence a manager has before finalising his squad, and players on the margin understand that these fixtures are effectively auditions. This produces a specific dynamic: individual players trying to impress within matches whose collective result is irrelevant.",
+          "It also explains substitution patterns that look strange, with several changes at half-time to give borderline candidates a defined period to be assessed. A friendly in which a manager uses eleven substitutes is not a shambles; it is a structured evaluation exercise conducted in public.",
+        ],
+      },
+      {
+        h: 'Injury risk is the coach\'s real anxiety',
+        p: [
+          "The dominant concern in any pre-tournament friendly is not the result but avoiding an injury to a key player days before a World Cup. Managers manage minutes conservatively, withdraw players at the first sign of discomfort, and occasionally rest their most important names entirely.",
+          "This produces a genuine tension: the team needs match sharpness and cannot afford the risk that provides it. The compromise most staffs reach is limited minutes for the important players and fuller involvement for those who need the exposure, which is another reason the resulting football rarely resembles what the team will actually field.",
+        ],
+      },
+      {
+        h: 'The media narrative forms here regardless',
+        p: [
+          "Whatever coaches say about friendlies being meaningless, the public narrative around a squad is substantially set by them. A heavy defeat produces a week of crisis coverage; a convincing win produces optimism, and both frame how the team's opening tournament match is received before it is played.",
+          "This matters because narratives affect players. A squad that arrives at a World Cup having been publicly written off after a poor friendly carries something extra into its first match, and several managers have described managing that external mood as a genuine part of the pre-tournament job.",
+        ],
+      },
+      {
+        h: 'What coaches actually watch for',
+        p: [
+          "Inside the staff, the useful outputs of a friendly are specific and unrelated to the score: whether a new pressing trigger is being executed correctly, how a particular midfield combination functions, whether a returning player looks physically ready, and how the team responds to a specific tactical situation they arranged to encounter.",
+          "This is why a manager can be genuinely satisfied after a defeat. If the four things he was examining all produced encouraging answers, the match served its purpose entirely, and the scoreline is an artefact of a fixture nobody was trying to win.",
+        ],
+      },
+      {
+        h: 'The historical record is unambiguous',
+        p: [
+          "Across tournaments, the correlation between warm-up results and eventual performance is weak enough to be effectively useless as a predictor. Teams have lost every friendly and reached finals; teams have won convincingly and exited in the group stage. The pattern of non-correlation is consistent enough to be treated as established.",
+          "This is worth holding firmly in mind during the weeks before 2026, when confident conclusions will be drawn from exactly this evidence. Anybody making a strong prediction on the basis of a warm-up result is using a data source with a documented history of being wrong.",
+        ],
+      },
+      {
+        h: 'The one thing worth taking seriously',
+        p: [
+          "If any friendly signal deserves attention, it is physical rather than tactical. A key player visibly short of fitness, or a squad that looks collectively heavy-legged, is genuine information that a scoreline is not — because unlike tactics and combinations, physical condition cannot be substantially improved in the days remaining.",
+          "This connects directly to everything this collection describes about peaking for a tournament. A team that looks physically underdone in its final warm-up has a problem it cannot fix, whereas one that looks sharp while losing has a problem it very likely can.",
+        ],
+      },
+      {
+        h: 'Enjoy them, ignore the scores',
+        p: [
+          "The recommended posture is to watch the friendlies with interest and hold their results entirely loosely. They are the first sight of squads assembled for the tournament, the first look at intended shapes, and a genuine part of the anticipation — and their scorelines are among the least informative numbers in football.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-goalkeepers-tournament',
+    sections: [
+      {
+        h: 'Distribution now shapes matches too',
+        p: [
+          "Alongside everything defensive, the modern goalkeeper's distribution is an attacking weapon, and a keeper capable of an accurate long pass over a pressing line can launch attacks that bypass an opponent's entire midfield. Several teams build specific patterns around this.",
+          "This collection's separate article on goalkeeping as playmaking covers the technical dimension in detail; the tournament-specific point is that a goalkeeper's passing range becomes disproportionately valuable against the deep defensive blocks that World Cup football produces, where a ball played over the top may be the only route past a compressed defence.",
+        ],
+      },
+      {
+        h: 'The save that changes a tournament',
+        p: [
+          "Every World Cup produces at least one save that becomes as significant as any goal — a reflex stop in the final minutes of a knockout tie, a penalty saved in a shootout, an intervention that preserved a lead somebody else had established. These moments carry the same weight as goals and receive a fraction of the attention.",
+          "Watching the 2026 knockout rounds with this in mind, and registering the saves as decisive events rather than as interruptions to the attacking story, is a small correction that makes the goalkeeper's genuine contribution visible in something closer to its actual proportion.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-magic-of-a-world-cup-summer',
+    sections: [
+      {
+        h: 'Why four years is the right interval',
+        p: [
+          "The tournament's cycle is long enough that each edition arrives into a genuinely different life. Four years changes where somebody lives, who they are close to, what they do — which means every World Cup is experienced by a person who has meaningfully changed since the last one, and the sequence becomes a personal chronology almost by accident.",
+          "A shorter interval would blur the editions together and a longer one would put too many outside a normal span of attention. Four years is close to the maximum spacing that still allows most people to remember several tournaments distinctly, which is a substantial part of why the World Cup functions as a marker of time in a way annual competitions do not.",
+        ],
+      },
+      {
+        h: 'The summer belongs to the northern hemisphere',
+        p: [
+          "The framing of a World Cup summer is geographically specific and worth acknowledging: the tournament traditionally falls in the northern hemisphere's summer, which is winter across much of South America, Africa and Oceania. The seasonal association that seems universal is in fact regional.",
+          "This does not diminish the shared experience so much as complicate the imagery. A tournament remembered elsewhere as long light evenings and warm nights is, for a substantial share of the world's population, remembered as something that happened in the cold — which is a small reminder that even the World Cup's most universal features are experienced unevenly.",
+        ],
+      },
+      {
+        h: 'Memory attaches to circumstances, not results',
+        p: [
+          "Ask people to describe a past tournament and the descriptions almost never begin with football. They begin with a house, a job, a relationship, a country they were living in — and the football arrives as the thing that was happening in the background of a particular period of life.",
+          "This is worth understanding as a description of how the tournament actually functions for most people. It supplies a fixed, dateable, universally shared reference point onto which entirely personal memories attach, and the specific results matter considerably less to that function than the fact that everybody was watching at the same time.",
+        ],
+      },
+      {
+        h: 'The routines a month creates',
+        p: [
+          "Across five weeks, following a World Cup produces genuine habits: a particular chair, a person you always message at half-time, a route home timed around kickoff, a meal that became associated with match days. These are trivial individually and they are what people remember.",
+          "It is worth being slightly deliberate about them for exactly that reason. A routine formed accidentally is remembered as fondly as one formed on purpose, and a month is more than long enough for something small and repeated to become the thing that returns whenever the tournament is mentioned decades later.",
+        ],
+      },
+      {
+        h: 'Even a bad tournament produces this',
+        p: [
+          "The effect described here does not depend on the football being good. Tournaments widely regarded as poor still function as markers for the people who lived through them, because the mechanism is shared attention across a defined period rather than quality of spectacle.",
+          "This is reassuring in advance of 2026, whose format has attracted genuine criticism. Whatever the football turns out to be, the month will still do the thing this article describes, and the people watching will still be able to locate that specific summer in their own lives twenty years from now.",
+        ],
+      },
+      {
+        h: 'The tournament ends and something remains',
+        p: [
+          "The abruptness of a World Cup's ending, covered elsewhere in this collection, is part of what fixes it in memory. A month of daily rhythm stops within hours, and the contrast between the last week and the following one is sharp enough to mark a boundary that a gradual wind-down would not.",
+          "What persists afterward is not the results, which are recorded elsewhere and easily looked up, but the texture of the period — and that is available only to the people who were paying attention while it happened. It is a genuinely non-recoverable thing, which is the strongest argument for participating rather than catching up later.",
+        ],
+      },
+      {
+        h: 'Share it with somebody',
+        p: [
+          "The clearest pattern in how people remember World Cups is that the memories almost always involve other people. Solitary viewing produces recollection of football; shared viewing produces recollection of a summer, and the difference in how vividly each is retained is substantial.",
+          "This is the practical implication of everything above. Whatever else you do with 2026, watch some of it alongside somebody, because that is what determines whether the tournament becomes a set of results you followed or a period of your life you can still describe in detail long afterward.",
+        ],
+      },
+      {
+        h: 'A summer that has not happened yet',
+        p: [
+          "Everything in this article is written about tournaments already past, and the point of it is entirely prospective: 2026 will become one of these, for a very large number of people, and it has not happened yet. The summer being described in retrospect twenty years from now is currently still available to be lived.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'football-food-around-the-world',
+    sections: [
+      {
+        h: 'The stadium food tells you where you are',
+        p: [
+          "Concession stands at football grounds are among the more reliable expressions of local food culture, and they vary enormously between countries — from grilled meats and street snacks in some footballing cultures to entirely different staples in others. The 2026 venues will offer three quite distinct versions of this.",
+          "For a travelling supporter, this is a genuine part of the experience and one that a home-based viewer misses entirely. What a stadium sells at half-time is a small, honest piece of cultural information, and it differs more between host cities in this particular tournament than in any previous one.",
+        ],
+      },
+      {
+        h: 'Timing shapes what gets eaten',
+        p: [
+          "A substantial amount of match-day food culture is determined by kickoff times relative to normal meal patterns. An evening kickoff produces snacking; an afternoon one produces a full meal before or after; a match falling at an unusual hour for a particular country produces improvisation.",
+          "With 2026 kickoffs scattered across time zones for a global broadcast audience, viewers in different parts of the world will be eating entirely different things while watching the same match — breakfast in one place, a late supper in another. It is a small illustration of how the same event is experienced quite differently depending on where the clock places it.",
+        ],
+      },
+      {
+        h: 'The host cities are unusually well suited to this',
+        p: [
+          "The 2026 hosts contain some of the world's most diverse food cultures, with substantial communities from most competing nations. This means a supporter in a host city can frequently eat the food of the country whose match they are watching, prepared by people from that country, several thousand miles from it.",
+          "That combination is genuinely specific to this tournament's circumstances. Previous hosts have offered visitors their own national cuisine; these hosts offer visitors a substantial portion of the world's, which suits an event gathering forty-eight nations rather better than a single culinary tradition would.",
+        ],
+      },
+      {
+        h: 'Cooking along with the fixture list',
+        p: [
+          "A pleasant and easily adopted habit: cook something from one of the day's competing nations, particularly for matches involving countries you know little about. It costs one evening's cooking, teaches something genuine, and connects the football to a place rather than leaving it as an abstract flag on a screen.",
+          "This works especially well with children, as this collection's article on family viewing notes, and it works perfectly well without them. With forty-eight nations across five weeks, the fixture list is effectively a global cookbook with a schedule attached.",
+        ],
+      },
+      {
+        h: 'The food follows the emotional arc',
+        p: [
+          "There is a recognisable progression across a tournament: elaborate preparation for early matches when enthusiasm is highest, simplification through the group stage as the volume of football becomes overwhelming, and then renewed effort for the knockout rounds when individual matches recover their significance.",
+          "Anybody hosting repeatedly across five weeks will recognise this, and planning for it in advance rather than exhausting the effort in week one produces a considerably better month. The tournament is long enough that pacing applies to catering as much as to viewing.",
+        ],
+      },
+      {
+        h: 'Eating together is the actual point',
+        p: [
+          "Underneath the variety, the constant is communal eating around a shared event, which is among the oldest social forms there is and which football has simply attached itself to. The specific dishes are the interesting surface; the gathering is the substance.",
+          "This is why match-day food traditions persist so robustly across cultures that share almost nothing else. The impulse to make a shared occasion special with food does not require any particular cuisine, and a World Cup provides an unusually large number of occasions across a short period.",
+        ],
+      },
+      {
+        h: 'What travelling supporters discover',
+        p: [
+          "Supporters who follow their teams abroad consistently report that the food is among the most vivid things they bring back — more memorable, frequently, than the matches themselves, particularly when the football went badly. Eating somewhere unfamiliar with people who support the same team is a specific and durable experience.",
+          "For anybody travelling to 2026, this is worth building a little time around. The matches are ninety minutes each and the rest of the trip is considerably longer, and the parts of it that will be described afterward are unlikely to be the football alone.",
+        ],
+      },
+      {
+        h: 'One tournament, countless tables',
+        p: [
+          "The image this article ends on is worth holding onto during 2026: at the moment any goal is scored, it is being celebrated simultaneously over an enormous variety of food across every time zone, in circumstances the people involved could not imagine of each other.",
+          "That simultaneity is the thing this collection keeps returning to, and the food is one of the more tangible ways it becomes visible. The same goal, the same instant, and several billion entirely different meals.",
+        ],
+      },
+      {
+        h: 'The fan zone menu is its own category',
+        p: [
+          "Official fan zones develop their own food culture during a tournament, typically combining local vendors with the practical requirements of feeding very large numbers quickly. The result is frequently a compressed sample of a host city's street food, available in one place across five weeks.",
+          "For visitors without match tickets this is a genuine attraction rather than a consolation. Several previous tournaments have produced fan zones remembered as much for their food and atmosphere as for the football shown on the screens, and the 2026 host cities are unusually well positioned to repeat that.",
+        ],
+      },
+      {
+        h: 'What players eat is nothing like this',
+        p: [
+          "Worth a brief contrast: while supporters are eating as described throughout this article, the players are on precisely calibrated nutrition plans covered elsewhere in this collection, with meal timing, composition and hydration managed to the gram. The two experiences of the same match could hardly differ more.",
+          "There is something quietly funny about this — a global event around which billions of people eat enthusiastically and twenty-two participants eat according to spreadsheets. It is also a reasonable illustration of how differently the tournament is experienced by the people watching it and the people producing it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-magic-of-a-world-cup-summer',
+    sections: [
+      {
+        h: 'The tournaments people remember most',
+        p: [
+          "Asked which World Cup was their favourite, most people name one from their teenage years or early twenties, regardless of the football's actual quality. The pattern is consistent enough that it clearly reflects a property of memory rather than of tournaments.",
+          "This has a practical implication worth noting: for anybody currently in that age range, 2026 is probably going to be the tournament they compare all subsequent ones against, whether or not it deserves that status. And for anybody with a teenager in the house, this is the one that will matter to them permanently.",
+        ],
+      },
+      {
+        h: 'Watch some of it live',
+        p: [
+          "The specific quality this article describes depends substantially on watching in real time. A match watched later, knowing the result, produces information rather than experience, and the shared simultaneity that makes a World Cup summer distinctive simply is not available afterward.",
+          "This is the one practical recommendation the whole article reduces to. Whatever else the tournament turns out to be, being present for some of it as it happens is what converts it from something you followed into something you remember.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'evolution-of-the-ball-and-boots',
+    sections: [
+      {
+        h: 'The rules constrain the equipment',
+        p: [
+          "Football's laws specify equipment requirements in some detail — ball circumference, weight and pressure ranges, mandatory shin protection, restrictions on jewellery and on anything dangerous to other players. Manufacturers innovate within a defined envelope rather than freely.",
+          "This is why the changes described in this article are evolutionary rather than revolutionary. A ball must remain within a specified size and weight regardless of what materials science makes possible, which has kept the sport's fundamental character stable while everything about how the ball is constructed has changed completely.",
+        ],
+      },
+      {
+        h: 'Equipment as a marker of eras',
+        p: [
+          "For anybody watching archive footage, equipment is the fastest way to date a match: the ball's panel pattern, the boot silhouette, the kit fabric and cut all place a tournament within a few years without any other information. The sport's visual history is legible almost entirely through its equipment.",
+          "This will apply to 2026 in due course. The specific look of this tournament's ball, boots and kits will eventually be as instantly datable as any previous era's, which is a small reason to notice them while they still look ordinary.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-shocks-and-upsets',
+    sections: [
+      {
+        h: 'The shock that reorders a tournament',
+        p: [
+          "A significant upset does not only affect the two teams involved. It reshapes the entire bracket, changes which favourites meet each other and when, and frequently opens a route for another unfancied team that had nothing to do with the original result.",
+          "This is worth watching for in the aftermath of any 2026 shock: the immediate story is the giant falling, and the more consequential story is frequently which other team's path just became substantially easier. Several deep tournament runs have been enabled by upsets that occurred in matches the beneficiary never played.",
+        ],
+      },
+      {
+        h: 'Both possibilities exist simultaneously',
+        p: [
+          "The honest summary is that favourites win most of the time and can lose any time, and both halves of that statement matter. A tournament in which upsets were common would lose the sense that they are remarkable; one in which they were impossible would lose most of its tension.",
+          "Football sits at close to the ideal point on that spectrum, which is arguably the deepest structural reason for its global popularity. Every match is genuinely uncertain and most of them still resolve the way quality suggests, and that combination is harder to achieve than it sounds.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'host-nations-through-history',
+    sections: [
+      {
+        h: 'The opening match burden',
+        p: [
+          "Host nations traditionally play the tournament's opening fixture, which combines everything difficult about hosting into a single ninety minutes: maximum global attention, maximum domestic expectation, and the specific nervousness that this collection's article on opening matches describes as structural.",
+          "A host that wins that match converts its crowd into an asset for the remainder of the tournament; one that fails to may spend the group stage under a weight that only grows. It is a genuinely consequential fixture, and it is scheduled before anybody has had a chance to settle into the tournament at all.",
+        ],
+      },
+      {
+        h: 'History suggests taking hosts seriously',
+        p: [
+          "Whatever the analytical complications, the practical advice for anybody assessing 2026 is not to underrate the three hosts relative to their rankings. The historical record of home teams overperforming is substantial enough that discounting it entirely would be a mistake.",
+          "It is equally a mistake to overrate them, since the advantage is genuinely diluted across three nations and the pressure is not. The defensible position is a modest upward adjustment rather than either dismissal or enthusiasm, which is an unsatisfying conclusion and probably the accurate one.",
+        ],
+      },
+      {
+        h: 'What hosting does to a generation',
+        p: [
+          "Beyond the results, a home World Cup produces a cohort of players who experienced something no other generation of their country's footballers will, and frequently a cohort of children who encountered the sport at its most visible. The developmental effects described elsewhere in this collection are strongest in host nations for exactly this reason.",
+          "This is arguably the more important measure of a hosting than the team's performance. A host that exits in the group stage while producing a surge in participation has achieved more than one that reached a quarter-final and left nothing behind, though the immediate coverage will suggest otherwise.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-language-of-fan-chants',
+    sections: [
+      {
+        h: 'The songs that outlast the players',
+        p: [
+          "Many chants survive long after the players they were written about have retired, with the names sometimes replaced and sometimes retained by supporters who never saw the original. This gives the tradition a genuine historical depth — a crowd singing something composed decades earlier for somebody most of them never watched.",
+          "It also means chants function as an oral history, carrying the memory of particular players, matches and eras forward through supporters rather than through records. A crowd singing about a moment from forty years ago is performing a form of remembrance, whether or not anybody present frames it that way.",
+        ],
+      },
+      {
+        h: 'A World Cup is where they travel',
+        p: [
+          "Chants spread between supporter cultures at international tournaments, where fans hear traditions from other countries in person and occasionally adopt them. Several rhythms and songs now heard globally originated with the supporters of a single nation and travelled at a World Cup.",
+          "This is one of the more genuinely interesting cultural transfers the tournament produces, and it happens without anybody organising it. With forty-eight nations present, the 2026 tournament will be an unusually large opportunity for exactly this kind of exchange.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-the-world-cup-unites-cities',
+    sections: [
+      {
+        h: 'The city before and after',
+        p: [
+          "One of the more striking things about hosting is the contrast between a city in the days before its first match and the same city a week later. The transformation is fast, comprehensive and largely temporary, and residents frequently describe it as slightly unreal.",
+          "The reverse transition is equally abrupt. Within days of the tournament leaving, the banners come down, the visitors disperse, and the city returns to itself — which is what makes the hosting period feel like something that happened to the place rather than something the place became.",
+        ],
+      },
+      {
+        h: 'Sixteen simultaneous experiments',
+        p: [
+          "Because 2026 spreads across so many cities in three countries, it effectively runs sixteen parallel versions of the transformation this article describes, in places with very different sizes, cultures and relationships to football. The variation between them will be considerable.",
+          "This makes the tournament unusually interesting as an urban story rather than only a sporting one. Some host cities will be transformed substantially and others barely at all, and the difference will say something about each place that no amount of tourist marketing could.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-friendlies-before-a-world-cup',
+    sections: [
+      {
+        h: 'The last one is the least useful',
+        p: [
+          "Counterintuitively, the final warm-up before a tournament is frequently the least informative of the series. By that point managers are protecting players, minimising risk and avoiding revealing anything to opponents who are certainly watching, which produces a deliberately uninformative performance.",
+          "The more revealing matches are usually earlier in the sequence, when experimentation is still happening and there is time to act on what is learned. Anybody trying to read a squad's readiness would do better watching the first warm-up than the last, which is the opposite of where most attention falls.",
+        ],
+      },
+      {
+        h: 'They matter more for unfamiliar squads',
+        p: [
+          "For a settled team with a long-serving manager, warm-ups genuinely are close to formalities. For a squad with a new coach, several debutants or a recently changed system, they are the only opportunity to establish anything before competitive football begins, and their importance rises accordingly.",
+          "This means the same fixture carries very different weight for the two teams playing it, which is worth knowing before drawing conclusions from a result. One side may be conducting a final rehearsal and the other genuinely trying to establish how it intends to play.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'wing-play-and-width',
+    sections: [
+      {
+        h: 'Beating a defender is still a rare skill',
+        p: [
+          "Amid all the tactical structure, the ability to beat an opponent in a one-against-one on the touchline remains genuinely scarce and disproportionately valuable, because it generates an advantage that no defensive organisation can prevent — a defender who has been beaten is simply out of the play.",
+          "This is why teams build so much of their wide strategy around creating isolation for specific players. The tactical work exists to manufacture the situation; the resolution of it depends entirely on an individual doing something difficult, which is a reasonable description of a great deal of attacking football.",
+        ],
+      },
+      {
+        h: 'Width for its own sake achieves nothing',
+        p: [
+          "A caution worth adding: a team that occupies wide areas without any threat from them has simply moved players away from goal. Width creates space centrally only if the defence is genuinely obliged to respect it, which requires the wide players to be capable of hurting them.",
+          "This is why teams sometimes abandon width against particular opponents, concentrating instead through the middle. It is not a rejection of the principle but a recognition that the principle only functions when the wide threat is credible, and against some defences it simply is not.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-goalkeepers-tournament',
+    sections: [
+      {
+        h: 'The position most transformed by the sport\'s evolution',
+        p: [
+          "Taking everything together, goalkeeping has probably changed more than any other position across the tournament's history — from a specialist shot-stopper barely involved in play to a player expected to organise, distribute, sweep and communicate continuously across ninety minutes.",
+          "What has not changed is the fundamental accountability: the goalkeeper is the last line, his errors are terminal, and the tournament's tightest matches will be decided by whether he makes one particular save. Everything added to the role sits on top of that unchanged core.",
+        ],
+      },
+      {
+        h: 'Give the gloves some attention',
+        p: [
+          "For a tournament that will be discussed almost entirely in terms of attackers, deliberately following one goalkeeper across the knockout rounds is a genuinely different way to watch. His command of the box, his organisation of the defence and his handling of pressure are all visible, and almost nobody is looking.",
+          "It is also, on the historical record, quite likely to be the position that decides at least one of 2026's most significant matches. The player in gloves will be the story of somebody's tournament, and identifying whose before it becomes obvious is one of the more satisfying things attentive viewing offers.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'evolution-of-the-ball-and-boots',
+    sections: [
+      {
+        h: 'What has not changed at all',
+        p: [
+          "For all the development described here, the essential act remains identical: a person strikes a spherical object with their foot and attempts to direct it precisely. Every technological improvement has refined the conditions of that act without altering it in any fundamental way.",
+          "This continuity is what allows footage separated by ninety years to be recognisably the same sport. The equipment story is genuinely significant and it operates entirely at the margins of something that has proved remarkably resistant to change — which is presumably why the game has travelled so well across time and place.",
+        ],
+      },
+      {
+        h: 'A history hidden in plain sight',
+        p: [
+          "The pleasure of knowing this history is that it is visible in every match without being announced. The ball's flight, the boots' colours and the pitch's condition are all present in every frame of every broadcast, carrying a century of development that most viewers look straight through.",
+          "Noticing it occasionally during 2026 costs nothing and adds a genuine dimension. The equipment is not the story of the tournament, and it is quietly shaping every technical action that the story is made of.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-shocks-and-upsets',
+    sections: [
+      {
+        h: 'Nobody sees it coming, which is the point',
+        p: [
+          "The defining property of an upset is that it was not predicted, which means no amount of analysis will identify the 2026 shock before it occurs. Every framework in this article explains why upsets happen and none of them says which match will produce one.",
+          "This is not a limitation of the analysis so much as a description of the phenomenon. If shocks were predictable they would not be shocks, and the whole value of the thing depends on nobody knowing — including the team about to produce it.",
+        ],
+      },
+      {
+        h: 'The sport at its most democratic',
+        p: [
+          "The reason this article closes on affection rather than analysis is that upsets represent football's most attractive property: that resources, reputation and history guarantee nothing on a given afternoon, and that a small nation with a plan and a goalkeeper in form can beat anybody.",
+          "Very few competitive structures preserve that possibility as robustly as football does. It is worth valuing explicitly, particularly in a sport whose economics are otherwise so unequal, and 2026 will almost certainly demonstrate it at least once.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'host-nations-through-history',
+    sections: [
+      {
+        h: 'Three stories, three outcomes',
+        p: [
+          "By the end of the 2026 group stage, the three hosts will likely have experienced three quite different versions of the phenomenon this article describes, and comparing them will be more informative than any single host's experience could be.",
+          "One may find the crowd carrying it further than expected; another may find the expectation heavier than the support; a third may simply have an ordinary tournament. All three outcomes are available, and having them run simultaneously under otherwise identical conditions is a genuinely unusual thing to be able to watch.",
+        ],
+      },
+      {
+        h: 'Support them or not, watch them',
+        p: [
+          "Even for viewers with no attachment to any of the three, the host nations are worth following as narratives. They are the teams for whom this tournament carries a weight nobody else's does, and the way each of them handles it will be one of the more human stories the competition produces.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-magic-of-a-world-cup-summer',
+    sections: [
+      {
+        h: 'The football is the delivery mechanism',
+        p: [
+          "The claim underneath this whole article is that a World Cup's significance for most people is not primarily sporting. The football supplies the schedule, the drama and the shared reference point, and what actually persists is the period of life those things were attached to.",
+          "This is not a diminishment of the sport. Football's ability to organise a month of global attention around itself is precisely what makes it capable of carrying all of this, and no other cultural form manages the same thing at the same scale.",
+        ],
+      },
+      {
+        h: 'It arrives whether you engage or not',
+        p: [
+          "A World Cup happens around people regardless of whether they participate. The difference between the person who followed it and the person who did not is not the tournament's occurrence but whether they have anything of it afterward — and that difference persists for decades.",
+          "Given that the cost of participating is essentially attention, and that the tournament arrives once every four years, the case for engaging with 2026 rather than letting it pass is reasonably strong even for people with no particular interest in football.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'football-food-around-the-world',
+    sections: [
+      {
+        h: 'A small tradition worth starting',
+        p: [
+          "If none of the elaborate suggestions appeal, the minimal version still works: choose one thing to eat on match days across the tournament and keep it consistent for five weeks. It requires no cooking, no planning and no expense beyond what you were spending anyway.",
+          "The mechanism this article describes needs only repetition and association. Something eaten during a month of football becomes attached to the memory of that month, and the specific thing matters considerably less than the fact that it was the same each time.",
+        ],
+      },
+      {
+        h: 'The world at one table, briefly',
+        p: [
+          "For five weeks in 2026, the food traditions of forty-eight nations will be brought together in three host countries, and viewers everywhere will be eating along with matches involving countries they may never visit. That is a genuinely pleasant thing to be part of, and it requires nothing except noticing it is happening.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-language-of-fan-chants',
+    sections: [
+      {
+        h: 'The sound is half the broadcast',
+        p: [
+          "Television coverage carries stadium audio deliberately and mixes it carefully, because a match broadcast without crowd sound is a startlingly diminished thing. Matches played behind closed doors demonstrated this comprehensively — the same football, the same players, and an experience most viewers found genuinely flat.",
+          "This is worth remembering as evidence for everything in this article. The chanting is not decoration on top of the sport; it is a substantial component of what watching football actually consists of, and its absence is immediately noticeable to people who never consciously registered its presence.",
+        ],
+      },
+      {
+        h: 'An art form with no authors',
+        p: [
+          "The final thing worth saying is that all of this was produced by nobody in particular. No institution commissioned it, no author owns it, and it evolved through the collective, unrecorded improvisation of enormous numbers of people over more than a century.",
+          "Genuine folk art is rarer than it used to be, and football chanting is among the more vigorous surviving examples. Listening to it during 2026 is listening to something made entirely by the people making it, which is worth a few minutes of deliberate attention across five weeks.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-the-world-cup-unites-cities',
+    sections: [
+      {
+        h: 'The version most residents actually get',
+        p: [
+          "For the majority of people in a host city, the tournament is experienced in exactly the same way as everywhere else — on a screen, at home or in a bar — with the addition of visible visitors, altered transport and a general sense of occasion in the streets.",
+          "This is worth stating plainly against the more romantic accounts. Hosting does not mean attending; it means living somewhere that the tournament is happening, which is a real and quite different thing, and it is what nearly everybody in the sixteen host cities will actually experience.",
+        ],
+      },
+      {
+        h: 'A month that becomes a reference point',
+        p: [
+          "Long after 2026, residents of the host cities will refer to the summer the World Cup was here as a marker in their city's recent history, in the same way that people elsewhere refer to their own tournaments as markers in their lives. Cities have this kind of memory too.",
+          "That is the genuine legacy this article points toward: not infrastructure or economics but a shared local memory of a period when the place was, briefly, somewhere the whole world was paying attention to. Sixteen cities will acquire that in 2026, which is a considerable amount of civic memory to create in five weeks.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-friendlies-before-a-world-cup',
+    sections: [
+      {
+        h: 'They are the first sight of the tournament',
+        p: [
+          "Whatever their analytical value, the warm-up matches serve a genuine function for supporters: they are the first appearance of the squads that will contest the tournament, in the kits they will wear, with the players who made the final selection. The anticipation is real even if the football is not competitive.",
+          "This is a perfectly good reason to watch them, and it does not require pretending the results matter. A friendly is the tournament coming into view, and that has a value entirely independent of what it does or does not predict.",
+        ],
+      },
+      {
+        h: 'Hold every conclusion loosely',
+        p: [
+          "The single instruction this article offers is to resist forming firm views during the warm-up period. Almost every confident pre-tournament judgement based on friendly results has been contradicted within a fortnight of the actual competition beginning.",
+          "The genuine evidence arrives with the first group match, when teams are trying to win, opponents are trying to stop them, and the result carries consequences. Everything before that is preparation being conducted in public, and reading it as competition is the most reliable way to be wrong about 2026 before it starts.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'wing-play-and-width',
+    sections: [
+      {
+        h: 'The touchline battle worth watching',
+        p: [
+          "Each flank hosts a repeated individual contest across ninety minutes — winger against full-back, dozens of times — and these duels are among the more legible things happening in any match. One player is usually winning, and identifying which tells you where the chances are likely to come from.",
+          "Because the same two players meet repeatedly, the contest also evolves: adjustments are made, patterns are established and broken, and a defender who was comfortable in the first half may be visibly struggling in the second. Following one of these duels across a full match is a genuinely rewarding way to watch.",
+        ],
+      },
+      {
+        h: 'An old idea that keeps working',
+        p: [
+          "The endurance of width as a principle is worth appreciating in a sport that reinvents itself as frequently as football does. Tactical fashions arrive and pass; the pitch remains wider than any defence can comfortably cover, and every team at 2026 will be attempting to exploit that in some form.",
+        ],
+      },
+      {
+        h: 'Crossing is not obsolete, just narrower',
+        p: [
+          "A correction to a common overstatement: the finding that cut-backs outperform crosses has been read in some quarters as meaning crossing no longer works, which is not what the evidence says. Crosses to the right areas, against the right defensive setups, with the right attackers arriving, remain productive.",
+          "What the data actually argues against is the indiscriminate high cross from deep positions into a crowded box, which has always been a low-percentage action. Teams still cross constantly and do so more selectively, which is a refinement of an old idea rather than its replacement.",
+        ],
+      },
+      {
+        h: 'The flanks will decide plenty of 2026',
+        p: [
+          "Given how many matches at this tournament will feature a compact defensive block, and given that the flanks are the primary route past one, a disproportionate share of the tournament's goals will originate from wide areas. That is a reasonably confident prediction and it follows directly from everything above.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'evolution-of-the-ball-and-boots',
+    sections: [
+      {
+        h: 'The player is still the variable',
+        p: [
+          "A final perspective worth holding: for all the engineering, the equipment is identical for both teams in every match. Whatever advantage a better ball or lighter boot confers is conferred on everybody simultaneously, which means it changes the sport without changing who wins any particular game.",
+          "This is why equipment history is interesting rather than decisive. It explains how the game has changed across generations and explains nothing at all about why one team beats another, which remains a matter of the people wearing the boots rather than the boots themselves.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'world-cup-shocks-and-upsets',
+    sections: [
+      {
+        h: 'Somewhere in the fixture list',
+        p: [
+          "The 2026 tournament contains 104 matches, a wider spread of quality than any previous edition, and forty-eight teams with wildly varying expectations attached. Statistically and structurally, the conditions for at least one significant shock are as favourable as they have ever been.",
+          "Where it will come from is unknowable, which is why the only reliable way to see it is to watch broadly across the group stage. Somewhere in that fixture list a nation is about to produce the result its supporters will describe for the rest of their lives, and the fixture will look entirely unremarkable beforehand.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'host-nations-through-history',
+    sections: [
+      {
+        h: 'A real advantage, honestly measured',
+        p: [
+          "Pulling the threads together: home advantage at a World Cup is genuine, historically well-evidenced and considerably smaller in 2026 than in any previous tournament because it is divided three ways. The pressure, meanwhile, is not divided at all — each host nation carries its own in full.",
+          "That combination is the specific situation the three hosts face, and it has no precedent. Whether the reduced advantage or the undiminished pressure proves more significant is genuinely open, and it will be one of the more analytically interesting questions the tournament resolves.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-magic-of-a-world-cup-summer',
+    sections: [
+      {
+        h: 'Twenty years from now',
+        p: [
+          "Somebody reading this will, two decades from now, be asked about the 2026 World Cup and will describe not the champion or the goals but where they were living, who they watched with and what that period of their life was like. That is what the tournament actually produces, and it is being produced whether or not anybody notices at the time.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'football-food-around-the-world',
+    sections: [
+      {
+        h: 'Hospitality is the older tradition',
+        p: [
+          "Feeding people who have come to watch something together predates football by a very long way, and match-day food culture is essentially the sport attaching itself to an existing human practice. That is why it appears in every footballing culture without anybody having spread it deliberately.",
+          "It also explains why the specific dishes vary so completely while the underlying behaviour does not. The impulse is universal and ancient; the menu is local and recent, and a World Cup puts several dozen versions of the same impulse on display simultaneously.",
+        ],
+      },
+      {
+        h: 'The simplest recommendation',
+        p: [
+          "Eat something you enjoy, with somebody, while watching a match you were going to watch anyway. That is the entire practice this article describes, and it requires no cultural research whatsoever to participate in.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-language-of-fan-chants',
+    sections: [
+      {
+        h: 'What the songs are really doing',
+        p: [
+          "Stripped to essentials, a crowd singing together is a large number of people voluntarily coordinating to produce something none of them could produce alone, for no purpose beyond the doing of it. That is a reasonable description of most collective culture and football provides one of its more accessible remaining venues.",
+          "It is worth valuing on those terms rather than only as atmosphere. The stands at a 2026 match will contain thousands of people making something together, and the football is the occasion for it rather than the whole of what is happening.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-the-world-cup-unites-cities',
+    sections: [
+      {
+        h: 'The streets are part of the tournament',
+        p: [
+          "Broadcast coverage between matches consistently includes footage of host cities — crowds in squares, supporters in the streets, the visual character of the places involved — and this material is a genuine part of what a World Cup is rather than filler between the football.",
+          "Watching it rather than looking away is one way for people following the tournament remotely to experience some of what this article describes. The cities are hosting something and the coverage shows it happening, which is as close as most viewers will get to being there.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-friendlies-before-a-world-cup',
+    sections: [
+      {
+        h: 'The tournament proper is close',
+        p: [
+          "The most useful thing about the warm-up period is what it signals rather than what it reveals: the friendlies mean the squads are assembled, the selections are made and the tournament is weeks away. That anticipation is the genuine content of the period, and it does not depend on any result.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-goalkeepers-tournament',
+    sections: [
+      {
+        h: 'One save, one tournament',
+        p: [
+          "The claim this article makes is simple and, on the historical record, well supported: at least one team's 2026 will be extended or ended by a single goalkeeping moment, and the player responsible will be remembered for it regardless of everything else he does in his career.",
+        ],
+      },
+      {
+        h: 'The understudies who never play',
+        p: [
+          "A squad carries three goalkeepers and two of them will almost certainly not play a minute across five weeks. They train fully every day, prepare for opponents they will never face, and travel to every venue in a role that offers essentially no prospect of participation.",
+          "Their function is nonetheless real: pushing the first choice in training, providing insurance against the injury that would otherwise end a campaign, and — as this collection notes elsewhere — frequently anchoring the squad's internal culture. It is among the strangest jobs in professional sport and the people who do it well are genuinely valued for it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'host-nations-through-history',
+    sections: [
+      {
+        h: 'The advantage arrives before the tournament',
+        p: [
+          "Several host benefits accrue long before a ball is kicked: familiarity with the venues from domestic fixtures, base camps chosen without travel constraints, no qualifying campaign consuming players' energy, and the ability to schedule preparation entirely around the tournament rather than around competitive commitments.",
+          "None of these appear in any discussion of home advantage, which focuses almost entirely on crowds. They are nonetheless real, they compound across a two-year preparation period, and they are among the more defensible components of the historical pattern this article describes.",
+        ],
+      },
+      {
+        h: 'Watch the opening ten minutes',
+        p: [
+          "For each host's first match, the opening ten minutes are unusually informative. A team that starts calmly and keeps the ball has absorbed the occasion; one that starts frantically, giving possession away and pressing wildly, has been affected by it — and the second pattern is considerably more common than the first.",
+          "How each of the three hosts handles that specific window will be a genuine early indicator of whether the support becomes an asset or a burden for them across the remainder of the tournament.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-magic-of-a-world-cup-summer',
+    sections: [
+      {
+        h: 'Why this is worth writing about at all',
+        p: [
+          "An article about the feeling of a tournament rather than its football may seem beside the point, and the justification is that the feeling is what most people actually retain. The results are recorded permanently and looked up in seconds; the experience of the month exists only in the people who had it.",
+          "Writing about it in advance is a way of suggesting that it be noticed while it happens rather than only recognised afterward. That is a small intervention and it is the only useful one available, since nothing about the tournament itself can be arranged by anybody reading this.",
+        ],
+      },
+      {
+        h: 'The particular quality of anticipation',
+        p: [
+          "There is a specific pleasure in the weeks before a World Cup that has no equivalent elsewhere in the sporting calendar: everything remains possible, no team has failed, and the month ahead is entirely undetermined. That state is itself part of what the tournament provides.",
+          "It ends at the first whistle and does not return for four years, which makes the period before 2026 begins worth appreciating in its own right rather than treating purely as waiting. Anticipation is a real part of the experience and it is available right now.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'football-food-around-the-world',
+    sections: [
+      {
+        h: 'Match day as an occasion',
+        p: [
+          "What the food traditions described here ultimately do is mark a match as an occasion rather than an ordinary evening, and that marking is what turns a broadcast into an event. A World Cup provides more such occasions in five weeks than most years supply in total.",
+          "This is worth taking advantage of deliberately. The tournament hands anybody who wants it a legitimate reason to make thirty or forty evenings into something slightly more than usual, which is an unusual amount of licence for a football competition to provide.",
+        ],
+      },
+      {
+        h: 'Nothing here requires ambition',
+        p: [
+          "Everything in this article works at whatever scale suits. An elaborate spread for a knockout match and a packet of something eaten alone during a group fixture serve exactly the same function, and the tradition this describes accommodates both without any hierarchy between them.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-language-of-fan-chants',
+    sections: [
+      {
+        h: 'The moment a whole stadium joins in',
+        p: [
+          "There is a specific phenomenon worth listening for: the point at which a chant that began in one section is picked up by an entire stadium, producing a sudden step-change in volume that is audible even through a television broadcast. It usually takes twenty or thirty seconds and it is unmistakable when it happens.",
+          "These moments are among the most genuinely thrilling sounds in sport, and they are entirely spontaneous and unplanned. Nobody decides they will happen; they emerge from a crowd deciding collectively, without communication, that this is the song for this moment.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-the-world-cup-unites-cities',
+    sections: [
+      {
+        h: 'Hosting is a gamble with a delayed result',
+        p: [
+          "A city agrees to host years in advance, incurs the disruption and the costs during the preparation, and only discovers whether it was worthwhile long afterward. The uncertainty is genuine and the decision is made by people who will frequently not be in office when the assessment arrives.",
+          "This is worth acknowledging as context for the transformation this article describes. The festival atmosphere is real and so is the cost of producing it, and the sixteen host cities of 2026 are each running a version of the same wager with a settlement date somewhere in the 2030s.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-friendlies-before-a-world-cup',
+    sections: [
+      {
+        h: 'The squad announcement matters more',
+        p: [
+          "If any pre-tournament event genuinely deserves scrutiny, it is the squad announcement rather than any friendly. The names selected constrain everything the manager can subsequently do, cannot be changed once the tournament begins, and reveal considerably more about intentions than any warm-up performance.",
+          "Reading a squad list carefully — the positional balance, the versatile selections, the omissions — is a better use of pre-tournament attention than analysing a friendly result, and this collection's article on squad rules explains what to look for in some detail.",
+        ],
+      },
+      {
+        h: 'A few weeks of harmless speculation',
+        p: [
+          "None of this means the warm-up period should be ignored. It is the last stretch of a four-year wait, the speculation is enjoyable precisely because nothing is settled, and the friendlies provide something to actually watch while the tournament approaches.",
+          "The only recommendation is to enjoy it as speculation rather than mistaking it for evidence — which is a distinction that will be widely ignored during the weeks before 2026, producing a great many confident predictions that the group stage will quietly dismantle.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'evolution-of-the-ball-and-boots',
+    sections: [
+      {
+        h: 'The next change is already coming',
+        p: [
+          "Equipment development has not stopped. Sensor technology in the ball is being extended, boot design continues to chase marginal gains, and materials science keeps offering new possibilities. The 2026 equipment will look dated within a decade in exactly the way every previous generation's did.",
+          "Whatever comes next will arrive with the same pattern this article has traced: a technical improvement, an accompanying controversy, a period of adjustment, and eventual absorption into the ordinary conditions of the game that nobody thinks about at all.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'wing-play-and-width',
+    sections: [
+      {
+        h: 'Where to look during the group stage',
+        p: [
+          "A practical suggestion for 2026: during any match featuring a heavily favoured team against a defensive opponent, watch the flanks specifically. That is where the favourite will be attempting to solve the problem, and where the underdog's defensive plan will either hold or fail.",
+          "The pattern repeats often enough across a tournament of this size that it becomes almost a reliable rhythm: possession in the middle, a switch to the flank, an attempt to reach the byline, and either a cut-back or a lost possession. Watching that cycle repeat and noticing what eventually changes it is a genuinely absorbing way to follow an ostensibly one-sided match.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-magic-of-a-world-cup-summer',
+    sections: [
+      {
+        h: 'What people describe when they describe a tournament',
+        p: [
+          "The consistent shape of these accounts is worth noting explicitly: a location, a group of people, an emotional register, and somewhere in the background a specific match. The football features and it features as detail rather than as subject, which is a striking thing given that the football is the reason any of it happened.",
+          "This is presumably true of most large shared events and it is unusually pronounced with World Cups because of the interval, the duration and the global simultaneity. Five weeks is long enough to become a period rather than an occasion, and a period is what memory attaches to.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'football-food-around-the-world',
+    sections: [
+      {
+        h: 'The half-time ritual',
+        p: [
+          "One specific structural feature shapes match-day eating more than anything else: football's single fifteen-minute interval, which is long enough to prepare or serve something and short enough that it must be simple. Almost every match-day food tradition is organised around that constraint.",
+          "It is a small illustration of how a sport's rules quietly shape the culture around it. A game with more frequent stoppages produces different eating habits entirely, and football's uninterrupted halves with one substantial break have produced a fairly consistent global pattern of eating either side of the match and grazing during it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-language-of-fan-chants',
+    sections: [
+      {
+        h: 'Learning one before the tournament',
+        p: [
+          "For anybody attending matches in 2026, learning even one chant of whichever team you will be supporting is worth the ten minutes it takes. Standing among people singing something you cannot join is a noticeably different experience from being able to participate, and the barrier is genuinely low.",
+          "Supporter groups and fan forums publish these openly, and most national team repertoires consist of a handful of simple songs rather than an intimidating catalogue. It is among the easier ways to convert attendance into participation, which is what this whole article is ultimately describing.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-the-world-cup-unites-cities',
+    sections: [
+      {
+        h: 'A temporary city within the city',
+        p: [
+          "During a hosting period, something like a parallel city forms inside the host: fan zones, official routes, accredited areas, temporary venues and a visiting population operating on entirely different rhythms from residents. The two coexist for a month and then one of them dissolves.",
+          "Residents describe this as the strangest part of the experience — recognising their own streets and finding them temporarily occupied by something with its own rules and population. It is genuinely unusual and it is one of the more interesting things a host city goes through.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-friendlies-before-a-world-cup',
+    sections: [
+      {
+        h: 'What they cannot tell you at all',
+        p: [
+          "It is worth listing the things a friendly reveals nothing about: how a team will handle knockout pressure, how it will respond to going behind in a match that matters, whether its squad harmony will survive five weeks, and how it will cope with a hostile crowd. All of these are tournament-specific and none is testable beforehand.",
+          "Since these are among the qualities that most reliably determine how far a team goes, the warm-up period is structurally incapable of predicting the outcomes people use it to predict. That is not a flaw in the friendlies; it is simply what they are for.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-goalkeepers-tournament',
+    sections: [
+      {
+        h: 'Judging one fairly across five weeks',
+        p: [
+          "Goalkeepers are assessed almost entirely on errors, which is an unfair standard given that a defender making the same number of mistakes would be judged far more leniently. A fair assessment weighs saves made, chances prevented through positioning, and defensive organisation alongside whatever went wrong.",
+          "This is difficult to do without specific data and it is worth attempting anyway during 2026, if only as a corrective to coverage that will inevitably reduce every goalkeeper's tournament to a small number of moments where the ball ended up in the net behind him.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'why-the-world-cup-unites-cities',
+    sections: [
+      {
+        h: 'What stays behind afterwards',
+        p: [
+          "When the visitors leave and the temporary structures come down, what remains is uneven. Some of it is physical — a refurbished transport link, an upgraded stadium, a park that got its paths resurfaced because a route ran through it. Some of it is administrative, in the form of civic bodies that learned how to coordinate at a scale they had never needed before. And some of it is nothing more than a shared reference point that residents use for years afterwards to date other events.",
+          "That last category is the most durable and the hardest to justify to anyone weighing costs. A city cannot put a figure on the summer everybody remembers. But if you ask people in a former host city what that period was like, you tend to get answers that are specific and immediate in a way that ordinary years do not produce, which is at least evidence that something real happened rather than merely something expensive.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'wing-play-and-width',
+    sections: [
+      {
+        h: 'A note on the players themselves',
+        p: [
+          "Wide players carry an unusual physical burden across a tournament. The role demands repeated maximum-effort sprints in both directions, and unlike a central midfielder who can regulate output by controlling tempo, a winger's work is dictated by where the ball goes and when. Across five weeks in summer heat that accumulates faster than almost any other position on the pitch.",
+          "This is why the wide positions see more rotation than most across a long tournament, and why teams that reach the later stages tend to be those with two credible options on each flank rather than one outstanding player and a drop-off behind him. Watch for which coaches have that depth going into the knockout rounds — it is a quieter predictor of who lasts than most of the things that get discussed.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function applyExpansions(all: Article[]): void {
