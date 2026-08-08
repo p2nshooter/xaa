@@ -6,6 +6,7 @@ import { SITE } from '@/lib/site';
 import { SiteHeader, SiteFooter } from '@/components/Site';
 import { Analytics } from '@/components/Analytics';
 import { GlobalAds } from '@/components/Ads';
+import { PageAds } from '@/components/PageAds';
 
 const serif = Playfair_Display({ subsets: ['latin'], weight: ['400', '700', '900'], variable: '--font-serif', display: 'swap' });
 const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
@@ -49,6 +50,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteBeacon />
         <SiteHeader />
         <main className="min-h-[60vh]">{children}</main>
+        {/* Tops every route up to the owner's minimum of six Adsterra units,
+            covering the top, middle and bottom of the page. Counts what the
+            template already placed so article pages are not doubled up. */}
+        <PageAds />
         <SiteFooter />
         <Analytics />
         <GlobalAds />

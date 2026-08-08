@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { ADS, type BannerSlot } from '@/lib/ads';
+import { useAdsterraOn } from '@/lib/ad-master';
 
 /**
  * Adsterra ad units — the LIVE, direct-tag placements for this site.
@@ -23,8 +24,9 @@ import { ADS, type BannerSlot } from '@/lib/ads';
  */
 
 export function BannerAd({ slot, className = '' }: { slot: BannerSlot; className?: string }) {
+  const on = useAdsterraOn();
   const cfg = ADS.banners[slot];
-  if (!cfg) return null;
+  if (!cfg || !on) return null;
   const doc =
     '<!doctype html><html><head><meta charset="utf-8">' +
     '<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head>' +
@@ -53,18 +55,19 @@ export function BannerAd({ slot, className = '' }: { slot: BannerSlot; className
 }
 
 export function NativeAd({ className = '' }: { className?: string }) {
+  const on = useAdsterraOn();
   const host = useRef<HTMLDivElement>(null);
   const done = useRef(false);
   useEffect(() => {
-    if (done.current || !ADS.native || !host.current) return;
+    if (!on || done.current || !ADS.native || !host.current) return;
     done.current = true;
     const s = document.createElement('script');
     s.async = true;
     s.setAttribute('data-cfasync', 'false');
     s.src = ADS.native.src;
     host.current.appendChild(s);
-  }, []);
-  if (!ADS.native) return null;
+  }, [on]);
+  if (!ADS.native || !on) return null;
   return (
     <div className={`ad-wrap ${className}`}>
       <span className="ad-label">Advertisement</span>
@@ -74,7 +77,8 @@ export function NativeAd({ className = '' }: { className?: string }) {
 }
 
 export function SponsoredCard({ className = '' }: { className?: string }) {
-  if (!ADS.smartLink) return null;
+  const on = useAdsterraOn();
+  if (!ADS.smartLink || !on) return null;
   return (
     <div className={`ad-wrap ${className}`}>
       <span className="ad-label">Sponsored</span>
@@ -96,15 +100,16 @@ export function SponsoredCard({ className = '' }: { className?: string }) {
  * social bar exactly one time per page load.
  */
 export function GlobalAds() {
+  const on = useAdsterraOn();
   const done = useRef(false);
   useEffect(() => {
-    if (done.current || !ADS.socialBar) return;
+    if (!on || done.current || !ADS.socialBar) return;
     done.current = true;
     const s = document.createElement('script');
     s.async = true;
     s.setAttribute('data-cfasync', 'false');
     s.src = ADS.socialBar;
     document.body.appendChild(s);
-  }, []);
+  }, [on]);
   return null;
 }
