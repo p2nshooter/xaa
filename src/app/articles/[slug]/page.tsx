@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { ARTICLES, CATEGORIES, getArticle, getArticlesByCategory } from '@/content/articles';
 import { ArticleBody, RelatedArticles } from '@/components/Article';
 import { SITE } from '@/lib/site';
+import { jsonLdHtml } from '@/lib/json-ld';
 
 interface Props { params: Promise<{ slug: string }>; }
 export function generateStaticParams() { return ARTICLES.map((a) => ({ slug: a.slug })); }
@@ -77,7 +78,7 @@ export default async function ArticlePage({ params }: Props) {
   };
   return (
     <div className="py-10">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml(jsonLd) }} />
       <ArticleBody article={a} />
       <RelatedArticles articles={related} />
     </div>

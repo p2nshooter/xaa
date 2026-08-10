@@ -7,6 +7,7 @@ import { SiteHeader, SiteFooter } from '@/components/Site';
 import { Analytics } from '@/components/Analytics';
 import { GlobalAds } from '@/components/Ads';
 import { PageAds } from '@/components/PageAds';
+import { jsonLdHtml } from '@/lib/json-ld';
 
 const serif = Playfair_Display({ subsets: ['latin'], weight: ['400', '700', '900'], variable: '--font-serif', display: 'swap' });
 const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
@@ -36,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: jsonLdHtml({
               '@context': 'https://schema.org',
               '@graph': [
                 { '@type': 'Organization', '@id': `${SITE.url}#org`, name: SITE.name, url: SITE.url, logo: `${SITE.url}/icon.svg` },
