@@ -27,16 +27,13 @@ export function BannerAd({ slot, className = '' }: { slot: BannerSlot; className
   const on = useAdsterraOn();
   const cfg = ADS.banners[slot];
   if (!cfg || !on) return null;
-  const doc =
-    '<!doctype html><html><head><meta charset="utf-8">' +
-    '<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head>' +
-    '<body><script type="text/javascript">atOptions=' +
-    JSON.stringify({ key: cfg.key, format: 'iframe', height: cfg.height, width: cfg.width, params: {} }) +
-    ';</scr' +
-    'ipt><script type="text/javascript" src="//www.highperformanceformat.com/' +
-    cfg.key +
-    '/invoke.js"></scr' +
-    'ipt></body></html>';
+  // A REAL same-origin frame, not srcdoc. Both give the banner its own
+  // document (which invoke.js needs, since it reads one global `atOptions`),
+  // but srcdoc costs the document its identity: inside about:srcdoc the
+  // hostname is empty, the origin is "null" and the referrer is empty, so
+  // Adsterra cannot match the request to a registered site and returns no ad.
+  // See public/ads/frame.html.
+  const src = `/ads/frame.html?key=${encodeURIComponent(cfg.key)}&w=${cfg.width}&h=${cfg.height}`;
   return (
     <div className={`ad-wrap ${className}`}>
       <span className="ad-label">Advertisement</span>
@@ -44,7 +41,7 @@ export function BannerAd({ slot, className = '' }: { slot: BannerSlot; className
         title="advertisement"
         width={cfg.width}
         height={cfg.height}
-        srcDoc={doc}
+        src={src}
         scrolling="no"
         loading="lazy"
         className="ad-frame"
