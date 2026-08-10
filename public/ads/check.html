@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ad unit check</title>
+<style>
+  body{font:14px/1.5 system-ui,sans-serif;margin:0;padding:16px;background:#fafafa;color:#111}
+  h1{font-size:18px;margin:0 0 4px}
+  .meta{color:#666;margin-bottom:16px}
+  table{border-collapse:collapse;width:100%;max-width:900px;margin-bottom:24px}
+  th,td{border:1px solid #ddd;padding:6px 8px;text-align:left;vertical-align:top}
+  th{background:#f0f0f0;font-weight:600}
+  code{font:12px/1.4 ui-monospace,monospace;word-break:break-all}
+  .ok{color:#0a6b2e;font-weight:600}
+  .bad{color:#a11;font-weight:600}
+  .wait{color:#888}
+  .units{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}
+  .unit{border:1px dashed #bbb;padding:4px;background:#fff}
+  .unit b{display:block;font-size:11px;color:#555;margin-bottom:2px}
+  iframe{border:0;display:block}
+</style>
+</head>
+<body>
+<h1>Ad unit check</h1>
+<div class="meta">
+  <span id="host"></span> &middot; <span id="when"></span><br>
+  Every unit configured for THIS domain is rendered below and reported on.
+  Nothing here is shown to readers &mdash; this page is noindex and linked from nowhere.
+</div>
+
+<table id="report"><thead><tr>
+  <th>unit</th><th>key</th><th>size</th><th>result</th><th>detail</th>
+</tr></thead><tbody></tbody></table>
+
+<div class="units" id="units"></div>
+
+<script>
+var CFG = {
+  "banners": [
+    {
+      "slot": "leaderboard",
+      "key": "258ed9f0c1c6a3d2afef261e723d2564",
+      "w": 728,
+      "h": 90
+    },
+    {
+      "slot": "rectangle",
+      "key": "8098e0116f57f3b2ed297caa803507a3",
+      "w": 300,
+      "h": 250
+    },
+    {
+      "slot": "banner468",
+      "key": "6401add15d42a3d88ef9bbfffe7a5df4",
+      "w": 468,
+      "h": 60
+    },
+    {
+      "slot": "halfpage",
+      "key": "2e68be5e549c9ad1fdcc6d383cc019c5",
+      "w": 160,
+      "h": 600
+    },
+    {
+      "slot": "skyscraper",
+      "key": "20fbc833c5c510a82409b00f9c51e7f4",
+      "w": 160,
+      "h": 300
+    },
+    {
+      "slot": "mobile",
+      "key": "9872be1f4793dfcceeb2dd9c196d98b8",
+      "w": 320,
+      "h": 50
+    }
+  ],
+  "native": {
+    "container": "fe88fcb65928b1dd5aac1114656ccda9",
+    "src": "https://pl30477810.effectivecpmnetwork.com/fe88fcb65928b1dd5aac1114656ccda9/invoke.js"
+  },
+  "socialBar": "https://pl30477811.effectivecpmnetwork.com/0a/0c/a6/0a0ca691ba061f502102603218ee1f67.js"
+};
+document.getElementById('host').textContent = location.hostname;
+document.getElementById('when').textContent = new Date().toISOString();
+
+var tbody = document.querySelector('#report tbody');
+var units = document.getElementById('units');
+var rows = {};
+
+function row(name, key, size) {
+  var tr = document.createElement('tr');
+  tr.innerHTML = '<td>' + name + '</td><td><code>' + key + '</code></td><td>' + size +
+    '</td><td class="wait">checking…</td><td class="detail"></td>';
+  tbody.appendChild(tr);
+  rows[name] = tr;
+  return tr;
+}
+function verdict(name, ok, detail) {
+  var tr = rows[name]; if (!tr) return;
+  var cell = tr.children[3];
+  cell.className = ok ? 'ok' : 'bad';
+  cell.textContent = ok ? 'FILLED' : 'EMPTY';
+  tr.querySelector('.detail').textContent = detail || '';
+}
+
+// ── Banners ──────────────────────────────────────────────────────────────────
+CFG.banners.forEach(function (b) {
+  row(b.slot, b.key, b.w + '×' + b.h);
+  var wrap = document.createElement('div');
+  wrap.className = 'unit';
+  wrap.innerHTML = '<b>' + b.slot + ' ' + b.w + '×' + b.h + '</b>';
+  var f = document.createElement('iframe');
+  f.width = b.w; f.height = b.h;
+  f.src = '/ads/frame.html?key=' + b.key + '&w=' + b.w + '&h=' + b.h;
+  wrap.appendChild(f);
+  units.appendChild(wrap);
+
+  setTimeout(function () {
+    var doc = null;
+    try { doc = f.contentDocument; } catch (e) { /* cross-origin: cannot happen here */ }
+    if (!doc) { verdict(b.slot, false, 'frame document unreadable'); return; }
+    if (doc.title !== 'Advertisement') {
+      verdict(b.slot, false, 'frame.html NOT DEPLOYED on this domain (got "' + doc.title + '")');
+      return;
+    }
+    // invoke.js injects its creative as a nested iframe, image or ins element.
+    var painted = doc.body.querySelector('iframe, img, ins, a');
+    verdict(b.slot, !!painted,
+      painted ? painted.tagName.toLowerCase() + ' rendered'
+              : 'frame served, script ran, no creative returned (no fill / domain not approved / wrong key)');
+  }, 8000);
+});
+
+// ── Native banner ────────────────────────────────────────────────────────────
+if (CFG.native) {
+  row('native', CFG.native.container, '—');
+  var host = document.createElement('div');
+  host.className = 'unit';
+  host.innerHTML = '<b>native</b>';
+  var box = document.createElement('div');
+  box.id = 'container-' + CFG.native.container;
+  host.appendChild(box);
+  units.appendChild(host);
+
+  var ns = document.createElement('script');
+  ns.async = true; ns.setAttribute('data-cfasync', 'false');
+  ns.src = CFG.native.src;
+  ns.onerror = function () { verdict('native', false, 'script FAILED to load (blocked, or bad url)'); };
+  document.body.appendChild(ns);
+
+  setTimeout(function () {
+    if (rows['native'].children[3].className !== 'wait') return;
+    verdict('native', box.childElementCount > 0,
+      box.childElementCount > 0 ? box.childElementCount + ' child nodes'
+                                : 'script loaded, container still empty (no fill / not approved)');
+  }, 8000);
+}
+
+// ── Social bar ───────────────────────────────────────────────────────────────
+if (CFG.socialBar) {
+  row('socialBar', CFG.socialBar.split('/').pop(), '—');
+  var sb = document.createElement('script');
+  sb.async = true; sb.setAttribute('data-cfasync', 'false');
+  sb.src = CFG.socialBar;
+  sb.onload = function () { verdict('socialBar', true, 'script loaded (watch for the floating bar)'); };
+  sb.onerror = function () { verdict('socialBar', false, 'script FAILED to load — blocked by the browser, an extension, or DNS'); };
+  document.body.appendChild(sb);
+  setTimeout(function () {
+    if (rows['socialBar'].children[3].className === 'wait') {
+      verdict('socialBar', false, 'no load and no error after 8s');
+    }
+  }, 8000);
+}
+</script>
+</body>
+</html>
