@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ADS, type BannerSlot } from '@/lib/ads';
 import { useAdsterraOn } from '@/lib/ad-master';
 
@@ -23,10 +23,62 @@ import { useAdsterraOn } from '@/lib/ad-master';
  * "Advertisement" label, so placement stays reader-first ("biar pantes").
  */
 
+/** The <title> of public/ads/frame.html. Load-bearing.
+ *
+ *  If frame.html stops being served the iframe does not error — it loads THIS
+ *  SITE'S OWN 404 page, which is same-origin and full of content. Anything that
+ *  judges a fill by looking for content would read that 404 as an ad. Checking
+ *  the title first is what tells our frame apart from whatever else the server
+ *  returned. */
+const FRAME_TITLE = 'Advertisement';
+
+/** How long a unit may take to paint before it is treated as a no-fill. */
+const FILL_GRACE_MS = 25_000;
+
 export function BannerAd({ slot, className = '' }: { slot: BannerSlot; className?: string }) {
   const on = useAdsterraOn();
   const cfg = ADS.banners[slot];
+  const frame = useRef<HTMLIFrameElement>(null);
+  // null = still waiting, so keep the space reserved and stay quiet;
+  // true = something painted; false = confirmed no-fill, collapse entirely.
+  const [filled, setFilled] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    if (!on || !cfg) return;
+    let stopped = false;
+    const startedAt = Date.now();
+    const tick = () => {
+      if (stopped) return;
+      let has = false;
+      try {
+        const doc = frame.current?.contentDocument;
+        // Our frame, or nothing. An empty title is the frame still loading.
+        if (doc && doc.title === FRAME_TITLE) {
+          const body = doc.body;
+          // invoke.js paints by injecting an element; its presence is the
+          // direct signal, with height as a backstop.
+          has = !!body && (!!body.querySelector('iframe, img, ins, a') || body.scrollHeight > 12);
+        }
+      } catch {
+        // Unreadable means nothing can be confirmed. Fails CLOSED: collapsing
+        // an ad that did arrive costs one impression, while reserving a hole
+        // that never fills costs the reader on every page.
+        has = false;
+      }
+      if (has) return setFilled(true);
+      if (Date.now() - startedAt > FILL_GRACE_MS) return setFilled(false);
+      window.setTimeout(tick, 900);
+    };
+    const id = window.setTimeout(tick, 1200);
+    return () => {
+      stopped = true;
+      window.clearTimeout(id);
+    };
+  }, [on, cfg]);
+
   if (!cfg || !on) return null;
+  if (filled === false) return null; // confirmed empty — no label, no gap
+
   // A REAL same-origin frame, not srcdoc. Both give the banner its own
   // document (which invoke.js needs, since it reads one global `atOptions`),
   // but srcdoc costs the document its identity: inside about:srcdoc the
@@ -36,8 +88,10 @@ export function BannerAd({ slot, className = '' }: { slot: BannerSlot; className
   const src = `/ads/frame.html?key=${encodeURIComponent(cfg.key)}&w=${cfg.width}&h=${cfg.height}`;
   return (
     <div className={`ad-wrap ${className}`}>
-      <span className="ad-label">Advertisement</span>
+      {/* The label appears only once there is something to label. */}
+      {filled && <span className="ad-label">Advertisement</span>}
       <iframe
+        ref={frame}
         title="advertisement"
         width={cfg.width}
         height={cfg.height}
