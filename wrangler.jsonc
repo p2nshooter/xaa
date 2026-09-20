@@ -6,31 +6,23 @@
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
   "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "xaa-es" }],
-  "vars": { "APP_URL": "https://xaa.es" }
+  "vars": { "APP_URL": "https://xaa.es" },
 
-  // ───────────────────────────────────────────────────────────────────────
-  // CLIENT PORTAL BINDINGS — see docs/PORTAL-SETUP.md
+  // Client portal storage — accounts, projects, milestone payments, uploads.
   //
-  // The marketing site runs without these; the portal (accounts, projects,
-  // milestone payments, uploads) needs them. They are left commented out so
-  // that `wrangler deploy` keeps working before the resources exist — a
-  // binding pointing at a database that has not been created fails the whole
-  // deploy, including the pages that were fine.
+  // The database_id below is filled in by scripts/ensure-cloudflare-resources.sh,
+  // which CI runs before every deploy and which creates the database and the
+  // bucket if they do not exist yet. So there is nothing to provision by hand,
+  // and the placeholder is what a fresh checkout is supposed to look like.
   //
-  // 1. npx wrangler d1 create xaa-portal      → copy the database_id below
-  // 2. npx wrangler r2 bucket create xaa-uploads
-  // 3. uncomment both blocks, paste the id, deploy
-  // 4. npx wrangler secret put ADMIN_EMAIL           (your studio login)
-  //    npx wrangler secret put USDT_TRC20_ADDRESS    (and ERC20 / BEP20)
-  //    npx wrangler secret put PAYPAL_EMAIL          (and/or PAYPAL_LINK)
+  // Locally, `npm run cf:preview` works with the placeholder as-is: wrangler's
+  // local mode keys its sqlite file off the binding, not off a real id.
   //
   // The D1 schema creates itself on first use — there is no migration step.
-  //
-  // "d1_databases": [
-  //   { "binding": "DB", "database_name": "xaa-portal", "database_id": "PASTE_ID_HERE" }
-  // ],
-  // "r2_buckets": [
-  //   { "binding": "UPLOADS", "bucket_name": "xaa-uploads" }
-  // ]
-  // ───────────────────────────────────────────────────────────────────────
+  "d1_databases": [
+    { "binding": "DB", "database_name": "xaa-portal", "database_id": "REPLACE_WITH_D1_DATABASE_ID" }
+  ],
+  "r2_buckets": [
+    { "binding": "UPLOADS", "bucket_name": "xaa-uploads" }
+  ]
 }

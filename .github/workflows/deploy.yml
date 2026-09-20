@@ -16,7 +16,6 @@ jobs:
           node-version: 22
       - run: npm install --no-audit --no-fund
       - run: npm run typecheck
-      - run: npm run cf:build
       - name: Check Cloudflare secrets
         id: cf
         run: |
@@ -26,6 +25,16 @@ jobs:
             echo "ok=false" >> "$GITHUB_OUTPUT"
             echo "::warning::CLOUDFLARE secrets not set — build OK but deploy SKIPPED. Add CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID and re-run."
           fi
+      # Creates the portal's D1 database and R2 bucket if they are missing, and
+      # writes the database_id into wrangler.jsonc. Runs before the build so the
+      # worker is bundled against real bindings.
+      - name: Prepare Cloudflare resources
+        if: steps.cf.outputs.ok == 'true'
+        run: bash scripts/ensure-cloudflare-resources.sh
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - run: npm run cf:build
       - name: Ensure workers.dev subdomain
         if: steps.cf.outputs.ok == 'true'
         run: |
@@ -44,20 +53,71 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      - name: Attach custom domain + DNS (best effort)
+      # Points xaa.es and www.xaa.es at this worker.
+      #
+      # `override_existing_origin` is load-bearing: both hostnames were already
+      # held by another worker in the same account, and without it Cloudflare
+      # answers 100116 ("Hostname already in use by other custom domain") and
+      # nothing moves. This step used to be continue-on-error, so it failed that
+      # way on 105 consecutive runs while every run still reported success and
+      # the domain kept serving the other project. It now fails the job instead.
+      - name: Attach custom domain + DNS
         if: steps.cf.outputs.ok == 'true'
-        continue-on-error: true
         run: |
-          set -e
+          set -uo pipefail
           zone=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/zones?name=xaa.es" | node -e "try{const d=JSON.parse(require('fs').readFileSync(0,'utf8'));process.stdout.write((d.result&&d.result[0]&&d.result[0].id)||'')}catch(e){}")
-          if [ -z "$zone" ]; then echo "Zone xaa.es not visible — attach manually once."; exit 0; fi
+          if [ -z "$zone" ]; then
+            echo "::error::Zone xaa.es is not visible to this API token. Give it Zone:Read on xaa.es, or attach the domain once by hand."
+            exit 1
+          fi
+          failed=0
           for host in xaa.es www.xaa.es; do
+            # A custom domain is served by the Workers route, so a stale A /
+            # AAAA / CNAME on the same name would shadow it.
             for type in A AAAA CNAME; do
               ids=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/zones/$zone/dns_records?type=$type&name=$host" | node -e "try{const d=JSON.parse(require('fs').readFileSync(0,'utf8'));(d.result||[]).forEach(r=>console.log(r.id))}catch(e){}")
               for id in $ids; do curl -s -X DELETE -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/zones/$zone/dns_records/$id" > /dev/null; done
             done
-            curl -s -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" -d "{\"hostname\":\"$host\",\"zone_id\":\"$zone\",\"service\":\"xaa-es\",\"environment\":\"production\"}" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/domains"
+            response=$(curl -s -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
+              -d "{\"hostname\":\"$host\",\"zone_id\":\"$zone\",\"service\":\"xaa-es\",\"environment\":\"production\",\"override_existing_origin\":true,\"override_existing_dns_record\":true}" \
+              "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/domains")
+            echo "$response"
+            ok=$(node -e "try{const d=JSON.parse(process.argv[1]);process.stdout.write(d.success?'yes':'no')}catch(e){process.stdout.write('no')}" "$response")
+            if [ "$ok" != "yes" ]; then
+              echo "::error::Failed to attach $host to the xaa-es worker."
+              failed=1
+            else
+              echo "Attached $host to xaa-es"
+            fi
           done
+          exit $failed
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # Pushes the portal's runtime configuration from repository secrets, so
+      # payment addresses never live in the repo. Each is optional: one that is
+      # not set is skipped, and the payment screen says so plainly rather than
+      # showing an empty box.
+      - name: Sync optional Worker secrets
+        if: steps.cf.outputs.ok == 'true'
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          put() {
+            local name="$1" value="$2"
+            if [ -n "$value" ]; then
+              printf '%s' "$value" | npx wrangler secret put "$name" --name xaa-es >/dev/null 2>&1 \
+                && echo "set $name" || echo "could not set $name"
+            else
+              echo "skipped $name (not set in GitHub secrets)"
+            fi
+          }
+          put ADMIN_EMAIL        "${{ secrets.ADMIN_EMAIL }}"
+          put USDT_TRC20_ADDRESS "${{ secrets.USDT_TRC20_ADDRESS }}"
+          put USDT_ERC20_ADDRESS "${{ secrets.USDT_ERC20_ADDRESS }}"
+          put USDT_BEP20_ADDRESS "${{ secrets.USDT_BEP20_ADDRESS }}"
+          put PAYPAL_EMAIL       "${{ secrets.PAYPAL_EMAIL }}"
+          put PAYPAL_LINK        "${{ secrets.PAYPAL_LINK }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
