@@ -7,4 +7,30 @@
   "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
   "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "xaa-es" }],
   "vars": { "APP_URL": "https://xaa.es" }
+
+  // ───────────────────────────────────────────────────────────────────────
+  // CLIENT PORTAL BINDINGS — see docs/PORTAL-SETUP.md
+  //
+  // The marketing site runs without these; the portal (accounts, projects,
+  // milestone payments, uploads) needs them. They are left commented out so
+  // that `wrangler deploy` keeps working before the resources exist — a
+  // binding pointing at a database that has not been created fails the whole
+  // deploy, including the pages that were fine.
+  //
+  // 1. npx wrangler d1 create xaa-portal      → copy the database_id below
+  // 2. npx wrangler r2 bucket create xaa-uploads
+  // 3. uncomment both blocks, paste the id, deploy
+  // 4. npx wrangler secret put ADMIN_EMAIL           (your studio login)
+  //    npx wrangler secret put USDT_TRC20_ADDRESS    (and ERC20 / BEP20)
+  //    npx wrangler secret put PAYPAL_EMAIL          (and/or PAYPAL_LINK)
+  //
+  // The D1 schema creates itself on first use — there is no migration step.
+  //
+  // "d1_databases": [
+  //   { "binding": "DB", "database_name": "xaa-portal", "database_id": "PASTE_ID_HERE" }
+  // ],
+  // "r2_buckets": [
+  //   { "binding": "UPLOADS", "bucket_name": "xaa-uploads" }
+  // ]
+  // ───────────────────────────────────────────────────────────────────────
 }
