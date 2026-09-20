@@ -14,19 +14,19 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="relative overflow-hidden metal-wash text-ivory-50">
-        <div className="mk-grid-bg absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 py-16">
+      <section className="hero relative overflow-hidden">
+        <div className="hero-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">
           <div className="flex flex-wrap items-center gap-6">
             <BrandMark size={96} />
             <div>
-              <span className="mk-chip border-white/25 text-ivory-100">About the studio</span>
-              <h1 className="mt-3 font-serif text-4xl font-black leading-tight sm:text-5xl">
+              <span className="chip">About the studio</span>
+              <h1 className="mt-3 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
                 XAA — <span className="accent-text">{SITE.expansionPlain}</span>
               </h1>
             </div>
           </div>
-          <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ivory-100/80">
+          <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-slate-600">
             We build the websites, stores and platforms that businesses actually operate on — and we structure the
             engagement so the client can see, at any hour, exactly what they have paid for and what has been built.
           </p>
@@ -97,7 +97,7 @@ export default function AboutPage() {
           ].map((x) => (
             <div key={x.t} className="panel p-5">
               <h3 className="font-bold">{x.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-800/70">{x.b}</p>
+              <p className="mt-2 text-sm leading-relaxed text-steel-500">{x.b}</p>
             </div>
           ))}
         </div>

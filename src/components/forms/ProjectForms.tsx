@@ -23,8 +23,8 @@ export function ConceptUploadForm({ projectId, locked }: { projectId: string; lo
   if (locked) {
     return (
       <div className="panel p-6">
-        <h3 className="font-serif text-lg font-black">Concept upload</h3>
-        <p className="mt-2 text-sm text-ink-800/70">
+        <h3 className="font-display text-lg font-extrabold">Concept upload</h3>
+        <p className="mt-2 text-sm text-steel-500">
           The upload panel opens as soon as your 10% booking deposit is confirmed. Start the deposit above and this
           unlocks automatically — usually within one business day.
         </p>
@@ -33,8 +33,8 @@ export function ConceptUploadForm({ projectId, locked }: { projectId: string; lo
   }
   return (
     <form action={action} className="panel p-6">
-      <h3 className="font-serif text-lg font-black">Upload your concept</h3>
-      <p className="mt-1 text-sm text-ink-800/70">
+      <h3 className="font-display text-lg font-extrabold">Upload your concept</h3>
+      <p className="mt-1 text-sm text-steel-500">
         Anything that describes the site you want: a brief, a deck, screenshots of sites you like, your logo and brand
         files, copy, product data, wireframes. You can add more at any time during the build.
       </p>
@@ -80,8 +80,8 @@ export function PaymentForm({
   return (
     <form action={action} className="panel border-l-4 border-l-[color:var(--accent)] p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="font-serif text-lg font-black">{label}</h3>
-        <p className="font-serif text-2xl font-black accent-text">{eur(amount)}</p>
+        <h3 className="font-display text-lg font-extrabold">{label}</h3>
+        <p className="font-display text-2xl font-extrabold accent-text">{eur(amount)}</p>
       </div>
       <p className="text-xs text-steel-500">≈ {usd(amount)} in USDT</p>
 
@@ -107,7 +107,7 @@ export function PaymentForm({
 
         {method === 'usdt' ? (
           <div className="mt-5">
-            <p className="text-xs font-black uppercase tracking-wide text-steel-500">Network</p>
+            <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">Network</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {(['TRC20', 'ERC20', 'BEP20'] as const).map((n) => (
                 <button
@@ -123,11 +123,11 @@ export function PaymentForm({
             <input type="hidden" name="network" value={network} />
 
             <div className="mt-4 rounded-lg bg-ivory-100/70 p-4">
-              <p className="text-xs font-black uppercase tracking-wide text-steel-500">Send {usd(amount)} USDT ({network}) to</p>
+              <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">Send {usd(amount)} USDT ({network}) to</p>
               {address ? (
                 <code className="mt-2 block break-all rounded bg-white p-3 text-xs font-semibold">{address}</code>
               ) : (
-                <p className="mt-2 text-sm text-ink-800/70">
+                <p className="mt-2 text-sm text-steel-500">
                   The {network} address for this project has not been published yet. Choose another network, or email us
                   and we will enable it — never accept an address sent to you any other way.
                 </p>
@@ -147,7 +147,7 @@ export function PaymentForm({
         ) : (
           <div className="mt-5">
             <div className="rounded-lg bg-ivory-100/70 p-4">
-              <p className="text-xs font-black uppercase tracking-wide text-steel-500">Send {eur(amount)} via PayPal to</p>
+              <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">Send {eur(amount)} via PayPal to</p>
               {payTo.paypalEmail || payTo.paypalLink ? (
                 <>
                   {payTo.paypalEmail ? <code className="mt-2 block break-all rounded bg-white p-3 text-xs font-semibold">{payTo.paypalEmail}</code> : null}
@@ -158,7 +158,7 @@ export function PaymentForm({
                   ) : null}
                 </>
               ) : (
-                <p className="mt-2 text-sm text-ink-800/70">PayPal has not been published for this deployment yet. Use USDT, or contact us.</p>
+                <p className="mt-2 text-sm text-steel-500">PayPal has not been published for this deployment yet. Use USDT, or contact us.</p>
               )}
               <p className="hint mt-2">
                 Send as a payment for goods and services and quote your project reference. Friends-and-family transfers
@@ -217,7 +217,7 @@ export function AdminProjectControls({
 
   return (
     <div className="panel border-l-4 border-l-ink-900 p-6">
-      <h3 className="font-serif text-lg font-black">Studio controls</h3>
+      <h3 className="font-display text-lg font-extrabold">Studio controls</h3>
       <p className="mt-1 text-xs text-steel-500">Visible to admins only. Every change is written to the client&apos;s activity log.</p>
 
       <div className="mt-5 grid gap-6 lg:grid-cols-2">

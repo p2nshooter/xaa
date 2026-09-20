@@ -20,7 +20,7 @@ export default function InsightsPage() {
     <>
       <div className="border-b border-[color:var(--accent-soft)] bg-ivory-100/60">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 text-sm">
-          <p className="text-ink-800/70">
+          <p className="text-steel-500">
             <strong className="font-bold text-ink-900">{ARTICLES.length} articles</strong> · {ARCHIVE.note}
           </p>
           <Link href="/services" className="btn btn-ghost btn-sm">See what we build →</Link>

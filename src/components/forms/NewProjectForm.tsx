@@ -56,10 +56,10 @@ export function NewProjectForm({
 
         {/* 1 — package */}
         <section className="panel p-6">
-          <h2 className="font-serif text-xl font-black">
+          <h2 className="font-display text-xl font-extrabold">
             <span className="mr-2 text-gold-500">01</span> Choose your package
           </h2>
-          <p className="mt-1 text-sm text-ink-800/70">
+          <p className="mt-1 text-sm text-steel-500">
             Not sure? Pick the closest — we confirm the right one during the scope review, before any money moves past
             the deposit.
           </p>
@@ -86,9 +86,9 @@ export function NewProjectForm({
                       {p.name}
                       <span className="ml-2 badge badge-grey">{TIER_LABEL[p.tier]}</span>
                     </span>
-                    <span className="whitespace-nowrap font-serif font-black">{priceRange(p.priceMin, p.priceMax, p.openEnded)}</span>
+                    <span className="whitespace-nowrap font-serif font-extrabold">{priceRange(p.priceMin, p.priceMax, p.openEnded)}</span>
                   </span>
-                  <span className="mt-1 block text-sm leading-relaxed text-ink-800/70">{p.summary}</span>
+                  <span className="mt-1 block text-sm leading-relaxed text-steel-500">{p.summary}</span>
                   <span className="mt-1.5 block text-xs text-steel-500">{p.timeline} · {p.pages}</span>
                 </span>
               </label>
@@ -98,7 +98,7 @@ export function NewProjectForm({
 
         {/* 2 — project details */}
         <section className="panel p-6">
-          <h2 className="font-serif text-xl font-black">
+          <h2 className="font-display text-xl font-extrabold">
             <span className="mr-2 text-gold-500">02</span> Tell us about the project
           </h2>
           <div className="mt-5">
@@ -121,10 +121,10 @@ export function NewProjectForm({
 
         {/* 3 — add-ons */}
         <section className="panel p-6">
-          <h2 className="font-serif text-xl font-black">
+          <h2 className="font-display text-xl font-extrabold">
             <span className="mr-2 text-gold-500">03</span> Add-on services <span className="text-sm font-normal text-steel-500">(optional)</span>
           </h2>
-          <p className="mt-1 text-sm text-ink-800/70">Each is quoted on its own and folded into your milestone schedule.</p>
+          <p className="mt-1 text-sm text-steel-500">Each is quoted on its own and folded into your milestone schedule.</p>
           <div className="mt-5 grid gap-2 sm:grid-cols-2">
             {ADDONS.map((a) => (
               <label
@@ -145,12 +145,12 @@ export function NewProjectForm({
 
         {/* 4 — setup & care */}
         <section className="panel p-6">
-          <h2 className="font-serif text-xl font-black">
+          <h2 className="font-display text-xl font-extrabold">
             <span className="mr-2 text-gold-500">04</span> Setup & care <span className="text-sm font-normal text-steel-500">(optional, priced separately)</span>
           </h2>
           <div className="mt-5 grid gap-6 sm:grid-cols-2">
             <div>
-              <p className="text-xs font-black uppercase tracking-wide text-steel-500">One-time setup</p>
+              <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">One-time setup</p>
               <select name="setup" className="select mt-2" value={setup} onChange={(e) => setSetup(e.target.value)}>
                 <option value="">No setup — I will handle it</option>
                 {SETUP_PLANS.map((s) => (
@@ -162,7 +162,7 @@ export function NewProjectForm({
               {setupPlan ? <p className="hint">{setupPlan.blurb}</p> : null}
             </div>
             <div>
-              <p className="text-xs font-black uppercase tracking-wide text-steel-500">Monthly care</p>
+              <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">Monthly care</p>
               <select name="care" className="select mt-2" value={care} onChange={(e) => setCare(e.target.value)}>
                 <option value="">No care plan for now</option>
                 {CARE_PLANS.map((c) => (
@@ -182,9 +182,9 @@ export function NewProjectForm({
 
       {/* Live quote */}
       <aside className="panel sticky top-20 h-fit p-6">
-        <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gold-500">Your quote</p>
-        <h3 className="mt-1 font-serif text-lg font-black">{pkg.name}</h3>
-        <p className="mt-3 font-serif text-2xl font-black accent-text">
+        <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">Your quote</p>
+        <h3 className="mt-1 font-display text-lg font-extrabold">{pkg.name}</h3>
+        <p className="mt-3 font-display text-2xl font-extrabold accent-text">
           {eur(quote.min)} – {eur(quote.max)}{pkg.openEnded ? '+' : ''}
         </p>
         <p className="text-xs text-steel-500">≈ {usd(quote.min)} – {usd(quote.max)} in USDT · indicative until scope review</p>
@@ -204,7 +204,7 @@ export function NewProjectForm({
         ) : null}
 
         <div className="mt-5 rounded-lg bg-ivory-100/70 p-4">
-          <p className="text-xs font-black uppercase tracking-wide text-steel-500">Milestone schedule</p>
+          <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">Milestone schedule</p>
           <div className="mt-2 space-y-1.5 text-sm">
             <div className="flex justify-between"><span>1. Deposit (10%)</span><strong>{eur(quote.deposit)}</strong></div>
             <div className="flex justify-between"><span>2. Production (40%)</span><strong>{eur(quote.production)}</strong></div>

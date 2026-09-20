@@ -20,26 +20,26 @@ export default async function RegisterPage() {
     <div className="mx-auto max-w-6xl px-4 py-14">
       <div className="grid gap-10 lg:grid-cols-[1fr_.85fr] lg:items-start">
         <div>
-          <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gold-500">Client portal</p>
-          <h1 className="mt-2 font-serif text-3xl font-black sm:text-4xl">Create your account</h1>
-          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-800/75">
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">Client portal</p>
+          <h1 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">Create your account</h1>
+          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-steel-500">
             One account gives you the order form, your milestone schedule, the concept upload, a live progress bar and
             every invoice in one place.
           </p>
           <div className="mt-8">
             <RegisterForm />
           </div>
-          <p className="mt-4 text-sm text-ink-800/70">
+          <p className="mt-4 text-sm text-steel-500">
             Already registered? <Link href="/login" className="text-gold-500 underline">Sign in</Link>.
           </p>
         </div>
 
         <aside className="panel-dark p-7">
-          <h2 className="font-serif text-xl font-black">What happens next</h2>
+          <h2 className="font-display text-xl font-extrabold">What happens next</h2>
           <ol className="mt-5 space-y-4">
             {STAGES.map((s, i) => (
               <li key={s.key} className="flex gap-3">
-                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/15 text-[11px] font-black">
+                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/15 text-[11px] font-extrabold">
                   {i + 1}
                 </span>
                 <div>

@@ -27,16 +27,16 @@ export default async function AdminPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gold-500">Studio desk</p>
-      <h1 className="mt-1 font-serif text-3xl font-black">Delivery overview</h1>
-      <p className="mt-2 text-sm text-ink-800/70">
+      <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">Studio desk</p>
+      <h1 className="mt-1 font-display text-3xl font-extrabold">Delivery overview</h1>
+      <p className="mt-2 text-sm text-steel-500">
         {active.length} active project{active.length === 1 ? '' : 's'} · {pending.length} payment
         {pending.length === 1 ? '' : 's'} awaiting verification
       </p>
 
       {/* Payments to verify */}
       <section className="panel mt-8 p-6">
-        <h2 className="font-serif text-xl font-black">Payments to verify</h2>
+        <h2 className="font-display text-xl font-extrabold">Payments to verify</h2>
         <p className="mt-1 text-xs text-steel-500">
           Check the hash on-chain or the transaction in PayPal before confirming. Confirming updates the client&apos;s
           status, milestone ledger and progress cap automatically.
@@ -86,7 +86,7 @@ export default async function AdminPage() {
 
       {/* All projects */}
       <section className="panel mt-8 p-6">
-        <h2 className="font-serif text-xl font-black">All projects</h2>
+        <h2 className="font-display text-xl font-extrabold">All projects</h2>
         <div className="mt-5 overflow-x-auto">
           <table className="data-table min-w-[900px]">
             <thead>

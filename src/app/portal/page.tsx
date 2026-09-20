@@ -31,8 +31,8 @@ export default async function PortalPage() {
     <div className="mx-auto max-w-6xl px-4 py-12">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gold-500">Welcome back</p>
-          <h1 className="mt-1 font-serif text-3xl font-black">{user.name}</h1>
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">Welcome back</p>
+          <h1 className="mt-1 font-display text-3xl font-extrabold">{user.name}</h1>
           {user.company ? <p className="text-sm text-steel-500">{user.company}</p> : null}
         </div>
         <Link href="/portal/new" className="btn btn-primary">Open a new project</Link>
@@ -67,8 +67,8 @@ function ProjectRow({ project, payments }: { project: Project; payments: Payment
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="font-mono text-xs text-steel-500">{project.ref}</p>
-          <h2 className="mt-1 font-serif text-xl font-black">{project.title}</h2>
-          <p className="text-sm text-ink-800/70">{project.package_name}</p>
+          <h2 className="mt-1 font-display text-xl font-extrabold">{project.title}</h2>
+          <p className="text-sm text-steel-500">{project.package_name}</p>
         </div>
         <span className={`badge ${STATUS_BADGE[project.status]}`}>{STATUS_LABEL[project.status]}</span>
       </div>
@@ -77,7 +77,7 @@ function ProjectRow({ project, payments }: { project: Project; payments: Payment
         <div className="progress-track flex-1">
           <div className="progress-fill" style={{ width: `${project.progress}%` }} />
         </div>
-        <span className="w-12 text-right font-serif font-black">{project.progress}%</span>
+        <span className="w-12 text-right font-serif font-extrabold">{project.progress}%</span>
       </div>
 
       <dl className="mt-5 grid grid-cols-2 gap-4 text-sm sm:grid-cols-4">
@@ -107,17 +107,17 @@ function ProjectRow({ project, payments }: { project: Project; payments: Payment
 function EmptyState() {
   return (
     <div className="panel mt-10 p-8 text-center">
-      <p className="font-serif text-2xl font-black">No projects yet</p>
-      <p className="mx-auto mt-2 max-w-lg text-sm text-ink-800/70">
+      <p className="font-display text-2xl font-extrabold">No projects yet</p>
+      <p className="mx-auto mt-2 max-w-lg text-sm text-steel-500">
         Open a project to see your exact milestone amounts, upload a concept and get a delivery date. Nothing is charged
         until you choose to pay the 10% deposit.
       </p>
       <ol className="mx-auto mt-8 grid max-w-3xl gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
         {STAGES.slice(0, 4).map((s, i) => (
           <li key={s.key} className="rounded-lg border border-[color:var(--accent-soft)] p-4">
-            <p className="text-xs font-black text-gold-500">STEP {i + 1}</p>
+            <p className="text-xs font-extrabold text-gold-500">STEP {i + 1}</p>
             <p className="mt-1 text-sm font-bold">{s.name}</p>
-            <p className="mt-1 text-xs text-ink-800/65">{s.blurb}</p>
+            <p className="mt-1 text-xs text-steel-500">{s.blurb}</p>
           </li>
         ))}
       </ol>
@@ -129,8 +129,8 @@ function EmptyState() {
 function NotConfigured() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-20 text-center">
-      <h1 className="font-serif text-3xl font-black">The client portal is not switched on yet</h1>
-      <p className="mt-4 text-sm leading-relaxed text-ink-800/70">
+      <h1 className="font-display text-3xl font-extrabold">The client portal is not switched on yet</h1>
+      <p className="mt-4 text-sm leading-relaxed text-steel-500">
         This deployment has no database bound, so accounts and projects cannot be stored. If you are a client, please
         contact us directly and we will set your project up by hand.
       </p>

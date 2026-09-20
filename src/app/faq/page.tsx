@@ -122,11 +122,11 @@ export default function FaqPage() {
         }}
       />
 
-      <section className="relative overflow-hidden metal-wash text-ivory-50">
-        <div className="mk-grid-bg absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 py-14">
-          <span className="mk-chip border-white/25 text-ivory-100">FAQ</span>
-          <h1 className="mt-5 max-w-3xl font-serif text-4xl font-black leading-tight sm:text-5xl">
+      <section className="hero relative overflow-hidden">
+        <div className="hero-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 py-10 sm:py-14">
+          <span className="chip">FAQ</span>
+          <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-5xl">
             Questions people ask <span className="accent-text">before they commit</span>
           </h1>
         </div>
@@ -143,7 +143,7 @@ export default function FaqPage() {
                     <span className="mr-2 text-gold-500 transition group-open:rotate-90 inline-block">▸</span>
                     {x.q}
                   </summary>
-                  <p className="mt-3 pl-6 text-sm leading-relaxed text-ink-800/75">{x.a}</p>
+                  <p className="mt-3 pl-6 text-sm leading-relaxed text-steel-500">{x.a}</p>
                 </details>
               ))}
             </div>
@@ -151,8 +151,8 @@ export default function FaqPage() {
         ))}
 
         <div className="panel p-6 text-center">
-          <p className="font-serif text-xl font-black">Still unsure about something?</p>
-          <p className="mt-2 text-sm text-ink-800/70">Ask before you pay anything. We would rather talk you out of the wrong package than take the order.</p>
+          <p className="font-display text-xl font-extrabold">Still unsure about something?</p>
+          <p className="mt-2 text-sm text-steel-500">Ask before you pay anything. We would rather talk you out of the wrong package than take the order.</p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="/contact" className="btn btn-primary">Ask a question</Link>
             <Link href="/process" className="btn btn-ghost">Read the process</Link>

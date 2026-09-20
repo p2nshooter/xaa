@@ -1,24 +1,36 @@
 import type { Config } from 'tailwindcss';
 
-// xaa.es — studio identity taken from the mark: deep midnight navy, electric
-// blue, brushed silver. `ink` = surfaces, `ivory` = light text/paper,
-// `gold` = the accent ramp (kept under the old names so shared template code
-// and the editorial archive keep working unchanged).
+// xaa.es — bright studio identity: white paper, vivid blue from the mark,
+// slate type. Deliberately light: the previous navy-on-navy treatment read as
+// heavy rather than premium.
+//
+// `serif` maps to the display face (Plus Jakarta Sans), not an actual serif.
+// The name is kept because ~120 call sites use `font-serif` for headings, and
+// remapping the token is cleaner than churning every one of them. Use
+// `font-display` in new code.
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        ink: { 950: '#04091b', 900: '#070f2b', 800: '#0c1740', 700: '#142158' },
-        ivory: { 50: '#f5f8ff', 100: '#e6edfb', 200: '#cbd8f2' },
-        gold: { 300: '#60c8ff', 400: '#2f9dff', 500: '#0b6fe8', 600: '#0a52bd' },
-        steel: { 300: '#c9d4e6', 400: '#9fb0c9', 500: '#6f81a0' }
+        // Deep shades, used sparingly — vivid blue panels and the CTA band.
+        ink: { 950: '#0b1220', 900: '#0f172a', 800: '#1e293b', 700: '#334155' },
+        // Light surfaces.
+        ivory: { 50: '#ffffff', 100: '#f7f9fc', 200: '#eef3fa' },
+        // The accent ramp, taken off the mark.
+        gold: { 300: '#7cb0ff', 400: '#4d8bff', 500: '#2b6bff', 600: '#1d4ed8' },
+        steel: { 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b' }
       },
       fontFamily: {
-        serif: ['var(--font-serif)', 'Georgia', 'serif'],
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif']
+        display: ['var(--font-display)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-display)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif']
       },
-      maxWidth: { prose2: '44rem' }
+      maxWidth: { prose2: '44rem' },
+      boxShadow: {
+        soft: '0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.12)',
+        lift: '0 2px 4px rgba(15,23,42,.04), 0 20px 40px -16px rgba(15,23,42,.18)'
+      }
     }
   },
   plugins: []

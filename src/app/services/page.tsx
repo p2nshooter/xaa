@@ -20,14 +20,14 @@ const TIERS: { tier: Tier; blurb: string }[] = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative overflow-hidden metal-wash text-ivory-50">
-        <div className="mk-grid-bg absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 py-16">
-          <span className="mk-chip border-white/25 text-ivory-100">Services & pricing</span>
-          <h1 className="mt-5 max-w-3xl font-serif text-4xl font-black leading-tight sm:text-5xl">
+      <section className="hero relative overflow-hidden">
+        <div className="hero-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">
+          <span className="chip">Services & pricing</span>
+          <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-5xl">
             Every package, every price, <span className="accent-text">published before you ask</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ivory-100/80">
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-600">
             These are real European development rates, in euros, before VAT where it applies. Each range covers the
             honest span between a lean build and a heavily customised one; your figure is fixed in writing after a scope
             review, and the milestone schedule is calculated from it automatically.
@@ -63,9 +63,9 @@ export default function ServicesPage() {
                     <Link href={`/services/${p.slug}`} className="font-bold text-ink-900 hover:text-gold-500">{p.name}</Link>
                     <span className="ml-2 badge badge-grey">{TIER_LABEL[p.tier]}</span>
                   </td>
-                  <td className="max-w-[220px] text-xs text-ink-800/70">{p.bestFor.slice(0, 2).join(' · ')}</td>
+                  <td className="max-w-[220px] text-xs text-steel-500">{p.bestFor.slice(0, 2).join(' · ')}</td>
                   <td className="whitespace-nowrap text-xs">{p.timeline}</td>
-                  <td className="whitespace-nowrap text-right font-serif font-black">{priceRange(p.priceMin, p.priceMax, p.openEnded)}</td>
+                  <td className="whitespace-nowrap text-right font-serif font-extrabold">{priceRange(p.priceMin, p.priceMax, p.openEnded)}</td>
                   <td className="whitespace-nowrap text-right text-xs font-semibold text-gold-500">from {eur(Math.round(p.priceMin * 0.1))}</td>
                   <td className="text-right">
                     <Link href={`/portal/new?package=${p.slug}`} className="btn btn-primary btn-sm">Start</Link>
@@ -85,8 +85,8 @@ export default function ServicesPage() {
           <section key={tier} className="mx-auto max-w-6xl px-4 py-10">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <div>
-                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gold-500">{TIER_LABEL[tier]}</p>
-                <h2 className="mt-1 font-serif text-2xl font-black">{blurb}</h2>
+                <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">{TIER_LABEL[tier]}</p>
+                <h2 className="mt-1 font-display text-2xl font-extrabold">{blurb}</h2>
               </div>
               <p className="text-sm text-steel-500">{group.length} package{group.length > 1 ? 's' : ''}</p>
             </div>
@@ -116,7 +116,7 @@ export default function ServicesPage() {
       {/* What decides the final figure */}
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="panel-dark p-8 sm:p-10">
-          <h2 className="font-serif text-2xl font-black">What moves a price inside its range</h2>
+          <h2 className="font-display text-2xl font-extrabold">What moves a price inside its range</h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ivory-100/75">
             Nothing here is a surprise charge. These are the factors we weigh during the scope review, and the ones we
             will walk you through line by line before anything is signed.

@@ -10,8 +10,8 @@ export function ArticleCard({ article }: { article: Article }) {
   return (
     <Link href={`/articles/${article.slug}`} className="premium-card block p-5">
       <p className="text-[11px] font-semibold uppercase tracking-wider text-gold-600">{cat?.name}</p>
-      <h3 className="mt-1.5 font-serif text-lg font-bold leading-snug">{article.title}</h3>
-      <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-800/70">{article.excerpt}</p>
+      <h3 className="mt-1.5 font-display text-lg font-bold leading-snug">{article.title}</h3>
+      <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-steel-500">{article.excerpt}</p>
       <p className="mt-3 text-xs text-gold-600">{article.minutes} min read</p>
     </Link>
   );
@@ -26,7 +26,7 @@ export function ArticleCard({ article }: { article: Article }) {
 export function ArticleBody({ article }: { article: Article }) {
   return (
     <article className="mx-auto max-w-prose2 px-4">
-      <h1 className="font-serif text-3xl font-black leading-tight sm:text-4xl">{article.title}</h1>
+      <h1 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl">{article.title}</h1>
       <p className="mt-3 text-sm text-gold-600">
         {new Date(article.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })} ·{' '}
         {article.minutes} min read · {article.author}
@@ -57,7 +57,7 @@ export function ArticleBody({ article }: { article: Article }) {
       <BannerAd slot="halfpage" />
       <SponsoredCard />
       <div className="ornament-rule mt-8" />
-      <p className="mt-4 text-xs leading-relaxed text-ink-800/60">
+      <p className="mt-4 text-xs leading-relaxed text-steel-400">
         Independent football analysis and opinion. Fixtures, squads and results change constantly — confirm
         match times and line-ups with official FIFA and broadcaster sources before you plan around a game.
       </p>
@@ -69,7 +69,7 @@ export function RelatedArticles({ articles }: { articles: Article[] }) {
   if (articles.length === 0) return null;
   return (
     <div className="mx-auto mt-12 max-w-prose2 px-4">
-      <h2 className="font-serif text-xl font-bold">Keep reading</h2>
+      <h2 className="font-display text-xl font-bold">Keep reading</h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         {articles.map((a) => (
           <ArticleCard key={a.slug} article={a} />
@@ -94,22 +94,22 @@ export function HomeContent() {
         <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-20">
           <div className="mk-fade-up">
             <span className="trophy-chip"><span className="wc-ball" aria-hidden>⚽</span> World Cup 2026 · USA · Canada · Mexico</span>
-            <h1 className="mt-5 font-serif text-4xl font-black leading-tight sm:text-6xl">
+            <h1 className="mt-5 font-display text-4xl font-extrabold leading-tight sm:text-6xl">
               {ARCHIVE.heroLead} <span className="accent-text">{ARCHIVE.heroAccent}</span>
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-800/75 sm:text-lg">{ARCHIVE.description}</p>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-steel-500 sm:text-lg">{ARCHIVE.description}</p>
             <div className="mt-8 flex flex-wrap gap-8">
               <div>
-                <p className="font-serif text-3xl font-black text-gold-600">{ARTICLES.length}</p>
-                <p className="text-xs font-semibold uppercase tracking-wider text-ink-800/60">Original guides</p>
+                <p className="font-display text-3xl font-extrabold text-gold-600">{ARTICLES.length}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-steel-400">Original guides</p>
               </div>
               <div>
-                <p className="font-serif text-3xl font-black text-gold-600">{CATEGORIES.length}</p>
-                <p className="text-xs font-semibold uppercase tracking-wider text-ink-800/60">Topic desks</p>
+                <p className="font-display text-3xl font-extrabold text-gold-600">{CATEGORIES.length}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-steel-400">Topic desks</p>
               </div>
               <div>
-                <p className="font-serif text-3xl font-black text-gold-600">100%</p>
-                <p className="text-xs font-semibold uppercase tracking-wider text-ink-800/60">Reader-first, no hype</p>
+                <p className="font-display text-3xl font-extrabold text-gold-600">100%</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-steel-400">Reader-first, no hype</p>
               </div>
             </div>
           </div>
@@ -118,8 +118,8 @@ export function HomeContent() {
               <div className="mk-ring" style={{ width: 340, height: 340, right: -40, top: -40 }} aria-hidden />
               <Link href={`/articles/${featured.slug}`} className="premium-card mk-fade-up mk-d2 relative block p-7">
                 <span className="mk-chip text-gold-600">★ Featured · {featuredCat?.name}</span>
-                <h2 className="mt-4 font-serif text-2xl font-black leading-snug">{featured.title}</h2>
-                <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-ink-800/70">{featured.excerpt}</p>
+                <h2 className="mt-4 font-display text-2xl font-extrabold leading-snug">{featured.title}</h2>
+                <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-steel-500">{featured.excerpt}</p>
                 <p className="mt-4 text-sm font-bold text-gold-600">Read the full story →</p>
               </Link>
             </div>
@@ -132,15 +132,15 @@ export function HomeContent() {
       {/* Topic desks */}
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="flex items-end justify-between">
-          <h2 className="font-serif text-2xl font-bold">Explore by topic</h2>
+          <h2 className="font-display text-2xl font-bold">Explore by topic</h2>
           <span className="text-xs font-semibold uppercase tracking-widest text-gold-600">{CATEGORIES.length} desks</span>
         </div>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {CATEGORIES.map((c, i) => (
             <Link key={c.slug} href={`/category/${c.slug}`} className={`premium-card mk-lift mk-fade-up mk-d${Math.min(i + 1, 6)} p-5`}>
               <span className="mk-icon-bubble" aria-hidden>{c.icon}</span>
-              <p className="mt-3 font-serif text-base font-bold">{c.name}</p>
-              <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-ink-800/60">{c.tagline}</p>
+              <p className="mt-3 font-display text-base font-bold">{c.name}</p>
+              <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-steel-400">{c.tagline}</p>
               <p className="mt-2 text-[11px] font-semibold text-gold-600">{ARTICLES.filter((a) => a.category === c.slug).length} guides →</p>
             </Link>
           ))}
@@ -150,7 +150,7 @@ export function HomeContent() {
       {/* Latest */}
       <section className="mx-auto max-w-6xl px-4 pb-10">
         <div className="flex items-end justify-between">
-          <h2 className="font-serif text-2xl font-bold">Latest guides</h2>
+          <h2 className="font-display text-2xl font-bold">Latest guides</h2>
           <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-gold-600">
             <span className="mk-live-dot" /> Updated often
           </span>
@@ -184,7 +184,7 @@ export function ArchiveNav({ active }: { active?: string }) {
           <Link
             key={c.slug}
             href={`/category/${c.slug}`}
-            className={`mk-underline shrink-0 whitespace-nowrap transition hover:text-gold-600 ${active === c.slug ? 'text-gold-600' : 'text-ink-800/75'}`}
+            className={`mk-underline shrink-0 whitespace-nowrap transition hover:text-gold-600 ${active === c.slug ? 'text-gold-600' : 'text-steel-500'}`}
           >
             <span className="mr-1" aria-hidden>{c.icon}</span>
             {c.name}
@@ -201,8 +201,8 @@ export function CategoryContent({ cat, articles }: { cat: (typeof CATEGORIES)[nu
       <ArchiveNav active={cat.slug} />
       <div className="mx-auto max-w-6xl px-4 py-10">
       <p className="text-3xl">{cat.icon}</p>
-      <h1 className="mt-2 font-serif text-3xl font-black">{cat.name}</h1>
-      <p className="mt-2 max-w-xl text-ink-800/70">{cat.tagline}</p>
+      <h1 className="mt-2 font-display text-3xl font-extrabold">{cat.name}</h1>
+      <p className="mt-2 max-w-xl text-steel-500">{cat.tagline}</p>
       <div className="ornament-rule mt-5 max-w-sm" />
       <AdSlot placement="in_article_1" />
       <BannerAd slot="rectangle" />

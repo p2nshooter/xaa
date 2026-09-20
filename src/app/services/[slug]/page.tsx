@@ -62,33 +62,33 @@ export default async function PackagePage({ params }: Props) {
         }}
       />
 
-      <section className="relative overflow-hidden metal-wash text-ivory-50">
-        <div className="mk-grid-bg absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 py-14">
-          <nav className="text-xs text-ivory-100/60">
-            <Link href="/services" className="hover:text-gold-300">Services</Link>
+      <section className="hero relative overflow-hidden">
+        <div className="hero-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 py-10 sm:py-14">
+          <nav className="text-xs text-slate-500">
+            <Link href="/services" className="hover:text-gold-500">Services</Link>
             <span className="mx-2">/</span>
             <span>{pkg.name}</span>
           </nav>
           <div className="mt-6 grid gap-10 lg:grid-cols-[1.2fr_.8fr]">
             <div>
-              <span className="mk-chip border-white/25 text-ivory-100">
+              <span className="chip">
                 {pkg.code} · {TIER_LABEL[pkg.tier]}
               </span>
-              <h1 className="mt-4 font-serif text-4xl font-black leading-tight sm:text-5xl">{pkg.name}</h1>
-              <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ivory-100/80">{pkg.summary}</p>
-              <dl className="mt-8 grid max-w-lg grid-cols-3 gap-6 border-t border-white/15 pt-6 text-sm">
+              <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl">{pkg.name}</h1>
+              <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-600">{pkg.summary}</p>
+              <dl className="mt-8 grid max-w-lg grid-cols-3 gap-6 border-t border-slate-200 pt-6 text-sm">
                 <div>
-                  <dt className="text-[11px] font-bold uppercase tracking-wider text-ivory-100/50">Build price</dt>
-                  <dd className="mt-1 font-serif text-lg font-black">{priceRange(pkg.priceMin, pkg.priceMax, pkg.openEnded)}</dd>
+                  <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Build price</dt>
+                  <dd className="mt-1 font-display text-lg font-extrabold">{priceRange(pkg.priceMin, pkg.priceMax, pkg.openEnded)}</dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] font-bold uppercase tracking-wider text-ivory-100/50">Timeline</dt>
-                  <dd className="mt-1 font-serif text-lg font-black">{pkg.timeline}</dd>
+                  <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Timeline</dt>
+                  <dd className="mt-1 font-display text-lg font-extrabold">{pkg.timeline}</dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] font-bold uppercase tracking-wider text-ivory-100/50">Scope</dt>
-                  <dd className="mt-1 font-serif text-lg font-black">{pkg.pages}</dd>
+                  <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Scope</dt>
+                  <dd className="mt-1 font-display text-lg font-extrabold">{pkg.pages}</dd>
                 </div>
               </dl>
             </div>
@@ -126,36 +126,36 @@ export default async function PackagePage({ params }: Props) {
 
             {pkg.optional?.length ? (
               <>
-                <h3 className="mt-10 font-serif text-xl font-black">Optional on this package</h3>
+                <h3 className="mt-10 font-display text-xl font-extrabold">Optional on this package</h3>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {pkg.optional.map((o) => (
                     <span key={o} className="mk-chip">{o}</span>
                   ))}
                 </div>
-                <p className="mt-3 text-sm text-ink-800/70">
+                <p className="mt-3 text-sm text-steel-500">
                   Optional items are quoted during the scope review, or picked from the{' '}
                   <Link href="/services#addons" className="text-gold-500 underline">add-on catalogue</Link> when you open the project.
                 </p>
               </>
             ) : null}
 
-            <h3 className="mt-10 font-serif text-xl font-black">Who this is for</h3>
+            <h3 className="mt-10 font-display text-xl font-extrabold">Who this is for</h3>
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
               {pkg.bestFor.map((b) => (
                 <li key={b} className="panel px-4 py-3 text-sm font-medium">{b}</li>
               ))}
             </ul>
 
-            <h3 className="mt-10 font-serif text-xl font-black">How this project will run</h3>
+            <h3 className="mt-10 font-display text-xl font-extrabold">How this project will run</h3>
             <ol className="mt-4 space-y-3">
               {STAGES.map((s, i) => (
                 <li key={s.key} className="flex gap-4">
-                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent)] text-xs font-black text-white">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent)] text-xs font-extrabold text-white">
                     {i + 1}
                   </span>
                   <div>
                     <p className="text-sm font-bold">{s.name}</p>
-                    <p className="text-sm text-ink-800/70">{s.blurb}</p>
+                    <p className="text-sm text-steel-500">{s.blurb}</p>
                   </div>
                 </li>
               ))}
@@ -166,11 +166,11 @@ export default async function PackagePage({ params }: Props) {
             {setup ? (
               <div className="panel p-5">
                 <p className="badge badge-blue">Recommended one-time setup</p>
-                <h3 className="mt-3 font-serif text-lg font-black">{setup.name}</h3>
-                <p className="mt-1 font-serif text-xl font-black accent-text">
+                <h3 className="mt-3 font-display text-lg font-extrabold">{setup.name}</h3>
+                <p className="mt-1 font-display text-xl font-extrabold accent-text">
                   {setup.custom ? `from ${eur(setup.price)}` : priceRange(setup.price, setup.priceMax ?? setup.price)}
                 </p>
-                <p className="mt-2 text-sm leading-relaxed text-ink-800/70">{setup.blurb}</p>
+                <p className="mt-2 text-sm leading-relaxed text-steel-500">{setup.blurb}</p>
                 <Link href="/care#setup" className="btn btn-ghost btn-sm mt-4 w-full">See what it covers</Link>
               </div>
             ) : null}
@@ -178,19 +178,19 @@ export default async function PackagePage({ params }: Props) {
             {care ? (
               <div className="panel p-5">
                 <p className="badge badge-green">Recommended monthly care</p>
-                <h3 className="mt-3 font-serif text-lg font-black">{care.name}</h3>
-                <p className="mt-1 font-serif text-xl font-black accent-text">
+                <h3 className="mt-3 font-display text-lg font-extrabold">{care.name}</h3>
+                <p className="mt-1 font-display text-xl font-extrabold accent-text">
                   {care.custom ? `from ${eur(care.price)}` : eur(care.price)}
                   <span className="text-sm font-normal text-steel-500">/month</span>
                 </p>
-                <p className="mt-2 text-sm leading-relaxed text-ink-800/70">{care.blurb}</p>
+                <p className="mt-2 text-sm leading-relaxed text-steel-500">{care.blurb}</p>
                 <p className="mt-2 text-xs text-steel-500">{care.hours} · response {care.response}</p>
                 <Link href="/care#maintenance" className="btn btn-ghost btn-sm mt-4 w-full">Compare care plans</Link>
               </div>
             ) : null}
 
             <div className="panel p-5">
-              <h3 className="font-serif text-lg font-black">Popular add-ons here</h3>
+              <h3 className="font-display text-lg font-extrabold">Popular add-ons here</h3>
               <ul className="mt-3 space-y-2 text-sm">
                 {ADDONS.slice(0, 4).map((a) => (
                   <li key={a.slug} className="flex items-baseline justify-between gap-3 border-b border-[color:var(--accent-soft)] pb-2">
@@ -210,15 +210,15 @@ export default async function PackagePage({ params }: Props) {
           {lighter ? (
             <Link href={`/services/${lighter.slug}`} className="panel mk-lift block p-5">
               <p className="text-xs uppercase tracking-wide text-steel-500">← Smaller</p>
-              <p className="mt-1 font-serif text-lg font-black">{lighter.name}</p>
-              <p className="text-sm text-ink-800/70">{priceRange(lighter.priceMin, lighter.priceMax, lighter.openEnded)}</p>
+              <p className="mt-1 font-display text-lg font-extrabold">{lighter.name}</p>
+              <p className="text-sm text-steel-500">{priceRange(lighter.priceMin, lighter.priceMax, lighter.openEnded)}</p>
             </Link>
           ) : <span />}
           {heavier ? (
             <Link href={`/services/${heavier.slug}`} className="panel mk-lift block p-5 text-right">
               <p className="text-xs uppercase tracking-wide text-steel-500">Bigger →</p>
-              <p className="mt-1 font-serif text-lg font-black">{heavier.name}</p>
-              <p className="text-sm text-ink-800/70">{priceRange(heavier.priceMin, heavier.priceMax, heavier.openEnded)}</p>
+              <p className="mt-1 font-display text-lg font-extrabold">{heavier.name}</p>
+              <p className="text-sm text-steel-500">{priceRange(heavier.priceMin, heavier.priceMax, heavier.openEnded)}</p>
             </Link>
           ) : null}
         </div>

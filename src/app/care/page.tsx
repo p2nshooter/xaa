@@ -13,14 +13,14 @@ export const metadata: Metadata = {
 export default function CarePage() {
   return (
     <>
-      <section className="relative overflow-hidden metal-wash text-ivory-50">
-        <div className="mk-grid-bg absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 py-16">
-          <span className="mk-chip border-white/25 text-ivory-100">Setup & Care</span>
-          <h1 className="mt-5 max-w-3xl font-serif text-4xl font-black leading-tight sm:text-5xl">
+      <section className="hero relative overflow-hidden">
+        <div className="hero-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">
+          <span className="chip">Setup & Care</span>
+          <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-5xl">
             Getting you live is one service. <span className="accent-text">Keeping you live is another.</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ivory-100/80">
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-600">
             Both are priced separately from the build, and both are optional. Take the setup once and run the site
             yourself; take a care plan and never think about an update again. Care plans are month to month — cancel
             with 30 days&apos; notice, and everything still belongs to you.
@@ -42,7 +42,7 @@ export default function CarePage() {
 
         <div className="mt-8 panel p-6">
           <p className="text-sm font-bold uppercase tracking-wide text-steel-500">Why it is separate</p>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-800/75">
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-steel-500">
             Plenty of clients already have a hosting provider, a domain registrar and an IT person. Charging every
             client for setup they do not need is how agencies quietly pad a quote. So it sits on its own line: choose
             it when you open the project, add it later, or never take it at all.
@@ -52,12 +52,12 @@ export default function CarePage() {
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {SETUP_PLANS.map((s) => (
             <article key={s.slug} className="premium-card flex h-full flex-col p-6">
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-steel-500">One-time</p>
-              <h3 className="mt-1 font-serif text-xl font-black">{s.name}</h3>
-              <p className="mt-3 font-serif text-2xl font-black accent-text">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-steel-500">One-time</p>
+              <h3 className="mt-1 font-display text-xl font-extrabold">{s.name}</h3>
+              <p className="mt-3 font-display text-2xl font-extrabold accent-text">
                 {s.custom ? `from ${eur(s.price)}` : priceRange(s.price, s.priceMax ?? s.price)}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-ink-800/70">{s.blurb}</p>
+              <p className="mt-3 text-sm leading-relaxed text-steel-500">{s.blurb}</p>
               <ul className="mt-4 space-y-1.5 text-sm">
                 {s.includes.map((f) => (
                   <li key={f} className="flex gap-2"><span className="tick mt-0.5">✓</span><span>{f}</span></li>
@@ -81,14 +81,14 @@ export default function CarePage() {
           {CARE_PLANS.map((c) => (
             <article key={c.slug} className={`premium-card flex h-full flex-col p-6 ${c.popular ? 'ring-2 ring-[color:var(--accent)]' : ''}`}>
               {c.popular ? <span className="badge badge-blue absolute right-4 top-4">Most chosen</span> : null}
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-steel-500">Monthly</p>
-              <h3 className="mt-1 font-serif text-xl font-black">{c.name}</h3>
-              <p className="mt-3 font-serif text-3xl font-black accent-text">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-steel-500">Monthly</p>
+              <h3 className="mt-1 font-display text-xl font-extrabold">{c.name}</h3>
+              <p className="mt-3 font-display text-3xl font-extrabold accent-text">
                 {c.custom ? `from ${eur(c.price)}` : eur(c.price)}
                 <span className="text-sm font-normal text-steel-500">/mo</span>
               </p>
               {c.priceMax ? <p className="text-xs text-steel-500">up to {eur(c.priceMax)}/mo depending on scale and SLA</p> : null}
-              <p className="mt-3 text-sm leading-relaxed text-ink-800/70">{c.blurb}</p>
+              <p className="mt-3 text-sm leading-relaxed text-steel-500">{c.blurb}</p>
               <dl className="mt-4 grid grid-cols-2 gap-3 rounded-lg bg-ivory-100/60 p-3 text-xs">
                 <div>
                   <dt className="font-bold uppercase text-steel-500">Included time</dt>
@@ -117,7 +117,7 @@ export default function CarePage() {
           ].map((x) => (
             <div key={x.t} className="panel p-5">
               <h3 className="font-bold">{x.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-800/70">{x.b}</p>
+              <p className="mt-2 text-sm leading-relaxed text-steel-500">{x.b}</p>
             </div>
           ))}
         </div>

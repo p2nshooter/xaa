@@ -34,20 +34,20 @@ export default function HomePage() {
   return (
     <>
       {/* ───────────────── Hero ───────────────── */}
-      <section className="relative overflow-hidden metal-wash text-ivory-50">
-        <div className="mk-grid-bg absolute inset-0" />
-        <div className="mk-orb" style={{ width: 420, height: 420, left: -140, top: -160, background: '#2f9dff' }} />
-        <div className="mk-orb mk-orb-2" style={{ width: 340, height: 340, right: -120, bottom: -180, background: '#60c8ff' }} />
-        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-20 lg:grid-cols-[1.15fr_.85fr] lg:py-28">
+      <section className="hero relative overflow-hidden">
+        <div className="hero-grid absolute inset-0" />
+        <div className="mk-orb" style={{ width: 420, height: 420, left: -160, top: -200, background: '#bcd6ff', opacity: 0.55 }} />
+        <div className="mk-orb mk-orb-2" style={{ width: 340, height: 340, right: -130, bottom: -200, background: '#b8f1fb', opacity: 0.55 }} />
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:py-20 lg:grid-cols-[1.15fr_.85fr] lg:py-28">
           <div className="mk-fade-up">
-            <span className="mk-chip border-white/25 text-ivory-100">
+            <span className="chip max-w-full text-[9px] sm:text-[0.7rem]">
               <span className="mk-live-dot" /> {SITE.expansion}
             </span>
-            <h1 className="mt-5 font-serif text-4xl font-black leading-[1.05] sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl">
               {SITE.heroLead}{' '}
               <span className="accent-text">{SITE.heroAccent}</span>
             </h1>
-            <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-ivory-100/80">
+            <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-slate-600">
               XAA builds the website, the store or the platform your business actually runs on — from a{' '}
               {eur(smallest.priceMin)} landing page to a {eur(largest.priceMin)}+ global ecosystem. European engineering
               standards, milestone payments, and a client portal that shows you exactly where your build stands.
@@ -56,18 +56,18 @@ export default function HomePage() {
               <Link href="/services" className="btn btn-primary">See packages & pricing</Link>
               <Link href="/portal/new" className="btn btn-ghost">Open a project</Link>
             </div>
-            <dl className="mt-10 grid max-w-lg grid-cols-3 gap-6 border-t border-white/15 pt-6 text-sm">
+            <dl className="mt-10 grid max-w-lg grid-cols-3 gap-6 border-t border-slate-200 pt-6 text-sm">
               <div>
-                <dt className="text-[11px] font-bold uppercase tracking-wider text-ivory-100/50">Start from</dt>
-                <dd className="mt-1 font-serif text-xl font-black">10% deposit</dd>
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Start from</dt>
+                <dd className="mt-1 font-display text-base font-extrabold sm:text-xl">10% deposit</dd>
               </div>
               <div>
-                <dt className="text-[11px] font-bold uppercase tracking-wider text-ivory-100/50">Paid in</dt>
-                <dd className="mt-1 font-serif text-xl font-black">USDT · PayPal</dd>
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Paid in</dt>
+                <dd className="mt-1 font-display text-base font-extrabold sm:text-xl">USDT · PayPal</dd>
               </div>
               <div>
-                <dt className="text-[11px] font-bold uppercase tracking-wider text-ivory-100/50">Delivery from</dt>
-                <dd className="mt-1 font-serif text-xl font-black">3 days</dd>
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Delivery from</dt>
+                <dd className="mt-1 font-display text-base font-extrabold sm:text-xl">3 days</dd>
               </div>
             </dl>
           </div>
@@ -90,9 +90,9 @@ export default function HomePage() {
               { letter: 'A', word: 'Applications', body: 'What it does. Real software — accounts, payments, dashboards, automation — not a brochure with a contact form bolted on.' },
             ].map((x, i) => (
               <div key={i} className="bg-white p-8">
-                <p className="font-serif text-5xl font-black accent-text">{x.letter}</p>
-                <p className="mt-2 font-serif text-xl font-black">{x.word}</p>
-                <p className="mt-3 text-sm leading-relaxed text-ink-800/70">{x.body}</p>
+                <p className="font-display text-5xl font-extrabold accent-text">{x.letter}</p>
+                <p className="mt-2 font-display text-xl font-extrabold">{x.word}</p>
+                <p className="mt-3 text-sm leading-relaxed text-steel-500">{x.body}</p>
               </div>
             ))}
           </div>
@@ -113,8 +113,8 @@ export default function HomePage() {
           {CAPABILITIES.map((c, i) => (
             <div key={c.title} className={`premium-card mk-fade-up mk-d${i + 1} p-6`}>
               <span className="mk-icon-bubble text-gold-500">{c.icon}</span>
-              <h3 className="mt-4 font-serif text-lg font-black">{c.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-800/70">{c.body}</p>
+              <h3 className="mt-4 font-display text-lg font-extrabold">{c.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-steel-500">{c.body}</p>
             </div>
           ))}
         </div>
@@ -136,7 +136,7 @@ export default function HomePage() {
           ))}
         </div>
         <div className="mt-8 panel flex flex-wrap items-center justify-between gap-4 p-6">
-          <p className="text-sm text-ink-800/75">
+          <p className="text-sm text-steel-500">
             Also available: {PACKAGES.filter((p) => !featured.includes(p)).map((p) => p.name).join(' · ')}.
           </p>
           <Link href="/services" className="btn btn-dark btn-sm">Compare everything</Link>
@@ -154,9 +154,9 @@ export default function HomePage() {
         <ol className="mt-12 grid gap-4 md:grid-cols-3 lg:grid-cols-7">
           {STAGES.map((s, i) => (
             <li key={s.key} className={`premium-card mk-fade-up mk-d${(i % 6) + 1} flex flex-col p-5`}>
-              <span className="font-serif text-2xl font-black accent-text">{String(i + 1).padStart(2, '0')}</span>
+              <span className="font-display text-2xl font-extrabold accent-text">{String(i + 1).padStart(2, '0')}</span>
               <p className="mt-2 text-sm font-bold leading-snug">{s.name}</p>
-              <p className="mt-1.5 text-xs leading-relaxed text-ink-800/65">{s.blurb}</p>
+              <p className="mt-1.5 text-xs leading-relaxed text-steel-500">{s.blurb}</p>
             </li>
           ))}
         </ol>
@@ -176,9 +176,9 @@ export default function HomePage() {
           <div className="grid gap-5 sm:grid-cols-2">
             {PRINCIPLES.map((p) => (
               <div key={p.n} className="panel p-5">
-                <p className="font-serif text-lg font-black text-gold-500">{p.n}</p>
+                <p className="font-display text-lg font-extrabold text-gold-500">{p.n}</p>
                 <h3 className="mt-1 font-bold leading-snug">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-800/70">{p.body}</p>
+                <p className="mt-2 text-sm leading-relaxed text-steel-500">{p.body}</p>
               </div>
             ))}
           </div>
@@ -195,8 +195,8 @@ export default function HomePage() {
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <div className="panel p-6">
             <p className="badge badge-blue">One-time</p>
-            <h3 className="mt-3 font-serif text-xl font-black">Setup service</h3>
-            <p className="mt-2 text-sm leading-relaxed text-ink-800/70">
+            <h3 className="mt-3 font-display text-xl font-extrabold">Setup service</h3>
+            <p className="mt-2 text-sm leading-relaxed text-steel-500">
               We do the configuration with you, once: domain, DNS, SSL, hosting, email records, analytics, backups — then
               hand you the keys and a recorded walkthrough.
             </p>
@@ -204,7 +204,7 @@ export default function HomePage() {
               {SETUP_PLANS.map((s) => (
                 <li key={s.slug} className="flex items-baseline justify-between gap-4 border-b border-[color:var(--accent-soft)] pb-2">
                   <span className="font-semibold">{s.name}</span>
-                  <span className="whitespace-nowrap font-serif font-black">
+                  <span className="whitespace-nowrap font-serif font-extrabold">
                     {s.custom ? `from ${eur(s.price)}` : priceRange(s.price, s.priceMax ?? s.price)}
                   </span>
                 </li>
@@ -214,8 +214,8 @@ export default function HomePage() {
           </div>
           <div className="panel p-6">
             <p className="badge badge-green">Monthly</p>
-            <h3 className="mt-3 font-serif text-xl font-black">Care plans</h3>
-            <p className="mt-2 text-sm leading-relaxed text-ink-800/70">
+            <h3 className="mt-3 font-display text-xl font-extrabold">Care plans</h3>
+            <p className="mt-2 text-sm leading-relaxed text-steel-500">
               Updates, backups, monitoring, security patching and a monthly allowance of development hours, so the thing
               we built keeps working while you run your business.
             </p>
@@ -223,7 +223,7 @@ export default function HomePage() {
               {CARE_PLANS.map((c) => (
                 <li key={c.slug} className="flex items-baseline justify-between gap-4 border-b border-[color:var(--accent-soft)] pb-2">
                   <span className="font-semibold">{c.name}</span>
-                  <span className="whitespace-nowrap font-serif font-black">
+                  <span className="whitespace-nowrap font-serif font-extrabold">
                     {c.custom ? `from ${eur(c.price)}` : eur(c.price)}<span className="text-xs font-normal text-steel-500">/mo</span>
                   </span>
                 </li>

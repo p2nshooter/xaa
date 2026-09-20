@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="mx-auto max-w-prose2 px-4 py-14">
-      <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gold-500">Legal</p>
-      <h1 className="mt-2 font-serif text-3xl font-black">Terms of engagement</h1>
+      <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">Legal</p>
+      <h1 className="mt-2 font-display text-3xl font-extrabold">Terms of engagement</h1>
       <div className="ornament-rule mt-4 max-w-sm" />
       <p className="mt-4 text-sm text-steel-500">
         These terms govern development work commissioned from {SITE.name} ({SITE.domain}) and use of the client portal.

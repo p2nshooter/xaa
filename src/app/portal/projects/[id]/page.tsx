@@ -60,8 +60,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         <div>
           <Link href="/portal" className="text-xs text-steel-500 hover:text-gold-500">← All projects</Link>
           <p className="mt-2 font-mono text-xs text-steel-500">{project.ref}</p>
-          <h1 className="mt-1 font-serif text-3xl font-black sm:text-4xl">{project.title}</h1>
-          <p className="mt-1 text-sm text-ink-800/70">
+          <h1 className="mt-1 font-display text-3xl font-extrabold sm:text-4xl">{project.title}</h1>
+          <p className="mt-1 text-sm text-steel-500">
             {project.package_name}
             {pkg ? <> · {pkg.timeline} · {pkg.pages}</> : null}
             {addons.length ? <> · add-ons: {addons.join(', ')}</> : null}
@@ -76,10 +76,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           <div className="progress-track flex-1">
             <div className="progress-fill" style={{ width: `${project.progress}%` }} />
           </div>
-          <span className="font-serif text-2xl font-black">{project.progress}%</span>
+          <span className="font-display text-2xl font-extrabold">{project.progress}%</span>
         </div>
         {capped && project.progress >= UNPAID_PROGRESS_CAP ? (
-          <p className="mt-3 text-sm text-ink-800/75">
+          <p className="mt-3 text-sm text-steel-500">
             Progress is held at {UNPAID_PROGRESS_CAP}% until the final settlement clears. The remaining 20% — deployment,
             content loading, final QA and handover — is released the moment the payment is confirmed.
           </p>
@@ -88,24 +88,24 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         <dl className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <dt className="text-xs font-bold uppercase tracking-wide text-steel-500">Contract value</dt>
-            <dd className="mt-1 font-serif text-xl font-black">{eur(m.contract)}</dd>
+            <dd className="mt-1 font-display text-xl font-extrabold">{eur(m.contract)}</dd>
             <dd className="text-xs text-steel-500">
               {project.contract_locked ? 'Agreed after scope review' : `Indicative — quoted ${eur(project.quote_min)} – ${eur(project.quote_max)}`}
             </dd>
           </div>
           <div>
             <dt className="text-xs font-bold uppercase tracking-wide text-steel-500">Confirmed paid</dt>
-            <dd className="mt-1 font-serif text-xl font-black accent-text">{eur(m.confirmed)}</dd>
+            <dd className="mt-1 font-display text-xl font-extrabold accent-text">{eur(m.confirmed)}</dd>
             <dd className="text-xs text-steel-500">{m.paidPct}% of contract{m.pending ? ` · ${eur(m.pending)} pending` : ''}</dd>
           </div>
           <div>
             <dt className="text-xs font-bold uppercase tracking-wide text-steel-500">Outstanding</dt>
-            <dd className="mt-1 font-serif text-xl font-black">{eur(m.outstanding)}</dd>
+            <dd className="mt-1 font-display text-xl font-extrabold">{eur(m.outstanding)}</dd>
             <dd className="text-xs text-steel-500">≈ {usd(m.outstanding)} in USDT</dd>
           </div>
           <div>
             <dt className="text-xs font-bold uppercase tracking-wide text-steel-500">Estimated completion</dt>
-            <dd className="mt-1 font-serif text-xl font-black">{formatDate(project.due_at)}</dd>
+            <dd className="mt-1 font-display text-xl font-extrabold">{formatDate(project.due_at)}</dd>
             <dd className="text-xs text-steel-500">
               {project.due_at ? `Started ${formatDate(project.started_at)}` : 'Fixed when your concept arrives'}
             </dd>
@@ -121,12 +121,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             return (
               <li key={s.key} className={`rounded-lg border p-4 ${done ? 'border-[color:var(--accent)] bg-[color:var(--accent-soft)]/15' : 'border-[color:var(--accent-soft)] bg-white'}`}>
                 <div className="flex items-center gap-2">
-                  <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-black ${done ? 'bg-[color:var(--accent)] text-white' : 'bg-ivory-200 text-steel-500'}`}>
+                  <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-extrabold ${done ? 'bg-[color:var(--accent)] text-white' : 'bg-ivory-200 text-steel-500'}`}>
                     {done ? '✓' : i + 1}
                   </span>
                   <p className="text-sm font-bold">{s.name}</p>
                 </div>
-                <p className="mt-1.5 text-xs leading-relaxed text-ink-800/65">{s.blurb}</p>
+                <p className="mt-1.5 text-xs leading-relaxed text-steel-500">{s.blurb}</p>
               </li>
             );
           })}
@@ -146,7 +146,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             />
           ) : null}
 
-          {action ? <p className="-mt-4 text-sm text-ink-800/70">{action.reason}</p> : null}
+          {action ? <p className="-mt-4 text-sm text-steel-500">{action.reason}</p> : null}
 
           {/* Concept upload */}
           {project.status !== 'delivered' && project.status !== 'cancelled' ? (
@@ -165,7 +165,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
           {/* Activity */}
           <section className="panel p-6">
-            <h2 className="font-serif text-lg font-black">Activity log</h2>
+            <h2 className="font-display text-lg font-extrabold">Activity log</h2>
             <p className="mt-1 text-xs text-steel-500">Every payment, upload and progress change, dated.</p>
             <ol className="mt-5 space-y-4">
               {updates.map((u) => (
@@ -178,7 +178,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                         {new Date(u.created_at).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                       </p>
                     </div>
-                    {u.body ? <p className="mt-1 text-sm leading-relaxed text-ink-800/70">{u.body}</p> : null}
+                    {u.body ? <p className="mt-1 text-sm leading-relaxed text-steel-500">{u.body}</p> : null}
                     <p className="mt-1 text-[11px] uppercase tracking-wide text-steel-500">{u.author}</p>
                   </div>
                 </li>
@@ -191,7 +191,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         <aside className="space-y-6">
           {/* Milestones */}
           <section className="panel p-5">
-            <h2 className="font-serif text-lg font-black">Milestone schedule</h2>
+            <h2 className="font-display text-lg font-extrabold">Milestone schedule</h2>
             <table className="data-table mt-3">
               <tbody>
                 <tr>
@@ -216,7 +216,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
           {/* Payments */}
           <section className="panel p-5">
-            <h2 className="font-serif text-lg font-black">Payments</h2>
+            <h2 className="font-display text-lg font-extrabold">Payments</h2>
             {payments.length === 0 ? (
               <p className="mt-2 text-sm text-steel-500">No payments recorded yet.</p>
             ) : (
@@ -225,7 +225,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                   <li key={p.id} className="border-b border-[color:var(--accent-soft)] pb-3 last:border-0">
                     <div className="flex items-baseline justify-between gap-2">
                       <span className="text-sm font-semibold">{p.label}</span>
-                      <span className="font-serif font-black">{eur(p.amount)}</span>
+                      <span className="font-serif font-extrabold">{eur(p.amount)}</span>
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-steel-500">
                       <span className={`badge ${p.status === 'confirmed' ? 'badge-green' : p.status === 'rejected' ? 'badge-red' : 'badge-amber'}`}>
@@ -243,7 +243,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
           {/* Files */}
           <section className="panel p-5">
-            <h2 className="font-serif text-lg font-black">Files</h2>
+            <h2 className="font-display text-lg font-extrabold">Files</h2>
             <p className="mt-1 text-xs text-steel-500">Private — visible only to you and the delivery team.</p>
             <FileList title="Your concept" files={conceptFiles} />
             <FileList title="Deliverables" files={deliverables} />
@@ -252,7 +252,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           {/* Separate services */}
           {setup || care ? (
             <section className="panel p-5">
-              <h2 className="font-serif text-lg font-black">Separate services</h2>
+              <h2 className="font-display text-lg font-extrabold">Separate services</h2>
               <p className="mt-1 text-xs text-steel-500">Invoiced apart from the build.</p>
               <ul className="mt-3 space-y-2 text-sm">
                 {setup ? (
@@ -274,8 +274,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
           {project.scope_note ? (
             <section className="panel p-5">
-              <h2 className="font-serif text-lg font-black">Your brief</h2>
-              <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-ink-800/75">{project.scope_note}</p>
+              <h2 className="font-display text-lg font-extrabold">Your brief</h2>
+              <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-steel-500">{project.scope_note}</p>
             </section>
           ) : null}
         </aside>
@@ -287,7 +287,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 function FileList({ title, files }: { title: string; files: { id: string; name: string; size: number; created_at: string }[] }) {
   return (
     <div className="mt-4">
-      <p className="text-xs font-black uppercase tracking-wide text-steel-500">{title}</p>
+      <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">{title}</p>
       {files.length === 0 ? (
         <p className="mt-1 text-sm text-steel-500">None yet.</p>
       ) : (

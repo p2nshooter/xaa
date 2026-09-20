@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { SiteBeacon } from '@/components/SiteBeacon';
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
 import './globals.css';
 import { SITE } from '@/lib/site';
 import { SiteHeader, SiteFooter } from '@/components/Site';
@@ -10,7 +10,9 @@ import { PageAds } from '@/components/PageAds';
 import { jsonLdHtml } from '@/lib/json-ld';
 import { PACKAGES, eur } from '@/content/packages';
 
-const serif = Playfair_Display({ subsets: ['latin'], weight: ['400', '700', '900'], variable: '--font-serif', display: 'swap' });
+// Display face for headings. A clean grotesk rather than the old Playfair:
+// the serif read as ornamental next to a pricing table.
+const display = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['500', '600', '700', '800'], variable: '--font-display', display: 'swap' });
 const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 
 export const metadata: Metadata = {
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <head>
         <meta name="google-adsense-account" content={SITE.adClient} />
         <script

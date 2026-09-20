@@ -62,14 +62,14 @@ export default function ProcessPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden metal-wash text-ivory-50">
-        <div className="mk-grid-bg absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 py-16">
-          <span className="mk-chip border-white/25 text-ivory-100">How it works</span>
-          <h1 className="mt-5 max-w-3xl font-serif text-4xl font-black leading-tight sm:text-5xl">
+      <section className="hero relative overflow-hidden">
+        <div className="hero-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">
+          <span className="chip">How it works</span>
+          <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-5xl">
             You pay in three steps. <span className="accent-text">You can watch every one of them.</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ivory-100/80">
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-600">
             Most studios ask for half up front and go quiet. We split the money across the life of the build and put the
             progress bar where you can see it — so the incentive to finish stays with us, and the risk never all sits
             with you.
@@ -81,35 +81,35 @@ export default function ProcessPage() {
       <section className="mx-auto max-w-6xl px-4 py-14">
         <SectionHead eyebrow="The payment schedule" title="10% · 40% · 50%" lead="Three payments, tied to real events rather than to dates on a calendar." />
         <div className="mt-8 panel p-6 sm:p-8">
-          <div className="flex h-12 w-full overflow-hidden rounded-lg text-xs font-black text-white">
+          <div className="flex h-12 w-full overflow-hidden rounded-lg text-xs font-extrabold text-white">
             <div className="flex items-center justify-center bg-[#0a52bd]" style={{ width: '10%' }}>10%</div>
             <div className="flex items-center justify-center bg-[#0b6fe8]" style={{ width: '40%' }}>40%</div>
             <div className="flex items-center justify-center bg-[#2f9dff]" style={{ width: '50%' }}>50%</div>
           </div>
           <div className="mt-4 grid gap-5 sm:grid-cols-3">
             <div>
-              <p className="font-serif text-lg font-black">Booking deposit</p>
-              <p className="text-sm text-ink-800/70">Paid at order. Reserves the slot, opens the concept upload.</p>
+              <p className="font-display text-lg font-extrabold">Booking deposit</p>
+              <p className="text-sm text-steel-500">Paid at order. Reserves the slot, opens the concept upload.</p>
             </div>
             <div>
-              <p className="font-serif text-lg font-black">Production</p>
-              <p className="text-sm text-ink-800/70">Paid once the scope is agreed. Starts the build; progress runs to 80%.</p>
+              <p className="font-display text-lg font-extrabold">Production</p>
+              <p className="text-sm text-steel-500">Paid once the scope is agreed. Starts the build; progress runs to 80%.</p>
             </div>
             <div>
-              <p className="font-serif text-lg font-black">Settlement</p>
-              <p className="text-sm text-ink-800/70">Paid at 75–80% progress, after you have seen it working. Releases handover.</p>
+              <p className="font-display text-lg font-extrabold">Settlement</p>
+              <p className="text-sm text-steel-500">Paid at 75–80% progress, after you have seen it working. Releases handover.</p>
             </div>
           </div>
 
           <div className="mt-8 rounded-lg bg-ivory-100/70 p-5">
-            <p className="text-xs font-black uppercase tracking-wider text-steel-500">Worked example — {example.name}</p>
+            <p className="text-xs font-extrabold uppercase tracking-wider text-steel-500">Worked example — {example.name}</p>
             <table className="data-table mt-3">
               <tbody>
                 <tr><td>Contract value (scope agreed)</td><td className="text-right font-bold">{eur(contract)}</td></tr>
                 <tr><td>1. Booking deposit — 10%, at order</td><td className="text-right font-bold">{eur(Math.round(contract * 0.1))}</td></tr>
                 <tr><td>2. Production — 40%, build starts</td><td className="text-right font-bold">{eur(Math.round(contract * 0.4))}</td></tr>
                 <tr><td>3. Settlement — 50%, at 75–80% progress</td><td className="text-right font-bold">{eur(Math.round(contract * 0.5))}</td></tr>
-                <tr><td className="font-bold">Total build cost</td><td className="text-right font-black">{eur(contract)}</td></tr>
+                <tr><td className="font-bold">Total build cost</td><td className="text-right font-extrabold">{eur(contract)}</td></tr>
               </tbody>
             </table>
             <p className="hint mt-3">
@@ -126,10 +126,10 @@ export default function ProcessPage() {
         <div className="mt-10 space-y-6">
           {STEPS.map((s) => (
             <article key={s.n} className="panel grid gap-6 p-6 sm:grid-cols-[auto_1fr_260px] sm:items-start">
-              <span className="font-serif text-4xl font-black accent-text">{s.n}</span>
+              <span className="font-display text-4xl font-extrabold accent-text">{s.n}</span>
               <div>
-                <h3 className="font-serif text-xl font-black">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-800/75">{s.body}</p>
+                <h3 className="font-display text-xl font-extrabold">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-steel-500">{s.body}</p>
               </div>
               <ul className="space-y-1.5 rounded-lg bg-ivory-100/60 p-4 text-xs">
                 {s.detail.map((d) => (
@@ -144,7 +144,7 @@ export default function ProcessPage() {
       {/* Stage rail */}
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="panel-dark p-8">
-          <h2 className="font-serif text-2xl font-black">What your project page shows</h2>
+          <h2 className="font-display text-2xl font-extrabold">What your project page shows</h2>
           <p className="mt-2 max-w-2xl text-sm text-ivory-100/75">
             Every project in the portal carries the same seven-stage rail. Stages light up from facts on record — a
             confirmed payment, an uploaded file, a progress update — never by hand.
@@ -152,7 +152,7 @@ export default function ProcessPage() {
           <ol className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {STAGES.map((s, i) => (
               <li key={s.key} className="rounded-lg border border-white/15 bg-white/5 p-4">
-                <p className="text-[11px] font-black text-gold-300">STAGE {i + 1}</p>
+                <p className="text-[11px] font-extrabold text-gold-300">STAGE {i + 1}</p>
                 <p className="mt-1 text-sm font-bold">{s.name}</p>
                 <p className="mt-1 text-xs text-ivory-100/65">{s.blurb}</p>
               </li>
@@ -173,11 +173,11 @@ export default function ProcessPage() {
           ].map((x) => (
             <div key={x.t} className="panel p-5">
               <h3 className="font-bold">{x.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-800/70">{x.b}</p>
+              <p className="mt-2 text-sm leading-relaxed text-steel-500">{x.b}</p>
             </div>
           ))}
         </div>
-        <p className="mt-6 text-sm text-ink-800/70">
+        <p className="mt-6 text-sm text-steel-500">
           If a delay is ours, we say so on the activity log and we do not invoice a milestone we have not reached.{' '}
           <Link href="/terms" className="text-gold-500 underline">Full terms</Link>.
         </p>

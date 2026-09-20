@@ -19,14 +19,14 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
 
   return (
     <div className="mx-auto max-w-lg px-4 py-16">
-      <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gold-500">Client portal</p>
-      <h1 className="mt-2 font-serif text-3xl font-black">Sign in</h1>
-      <p className="mt-3 text-sm text-ink-800/70">Your projects, milestones, files and invoices.</p>
+      <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">Client portal</p>
+      <h1 className="mt-2 font-display text-3xl font-extrabold">Sign in</h1>
+      <p className="mt-3 text-sm text-steel-500">Your projects, milestones, files and invoices.</p>
       <div className="mt-8">
         <LoginForm next={next && next.startsWith('/') ? next : '/portal'} />
       </div>
       <div className="panel mt-6 border-l-4 border-l-[color:var(--accent)] p-5">
-        <p className="text-sm text-ink-800/70">
+        <p className="text-sm text-steel-500">
           We will never email you asking for your password or send you a payment address. Payment details appear only on
           your project page here. <Link href="/payments" className="text-gold-500 underline">More on payment security</Link>.
         </p>

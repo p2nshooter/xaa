@@ -15,14 +15,14 @@ export const dynamic = 'force-dynamic';
 export default function ContactPage() {
   return (
     <>
-      <section className="relative overflow-hidden metal-wash text-ivory-50">
-        <div className="mk-grid-bg absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 py-14">
-          <span className="mk-chip border-white/25 text-ivory-100">Contact</span>
-          <h1 className="mt-5 max-w-3xl font-serif text-4xl font-black leading-tight sm:text-5xl">
+      <section className="hero relative overflow-hidden">
+        <div className="hero-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 py-10 sm:py-14">
+          <span className="chip">Contact</span>
+          <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-5xl">
             Tell us what you need built
           </h1>
-          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ivory-100/80">
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-600">
             Send the brief and we come back with the package it lands in, a realistic number, a delivery estimate, and
             what we would leave out of version one. If your project is not a fit, we will say that too.
           </p>
@@ -40,7 +40,7 @@ export default function ContactPage() {
 
           <aside className="space-y-6">
             <div className="panel p-6">
-              <h2 className="font-serif text-lg font-black">Direct contact</h2>
+              <h2 className="font-display text-lg font-extrabold">Direct contact</h2>
               <dl className="mt-4 space-y-3 text-sm">
                 <div>
                   <dt className="text-xs font-bold uppercase tracking-wide text-steel-500">New projects</dt>
@@ -62,8 +62,8 @@ export default function ContactPage() {
             </div>
 
             <div className="panel p-6">
-              <h2 className="font-serif text-lg font-black">Already decided?</h2>
-              <p className="mt-2 text-sm leading-relaxed text-ink-800/70">
+              <h2 className="font-display text-lg font-extrabold">Already decided?</h2>
+              <p className="mt-2 text-sm leading-relaxed text-steel-500">
                 You do not need to talk to us first. Open a project, and you will see the exact milestone amounts before
                 anything is due.
               </p>
@@ -73,7 +73,7 @@ export default function ContactPage() {
 
             <div className="panel border-l-4 border-l-[color:var(--accent)] p-6">
               <h2 className="font-bold">A security note</h2>
-              <p className="mt-2 text-sm leading-relaxed text-ink-800/70">
+              <p className="mt-2 text-sm leading-relaxed text-steel-500">
                 We never send wallet addresses or payment details by email. Payment information appears only inside your
                 signed-in project page.
               </p>

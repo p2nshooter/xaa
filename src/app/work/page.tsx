@@ -55,14 +55,14 @@ const STANDARDS = [
 export default function WorkPage() {
   return (
     <>
-      <section className="relative overflow-hidden metal-wash text-ivory-50">
-        <div className="mk-grid-bg absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 py-16">
-          <span className="mk-chip border-white/25 text-ivory-100">Capabilities</span>
-          <h1 className="mt-5 max-w-3xl font-serif text-4xl font-black leading-tight sm:text-5xl">
+      <section className="hero relative overflow-hidden">
+        <div className="hero-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">
+          <span className="chip">Capabilities</span>
+          <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-5xl">
             The same engineering standard <span className="accent-text">at every price point</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ivory-100/80">
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-600">
             A landing page and an enterprise platform differ in scope, not in craft. Both are typed, reviewed, tested,
             monitored and documented — because the cheap build is usually the one a business grows out of fastest, and
             it should be ready when that happens.
@@ -75,8 +75,8 @@ export default function WorkPage() {
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {STACK.map((s) => (
             <div key={s.area} className="panel p-5">
-              <h3 className="font-serif text-lg font-black">{s.area}</h3>
-              <ul className="mt-3 space-y-1.5 text-sm text-ink-800/75">
+              <h3 className="font-display text-lg font-extrabold">{s.area}</h3>
+              <ul className="mt-3 space-y-1.5 text-sm text-steel-500">
                 {s.items.map((i) => (
                   <li key={i} className="flex gap-2"><span className="text-gold-400">▸</span><span>{i}</span></li>
                 ))}
@@ -92,7 +92,7 @@ export default function WorkPage() {
           {STANDARDS.map((s) => (
             <div key={s.t} className="premium-card p-6">
               <h3 className="font-bold">{s.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-800/70">{s.b}</p>
+              <p className="mt-2 text-sm leading-relaxed text-steel-500">{s.b}</p>
             </div>
           ))}
         </div>
@@ -100,7 +100,7 @@ export default function WorkPage() {
 
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="panel-dark p-8 sm:p-10">
-          <h2 className="font-serif text-2xl font-black">Industries we work in</h2>
+          <h2 className="font-display text-2xl font-extrabold">Industries we work in</h2>
           <p className="mt-3 max-w-2xl text-sm text-ivory-100/75">
             Sector experience matters less than people pretend — but it does shape the questions we know to ask early.
           </p>
@@ -127,7 +127,7 @@ export default function WorkPage() {
           ].map((x) => (
             <div key={x.t} className="panel p-5">
               <h3 className="font-bold">{x.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-800/70">{x.b}</p>
+              <p className="mt-2 text-sm leading-relaxed text-steel-500">{x.b}</p>
             </div>
           ))}
         </div>
