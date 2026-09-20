@@ -8,6 +8,23 @@ needs two Cloudflare resources and a handful of secrets.
 Everything below is a one-time job. There is no migration step: the D1 schema
 creates itself the first time the portal is used.
 
+## 0. If you deploy from CI, this is already done
+
+`.github/workflows/deploy.yml` runs `scripts/ensure-cloudflare-resources.sh`
+before every build. It creates the D1 database and the R2 bucket when they are
+missing and writes the `database_id` into `wrangler.jsonc`, so a push to `main`
+provisions and deploys in one go. The rest of this page is the manual path, for
+bootstrapping from a laptop.
+
+**One thing CI cannot do for you: enabling R2.** R2 is opt-in per account and
+needs a billing profile on file, even on the free tier. Until it is on, the API
+answers `code: 10042` and `wrangler deploy` refuses the whole deploy over the
+binding. The script handles that by stripping the R2 binding for that run and
+warning: the site, accounts, projects, milestone payments and progress all
+deploy and work, and only client file upload stays off. Turn it on once at
+**Cloudflare Dashboard → R2 → Enable**, and the next deploy picks it up with no
+code change.
+
 ## 1. Create the database and the bucket
 
 ```bash

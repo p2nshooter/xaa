@@ -79,9 +79,42 @@ else
 fi
 
 # ── R2 ────────────────────────────────────────────────────────────────────
-# `r2 bucket create` on an existing bucket is an error we can ignore; there is
-# no id to capture, the binding refers to the bucket by name.
+# The bucket has no id to capture — the binding names it directly — so all
+# that matters is whether it exists.
+#
+# R2 is opt-in per account, and until someone enables it in the dashboard the
+# API answers 10042 and `wrangler deploy` REFUSES THE WHOLE DEPLOY over the
+# binding. That used to take the entire site down with it for the sake of one
+# optional feature. So when R2 is unavailable the binding is stripped from this
+# run's wrangler.jsonc: everything else — the site, accounts, projects,
+# milestone payments, progress — deploys and works, and only file upload is
+# off. The portal already handles a missing bucket, and the next deploy picks
+# R2 up by itself once it is switched on.
 echo "==> Ensuring R2 bucket '$R2_NAME'"
-npx wrangler r2 bucket create "$R2_NAME" 2>&1 || echo "    (already exists)"
+R2_OUTPUT="$(npx wrangler r2 bucket create "$R2_NAME" 2>&1 || true)"
+echo "$R2_OUTPUT"
+
+if grep -qiE 'already (exists|owned)|Created bucket' <<<"$R2_OUTPUT"; then
+  echo "==> R2 bucket '$R2_NAME' ready"
+elif grep -qE 'code: 10042|enable R2' <<<"$R2_OUTPUT"; then
+  echo "::warning::R2 is not enabled on this Cloudflare account, so client file uploads stay switched off. Everything else deploys normally. Enable R2 once in the dashboard (Dashboard → R2 → Enable) and the next deploy turns uploads on by itself."
+  node -e "
+    const fs = require('fs');
+    const file = '$CONFIG';
+    const text = fs.readFileSync(file, 'utf8');
+    // Drop the r2_buckets entry, and the comma that joined it to the previous
+    // key, so what is left is still valid JSON.
+    const stripped = text.replace(/,\s*\"r2_buckets\"\s*:\s*\[[\s\S]*?\]/, '');
+    if (stripped === text) {
+      console.error('Could not strip the r2_buckets binding — deploy would fail on it.');
+      process.exit(1);
+    }
+    fs.writeFileSync(file, stripped);
+  "
+  echo "==> R2 binding removed from this build"
+else
+  echo "Unexpected failure creating R2 bucket '$R2_NAME'." >&2
+  exit 1
+fi
 
 echo "==> Cloudflare resources ready"
