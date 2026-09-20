@@ -5,3 +5,6 @@ node_modules/
 *.tsbuildinfo
 .env*
 .DS_Store
+
+# Local wrangler dev state (D1 sqlite, R2 objects)
+.wrangler/state/

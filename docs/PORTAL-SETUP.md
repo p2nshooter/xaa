@@ -60,6 +60,23 @@ register before setting the secret, you still get in.
 npm run cf:deploy
 ```
 
+## Running it locally
+
+```bash
+npm run cf:preview
+```
+
+Use this rather than `npm run cf:build` followed by `wrangler dev` on its own.
+`cf:build` leaves the prerendered pages in `.open-next/cache`, and the worker
+reads them through the `ASSETS` binding at `cdn-cgi/_next_cache` — so without
+the `populateCache` step every page built from `generateStaticParams`
+(`/services/[slug]`, `/articles/[slug]`, `/category/[slug]`) answers 404
+locally. `cf:deploy` runs that step for you, so deployed builds are unaffected.
+
+Local runs need the bindings uncommented in `wrangler.jsonc`; any string works
+as the `database_id` in local mode, and state lands in `.wrangler/state`
+(git-ignored).
+
 ## 5. First run
 
 1. Register at `/register` with `ADMIN_EMAIL`. You land on the studio desk.
