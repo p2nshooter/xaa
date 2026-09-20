@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { ADS, type BannerSlot } from '@/lib/ads';
 import { useAdsterraOn } from '@/lib/ad-master';
+import { adsAllowedOn } from '@/lib/site';
 
 /**
  * Adsterra ad units — the LIVE, direct-tag placements for this site.
@@ -149,18 +151,23 @@ export function SponsoredCard({ className = '' }: { className?: string }) {
 /**
  * Page-global units. Drop <GlobalAds/> ONCE in the root layout: it injects the
  * social bar exactly one time per page load.
+ *
+ * The social bar is site-wide by nature, so it is gated on the first route the
+ * visitor lands on: it never appears on the studio pages or the client portal.
  */
 export function GlobalAds() {
   const on = useAdsterraOn();
+  const pathname = usePathname();
+  const allowed = adsAllowedOn(pathname ?? '/');
   const done = useRef(false);
   useEffect(() => {
-    if (!on || done.current || !ADS.socialBar) return;
+    if (!on || !allowed || done.current || !ADS.socialBar) return;
     done.current = true;
     const s = document.createElement('script');
     s.async = true;
     s.setAttribute('data-cfasync', 'false');
     s.src = ADS.socialBar;
     document.body.appendChild(s);
-  }, [on]);
+  }, [on, allowed]);
   return null;
 }

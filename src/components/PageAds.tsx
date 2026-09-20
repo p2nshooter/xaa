@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import { usePathname } from 'next/navigation';
 import { BannerAd, NativeAd, SponsoredCard } from '@/components/Ads';
 import { useAdsterraOn } from '@/lib/ad-master';
+import { adsAllowedOn } from '@/lib/site';
 
 /**
  * Guarantees every page and every link carries a full set of Adsterra units,
@@ -122,10 +123,14 @@ export function PageAds() {
   const adsterraOn = useAdsterraOn();
   const [slots, setSlots] = useState<Slot[]>([]);
 
+  const allowed = adsAllowedOn(pathname ?? '/');
+
   useEffect(() => {
     // Every control lives in the ulyah.com admin: when the switch is off we do
     // not even create the anchors, so the page has no gaps where ads were.
-    if (!adsterraOn) return;
+    // Ads are also confined to the editorial archive — the studio pages and
+    // the client portal never carry them.
+    if (!adsterraOn || !allowed) return;
 
     const created: Slot[] = [];
     let cancelled = false;
@@ -243,9 +248,9 @@ export function PageAds() {
         }
       }, 0);
     };
-  }, [pathname, adsterraOn]);
+  }, [pathname, adsterraOn, allowed]);
 
-  if (!adsterraOn || !slots.length) return null;
+  if (!adsterraOn || !allowed || !slots.length) return null;
 
   return <>{slots.map((s) => createPortal(unitFor(s), s.host, `pa-${s.i}`))}</>;
 }

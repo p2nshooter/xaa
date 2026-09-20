@@ -2,14 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Per-site palette — the only theme knobs, mirrored from tailwind colors. */
+/* Studio palette — mirrored from tailwind colors. Midnight navy + electric
+   blue + brushed silver, straight off the XAA mark. */
 :root {
-  --paper: #f2faf3;
-  --ink: #0a2818;
-  --accent: #16a34a;
-  --accent-soft: rgba(22, 163, 74, 0.30);
-  --gold: #e0b83c; /* trophy accent for World Cup ornaments */
-  --gold-soft: rgba(224, 184, 60, 0.35);
+  --paper: #f5f8ff;
+  --ink: #070f2b;
+  --accent: #0b6fe8;
+  --accent-soft: rgba(11, 111, 232, 0.28);
+  --accent-2: #60c8ff;
+  --gold: #8fa4c4; /* brushed-silver secondary from the mark */
+  --gold-soft: rgba(143, 164, 196, 0.35);
 }
 
 html { scroll-behavior: smooth; }
@@ -29,12 +31,12 @@ body { background: var(--paper); color: var(--ink); }
 }
 .paper-motif { background-image: radial-gradient(var(--accent-soft) 0.6px, transparent 1.4px); background-size: 22px 22px; opacity: 1; }
 .accent-text {
-  background: linear-gradient(120deg, #15803d, #4ade80 45%, #16a34a 70%);
+  background: linear-gradient(120deg, #0a52bd, #60c8ff 45%, #2f9dff 70%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .premium-card {
   position: relative; border: 1px solid var(--accent-soft); border-radius: 0.75rem;
-  background: #fffdf8; box-shadow: 0 1px 2px rgba(15, 30, 61, 0.06);
+  background: #ffffff; box-shadow: 0 1px 2px rgba(7, 15, 43, 0.06);
   transition: transform .25s ease, box-shadow .25s ease;
 }
 .premium-card::before { content: ''; position: absolute; inset: 5px; border: 1px solid var(--accent-soft); border-radius: 0.5rem; opacity: 0.55; pointer-events: none; }
@@ -98,8 +100,8 @@ body { background: var(--paper); color: var(--ink); }
 .pitch-stripes {
   background-image: repeating-linear-gradient(
     115deg,
-    rgba(22, 163, 74, 0.06) 0 44px,
-    rgba(22, 163, 74, 0.11) 44px 88px
+    rgba(11, 111, 232, 0.05) 0 44px,
+    rgba(11, 111, 232, 0.10) 44px 88px
   );
 }
 /* Centre-circle + halfway-line motif for the hero. */
@@ -118,12 +120,7 @@ body { background: var(--paper); color: var(--ink); }
   border: 1px solid var(--gold-soft); border-radius: 9999px;
   padding: .3rem .8rem; font-size: .7rem; font-weight: 800;
   letter-spacing: .1em; text-transform: uppercase;
-  color: #a97e17; background: color-mix(in srgb, var(--gold) 12%, transparent);
-}
-/* Hexagon (classic ball panel) card accent. */
-.premium-card::after {
-  content: '⚽'; position: absolute; top: 8px; right: 10px;
-  font-size: .7rem; opacity: .18; pointer-events: none;
+  color: #43536e; background: color-mix(in srgb, var(--gold) 16%, transparent);
 }
 @media (prefers-reduced-motion: reduce) {
   .wc-ball, .wc-ball-spin { animation: none !important; }
@@ -141,3 +138,51 @@ body { background: var(--paper); color: var(--ink); }
   transition: transform 0.15s ease, background 0.15s ease;
 }
 .ad-sponsored:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--accent, #888) 16%, transparent); }
+
+/* ————— Studio kit: the commercial side of xaa.es ————— */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  border-radius: .6rem; padding: .7rem 1.25rem; font-size: .9rem; font-weight: 700;
+  line-height: 1; text-decoration: none; cursor: pointer; border: 1px solid transparent;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+}
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.btn-primary { background: linear-gradient(120deg, #0a52bd, #0b6fe8 55%, #2f9dff); color: #fff; box-shadow: 0 8px 22px rgba(11, 111, 232, .28); }
+.btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(11, 111, 232, .38); }
+.btn-ghost { border-color: var(--accent-soft); color: var(--accent); background: #fff; }
+.btn-ghost:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 8%, #fff); }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover:not(:disabled) { transform: translateY(-2px); }
+.btn-sm { padding: .45rem .85rem; font-size: .78rem; border-radius: .5rem; }
+
+.field { display: block; margin-bottom: 1rem; }
+.field > span { display: block; margin-bottom: .35rem; font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #43536e; }
+.input, .select, .textarea {
+  width: 100%; border: 1px solid var(--accent-soft); border-radius: .55rem;
+  padding: .65rem .8rem; font-size: .95rem; background: #fff; color: var(--ink);
+}
+.input:focus, .select:focus, .textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.hint { font-size: .78rem; color: #6f81a0; margin-top: .3rem; }
+.form-error { border: 1px solid #fca5a5; background: #fef2f2; color: #991b1b; border-radius: .55rem; padding: .7rem .9rem; font-size: .86rem; margin-bottom: 1rem; }
+.form-ok { border: 1px solid #86efac; background: #f0fdf4; color: #14532d; border-radius: .55rem; padding: .7rem .9rem; font-size: .86rem; margin-bottom: 1rem; }
+
+.badge { display: inline-flex; align-items: center; gap: .35rem; border-radius: 9999px; padding: .2rem .6rem; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.badge-blue { background: color-mix(in srgb, var(--accent) 12%, #fff); color: var(--accent); border: 1px solid var(--accent-soft); }
+.badge-amber { background: #fffbeb; color: #92400e; border: 1px solid #fcd34d; }
+.badge-green { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+.badge-grey { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+.badge-red { background: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
+
+.progress-track { height: .6rem; width: 100%; border-radius: 9999px; background: #e2e8f0; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 9999px; background: linear-gradient(90deg, #0a52bd, #2f9dff 60%, #60c8ff); transition: width .6s ease; }
+
+.panel { border: 1px solid var(--accent-soft); border-radius: .85rem; background: #fff; box-shadow: 0 1px 2px rgba(7, 15, 43, .05); }
+.panel-dark { border-radius: .85rem; background: linear-gradient(160deg, #070f2b, #0c1740 60%, #142158); color: #e6edfb; }
+
+.tick { color: var(--accent); font-weight: 800; }
+.data-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.data-table th { text-align: left; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #6f81a0; padding: .55rem .6rem; border-bottom: 1px solid var(--accent-soft); }
+.data-table td { padding: .65rem .6rem; border-bottom: 1px solid #eef2f9; vertical-align: top; }
+
+/* Brushed-metal wash for hero/CTA bands, echoing the mark. */
+.metal-wash { background: linear-gradient(135deg, #04091b 0%, #070f2b 35%, #0c1740 60%, #0b6fe8 160%); }
