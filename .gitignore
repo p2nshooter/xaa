@@ -6,5 +6,6 @@ node_modules/
 .env*
 .DS_Store
 
-# Local wrangler dev state (D1 sqlite, R2 objects)
-.wrangler/state/
+# Local wrangler dev artefacts: D1 sqlite, R2 objects, and the bundles
+# `wrangler dev` drops in .wrangler/tmp (tens of MB).
+.wrangler/
