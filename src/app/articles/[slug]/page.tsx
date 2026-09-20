@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ARTICLES, CATEGORIES, getArticle, getArticlesByCategory } from '@/content/articles';
-import { ArticleBody, RelatedArticles } from '@/components/Article';
+import { ArticleBody, RelatedArticles, ArchiveNav } from '@/components/Article';
 import { SITE } from '@/lib/site';
 import { jsonLdHtml } from '@/lib/json-ld';
 
@@ -63,13 +63,13 @@ export default async function ArticlePage({ params }: Props) {
           '@type': 'Organization',
           name: SITE.name,
           url: SITE.url,
-          logo: { '@type': 'ImageObject', url: `${SITE.url}/icon.svg` },
+          logo: { '@type': 'ImageObject', url: `${SITE.url}/brand/xaa-mark.png` },
         },
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: SITE.name, item: SITE.url },
+          { '@type': 'ListItem', position: 1, name: SITE.magazine.name, item: `${SITE.url}${SITE.magazine.path}` },
           { '@type': 'ListItem', position: 2, name: catName, item: `${SITE.url}/category/${a.category}` },
           { '@type': 'ListItem', position: 3, name: a.title, item: url },
         ],
@@ -77,10 +77,13 @@ export default async function ArticlePage({ params }: Props) {
     ],
   };
   return (
-    <div className="py-10">
+    <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml(jsonLd) }} />
+      <ArchiveNav active={a.category} />
+      <div className="py-10">
       <ArticleBody article={a} />
       <RelatedArticles articles={related} />
+      </div>
     </div>
   );
 }

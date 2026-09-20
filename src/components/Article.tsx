@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { AdSlot } from '@/components/AdSlot';
 import { BannerAd, NativeAd, SponsoredCard } from '@/components/Ads';
-import { SITE } from '@/lib/site';
+import { SITE, ARCHIVE } from '@/lib/site';
 import { CATEGORIES, ARTICLES } from '@/content/articles';
 import type { Article } from '@/content/types';
 
@@ -95,9 +95,9 @@ export function HomeContent() {
           <div className="mk-fade-up">
             <span className="trophy-chip"><span className="wc-ball" aria-hidden>⚽</span> World Cup 2026 · USA · Canada · Mexico</span>
             <h1 className="mt-5 font-serif text-4xl font-black leading-tight sm:text-6xl">
-              {SITE.heroLead} <span className="accent-text">{SITE.heroAccent}</span>
+              {ARCHIVE.heroLead} <span className="accent-text">{ARCHIVE.heroAccent}</span>
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-800/75 sm:text-lg">{SITE.description}</p>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-800/75 sm:text-lg">{ARCHIVE.description}</p>
             <div className="mt-8 flex flex-wrap gap-8">
               <div>
                 <p className="font-serif text-3xl font-black text-gold-600">{ARTICLES.length}</p>
@@ -169,9 +169,37 @@ export function HomeContent() {
   );
 }
 
+/**
+ * Topic navigation for the editorial archive. The studio header no longer
+ * carries the magazine's categories, so archive pages bring their own.
+ */
+export function ArchiveNav({ active }: { active?: string }) {
+  return (
+    <div className="border-b border-[color:var(--accent-soft)] bg-ivory-100/60">
+      <div className="mx-auto flex max-w-6xl items-center gap-5 overflow-x-auto px-4 py-2.5 text-sm font-semibold [scrollbar-width:none]">
+        <Link href={SITE.magazine.path} className="mk-underline shrink-0 whitespace-nowrap text-gold-600">
+          ← {SITE.magazine.name}
+        </Link>
+        {CATEGORIES.map((c) => (
+          <Link
+            key={c.slug}
+            href={`/category/${c.slug}`}
+            className={`mk-underline shrink-0 whitespace-nowrap transition hover:text-gold-600 ${active === c.slug ? 'text-gold-600' : 'text-ink-800/75'}`}
+          >
+            <span className="mr-1" aria-hidden>{c.icon}</span>
+            {c.name}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function CategoryContent({ cat, articles }: { cat: (typeof CATEGORIES)[number]; articles: Article[] }) {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <>
+      <ArchiveNav active={cat.slug} />
+      <div className="mx-auto max-w-6xl px-4 py-10">
       <p className="text-3xl">{cat.icon}</p>
       <h1 className="mt-2 font-serif text-3xl font-black">{cat.name}</h1>
       <p className="mt-2 max-w-xl text-ink-800/70">{cat.tagline}</p>
@@ -183,6 +211,7 @@ export function CategoryContent({ cat, articles }: { cat: (typeof CATEGORIES)[nu
           <ArticleCard key={a.slug} article={a} />
         ))}
       </div>
-    </div>
+      </div>
+    </>
   );
 }

@@ -37,6 +37,21 @@ export const SITE = {
 } as const;
 
 /**
+ * Copy for the editorial archive. xaa.es began as a World Cup 2026 magazine
+ * and those hundred-odd articles are still published; they keep their own
+ * voice rather than inheriting the studio's.
+ */
+export const ARCHIVE = {
+  heroLead: 'The road to',
+  heroAccent: 'World Cup 2026',
+  tagline: 'World Cup 2026 — every match, every story',
+  description:
+    'Independent, original football writing for World Cup 2026 — the teams, the players, the tactics, the host cities and the history, explained with no hype and no clickbait.',
+  note:
+    'The XAA editorial archive. We are a web development studio; this magazine is the writing the domain grew out of, and we keep it online and free.',
+} as const;
+
+/**
  * Ads belong to the editorial archive only. The commercial side of the site
  * (home, services, pricing, the client portal) stays completely ad-free —
  * nobody signs a six-figure build off a page wrapped in banner units.
