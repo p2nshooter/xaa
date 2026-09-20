@@ -28,11 +28,15 @@ export const SITE = {
   adClient: 'ca-pub-6371903555702163',
   analyticsEndpoint: 'https://api.ulyah.com/track',
   adConfigEndpoint: 'https://api.ulyah.com/content/ad-config',
-  /** Editorial archive kept from the original site. */
+  /**
+   * Editorial archive kept from the original site. Named plainly: calling
+   * football coverage "Insights" in a studio's menu sets an expectation the
+   * content cannot meet.
+   */
   magazine: {
     path: '/insights',
-    name: 'Insights',
-    blurb: 'Our editorial archive — independent football writing from the road to World Cup 2026.',
+    name: 'Football archive',
+    blurb: 'The independent World Cup 2026 writing this domain began as. Still published, still free.',
   },
 } as const;
 

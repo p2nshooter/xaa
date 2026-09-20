@@ -600,3 +600,35 @@ export const TIER_LABEL: Record<Tier, string> = {
   advanced: 'Advanced',
   enterprise: 'Enterprise',
 };
+
+/* ──────────── Which add-ons actually belong to which package ──────────── */
+
+/**
+ * Add-ons worth offering alongside each package, most relevant first.
+ *
+ * The package pages used to show the first four entries of ADDONS regardless
+ * of what was being sold, so an enterprise platform quote suggested
+ * copywriting while an e-commerce build never surfaced payment integration.
+ * The order here is a sales judgement, not an alphabetical accident.
+ */
+const RELATED_ADDONS: Record<string, string[]> = {
+  'landing-page': ['copywriting', 'ui-ux', 'seo', 'performance'],
+  'portfolio-website': ['ui-ux', 'branding', 'copywriting', 'seo'],
+  'company-profile': ['seo', 'ui-ux', 'copywriting', 'migration'],
+  'corporate-website': ['seo', 'ui-ux', 'migration', 'api'],
+  'business-platform': ['api', 'ui-ux', 'payments', 'security-audit'],
+  ecommerce: ['payments', 'migration', 'seo', 'api'],
+  marketplace: ['payments', 'security-audit', 'api', 'ai'],
+  'saas-platform': ['ai', 'api', 'payments', 'security-audit'],
+  'enterprise-platform': ['security-audit', 'api', 'performance', 'ai'],
+  'global-ecosystem': ['ai', 'security-audit', 'api', 'branding'],
+};
+
+export function relatedAddons(packageSlug: string, limit = 4): AddOn[] {
+  const slugs = RELATED_ADDONS[packageSlug] ?? [];
+  const picked = slugs
+    .map((s) => ADDONS.find((a) => a.slug === s))
+    .filter((a): a is AddOn => Boolean(a));
+  // Any package we have not mapped still gets a sensible list rather than none.
+  return (picked.length ? picked : ADDONS).slice(0, limit);
+}

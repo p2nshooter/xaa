@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { PACKAGES, getPackage, getSetupPlan, getCarePlan, ADDONS, eur, usd, priceRange, TIER_LABEL } from '@/content/packages';
+import { PACKAGES, getPackage, getSetupPlan, getCarePlan, relatedAddons, eur, usd, priceRange, TIER_LABEL } from '@/content/packages';
 import { SectionHead, CtaBand, PriceTag } from '@/components/Studio';
 import { STAGES } from '@/content/process';
 import { SITE } from '@/lib/site';
@@ -190,9 +190,9 @@ export default async function PackagePage({ params }: Props) {
             ) : null}
 
             <div className="panel p-5">
-              <h3 className="font-display text-lg font-extrabold">Popular add-ons here</h3>
+              <h3 className="font-display text-lg font-extrabold">Add-ons for this build</h3>
               <ul className="mt-3 space-y-2 text-sm">
-                {ADDONS.slice(0, 4).map((a) => (
+                {relatedAddons(pkg.slug).map((a) => (
                   <li key={a.slug} className="flex items-baseline justify-between gap-3 border-b border-[color:var(--accent-soft)] pb-2">
                     <span>{a.name}</span>
                     <span className="whitespace-nowrap text-xs font-bold">{priceRange(a.priceMin, a.priceMax, a.openEnded)}</span>

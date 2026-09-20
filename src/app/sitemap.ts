@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${b}/process`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${b}/care`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${b}/payments`, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${b}/work`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${b}/capabilities`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${b}/faq`, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${b}/register`, priority: 0.5 },
     // Editorial archive

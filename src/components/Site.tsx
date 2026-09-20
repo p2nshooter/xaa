@@ -6,8 +6,11 @@ import { SITE } from '@/lib/site';
  * three letters mean, and the one thing every visitor is here to do: look at
  * the packages and open a project.
  *
- * The editorial archive the domain started as is still published; it lives
- * behind the "Insights" link and keeps its own navigation.
+ * The editorial archive the domain started as is still published, but it is
+ * deliberately NOT in the primary nav any more. It is football writing, and a
+ * "Insights" link in the main menu of a development studio promised thinking
+ * about software and delivered World Cup coverage. It sits in the footer now,
+ * labelled for what it is, and keeps its own navigation.
  *
  * Deliberately NOT session-aware: reading the cookie here would opt every
  * route — including a hundred pre-rendered archive articles — out of static
@@ -20,8 +23,8 @@ const NAV = [
   { href: '/process', label: 'How it works' },
   { href: '/care', label: 'Setup & Care' },
   { href: '/payments', label: 'Payments' },
-  { href: '/work', label: 'Capabilities' },
-  { href: SITE.magazine.path, label: SITE.magazine.name },
+  { href: '/capabilities', label: 'Capabilities' },
+  { href: '/faq', label: 'FAQ' },
 ];
 
 export function BrandMark({ size = 40, className = '' }: { size?: number; className?: string }) {
@@ -131,7 +134,7 @@ export function SiteFooter() {
               ['/services#addons', 'Add-on services'],
               ['/care#setup', 'One-time setup'],
               ['/care#maintenance', 'Monthly maintenance'],
-              ['/work', 'Capabilities & stack'],
+              ['/capabilities', 'Capabilities & stack'],
             ]}
           />
           <FooterColumn
@@ -139,7 +142,7 @@ export function SiteFooter() {
             links={[
               ['/process', 'How a project runs'],
               ['/payments', 'USDT & PayPal'],
-              ['/faq', 'FAQ'],
+              ['/faq', 'Frequently asked questions'],
               ['/register', 'Open a project'],
               ['/portal', 'Client portal'],
             ]}
