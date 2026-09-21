@@ -13,6 +13,7 @@ type AuthCopy = {
   passwordReg: string; passwordHint: string; confirm: string; createAccount: string; creating: string;
   freeReg0: string; termsLink: string; freeRegAnd: string; privacyLink: string; freeReg1: string;
   signIn: string; noAccount: string; registerHere: string;
+  show: string; hide: string;
 };
 
 const AUTH: Record<Lang, AuthCopy> = {
@@ -25,6 +26,7 @@ const AUTH: Record<Lang, AuthCopy> = {
     freeReg0: 'Free to register. Nothing is charged until you open a project and choose to pay the deposit. By registering you accept our ',
     termsLink: 'terms', freeRegAnd: ' and ', privacyLink: 'privacy policy', freeReg1: '.',
     signIn: 'Sign in', noAccount: 'No account yet? ', registerHere: 'Register here',
+    show: 'Show', hide: 'Hide',
   },
   es: {
     studioAccess: 'Acceso del estudio', adminSignIn: 'Acceso de administración', adminRestricted: 'Restringido a la cuenta del estudio.',
@@ -35,6 +37,7 @@ const AUTH: Record<Lang, AuthCopy> = {
     freeReg0: 'Registro gratuito. No se cobra nada hasta que abras un proyecto y elijas pagar el depósito. Al registrarte aceptas nuestros ',
     termsLink: 'términos', freeRegAnd: ' y la ', privacyLink: 'política de privacidad', freeReg1: '.',
     signIn: 'Iniciar sesión', noAccount: '¿Aún sin cuenta? ', registerHere: 'Regístrate aquí',
+    show: 'Mostrar', hide: 'Ocultar',
   },
   id: {
     studioAccess: 'Akses studio', adminSignIn: 'Masuk admin', adminRestricted: 'Terbatas untuk akun studio.',
@@ -45,8 +48,51 @@ const AUTH: Record<Lang, AuthCopy> = {
     freeReg0: 'Gratis mendaftar. Tak ada tagihan sampai Anda membuka proyek dan memilih membayar DP. Dengan mendaftar Anda menyetujui ',
     termsLink: 'ketentuan', freeRegAnd: ' dan ', privacyLink: 'kebijakan privasi', freeReg1: ' kami.',
     signIn: 'Masuk', noAccount: 'Belum punya akun? ', registerHere: 'Daftar di sini',
+    show: 'Lihat', hide: 'Sembunyikan',
   },
 };
+
+/**
+ * A password input with a reveal toggle. The browser still sees a single
+ * <input name="password"> (its `type` just flips between password/text), so
+ * autofill and "save password" keep working exactly as before — the eye button
+ * only changes what the human sees, never the submitted value.
+ *
+ * `dark` inverts the toggle colour for the panel-dark admin card.
+ */
+function PasswordField({
+  name, label, c, autoComplete, minLength, dark = false,
+}: {
+  name: string; label: string; c: AuthCopy; autoComplete: string; minLength?: number; dark?: boolean;
+}) {
+  const [visible, setVisible] = useState(false);
+  return (
+    <label className="field">
+      <span className={dark ? 'text-white/80' : undefined}>{label}</span>
+      <span className="relative block">
+        <input
+          name={name}
+          type={visible ? 'text' : 'password'}
+          className="input pr-16"
+          required
+          minLength={minLength}
+          autoComplete={autoComplete}
+        />
+        <button
+          type="button"
+          onClick={() => setVisible((v) => !v)}
+          aria-pressed={visible}
+          className={`absolute inset-y-0 right-0 flex items-center pr-3 text-xs font-bold uppercase tracking-wide ${
+            dark ? 'text-white/60 hover:text-white' : 'text-steel-500 hover:text-gold-500'
+          }`}
+          tabIndex={-1}
+        >
+          {visible ? c.hide : c.show}
+        </button>
+      </span>
+    </label>
+  );
+}
 
 /**
  * Hidden studio sign-in. The mark below the client login is quiet on the page;
@@ -106,10 +152,7 @@ function AdminLoginForm({ c }: { c: AuthCopy }) {
         <span className="text-white/80">{c.email}</span>
         <input name="email" type="email" className="input" required autoComplete="username" />
       </label>
-      <label className="field">
-        <span className="text-white/80">{c.password}</span>
-        <input name="password" type="password" className="input" required autoComplete="current-password" />
-      </label>
+      <PasswordField name="password" label={c.password} c={c} autoComplete="current-password" dark />
       <Submit pendingLabel={c.signingIn}>{c.adminEnter}</Submit>
     </form>
   );
@@ -143,15 +186,11 @@ export function RegisterForm({ lang = 'en' }: { lang?: Lang }) {
           <input name="phone" className="input" autoComplete="tel" />
         </label>
         <div />
-        <label className="field">
-          <span>{c.passwordReg}</span>
-          <input name="password" type="password" className="input" required minLength={8} autoComplete="new-password" />
+        <div>
+          <PasswordField name="password" label={c.passwordReg} c={c} autoComplete="new-password" minLength={8} />
           <span className="hint">{c.passwordHint}</span>
-        </label>
-        <label className="field">
-          <span>{c.confirm}</span>
-          <input name="confirm" type="password" className="input" required minLength={8} autoComplete="new-password" />
-        </label>
+        </div>
+        <PasswordField name="confirm" label={c.confirm} c={c} autoComplete="new-password" minLength={8} />
       </div>
       <Submit pendingLabel={c.creating}>{c.createAccount}</Submit>
       <p className="hint mt-3">
@@ -171,12 +210,9 @@ export function LoginForm({ next = '/portal', lang = 'en' }: { next?: string; la
       <input type="hidden" name="next" value={next} />
       <label className="field">
         <span>{c.email}</span>
-        <input name="email" type="email" className="input" required autoComplete="email" />
+        <input name="email" type="email" className="input" required autoComplete="username" />
       </label>
-      <label className="field">
-        <span>{c.password}</span>
-        <input name="password" type="password" className="input" required autoComplete="current-password" />
-      </label>
+      <PasswordField name="password" label={c.password} c={c} autoComplete="current-password" />
       <Submit pendingLabel={c.signingIn}>{c.signIn}</Submit>
       <p className="hint mt-3">
         {c.noAccount}<Link href="/register" className="underline">{c.registerHere}</Link>.

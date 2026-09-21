@@ -45,7 +45,7 @@ export class NotConfiguredError extends Error {
   }
 }
 
-const SCHEMA = [
+const TABLES = [
   `CREATE TABLE IF NOT EXISTS users (
      id TEXT PRIMARY KEY,
      email TEXT NOT NULL UNIQUE,
@@ -63,7 +63,6 @@ const SCHEMA = [
      created_at TEXT NOT NULL,
      expires_at TEXT NOT NULL
    )`,
-  `CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id)`,
   `CREATE TABLE IF NOT EXISTS projects (
      id TEXT PRIMARY KEY,
      ref TEXT NOT NULL UNIQUE,
@@ -89,7 +88,6 @@ const SCHEMA = [
      created_at TEXT NOT NULL,
      updated_at TEXT NOT NULL
    )`,
-  `CREATE INDEX IF NOT EXISTS idx_projects_user ON projects(user_id)`,
   `CREATE TABLE IF NOT EXISTS payments (
      id TEXT PRIMARY KEY,
      project_id TEXT NOT NULL,
@@ -106,7 +104,6 @@ const SCHEMA = [
      created_at TEXT NOT NULL,
      confirmed_at TEXT
    )`,
-  `CREATE INDEX IF NOT EXISTS idx_payments_project ON payments(project_id)`,
   `CREATE TABLE IF NOT EXISTS files (
      id TEXT PRIMARY KEY,
      project_id TEXT NOT NULL,
@@ -119,7 +116,6 @@ const SCHEMA = [
      uploaded_by TEXT NOT NULL,
      created_at TEXT NOT NULL
    )`,
-  `CREATE INDEX IF NOT EXISTS idx_files_project ON files(project_id)`,
   `CREATE TABLE IF NOT EXISTS updates (
      id TEXT PRIMARY KEY,
      project_id TEXT NOT NULL,
@@ -130,7 +126,6 @@ const SCHEMA = [
      author TEXT NOT NULL,
      created_at TEXT NOT NULL
    )`,
-  `CREATE INDEX IF NOT EXISTS idx_updates_project ON updates(project_id)`,
   `CREATE TABLE IF NOT EXISTS enquiries (
      id TEXT PRIMARY KEY,
      name TEXT NOT NULL,
@@ -167,7 +162,6 @@ const SCHEMA = [
      created_at TEXT NOT NULL,
      updated_at TEXT NOT NULL
    )`,
-  `CREATE INDEX IF NOT EXISTS idx_payment_methods_active ON payment_methods(active, sort_order)`,
   /** Studio configuration typed by an admin; secret values are encrypted. */
   `CREATE TABLE IF NOT EXISTS app_settings (
      key TEXT PRIMARY KEY,
@@ -210,7 +204,6 @@ const SCHEMA = [
      actor TEXT NOT NULL,
      created_at TEXT NOT NULL
    )`,
-  `CREATE INDEX IF NOT EXISTS idx_recovery_project ON recovery_events(project_id, created_at)`,
   /**
    * Ready-made SaaS template store. An order is one purchase of one template;
    * when it is marked paid, the buyer may download that template's bundle. The
@@ -230,7 +223,6 @@ const SCHEMA = [
      created_at TEXT NOT NULL,
      confirmed_at TEXT
    )`,
-  `CREATE INDEX IF NOT EXISTS idx_template_orders_user ON template_orders(user_id, created_at)`,
   `CREATE TABLE IF NOT EXISTS template_bundles (
      slug TEXT PRIMARY KEY,
      object_key TEXT NOT NULL,
@@ -240,6 +232,30 @@ const SCHEMA = [
      updated_by TEXT
    )`,
 ];
+
+/**
+ * Indexes are applied last, after the column migrations below, and each on its
+ * own with any failure tolerated. They are pure query optimisations — the
+ * portal is correct without them — and one that references a column an older,
+ * drifted table has not gained yet must never be allowed to block the tables
+ * sign-in actually needs. (idx_payment_methods_active is the classic trap: it
+ * names sort_order, a column added after that table's first release.)
+ */
+const INDEXES = [
+  `CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_projects_user ON projects(user_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_payments_project ON payments(project_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_files_project ON files(project_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_updates_project ON updates(project_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_payment_methods_active ON payment_methods(active, sort_order)`,
+  `CREATE INDEX IF NOT EXISTS idx_recovery_project ON recovery_events(project_id, created_at)`,
+  `CREATE INDEX IF NOT EXISTS idx_template_orders_user ON template_orders(user_id, created_at)`,
+];
+
+/** The two tables sign-in cannot work without. If either of these cannot be
+ *  ensured, the failure is real and must surface; everything else is tolerated
+ *  so a drifted or half-built database still lets the studio owner in. */
+const CRITICAL_TABLES = ['users', 'sessions'];
 
 /**
  * Columns added after the first release.
@@ -275,17 +291,49 @@ function isDuplicateColumn(err: unknown): boolean {
   return /duplicate column/i.test(err instanceof Error ? err.message : String(err));
 }
 
+function tableOf(createSql: string): string {
+  return /create table if not exists\s+([a-z_]+)/i.exec(createSql)?.[1] ?? '';
+}
+
+/**
+ * Apply the schema statement by statement, never as a single batch.
+ *
+ * A batch is one transaction: if any statement failed — an index naming a
+ * column an older, drifted table has not gained, say — the whole thing rolled
+ * back on *every* request, which took down `db()` and with it the sign-in that
+ * only ever reads the users table. That produced a portal that was
+ * permanently un-sign-in-able while looking, from the outside, like a bad
+ * password. So now:
+ *   1. tables run individually; a failure on a non-critical table is tolerated,
+ *      but a failure on users/sessions is fatal and surfaces;
+ *   2. column migrations run next (duplicate-column is the "already done"
+ *      signal and is swallowed);
+ *   3. indexes run last, each tolerated — they are only query optimisations.
+ * The result: a half-built or drifted database still lets the owner in.
+ */
 async function ensureSchema(database: D1Database): Promise<void> {
   if (!ready) {
     ready = (async () => {
-      await database.batch(SCHEMA.map((sql) => database.prepare(sql)));
-      // Not batched: a batch is one transaction, so the first already-applied
-      // ALTER would roll the rest back on every single request.
+      for (const sql of TABLES) {
+        try {
+          await database.prepare(sql).run();
+        } catch (err) {
+          if (CRITICAL_TABLES.includes(tableOf(sql))) throw err;
+          console.error('schema: non-critical table create failed (continuing):', err);
+        }
+      }
       for (const sql of COLUMN_MIGRATIONS) {
         try {
           await database.prepare(sql).run();
         } catch (err) {
-          if (!isDuplicateColumn(err)) throw err;
+          if (!isDuplicateColumn(err)) console.error('schema: column migration failed (continuing):', err);
+        }
+      }
+      for (const sql of INDEXES) {
+        try {
+          await database.prepare(sql).run();
+        } catch (err) {
+          console.error('schema: index create failed (continuing):', err);
         }
       }
     })().catch((err) => {

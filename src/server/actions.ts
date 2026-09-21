@@ -118,9 +118,28 @@ export async function loginAction(_prev: ActionState, form: FormData): Promise<A
     await startSession(user.id);
   } catch (err) {
     if (isRedirect(err)) throw err;
-    return fail(err);
+    // Sign-in is the one action where the *real* reason matters more than a
+    // tidy message: the studio owner cannot open /api/health if they cannot
+    // sign in, and a bare "Something went wrong" told us nothing across many
+    // deploys. Surface a short, secret-free diagnostic instead — the name of
+    // the error and a trimmed message with any long hex token (hashes, keys,
+    // ids) redacted — so a failure is legible from the screen itself.
+    return { error: loginDiagnostic(err) };
   }
   redirect(next.startsWith('/') ? next : '/portal');
+}
+
+/** A short, secret-free description of a sign-in failure, safe to show. */
+function loginDiagnostic(err: unknown): string {
+  if (err instanceof NotConfiguredError) return err.message;
+  const name = err instanceof Error ? err.name : 'Error';
+  let msg = err instanceof Error ? err.message : String(err);
+  // Redact anything that looks like a secret: 24+ char hex runs (hashes/keys),
+  // and our pbkdf2$… hash strings.
+  msg = msg.replace(/pbkdf2\$[^\s]+/gi, '[redacted]').replace(/[0-9a-f]{24,}/gi, '[redacted]');
+  msg = msg.replace(/\s+/g, ' ').trim();
+  if (msg.length > 160) msg = msg.slice(0, 160) + '…';
+  return `Sign-in failed (${name}): ${msg || 'no detail'}. Please try again.`;
 }
 
 export async function logoutAction(): Promise<void> {
