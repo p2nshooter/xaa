@@ -9,6 +9,7 @@ import { GlobalAds } from '@/components/Ads';
 import { PageAds } from '@/components/PageAds';
 import { jsonLdHtml } from '@/lib/json-ld';
 import { PACKAGES, eur } from '@/content/packages';
+import { getLang } from '@/lib/i18n.server';
 
 // Display face for headings. A clean grotesk rather than the old Playfair:
 // the serif read as ornamental next to a pricing table.
@@ -34,9 +35,10 @@ export const metadata: Metadata = {
   other: { 'google-adsense-account': SITE.adClient },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const lang = await getLang();
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html lang={lang} className={`${display.variable} ${sans.variable}`}>
       <head>
         <meta name="google-adsense-account" content={SITE.adClient} />
         <script

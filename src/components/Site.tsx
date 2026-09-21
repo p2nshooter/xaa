@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { SITE } from '@/lib/site';
+import { translator } from '@/lib/i18n';
+import { getLang } from '@/lib/i18n.server';
+import { LangSwitcher } from '@/components/LangSwitcher';
 
 /**
  * Studio chrome — light, quiet, and out of the way. Mark, wordmark, what the
@@ -12,20 +15,19 @@ import { SITE } from '@/lib/site';
  * about software and delivered World Cup coverage. It sits in the footer now,
  * labelled for what it is, and keeps its own navigation.
  *
- * Deliberately NOT session-aware: reading the cookie here would opt every
- * route — including a hundred pre-rendered archive articles — out of static
- * rendering for the sake of one button. The portal shows who you are once
- * you are inside it.
+ * The chrome is language-aware (getLang) so the picker in the header can switch
+ * the whole site. That reads the sticky cookie, which opts these shared parts
+ * out of static rendering — an accepted cost for a manually localised site.
  */
 
 const NAV = [
-  { href: '/services', label: 'Services' },
-  { href: '/portfolio', label: 'Work' },
-  { href: '/process', label: 'How it works' },
-  { href: '/care', label: 'Setup & Care' },
-  { href: '/payments', label: 'Payments' },
-  { href: '/capabilities', label: 'Capabilities' },
-  { href: '/faq', label: 'FAQ' },
+  { href: '/services', key: 'nav.services' },
+  { href: '/portfolio', key: 'nav.work' },
+  { href: '/process', key: 'nav.process' },
+  { href: '/care', key: 'nav.care' },
+  { href: '/payments', key: 'nav.payments' },
+  { href: '/capabilities', key: 'nav.capabilities' },
+  { href: '/faq', key: 'nav.faq' },
 ];
 
 export function BrandMark({ size = 40, className = '' }: { size?: number; className?: string }) {
@@ -43,7 +45,9 @@ export function BrandMark({ size = 40, className = '' }: { size?: number; classN
   );
 }
 
-export function SiteHeader() {
+export async function SiteHeader() {
+  const lang = await getLang();
+  const t = translator(lang);
   return (
     <header id="top">
       {/* Positioning strip — the promise and the payment rails, one line. */}
@@ -51,12 +55,12 @@ export function SiteHeader() {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-1.5 text-[11px] font-medium">
           <span className="flex items-center gap-2">
             <span className="mk-live-dot" />
-            Taking projects for the next production slot — start from a 10% deposit
+            {t('promo.slot')}
           </span>
           <span className="hidden items-center gap-3 text-white/75 sm:flex">
-            <span>Paid in USDT or PayPal</span>
+            <span>{t('promo.paid')}</span>
             <span aria-hidden>·</span>
-            <span>Milestone-based, never all up front</span>
+            <span>{t('promo.milestone')}</span>
           </span>
         </div>
       </div>
@@ -82,14 +86,15 @@ export function SiteHeader() {
           <nav className="hidden items-center gap-6 text-sm font-medium text-ink-800 lg:flex">
             {NAV.map((n) => (
               <Link key={n.href} href={n.href} className="mk-underline whitespace-nowrap transition hover:text-gold-500">
-                {n.label}
+                {t(n.key)}
               </Link>
             ))}
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <Link href="/portal" className="btn btn-ghost btn-sm hidden sm:inline-flex">Client portal</Link>
-            <Link href="/register" className="btn btn-primary btn-sm">Start a project</Link>
+            <LangSwitcher current={lang} label={t('lang.label')} />
+            <Link href="/portal" className="btn btn-ghost btn-sm hidden sm:inline-flex">{t('nav.portal')}</Link>
+            <Link href="/register" className="btn btn-primary btn-sm">{t('nav.start')}</Link>
           </div>
         </div>
 
@@ -97,11 +102,11 @@ export function SiteHeader() {
         <div className="mx-auto flex max-w-6xl items-center gap-5 overflow-x-auto px-4 pb-2.5 text-sm font-medium text-ink-800 [scrollbar-width:none] lg:hidden">
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} className="shrink-0 whitespace-nowrap transition hover:text-gold-500">
-              {n.label}
+              {t(n.key)}
             </Link>
           ))}
           <Link href="/contact" className="shrink-0 whitespace-nowrap text-steel-500 transition hover:text-gold-500">
-            Contact
+            {t('nav.contact')}
           </Link>
         </div>
       </div>
@@ -109,7 +114,9 @@ export function SiteHeader() {
   );
 }
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const lang = await getLang();
+  const t = translator(lang);
   return (
     <footer className="mt-24 border-t border-[color:var(--line)] bg-[color:var(--surface)]">
       <div className="mx-auto max-w-6xl px-4 py-14">
@@ -123,54 +130,51 @@ export function SiteFooter() {
             </div>
             <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-gold-500">{SITE.expansion}</p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-steel-500">
-              A European development studio. We design, build, deploy and maintain websites, stores and platforms —
-              from a single landing page to an enterprise ecosystem.
+              {t('footer.tagline')}
             </p>
           </div>
 
           <FooterColumn
-            title="Services"
+            title={t('footer.services')}
             links={[
-              ['/services', 'All packages'],
-              ['/portfolio', 'Work we have built'],
-              ['/portfolio#super-enterprise', 'Super Enterprise'],
-              ['/election-systems', 'Election & civic systems'],
-              ['/services#addons', 'Add-on services'],
-              ['/care#setup', 'One-time setup'],
-              ['/care#maintenance', 'Monthly maintenance'],
-              ['/capabilities', 'Capabilities & stack'],
+              ['/services', t('footer.allPackages')],
+              ['/portfolio', t('footer.workBuilt')],
+              ['/portfolio#super-enterprise', t('footer.superEnterprise')],
+              ['/election-systems', t('footer.election')],
+              ['/services#addons', t('footer.addons')],
+              ['/care#setup', t('footer.setup')],
+              ['/care#maintenance', t('footer.maintenance')],
+              ['/capabilities', t('footer.capabilities')],
             ]}
           />
           <FooterColumn
-            title="Working with us"
+            title={t('footer.working')}
             links={[
-              ['/process', 'How a project runs'],
-              ['/payments', 'USDT & PayPal'],
-              ['/faq', 'Frequently asked questions'],
-              ['/register', 'Open a project'],
-              ['/portal', 'Client portal'],
+              ['/process', t('footer.processRuns')],
+              ['/payments', t('footer.usdtPaypal')],
+              ['/faq', t('footer.faqLong')],
+              ['/register', t('footer.openProject')],
+              ['/portal', t('nav.portal')],
             ]}
           />
           <FooterColumn
-            title="Studio"
+            title={t('footer.studio')}
             links={[
-              ['/about', 'About XAA'],
-              ['/contact', 'Contact'],
-              [SITE.magazine.path, SITE.magazine.name],
-              ['/terms', 'Terms'],
-              ['/privacy', 'Privacy'],
+              ['/about', t('footer.about')],
+              ['/contact', t('footer.contact')],
+              [SITE.magazine.path, t('footer.archive')],
+              ['/terms', t('footer.terms')],
+              ['/privacy', t('footer.privacy')],
             ]}
           />
         </div>
 
         <p className="mt-12 border-t border-[color:var(--line)] pt-6 text-xs leading-relaxed text-steel-500">
-          All prices are indicative European market rates in euros, quoted before VAT where applicable, and are confirmed
-          in writing after a scope review. Setup and monthly maintenance are priced separately from the build. Domain
-          registration, third-party licences, payment gateway fees and external API usage are billed at cost.
+          {t('footer.legal')}
         </p>
         <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-steel-400">
           <p>© {new Date().getFullYear()} {SITE.domain} — {SITE.expansionPlain}</p>
-          <a href="#top" className="transition hover:text-gold-500">↑ Back to top</a>
+          <a href="#top" className="transition hover:text-gold-500">{t('footer.backToTop')}</a>
         </div>
       </div>
     </footer>

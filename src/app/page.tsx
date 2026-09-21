@@ -5,6 +5,8 @@ import { PACKAGES, ADDONS, CARE_PLANS, SETUP_PLANS, eur, priceRange } from '@/co
 import { PackageCard, SectionHead, CtaBand, StatStrip, AddOnCard } from '@/components/Studio';
 import { BrandMark } from '@/components/Site';
 import { STAGES } from '@/content/process';
+import { translator } from '@/lib/i18n';
+import { getLang } from '@/lib/i18n.server';
 
 export const metadata: Metadata = {
   title: `${SITE.name} — ${SITE.tagline}`,
@@ -26,10 +28,9 @@ const PRINCIPLES = [
   { n: '04', title: 'You own what we build', body: 'Source code, design files, content and infrastructure accounts transfer to you at handover. Setup and maintenance are separate services, never a lock-in.' },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const t = translator(await getLang());
   const featured = PACKAGES.filter((p) => ['landing-page', 'company-profile', 'business-platform', 'ecommerce', 'saas-platform', 'enterprise-platform'].includes(p.slug));
-  const smallest = PACKAGES[0]!;
-  const largest = PACKAGES[PACKAGES.length - 1]!;
 
   return (
     <>
@@ -44,30 +45,28 @@ export default function HomePage() {
               <span className="mk-live-dot" /> {SITE.expansion}
             </span>
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl">
-              {SITE.heroLead}{' '}
-              <span className="accent-text">{SITE.heroAccent}</span>
+              {t('home.hero.lead')}{' '}
+              <span className="accent-text">{t('home.hero.accent')}</span>
             </h1>
             <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-slate-600">
-              XAA builds the website, the store or the platform your business actually runs on — from a{' '}
-              {eur(smallest.priceMin)} landing page to a {eur(largest.priceMin)}+ global ecosystem. European engineering
-              standards, milestone payments, and a client portal that shows you exactly where your build stands.
+              {t('home.hero.body')}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/services" className="btn btn-primary">See packages & pricing</Link>
-              <Link href="/portal/new" className="btn btn-ghost">Open a project</Link>
+              <Link href="/services" className="btn btn-primary">{t('home.hero.seePackages')}</Link>
+              <Link href="/portal/new" className="btn btn-ghost">{t('home.hero.openProject')}</Link>
             </div>
             <dl className="mt-10 grid max-w-lg grid-cols-3 gap-6 border-t border-slate-200 pt-6 text-sm">
               <div>
-                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Start from</dt>
-                <dd className="mt-1 font-display text-base font-extrabold sm:text-xl">10% deposit</dd>
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{t('home.hero.startFrom')}</dt>
+                <dd className="mt-1 font-display text-base font-extrabold sm:text-xl">{t('home.hero.deposit10')}</dd>
               </div>
               <div>
-                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Paid in</dt>
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{t('home.hero.paidIn')}</dt>
                 <dd className="mt-1 font-display text-base font-extrabold sm:text-xl">USDT · PayPal</dd>
               </div>
               <div>
-                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Delivery from</dt>
-                <dd className="mt-1 font-display text-base font-extrabold sm:text-xl">3 days</dd>
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{t('home.hero.deliveryFrom')}</dt>
+                <dd className="mt-1 font-display text-base font-extrabold sm:text-xl">{t('home.hero.days3')}</dd>
               </div>
             </dl>
           </div>
@@ -85,10 +84,10 @@ export default function HomePage() {
         <div className="panel overflow-hidden">
           <div className="grid gap-px bg-[color:var(--accent-soft)] sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { letter: 'X', word: 'eXperience', body: 'What the visitor feels. Interface, speed, clarity, trust — the part that decides whether anything else you built ever gets used.' },
-              { letter: 'A', word: 'Automation', body: 'What removes the manual step. The payment that reconciles itself, the report nobody assembles by hand, the status a client reads without asking.' },
-              { letter: 'A', word: 'Architecture', body: 'What holds it up. Data models, services, security and infrastructure designed for the size you are growing into, not the size you are.' },
-              { letter: 'ES', word: 'Ecosystem Services', body: 'What most studios skip: keeping the thing alive once it ships — setup, monitoring, patching and the hours that keep it current.' },
+              { letter: 'X', word: t('home.mean.xWord'), body: t('home.mean.xBody') },
+              { letter: 'A', word: t('home.mean.a1Word'), body: t('home.mean.a1Body') },
+              { letter: 'A', word: t('home.mean.a2Word'), body: t('home.mean.a2Body') },
+              { letter: 'ES', word: t('home.mean.esWord'), body: t('home.mean.esBody') },
             ].map((x, i) => (
               <div key={i} className="bg-white p-8">
                 <p className="font-display text-5xl font-extrabold accent-text">{x.letter}</p>
@@ -99,16 +98,16 @@ export default function HomePage() {
           </div>
         </div>
         <p className="mt-4 text-center text-sm text-steel-500">
-          <strong className="text-ink-900">{SITE.expansionPlain}</strong> — four disciplines, one delivery team.
+          <strong className="text-ink-900">{SITE.expansionPlain}</strong> — {t('home.mean.footnote')}
         </p>
       </section>
 
       {/* ───────────────── Capabilities ───────────────── */}
       <section className="mx-auto max-w-6xl px-4 py-12">
         <SectionHead
-          eyebrow="What we build"
-          title="Four kinds of work, one engineering standard"
-          lead="The package you choose changes the scope, never the quality of the code underneath it. A €500 landing page is written to the same standards as a €500,000 platform — there is simply less of it."
+          eyebrow={t('home.cap.eyebrow')}
+          title={t('home.cap.title')}
+          lead={t('home.cap.lead')}
         />
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {CAPABILITIES.map((c, i) => (
@@ -125,11 +124,11 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHead
-            eyebrow="Packages"
-            title="Ten packages, priced at European market rates"
-            lead="Every price is a real range, published before you talk to anyone. The final figure is fixed in writing after a scope review — and it never moves afterwards without your signature."
+            eyebrow={t('home.pkg.eyebrow')}
+            title={t('home.pkg.title')}
+            lead={t('home.pkg.lead')}
           />
-          <Link href="/services" className="btn btn-ghost btn-sm shrink-0">All ten packages →</Link>
+          <Link href="/services" className="btn btn-ghost btn-sm shrink-0">{t('home.pkg.all')}</Link>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featured.map((p) => (
@@ -138,18 +137,18 @@ export default function HomePage() {
         </div>
         <div className="mt-8 panel flex flex-wrap items-center justify-between gap-4 p-6">
           <p className="text-sm text-steel-500">
-            Also available: {PACKAGES.filter((p) => !featured.includes(p)).map((p) => p.name).join(' · ')}.
+            {t('home.pkg.also')} {PACKAGES.filter((p) => !featured.includes(p)).map((p) => p.name).join(' · ')}.
           </p>
-          <Link href="/services" className="btn btn-dark btn-sm">Compare everything</Link>
+          <Link href="/services" className="btn btn-dark btn-sm">{t('home.pkg.compare')}</Link>
         </div>
       </section>
 
       {/* ───────────────── How payment works ───────────────── */}
       <section className="mx-auto max-w-6xl px-4 py-16">
         <SectionHead
-          eyebrow="How it works"
-          title="Seven steps from order to handover"
-          lead="Register, choose a package, pay 10%, upload your concept — and from that moment the portal shows you a delivery date and a live progress bar. You settle the balance only when the build is 75–80% done."
+          eyebrow={t('home.how.eyebrow')}
+          title={t('home.how.title')}
+          lead={t('home.how.lead')}
           center
         />
         <ol className="mt-12 grid gap-4 md:grid-cols-3 lg:grid-cols-7">
@@ -162,7 +161,7 @@ export default function HomePage() {
           ))}
         </ol>
         <div className="mt-8 flex justify-center">
-          <Link href="/process" className="btn btn-ghost btn-sm">Read the full process →</Link>
+          <Link href="/process" className="btn btn-ghost btn-sm">{t('home.how.readFull')}</Link>
         </div>
       </section>
 
@@ -170,9 +169,9 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr]">
           <SectionHead
-            eyebrow="Why clients stay"
-            title="The terms are the product"
-            lead="Anyone can show you a portfolio. What actually decides whether a build goes well is how it is paid for, how progress is reported, and who owns the result."
+            eyebrow={t('home.principles.eyebrow')}
+            title={t('home.principles.title')}
+            lead={t('home.principles.lead')}
           />
           <div className="grid gap-5 sm:grid-cols-2">
             {PRINCIPLES.map((p) => (
@@ -189,17 +188,16 @@ export default function HomePage() {
       {/* ───────────────── Setup & care ───────────────── */}
       <section className="mx-auto max-w-6xl px-4 py-16">
         <SectionHead
-          eyebrow="After launch"
-          title="Setup and maintenance are priced separately — on purpose"
-          lead="The build price covers the build. Getting you live is a one-time setup service; keeping you live is a monthly care plan. You can take either, both or neither, and you can stop a care plan any month."
+          eyebrow={t('home.after.eyebrow')}
+          title={t('home.after.title')}
+          lead={t('home.after.lead')}
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <div className="panel p-6">
-            <p className="badge badge-blue">One-time</p>
-            <h3 className="mt-3 font-display text-xl font-extrabold">Setup service</h3>
+            <p className="badge badge-blue">{t('home.setup.oneTime')}</p>
+            <h3 className="mt-3 font-display text-xl font-extrabold">{t('home.setup.title')}</h3>
             <p className="mt-2 text-sm leading-relaxed text-steel-500">
-              We do the configuration with you, once: domain, DNS, SSL, hosting, email records, analytics, backups — then
-              hand you the keys and a recorded walkthrough.
+              {t('home.setup.body')}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
               {SETUP_PLANS.map((s) => (
@@ -211,14 +209,13 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-            <Link href="/care#setup" className="btn btn-ghost btn-sm mt-5">What setup includes →</Link>
+            <Link href="/care#setup" className="btn btn-ghost btn-sm mt-5">{t('home.setup.link')}</Link>
           </div>
           <div className="panel p-6">
-            <p className="badge badge-green">Monthly</p>
-            <h3 className="mt-3 font-display text-xl font-extrabold">Care plans</h3>
+            <p className="badge badge-green">{t('home.care.monthly')}</p>
+            <h3 className="mt-3 font-display text-xl font-extrabold">{t('home.care.title')}</h3>
             <p className="mt-2 text-sm leading-relaxed text-steel-500">
-              Updates, backups, monitoring, security patching and a monthly allowance of development hours, so the thing
-              we built keeps working while you run your business.
+              {t('home.care.body')}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
               {CARE_PLANS.map((c) => (
@@ -230,21 +227,21 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-            <Link href="/care#maintenance" className="btn btn-ghost btn-sm mt-5">Compare care plans →</Link>
+            <Link href="/care#maintenance" className="btn btn-ghost btn-sm mt-5">{t('home.care.link')}</Link>
           </div>
         </div>
       </section>
 
       {/* ───────────────── Add-ons ───────────────── */}
       <section className="mx-auto max-w-6xl px-4 py-12">
-        <SectionHead eyebrow="Add-ons" title="Bolt anything on, at any point" lead="Add-ons can be selected when you open the project or added later. Each is quoted on its own so you always know what you are paying for." />
+        <SectionHead eyebrow={t('home.addons.eyebrow')} title={t('home.addons.title')} lead={t('home.addons.lead')} />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {ADDONS.slice(0, 6).map((a) => (
             <AddOnCard key={a.slug} addon={a} />
           ))}
         </div>
         <div className="mt-6 text-center">
-          <Link href="/services#addons" className="btn btn-ghost btn-sm">All add-on services →</Link>
+          <Link href="/services#addons" className="btn btn-ghost btn-sm">{t('home.addons.all')}</Link>
         </div>
       </section>
 
@@ -260,7 +257,12 @@ export default function HomePage() {
         />
       </section>
 
-      <CtaBand />
+      <CtaBand
+        title={t('cta.title')}
+        lead={t('cta.lead')}
+        primary={{ href: '/portal/new', label: t('cta.primary') }}
+        secondary={{ href: '/contact', label: t('cta.secondary') }}
+      />
     </>
   );
 }
