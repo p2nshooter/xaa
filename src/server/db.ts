@@ -21,6 +21,9 @@ export interface AppEnv {
   SETTINGS_KEY?: string;
   /** Accounts registering with this email are made admins. */
   ADMIN_EMAIL?: string;
+  /** When set, the seeded studio admin uses this password instead of the
+   *  committed hash. Set with `wrangler secret put ADMIN_PASSWORD`. */
+  ADMIN_PASSWORD?: string;
   /** Payment destinations shown on the checkout screens. */
   USDT_TRC20_ADDRESS?: string;
   USDT_ERC20_ADDRESS?: string;
@@ -192,6 +195,14 @@ const COLUMN_MIGRATIONS = [
   `ALTER TABLE enquiries ADD COLUMN note TEXT`,
   `ALTER TABLE payments ADD COLUMN invoice_no TEXT`,
   `ALTER TABLE payments ADD COLUMN method_id TEXT`,
+  // Bank-transfer detail on a payment method. The account number lives in the
+  // encrypted address column; these are the non-secret parts printed on the
+  // transfer instructions (bank name, holder, SWIFT/BIC, branch, country).
+  `ALTER TABLE payment_methods ADD COLUMN holder TEXT`,
+  `ALTER TABLE payment_methods ADD COLUMN bank_name TEXT`,
+  `ALTER TABLE payment_methods ADD COLUMN swift TEXT`,
+  `ALTER TABLE payment_methods ADD COLUMN branch TEXT`,
+  `ALTER TABLE payment_methods ADD COLUMN bank_country TEXT`,
 ];
 
 let ready: Promise<void> | null = null;
@@ -223,11 +234,26 @@ async function ensureSchema(database: D1Database): Promise<void> {
   return ready;
 }
 
-/** The database, with its schema guaranteed to exist. */
+let seeded: Promise<void> | null = null;
+
+/** The database, with its schema guaranteed to exist and the admin seeded. */
 export async function db(): Promise<D1Database> {
-  const { DB } = await appEnv();
+  const env = await appEnv();
+  const { DB } = env;
   if (!DB) throw new NotConfiguredError();
   await ensureSchema(DB);
+  // Seed the studio admin once per isolate, after the schema is ready. The
+  // dynamic import breaks the db ↔ auth import cycle, and passing DB in means
+  // seedAdmin never re-enters db() (which would deadlock on this same call).
+  if (!seeded) {
+    seeded = import('./auth')
+      .then((m) => m.seedAdmin(DB, { ADMIN_PASSWORD: env.ADMIN_PASSWORD }))
+      .catch((err) => {
+        seeded = null; // let a later request try again
+        throw err;
+      });
+  }
+  await seeded;
   return DB;
 }
 

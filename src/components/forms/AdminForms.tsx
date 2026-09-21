@@ -4,9 +4,48 @@ import { useActionState, useState } from 'react';
 import {
   savePaymentMethodAction, togglePaymentMethodAction, deletePaymentMethodAction,
   importEnvMethodsAction, saveSettingsAction, clearSettingAction,
-  updateLeadAction, deleteLeadAction, type ActionState,
+  updateLeadAction, deleteLeadAction, revealMethodAction, revealSettingAction,
+  type ActionState, type RevealState,
 } from '@/server/actions';
 import { Submit, Notice } from './Submit';
+
+/** Show/hide a stored secret on demand. Admin-only; the value is fetched from
+ *  the server only when Show is pressed, and hidden again on Hide. */
+function RevealValue({ kind, id }: { kind: 'method' | 'setting'; id: string }) {
+  const [state, action] = useActionState<RevealState, FormData>(
+    kind === 'method' ? revealMethodAction : revealSettingAction,
+    {}
+  );
+  const [shown, setShown] = useState(false);
+  const has = state.value !== undefined || state.error !== undefined;
+
+  return (
+    <span className="inline-flex flex-wrap items-center gap-2">
+      {!shown || !has ? (
+        <form action={action} className="inline">
+          <input type="hidden" name={kind === 'method' ? 'id' : 'key'} value={id} />
+          <button type="submit" className="btn btn-ghost btn-sm" onClick={() => setShown(true)}>
+            Show
+          </button>
+        </form>
+      ) : (
+        <button type="button" className="btn btn-ghost btn-sm" onClick={() => setShown(false)}>
+          Hide
+        </button>
+      )}
+      {shown && has ? (
+        state.error ? (
+          <span className="text-xs text-red-700">{state.error}</span>
+        ) : (
+          <code className="break-all rounded bg-[color:var(--surface)] px-2 py-1 text-xs">
+            {state.value || '(empty)'}
+            {state.memo ? ` · memo: ${state.memo}` : ''}
+          </code>
+        )
+      ) : null}
+    </span>
+  );
+}
 
 /* ───────────────── Payment destinations ───────────────── */
 
@@ -23,6 +62,11 @@ export interface MethodView {
   sortOrder: number;
   unreadable: boolean;
   hasMemo: boolean;
+  holder?: string | null;
+  bankName?: string | null;
+  swift?: string | null;
+  branch?: string | null;
+  bankCountry?: string | null;
 }
 
 const NETWORKS = ['TRC20', 'ERC20', 'BEP20', 'Polygon', 'Solana', 'Arbitrum', 'Bitcoin', 'Other'];
@@ -100,6 +144,38 @@ export function PaymentMethodForm({ method, onDone }: { method?: MethodView; onD
         </span>
       </label>
 
+      {kind === 'bank' ? (
+        <div className="rounded-xl bg-[color:var(--surface)] p-4">
+          <p className="text-xs font-black uppercase tracking-wide text-steel-500">Bank details</p>
+          <p className="mt-1 text-xs text-steel-400">
+            For BNI (SWIFT <code>BNINIDJA</code>), the international transfer guide fills in automatically when you leave
+            the instructions blank. BNI receives foreign currency, so a European client can wire EUR directly.
+          </p>
+          <div className="mt-3 grid gap-x-5 sm:grid-cols-2">
+            <label className="field">
+              <span>Bank name</span>
+              <input name="bankName" className="input" defaultValue={method?.bankName ?? ''} placeholder="Bank Negara Indonesia (BNI)" />
+            </label>
+            <label className="field">
+              <span>Account holder *</span>
+              <input name="holder" className="input" defaultValue={method?.holder ?? ''} placeholder="Exactly as the bank prints it" autoComplete="off" />
+            </label>
+            <label className="field">
+              <span>SWIFT / BIC</span>
+              <input name="swift" className="input font-mono" defaultValue={method?.swift ?? ''} placeholder="BNINIDJA" autoComplete="off" />
+            </label>
+            <label className="field">
+              <span>Branch</span>
+              <input name="branch" className="input" defaultValue={method?.branch ?? ''} placeholder="e.g. KCU Bekasi" />
+            </label>
+            <label className="field">
+              <span>Country</span>
+              <input name="bankCountry" className="input" defaultValue={method?.bankCountry ?? 'Indonesia'} placeholder="Indonesia" />
+            </label>
+          </div>
+        </div>
+      ) : null}
+
       <div className="grid gap-x-5 sm:grid-cols-2">
         {kind === 'crypto' ? (
           <label className="field">
@@ -109,7 +185,7 @@ export function PaymentMethodForm({ method, onDone }: { method?: MethodView; onD
         ) : (
           <label className="field">
             <span>Payment link</span>
-            <input name="link" className="input" defaultValue={method?.link ?? ''} placeholder="https://paypal.me/…" />
+            <input name="link" className="input" defaultValue={method?.link ?? ''} placeholder={kind === 'paypal' ? 'https://paypal.me/…' : 'Optional'} />
           </label>
         )}
         <label className="field">
@@ -170,11 +246,21 @@ export function PaymentMethodRow({ method }: { method: MethodView }) {
             </span>
             {method.unreadable ? <span className="badge badge-red">Key changed — re-enter</span> : null}
           </div>
-          <p className="mt-1.5 font-mono text-xs text-steel-500">{method.masked}</p>
+          <div className="mt-1.5 flex flex-wrap items-center gap-2">
+            <p className="font-mono text-xs text-steel-500">{method.masked}</p>
+            {method.unreadable ? null : <RevealValue kind="method" id={method.id} />}
+          </div>
           <p className="mt-1 text-xs text-steel-400">
-            {method.kind === 'crypto' ? `${method.currency} · ${method.network}` : `${method.kind} · ${method.currency}`}
+            {method.kind === 'crypto'
+              ? `${method.currency} · ${method.network}`
+              : method.kind === 'bank'
+              ? `bank · ${method.bankName ?? ''} ${method.swift ? `· ${method.swift}` : ''} · ${method.currency}`
+              : `${method.kind} · ${method.currency}`}
             {method.hasMemo ? ' · memo stored' : ''}
           </p>
+          {method.kind === 'bank' && method.holder ? (
+            <p className="mt-0.5 text-xs text-steel-400">Holder: {method.holder}{method.branch ? ` · ${method.branch}` : ''}</p>
+          ) : null}
         </div>
         <div className="flex flex-wrap gap-2">
           <button type="button" className="btn btn-ghost btn-sm" onClick={() => setEditing(true)}>Edit</button>
@@ -275,6 +361,11 @@ export function SettingsGroupForm({
               />
             )}
             <span className="hint">{f.hint}</span>
+            {f.secret && f.present && !f.unreadable ? (
+              <span className="mt-1 inline-flex items-center gap-2 text-xs text-steel-400">
+                Stored value: <RevealValue kind="setting" id={f.key} />
+              </span>
+            ) : null}
           </label>
         ))}
         <Submit pendingLabel="Saving…">Save {title.toLowerCase()}</Submit>

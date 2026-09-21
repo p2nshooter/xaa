@@ -125,7 +125,7 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
             <div className="flex justify-between gap-4">
               <dt className="text-steel-500">Method</dt>
               <dd className="font-medium">
-                {payment.method === 'usdt' ? `USDT ${payment.network ?? ''}`.trim() : 'PayPal'}
+                {payment.method === 'usdt' ? `USDT ${payment.network ?? ''}`.trim() : payment.method === 'bank' ? 'Bank transfer' : 'PayPal'}
               </dd>
             </div>
             <div className="flex justify-between gap-4">

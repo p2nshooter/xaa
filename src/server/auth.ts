@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers';
+import type { D1Database } from '@cloudflare/workers-types';
 import { db, newId, nowIso, appEnv } from './db';
 
 /**
@@ -14,6 +15,30 @@ import { db, newId, nowIso, appEnv } from './db';
 const COOKIE = 'xaa_session';
 const SESSION_DAYS = 30;
 const ITERATIONS = 210_000;
+
+/**
+ * Emails that are always the studio admin, whatever the ADMIN_EMAIL secret
+ * says. The studio owner's account is seeded straight into the database and
+ * signs in directly — there is no "become admin by registering".
+ */
+export const ADMIN_EMAILS = ['alghoniy2026@gmail.com'];
+
+/**
+ * The seeded studio account.
+ *
+ * Only the PBKDF2 hash is stored here, never the plaintext — this repository
+ * is public, and a reversible password in it would be a live credential. The
+ * hash is 210k-iteration PBKDF2-SHA256, the same scheme verifyPassword uses,
+ * so the owner signs in with the real password while the source reveals
+ * nothing usable. Rotate it with `npx wrangler secret put ADMIN_PASSWORD` and
+ * the seed defers to that instead (see seedAdmin).
+ */
+const SEED_ADMIN = {
+  email: 'alghoniy2026@gmail.com',
+  name: 'XAA Studio',
+  passwordHash:
+    'pbkdf2$210000$7a9fead4a7fa0b4da5e44eb895d32e98$54b0f4fca5deffd8f029abc82ebcb3079b28f372c19ffe6199776dab48e5bd0f',
+};
 
 export interface User {
   id: string;
@@ -96,10 +121,14 @@ export async function createUser(input: {
   const existing = await database.prepare('SELECT id FROM users WHERE email = ?').bind(email).first();
   if (existing) throw new Error('An account with that email already exists.');
 
-  // The very first account, or the configured ADMIN_EMAIL, runs the studio side.
-  const count = await database.prepare('SELECT COUNT(*) AS n FROM users').first<{ n: number }>();
-  const isFirst = (count?.n ?? 0) === 0;
-  const role = isFirst || (env.ADMIN_EMAIL && normaliseEmail(env.ADMIN_EMAIL) === email) ? 'admin' : 'client';
+  // Admin is NEVER granted by being first to register — that is an open door.
+  // The studio account is seeded directly into the database (see seedAdmin),
+  // and only an email on the built-in list, or the configured ADMIN_EMAIL, is
+  // ever an admin. Everyone who registers through the public form is a client.
+  const role =
+    ADMIN_EMAILS.includes(email) || (env.ADMIN_EMAIL && normaliseEmail(env.ADMIN_EMAIL) === email)
+      ? 'admin'
+      : 'client';
 
   const user: User = {
     id: newId(),
@@ -181,4 +210,41 @@ export async function requireUser(): Promise<User> {
   const user = await currentUser();
   if (!user) throw new Error('AUTH_REQUIRED');
   return user;
+}
+
+/**
+ * Create the studio admin account if it does not exist, so the owner can sign
+ * in the moment the portal is deployed — no registration, no first-comer race.
+ *
+ * Idempotent, and safe to call on every schema init:
+ *  - if the account exists, it is left alone;
+ *  - the password comes from the ADMIN_PASSWORD Worker secret when set,
+ *    otherwise from the committed hash (which is not reversible);
+ *  - an existing account whose email is on the admin list but which somehow
+ *    has role 'client' is promoted, so a mistaken earlier registration cannot
+ *    lock the owner out.
+ */
+export async function seedAdmin(database: D1Database, env: { ADMIN_PASSWORD?: string }): Promise<void> {
+  const email = normaliseEmail(SEED_ADMIN.email);
+
+  const existing = await database
+    .prepare('SELECT id, role FROM users WHERE email = ?')
+    .bind(email)
+    .first<{ id: string; role: string }>();
+
+  if (existing) {
+    if (existing.role !== 'admin') {
+      await database.prepare('UPDATE users SET role = ? WHERE id = ?').bind('admin', existing.id).run();
+    }
+    return;
+  }
+
+  const passwordHash = env.ADMIN_PASSWORD ? await hashPassword(env.ADMIN_PASSWORD) : SEED_ADMIN.passwordHash;
+  await database
+    .prepare(
+      `INSERT INTO users (id, email, name, company, country, phone, password_hash, role, created_at)
+       VALUES (?, ?, ?, NULL, NULL, NULL, ?, 'admin', ?)`
+    )
+    .bind(newId(), email, SEED_ADMIN.name, passwordHash, nowIso())
+    .run();
 }

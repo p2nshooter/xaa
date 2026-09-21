@@ -59,6 +59,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
       memo: m.memo,
       link: m.link,
       instructions: m.instructions,
+      holder: m.holder,
+      bankName: m.bankName,
+      swift: m.swift,
+      branch: m.branch,
+      bankCountry: m.bankCountry,
     }));
 
   const capped = m.paidPct < FINAL_PCT;
@@ -245,7 +250,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                       <span className={`badge ${p.status === 'confirmed' ? 'badge-green' : p.status === 'rejected' ? 'badge-red' : 'badge-amber'}`}>
                         {p.status}
                       </span>
-                      <span>{p.method === 'usdt' ? `USDT ${p.network ?? ''}` : 'PayPal'}</span>
+                      <span>{p.method === 'usdt' ? `USDT ${p.network ?? ''}` : p.method === 'bank' ? 'Bank transfer' : 'PayPal'}</span>
                       <span>{formatDate(p.created_at)}</span>
                     </div>
                     {p.reference ? <p className="mt-1 break-all font-mono text-[11px] text-steel-500">{p.reference}</p> : null}

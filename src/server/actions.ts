@@ -12,7 +12,8 @@ import { storeFile, UploadError } from './uploads';
 import { getCarePlan, getSetupPlan } from '@/content/packages';
 import {
   createPaymentMethod, updatePaymentMethod, deletePaymentMethod, setPaymentMethodActive,
-  saveSetting, clearSetting, seedMethodsFromEnv, SETTING_DEFS, type MethodKind,
+  saveSetting, clearSetting, seedMethodsFromEnv, revealPaymentMethod, getSetting,
+  bniTransferGuide, BNI_SWIFT, SETTING_DEFS, type MethodKind,
 } from './settings';
 import { setLeadStatus, deleteLead, type LeadStatus } from './leads';
 
@@ -26,6 +27,13 @@ import { setLeadStatus, deleteLead, type LeadStatus } from './leads';
 export interface ActionState {
   error?: string;
   ok?: string;
+}
+
+/** Result of a reveal (show/hide) action: the plaintext, or an error. */
+export interface RevealState {
+  value?: string;
+  memo?: string;
+  error?: string;
 }
 
 function fail(err: unknown): ActionState {
@@ -185,10 +193,18 @@ export async function submitPaymentAction(_prev: ActionState, form: FormData): P
     const amount = Math.round(Number(str(form, 'amount')));
     if (!Number.isFinite(amount) || amount < 1) return { error: 'Enter the amount you sent, in euros.' };
 
-    const method = str(form, 'method') === 'paypal' ? 'paypal' : 'usdt';
+    const rawMethod = str(form, 'method');
+    const method = rawMethod === 'paypal' ? 'paypal' : rawMethod === 'bank' ? 'bank' : 'usdt';
     const reference = str(form, 'reference');
     if (!reference) {
-      return { error: method === 'usdt' ? 'Paste the transaction hash so we can verify it on-chain.' : 'Paste the PayPal transaction ID.' };
+      return {
+        error:
+          method === 'usdt'
+            ? 'Paste the transaction hash so we can verify it on-chain.'
+            : method === 'bank'
+            ? 'Paste the wire reference from your transfer receipt.'
+            : 'Paste the PayPal transaction ID.',
+      };
     }
 
     // A deposit below the 10% floor cannot open the build.
@@ -212,7 +228,7 @@ export async function submitPaymentAction(_prev: ActionState, form: FormData): P
       label: str(form, 'label') || 'Payment',
       amount,
       method,
-      network: method === 'usdt' ? str(form, 'network') || 'TRC20' : null,
+      network: method === 'usdt' ? str(form, 'network') || 'TRC20' : method === 'bank' ? str(form, 'network') || null : null,
       reference,
       note: str(form, 'note'),
       proofFileId,
@@ -365,6 +381,11 @@ function methodInputFrom(form: FormData) {
     instructions: str(form, 'instructions'),
     active: form.get('active') !== null,
     sortOrder: Number(str(form, 'sortOrder')) || 0,
+    holder: str(form, 'holder'),
+    bankName: str(form, 'bankName'),
+    swift: str(form, 'swift'),
+    branch: str(form, 'branch'),
+    bankCountry: str(form, 'bankCountry'),
   };
 }
 
@@ -378,6 +399,23 @@ export async function savePaymentMethodAction(_prev: ActionState, form: FormData
     if (!['crypto', 'paypal', 'bank'].includes(input.kind)) return { error: 'Unknown destination type.' };
     if (!id && !input.address) return { error: 'Enter the address, email or account number.' };
     if (input.kind === 'crypto' && !input.network) return { error: 'Choose the network — a transfer on the wrong one cannot be recovered.' };
+    if (input.kind === 'bank' && !input.holder) return { error: 'Enter the account holder name exactly as the bank prints it.' };
+
+    // A BNI account with no custom instructions gets the international transfer
+    // guide filled in automatically — that is the whole point of recognising BNI.
+    const looksBni =
+      input.kind === 'bank' &&
+      /bni|negara indonesia|BNINIDJA/i.test(`${input.bankName ?? ''} ${input.swift ?? ''}`);
+    if (looksBni && !input.instructions.trim()) {
+      input.instructions = bniTransferGuide({
+        holder: input.holder,
+        account: input.address || undefined,
+        branch: input.branch,
+        currency: input.currency,
+      });
+      if (!input.swift.trim()) input.swift = BNI_SWIFT;
+      if (!input.bankCountry.trim()) input.bankCountry = 'Indonesia';
+    }
 
     if (id) {
       await updatePaymentMethod(id, input);
@@ -416,6 +454,34 @@ export async function deletePaymentMethodAction(_prev: ActionState, form: FormDa
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);
+  }
+}
+
+/**
+ * Reveal (show/hide) the full stored value of a destination or a secret
+ * setting. Admin-only, returns plaintext to the admin who asked for it — the
+ * whole point of a reveal button is to let the owner verify what is stored.
+ */
+export async function revealMethodAction(_prev: RevealState, form: FormData): Promise<RevealState> {
+  try {
+    await requireAdmin();
+    const revealed = await revealPaymentMethod(str(form, 'id'));
+    if (!revealed) return { error: 'Not found.' };
+    return { value: revealed.address, memo: revealed.memo };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return { error: err instanceof Error ? err.message : 'Could not reveal.' };
+  }
+}
+
+export async function revealSettingAction(_prev: RevealState, form: FormData): Promise<RevealState> {
+  try {
+    await requireAdmin();
+    const value = await getSetting(str(form, 'key'));
+    return { value };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return { error: err instanceof Error ? err.message : 'Could not reveal.' };
   }
 }
 

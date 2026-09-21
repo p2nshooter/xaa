@@ -26,6 +26,11 @@ export interface PaymentMethodRow {
   instructions: string | null;
   active: number;
   sort_order: number;
+  holder: string | null;
+  bank_name: string | null;
+  swift: string | null;
+  branch: string | null;
+  bank_country: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -43,6 +48,11 @@ export interface PaymentMethod {
   instructions: string | null;
   active: boolean;
   sortOrder: number;
+  holder: string | null;
+  bankName: string | null;
+  swift: string | null;
+  branch: string | null;
+  bankCountry: string | null;
   /** True when the stored value will not open with the current key. */
   unreadable: boolean;
 }
@@ -61,6 +71,11 @@ async function openMethod(row: PaymentMethodRow): Promise<PaymentMethod> {
     instructions: row.instructions,
     active: row.active === 1,
     sortOrder: row.sort_order,
+    holder: row.holder ?? null,
+    bankName: row.bank_name ?? null,
+    swift: row.swift ?? null,
+    branch: row.branch ?? null,
+    bankCountry: row.bank_country ?? null,
     unreadable: Boolean(row.address_enc) && address === '',
   };
 }
@@ -94,6 +109,11 @@ export interface PaymentMethodInput {
   instructions?: string;
   active?: boolean;
   sortOrder?: number;
+  holder?: string;
+  bankName?: string;
+  swift?: string;
+  branch?: string;
+  bankCountry?: string;
 }
 
 export async function createPaymentMethod(input: PaymentMethodInput): Promise<string> {
@@ -103,8 +123,8 @@ export async function createPaymentMethod(input: PaymentMethodInput): Promise<st
   await database
     .prepare(
       `INSERT INTO payment_methods (id, kind, label, network, currency, address_enc, memo_enc, link,
-        instructions, active, sort_order, created_at, updated_at)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`
+        instructions, active, sort_order, holder, bank_name, swift, branch, bank_country, created_at, updated_at)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
     )
     .bind(
       id,
@@ -115,9 +135,14 @@ export async function createPaymentMethod(input: PaymentMethodInput): Promise<st
       await encryptValue(input.address.trim()),
       input.memo?.trim() ? await encryptValue(input.memo.trim()) : null,
       input.link?.trim() || null,
-      input.instructions?.trim().slice(0, 500) || null,
+      input.instructions?.trim().slice(0, 1000) || null,
       input.active === false ? 0 : 1,
       input.sortOrder ?? 0,
+      input.holder?.trim() || null,
+      input.bankName?.trim() || null,
+      input.swift?.trim() || null,
+      input.branch?.trim() || null,
+      input.bankCountry?.trim() || null,
       now,
       now
     )
@@ -141,7 +166,8 @@ export async function updatePaymentMethod(id: string, input: PaymentMethodInput)
   await database
     .prepare(
       `UPDATE payment_methods SET kind = ?, label = ?, network = ?, currency = ?, address_enc = ?,
-        memo_enc = ?, link = ?, instructions = ?, active = ?, sort_order = ?, updated_at = ?
+        memo_enc = ?, link = ?, instructions = ?, active = ?, sort_order = ?, holder = ?, bank_name = ?,
+        swift = ?, branch = ?, bank_country = ?, updated_at = ?
        WHERE id = ?`
     )
     .bind(
@@ -152,9 +178,14 @@ export async function updatePaymentMethod(id: string, input: PaymentMethodInput)
       addressEnc,
       memoEnc,
       input.link?.trim() || null,
-      input.instructions?.trim().slice(0, 500) || null,
+      input.instructions?.trim().slice(0, 1000) || null,
       input.active === false ? 0 : 1,
       input.sortOrder ?? 0,
+      input.holder?.trim() || null,
+      input.bankName?.trim() || null,
+      input.swift?.trim() || null,
+      input.branch?.trim() || null,
+      input.bankCountry?.trim() || null,
       nowIso(),
       id
     )
@@ -178,6 +209,51 @@ export async function deletePaymentMethod(id: string): Promise<void> {
 export function maskedAddress(m: PaymentMethod): string {
   if (m.unreadable) return 'unreadable — re-enter';
   return maskSecret(m.address, m.kind === 'crypto' ? 'address' : 'token');
+}
+
+/**
+ * The full decrypted value of one destination, for the admin reveal (show/hide)
+ * button. Server-side only, and the caller must be an admin.
+ */
+export async function revealPaymentMethod(id: string): Promise<{ address: string; memo: string } | null> {
+  const m = await getPaymentMethod(id);
+  if (!m) return null;
+  return { address: m.address, memo: m.memo };
+}
+
+/**
+ * A ready-made international transfer guide for BNI, offered as the default
+ * `instructions` when an admin adds a BNI account. Indonesia's BNI receives
+ * inbound foreign-currency wires under one SWIFT/BIC, so a European client
+ * paying in EUR needs exactly these fields — most get it wrong the first time.
+ */
+export const BNI_SWIFT = 'BNINIDJA';
+export function bniTransferGuide(opts: { holder?: string; account?: string; branch?: string; currency?: string }): string {
+  const cur = opts.currency || 'EUR';
+  const lines = [
+    `International transfer to Bank Negara Indonesia (BNI), Indonesia.`,
+    ``,
+    `Beneficiary bank : BANK NEGARA INDONESIA (PERSERO) TBK`,
+    `SWIFT / BIC      : ${BNI_SWIFT}`,
+  ];
+  if (opts.branch) lines.push(`Branch           : ${opts.branch}`);
+  lines.push(
+    `Beneficiary name : ${opts.holder || '[account holder]'}`,
+    `Account number   : ${opts.account || '[account number]'}`,
+    `Currency         : ${cur}`,
+    ``,
+    `Steps from your bank / provider (Wise, Revolut, or a bank wire):`,
+    `1. Choose an INTERNATIONAL / SWIFT transfer, not a domestic one.`,
+    `2. Country: Indonesia. Bank: BNI. SWIFT/BIC: ${BNI_SWIFT}.`,
+    `3. Enter the beneficiary name EXACTLY as above and the account number.`,
+    `4. Send in ${cur}; BNI converts to IDR on arrival at their rate.`,
+    `5. Pay the sender + correspondent fees ("OUR") so the full amount arrives,`,
+    `   or tell us if you send "SHA" so we can reconcile the small shortfall.`,
+    `6. Reference: your project code (XAA-…). Arrival is usually 1–3 business days.`,
+    ``,
+    `After sending, paste the wire reference below so we can match your payment.`
+  );
+  return lines.join('\n');
 }
 
 /* ───────────────────────── Studio settings ───────────────────────── */

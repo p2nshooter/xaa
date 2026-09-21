@@ -90,7 +90,7 @@ export default async function AdminPage() {
                     <td className="text-xs">{p.client_email}</td>
                     <td className="text-xs">{p.label}</td>
                     <td className="whitespace-nowrap text-right font-bold">{eur(p.amount)}</td>
-                    <td className="text-xs">{p.method === 'usdt' ? `USDT ${p.network ?? ''}` : 'PayPal'}</td>
+                    <td className="text-xs">{p.method === 'usdt' ? `USDT ${p.network ?? ''}` : p.method === 'bank' ? 'Bank' : 'PayPal'}</td>
                     <td className="max-w-[200px] break-all font-mono text-[11px]">
                       {p.reference}
                       {p.proof_file_id ? (

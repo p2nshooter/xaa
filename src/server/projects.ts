@@ -100,7 +100,7 @@ export interface Payment {
   milestone: Milestone;
   label: string;
   amount: number;
-  method: 'usdt' | 'paypal';
+  method: 'usdt' | 'paypal' | 'bank';
   network: string | null;
   reference: string | null;
   note: string | null;
@@ -481,7 +481,7 @@ export async function recordPayment(input: {
   milestone: Milestone;
   label: string;
   amount: number;
-  method: 'usdt' | 'paypal';
+  method: 'usdt' | 'paypal' | 'bank';
   network?: string | null;
   reference?: string | null;
   note?: string | null;
@@ -521,7 +521,7 @@ export async function recordPayment(input: {
     .run();
   await addUpdate(input.project.id, {
     title: `Payment submitted — €${payment.amount.toLocaleString('en-GB')}`,
-    body: `${payment.label} via ${payment.method === 'usdt' ? `USDT ${payment.network ?? ''}`.trim() : 'PayPal'}. Awaiting confirmation.`,
+    body: `${payment.label} via ${payment.method === 'usdt' ? `USDT ${payment.network ?? ''}`.trim() : payment.method === 'bank' ? 'bank transfer' : 'PayPal'}. Awaiting confirmation.`,
     author: 'Client',
   });
   return payment;

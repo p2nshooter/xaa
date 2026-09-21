@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { LoginForm } from '@/components/forms/AuthForms';
+import { LoginForm, AdminAccessLogin } from '@/components/forms/AuthForms';
 import { currentUser } from '@/server/auth';
 
 export const metadata: Metadata = {
@@ -31,6 +31,11 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           your project page here. <Link href="/payments" className="text-gold-500 underline">More on payment security</Link>.
         </p>
       </div>
+
+      {/* Studio access is not advertised: tap the mark five times, quickly, to
+          reveal the admin sign-in. Nothing here grants admin — the account is
+          seeded in the database and this is only how the owner reaches it. */}
+      <AdminAccessLogin />
     </div>
   );
 }

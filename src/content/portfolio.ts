@@ -18,7 +18,7 @@
  * work with no verified URL renders without a button instead of guessing.
  * Fill this in once, and every entry using it goes live.
  */
-export const WORKERS_SUBDOMAIN = '';
+export const WORKERS_SUBDOMAIN = 'axto';
 
 export interface Work {
   slug: string;

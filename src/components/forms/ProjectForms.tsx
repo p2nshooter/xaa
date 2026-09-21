@@ -20,6 +20,11 @@ export interface PayDestination {
   memo: string;
   link: string | null;
   instructions: string | null;
+  holder?: string | null;
+  bankName?: string | null;
+  swift?: string | null;
+  branch?: string | null;
+  bankCountry?: string | null;
 }
 
 /* ───────────────────── Client: concept upload ───────────────────── */
@@ -62,6 +67,16 @@ export function ConceptUploadForm({ projectId, locked }: { projectId: string; lo
   );
 }
 
+/** One labelled line in the bank-details box. */
+function Row({ k, v, mono = false }: { k: string; v: string; mono?: boolean }) {
+  return (
+    <div className="flex flex-wrap justify-between gap-2">
+      <dt className="text-steel-400">{k}</dt>
+      <dd className={`text-right font-semibold text-ink-900 ${mono ? 'break-all font-mono' : ''}`}>{v}</dd>
+    </div>
+  );
+}
+
 /* ───────────────────── Client: milestone payment ───────────────────── */
 
 export function PaymentForm({
@@ -98,6 +113,8 @@ export function PaymentForm({
   }
 
   const isCrypto = selected?.kind === 'crypto';
+  const isBank = selected?.kind === 'bank';
+  const methodValue = isCrypto ? 'usdt' : isBank ? 'bank' : 'paypal';
 
   return (
     <form action={action} className="panel border-l-4 border-l-[color:var(--accent)] p-6">
@@ -113,7 +130,7 @@ export function PaymentForm({
         <input type="hidden" name="milestone" value={milestone} />
         <input type="hidden" name="label" value={label} />
         <input type="hidden" name="methodId" value={selected?.id ?? ''} />
-        <input type="hidden" name="method" value={isCrypto ? 'usdt' : 'paypal'} />
+        <input type="hidden" name="method" value={methodValue} />
         <input type="hidden" name="network" value={selected?.network ?? ''} />
 
         <p className="text-xs font-bold uppercase tracking-wide text-steel-400">Choose how to pay</p>
@@ -133,11 +150,27 @@ export function PaymentForm({
         {selected ? (
           <div className="mt-4 rounded-xl bg-[color:var(--surface)] p-4">
             <p className="text-xs font-bold uppercase tracking-wide text-steel-400">
-              Send {isCrypto ? `${usd(amount)} ${selected.currency}` : eur(amount)} to
+              Send {isCrypto ? `${usd(amount)} ${selected.currency}` : `${eur(amount)}${isBank && selected.currency !== 'EUR' ? ` (${selected.currency})` : ''}`} to
             </p>
-            <code className="mt-2 block break-all rounded-lg bg-white p-3 text-xs font-semibold">
-              {selected.address}
-            </code>
+
+            {isBank ? (
+              <div className="mt-2 rounded-lg bg-white p-3 text-xs">
+                <dl className="grid gap-1.5">
+                  {selected.bankName ? <Row k="Bank" v={selected.bankName} /> : null}
+                  {selected.swift ? <Row k="SWIFT / BIC" v={selected.swift} mono /> : null}
+                  {selected.holder ? <Row k="Account holder" v={selected.holder} /> : null}
+                  <Row k="Account number" v={selected.address} mono />
+                  {selected.branch ? <Row k="Branch" v={selected.branch} /> : null}
+                  {selected.bankCountry ? <Row k="Country" v={selected.bankCountry} /> : null}
+                  <Row k="Currency" v={selected.currency} />
+                </dl>
+              </div>
+            ) : (
+              <code className="mt-2 block break-all rounded-lg bg-white p-3 text-xs font-semibold">
+                {selected.address}
+              </code>
+            )}
+
             {selected.memo ? (
               <p className="mt-2 text-xs">
                 <strong>Memo / tag (required):</strong>{' '}
@@ -149,24 +182,30 @@ export function PaymentForm({
                 Open {selected.label}
               </a>
             ) : null}
-            <p className="hint mt-2">
-              {selected.instructions ??
-                (isCrypto
+
+            {selected.instructions ? (
+              <pre className="mt-3 whitespace-pre-wrap rounded-lg bg-white p-3 text-[11px] leading-relaxed text-ink-800">
+                {selected.instructions}
+              </pre>
+            ) : (
+              <p className="hint mt-2">
+                {isCrypto
                   ? `Send only ${selected.currency} on ${selected.network}. A transfer on the wrong network cannot be recovered, and network fees are paid by the sender.`
-                  : 'Send as a payment for goods and services and quote your project reference.')}
-            </p>
+                  : 'Send as a payment for goods and services and quote your project reference.'}
+              </p>
+            )}
           </div>
         ) : null}
 
         <label className="field mt-4">
-          <span>{isCrypto ? 'Transaction hash *' : 'Transaction ID *'}</span>
+          <span>{isCrypto ? 'Transaction hash *' : isBank ? 'Wire reference / receipt no. *' : 'Transaction ID *'}</span>
           <input
             name="reference"
             className="input font-mono text-sm"
             required
             autoComplete="off"
             spellCheck={false}
-            placeholder={isCrypto ? '0x… or the TRON txid' : 'e.g. 8XY12345AB678901C'}
+            placeholder={isCrypto ? '0x… or the TRON txid' : isBank ? 'The reference on your wire receipt' : 'e.g. 8XY12345AB678901C'}
           />
           <span className="hint">We verify it against the transfer and confirm within one business day.</span>
         </label>

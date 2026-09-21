@@ -53,6 +53,11 @@ export default async function AdminPaymentsPage() {
     sortOrder: m.sortOrder,
     unreadable: m.unreadable,
     hasMemo: Boolean(m.memo),
+    holder: m.holder,
+    bankName: m.bankName,
+    swift: m.swift,
+    branch: m.branch,
+    bankCountry: m.bankCountry,
   }));
 
   const active = views.filter((m) => m.active).length;
