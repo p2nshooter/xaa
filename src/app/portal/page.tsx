@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { currentUser } from '@/server/auth';
 import { portalReady } from '@/server/db';
 import { listProjects, listPayments, money, nextAction, STATUS_LABEL, STATUS_BADGE, formatDate, type Project, type Payment } from '@/server/projects';
+import { listUserOrders, listAllOrders, type TemplateOrder } from '@/server/store';
 import { eur } from '@/content/packages';
 import { STAGES } from '@/content/process';
 
@@ -26,6 +27,7 @@ export default async function PortalPage() {
       return { project: p, payments };
     })
   );
+  const orders = user.role === 'admin' ? await listAllOrders() : await listUserOrders(user.id);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
@@ -48,16 +50,42 @@ export default async function PortalPage() {
         </div>
       ) : null}
 
-      {projects.length === 0 ? <EmptyState /> : (
+      {projects.length === 0 && orders.length === 0 ? <EmptyState /> : (
         <div className="mt-10 space-y-5">
           {withMoney.map(({ project, payments }) => (
             <ProjectRow key={project.id} project={project} payments={payments} />
           ))}
         </div>
       )}
+
+      {orders.length ? (
+        <section className="mt-10">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <h2 className="font-display text-xl font-extrabold">{user.role === 'admin' ? 'Template orders (all clients)' : 'Your template orders'}</h2>
+            <Link href="/templates" className="text-sm text-gold-500 underline">Browse SaaS templates →</Link>
+          </div>
+          <div className="panel mt-4 divide-y divide-[color:var(--accent-soft)]">
+            {orders.map((o) => (
+              <Link key={o.id} href={`/portal/orders/${o.id}`} className="flex flex-wrap items-center justify-between gap-3 p-4 hover:bg-[color:var(--surface)]">
+                <div>
+                  <p className="font-semibold">{o.name}</p>
+                  <p className="font-mono text-xs text-steel-500">{o.ref}{'client_email' in o ? ` · ${(o as { client_email: string }).client_email}` : ''}</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="font-serif font-extrabold">{eur(o.price)}</span>
+                  <span className={`badge ${ORDER_BADGE[o.status] ?? 'badge-grey'}`}>{ORDER_LABEL[o.status] ?? o.status}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }
+
+const ORDER_LABEL: Record<string, string> = { pending: 'Awaiting payment', submitted: 'Awaiting confirmation', paid: 'Paid — download ready', cancelled: 'Cancelled' };
+const ORDER_BADGE: Record<string, string> = { pending: 'badge-amber', submitted: 'badge-blue', paid: 'badge-green', cancelled: 'badge-grey' };
 
 function ProjectRow({ project, payments }: { project: Project; payments: Payment[] }) {
   const m = money(project, payments);

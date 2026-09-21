@@ -2,8 +2,8 @@
 
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { db, newId, nowIso, NotConfiguredError } from './db';
-import { createUser, currentUser, endSession, findUserByEmail, normaliseEmail, startSession, verifyPassword } from './auth';
+import { db, newId, nowIso, NotConfiguredError, appEnv } from './db';
+import { createUser, currentUser, endSession, findUserByEmail, normaliseEmail, startSession, verifyPassword, ADMIN_EMAILS, seedAdmin } from './auth';
 import {
   addUpdate, cancelProject, createProject, getProject, listPayments, money, recordPayment,
   setContract, setPaymentStatus, setProgress, type Milestone, type Project,
@@ -20,6 +20,8 @@ import {
   saveAiKey, clearAiKey, revealAiKey, setSchedule, runBackup, runOperation,
   restoreFromBackup, resetDatabase, CADENCES, PROVIDERS, type Cadence, type Provider,
 } from './recovery';
+import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle } from './store';
+import { getTemplate } from '@/content/templates';
 
 /**
  * Every mutation in the portal. Server actions rather than REST handlers:
@@ -94,6 +96,21 @@ export async function loginAction(_prev: ActionState, form: FormData): Promise<A
   try {
     const email = str(form, 'email');
     const password = str(form, 'password');
+
+    // The studio account must always be able to sign in. If this is an admin
+    // email, seed/heal the row synchronously right here — independent of the
+    // background seed in db() — so a missing or stale studio row is repaired
+    // before we verify, not on some later request. Best-effort: a failure must
+    // not block a normal client login, and /api/health surfaces the reason.
+    if (ADMIN_EMAILS.includes(normaliseEmail(email))) {
+      try {
+        const env = await appEnv();
+        if (env.DB) await seedAdmin(env.DB, { ADMIN_PASSWORD: env.ADMIN_PASSWORD });
+      } catch {
+        /* health endpoint reports why; do not block the login attempt */
+      }
+    }
+
     const user = await findUserByEmail(email);
     if (!user || !(await verifyPassword(password, user.password_hash))) {
       return { error: 'Email or password is incorrect.' };
@@ -245,6 +262,49 @@ export async function submitPaymentAction(_prev: ActionState, form: FormData): P
   }
 }
 
+/* ─────────────────── SaaS template store ─────────────────── */
+
+export async function buyTemplateAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  const slug = str(form, 'slug');
+  try {
+    const user = await currentUser();
+    if (!user) redirect(`/login?next=${encodeURIComponent(`/templates/${slug}`)}`);
+    const tpl = getTemplate(slug);
+    if (!tpl) return { error: 'Unknown template.' };
+    const order = await createOrder(user, slug);
+    redirect(`/portal/orders/${order.id}`);
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+  return {};
+}
+
+async function ownedOrder(orderId: string) {
+  const user = await currentUser();
+  if (!user) throw new Error('AUTH_REQUIRED');
+  const order = await getOrder(orderId);
+  if (!order) throw new Error('Order not found.');
+  if (order.user_id !== user.id && user.role !== 'admin') throw new Error('Order not found.');
+  return { order, user };
+}
+
+export async function submitOrderPaymentAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const { order } = await ownedOrder(str(form, 'orderId'));
+    const rawMethod = str(form, 'method');
+    const method = rawMethod === 'paypal' ? 'paypal' : rawMethod === 'bank' ? 'bank' : 'usdt';
+    const reference = str(form, 'reference');
+    if (!reference) return { error: 'Paste the transaction reference from your payment.' };
+    await submitOrderPayment(order.id, { method, reference, note: str(form, 'note') });
+    revalidatePath(`/portal/orders/${order.id}`);
+    return { ok: 'Payment submitted. We will confirm it and unlock your download.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
 /* ─────────────────── AI backup & recovery (project owner) ─────────────────── */
 
 export async function saveAiKeyAction(_prev: ActionState, form: FormData): Promise<ActionState> {
@@ -359,6 +419,42 @@ export async function revealAiKeyAction(_prev: RevealState, form: FormData): Pro
   } catch (err) {
     if (isRedirect(err)) throw err;
     return { error: err instanceof Error ? err.message : 'Could not reveal.' };
+  }
+}
+
+export async function confirmOrderAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const orderId = str(form, 'orderId');
+    if (str(form, 'decision') === 'cancel') {
+      await cancelOrder(orderId);
+    } else {
+      await confirmOrder(orderId);
+    }
+    revalidatePath(`/portal/orders/${orderId}`);
+    revalidatePath('/portal/admin');
+    return { ok: 'Order updated.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function uploadBundleAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    const slug = str(form, 'slug');
+    if (!getTemplate(slug)) return { error: 'Unknown template.' };
+    const file = form.get('bundle');
+    if (!(file instanceof File) || file.size === 0) return { error: 'Choose a .zip bundle to upload.' };
+    if (file.size > 500 * 1024 * 1024) return { error: 'Bundle is larger than 500 MB.' };
+    await saveBundle(slug, file, admin.name);
+    revalidatePath(`/templates/${slug}`);
+    revalidatePath('/portal/admin');
+    return { ok: `Bundle uploaded for ${slug}.` };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
   }
 }
 

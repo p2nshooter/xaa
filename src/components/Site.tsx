@@ -22,6 +22,7 @@ import { LangSwitcher } from '@/components/LangSwitcher';
 
 const NAV = [
   { href: '/services', key: 'nav.services' },
+  { href: '/templates', key: 'nav.templates' },
   { href: '/portfolio', key: 'nav.work' },
   { href: '/process', key: 'nav.process' },
   { href: '/care', key: 'nav.care' },
@@ -138,6 +139,7 @@ export async function SiteFooter() {
             title={t('footer.services')}
             links={[
               ['/services', t('footer.allPackages')],
+              ['/templates', t('footer.templates')],
               ['/portfolio', t('footer.workBuilt')],
               ['/portfolio#super-enterprise', t('footer.superEnterprise')],
               ['/election-systems', t('footer.election')],

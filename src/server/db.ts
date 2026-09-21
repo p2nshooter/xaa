@@ -211,6 +211,34 @@ const SCHEMA = [
      created_at TEXT NOT NULL
    )`,
   `CREATE INDEX IF NOT EXISTS idx_recovery_project ON recovery_events(project_id, created_at)`,
+  /**
+   * Ready-made SaaS template store. An order is one purchase of one template;
+   * when it is marked paid, the buyer may download that template's bundle. The
+   * bundle zip itself is stored once per template in template_bundles (R2).
+   */
+  `CREATE TABLE IF NOT EXISTS template_orders (
+     id TEXT PRIMARY KEY,
+     ref TEXT NOT NULL,
+     slug TEXT NOT NULL,
+     name TEXT NOT NULL,
+     user_id TEXT NOT NULL,
+     price INTEGER NOT NULL,
+     status TEXT NOT NULL DEFAULT 'pending',
+     method TEXT,
+     reference TEXT,
+     note TEXT,
+     created_at TEXT NOT NULL,
+     confirmed_at TEXT
+   )`,
+  `CREATE INDEX IF NOT EXISTS idx_template_orders_user ON template_orders(user_id, created_at)`,
+  `CREATE TABLE IF NOT EXISTS template_bundles (
+     slug TEXT PRIMARY KEY,
+     object_key TEXT NOT NULL,
+     filename TEXT NOT NULL,
+     size INTEGER NOT NULL,
+     updated_at TEXT NOT NULL,
+     updated_by TEXT
+   )`,
 ];
 
 /**
