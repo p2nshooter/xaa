@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { PACKAGES, ADDONS, TIER_LABEL, eur, priceRange, type Tier } from '@/content/packages';
+import { PACKAGES, ADDONS, TIER_LABEL, SUPER_ENTERPRISE, eur, priceRange, type Tier } from '@/content/packages';
 import { PackageCard, AddOnCard, SectionHead, CtaBand } from '@/components/Studio';
 
 export const metadata: Metadata = {
@@ -35,6 +35,38 @@ export default function ServicesPage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/portal/new" className="btn btn-primary">Open a project</Link>
             <Link href="/process" className="btn btn-ghost">How payment works</Link>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Super Enterprise — above the catalogue, capacity-limited. */}
+      <section className="mx-auto max-w-6xl px-4 py-12">
+        <div className="panel-dark relative overflow-hidden p-8 sm:p-10">
+          <div className="mk-grid-bg absolute inset-0 opacity-20" />
+          <div className="relative flex flex-wrap items-start justify-between gap-6">
+            <div className="max-w-2xl">
+              <span className="mk-chip">{SUPER_ENTERPRISE.code} · Only {SUPER_ENTERPRISE.slots} at a time</span>
+              <h2 className="mt-4 font-display text-3xl font-extrabold">{SUPER_ENTERPRISE.name}</h2>
+              <p className="mt-3 text-[15px] leading-relaxed text-white/85">{SUPER_ENTERPRISE.summary}</p>
+              <ul className="mt-5 grid gap-1.5 sm:grid-cols-2">
+                {SUPER_ENTERPRISE.includes.slice(0, 6).map((f) => (
+                  <li key={f} className="flex gap-2 text-sm text-white/85">
+                    <span className="text-white/60">▸</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link href="/portfolio#super-enterprise" className="btn btn-primary">Full specification</Link>
+                <Link href="/contact?tier=super-enterprise" className="btn btn-ghost">Enquire about a slot</Link>
+              </div>
+            </div>
+            <div className="shrink-0 rounded-xl bg-white/10 p-5 text-center">
+              <p className="font-display text-2xl font-extrabold">{SUPER_ENTERPRISE.priceLabel}</p>
+              <p className="mt-1 text-xs text-white/70">per programme</p>
+              <p className="mt-3 border-t border-white/20 pt-3 text-xs text-white/70">{SUPER_ENTERPRISE.timeline}</p>
+            </div>
           </div>
         </div>
       </section>

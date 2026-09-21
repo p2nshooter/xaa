@@ -632,3 +632,53 @@ export function relatedAddons(packageSlug: string, limit = 4): AddOn[] {
   // Any package we have not mapped still gets a sensible list rather than none.
   return (picked.length ? picked : ADDONS).slice(0, limit);
 }
+
+/* ─────────────────────── Super Enterprise ─────────────────────── */
+
+/**
+ * The flagship engagement, quoted in USD because that is how these deals are
+ * negotiated. Capacity-limited on purpose: a programme at this size takes the
+ * studio's senior attention for the better part of a year, and taking a fourth
+ * would mean shortchanging the three already running.
+ */
+export const SUPER_ENTERPRISE = {
+  code: 'W-SE',
+  name: 'Super Enterprise',
+  /** Concurrent engagements accepted. Not a marketing device — it is capacity. */
+  slots: 3,
+  priceUsdMin: 500_000,
+  priceUsdMax: 1_000_000,
+  priceLabel: '$500,000 – $1,000,000',
+  /** Contracts are written in EUR; this is the figure the portal works from. */
+  priceEurMin: 460_000,
+  priceEurMax: 925_000,
+  timeline: '9–18 months',
+  summary:
+    'A complete digital ecosystem delivered by a dedicated senior team: custom architecture, multiple platforms, an AI layer and global infrastructure, run to a contracted SLA from day one.',
+  forWhom: [
+    'International groups consolidating many systems into one',
+    'Financial, logistics and healthcare networks',
+    'Government and regulated organisations',
+    'Companies building a platform their whole market will run on',
+  ],
+  includes: [
+    'Dedicated senior delivery team for the life of the programme',
+    'Architecture governance, documented and reviewed quarterly',
+    'Customer, partner and internal platforms',
+    'Mobile and public API infrastructure',
+    'AI layer: assistants, retrieval, automation and evaluation',
+    'Global cloud architecture with multi-region deployment',
+    'Enterprise security: SSO, MFA, RBAC, encryption, audit logs',
+    'Compliance architecture and audit support',
+    'Disaster recovery with rehearsed failover',
+    '24/7 monitoring and incident response under SLA',
+    'Payment, ERP, CRM and logistics integration',
+    'Full source, infrastructure and documentation handover',
+  ],
+  terms: [
+    'Scope and architecture review before anything is signed',
+    'Milestone schedule agreed per programme, not off a template',
+    'Contracted in EUR; settled in USDT or by arrangement',
+    'Named delivery manager and escalation path',
+  ],
+} as const;

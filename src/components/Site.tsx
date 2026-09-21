@@ -20,6 +20,7 @@ import { SITE } from '@/lib/site';
 
 const NAV = [
   { href: '/services', label: 'Services' },
+  { href: '/portfolio', label: 'Work' },
   { href: '/process', label: 'How it works' },
   { href: '/care', label: 'Setup & Care' },
   { href: '/payments', label: 'Payments' },
@@ -131,6 +132,8 @@ export function SiteFooter() {
             title="Services"
             links={[
               ['/services', 'All packages'],
+              ['/portfolio', 'Work we have built'],
+              ['/portfolio#super-enterprise', 'Super Enterprise'],
               ['/services#addons', 'Add-on services'],
               ['/care#setup', 'One-time setup'],
               ['/care#maintenance', 'Monthly maintenance'],
