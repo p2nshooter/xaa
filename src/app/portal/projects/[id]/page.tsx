@@ -12,6 +12,9 @@ import { STAGES } from '@/content/process';
 import { getPackage, getSetupPlan, getCarePlan, eur, usd } from '@/content/packages';
 import { formatBytes } from '@/server/uploads';
 import { ConceptUploadForm, PaymentForm, AdminProjectControls, BusinessDataForm } from '@/components/forms/ProjectForms';
+import { RecoveryPanel } from '@/components/forms/RecoveryForms';
+import { getAiConfig, listRecoveryEvents } from '@/server/recovery';
+import { getLang } from '@/lib/i18n.server';
 
 export const metadata: Metadata = { title: 'Project', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -27,11 +30,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   if (!project) notFound();
   if (project.user_id !== user.id && user.role !== 'admin') notFound();
 
-  const [payments, files, updates, methods] = await Promise.all([
+  const [payments, files, updates, methods, aiConfig, recoveryEvents, lang] = await Promise.all([
     listPayments(project.id),
     listFiles(project.id),
     listUpdates(project.id),
     listPaymentMethods(true),
+    getAiConfig(project.id),
+    listRecoveryEvents(project.id),
+    getLang(),
   ]);
 
   const m = money(project, payments);
@@ -182,6 +188,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             />
           ) : null}
 
+          {/* AI Backup & Recovery — self-served by the client, procedure recorded */}
+          {project.status !== 'cancelled' ? (
+            <RecoveryPanel
+              projectId={project.id}
+              config={aiConfig}
+              events={recoveryEvents}
+              isAdmin={user.role === 'admin'}
+              lang={lang}
+            />
+          ) : null}
+
           {/* Activity */}
           <section className="panel p-6">
             <h2 className="font-display text-lg font-extrabold">Activity log</h2>
@@ -286,8 +303,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 ) : null}
                 {care ? (
                   <li className="flex justify-between gap-3">
-                    <span>{care.name} <span className="text-xs text-steel-500">monthly</span></span>
-                    <strong>{eur(care.price)}/mo</strong>
+                    <span>{care.name} <span className="text-xs text-steel-500">one-time install</span></span>
+                    <strong>{eur(care.price)}{care.priceMax ? `–${eur(care.priceMax)}` : ''}</strong>
                   </li>
                 ) : null}
               </ul>

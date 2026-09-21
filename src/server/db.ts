@@ -176,6 +176,41 @@ const SCHEMA = [
      updated_at TEXT NOT NULL,
      updated_by TEXT
    )`,
+  /**
+   * Per-project AI backup & recovery configuration.
+   *
+   * The client's AI API key is stored encrypted (server/crypto.ts). `schedule`
+   * records which automatic cadences are armed (comma list of daily/weekly/
+   * monthly). One row per project; the key is never returned to the browser
+   * except through the admin reveal action.
+   */
+  `CREATE TABLE IF NOT EXISTS project_ai (
+     project_id TEXT PRIMARY KEY,
+     provider TEXT NOT NULL DEFAULT 'openai',
+     api_key_enc TEXT,
+     schedule TEXT NOT NULL DEFAULT '',
+     updated_at TEXT NOT NULL,
+     updated_by TEXT
+   )`,
+  /**
+   * The backup & recovery ledger. Every backup, restore, database reset and
+   * AI web-fix is written here — who ran it, when, on which project and with
+   * what result — so the whole procedure is recorded and auditable. This is
+   * the "wajib dicatat" record surfaced in the admin project portal.
+   */
+  `CREATE TABLE IF NOT EXISTS recovery_events (
+     id TEXT PRIMARY KEY,
+     project_id TEXT NOT NULL,
+     kind TEXT NOT NULL,
+     cadence TEXT,
+     detail TEXT,
+     object_key TEXT,
+     bytes INTEGER,
+     status TEXT NOT NULL DEFAULT 'recorded',
+     actor TEXT NOT NULL,
+     created_at TEXT NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS idx_recovery_project ON recovery_events(project_id, created_at)`,
 ];
 
 /**

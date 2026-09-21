@@ -28,6 +28,7 @@ type Copy = {
   ctaTitle: string; ctaLead: string; ctaPrimary: string; ctaSecondary: string;
   lines: string; stack: string; domainsLine: (n: number) => string;
   demoStamp: string; demoNoteRow: string; demoNoteCard: string; internal: string;
+  modulesTitle: string; modulesLead: string; thApp: string; thLoc: string; thBuild: string;
 };
 
 const COPY: Record<Lang, Copy> = {
@@ -53,6 +54,7 @@ const COPY: Record<Lang, Copy> = {
     demoNoteRow: 'Not real data. Every name, ID and address in these is generated, and only a sample of rows is kept — the systems themselves run on records that are not ours to publish.',
     demoNoteCard: 'Not real data — names, IDs and addresses are generated and only a sample of rows is kept.',
     internal: 'Internal system',
+    modulesTitle: 'Priced app by app', modulesLead: 'AXTO is not one app but a platform of them. Each module is measured from the repository and priced on its own, at the rates on our services page.', thApp: 'App / module', thLoc: 'Lines', thBuild: 'Build value (EUR)',
   },
   es: {
     chip: 'Proyectos', h1a: 'Sistemas que construimos,', h1b: 'y aún operamos',
@@ -76,6 +78,7 @@ const COPY: Record<Lang, Copy> = {
     demoNoteRow: 'No son datos reales. Cada nombre, ID y dirección aquí está generado, y solo se conserva una muestra de filas — los sistemas mismos funcionan con datos que no son nuestros para publicar.',
     demoNoteCard: 'No son datos reales — nombres, ID y direcciones están generados y solo se conserva una muestra de filas.',
     internal: 'Sistema interno',
+    modulesTitle: 'Con precio app por app', modulesLead: 'AXTO no es una app sino una plataforma de ellas. Cada módulo se mide desde el repositorio y se cotiza por su cuenta, a las tarifas de nuestra página de servicios.', thApp: 'App / módulo', thLoc: 'Líneas', thBuild: 'Valor de desarrollo (EUR)',
   },
   id: {
     chip: 'Karya', h1a: 'Sistem yang kami bangun,', h1b: 'dan masih kami jalankan',
@@ -99,6 +102,7 @@ const COPY: Record<Lang, Copy> = {
     demoNoteRow: 'Bukan data nyata. Tiap nama, ID, dan alamat di sini dibuat, dan hanya sampel baris yang disimpan — sistemnya sendiri berjalan pada data yang bukan milik kami untuk dipublikasikan.',
     demoNoteCard: 'Bukan data nyata — nama, ID, dan alamat dibuat dan hanya sampel baris yang disimpan.',
     internal: 'Sistem internal',
+    modulesTitle: 'Dihargai app per app', modulesLead: 'AXTO bukan satu app melainkan platform berisi banyak app. Tiap modul diukur dari repositori dan dihargai sendiri, pada tarif di halaman layanan kami.', thApp: 'App / modul', thLoc: 'Baris', thBuild: 'Nilai build (EUR)',
   },
 };
 
@@ -290,6 +294,36 @@ function WorkRow({ work, c }: { work: Work; c: Copy }) {
           </li>
         ))}
       </ul>
+
+      {work.modules ? (
+        <div className="mt-6 rounded-xl bg-[color:var(--surface)] p-4">
+          <p className="font-display text-base font-extrabold">{c.modulesTitle}</p>
+          <p className="mt-1 text-xs leading-relaxed text-steel-500">{c.modulesLead}</p>
+          <div className="mt-3 overflow-x-auto">
+            <table className="data-table min-w-[560px]">
+              <thead>
+                <tr>
+                  <th>{c.thApp}</th>
+                  <th className="text-right">{c.thLoc}</th>
+                  <th className="text-right">{c.thBuild}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {work.modules.map((mod) => (
+                  <tr key={mod.name}>
+                    <td>
+                      <span className="font-bold text-ink-900">{mod.name}</span>
+                      <span className="block text-xs text-steel-500">{mod.purpose}</span>
+                    </td>
+                    <td className="whitespace-nowrap text-right text-xs">{fmtLoc(mod.loc)}</td>
+                    <td className="whitespace-nowrap text-right font-serif font-extrabold">{eur(mod.priceMin)} – {eur(mod.priceMax)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
 
       {work.demos ? (
         <div className="relative mt-6 rounded-xl border border-red-200 bg-red-50/40 p-4">

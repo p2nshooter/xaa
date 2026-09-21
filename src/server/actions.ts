@@ -16,6 +16,10 @@ import {
   bniTransferGuide, BNI_SWIFT, SETTING_DEFS, type MethodKind,
 } from './settings';
 import { setLeadStatus, deleteLead, type LeadStatus } from './leads';
+import {
+  saveAiKey, clearAiKey, revealAiKey, setSchedule, runBackup, runOperation,
+  CADENCES, PROVIDERS, type Cadence, type Provider,
+} from './recovery';
 
 /**
  * Every mutation in the portal. Server actions rather than REST handlers:
@@ -241,12 +245,102 @@ export async function submitPaymentAction(_prev: ActionState, form: FormData): P
   }
 }
 
+/* ─────────────────── AI backup & recovery (project owner) ─────────────────── */
+
+export async function saveAiKeyAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const projectId = str(form, 'projectId');
+    const { project, name } = await ownedProject(projectId);
+    const rawProvider = str(form, 'provider');
+    const provider: Provider = (PROVIDERS as readonly string[]).includes(rawProvider) ? (rawProvider as Provider) : 'openai';
+    const apiKey = str(form, 'apiKey');
+    if (!apiKey) return { error: 'Paste your AI API key.' };
+    if (apiKey.length < 12) return { error: 'That does not look like a full API key.' };
+    await saveAiKey(project.id, provider, apiKey, name);
+    revalidatePath(`/portal/projects/${project.id}`);
+    return { ok: 'AI key saved and encrypted. Backup & recovery is armed.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function clearAiKeyAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const projectId = str(form, 'projectId');
+    const { project, name } = await ownedProject(projectId);
+    await clearAiKey(project.id, name);
+    revalidatePath(`/portal/projects/${project.id}`);
+    return { ok: 'AI key removed.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function setScheduleAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const projectId = str(form, 'projectId');
+    const { project, name } = await ownedProject(projectId);
+    const schedule = form.getAll('cadence').filter((c): c is string => typeof c === 'string') as Cadence[];
+    await setSchedule(project.id, schedule.filter((c) => CADENCES.includes(c)), name);
+    revalidatePath(`/portal/projects/${project.id}`);
+    return { ok: 'Backup schedule updated.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function runBackupAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const projectId = str(form, 'projectId');
+    const { project, name } = await ownedProject(projectId);
+    const rawCadence = str(form, 'cadence');
+    const cadence: Cadence = (['daily', 'weekly', 'monthly', 'now'] as string[]).includes(rawCadence) ? (rawCadence as Cadence) : 'now';
+    await runBackup(project.id, cadence, name);
+    revalidatePath(`/portal/projects/${project.id}`);
+    return { ok: `Backup taken (${cadence === 'now' ? 'on demand' : cadence}) and recorded.` };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function runRecoveryOpAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const projectId = str(form, 'projectId');
+    const { project, name } = await ownedProject(projectId);
+    const rawKind = str(form, 'kind');
+    if (!['restore', 'reset', 'web-fix'].includes(rawKind)) return { error: 'Unknown operation.' };
+    const kind = rawKind as 'restore' | 'reset' | 'web-fix';
+    await runOperation(project.id, kind, name, str(form, 'note'));
+    revalidatePath(`/portal/projects/${project.id}`);
+    const label = kind === 'restore' ? 'Recovery' : kind === 'reset' ? 'Database reset' : 'AI web-fix';
+    return { ok: `${label} requested and recorded on the project log.` };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
 /* ───────────────────────── Studio (admin) actions ───────────────────────── */
 
 async function requireAdmin(): Promise<{ id: string; name: string }> {
   const user = await currentUser();
   if (!user || user.role !== 'admin') throw new Error('Not authorised.');
   return { id: user.id, name: user.name };
+}
+
+export async function revealAiKeyAction(_prev: RevealState, form: FormData): Promise<RevealState> {
+  try {
+    await requireAdmin();
+    const value = await revealAiKey(str(form, 'projectId'));
+    return value ? { value } : { error: 'No key stored.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return { error: err instanceof Error ? err.message : 'Could not reveal.' };
+  }
 }
 
 export async function confirmPaymentAction(_prev: ActionState, form: FormData): Promise<ActionState> {

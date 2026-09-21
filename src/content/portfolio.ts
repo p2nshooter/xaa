@@ -49,6 +49,17 @@ export interface Work {
   priceMin: number;
   priceMax: number;
   featured?: boolean;
+  /** For a multi-app platform: each app/module priced on its own. */
+  modules?: WorkModule[];
+}
+
+/** One app/module inside a platform, with its own measured size and price. */
+export interface WorkModule {
+  name: string;
+  purpose: string;
+  loc: number;
+  priceMin: number;
+  priceMax: number;
 }
 
 export const WORKS: Work[] = [
@@ -75,6 +86,24 @@ export const WORKS: Work[] = [
     priceMin: 500000,
     priceMax: 1200000,
     featured: true,
+    // Each module priced on its own at XAA rates. Sizes are lines of code read
+    // straight off the repository; the price is comparable build value, the way
+    // every figure on this page is — not an invoice anyone received.
+    modules: [
+      { name: 'Operator Dashboard', purpose: 'The unified console that drives all twenty-plus modules — the largest single app in the platform.', loc: 46870, priceMin: 120000, priceMax: 300000 },
+      { name: 'Detection & Scanning Engine', purpose: 'The core engine that scans, detects and classifies threats (TypeScript + Python).', loc: 15581, priceMin: 60000, priceMax: 150000 },
+      { name: 'Orchestra', purpose: 'AI workload orchestration with multi-provider, multi-GPU routing.', loc: 8454, priceMin: 45000, priceMax: 110000 },
+      { name: 'SOC', purpose: 'Security operations centre — alerts, cases and response workflows.', loc: 5414, priceMin: 35000, priceMax: 85000 },
+      { name: 'AI Studios (CPU / GPU / Hybrid)', purpose: 'The studio environments for running and building AI workloads.', loc: 6264, priceMin: 35000, priceMax: 90000 },
+      { name: 'Edge & Endpoint Agents', purpose: 'Agents that run on the edge and on endpoints, reporting back to the core.', loc: 5111, priceMin: 30000, priceMax: 70000 },
+      { name: 'Sentinel', purpose: 'Real-time monitoring and detection across the fleet.', loc: 4061, priceMin: 25000, priceMax: 60000 },
+      { name: 'Vault', purpose: 'Secrets and credential vault for the whole platform.', loc: 3978, priceMin: 22000, priceMax: 55000 },
+      { name: 'Legal', purpose: 'Legal and case-management module.', loc: 3947, priceMin: 18000, priceMax: 45000 },
+      { name: 'Compliance', purpose: 'Compliance controls, evidence and reporting.', loc: 3275, priceMin: 18000, priceMax: 45000 },
+      { name: 'YP scanning service', purpose: 'Standalone Python analysis and scanning service.', loc: 2590, priceMin: 12000, priceMax: 30000 },
+      { name: 'Antivirus', purpose: 'Antivirus, quarantine and cleanup.', loc: 1909, priceMin: 15000, priceMax: 40000 },
+      { name: 'Threat Feed', purpose: 'Threat-intelligence feeds and enrichment.', loc: 900, priceMin: 12000, priceMax: 30000 },
+    ],
   },
   {
     slug: 'ulyah',

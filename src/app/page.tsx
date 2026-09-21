@@ -19,7 +19,7 @@ const CAPABILITIES = [
   { icon: '◈', title: 'Websites that sell', body: 'Landing pages, portfolios, company profiles and corporate sites — fast, indexed, and written to convert rather than to decorate.' },
   { icon: '▦', title: 'Commerce', body: 'Stores from a first catalogue to multi-warehouse, multi-currency operations, with checkout, fulfilment and reconciliation that hold up.' },
   { icon: '◮', title: 'Products & SaaS', body: 'Multi-tenant applications with subscriptions, billing, roles and an API — the commercial plumbing that turns software into revenue.' },
-  { icon: '◰', title: 'Enterprise systems', body: 'Portals, microservices, SSO, RBAC, audit trails and disaster recovery, delivered to an SLA your risk team can sign.' },
+  { icon: '◰', title: 'Enterprise systems', body: 'Portals, microservices, SSO, RBAC, audit trails and AI backup & recovery your own team runs — one-click backups, restore and database reset.' },
 ];
 
 const PRINCIPLES = [
@@ -230,7 +230,7 @@ export default async function HomePage() {
                 <li key={c.slug} className="flex items-baseline justify-between gap-4 border-b border-[color:var(--accent-soft)] pb-2">
                   <span className="font-semibold">{c.name}</span>
                   <span className="whitespace-nowrap font-serif font-extrabold">
-                    {c.custom ? `from ${eur(c.price)}` : eur(c.price)}<span className="text-xs font-normal text-steel-500">/mo</span>
+                    {c.custom ? `from ${eur(c.price)}` : eur(c.price)}
                   </span>
                 </li>
               ))}

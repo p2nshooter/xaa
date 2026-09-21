@@ -329,7 +329,7 @@ export const PACKAGES: Package[] = [
       'Third-party API integration layer',
       'Enterprise support and onboarding for internal teams',
     ],
-    optional: ['Data warehouse and BI layer', 'Regulatory compliance programme', 'Dedicated environment per region', '24/7 incident response'],
+    optional: ['Data warehouse and BI layer', 'Regulatory compliance programme', 'Dedicated environment per region', 'AI-assisted incident recovery'],
     recommendedSetup: 'setup-enterprise',
     recommendedCare: 'care-enterprise',
   },
@@ -340,7 +340,7 @@ export const PACKAGES: Package[] = [
     tier: 'enterprise',
     icon: '◈◈',
     summary:
-      'A complete digital ecosystem: customer, partner and internal platforms, an AI layer, and global infrastructure run to an SLA.',
+      'A complete digital ecosystem: customer, partner and internal platforms, an AI layer, and global infrastructure with AI backup and recovery built in.',
     bestFor: ['International groups', 'Multi-country operations', 'Financial and logistics networks', 'Organisations consolidating many systems'],
     priceMin: 500000,
     priceMax: 1500000,
@@ -356,7 +356,7 @@ export const PACKAGES: Package[] = [
       'AI ECOSYSTEM: assistant, customer support, analytics, recommendations, automation',
       'GLOBAL INFRASTRUCTURE: cloud architecture, microservices, Kubernetes, CDN, load balancing, monitoring, disaster recovery',
       'ENTERPRISE SECURITY: SSO, MFA, RBAC, encryption, audit logs, security monitoring, compliance architecture',
-      'GLOBAL SUPPORT: 24/7 monitoring, technical support, maintenance, incident response, SLA',
+      'AI BACKUP & RECOVERY: one-click daily/weekly/monthly backups, restore, database reset and AI web-fix on your own AI key',
       'Programme management, architecture governance and documentation',
     ],
     optional: ['Dedicated delivery team', 'Multi-region data residency', 'Custom AI model training', 'Managed operations centre'],
@@ -469,7 +469,7 @@ export const SETUP_PLANS: SetupPlan[] = [
       'Network, firewall and secrets management',
       'SSO / MFA and directory integration',
       'CI/CD pipelines with approval gates',
-      'Observability stack and on-call routing',
+      'Observability stack and alerting',
       'Disaster recovery drill',
       'Security baseline and compliance documentation',
       'Go-live plan, cutover rehearsal and support window',
@@ -481,15 +481,31 @@ export function getSetupPlan(slug: string): SetupPlan | undefined {
   return SETUP_PLANS.find((p) => p.slug === slug);
 }
 
-/* ───────────── Monthly care (separate from the build) ───────────── */
+/* ──────── AI Backup & Recovery (installed once, then self-served) ──────── */
 
+/**
+ * There is no monthly retainer and no 24/7 SLA. Instead we install an AI
+ * backup-and-recovery system into the site once, at setup. From then on the
+ * owner runs it themselves from their project portal: one-click daily, weekly
+ * and monthly backups, one-click restore, one-click reset (empty) of the
+ * database, and an AI web-fix that repairs the site. It runs on the client's
+ * own AI API key, into which we bake a premium repair-and-recovery prompt — so
+ * the ongoing cost is their key, not a support contract, and nobody waits on us.
+ *
+ * The tiers below are one-time installs, sized by how much the system has to
+ * protect. `price` is a one-time EUR figure. `hours` and `response` are reused
+ * to carry the two facts a buyer compares: what the AI is allowed to do, and
+ * the backup schedule it runs.
+ */
 export interface CarePlan {
   slug: string;
   name: string;
-  price: number; // EUR / month
+  price: number; // EUR, one-time install
   priceMax?: number;
   custom?: boolean;
+  /** Backup cadence the installed system runs (was: SLA response time). */
   response: string;
+  /** What the AI recovery is allowed to do (was: monthly hours). */
   hours: string;
   blurb: string;
   includes: string[];
@@ -499,78 +515,69 @@ export interface CarePlan {
 export const CARE_PLANS: CarePlan[] = [
   {
     slug: 'care-essential',
-    name: 'Essential Care',
-    price: 99,
-    response: '2 business days',
-    hours: '2 hours / month',
-    blurb: 'Keeps a website safe, current and online. For landing pages and portfolio sites.',
+    name: 'Essential Backup & Recovery',
+    price: 149,
+    response: 'Daily backups',
+    hours: 'AI web-fix + restore',
+    blurb: 'For a landing page or portfolio. Your site backs itself up every day and repairs itself from your AI key — no monthly fee.',
     includes: [
-      'Platform, dependency and security updates',
-      'Daily backups with 30-day retention',
-      'Uptime monitoring',
-      'SSL renewal and DNS care',
-      'Malware and vulnerability scanning',
-      'Monthly health report',
-      '2 hours of content or small changes',
-      'Email support',
+      'One-click daily backup, kept 30 days',
+      'One-click restore to any saved point',
+      'One-click reset — empty the database and start clean',
+      'AI web-fix: the AI repairs the live site on your key',
+      'Your AI API key stored encrypted, our premium repair prompt built in',
+      'Every backup, restore and reset written to the project log',
     ],
   },
   {
     slug: 'care-growth',
-    name: 'Growth Care',
-    price: 299,
-    response: '1 business day',
-    hours: '6 hours / month',
+    name: 'Growth Backup & Recovery',
+    price: 349,
+    response: 'Daily · weekly',
+    hours: 'AI web-fix + restore + reset',
+    blurb: 'For a company site that has to stay up. Daily and weekly backups, deeper AI recovery, longer history.',
     popular: true,
-    blurb: 'Maintenance plus continuous improvement for a company site that has to perform.',
     includes: [
-      'Everything in Essential Care',
-      'Daily backups with 90-day retention',
-      'Performance monitoring and quarterly tuning',
-      'SEO health checks and fixes',
-      'Analytics reporting with commentary',
-      '6 hours of changes, content or new sections',
-      'Staging environment for review',
-      'Email and chat support',
+      'Everything in Essential',
+      'Daily and weekly backups, kept 90 days',
+      'AI database recovery — rebuild and re-seed from a backup',
+      'Scheduled backups run automatically, on top of the buttons',
+      'Pre-restore safety snapshot taken before every restore',
+      'Downloadable backup snapshots you keep off-site',
     ],
   },
   {
     slug: 'care-business',
-    name: 'Business Care',
+    name: 'Business Backup & Recovery',
     price: 749,
-    response: '4 business hours',
-    hours: '16 hours / month',
-    blurb: 'For platforms and stores where downtime costs money. Proactive, monitored, on call in business hours.',
+    response: 'Daily · weekly · monthly',
+    hours: 'Full AI recovery suite',
+    blurb: 'For platforms and stores where the data is the business. Every cadence, full AI recovery, one year of history.',
     includes: [
-      'Everything in Growth Care',
-      'Application and database monitoring with alerting',
-      'Incident response during business hours',
-      'Monthly release cycle for improvements',
-      'Payment, integration and webhook monitoring',
-      'Quarterly security review',
-      '16 hours of development each month',
-      'Dedicated account contact',
+      'Everything in Growth',
+      'Daily, weekly and monthly backups, kept 12 months',
+      'AI recovery across the app and its database together',
+      'Point-in-time restore and selective table reset',
+      'Integrity check after every backup and restore',
+      'Backup and recovery activity exportable for audit',
     ],
   },
   {
     slug: 'care-enterprise',
-    name: 'Enterprise Care',
-    price: 2500,
-    priceMax: 10000,
+    name: 'Enterprise Backup & Recovery',
+    price: 1500,
+    priceMax: 6000,
     custom: true,
-    response: '1 hour, 24/7 under SLA',
-    hours: 'Dedicated capacity',
-    blurb: 'Contracted SLA, 24/7 monitoring and a named team. Scoped to your architecture and compliance obligations.',
+    response: 'Custom schedules',
+    hours: 'Multi-site AI recovery',
+    blurb: 'For multi-site and regulated systems. Custom schedules, multi-database recovery and rehearsed restores — scoped to your architecture.',
     includes: [
-      'Everything in Business Care',
-      '24/7 monitoring and incident response',
-      'Contractual SLA with response and resolution targets',
-      'Named engineers and a delivery manager',
-      'Capacity planning and cost optimisation',
-      'Disaster recovery drills',
-      'Compliance and audit support',
-      'Roadmap and architecture reviews',
-      'Optional dedicated development team',
+      'Everything in Business',
+      'Backup and recovery across several sites and databases',
+      'Custom retention and cadence per system',
+      'Rehearsed disaster recovery you can run on demand',
+      'Bring-your-own model or endpoint for the AI recovery',
+      'Handover runbook so your own team can operate it',
     ],
   },
 ];
@@ -654,7 +661,7 @@ export const SUPER_ENTERPRISE = {
   priceEurMax: 925_000,
   timeline: '9–18 months',
   summary:
-    'A complete digital ecosystem delivered by a dedicated senior team: custom architecture, multiple platforms, an AI layer and global infrastructure, run to a contracted SLA from day one.',
+    'A complete digital ecosystem delivered by a dedicated senior team: custom architecture, multiple platforms, an AI layer and global infrastructure, with AI backup and recovery the client runs themselves from day one.',
   forWhom: [
     'International groups consolidating many systems into one',
     'Financial, logistics and healthcare networks',
@@ -671,7 +678,7 @@ export const SUPER_ENTERPRISE = {
     'Enterprise security: SSO, MFA, RBAC, encryption, audit logs',
     'Compliance architecture and audit support',
     'Disaster recovery with rehearsed failover',
-    '24/7 monitoring and incident response under SLA',
+    'AI backup and recovery: one-click backups, restore, database reset and AI web-fix on your key',
     'Payment, ERP, CRM and logistics integration',
     'Full source, infrastructure and documentation handover',
   ],
@@ -777,7 +784,7 @@ export const CIVIC_TIERS: CivicTier[] = [
       'Redundant regional deployment with automatic failover',
       'Data retention and archival policy implementation',
       'Security review and penetration testing before go-live',
-      'On-call engineering cover for election day',
+      'Engineering cover for election day',
     ],
   },
   {
@@ -786,7 +793,7 @@ export const CIVIC_TIERS: CivicTier[] = [
     name: 'National',
     scale: 'Multi-province · nationwide field operation',
     summary:
-      'A national programme: multi-region infrastructure, formal compliance and audit obligations, rehearsed disaster recovery, and a contracted SLA covering election day itself.',
+      'A national programme: multi-region infrastructure, formal compliance and audit obligations, rehearsed disaster recovery, and dedicated operational cover for election day itself.',
     priceMin: 180000,
     priceMax: 600000,
     openEnded: true,
@@ -802,7 +809,7 @@ export const CIVIC_TIERS: CivicTier[] = [
       'Accessibility compliance across field and public interfaces',
       'Multi-language field and public interfaces',
       'Training programme and materials for field officers',
-      'Dedicated operations centre and 24/7 SLA around the election window',
+      'Dedicated operations centre for the election window',
       'Post-election audit export and independent reconciliation support',
     ],
   },
