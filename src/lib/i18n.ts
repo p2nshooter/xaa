@@ -139,6 +139,12 @@ const EN: Dict = {
   'home.care.title': 'Care plans',
   'home.care.body': 'Updates, backups, monitoring, security patching and a monthly allowance of development hours, so the thing we built keeps working while you run your business.',
   'home.care.link': 'Compare care plans →',
+  // Home — stat strip
+  'home.stat.pkgL': 'Landing page → global ecosystem',
+  'home.stat.splitV': '10 / 40 / 50', 'home.stat.splitL': 'Milestone payment split',
+  'home.stat.railsL': 'Payment rails: USDT & PayPal',
+  'home.stat.ownL': 'Code & assets transferred to you',
+  'home.stat.pkgV': '10 packages',
   // CTA band (shared)
   'cta.title': 'Ready to start?',
   'cta.lead': 'Open a project, pay the 10% booking deposit and upload your concept. You will have a delivery date the same week.',
@@ -237,6 +243,11 @@ const ES: Dict = {
   'home.care.title': 'Planes de mantenimiento',
   'home.care.body': 'Actualizaciones, copias de seguridad, monitorización, parches de seguridad y una bolsa mensual de horas de desarrollo, para que lo que construimos siga funcionando mientras tú llevas tu negocio.',
   'home.care.link': 'Comparar planes →',
+  'home.stat.pkgL': 'Landing → ecosistema global',
+  'home.stat.splitV': '10 / 40 / 50', 'home.stat.splitL': 'Reparto de pagos por hitos',
+  'home.stat.railsL': 'Vías de pago: USDT y PayPal',
+  'home.stat.ownL': 'Código y activos transferidos a ti',
+  'home.stat.pkgV': '10 paquetes',
   'cta.title': '¿Listo para empezar?',
   'cta.lead': 'Abre un proyecto, paga el 10% de depósito de reserva y sube tu concepto. Tendrás una fecha de entrega esa misma semana.',
   'cta.primary': 'Abrir un proyecto',
@@ -334,6 +345,11 @@ const ID: Dict = {
   'home.care.title': 'Paket perawatan',
   'home.care.body': 'Pembaruan, backup, monitoring, patch keamanan, dan jatah jam pengembangan bulanan, agar yang kami bangun tetap berjalan sementara Anda menjalankan bisnis.',
   'home.care.link': 'Bandingkan paket perawatan →',
+  'home.stat.pkgL': 'Halaman arahan → ekosistem global',
+  'home.stat.splitV': '10 / 40 / 50', 'home.stat.splitL': 'Pembagian pembayaran termin',
+  'home.stat.railsL': 'Jalur pembayaran: USDT & PayPal',
+  'home.stat.ownL': 'Kode & aset dipindahkan ke Anda',
+  'home.stat.pkgV': '10 paket',
   'cta.title': 'Siap memulai?',
   'cta.lead': 'Buka proyek, bayar DP 10%, dan unggah konsep Anda. Tanggal selesai keluar minggu itu juga.',
   'cta.primary': 'Buka proyek',
@@ -351,4 +367,14 @@ export function tr(lang: Lang, key: string): string {
 /** Bound translator for one language. */
 export function translator(lang: Lang) {
   return (key: string) => tr(lang, key);
+}
+
+/**
+ * Pick one language's copy from a hand-written {en, es, id} block. Content-heavy
+ * pages keep their prose in a local object of this shape rather than in the
+ * global dictionary, so the three translations sit next to each other and stay
+ * easy to review. A missing language falls back to English — never a guess.
+ */
+export function pick<T>(lang: Lang, variants: Record<Lang, T>): T {
+  return variants[lang] ?? variants.en;
 }

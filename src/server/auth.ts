@@ -14,7 +14,12 @@ import { db, newId, nowIso, appEnv } from './db';
 
 const COOKIE = 'xaa_session';
 const SESSION_DAYS = 30;
-const ITERATIONS = 210_000;
+// PBKDF2 rounds for NEW hashes. Kept deliberately modest because this runs in
+// a Cloudflare Worker, where a single 210k-round derivation (~100ms of CPU) can
+// blow the per-request CPU budget and make sign-in throw. 100k is still a sound
+// work factor, and verifyPassword reads each stored hash's own round count from
+// the string, so hashes written at the old value keep verifying unchanged.
+const ITERATIONS = 100_000;
 
 /**
  * Emails that are always the studio admin, whatever the ADMIN_EMAIL secret
@@ -37,7 +42,7 @@ const SEED_ADMIN = {
   email: 'alghoniy2026@gmail.com',
   name: 'XAA Studio',
   passwordHash:
-    'pbkdf2$210000$7a9fead4a7fa0b4da5e44eb895d32e98$54b0f4fca5deffd8f029abc82ebcb3079b28f372c19ffe6199776dab48e5bd0f',
+    'pbkdf2$100000$dec21423a7fadaa2b3d4bb3efd6c3a9f$8b82ea3510ae09b69e70829cf9a2d0114191e09fc20f02c0ee9c9d813c9a3149',
 };
 
 export interface User {
@@ -228,13 +233,23 @@ export async function seedAdmin(database: D1Database, env: { ADMIN_PASSWORD?: st
   const email = normaliseEmail(SEED_ADMIN.email);
 
   const existing = await database
-    .prepare('SELECT id, role FROM users WHERE email = ?')
+    .prepare('SELECT id, role, password_hash FROM users WHERE email = ?')
     .bind(email)
-    .first<{ id: string; role: string }>();
+    .first<{ id: string; role: string; password_hash: string }>();
 
   if (existing) {
+    // Keep the studio account correct even if an earlier deploy left it wrong.
     if (existing.role !== 'admin') {
       await database.prepare('UPDATE users SET role = ? WHERE id = ?').bind('admin', existing.id).run();
+    }
+    // Heal the password too. When no ADMIN_PASSWORD secret is set the intended
+    // password is the committed one, so a row carrying a stale or higher-cost
+    // hash (e.g. seeded by an earlier build) is refreshed to the current hash.
+    // This is what lets the owner sign in after the work factor changed, and it
+    // corrects a row that was seeded with the wrong hash. It never runs when a
+    // secret governs the password.
+    if (!env.ADMIN_PASSWORD && existing.password_hash !== SEED_ADMIN.passwordHash) {
+      await database.prepare('UPDATE users SET password_hash = ? WHERE id = ?').bind(SEED_ADMIN.passwordHash, existing.id).run();
     }
     return;
   }

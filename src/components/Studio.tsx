@@ -1,7 +1,28 @@
 import Link from 'next/link';
-import { eur, usd, priceRange, TIER_LABEL, type Package, type AddOn } from '@/content/packages';
+import { eur, usd, priceRange, type Package, type AddOn } from '@/content/packages';
+import { tierLabel } from '@/content/packages.i18n';
+import { pick, type Lang } from '@/lib/i18n';
 
 /** Shared building blocks for the commercial pages. */
+
+type CardCopy = {
+  mostRequested: string; usdtNote: string; timeline: string; scope: string;
+  moreIncluded: (n: number) => string; fullSpec: string; startFrom: string; deposit: string;
+};
+const CARD: Record<Lang, CardCopy> = {
+  en: {
+    mostRequested: 'Most requested', usdtNote: 'in USDT · one-time build cost', timeline: 'Timeline', scope: 'Scope',
+    moreIncluded: (n) => `+ ${n} more included`, fullSpec: 'Full spec', startFrom: 'Start from', deposit: '10% booking deposit',
+  },
+  es: {
+    mostRequested: 'Más solicitado', usdtNote: 'en USDT · coste único de desarrollo', timeline: 'Plazo', scope: 'Alcance',
+    moreIncluded: (n) => `+ ${n} más incluidos`, fullSpec: 'Ficha completa', startFrom: 'Desde', deposit: '10% de depósito de reserva',
+  },
+  id: {
+    mostRequested: 'Paling diminta', usdtNote: 'dalam USDT · biaya pembuatan sekali', timeline: 'Lini masa', scope: 'Cakupan',
+    moreIncluded: (n) => `+ ${n} lagi termasuk`, fullSpec: 'Spesifikasi lengkap', startFrom: 'Mulai dari', deposit: 'DP pemesanan 10%',
+  },
+};
 
 export function SectionHead({
   eyebrow,
@@ -23,29 +44,31 @@ export function SectionHead({
   );
 }
 
-export function PriceTag({ pkg, compact = false }: { pkg: Package; compact?: boolean }) {
+export function PriceTag({ pkg, compact = false, lang = 'en' }: { pkg: Package; compact?: boolean; lang?: Lang }) {
+  const c = pick(lang, CARD);
   return (
     <div>
       <p className={`font-display font-extrabold leading-none tracking-tight ${compact ? 'text-2xl' : 'text-[2rem]'}`}>
         {priceRange(pkg.priceMin, pkg.priceMax, pkg.openEnded)}
       </p>
       <p className="mt-1.5 text-xs text-steel-500">
-        ≈ {usd(pkg.priceMin)} – {usd(pkg.priceMax)}{pkg.openEnded ? '+' : ''} in USDT · one-time build cost
+        ≈ {usd(pkg.priceMin)} – {usd(pkg.priceMax)}{pkg.openEnded ? '+' : ''} {c.usdtNote}
       </p>
     </div>
   );
 }
 
-export function PackageCard({ pkg }: { pkg: Package }) {
+export function PackageCard({ pkg, lang = 'en' }: { pkg: Package; lang?: Lang }) {
+  const c = pick(lang, CARD);
   return (
     <article className="premium-card relative flex h-full flex-col p-6">
-      {pkg.popular ? <span className="badge badge-blue absolute right-5 top-5">Most requested</span> : null}
+      {pkg.popular ? <span className="badge badge-blue absolute right-5 top-5">{c.mostRequested}</span> : null}
 
       <div className="flex items-center gap-3">
         <span className="mk-icon-bubble">{pkg.icon}</span>
         <div>
           <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-steel-400">
-            {pkg.code} · {TIER_LABEL[pkg.tier]}
+            {pkg.code} · {tierLabel(pkg.tier, lang)}
           </p>
           <h3 className="font-display text-lg font-bold leading-tight">{pkg.name}</h3>
         </div>
@@ -54,16 +77,16 @@ export function PackageCard({ pkg }: { pkg: Package }) {
       <p className="mt-4 text-sm leading-relaxed text-steel-500">{pkg.summary}</p>
 
       <div className="mt-5 border-t border-[color:var(--line)] pt-4">
-        <PriceTag pkg={pkg} compact />
+        <PriceTag pkg={pkg} compact lang={lang} />
       </div>
 
       <dl className="mt-4 grid grid-cols-2 gap-3 rounded-xl bg-[color:var(--surface)] p-3 text-xs">
         <div>
-          <dt className="font-semibold uppercase tracking-wide text-steel-400">Timeline</dt>
+          <dt className="font-semibold uppercase tracking-wide text-steel-400">{c.timeline}</dt>
           <dd className="mt-0.5 font-semibold text-ink-900">{pkg.timeline}</dd>
         </div>
         <div>
-          <dt className="font-semibold uppercase tracking-wide text-steel-400">Scope</dt>
+          <dt className="font-semibold uppercase tracking-wide text-steel-400">{c.scope}</dt>
           <dd className="mt-0.5 font-semibold text-ink-900">{pkg.pages}</dd>
         </div>
       </dl>
@@ -76,17 +99,17 @@ export function PackageCard({ pkg }: { pkg: Package }) {
           </li>
         ))}
         {pkg.includes.length > 5 ? (
-          <li className="pl-5 text-xs text-steel-400">+ {pkg.includes.length - 5} more included</li>
+          <li className="pl-5 text-xs text-steel-400">{c.moreIncluded(pkg.includes.length - 5)}</li>
         ) : null}
       </ul>
 
       <div className="mt-auto flex gap-2 pt-6">
-        <Link href={`/services/${pkg.slug}`} className="btn btn-ghost btn-sm flex-1">Full spec</Link>
+        <Link href={`/services/${pkg.slug}`} className="btn btn-ghost btn-sm flex-1">{c.fullSpec}</Link>
         <Link href={`/portal/new?package=${pkg.slug}`} className="btn btn-primary btn-sm flex-1">
-          Start from {eur(Math.round(pkg.priceMin * 0.1))}
+          {c.startFrom} {eur(Math.round(pkg.priceMin * 0.1))}
         </Link>
       </div>
-      <p className="mt-2 text-center text-[11px] text-steel-400">10% booking deposit</p>
+      <p className="mt-2 text-center text-[11px] text-steel-400">{c.deposit}</p>
     </article>
   );
 }

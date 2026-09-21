@@ -245,12 +245,19 @@ export async function db(): Promise<D1Database> {
   // Seed the studio admin once per isolate, after the schema is ready. The
   // dynamic import breaks the db ↔ auth import cycle, and passing DB in means
   // seedAdmin never re-enters db() (which would deadlock on this same call).
+  //
+  // Best-effort, and deliberately NOT awaited into the caller's fate: a failed
+  // seed must never take the whole portal down. Earlier this threw, so any
+  // hiccup while seeding the admin broke *every* database call — including the
+  // sign-in that only needs to read the users table. Now a seed error is logged
+  // and swallowed, the seed is retried on the next request, and db() always
+  // returns a working handle.
   if (!seeded) {
     seeded = import('./auth')
       .then((m) => m.seedAdmin(DB, { ADMIN_PASSWORD: env.ADMIN_PASSWORD }))
       .catch((err) => {
+        console.error('seedAdmin failed (non-fatal):', err);
         seeded = null; // let a later request try again
-        throw err;
       });
   }
   await seeded;

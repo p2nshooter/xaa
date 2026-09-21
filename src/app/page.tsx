@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { SITE } from '@/lib/site';
-import { PACKAGES, ADDONS, CARE_PLANS, SETUP_PLANS, eur, priceRange } from '@/content/packages';
+import { PACKAGES, eur, priceRange } from '@/content/packages';
+import { localisedPackages, localisedAddons, localisedSetupPlans, localisedCarePlans } from '@/content/packages.i18n';
 import { PackageCard, SectionHead, CtaBand, StatStrip, AddOnCard } from '@/components/Studio';
 import { BrandMark } from '@/components/Site';
-import { STAGES } from '@/content/process';
+import { localisedStages } from '@/content/process';
 import { translator } from '@/lib/i18n';
 import { getLang } from '@/lib/i18n.server';
 
@@ -29,8 +30,15 @@ const PRINCIPLES = [
 ];
 
 export default async function HomePage() {
-  const t = translator(await getLang());
-  const featured = PACKAGES.filter((p) => ['landing-page', 'company-profile', 'business-platform', 'ecommerce', 'saas-platform', 'enterprise-platform'].includes(p.slug));
+  const lang = await getLang();
+  const t = translator(lang);
+  const stages = localisedStages(lang);
+  const pkgs = localisedPackages(lang);
+  const addons = localisedAddons(lang);
+  const setupPlans = localisedSetupPlans(lang);
+  const carePlans = localisedCarePlans(lang);
+  const featuredSlugs = ['landing-page', 'company-profile', 'business-platform', 'ecommerce', 'saas-platform', 'enterprise-platform'];
+  const featured = pkgs.filter((p) => featuredSlugs.includes(p.slug));
 
   return (
     <>
@@ -132,12 +140,12 @@ export default async function HomePage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featured.map((p) => (
-            <PackageCard key={p.slug} pkg={p} />
+            <PackageCard key={p.slug} pkg={p} lang={lang} />
           ))}
         </div>
         <div className="mt-8 panel flex flex-wrap items-center justify-between gap-4 p-6">
           <p className="text-sm text-steel-500">
-            {t('home.pkg.also')} {PACKAGES.filter((p) => !featured.includes(p)).map((p) => p.name).join(' · ')}.
+            {t('home.pkg.also')} {pkgs.filter((p) => !featuredSlugs.includes(p.slug)).map((p) => p.name).join(' · ')}.
           </p>
           <Link href="/services" className="btn btn-dark btn-sm">{t('home.pkg.compare')}</Link>
         </div>
@@ -152,7 +160,7 @@ export default async function HomePage() {
           center
         />
         <ol className="mt-12 grid gap-4 md:grid-cols-3 lg:grid-cols-7">
-          {STAGES.map((s, i) => (
+          {stages.map((s, i) => (
             <li key={s.key} className={`premium-card mk-fade-up mk-d${(i % 6) + 1} flex flex-col p-5`}>
               <span className="font-display text-2xl font-extrabold accent-text">{String(i + 1).padStart(2, '0')}</span>
               <p className="mt-2 text-sm font-bold leading-snug">{s.name}</p>
@@ -200,7 +208,7 @@ export default async function HomePage() {
               {t('home.setup.body')}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              {SETUP_PLANS.map((s) => (
+              {setupPlans.map((s) => (
                 <li key={s.slug} className="flex items-baseline justify-between gap-4 border-b border-[color:var(--accent-soft)] pb-2">
                   <span className="font-semibold">{s.name}</span>
                   <span className="whitespace-nowrap font-serif font-extrabold">
@@ -218,7 +226,7 @@ export default async function HomePage() {
               {t('home.care.body')}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              {CARE_PLANS.map((c) => (
+              {carePlans.map((c) => (
                 <li key={c.slug} className="flex items-baseline justify-between gap-4 border-b border-[color:var(--accent-soft)] pb-2">
                   <span className="font-semibold">{c.name}</span>
                   <span className="whitespace-nowrap font-serif font-extrabold">
@@ -236,7 +244,7 @@ export default async function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-12">
         <SectionHead eyebrow={t('home.addons.eyebrow')} title={t('home.addons.title')} lead={t('home.addons.lead')} />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {ADDONS.slice(0, 6).map((a) => (
+          {addons.slice(0, 6).map((a) => (
             <AddOnCard key={a.slug} addon={a} />
           ))}
         </div>
@@ -249,10 +257,10 @@ export default async function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-12">
         <StatStrip
           items={[
-            { value: '10 packages', label: 'Landing page → global ecosystem' },
-            { value: '10 / 40 / 50', label: 'Milestone payment split' },
-            { value: '2', label: 'Payment rails: USDT & PayPal' },
-            { value: '100%', label: 'Code & assets transferred to you' },
+            { value: t('home.stat.pkgV'), label: t('home.stat.pkgL') },
+            { value: t('home.stat.splitV'), label: t('home.stat.splitL') },
+            { value: '2', label: t('home.stat.railsL') },
+            { value: '100%', label: t('home.stat.ownL') },
           ]}
         />
       </section>
