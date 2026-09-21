@@ -18,7 +18,7 @@ import {
 import { setLeadStatus, deleteLead, type LeadStatus } from './leads';
 import {
   saveAiKey, clearAiKey, revealAiKey, setSchedule, runBackup, runOperation,
-  CADENCES, PROVIDERS, type Cadence, type Provider,
+  restoreFromBackup, resetDatabase, CADENCES, PROVIDERS, type Cadence, type Provider,
 } from './recovery';
 
 /**
@@ -313,11 +313,30 @@ export async function runRecoveryOpAction(_prev: ActionState, form: FormData): P
     const { project, name } = await ownedProject(projectId);
     const rawKind = str(form, 'kind');
     if (!['restore', 'reset', 'web-fix'].includes(rawKind)) return { error: 'Unknown operation.' };
-    const kind = rawKind as 'restore' | 'reset' | 'web-fix';
-    await runOperation(project.id, kind, name, str(form, 'note'));
+
+    // Backup, restore and reset are the NON-AI path: they act directly on the
+    // stored snapshots and the database and need no AI key. Only web-fix uses
+    // the AI. Restore requires a chosen snapshot; without one it is recorded as
+    // an intent so the studio can run it against a specific point.
+    if (rawKind === 'restore') {
+      const backupId = str(form, 'backupId');
+      if (backupId) {
+        await restoreFromBackup(project.id, backupId, name);
+      } else {
+        await runOperation(project.id, 'restore', name, str(form, 'note'));
+      }
+      revalidatePath(`/portal/projects/${project.id}`);
+      return { ok: backupId ? 'Recovery done — restored from the chosen snapshot.' : 'Recovery request recorded.' };
+    }
+    if (rawKind === 'reset') {
+      await resetDatabase(project.id, name);
+      revalidatePath(`/portal/projects/${project.id}`);
+      return { ok: 'Database reset — emptied. A safety snapshot was taken first.' };
+    }
+    // web-fix (AI)
+    await runOperation(project.id, 'web-fix', name, str(form, 'note'));
     revalidatePath(`/portal/projects/${project.id}`);
-    const label = kind === 'restore' ? 'Recovery' : kind === 'reset' ? 'Database reset' : 'AI web-fix';
-    return { ok: `${label} requested and recorded on the project log.` };
+    return { ok: 'AI web-fix requested and recorded on the project log.' };
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);

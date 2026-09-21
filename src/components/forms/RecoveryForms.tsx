@@ -13,15 +13,18 @@ export type RecoveryEventView = {
   id: string; kind: string; cadence: string | null; detail: string | null;
   status: string; actor: string; created_at: string; bytes: number | null;
 };
+export type BackupView = { id: string; created_at: string; bytes: number | null };
 
 type Copy = {
   title: string; intro: string;
+  nonAiTitle: string; nonAiHint: string; aiTitle: string; aiHint: string;
   keyTitle: string; provider: string; apiKey: string; keyHint: string; save: string; saving: string;
   keyStored: string; noKey: string; remove: string; removing: string; show: string; hide: string;
   schedTitle: string; schedHint: string; daily: string; weekly: string; monthly: string; armed: string; saveSched: string;
   opsTitle: string; backupNow: string; backupDaily: string; backupWeekly: string; backupMonthly: string;
   restore: string; reset: string; webfix: string; running: string;
   confirmReset: string; confirmRestore: string; noteLabel: string;
+  snapshotsTitle: string; noSnapshots: string; download: string; restoreThis: string;
   logTitle: string; logEmpty: string;
   procTitle: string; procIntro: string; procSteps: string[]; procNote: string;
   kinds: Record<string, string>;
@@ -29,7 +32,10 @@ type Copy = {
 
 const COPY: Record<Lang, Copy> = {
   en: {
-    title: 'AI Backup & Recovery', intro: 'Back up, restore, reset the database and run an AI web-fix — one click, on your own AI key. Every action is recorded below.',
+    title: 'Backup & Recovery', intro: 'Back up, restore and reset the database with one click. Backup and recovery work directly — no AI key needed. The AI is only for the optional self-healing web-fix. Every action is recorded below.',
+    nonAiTitle: 'Direct backup & recovery — no AI key needed', nonAiHint: 'Plain snapshots of the database. Back up, download, restore or reset — none of this needs an AI key.',
+    aiTitle: 'AI-assisted (needs your API key)', aiHint: 'Optional. With an AI key the site can repair itself; our premium repair prompt is applied server-side.',
+    snapshotsTitle: 'Stored snapshots', noSnapshots: 'No stored snapshots yet — run a backup.', download: 'Download', restoreThis: 'Restore this',
     keyTitle: 'Your AI API key', provider: 'Provider', apiKey: 'API key', keyHint: 'Stored encrypted. Our premium repair-and-recovery prompt is applied server-side; your key is never shown back to you.',
     save: 'Save key', saving: 'Saving…', keyStored: 'Key stored — recovery is armed', noKey: 'No key yet — add one to arm recovery', remove: 'Remove key', removing: 'Removing…', show: 'Show (admin)', hide: 'Hide',
     schedTitle: 'Automatic backups', schedHint: 'On top of the one-click buttons. Choose the cadences to run automatically.', daily: 'Daily', weekly: 'Weekly', monthly: 'Monthly', armed: 'Armed', saveSched: 'Save schedule',
@@ -51,7 +57,10 @@ const COPY: Record<Lang, Copy> = {
     kinds: { backup: 'Backup', restore: 'Recovery', reset: 'Database reset', 'web-fix': 'AI web-fix', schedule: 'Schedule', 'key-set': 'AI key set', 'key-clear': 'AI key removed' },
   },
   es: {
-    title: 'Backup y Recuperación IA', intro: 'Respalda, restaura, resetea la base de datos y ejecuta un web-fix IA — un clic, sobre tu propia API key. Cada acción queda registrada abajo.',
+    title: 'Backup y Recuperación', intro: 'Respalda, restaura y resetea la base de datos con un clic. El backup y la recuperación funcionan directamente — sin API key de IA. La IA es solo para el web-fix opcional de autorreparación. Cada acción queda registrada abajo.',
+    nonAiTitle: 'Backup y recuperación directos — sin API key de IA', nonAiHint: 'Snapshots simples de la base de datos. Respalda, descarga, restaura o resetea — nada de esto necesita una API key de IA.',
+    aiTitle: 'Asistido por IA (necesita tu API key)', aiHint: 'Opcional. Con una API key el sitio puede repararse solo; nuestro prompt premium se aplica en el servidor.',
+    snapshotsTitle: 'Snapshots guardados', noSnapshots: 'Aún sin snapshots — ejecuta un backup.', download: 'Descargar', restoreThis: 'Restaurar este',
     keyTitle: 'Tu API key de IA', provider: 'Proveedor', apiKey: 'API key', keyHint: 'Guardada cifrada. Nuestro prompt premium de reparación se aplica en el servidor; tu key nunca se te muestra de vuelta.',
     save: 'Guardar key', saving: 'Guardando…', keyStored: 'Key guardada — recuperación armada', noKey: 'Aún sin key — añade una para armar la recuperación', remove: 'Quitar key', removing: 'Quitando…', show: 'Mostrar (admin)', hide: 'Ocultar',
     schedTitle: 'Backups automáticos', schedHint: 'Además de los botones. Elige las cadencias que se ejecutan solas.', daily: 'Diario', weekly: 'Semanal', monthly: 'Mensual', armed: 'Armado', saveSched: 'Guardar horario',
@@ -73,7 +82,10 @@ const COPY: Record<Lang, Copy> = {
     kinds: { backup: 'Backup', restore: 'Recuperación', reset: 'Reseteo de base de datos', 'web-fix': 'Web-fix IA', schedule: 'Horario', 'key-set': 'Key IA guardada', 'key-clear': 'Key IA quitada' },
   },
   id: {
-    title: 'Backup & Recovery AI', intro: 'Backup, restore, reset database, dan jalankan web-fix AI — satu klik, di atas API key AI Anda. Tiap aksi tercatat di bawah.',
+    title: 'Backup & Recovery', intro: 'Backup, restore, dan reset database dengan satu klik. Backup dan recovery berjalan langsung — tanpa API key AI. AI hanya untuk web-fix swa-perbaikan yang opsional. Tiap aksi tercatat di bawah.',
+    nonAiTitle: 'Backup & recovery langsung — tanpa API key AI', nonAiHint: 'Snapshot sederhana dari database. Backup, unduh, restore, atau reset — semua ini tak butuh API key AI.',
+    aiTitle: 'Dibantu AI (butuh API key Anda)', aiHint: 'Opsional. Dengan API key AI, situs bisa memperbaiki dirinya; prompt perbaikan premium kami diterapkan di server.',
+    snapshotsTitle: 'Snapshot tersimpan', noSnapshots: 'Belum ada snapshot — jalankan backup.', download: 'Unduh', restoreThis: 'Restore ini',
     keyTitle: 'API key AI Anda', provider: 'Penyedia', apiKey: 'API key', keyHint: 'Disimpan terenkripsi. Prompt perbaikan premium kami diterapkan di server; key Anda tak pernah ditampilkan kembali.',
     save: 'Simpan key', saving: 'Menyimpan…', keyStored: 'Key tersimpan — recovery aktif', noKey: 'Belum ada key — tambahkan untuk mengaktifkan recovery', remove: 'Hapus key', removing: 'Menghapus…', show: 'Tampilkan (admin)', hide: 'Sembunyikan',
     schedTitle: 'Backup otomatis', schedHint: 'Di samping tombol. Pilih irama yang berjalan otomatis.', daily: 'Harian', weekly: 'Mingguan', monthly: 'Bulanan', armed: 'Aktif', saveSched: 'Simpan jadwal',
@@ -115,8 +127,8 @@ function OpButton({ action, hidden, label, running, projectId, extra }: {
   );
 }
 
-export function RecoveryPanel({ projectId, config, events, isAdmin, lang = 'en' }: {
-  projectId: string; config: RecoveryConfig; events: RecoveryEventView[]; isAdmin: boolean; lang?: Lang;
+export function RecoveryPanel({ projectId, config, events, backups, isAdmin, lang = 'en' }: {
+  projectId: string; config: RecoveryConfig; events: RecoveryEventView[]; backups: BackupView[]; isAdmin: boolean; lang?: Lang;
 }) {
   const c = pick(lang, COPY);
   const [keyState, keyAction] = useActionState<ActionState, FormData>(saveAiKeyAction, {});
@@ -128,10 +140,65 @@ export function RecoveryPanel({ projectId, config, events, isAdmin, lang = 'en' 
       <h2 className="font-display text-lg font-extrabold">{c.title}</h2>
       <p className="mt-1 text-sm leading-relaxed text-steel-500">{c.intro}</p>
 
-      {/* Key */}
-      <div className="mt-5 rounded-lg bg-[color:var(--surface)] p-4">
+      {/* ───── Non-AI: direct backup & recovery ───── */}
+      <div className="mt-5 rounded-lg border border-[color:var(--accent-soft)] p-4">
+        <p className="text-sm font-bold">{c.nonAiTitle}</p>
+        <p className="mt-1 text-xs text-steel-500">{c.nonAiHint}</p>
+
+        {/* Operations */}
+        <p className="mt-4 text-xs font-extrabold uppercase tracking-wide text-steel-500">{c.opsTitle}</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <OpButton action={runBackupAction} hidden={{ cadence: 'now' }} label={c.backupNow} running={c.running} projectId={projectId} />
+          <OpButton action={runBackupAction} hidden={{ cadence: 'daily' }} label={c.backupDaily} running={c.running} projectId={projectId} />
+          <OpButton action={runBackupAction} hidden={{ cadence: 'weekly' }} label={c.backupWeekly} running={c.running} projectId={projectId} />
+          <OpButton action={runBackupAction} hidden={{ cadence: 'monthly' }} label={c.backupMonthly} running={c.running} projectId={projectId} />
+        </div>
+
+        {/* Schedule */}
+        <form action={schedAction} className="mt-4 flex flex-wrap items-center gap-4 rounded-lg bg-[color:var(--surface)] p-3">
+          <span className="text-xs font-extrabold uppercase tracking-wide text-steel-500">{c.schedTitle}</span>
+          {(['daily', 'weekly', 'monthly'] as const).map((cad) => (
+            <label key={cad} className="flex items-center gap-2 text-sm">
+              <input type="checkbox" name="cadence" value={cad} defaultChecked={config.schedule.includes(cad)} />
+              {cad === 'daily' ? c.daily : cad === 'weekly' ? c.weekly : c.monthly}
+            </label>
+          ))}
+          <input type="hidden" name="projectId" value={projectId} />
+          <Submit pendingLabel={c.saving} className="btn btn-ghost btn-sm">{c.saveSched}</Submit>
+          {schedState.ok ? <span className="text-xs text-green-700">{schedState.ok}</span> : null}
+        </form>
+
+        {/* Stored snapshots — download / restore, no AI needed */}
+        <p className="mt-4 text-xs font-extrabold uppercase tracking-wide text-steel-500">{c.snapshotsTitle}</p>
+        {backups.length === 0 ? (
+          <p className="mt-1 text-sm text-steel-500">{c.noSnapshots}</p>
+        ) : (
+          <ul className="mt-2 space-y-2">
+            {backups.map((b) => (
+              <li key={b.id} className="flex flex-wrap items-center justify-between gap-2 border-b border-[color:var(--accent-soft)] pb-2 text-sm last:border-0">
+                <span>{new Date(b.created_at).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}{b.bytes ? ` · ${(b.bytes / 1024).toFixed(1)} KB` : ''}</span>
+                <span className="flex items-center gap-3">
+                  <a href={`/api/backups/${b.id}`} className="text-xs text-gold-500 underline">{c.download}</a>
+                  <RestoreThis projectId={projectId} backupId={b.id} label={c.restoreThis} running={c.running} />
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* Reset — empty the database (safety snapshot first) */}
+        <div className="mt-4">
+          <ConfirmOp action={runRecoveryOpAction} kind="reset" label={c.reset} confirm={c.confirmReset} running={c.running} projectId={projectId} danger noteLabel={c.noteLabel} />
+        </div>
+      </div>
+
+      {/* ───── AI-assisted ───── */}
+      <div className="mt-4 rounded-lg border border-[color:var(--accent-soft)] p-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">{c.keyTitle}</p>
+          <div>
+            <p className="text-sm font-bold">{c.aiTitle}</p>
+            <p className="mt-1 text-xs text-steel-500">{c.aiHint}</p>
+          </div>
           <span className={`badge ${config.hasKey ? 'badge-green' : 'badge-amber'}`}>{config.hasKey ? c.keyStored : c.noKey}</span>
         </div>
         <form action={keyAction} className="mt-3">
@@ -155,45 +222,15 @@ export function RecoveryPanel({ projectId, config, events, isAdmin, lang = 'en' 
             {isAdmin && config.hasKey ? <RevealKey projectId={projectId} show={c.show} hide={c.hide} /> : null}
           </div>
         </form>
-        {config.hasKey ? (
-          <form action={clearAction} className="mt-2">
-            <input type="hidden" name="projectId" value={projectId} />
-            <Submit pendingLabel={c.removing} className="btn btn-ghost btn-sm">{c.remove}</Submit>
-            {clearState.ok ? <span className="ml-2 text-xs text-green-700">{clearState.ok}</span> : null}
-          </form>
-        ) : null}
-      </div>
-
-      {/* Schedule */}
-      <div className="mt-4 rounded-lg bg-[color:var(--surface)] p-4">
-        <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">{c.schedTitle}</p>
-        <p className="mt-1 text-xs text-steel-500">{c.schedHint}</p>
-        <form action={schedAction} className="mt-2 flex flex-wrap items-center gap-4">
-          <input type="hidden" name="projectId" value={projectId} />
-          {(['daily', 'weekly', 'monthly'] as const).map((cad) => (
-            <label key={cad} className="flex items-center gap-2 text-sm">
-              <input type="checkbox" name="cadence" value={cad} defaultChecked={config.schedule.includes(cad)} />
-              {cad === 'daily' ? c.daily : cad === 'weekly' ? c.weekly : c.monthly}
-            </label>
-          ))}
-          <Submit pendingLabel={c.saving} className="btn btn-ghost btn-sm">{c.saveSched}</Submit>
-          {schedState.ok ? <span className="text-xs text-green-700">{schedState.ok}</span> : null}
-        </form>
-      </div>
-
-      {/* Operations */}
-      <div className="mt-4">
-        <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">{c.opsTitle}</p>
-        <div className="mt-2 flex flex-wrap gap-2">
-          <OpButton action={runBackupAction} hidden={{ cadence: 'now' }} label={c.backupNow} running={c.running} projectId={projectId} />
-          <OpButton action={runBackupAction} hidden={{ cadence: 'daily' }} label={c.backupDaily} running={c.running} projectId={projectId} />
-          <OpButton action={runBackupAction} hidden={{ cadence: 'weekly' }} label={c.backupWeekly} running={c.running} projectId={projectId} />
-          <OpButton action={runBackupAction} hidden={{ cadence: 'monthly' }} label={c.backupMonthly} running={c.running} projectId={projectId} />
+        <div className="mt-3 flex flex-wrap items-center gap-2">
           <OpButton action={runRecoveryOpAction} hidden={{ kind: 'web-fix' }} label={c.webfix} running={c.running} projectId={projectId} />
-        </div>
-        <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          <ConfirmOp action={runRecoveryOpAction} kind="restore" label={c.restore} confirm={c.confirmRestore} running={c.running} projectId={projectId} noteLabel={c.noteLabel} />
-          <ConfirmOp action={runRecoveryOpAction} kind="reset" label={c.reset} confirm={c.confirmReset} running={c.running} projectId={projectId} danger noteLabel={c.noteLabel} />
+          {config.hasKey ? (
+            <form action={clearAction} className="contents">
+              <input type="hidden" name="projectId" value={projectId} />
+              <Submit pendingLabel={c.removing} className="btn btn-ghost btn-sm">{c.remove}</Submit>
+              {clearState.ok ? <span className="text-xs text-green-700">{clearState.ok}</span> : null}
+            </form>
+          ) : null}
         </div>
       </div>
 
@@ -229,6 +266,19 @@ export function RecoveryPanel({ projectId, config, events, isAdmin, lang = 'en' 
         <p className="mt-3 text-xs font-medium text-ink-900">{c.procNote}</p>
       </details>
     </section>
+  );
+}
+
+function RestoreThis({ projectId, backupId, label, running }: { projectId: string; backupId: string; label: string; running: string }) {
+  const [state, formAction] = useActionState<ActionState, FormData>(runRecoveryOpAction, {});
+  return (
+    <form action={formAction} className="inline">
+      <input type="hidden" name="projectId" value={projectId} />
+      <input type="hidden" name="kind" value="restore" />
+      <input type="hidden" name="backupId" value={backupId} />
+      <Submit pendingLabel={running} className="btn btn-ghost btn-sm">{label}</Submit>
+      {state.error ? <span className="ml-1 text-xs text-red-600">{state.error}</span> : null}
+    </form>
   );
 }
 
