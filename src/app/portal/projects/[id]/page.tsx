@@ -2,7 +2,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { currentUser } from '@/server/auth';
-import { appEnv, portalReady } from '@/server/db';
+import { portalReady } from '@/server/db';
+import { listPaymentMethods } from '@/server/settings';
 import {
   getProject, listPayments, listFiles, listUpdates, money, nextAction, stageState,
   addonNames, formatDate, STATUS_LABEL, STATUS_BADGE, SETTLEMENT_TRIGGER, UNPAID_PROGRESS_CAP, FINAL_PCT,
@@ -10,7 +11,7 @@ import {
 import { STAGES } from '@/content/process';
 import { getPackage, getSetupPlan, getCarePlan, eur, usd } from '@/content/packages';
 import { formatBytes } from '@/server/uploads';
-import { ConceptUploadForm, PaymentForm, AdminProjectControls, type PayTo } from '@/components/forms/ProjectForms';
+import { ConceptUploadForm, PaymentForm, AdminProjectControls, BusinessDataForm } from '@/components/forms/ProjectForms';
 
 export const metadata: Metadata = { title: 'Project', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -26,11 +27,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   if (!project) notFound();
   if (project.user_id !== user.id && user.role !== 'admin') notFound();
 
-  const [payments, files, updates, env] = await Promise.all([
+  const [payments, files, updates, methods] = await Promise.all([
     listPayments(project.id),
     listFiles(project.id),
     listUpdates(project.id),
-    appEnv(),
+    listPaymentMethods(true),
   ]);
 
   const m = money(project, payments);
@@ -42,14 +43,23 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   const addons = addonNames(project);
   const conceptFiles = files.filter((f) => f.kind === 'concept');
   const deliverables = files.filter((f) => f.kind === 'deliverable');
+  const businessData = files.filter((f) => f.kind === 'business-data');
 
-  const payTo: PayTo = {
-    trc20: env.USDT_TRC20_ADDRESS,
-    erc20: env.USDT_ERC20_ADDRESS,
-    bep20: env.USDT_BEP20_ADDRESS,
-    paypalEmail: env.PAYPAL_EMAIL,
-    paypalLink: env.PAYPAL_LINK,
-  };
+  // Only destinations that open with the current key are offered; a wallet
+  // address we cannot decrypt must never reach a client as a blank box.
+  const destinations = methods
+    .filter((m) => !m.unreadable && m.address)
+    .map((m) => ({
+      id: m.id,
+      kind: m.kind,
+      label: m.label,
+      network: m.network,
+      currency: m.currency,
+      address: m.address,
+      memo: m.memo,
+      link: m.link,
+      instructions: m.instructions,
+    }));
 
   const capped = m.paidPct < FINAL_PCT;
 
@@ -142,7 +152,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               milestone={action.milestone}
               label={action.label}
               amount={action.amount}
-              payTo={payTo}
+              destinations={destinations}
             />
           ) : null}
 
@@ -151,6 +161,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           {/* Concept upload */}
           {project.status !== 'delivered' && project.status !== 'cancelled' ? (
             <ConceptUploadForm projectId={project.id} locked={m.paidPct < 10} />
+          ) : null}
+
+          {project.status !== 'delivered' && project.status !== 'cancelled' ? (
+            <BusinessDataForm projectId={project.id} />
           ) : null}
 
           {/* Admin */}
@@ -235,6 +249,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                       <span>{formatDate(p.created_at)}</span>
                     </div>
                     {p.reference ? <p className="mt-1 break-all font-mono text-[11px] text-steel-500">{p.reference}</p> : null}
+                    <Link href={`/portal/invoices/${p.id}`} className="mt-1 inline-block text-xs text-gold-500 underline">
+                      {p.status === 'confirmed' ? 'Receipt' : 'Invoice'} →
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -246,6 +263,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             <h2 className="font-display text-lg font-extrabold">Files</h2>
             <p className="mt-1 text-xs text-steel-500">Private — visible only to you and the delivery team.</p>
             <FileList title="Your concept" files={conceptFiles} />
+            <FileList title="Business data" files={businessData} />
             <FileList title="Deliverables" files={deliverables} />
           </section>
 

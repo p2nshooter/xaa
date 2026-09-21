@@ -10,6 +10,11 @@ import {
 } from './projects';
 import { storeFile, UploadError } from './uploads';
 import { getCarePlan, getSetupPlan } from '@/content/packages';
+import {
+  createPaymentMethod, updatePaymentMethod, deletePaymentMethod, setPaymentMethodActive,
+  saveSetting, clearSetting, seedMethodsFromEnv, SETTING_DEFS, type MethodKind,
+} from './settings';
+import { setLeadStatus, deleteLead, type LeadStatus } from './leads';
 
 /**
  * Every mutation in the portal. Server actions rather than REST handlers:
@@ -338,6 +343,187 @@ export async function enquiryAction(_prev: ActionState, form: FormData): Promise
       .bind(newId(), name, normaliseEmail(email), str(form, 'company') || null, str(form, 'budget') || null, str(form, 'package') || null, message.slice(0, 5000), nowIso())
       .run();
     return { ok: 'Thank you — your brief is with us. We reply within one business day.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/* ───────────────── Studio: payment destinations ───────────────── */
+
+
+function methodInputFrom(form: FormData) {
+  const kind = (str(form, 'kind') || 'crypto') as MethodKind;
+  return {
+    kind,
+    label: str(form, 'label'),
+    network: str(form, 'network'),
+    currency: str(form, 'currency'),
+    address: str(form, 'address'),
+    memo: str(form, 'memo'),
+    link: str(form, 'link'),
+    instructions: str(form, 'instructions'),
+    active: form.get('active') !== null,
+    sortOrder: Number(str(form, 'sortOrder')) || 0,
+  };
+}
+
+export async function savePaymentMethodAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    const id = str(form, 'id');
+    const input = methodInputFrom(form);
+
+    if (!input.label) return { error: 'Give the destination a label your clients will recognise.' };
+    if (!['crypto', 'paypal', 'bank'].includes(input.kind)) return { error: 'Unknown destination type.' };
+    if (!id && !input.address) return { error: 'Enter the address, email or account number.' };
+    if (input.kind === 'crypto' && !input.network) return { error: 'Choose the network — a transfer on the wrong one cannot be recovered.' };
+
+    if (id) {
+      await updatePaymentMethod(id, input);
+    } else {
+      await createPaymentMethod(input);
+    }
+    revalidatePath('/portal/admin/payments');
+    return { ok: id ? `Updated. (${admin.name})` : 'Payment destination added. It is live on client payment screens now.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function togglePaymentMethodAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    await setPaymentMethodActive(str(form, 'id'), str(form, 'active') === '1');
+    revalidatePath('/portal/admin/payments');
+    return { ok: 'Updated.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function deletePaymentMethodAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    if (str(form, 'confirm') !== 'DELETE') {
+      return { error: 'Type DELETE to confirm — clients paying to a removed address cannot be helped afterwards.' };
+    }
+    await deletePaymentMethod(str(form, 'id'));
+    revalidatePath('/portal/admin/payments');
+    return { ok: 'Payment destination deleted.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function importEnvMethodsAction(_prev: ActionState, _form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const n = await seedMethodsFromEnv();
+    revalidatePath('/portal/admin/payments');
+    return n > 0
+      ? { ok: `Imported ${n} destination${n > 1 ? 's' : ''} from the Worker secrets.` }
+      : { error: 'Nothing to import — either destinations already exist, or no payment secrets are set on the Worker.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/* ───────────────── Studio: settings ───────────────── */
+
+export async function saveSettingsAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    const group = str(form, 'group');
+    const keys = SETTING_DEFS.filter((d) => !group || d.group === group).map((d) => d.key);
+    let saved = 0;
+    for (const key of keys) {
+      const raw = form.get(key);
+      if (typeof raw !== 'string') continue;
+      const def = SETTING_DEFS.find((d) => d.key === key)!;
+      // Blank on a secret means "leave it"; blank on a plain field clears it.
+      if (def.secret && !raw.trim()) continue;
+      await saveSetting(key, raw, admin.name);
+      saved += 1;
+    }
+    revalidatePath('/portal/admin/settings');
+    return { ok: `Saved ${saved} field${saved === 1 ? '' : 's'}.` };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function clearSettingAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    await clearSetting(str(form, 'key'));
+    revalidatePath('/portal/admin/settings');
+    return { ok: 'Value cleared.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/* ───────────────── Studio: leads ───────────────── */
+
+export async function updateLeadAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    const status = str(form, 'status') as LeadStatus;
+    if (!['new', 'replied', 'won', 'archived'].includes(status)) return { error: 'Unknown status.' };
+    await setLeadStatus(str(form, 'id'), status, str(form, 'note'), admin.name);
+    revalidatePath('/portal/admin/leads');
+    return { ok: 'Lead updated.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function deleteLeadAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    await deleteLead(str(form, 'id'));
+    revalidatePath('/portal/admin/leads');
+    return { ok: 'Lead deleted.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/* ───────────────── Client: business data upload ───────────────── */
+
+/**
+ * The company/member data a client has to hand over before a build can start —
+ * registration documents, team lists, product data. Kept separate from the
+ * concept upload so the two are not mixed on the project page, and it stays
+ * open after the concept stage because this material usually arrives later.
+ */
+export async function uploadBusinessDataAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const projectId = str(form, 'projectId');
+    const { project, name } = await ownedProject(projectId);
+    const files = form.getAll('files').filter((f): f is File => f instanceof File && f.size > 0);
+    const note = str(form, 'note');
+    if (!files.length && !note) return { error: 'Attach at least one file, or write a note.' };
+
+    for (const file of files.slice(0, 10)) {
+      await storeFile({ projectId: project.id, userId: project.user_id, uploadedBy: name, kind: 'business-data', file });
+    }
+    await addUpdate(project.id, {
+      title: files.length ? `${files.length} business data file${files.length > 1 ? 's' : ''} uploaded` : 'Business data note added',
+      body: [files.map((f) => f.name).join(', '), note].filter(Boolean).join(' — ') || null,
+      author: name,
+    });
+    revalidatePath(`/portal/projects/${project.id}`);
+    return { ok: 'Received. These files are private to your project.' };
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);

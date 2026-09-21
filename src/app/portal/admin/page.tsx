@@ -6,6 +6,9 @@ import { portalReady } from '@/server/db';
 import { listAllProjects, listPendingPayments, STATUS_LABEL, STATUS_BADGE, formatDate } from '@/server/projects';
 import { PaymentDecision } from '@/components/forms/ProjectForms';
 import { eur } from '@/content/packages';
+import { AdminNav } from '@/components/AdminNav';
+import { countNewLeads } from '@/server/leads';
+import { listPaymentMethods } from '@/server/settings';
 
 export const metadata: Metadata = { title: 'Studio desk', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -22,7 +25,13 @@ export default async function AdminPage() {
   if (!user) redirect('/login?next=/portal/admin');
   if (user.role !== 'admin') redirect('/portal');
 
-  const [pending, projects] = await Promise.all([listPendingPayments(), listAllProjects()]);
+  const [pending, projects, newLeads, methods] = await Promise.all([
+    listPendingPayments(),
+    listAllProjects(),
+    countNewLeads(),
+    listPaymentMethods(true),
+  ]);
+  const payable = methods.filter((m) => !m.unreadable && m.address).length;
   const active = projects.filter((p) => p.status !== 'delivered' && p.status !== 'cancelled');
 
   return (
@@ -31,8 +40,22 @@ export default async function AdminPage() {
       <h1 className="mt-1 font-display text-3xl font-extrabold">Delivery overview</h1>
       <p className="mt-2 text-sm text-steel-500">
         {active.length} active project{active.length === 1 ? '' : 's'} · {pending.length} payment
-        {pending.length === 1 ? '' : 's'} awaiting verification
+        {pending.length === 1 ? '' : 's'} awaiting verification · {newLeads} unread enquir{newLeads === 1 ? 'y' : 'ies'}
       </p>
+
+      <div className="mt-8">
+        <AdminNav current="/portal/admin" newLeads={newLeads} />
+      </div>
+
+      {payable === 0 ? (
+        <div className="panel mb-8 border-l-4 border-l-amber-400 bg-amber-50/50 p-5">
+          <p className="font-bold text-ink-900">No usable payment destination — clients cannot pay</p>
+          <p className="mt-1.5 text-sm text-steel-500">
+            Every milestone will stall until at least one destination is active and readable.
+          </p>
+          <Link href="/portal/admin/payments" className="btn btn-primary btn-sm mt-3">Set one up</Link>
+        </div>
+      ) : null}
 
       {/* Payments to verify */}
       <section className="panel mt-8 p-6">
@@ -74,7 +97,11 @@ export default async function AdminPage() {
                         <a href={`/api/files/${p.proof_file_id}`} className="ml-2 text-gold-500 underline">receipt</a>
                       ) : null}
                     </td>
-                    <td className="whitespace-nowrap text-xs">{formatDate(p.created_at)}</td>
+                    <td className="whitespace-nowrap text-xs">
+                      {formatDate(p.created_at)}
+                      <br />
+                      <Link href={`/portal/invoices/${p.id}`} className="text-gold-500 underline">invoice</Link>
+                    </td>
                     <td><PaymentDecision paymentId={p.id} /></td>
                   </tr>
                 ))}

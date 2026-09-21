@@ -83,11 +83,12 @@ export default function HomePage() {
       {/* ───────────────── What XAA stands for ───────────────── */}
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="panel overflow-hidden">
-          <div className="grid gap-px bg-[color:var(--accent-soft)] md:grid-cols-3">
+          <div className="grid gap-px bg-[color:var(--accent-soft)] sm:grid-cols-2 lg:grid-cols-4">
             {[
               { letter: 'X', word: 'eXperience', body: 'What the visitor feels. Interface, speed, clarity, trust — the part that decides whether anything else you built ever gets used.' },
+              { letter: 'A', word: 'Automation', body: 'What removes the manual step. The payment that reconciles itself, the report nobody assembles by hand, the status a client reads without asking.' },
               { letter: 'A', word: 'Architecture', body: 'What holds it up. Data models, services, security and infrastructure designed for the size you are growing into, not the size you are.' },
-              { letter: 'A', word: 'Applications', body: 'What it does. Real software — accounts, payments, dashboards, automation — not a brochure with a contact form bolted on.' },
+              { letter: 'ES', word: 'Ecosystem Services', body: 'What most studios skip: keeping the thing alive once it ships — setup, monitoring, patching and the hours that keep it current.' },
             ].map((x, i) => (
               <div key={i} className="bg-white p-8">
                 <p className="font-display text-5xl font-extrabold accent-text">{x.letter}</p>
@@ -98,7 +99,7 @@ export default function HomePage() {
           </div>
         </div>
         <p className="mt-4 text-center text-sm text-steel-500">
-          XAA — <strong className="text-ink-900">{SITE.expansionPlain}</strong>. Three letters, three disciplines, one delivery team.
+          <strong className="text-ink-900">{SITE.expansionPlain}</strong> — four disciplines, one delivery team.
         </p>
       </section>
 

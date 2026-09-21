@@ -108,6 +108,10 @@ export interface Payment {
   status: PaymentStatus;
   created_at: string;
   confirmed_at: string | null;
+  /** Allocated on first invoice view, then fixed. See server/invoices.ts. */
+  invoice_no: string | null;
+  /** Which stored payment destination the client said they sent to. */
+  method_id: string | null;
 }
 
 export interface ProjectFile {
@@ -118,7 +122,7 @@ export interface ProjectFile {
   name: string;
   size: number;
   content_type: string | null;
-  kind: 'concept' | 'proof' | 'deliverable';
+  kind: 'concept' | 'proof' | 'deliverable' | 'business-data';
   uploaded_by: string;
   created_at: string;
 }
@@ -482,6 +486,7 @@ export async function recordPayment(input: {
   reference?: string | null;
   note?: string | null;
   proofFileId?: string | null;
+  methodId?: string | null;
 }): Promise<Payment> {
   const database = await db();
   const payment: Payment = {
@@ -499,17 +504,19 @@ export async function recordPayment(input: {
     status: 'pending',
     created_at: nowIso(),
     confirmed_at: null,
+    invoice_no: null,
+    method_id: input.methodId ?? null,
   };
   await database
     .prepare(
       `INSERT INTO payments (id, project_id, user_id, milestone, label, amount, method, network,
-        reference, note, proof_file_id, status, created_at, confirmed_at)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+        reference, note, proof_file_id, status, created_at, confirmed_at, method_id)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
     )
     .bind(
       payment.id, payment.project_id, payment.user_id, payment.milestone, payment.label, payment.amount,
       payment.method, payment.network, payment.reference, payment.note, payment.proof_file_id,
-      payment.status, payment.created_at, payment.confirmed_at
+      payment.status, payment.created_at, payment.confirmed_at, payment.method_id
     )
     .run();
   await addUpdate(input.project.id, {

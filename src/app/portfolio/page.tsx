@@ -196,7 +196,7 @@ export default function PortfolioPage() {
 
 function WorkRow({ work }: { work: Work }) {
   return (
-    <article className="premium-card p-7">
+    <article className={`premium-card p-7 ${work.stamped ? 'stamped' : ''}`}>
       <div className="flex flex-wrap items-start justify-between gap-5">
         <div className="max-w-2xl">
           <p className="eyebrow">{work.kind}</p>
@@ -221,6 +221,54 @@ function WorkRow({ work }: { work: Work }) {
         ))}
       </ul>
 
+
+      {work.demos ? (
+        <div className="relative mt-6 rounded-xl border border-red-200 bg-red-50/40 p-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="stamp-note">Demo · sampling only</span>
+            <p className="text-xs text-steel-500">
+              Not real data. Every name, ID and address in these is generated, and only a sample of rows is kept —
+              the systems themselves run on records that are not ours to publish.
+            </p>
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {work.demos.map((d) => (
+              <a
+                key={d.href}
+                href={d.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost btn-sm bg-white"
+                title={d.note}
+              >
+                {d.label} ↗
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
+      {work.tenants ? (
+        <div className="mt-6 rounded-xl bg-[color:var(--surface)] p-4">
+          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-steel-400">
+            {work.tenants.length} production domains, one codebase
+          </p>
+          <div className="mt-2.5 flex flex-wrap gap-2">
+            {work.tenants.map((t) => (
+              <a
+                key={t.domain}
+                href={t.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mk-chip bg-white transition hover:border-[color:var(--accent)] hover:text-gold-500"
+              >
+                {t.domain} <span className="ml-1 font-normal normal-case tracking-normal opacity-60">{t.note}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-[color:var(--line)] pt-5">
         <dl className="flex flex-wrap gap-6 text-xs">
           <div>
@@ -244,7 +292,7 @@ function WorkRow({ work }: { work: Work }) {
 
 function WorkCard({ work }: { work: Work }) {
   return (
-    <article className="premium-card flex h-full flex-col p-6">
+    <article className={`premium-card flex h-full flex-col p-6 ${work.stamped ? 'stamped' : ''}`}>
       <p className="eyebrow">{work.kind}</p>
       <h3 className="mt-1.5 font-display text-xl font-extrabold">{work.name}</h3>
       <p className="mt-2.5 text-sm leading-relaxed text-steel-500">{work.summary}</p>
@@ -267,7 +315,24 @@ function WorkCard({ work }: { work: Work }) {
         </p>
       </div>
 
-      <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+      {work.demos ? (
+        <div className="relative mt-4 rounded-xl border border-red-200 bg-red-50/40 p-3">
+          <span className="stamp-note">Demo · sampling only</span>
+          <p className="mt-2 text-xs leading-relaxed text-steel-500">
+            Not real data — names, IDs and addresses are generated and only a sample of rows is kept.
+          </p>
+          <div className="mt-2.5 flex flex-wrap gap-2">
+            {work.demos.map((d) => (
+              <a key={d.href} href={d.href} target="_blank" rel="noopener noreferrer"
+                 className="btn btn-ghost btn-sm bg-white" title={d.note}>
+                {d.label} ↗
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
+      <div className="relative mt-auto flex items-center justify-between gap-3 pt-5">
         <p className="text-xs text-steel-400">{work.stack.slice(0, 3).join(' · ')}</p>
         <WorkLink work={work} />
       </div>
@@ -277,7 +342,7 @@ function WorkCard({ work }: { work: Work }) {
 
 function WorkLink({ work }: { work: Work }) {
   if (!work.url) {
-    return <span className="badge badge-grey">Internal system</span>;
+    return <span className="badge badge-grey">{work.urlPending ?? 'Internal system'}</span>;
   }
   return (
     <a href={work.url} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm">

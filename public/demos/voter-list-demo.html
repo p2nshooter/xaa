@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>[DEMO] Voter Register 2026 — Standalone</title>
+<meta name="theme-color" content="#0F5132">
+<style>/* ==========================================================================
+   SAIRAN 2026 -- sistem tampilan
+   Warna kandidat (hijau/kuning/merah/abu) bersifat baku dan tidak boleh
+   dipakai untuk hiasan lain, supaya arti warnanya tidak kabur.
+   ========================================================================== */
+
+:root {
+  --hijau: #15803D;  --hijau-terang: #22C55E;  --hijau-latar: #E7F5EC;
+  --kuning: #A16207; --kuning-terang: #EAB308; --kuning-latar: #FBF3DC;
+  --merah: #B91C1C;  --merah-terang: #EF4444;  --merah-latar: #FBE9E9;
+  --abu: #64748B;    --abu-terang: #94A3B8;    --abu-latar: #EEF1F5;
+
+  --tinta: #0F1B2D;
+  --tinta-2: #475569;
+  --tinta-3: #8A96A8;
+  --garis: #E2E7EE;
+  --garis-kuat: #CBD4E1;
+  --kertas: #F6F8FA;
+  --kartu: #FFFFFF;
+
+  --r-s: 8px;
+  --r-m: 12px;
+  --r-l: 18px;
+  --bayang: 0 1px 2px rgba(15, 27, 45, .06), 0 4px 12px rgba(15, 27, 45, .04);
+  --bayang-naik: 0 8px 24px rgba(15, 27, 45, .10);
+  --lebar: 1120px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--kertas);
+  color: var(--tinta);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3, h4 { margin: 0; font-weight: 700; letter-spacing: -.01em; }
+a { color: var(--hijau); }
+button { font: inherit; }
+
+.wadah { max-width: var(--lebar); margin: 0 auto; padding: 0 16px; }
+.sembunyi { display: none !important; }
+.angka { font-variant-numeric: tabular-nums; }
+
+/* ---------- Kepala ---------- */
+.kepala {
+  background: linear-gradient(135deg, #0B3D24 0%, #11532F 55%, #15803D 100%);
+  color: #fff;
+  padding: 14px 0 0;
+  position: sticky; top: 0; z-index: 40;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .08), 0 6px 18px rgba(11, 61, 36, .18);
+}
+.kepala-baris { display: flex; align-items: center; gap: 12px; }
+.lambang {
+  width: 42px; height: 42px; flex: none; border-radius: 11px;
+  background: rgba(255, 255, 255, .13);
+  border: 1px solid rgba(255, 255, 255, .22);
+  display: grid; place-items: center;
+  font-weight: 800; font-size: 17px; letter-spacing: .02em;
+}
+.judul-app { font-size: 17px; line-height: 1.15; }
+.judul-sub { font-size: 11.5px; opacity: .78; letter-spacing: .04em; text-transform: uppercase; }
+.kepala-kanan { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+
+.chip-pengguna {
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 999px; padding: 6px 12px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; cursor: pointer;
+}
+.chip-pengguna b { font-weight: 600; }
+.chip-peran {
+  font-size: 10px; text-transform: uppercase; letter-spacing: .06em;
+  background: rgba(255, 255, 255, .18); padding: 2px 7px; border-radius: 999px;
+}
+
+.tab-baris { display: flex; gap: 2px; margin-top: 12px; overflow-x: auto; scrollbar-width: none; }
+.tab-baris::-webkit-scrollbar { display: none; }
+.tab {
+  background: none; border: 0; color: rgba(255, 255, 255, .72);
+  padding: 10px 14px 11px; font-size: 13.5px; font-weight: 600;
+  border-bottom: 3px solid transparent; cursor: pointer; white-space: nowrap;
+}
+.tab:hover { color: #fff; }
+.tab[aria-selected="true"] { color: #fff; border-bottom-color: #A3E635; }
+
+/* ---------- Kartu & panel ---------- */
+.panel { padding: 20px 0 64px; }
+.kartu {
+  background: var(--kartu); border: 1px solid var(--garis);
+  border-radius: var(--r-m); box-shadow: var(--bayang); padding: 16px;
+}
+.kartu + .kartu { margin-top: 14px; }
+.kartu-judul {
+  font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--tinta-3); margin-bottom: 12px;
+}
+
+/* ---------- Sorotan kandidat utama ---------- */
+.sorot {
+  background: linear-gradient(135deg, #0F5132 0%, #15803D 100%);
+  color: #fff; border-radius: var(--r-l); padding: 22px;
+  box-shadow: var(--bayang-naik); position: relative; overflow: hidden;
+}
+.sorot::after {
+  content: ''; position: absolute; right: -40px; top: -60px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(255, 255, 255, .06);
+}
+.sorot-label { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
+.sorot-nama { font-size: 26px; font-weight: 800; margin: 2px 0 10px; letter-spacing: -.02em; }
+.sorot-angka { display: flex; align-items: baseline; gap: 10px; }
+.sorot-besar { font-size: 44px; font-weight: 800; line-height: 1; letter-spacing: -.03em; }
+.sorot-persen { font-size: 17px; font-weight: 700; opacity: .92; }
+.sorot-ket { font-size: 12.5px; opacity: .82; margin-top: 6px; }
+
+/* ---------- Deret angka ---------- */
+.deret { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
+.ubin {
+  background: var(--kartu); border: 1px solid var(--garis); border-radius: var(--r-m);
+  padding: 12px 13px; box-shadow: var(--bayang);
+  border-top: 3px solid var(--warna, var(--garis-kuat));
+}
+.ubin-nama { font-size: 11.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--tinta-2); }
+.ubin-angka { font-size: 25px; font-weight: 800; letter-spacing: -.02em; margin-top: 3px; }
+.ubin-persen { font-size: 12px; color: var(--tinta-3); font-weight: 600; }
+
+/* ---------- Batang bersusun ---------- */
+.batang {
+  display: flex; gap: 2px; height: 10px; border-radius: 999px;
+  background: var(--garis); overflow: hidden;
+}
+.batang span { display: block; height: 100%; flex: 0 1 auto; min-width: 2px; }
+.batang span:first-child { border-radius: 999px 0 0 999px; }
+.batang span:last-child { border-radius: 0 999px 999px 0; }
+.batang span:only-child { border-radius: 999px; }
+
+/* ---------- Tabel rekap ---------- */
+.rekap { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.rekap th {
+  text-align: left; font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--tinta-3); font-weight: 700; padding: 0 8px 8px; border-bottom: 1px solid var(--garis);
+}
+.rekap td { padding: 9px 8px; border-bottom: 1px solid var(--garis); vertical-align: middle; }
+.rekap tr:last-child td { border-bottom: 0; }
+.rekap .kanan { text-align: right; }
+.rekap .nama-baris { font-weight: 650; white-space: nowrap; }
+.rekap .kecil { font-size: 11.5px; color: var(--tinta-3); font-weight: 500; }
+.rekap .kol-batang { width: 34%; min-width: 120px; }
+.rekap tr.sorot-baris td { background: var(--hijau-latar); }
+.gulir-x { overflow-x: auto; }
+
+/* ---------- Kendali & isian ---------- */
+.saring { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 9px; }
+label.isian { display: block; }
+label.isian > span {
+  display: block; font-size: 11px; font-weight: 700; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--tinta-3); margin-bottom: 4px;
+}
+input, select, textarea {
+  width: 100%; font: inherit; font-size: 14px; color: var(--tinta);
+  background: #fff; border: 1px solid var(--garis-kuat); border-radius: var(--r-s);
+  padding: 9px 10px; outline: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--hijau); box-shadow: 0 0 0 3px rgba(21, 128, 61, .13);
+}
+select { appearance: none; background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%238A96A8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px; }
+
+.tombol {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  border: 1px solid var(--garis-kuat); background: #fff; color: var(--tinta);
+  border-radius: var(--r-s); padding: 9px 14px; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: background .12s, border-color .12s;
+}
+.tombol:hover { background: #F8FAFC; border-color: var(--abu-terang); }
+.tombol.utama { background: var(--hijau); border-color: var(--hijau); color: #fff; }
+.tombol.utama:hover { background: #126B33; }
+.tombol.bahaya { color: var(--merah); border-color: #F0C8C8; }
+.tombol.bahaya:hover { background: var(--merah-latar); }
+.tombol.kecil { padding: 6px 10px; font-size: 12.5px; }
+.tombol:disabled { opacity: .5; cursor: not-allowed; }
+.baris-tombol { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+/* ---------- Daftar pemilih ---------- */
+.pemilih { border: 1px solid var(--garis); border-radius: var(--r-m); overflow: hidden; background: #fff; }
+.orang { border-bottom: 1px solid var(--garis); padding: 11px 13px; }
+.orang:last-child { border-bottom: 0; }
+.orang-atas { display: flex; align-items: flex-start; gap: 10px; }
+.orang-no {
+  flex: none; width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
+  font-size: 12px; font-weight: 700; background: var(--kertas); color: var(--tinta-2);
+  border: 1px solid var(--garis);
+}
+.orang-isi { flex: 1; min-width: 0; }
+.orang-nama { font-weight: 650; font-size: 14.5px; line-height: 1.3; }
+.orang-meta { font-size: 12px; color: var(--tinta-3); margin-top: 2px; }
+.orang-meta b { color: var(--tinta-2); font-weight: 600; }
+.tanda-data {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em;
+  background: var(--kuning-latar); color: var(--kuning); border-radius: 4px; padding: 1px 5px; margin-left: 6px;
+}
+
+.pilih-warna { display: flex; gap: 6px; margin-top: 9px; }
+.warna {
+  flex: 1; border: 1.5px solid var(--garis-kuat); background: #fff; border-radius: var(--r-s);
+  padding: 7px 4px; font-size: 11.5px; font-weight: 700; cursor: pointer; color: var(--tinta-2);
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+  transition: all .12s;
+}
+.warna .titik { width: 9px; height: 9px; border-radius: 50%; background: var(--w, var(--abu-terang)); flex: none; }
+.warna:hover { border-color: var(--w); }
+.warna[aria-pressed="true"] { background: var(--wl); border-color: var(--w); color: var(--w); box-shadow: inset 0 0 0 1px var(--w); }
+.w-hijau { --w: var(--hijau); --wl: var(--hijau-latar); }
+.w-kuning { --w: var(--kuning); --wl: var(--kuning-latar); }
+.w-merah { --w: var(--merah); --wl: var(--merah-latar); }
+.w-abu { --w: var(--abu); --wl: var(--abu-latar); }
+
+.orang-rinci { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--garis); display: grid; gap: 9px; }
+.rinci-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 9px; }
+
+/* ---------- Tabel akun ---------- */
+.tabel { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.tabel th { text-align: left; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-3); padding: 0 8px 8px; border-bottom: 1px solid var(--garis); }
+.tabel td { padding: 10px 8px; border-bottom: 1px solid var(--garis); }
+.lencana { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--abu-latar); color: var(--tinta-2); white-space: nowrap; }
+.lencana.aktif { background: var(--hijau-latar); color: var(--hijau); }
+.lencana.mati { background: var(--merah-latar); color: var(--merah); }
+
+/* ---------- Pemberitahuan ---------- */
+.bilah-simpan {
+  position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%) translateY(20px);
+  background: var(--tinta); color: #fff; border-radius: 999px; padding: 9px 18px;
+  font-size: 13px; font-weight: 600; box-shadow: var(--bayang-naik);
+  opacity: 0; pointer-events: none; transition: all .18s; z-index: 60;
+}
+.bilah-simpan.tampil { opacity: 1; transform: translateX(-50%) translateY(0); }
+.bilah-simpan.galat { background: var(--merah); }
+
+.kosong { text-align: center; color: var(--tinta-3); padding: 34px 14px; font-size: 14px; }
+.memuat { text-align: center; color: var(--tinta-3); padding: 24px; font-size: 13.5px; }
+
+/* ---------- Tirai (modal) ---------- */
+.tirai {
+  position: fixed; inset: 0; background: rgba(15, 27, 45, .5); z-index: 70;
+  display: flex; align-items: flex-end; justify-content: center; padding: 0;
+}
+.tirai-kotak {
+  background: #fff; width: 100%; max-width: 520px; max-height: 92vh; overflow-y: auto;
+  border-radius: var(--r-l) var(--r-l) 0 0; padding: 20px;
+}
+.tirai-judul { font-size: 17px; margin-bottom: 14px; }
+.tirai-isi { display: grid; gap: 10px; }
+
+/* ---------- Masuk ---------- */
+.layar-masuk { min-height: 100dvh; display: grid; place-items: center; padding: 20px; background: linear-gradient(160deg, #0B3D24 0%, #103F27 40%, #F6F8FA 40.1%); }
+.kotak-masuk { background: #fff; border-radius: var(--r-l); box-shadow: var(--bayang-naik); padding: 26px 22px; width: 100%; max-width: 380px; }
+.masuk-lambang { width: 54px; height: 54px; border-radius: 15px; background: var(--hijau); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 20px; margin-bottom: 14px; }
+.masuk-galat { background: var(--merah-latar); color: var(--merah); border-radius: var(--r-s); padding: 9px 11px; font-size: 13px; font-weight: 600; }
+
+/* ---------- Laporan / cetak ---------- */
+.kop { text-align: center; border-bottom: 3px double var(--tinta); padding-bottom: 12px; margin-bottom: 16px; }
+.kop-kecil { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); }
+.kop-besar { font-size: 19px; font-weight: 800; margin: 3px 0; }
+.ttd { margin-top: 26px; display: flex; justify-content: flex-end; }
+.ttd-kotak { width: 230px; text-align: center; font-size: 13px; }
+.ttd-garis { margin-top: 56px; border-top: 1px solid var(--tinta); padding-top: 5px; }
+
+@media (min-width: 720px) {
+  body { font-size: 15.5px; }
+  .tirai { align-items: center; padding: 20px; }
+  .tirai-kotak { border-radius: var(--r-l); }
+  .orang-atas { align-items: center; }
+  .pilih-warna { margin-top: 0; width: 330px; flex: none; }
+  .orang-atas-lebar { display: flex; gap: 12px; align-items: center; }
+}
+
+@media (max-width: 520px) {
+  .deret { grid-template-columns: repeat(2, 1fr); }
+  .sorot-besar { font-size: 38px; }
+}
+
+/* ---------- Aturan cetak (PDF lewat dialog cetak peramban) ---------- */
+@page { size: A4; margin: 14mm 12mm; }
+
+@media print {
+  body { background: #fff; font-size: 11pt; }
+  .kepala, .tab-baris, .bilah-simpan, .tanpa-cetak, .tirai { display: none !important; }
+  .panel { padding: 0; }
+  .wadah { max-width: none; padding: 0; }
+  .kartu { box-shadow: none; border: 1px solid #C9D2DE; break-inside: avoid; page-break-inside: avoid; }
+  .sorot { background: #EDF7F0 !important; color: #0F1B2D !important; box-shadow: none; border: 1px solid #A7D3B6; }
+  .sorot-nama, .sorot-besar { color: #0F5132 !important; }
+  .rekap { font-size: 10pt; }
+  .rekap th { color: #334155; }
+  table, tr, td, th { break-inside: avoid; }
+  .cetak-putus { break-before: page; page-break-before: always; }
+  a[href]::after { content: ''; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ==========================================================================
+   Daftar rekap untuk layar (versi tabel tetap dipakai pada laporan cetak,
+   karena bentuk tabel yang formal lebih cocok di atas kertas).
+   ========================================================================== */
+.rk { padding: 11px 0; border-bottom: 1px solid var(--garis); }
+.rk:first-child { padding-top: 2px; }
+.rk:last-child { border-bottom: 0; padding-bottom: 2px; }
+.rk-atas { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 7px; }
+.rk-nama { font-weight: 650; font-size: 14.5px; line-height: 1.25; }
+.rk-sub { font-size: 11.5px; color: var(--tinta-3); margin-top: 1px; }
+.rk-kanan { margin-left: auto; text-align: right; flex: none; }
+.rk-persen.angka-galat { color: var(--merah) !important; }
+.rk-persen { font-size: 19px; font-weight: 800; color: var(--hijau); line-height: 1.1; letter-spacing: -.02em; }
+.rk-persen-ket { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-3); }
+.rk-angka { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 7px; font-size: 12px; }
+.rk-angka span { display: inline-flex; align-items: center; gap: 5px; color: var(--tinta-2); font-weight: 600; }
+.rk-angka i { width: 8px; height: 8px; border-radius: 50%; flex: none; font-style: normal; }
+.rk-angka .i-hijau { background: var(--hijau-terang); }
+.rk-angka .i-kuning { background: var(--kuning-terang); }
+.rk-angka .i-merah { background: var(--merah-terang); }
+.rk-angka .i-abu { background: var(--abu-terang); }
+.rk-dpt { margin-left: auto; color: var(--tinta-3) !important; font-weight: 600; }
+.rk.utama { background: var(--hijau-latar); margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+
+/* ---------- Kartu akun ---------- */
+.akun-kartu { border: 1px solid var(--garis); border-radius: var(--r-m); padding: 12px; margin-bottom: 9px; }
+.akun-kartu:last-child { margin-bottom: 0; }
+.akun-atas { display: flex; align-items: flex-start; gap: 10px; }
+.akun-nama { font-weight: 650; font-size: 14.5px; }
+.akun-ket { font-size: 12px; color: var(--tinta-3); margin-top: 2px; }
+.akun-atas .lencana { margin-left: auto; flex: none; }
+
+/* ---------- Penyempitan untuk layar kecil ---------- */
+@media (max-width: 560px) {
+  .chip-pengguna { padding: 5px 10px; max-width: 46vw; }
+  .chip-pengguna b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chip-peran { display: none; }
+  .tab { padding: 10px 11px 11px; font-size: 13px; }
+  .judul-sub { font-size: 10.5px; }
+}
+
+/* ---------- Wadah khusus cetak (daftar nama hasil saringan) ---------- */
+/* Baris/ubin yang bisa ditelusuri ke daftar namanya */
+.bisa-klik { cursor: pointer; border-radius: var(--r-s); transition: background .12s; }
+.bisa-klik:hover { background: #F4F7FA; }
+.bisa-klik:focus-visible { outline: 2px solid var(--hijau); outline-offset: 2px; }
+.ubin.bisa-klik:hover { background: #F8FBF9; }
+.telusur-ket { font-size: 11px; color: var(--tinta-3); margin-top: 8px; text-align: center; }
+
+#cetak-wadah { display: none; }
+
+@media print {
+  body.mode-cetak #aplikasi { display: none !important; }
+  body.mode-cetak #cetak-wadah { display: block !important; }
+  .daftar-cetak { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+  .daftar-cetak th { text-align: left; border-bottom: 1.5px solid #0F1B2D; padding: 4px 6px; font-size: 8.5pt; text-transform: uppercase; letter-spacing: .05em; }
+  .daftar-cetak td { border-bottom: 1px solid #DCE3EC; padding: 4px 6px; }
+  .daftar-cetak tr { break-inside: avoid; }
+  thead { display: table-header-group; }
+}
+
+/* ==========================================================================
+   Grafik
+   Batang setebal 14px (di bawah batas 24px), ujung data membulat 4px dan
+   rata pada garis dasar, jalur latar satu langkah dari permukaan. Nilai
+   dilabeli langsung di ujung supaya tidak perlu menebak dari sumbu.
+   ========================================================================== */
+.grafik { display: grid; gap: 9px; }
+.batang-besar .batang { height: 16px; }
+
+.gbar {
+  display: grid;
+  grid-template-columns: minmax(84px, 34%) 1fr auto;
+  align-items: center; gap: 10px;
+  padding: 3px 4px; border-radius: var(--r-s);
+}
+.gbar-label { font-size: 13px; font-weight: 600; line-height: 1.25; }
+.gbar-jalur { height: 14px; background: var(--garis); border-radius: 3px; overflow: hidden; }
+.gbar-jalur span {
+  display: block; height: 100%;
+  border-radius: 0 4px 4px 0;   /* ujung data membulat, pangkal rata baseline */
+}
+.gbar-nilai { font-size: 13px; font-weight: 700; min-width: 54px; text-align: right; }
+
+/* Keterangan warna -- identitas tidak boleh bergantung pada warna saja */
+.legenda { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 11px; }
+.legenda span { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--tinta-2); }
+.legenda i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+i.tk { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; vertical-align: 1px; }
+
+/* Penanda pembaruan langsung */
+.denyut { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--tinta-3); }
+.denyut i {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--hijau-terang);
+  animation: denyut 2s ease-in-out infinite;
+}
+@keyframes denyut { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .denyut i { animation: none; } }
+
+/* Bukti lembar penghitungan */
+.bukti-daftar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 9px; }
+.bukti-item {
+  position: relative; width: 84px; border: 1px solid var(--garis);
+  border-radius: var(--r-s); overflow: hidden; background: var(--kertas);
+}
+.bukti-item img { display: block; width: 100%; height: 66px; object-fit: cover; }
+.bukti-item .berkas-pdf {
+  height: 66px; display: grid; place-items: center; font-size: 11px; font-weight: 700; color: var(--tinta-2);
+}
+.bukti-item .bukti-ket { font-size: 9.5px; color: var(--tinta-3); padding: 3px 5px; line-height: 1.3; }
+.bukti-hapus {
+  position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; line-height: 1;
+  border-radius: 50%; border: 0; background: rgba(15,27,45,.62); color: #fff;
+  font-size: 13px; cursor: pointer; display: grid; place-items: center;
+}
+.bukti-kosong { font-size: 12px; color: var(--tinta-3); }
+
+@media print { .bukti-item { break-inside: avoid; } }
+
+@media (max-width: 420px) {
+  .gbar { grid-template-columns: minmax(70px, 38%) 1fr auto; gap: 8px; }
+  .gbar-label { font-size: 12.5px; }
+  .gbar-nilai { min-width: 46px; font-size: 12.5px; }
+}
+
+/* PIN baru hasil reset -- dibuat besar dan berjarak supaya mudah dibacakan */
+.pin-baru {
+  font-size: 40px; font-weight: 800; letter-spacing: 10px; text-align: center;
+  color: var(--hijau); background: var(--hijau-latar); border: 1px solid #A7D3B6;
+  border-radius: var(--r-m); padding: 16px 10px; margin: 4px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Panduan ---------- */
+details.panduan { padding: 0; }
+details.panduan summary {
+  cursor: pointer; list-style: none; padding: 15px 16px;
+  font-size: 15px; font-weight: 700; color: var(--tinta);
+  display: flex; align-items: center; gap: 10px;
+}
+details.panduan summary::-webkit-details-marker { display: none; }
+details.panduan summary::before {
+  content: '+'; flex: none; width: 22px; height: 22px; border-radius: 6px;
+  background: var(--hijau-latar); color: var(--hijau);
+  display: grid; place-items: center; font-size: 16px; font-weight: 800;
+}
+details.panduan[open] summary::before { content: '\2212'; }
+details.panduan[open] summary { border-bottom: 1px solid var(--garis); }
+.panduan-isi { padding: 14px 16px 16px; font-size: 14.5px; line-height: 1.65; color: var(--tinta-2); }
+.panduan-isi p { margin: 0 0 11px; }
+.panduan-isi p:last-child { margin-bottom: 0; }
+.panduan-isi b { color: var(--tinta); }
+.panduan-isi ul, .panduan-isi ol { margin: 0 0 11px; padding-left: 22px; }
+.panduan-isi li { margin-bottom: 6px; }
+.panduan-isi ul ul { margin-top: 6px; }
+
+@media print {
+  details.panduan summary::before { display: none; }
+  details.panduan > summary { font-size: 13pt; }
+  .panduan-isi { font-size: 11pt; }
+}
+
+/* ---------- Grafik bundar (donat) ---------- */
+.donat-bungkus { position: relative; width: fit-content; margin: 0 auto; }
+.donat { display: block; }
+.donat-iris { transition: stroke-dasharray .35s ease; }
+@media (prefers-reduced-motion: reduce) { .donat-iris { transition: none; } }
+.donat-tengah {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; pointer-events: none; text-align: center;
+}
+.donat-angka { font-size: 30px; font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
+.donat-label {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--tinta-3); margin-top: 3px; max-width: 110px;
+}
+
+.legenda-nilai { display: grid; gap: 2px; margin-top: 14px; }
+.ln {
+  display: grid; grid-template-columns: 12px 1fr auto auto; align-items: center;
+  gap: 10px; padding: 8px 4px; border-bottom: 1px solid var(--garis);
+}
+.ln:last-child { border-bottom: 0; }
+.ln i { width: 12px; height: 12px; border-radius: 4px; }
+.ln-nama { font-size: 13.5px; font-weight: 650; }
+.ln-angka { font-size: 14.5px; font-weight: 700; }
+.ln-persen { font-size: 12.5px; color: var(--tinta-3); font-weight: 600; min-width: 48px; text-align: right; }
+
+.donat-deret { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+.donat-kotak { text-align: center; }
+.donat-judul { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-3); margin-bottom: 10px; }
+
+@media print { .donat-iris { transition: none; } }
+
+/* Penanda pilihan untuk akses yang hanya melihat (tanpa tombol) */
+.tanda-pilihan {
+  display: inline-flex; align-items: center; gap: 6px; flex: none;
+  font-size: 12px; font-weight: 700; padding: 5px 11px; border-radius: 999px;
+  background: var(--wl); color: var(--w); border: 1px solid var(--w);
+}
+.tanda-pilihan .titik { width: 8px; height: 8px; border-radius: 50%; background: var(--w); }
+
+/* ---------- Ajakan memasang aplikasi ---------- */
+.ajak-pasang {
+  position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 65;
+  display: flex; align-items: center; gap: 11px;
+  background: var(--kartu); border: 1px solid var(--garis-kuat);
+  border-radius: var(--r-m); box-shadow: var(--bayang-naik); padding: 11px 12px;
+  max-width: 460px; margin: 0 auto;
+}
+.ajak-pasang img { width: 40px; height: 40px; border-radius: 10px; flex: none; }
+.ajak-teks { flex: 1; min-width: 0; line-height: 1.3; }
+.ajak-teks b { display: block; font-size: 14px; }
+.ajak-teks span { font-size: 11.5px; color: var(--tinta-3); }
+.ajak-tutup {
+  border: 0; background: none; color: var(--tinta-3); font-size: 22px;
+  line-height: 1; cursor: pointer; padding: 0 2px; flex: none;
+}
+@media print { .ajak-pasang { display: none !important; } }
+
+/* Penanda sambungan terputus */
+.bilah-luring {
+  position: fixed; left: 0; right: 0; top: 0; z-index: 80;
+  background: var(--merah); color: #fff; text-align: center;
+  font-size: 12.5px; font-weight: 600; padding: 7px 14px; line-height: 1.35;
+}
+@media print { .bilah-luring { display: none !important; } }
+
+/* ---------- Obrolan bersama ---------- */
+
+.ob-ruang { display: flex; gap: 6px; margin: 10px 0 0; flex-wrap: wrap; }
+.ob-ruang-tab {
+  font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  padding: 7px 13px; border-radius: 999px;
+  border: 1px solid var(--garis); background: var(--kartu); color: var(--tinta-2);
+}
+.ob-ruang-tab:hover { border-color: var(--garis-kuat); }
+.ob-ruang-tab.aktif { background: var(--tinta); border-color: var(--tinta); color: #fff; }
+
+.ob-catatan { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.ob-tanda {
+  font-size: 12px; font-weight: 600; padding: 4px 9px; border-radius: 999px;
+  background: var(--hijau-latar); color: var(--hijau);
+}
+.ob-tanda.mati { background: var(--abu-latar); color: var(--tinta-2); }
+
+.ob-kartu { padding-bottom: 12px; }
+.ob-gulung {
+  max-height: 58vh; min-height: 220px; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 9px;
+  padding: 4px 2px 10px; scroll-behavior: smooth;
+}
+.ob-gulung > :first-child { margin-top: auto; }
+.ob-baris { display: flex; }
+.ob-baris.ob-saya { justify-content: flex-end; }
+.ob-gelembung {
+  max-width: 78%; padding: 8px 11px 6px; border-radius: 14px;
+  background: var(--kertas); border: 1px solid var(--garis);
+}
+.ob-saya .ob-gelembung {
+  background: var(--hijau-latar); border-color: #C6E6D2; border-bottom-right-radius: 4px;
+}
+.ob-baris:not(.ob-saya) .ob-gelembung { border-bottom-left-radius: 4px; }
+.ob-kepala { display: flex; align-items: center; gap: 6px; font-size: 12.5px; margin-bottom: 3px; }
+.ob-kepala b { color: var(--tinta); }
+.ob-peran {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .04em;
+  padding: 1px 6px; border-radius: 999px; background: var(--abu-latar); color: var(--tinta-2);
+}
+.ob-teks { font-size: 14.5px; line-height: 1.45; color: var(--tinta); overflow-wrap: anywhere; }
+.ob-kaki {
+  display: flex; align-items: center; gap: 8px; justify-content: flex-end;
+  font-size: 11px; color: var(--tinta-3); margin-top: 3px;
+}
+.ob-hapus {
+  font: inherit; font-size: 11px; cursor: pointer; padding: 0;
+  background: none; border: 0; color: var(--tinta-3); text-decoration: underline;
+}
+.ob-hapus:hover { color: var(--merah); }
+
+/* Stiker: gambarnya disusun dari emoji + tulisan, tidak ada berkas gambar. */
+.ob-stiker {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 10px 16px 8px; border-radius: var(--r-m); min-width: 118px;
+  background: var(--abu-latar); border: 1px solid var(--garis);
+}
+.ob-stiker-emoji { font-size: 40px; line-height: 1.1; }
+.ob-stiker-teks { font-size: 12px; font-weight: 800; letter-spacing: .03em; color: var(--tinta-2); }
+
+.ob-kirim { display: flex; gap: 7px; align-items: center; margin-top: 10px; }
+.ob-kirim input {
+  flex: 1; min-width: 0; font: inherit; font-size: 15px; padding: 10px 13px;
+  border: 1px solid var(--garis-kuat); border-radius: 999px; background: var(--kartu);
+  color: var(--tinta);
+}
+.ob-kirim input:focus { outline: 2px solid var(--hijau-terang); outline-offset: 1px; }
+.tombol.ikon { padding: 8px 11px; font-size: 18px; line-height: 1; border-radius: 999px; }
+
+.ob-petik {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 7px; margin-top: 10px; max-height: 34vh; overflow-y: auto;
+  padding: 10px; border: 1px solid var(--garis); border-radius: var(--r-m);
+  background: var(--kertas);
+}
+.ob-petik-satu {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer;
+  font: inherit; padding: 9px 4px 7px; border-radius: var(--r-s);
+  border: 1px solid var(--garis); background: var(--kartu);
+}
+.ob-petik-satu:hover { transform: translateY(-1px); box-shadow: var(--bayang); }
+.ob-petik-satu span { font-size: 27px; line-height: 1.1; }
+.ob-petik-satu i {
+  font-style: normal; font-size: 9.5px; font-weight: 800; letter-spacing: .02em;
+  color: var(--tinta-2); text-align: center;
+}
+
+/* Warna stiker dipakai bersama oleh gelembung pesan dan pemetik. */
+.ob-stiker.st-hijau, .ob-petik-satu.st-hijau { background: var(--hijau-latar); border-color: #C6E6D2; }
+.st-hijau .ob-stiker-teks, .ob-petik-satu.st-hijau i { color: var(--hijau); }
+.ob-stiker.st-kuning, .ob-petik-satu.st-kuning { background: var(--kuning-latar); border-color: #EBDCA9; }
+.st-kuning .ob-stiker-teks, .ob-petik-satu.st-kuning i { color: var(--kuning); }
+.ob-stiker.st-merah, .ob-petik-satu.st-merah { background: var(--merah-latar); border-color: #F0C8C8; }
+.st-merah .ob-stiker-teks, .ob-petik-satu.st-merah i { color: var(--merah); }
+.ob-stiker.st-biru, .ob-petik-satu.st-biru { background: #E6EFFA; border-color: #C3D8F0; }
+.st-biru .ob-stiker-teks, .ob-petik-satu.st-biru i { color: #1D4ED8; }
+.ob-stiker.st-coklat, .ob-petik-satu.st-coklat { background: #F2EAE1; border-color: #DFCDB9; }
+.st-coklat .ob-stiker-teks, .ob-petik-satu.st-coklat i { color: #92400E; }
+
+.ob-blokir-pesan {
+  margin-top: 10px; padding: 11px 13px; border-radius: var(--r-s);
+  background: var(--merah-latar); border: 1px solid #F0C8C8;
+  font-size: 13.5px; line-height: 1.5; color: var(--tinta);
+}
+.ob-cap-blokir { font-size: 11.5px; font-weight: 700; color: var(--merah); }
+.gulir-y { overflow-y: auto; }
+
+@media print { #panel-obrolan { display: none !important; } }
+
+/* Catatan kecil di layar masuk saat daftar akun sedang bermasalah. */
+.masuk-catatan {
+  margin: -4px 0 10px; font-size: 12.5px; line-height: 1.5;
+  color: var(--kuning); background: var(--kuning-latar);
+  border: 1px solid #EBDCA9; border-radius: var(--r-s); padding: 8px 10px;
+}
+.masuk-catatan button {
+  font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer;
+  background: none; border: 0; padding: 0; color: var(--hijau); text-decoration: underline;
+}
+
+/* Grafik garis pergerakan suara. */
+.garis-bungkus { width: 100%; overflow: hidden; }
+.garis { width: 100%; height: auto; display: block; }
+
+/* ---------- Layar hari pemungutan (20 September) ---------- */
+
+.tab-harih { font-weight: 800; }
+
+.hh-spanduk {
+  display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
+  padding: 11px 14px; border-radius: var(--r-m); margin-bottom: 14px;
+  font-size: 13.5px; line-height: 1.5;
+}
+.hh-spanduk.hidup { background: var(--hijau-latar); border: 1px solid #C6E6D2; color: var(--tinta); }
+.hh-spanduk.tidur { background: var(--abu-latar); border: 1px solid var(--garis); color: var(--tinta-2); }
+
+.hh-kemajuan { margin-top: 14px; }
+.hh-kemajuan-atas {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 13.5px; margin-bottom: 6px; color: var(--tinta-2);
+}
+.hh-kemajuan-kaki { font-size: 12.5px; color: var(--tinta-3); margin-top: 6px; }
+
+.hh-catatan { font-size: 12.5px; line-height: 1.55; color: var(--tinta-3); margin: 10px 0 0; }
+.hh-kecil { font-size: 11.5px; color: var(--tinta-3); }
+
+.hh-cap {
+  display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .03em;
+  padding: 2px 8px; border-radius: 999px;
+}
+.hh-cap.final { background: var(--hijau-latar); color: var(--hijau); }
+.hh-cap.masuk { background: var(--kuning-latar); color: var(--kuning); }
+.hh-cap.nanti { background: var(--abu-latar); color: var(--tinta-3); }
+
+.hh-alur { display: flex; flex-direction: column; gap: 8px; }
+.hh-alur-baris {
+  display: flex; gap: 10px; align-items: baseline;
+  padding-bottom: 8px; border-bottom: 1px solid var(--garis);
+}
+.hh-alur-baris:last-child { border-bottom: 0; padding-bottom: 0; }
+.hh-alur-jam { font-size: 12px; color: var(--tinta-3); min-width: 42px; }
+.hh-alur-isi { font-size: 13.5px; line-height: 1.5; }
+.hh-alur-isi i { color: var(--kuning); font-style: normal; font-weight: 700; }
+
+.tabel th.ka, .tabel td.ka { text-align: right; }
+
+@media print {
+  .hh-spanduk { border: 1px solid #999; }
+  #panel-harih .kartu { break-inside: avoid; }
+}
+
+.hh-luar { display: flex; flex-direction: column; gap: 7px; margin-top: 12px; }
+.hh-luar-satu {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  flex-wrap: wrap; font-size: 13px; color: var(--tinta-2);
+  padding: 8px 11px; background: var(--kertas); border-radius: var(--r-s);
+}
+.hh-luar-nama { display: flex; align-items: center; gap: 7px; font-weight: 700; }
+.hh-luar-nama i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+/* Nama wilayah TPS dibiarkan memanjang ke samping bersama tabelnya, bukan
+   dipatahkan menjadi empat baris yang membuat tiap baris tabel menjulang. */
+.hh-tps { white-space: nowrap; }
+</style>
+<style>
+  /* Tambahan khusus aplikasi mandiri. */
+  .md-tanda { background: var(--kuning-latar); border: 1px solid #EBDCA9; color: var(--tinta);
+    padding: 10px 13px; border-radius: var(--r-s); font-size: 13px; line-height: 1.55; margin-bottom: 14px; }
+  .md-tanda b { color: var(--kuning); }
+  .md-alat { display: flex; gap: 7px; flex-wrap: wrap; }
+  @media print { .md-tanda { display: none !important; } }
+</style>
+
+<style id="xaa-demo-stamp">
+  .xaa-demo-banner{position:sticky;top:0;z-index:99999;background:#b91c1c;color:#fff;
+    font:600 13px/1.45 system-ui,sans-serif;padding:9px 14px;text-align:center}
+  .xaa-demo-banner a{color:#fff;text-decoration:underline}
+  .xaa-demo-stamp{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);
+    z-index:99998;pointer-events:none;font:900 clamp(56px,14vw,190px)/0.95 system-ui,sans-serif;
+    color:rgba(185,28,28,.15);border:.14em solid rgba(185,28,28,.15);border-radius:.12em;
+    padding:.06em .18em;white-space:nowrap;text-align:center}
+  .xaa-demo-stamp small{display:block;font-size:.17em;letter-spacing:.22em;margin-top:.18em}
+  .xaa-demo-hint{background:#fef3c7;border:1px solid #fcd34d;color:#92400e;border-radius:8px;
+    padding:8px 10px;font:600 12px/1.45 system-ui,sans-serif;margin:0 0 10px}
+  @media print{.xaa-demo-stamp{position:absolute}.xaa-demo-banner{position:static}}
+</style>
+</head>
+<body>
+<div class="xaa-demo-banner">
+  DEMO — SAMPLING ONLY, NOT REAL DATA. Every name, ID, address and account on this page is generated.
+  Voter register built by <a href="https://xaa.es" target="_blank" rel="noopener">xaa.es</a>
+</div>
+<div class="xaa-demo-stamp" aria-hidden="true">DEMO<small>SAMPLING ONLY · NOT REAL DATA</small></div>
+
+<div id="tirai-wadah"></div>
+<div class="bilah-simpan" id="bilah-simpan"></div>
+
+<div class="layar-masuk" id="layar-masuk">
+  <form class="kotak-masuk" id="form-masuk">
+    <div class="masuk-lambang">S</div>
+    <h1 style="font-size:20px">Voter Register 2026</h1>
+    <p style="color:var(--tinta-3);font-size:13px;margin:4px 0 8px">
+      Pendataan &amp; pelaporan Pemilihan Kepala Desa<br>Desa Sukamulya, Kec. Sukatani, Kab. Bekasi
+    </p>
+    <p style="font-size:12px;color:var(--hijau);font-weight:700;margin:0 0 16px">
+      STANDALONE MODE — runs without a database
+    </p>
+    <div class="tirai-isi">
+      <label class="isian"><span>Select account</span>
+        <select id="m-username" required></select>
+      </label>
+      <label class="isian"><span>PIN (5 digits)</span>
+        <input id="m-sandi" type="password" inputmode="numeric" pattern="[0-9]*"
+               maxlength="5" autocomplete="current-password" required>
+      </label>
+      <div class="masuk-galat sembunyi" id="m-galat"></div>
+      <button class="tombol utama lebar" id="m-kirim" type="submit">Sign in</button>
+    </div>
+  </form>
+</div>
+
+<div id="aplikasi" class="sembunyi">
+  <header class="kepala">
+    <div class="wadah">
+      <div class="kepala-atas">
+        <div class="cap">
+          <div class="cap-lambang">S</div>
+          <div>
+            <div class="cap-nama">Voter Register 2026</div>
+            <div class="cap-anak">DEMO VILLAGE · SAMPLE DISTRICT · REGION</div>
+          </div>
+        </div>
+        <div class="kepala-kanan">
+          <button class="pil" id="cp-peran" type="button"></button>
+        </div>
+      </div>
+      <nav class="tab-baris" id="tab-baris" role="tablist">
+        <button class="tab" role="tab" data-panel="dasbor" aria-selected="true">Dashboard</button>
+        <button class="tab" role="tab" data-panel="pemilih">Voter records</button>
+        <button class="tab" role="tab" data-panel="laporan">Report</button>
+        <button class="tab" role="tab" data-panel="suara">Vote count</button>
+        <button class="tab" role="tab" data-panel="berkas">Data &amp; Merge</button>
+        <button class="tab" role="tab" data-panel="panduan">Guide</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wadah panel">
+    <section id="panel-dasbor" data-panel="dasbor"><div id="dasbor-isi"></div></section>
+    <section id="panel-pemilih" data-panel="pemilih" class="sembunyi"><div id="pemilih-isi"></div></section>
+    <section id="panel-laporan" data-panel="laporan" class="sembunyi"><div id="laporan-isi"></div></section>
+    <section id="panel-suara" data-panel="suara" class="sembunyi"><div id="suara-isi"></div></section>
+    <section id="panel-berkas" data-panel="berkas" class="sembunyi"><div id="berkas-isi"></div></section>
+    <section id="panel-panduan" data-panel="panduan" class="sembunyi"><div id="panduan-isi"></div></section>
+  </main>
+</div>
+
+<script id="data-sairan" type="application/json">{"kolom":["id","tps","no_urut","nama","nik","tempat_lahir","tanggal_lahir","usia","jk","alamat","kampung","rt","rw"],"pemilih":[["01-0001",1,1,"FIRZA MISALUDIN","0000000000000001","DEMO CITY","26-03-1981",37,"P","TEST HAMLET NO. 62","SAMPLE HAMLET",3,1],["01-0002",1,2,"FIRZA FIKTIFIANI","0000000000000002","SAMPLE REGION","19-02-1968",35,"L","DEMO HAMLET THREE NO. 6","TEST HAMLET",3,1],["01-0003",1,3,"NIRWAN MISALUDIN","0000000000000003","DEMO CITY","06-05-1965",37,"P","SAMPLE HAMLET NO. 95","DEMO HAMLET ONE",3,1],["01-0004",1,4,"ZEVANA UMPAMAWATI","0000000000000004","SAMPLE REGION","22-08-1987",52,"L","TEST HAMLET NO. 54","DEMO HAMLET THREE",3,1],["01-0005",1,5,"LIMRA UJICOBAWAN","0000000000000005","TEST DISTRICT","23-11-1962",51,"P","TEST HAMLET NO. 115","DEMO HAMLET THREE",3,1],["01-0006",1,6,"XANORA CONTOHSARI","0000000000000006","TEST DISTRICT","16-07-2006",23,"P","DEMO HAMLET THREE NO. 20","SAMPLE HAMLET",3,1],["02-0001",2,1,"LIMRA CONTOHSARI","0000000000000007","SAMPLE REGION","21-05-1998",29,"L","DEMO HAMLET TWO NO. 81","DEMO HAMLET ONE",1,1],["02-0002",2,2,"JEVARA MISALUDIN","0000000000000008","TEST DISTRICT","27-08-1990",59,"L","DEMO HAMLET THREE NO. 13","DEMO HAMLET TWO",1,1],["02-0003",2,3,"QUENZA FIKTIFIANI","0000000000000009","TEST DISTRICT","22-07-1977",61,"P","SAMPLE HAMLET NO. 107","DEMO HAMLET TWO",1,1],["02-0004",2,4,"HELVIN DEMOPUTRA","0000000000000010","DEMO CITY","15-10-2002",47,"P","DEMO HAMLET ONE NO. 88","SAMPLE HAMLET",1,1],["02-0005",2,5,"QUENZA RANCANGSA","0000000000000011","TEST DISTRICT","13-06-1962",43,"L","DEMO HAMLET ONE NO. 7","TEST HAMLET",1,1],["02-0006",2,6,"SELARA DUMIYANA","0000000000000012","DEMO CITY","19-02-1968",36,"L","TEST HAMLET NO. 47","SAMPLE HAMLET",1,1],["03-0001",3,1,"ZEVANA TESTAMIJAYA","0000000000000013","TEST DISTRICT","15-01-1994",27,"P","SAMPLE HAMLET NO. 12","SAMPLE HAMLET",1,1],["03-0002",3,2,"BRAMA SIMULINDO","0000000000000014","DEMO CITY","14-10-1977",31,"L","DEMO HAMLET TWO NO. 31","SAMPLE HAMLET",1,1],["03-0003",3,3,"ANDRO CONTOHSARI","0000000000000015","SAMPLE REGION","27-09-1992",75,"L","DEMO HAMLET THREE NO. 40","TEST HAMLET",1,1],["03-0004",3,4,"ELNAR UJICOBAWAN","0000000000000016","SAMPLE REGION","28-05-1964",31,"P","DEMO HAMLET THREE NO. 90","TEST HAMLET",1,1],["03-0005",3,5,"ELNAR FIKTIFIANI","0000000000000017","SAMPLE REGION","23-03-1996",22,"P","DEMO HAMLET THREE NO. 23","SAMPLE HAMLET",1,1],["03-0006",3,6,"ELNAR DEMOPUTRA","0000000000000018","SAMPLE REGION","18-04-1981",18,"L","DEMO HAMLET ONE NO. 50","SAMPLE HAMLET",1,1],["04-0001",4,1,"SELARA SIMULINDO","0000000000000019","SAMPLE REGION","10-04-1973",30,"P","DEMO HAMLET TWO NO. 97","SAMPLE HAMLET",5,1],["04-0002",4,2,"GANDRA MISALUDIN","0000000000000020","DEMO CITY","19-05-1982",69,"P","TEST HAMLET NO. 61","DEMO HAMLET ONE",5,1],["04-0003",4,3,"JEVARA SIMULINDO","0000000000000021","DEMO CITY","20-09-1991",35,"L","SAMPLE HAMLET NO. 41","DEMO HAMLET TWO",5,1],["04-0004",4,4,"RIVANDA FIKTIFIANI","0000000000000022","DEMO CITY","27-06-1971",43,"P","DEMO HAMLET THREE NO. 116","DEMO HAMLET ONE",5,1],["04-0005",4,5,"MAVENDRA MISALUDIN","0000000000000023","DEMO CITY","24-11-1973",26,"P","DEMO HAMLET TWO NO. 23","SAMPLE HAMLET",5,1],["04-0006",4,6,"ZEVANA DUMIYANA","0000000000000024","SAMPLE REGION","15-04-1968",38,"P","TEST HAMLET NO. 59","TEST HAMLET",5,1],["05-0001",5,1,"IRSANO SAMPELYANTO","0000000000000025","SAMPLE REGION","04-09-2004",36,"L","SAMPLE HAMLET NO. 106","DEMO HAMLET TWO",5,1],["05-0002",5,2,"QUENZA PERCOBANI","0000000000000026","DEMO CITY","06-05-1997",30,"P","DEMO HAMLET TWO NO. 116","DEMO HAMLET ONE",5,1],["05-0003",5,3,"IRSANO CONTOHSARI","0000000000000027","DEMO CITY","12-04-1978",38,"P","SAMPLE HAMLET NO. 91","DEMO HAMLET ONE",5,1],["05-0004",5,4,"VERINDA TESTAMIJAYA","0000000000000028","DEMO CITY","15-12-1991",45,"L","DEMO HAMLET ONE NO. 70","DEMO HAMLET TWO",5,1],["05-0005",5,5,"NIRWAN CONTOHSARI","0000000000000029","SAMPLE REGION","16-01-2001",61,"L","TEST HAMLET NO. 28","DEMO HAMLET ONE",5,1],["05-0006",5,6,"HELVIN UMPAMAWATI","0000000000000030","TEST DISTRICT","16-09-1960",28,"P","SAMPLE HAMLET NO. 53","SAMPLE HAMLET",5,1],["06-0001",6,1,"IRSANO RANCANGSA","0000000000000031","SAMPLE REGION","27-01-1966",51,"P","SAMPLE HAMLET NO. 5","DEMO HAMLET THREE",1,2],["06-0002",6,2,"ELNAR CONTOHSARI","0000000000000032","SAMPLE REGION","20-12-1970",44,"L","DEMO HAMLET THREE NO. 116","DEMO HAMLET TWO",1,2],["06-0003",6,3,"KALUNA UMPAMAWATI","0000000000000033","SAMPLE REGION","25-07-2003",39,"P","DEMO HAMLET TWO NO. 32","DEMO HAMLET THREE",1,2],["06-0004",6,4,"QUENZA DEMOPUTRA","0000000000000034","TEST DISTRICT","20-10-2001",34,"P","DEMO HAMLET TWO NO. 108","TEST HAMLET",1,2],["06-0005",6,5,"LIMRA FIKTIFIANI","0000000000000035","SAMPLE REGION","17-06-1974",31,"L","DEMO HAMLET THREE NO. 8","DEMO HAMLET TWO",1,2],["06-0006",6,6,"LIMRA UJICOBAWAN","0000000000000036","SAMPLE REGION","20-02-1968",45,"P","DEMO HAMLET THREE NO. 120","DEMO HAMLET TWO",1,2],["07-0001",7,1,"ZEVANA RANCANGSA","0000000000000037","DEMO CITY","28-10-1963",31,"P","TEST HAMLET NO. 15","DEMO HAMLET TWO",2,2],["07-0002",7,2,"SELARA RANCANGSA","0000000000000038","DEMO CITY","18-02-1990",63,"P","DEMO HAMLET THREE NO. 30","DEMO HAMLET TWO",2,2],["07-0003",7,3,"PRANAVI TESTAMIJAYA","0000000000000039","TEST DISTRICT","05-01-1986",56,"L","DEMO HAMLET TWO NO. 33","DEMO HAMLET ONE",2,2],["07-0004",7,4,"YULVARA SIMULINDO","0000000000000040","SAMPLE REGION","28-10-1979",43,"P","SAMPLE HAMLET NO. 84","TEST HAMLET",2,2],["07-0005",7,5,"HELVIN MISALUDIN","0000000000000041","TEST DISTRICT","17-06-2006",44,"L","DEMO HAMLET ONE NO. 94","TEST HAMLET",2,2],["07-0006",7,6,"ANDRO PERCOBANI","0000000000000042","TEST DISTRICT","05-05-1973",37,"P","SAMPLE HAMLET NO. 25","DEMO HAMLET TWO",2,2],["08-0001",8,1,"YULVARA MISALUDIN","0000000000000043","SAMPLE REGION","26-09-2006",35,"L","DEMO HAMLET THREE NO. 114","SAMPLE HAMLET",4,2],["08-0002",8,2,"PRANAVI UJICOBAWAN","0000000000000044","DEMO CITY","01-12-1981",32,"P","DEMO HAMLET TWO NO. 75","TEST HAMLET",4,2],["08-0003",8,3,"GANDRA TESTAMIJAYA","0000000000000045","DEMO CITY","22-09-1964",39,"L","DEMO HAMLET ONE NO. 20","DEMO HAMLET THREE",4,2],["08-0004",8,4,"YULVARA SAMPELYANTO","0000000000000046","SAMPLE REGION","02-03-1967",26,"P","DEMO HAMLET THREE NO. 60","TEST HAMLET",4,2],["08-0005",8,5,"YULVARA UMPAMAWATI","0000000000000047","DEMO CITY","06-10-1995",72,"P","DEMO HAMLET ONE NO. 44","DEMO HAMLET TWO",4,2],["08-0006",8,6,"NIRWAN DUMIYANA","0000000000000048","TEST DISTRICT","28-07-1965",41,"P","DEMO HAMLET THREE NO. 64","DEMO HAMLET ONE",4,2],["09-0001",9,1,"CENDA RANCANGSA","0000000000000049","DEMO CITY","03-05-1989",33,"P","DEMO HAMLET THREE NO. 88","DEMO HAMLET TWO",5,2],["09-0002",9,2,"FIRZA UJICOBAWAN","0000000000000050","SAMPLE REGION","26-01-1995",34,"L","TEST HAMLET NO. 118","SAMPLE HAMLET",5,2],["09-0003",9,3,"TARUNIA UMPAMAWATI","0000000000000051","DEMO CITY","23-09-1977",28,"P","SAMPLE HAMLET NO. 4","DEMO HAMLET THREE",5,2],["09-0004",9,4,"LIMRA UJICOBAWAN","0000000000000052","TEST DISTRICT","18-01-1986",32,"L","DEMO HAMLET THREE NO. 111","DEMO HAMLET ONE",5,2],["09-0005",9,5,"CENDA SIMULINDO","0000000000000053","DEMO CITY","11-05-1989",34,"L","DEMO HAMLET TWO NO. 4","DEMO HAMLET ONE",5,2],["09-0006",9,6,"SELARA DUMIYANA","0000000000000054","DEMO CITY","04-10-1969",22,"L","DEMO HAMLET TWO NO. 13","TEST HAMLET",5,2],["10-0001",10,1,"GANDRA CONTOHSARI","0000000000000055","TEST DISTRICT","25-11-1980",45,"L","DEMO HAMLET TWO NO. 3","DEMO HAMLET ONE",6,2],["10-0002",10,2,"FIRZA DUMIYANA","0000000000000056","SAMPLE REGION","06-05-1997",37,"P","DEMO HAMLET ONE NO. 68","SAMPLE HAMLET",6,2],["10-0003",10,3,"VERINDA MISALUDIN","0000000000000057","DEMO CITY","01-12-1962",33,"P","DEMO HAMLET ONE NO. 32","SAMPLE HAMLET",6,2],["10-0004",10,4,"NIRWAN UJICOBAWAN","0000000000000058","SAMPLE REGION","10-04-1998",33,"L","DEMO HAMLET THREE NO. 93","SAMPLE HAMLET",6,2],["10-0005",10,5,"KALUNA UMPAMAWATI","0000000000000059","TEST DISTRICT","10-10-1971",23,"P","DEMO HAMLET ONE NO. 74","SAMPLE HAMLET",6,2],["10-0006",10,6,"WIRAJA UJICOBAWAN","0000000000000060","SAMPLE REGION","24-03-1980",37,"L","DEMO HAMLET THREE NO. 40","SAMPLE HAMLET",6,2],["11-0001",11,1,"GANDRA TESTAMIJAYA","0000000000000061","TEST DISTRICT","25-08-1982",21,"L","DEMO HAMLET TWO NO. 34","SAMPLE HAMLET",1,3],["11-0002",11,2,"ULVARA SAMPELYANTO","0000000000000062","TEST DISTRICT","16-08-1977",66,"L","SAMPLE HAMLET NO. 38","SAMPLE HAMLET",1,3],["11-0003",11,3,"IRSANO RANCANGSA","0000000000000063","TEST DISTRICT","03-03-1972",42,"P","DEMO HAMLET THREE NO. 2","DEMO HAMLET TWO",1,3],["11-0004",11,4,"QUENZA DUMIYANA","0000000000000064","SAMPLE REGION","11-04-2006",27,"P","DEMO HAMLET TWO NO. 92","DEMO HAMLET TWO",1,3],["11-0005",11,5,"QUENZA SIMULINDO","0000000000000065","SAMPLE REGION","03-08-1999",25,"L","DEMO HAMLET THREE NO. 15","DEMO HAMLET TWO",1,3],["11-0006",11,6,"ULVARA DUMIYANA","0000000000000066","SAMPLE REGION","01-05-1995",31,"L","TEST HAMLET NO. 96","DEMO HAMLET THREE",1,3],["12-0001",12,1,"MAVENDRA DUMIYANA","0000000000000067","TEST DISTRICT","06-07-1968",38,"L","DEMO HAMLET ONE NO. 25","DEMO HAMLET ONE",1,3],["12-0002",12,2,"ZEVANA DEMOPUTRA","0000000000000068","DEMO CITY","19-07-1994",29,"L","DEMO HAMLET ONE NO. 73","DEMO HAMLET THREE",1,3],["12-0003",12,3,"QUENZA DEMOPUTRA","0000000000000069","DEMO CITY","03-12-1995",49,"P","DEMO HAMLET THREE NO. 7","DEMO HAMLET THREE",1,3],["12-0004",12,4,"ZEVANA PERCOBANI","0000000000000070","SAMPLE REGION","17-07-1993",25,"P","SAMPLE HAMLET NO. 100","DEMO HAMLET THREE",1,3],["12-0005",12,5,"OKTARA CONTOHSARI","0000000000000071","DEMO CITY","02-01-1985",46,"L","DEMO HAMLET ONE NO. 117","TEST HAMLET",1,3],["12-0006",12,6,"TARUNIA MISALUDIN","0000000000000072","TEST DISTRICT","20-11-1961",45,"P","TEST HAMLET NO. 53","SAMPLE HAMLET",1,3],["13-0001",13,1,"MAVENDRA UJICOBAWAN","0000000000000073","DEMO CITY","17-10-1969",26,"L","TEST HAMLET NO. 32","DEMO HAMLET ONE",3,3],["13-0002",13,2,"JEVARA UJICOBAWAN","0000000000000074","SAMPLE REGION","04-09-1971",39,"L","DEMO HAMLET ONE NO. 69","TEST HAMLET",3,3],["13-0003",13,3,"VERINDA DUMIYANA","0000000000000075","TEST DISTRICT","21-12-1989",45,"L","DEMO HAMLET ONE NO. 51","DEMO HAMLET TWO",3,3],["13-0004",13,4,"VERINDA SIMULINDO","0000000000000076","DEMO CITY","09-04-1978",36,"P","DEMO HAMLET THREE NO. 26","TEST HAMLET",3,3],["13-0005",13,5,"MAVENDRA TESTAMIJAYA","0000000000000077","TEST DISTRICT","20-04-1984",47,"L","SAMPLE HAMLET NO. 43","DEMO HAMLET TWO",3,3],["13-0006",13,6,"HELVIN MISALUDIN","0000000000000078","SAMPLE REGION","01-05-2002",45,"L","SAMPLE HAMLET NO. 75","TEST HAMLET",3,3],["14-0001",14,1,"ZEVANA SIMULINDO","0000000000000079","DEMO CITY","12-01-1968",23,"P","DEMO HAMLET ONE NO. 43","DEMO HAMLET THREE",4,3],["14-0002",14,2,"DIVARA FIKTIFIANI","0000000000000080","DEMO CITY","11-02-1998",58,"L","DEMO HAMLET THREE NO. 76","SAMPLE HAMLET",4,3],["14-0003",14,3,"VERINDA DEMOPUTRA","0000000000000081","DEMO CITY","07-08-2000",58,"P","DEMO HAMLET THREE NO. 31","SAMPLE HAMLET",4,3],["14-0004",14,4,"LIMRA CONTOHSARI","0000000000000082","DEMO CITY","05-06-1980",26,"P","SAMPLE HAMLET NO. 109","TEST HAMLET",4,3],["14-0005",14,5,"YULVARA DUMIYANA","0000000000000083","TEST DISTRICT","16-11-1985",28,"L","DEMO HAMLET TWO NO. 113","SAMPLE HAMLET",4,3],["14-0006",14,6,"BRAMA DEMOPUTRA","0000000000000084","DEMO CITY","24-09-1980",26,"P","SAMPLE HAMLET NO. 14","DEMO HAMLET TWO",4,3],["15-0001",15,1,"IRSANO MISALUDIN","0000000000000085","TEST DISTRICT","05-01-1983",55,"P","DEMO HAMLET TWO NO. 105","DEMO HAMLET ONE",1,4],["15-0002",15,2,"ELNAR MISALUDIN","0000000000000086","DEMO CITY","25-08-1965",34,"L","DEMO HAMLET THREE NO. 65","SAMPLE HAMLET",1,4],["15-0003",15,3,"XANORA DEMOPUTRA","0000000000000087","TEST DISTRICT","08-10-1988",58,"L","TEST HAMLET NO. 49","DEMO HAMLET THREE",1,4],["15-0004",15,4,"ZEVANA UMPAMAWATI","0000000000000088","DEMO CITY","25-11-2003",39,"P","TEST HAMLET NO. 89","TEST HAMLET",1,4],["15-0005",15,5,"HELVIN MISALUDIN","0000000000000089","DEMO CITY","19-09-1987",38,"L","TEST HAMLET NO. 101","DEMO HAMLET TWO",1,4],["15-0006",15,6,"GANDRA DEMOPUTRA","0000000000000090","SAMPLE REGION","08-08-1990",37,"P","DEMO HAMLET ONE NO. 110","DEMO HAMLET THREE",1,4],["16-0001",16,1,"IRSANO MISALUDIN","0000000000000091","TEST DISTRICT","18-09-1989",32,"L","TEST HAMLET NO. 74","DEMO HAMLET TWO",2,4],["16-0002",16,2,"HELVIN DUMIYANA","0000000000000092","TEST DISTRICT","06-05-1978",17,"P","DEMO HAMLET ONE NO. 19","DEMO HAMLET TWO",2,4],["16-0003",16,3,"OKTARA MISALUDIN","0000000000000093","DEMO CITY","26-04-1989",17,"P","TEST HAMLET NO. 76","TEST HAMLET",2,4],["16-0004",16,4,"ANDRO FIKTIFIANI","0000000000000094","SAMPLE REGION","21-08-1987",19,"P","DEMO HAMLET ONE NO. 94","SAMPLE HAMLET",2,4],["16-0005",16,5,"WIRAJA RANCANGSA","0000000000000095","DEMO CITY","15-10-1990",69,"L","SAMPLE HAMLET NO. 93","DEMO HAMLET ONE",2,4],["16-0006",16,6,"PRANAVI DEMOPUTRA","0000000000000096","TEST DISTRICT","05-06-1963",48,"P","DEMO HAMLET TWO NO. 1","SAMPLE HAMLET",2,4],["17-0001",17,1,"YULVARA SIMULINDO","0000000000000097","TEST DISTRICT","05-12-1991",54,"L","DEMO HAMLET ONE NO. 114","TEST HAMLET",3,4],["17-0002",17,2,"QUENZA TESTAMIJAYA","0000000000000098","TEST DISTRICT","07-12-1969",35,"L","TEST HAMLET NO. 41","DEMO HAMLET TWO",3,4],["17-0003",17,3,"FIRZA TESTAMIJAYA","0000000000000099","SAMPLE REGION","15-11-1986",40,"P","SAMPLE HAMLET NO. 90","DEMO HAMLET THREE",3,4],["17-0004",17,4,"TARUNIA SIMULINDO","0000000000000100","SAMPLE REGION","11-11-1988",51,"P","DEMO HAMLET THREE NO. 77","DEMO HAMLET TWO",3,4],["17-0005",17,5,"ELNAR SIMULINDO","0000000000000101","TEST DISTRICT","14-01-1963",30,"P","TEST HAMLET NO. 40","DEMO HAMLET TWO",3,4],["17-0006",17,6,"ULVARA SIMULINDO","0000000000000102","SAMPLE REGION","07-08-1981",30,"L","TEST HAMLET NO. 14","SAMPLE HAMLET",3,4],["18-0001",18,1,"JEVARA DEMOPUTRA","0000000000000103","TEST DISTRICT","26-09-1967",61,"L","DEMO HAMLET ONE NO. 77","DEMO HAMLET ONE",5,4],["18-0002",18,2,"ZEVANA PERCOBANI","0000000000000104","TEST DISTRICT","15-07-2001",61,"P","DEMO HAMLET THREE NO. 75","SAMPLE HAMLET",5,4],["18-0003",18,3,"IRSANO DEMOPUTRA","0000000000000105","TEST DISTRICT","08-05-1997",31,"L","DEMO HAMLET TWO NO. 108","SAMPLE HAMLET",5,4],["18-0004",18,4,"FIRZA PERCOBANI","0000000000000106","DEMO CITY","16-09-1962",33,"P","DEMO HAMLET THREE NO. 80","DEMO HAMLET THREE",5,4],["18-0005",18,5,"CENDA FIKTIFIANI","0000000000000107","TEST DISTRICT","13-06-1986",33,"L","DEMO HAMLET ONE NO. 96","TEST HAMLET",5,4],["18-0006",18,6,"OKTARA SAMPELYANTO","0000000000000108","TEST DISTRICT","11-11-1984",34,"L","DEMO HAMLET ONE NO. 69","DEMO HAMLET ONE",5,4],["19-0001",19,1,"CENDA DEMOPUTRA","0000000000000109","DEMO CITY","10-08-1985",20,"P","DEMO HAMLET TWO NO. 12","DEMO HAMLET THREE",6,4],["19-0002",19,2,"GANDRA UJICOBAWAN","0000000000000110","TEST DISTRICT","28-04-1997",29,"L","TEST HAMLET NO. 104","SAMPLE HAMLET",6,4],["19-0003",19,3,"TARUNIA CONTOHSARI","0000000000000111","DEMO CITY","16-11-1966",22,"L","SAMPLE HAMLET NO. 118","SAMPLE HAMLET",6,4],["19-0004",19,4,"PRANAVI DUMIYANA","0000000000000112","DEMO CITY","11-02-1965",49,"P","SAMPLE HAMLET NO. 97","TEST HAMLET",6,4],["19-0005",19,5,"ELNAR UMPAMAWATI","0000000000000113","SAMPLE REGION","03-09-1965",21,"P","DEMO HAMLET ONE NO. 74","DEMO HAMLET ONE",6,4],["19-0006",19,6,"JEVARA MISALUDIN","0000000000000114","DEMO CITY","28-10-1982",44,"L","DEMO HAMLET THREE NO. 57","DEMO HAMLET TWO",6,4],["20-0001",20,1,"PRANAVI UJICOBAWAN","0000000000000115","SAMPLE REGION","04-10-1979",32,"L","SAMPLE HAMLET NO. 88","TEST HAMLET",1,5],["20-0002",20,2,"JEVARA MISALUDIN","0000000000000116","DEMO CITY","27-07-1996",31,"P","DEMO HAMLET TWO NO. 83","DEMO HAMLET TWO",1,5],["20-0003",20,3,"GANDRA DEMOPUTRA","0000000000000117","SAMPLE REGION","23-02-1983",61,"P","TEST HAMLET NO. 17","DEMO HAMLET ONE",1,5],["20-0004",20,4,"BRAMA UJICOBAWAN","0000000000000118","DEMO CITY","24-10-1972",69,"L","DEMO HAMLET TWO NO. 118","DEMO HAMLET THREE",1,5],["20-0005",20,5,"YULVARA FIKTIFIANI","0000000000000119","TEST DISTRICT","19-08-1986",40,"L","SAMPLE HAMLET NO. 47","DEMO HAMLET ONE",1,5],["20-0006",20,6,"LIMRA SIMULINDO","0000000000000120","TEST DISTRICT","24-08-1993",35,"P","DEMO HAMLET TWO NO. 22","DEMO HAMLET ONE",1,5],["21-0001",21,1,"VERINDA MISALUDIN","0000000000000121","DEMO CITY","26-04-1985",48,"P","TEST HAMLET NO. 56","TEST HAMLET",2,5],["21-0002",21,2,"WIRAJA SIMULINDO","0000000000000122","SAMPLE REGION","25-09-1986",32,"P","DEMO HAMLET ONE NO. 55","DEMO HAMLET TWO",2,5],["21-0003",21,3,"RIVANDA CONTOHSARI","0000000000000123","SAMPLE REGION","28-01-1979",37,"L","TEST HAMLET NO. 110","DEMO HAMLET ONE",2,5],["21-0004",21,4,"ZEVANA UJICOBAWAN","0000000000000124","TEST DISTRICT","28-06-1981",57,"P","TEST HAMLET NO. 105","DEMO HAMLET ONE",2,5],["21-0005",21,5,"YULVARA UJICOBAWAN","0000000000000125","SAMPLE REGION","27-04-1983",47,"L","DEMO HAMLET ONE NO. 35","DEMO HAMLET THREE",2,5],["21-0006",21,6,"ZEVANA CONTOHSARI","0000000000000126","SAMPLE REGION","17-08-1966",54,"L","TEST HAMLET NO. 13","SAMPLE HAMLET",2,5],["22-0001",22,1,"PRANAVI PERCOBANI","0000000000000127","DEMO CITY","23-02-1967",33,"L","DEMO HAMLET ONE NO. 81","DEMO HAMLET THREE",3,5],["22-0002",22,2,"ELNAR PERCOBANI","0000000000000128","SAMPLE REGION","03-01-2004",53,"L","DEMO HAMLET TWO NO. 4","DEMO HAMLET ONE",3,5],["22-0003",22,3,"ZEVANA RANCANGSA","0000000000000129","SAMPLE REGION","02-02-2005",25,"L","DEMO HAMLET THREE NO. 44","DEMO HAMLET THREE",3,5],["22-0004",22,4,"MAVENDRA SIMULINDO","0000000000000130","SAMPLE REGION","06-11-1978",26,"P","DEMO HAMLET TWO NO. 74","DEMO HAMLET ONE",3,5],["22-0005",22,5,"YULVARA SIMULINDO","0000000000000131","DEMO CITY","02-04-2003",33,"L","DEMO HAMLET ONE NO. 49","SAMPLE HAMLET",3,5],["22-0006",22,6,"RIVANDA UMPAMAWATI","0000000000000132","TEST DISTRICT","05-10-1970",28,"P","DEMO HAMLET ONE NO. 36","SAMPLE HAMLET",3,5],["23-0001",23,1,"CENDA SIMULINDO","0000000000000133","DEMO CITY","07-09-1960",52,"P","TEST HAMLET NO. 50","DEMO HAMLET THREE",3,5],["23-0002",23,2,"JEVARA TESTAMIJAYA","0000000000000134","SAMPLE REGION","22-07-1969",29,"L","DEMO HAMLET ONE NO. 51","DEMO HAMLET THREE",3,5],["23-0003",23,3,"VERINDA MISALUDIN","0000000000000135","DEMO CITY","08-10-1974",46,"L","TEST HAMLET NO. 119","DEMO HAMLET THREE",3,5],["23-0004",23,4,"IRSANO RANCANGSA","0000000000000136","DEMO CITY","10-01-1979",29,"P","DEMO HAMLET ONE NO. 26","TEST HAMLET",3,5],["23-0005",23,5,"QUENZA PERCOBANI","0000000000000137","DEMO CITY","17-07-1963",35,"L","DEMO HAMLET THREE NO. 53","DEMO HAMLET ONE",3,5],["23-0006",23,6,"FIRZA PERCOBANI","0000000000000138","TEST DISTRICT","09-11-1973",40,"P","DEMO HAMLET ONE NO. 63","SAMPLE HAMLET",3,5],["24-0001",24,1,"WIRAJA UMPAMAWATI","0000000000000139","DEMO CITY","08-04-1997",36,"P","SAMPLE HAMLET NO. 84","DEMO HAMLET TWO",1,6],["24-0002",24,2,"LIMRA DEMOPUTRA","0000000000000140","SAMPLE REGION","01-01-2003",42,"L","DEMO HAMLET THREE NO. 33","TEST HAMLET",1,6],["24-0003",24,3,"YULVARA DEMOPUTRA","0000000000000141","SAMPLE REGION","19-09-1998",25,"P","SAMPLE HAMLET NO. 114","SAMPLE HAMLET",1,6],["24-0004",24,4,"BRAMA PERCOBANI","0000000000000142","DEMO CITY","07-09-1984",51,"P","SAMPLE HAMLET NO. 3","DEMO HAMLET THREE",1,6],["24-0005",24,5,"TARUNIA TESTAMIJAYA","0000000000000143","SAMPLE REGION","21-03-1991",22,"P","DEMO HAMLET TWO NO. 105","DEMO HAMLET TWO",1,6],["24-0006",24,6,"ZEVANA UMPAMAWATI","0000000000000144","TEST DISTRICT","11-04-1965",47,"P","DEMO HAMLET TWO NO. 83","TEST HAMLET",1,6],["25-0001",25,1,"KALUNA MISALUDIN","0000000000000145","SAMPLE REGION","14-04-1962",45,"L","DEMO HAMLET TWO NO. 67","DEMO HAMLET ONE",2,6],["25-0002",25,2,"ULVARA RANCANGSA","0000000000000146","DEMO CITY","03-02-1986",37,"P","TEST HAMLET NO. 45","DEMO HAMLET TWO",2,6],["25-0003",25,3,"YULVARA FIKTIFIANI","0000000000000147","DEMO CITY","15-11-1996",25,"L","DEMO HAMLET ONE NO. 75","TEST HAMLET",2,6],["25-0004",25,4,"NIRWAN RANCANGSA","0000000000000148","DEMO CITY","21-09-1984",25,"P","SAMPLE HAMLET NO. 5","DEMO HAMLET ONE",2,6],["25-0005",25,5,"ULVARA RANCANGSA","0000000000000149","TEST DISTRICT","02-08-1961",30,"L","TEST HAMLET NO. 113","DEMO HAMLET THREE",2,6],["25-0006",25,6,"NIRWAN TESTAMIJAYA","0000000000000150","TEST DISTRICT","09-03-1997",28,"P","SAMPLE HAMLET NO. 34","DEMO HAMLET THREE",2,6],["26-0001",26,1,"FIRZA FIKTIFIANI","0000000000000151","SAMPLE REGION","19-09-1994",57,"P","TEST HAMLET NO. 102","DEMO HAMLET ONE",4,6],["26-0002",26,2,"VERINDA DEMOPUTRA","0000000000000152","SAMPLE REGION","08-04-1977",21,"P","TEST HAMLET NO. 56","SAMPLE HAMLET",4,6],["26-0003",26,3,"ULVARA UJICOBAWAN","0000000000000153","DEMO CITY","15-05-1987",22,"L","SAMPLE HAMLET NO. 3","DEMO HAMLET THREE",4,6],["26-0004",26,4,"MAVENDRA FIKTIFIANI","0000000000000154","TEST DISTRICT","07-08-1964",54,"L","DEMO HAMLET THREE NO. 25","TEST HAMLET",4,6],["26-0005",26,5,"NIRWAN SIMULINDO","0000000000000155","DEMO CITY","28-04-1961",45,"L","SAMPLE HAMLET NO. 55","DEMO HAMLET TWO",4,6],["26-0006",26,6,"ANDRO SAMPELYANTO","0000000000000156","SAMPLE REGION","28-01-1984",43,"P","DEMO HAMLET THREE NO. 24","DEMO HAMLET ONE",4,6]],"tps":[{"no_tps":1,"dusun":1,"wilayah":"RT 003, 004 & 007 RW 001","dpt_l":246,"dpt_p":254,"dpt_total":500},{"no_tps":2,"dusun":1,"wilayah":"RT 001 RW 001","dpt_l":265,"dpt_p":262,"dpt_total":527},{"no_tps":3,"dusun":1,"wilayah":"RT 001, 002 & 004 RW 001","dpt_l":250,"dpt_p":260,"dpt_total":510},{"no_tps":4,"dusun":1,"wilayah":"RT 005 RW 001","dpt_l":271,"dpt_p":275,"dpt_total":546},{"no_tps":5,"dusun":1,"wilayah":"RT 005 & 006 RW 001","dpt_l":255,"dpt_p":251,"dpt_total":506},{"no_tps":6,"dusun":1,"wilayah":"RT 001 & 002 RW 002","dpt_l":192,"dpt_p":202,"dpt_total":394},{"no_tps":7,"dusun":1,"wilayah":"RT 002 & 003 RW 002","dpt_l":188,"dpt_p":203,"dpt_total":391},{"no_tps":8,"dusun":1,"wilayah":"RT 004 RW 002","dpt_l":229,"dpt_p":244,"dpt_total":473},{"no_tps":9,"dusun":1,"wilayah":"RT 005 RW 002","dpt_l":220,"dpt_p":221,"dpt_total":441},{"no_tps":10,"dusun":1,"wilayah":"RT 006 & 007 RW 002","dpt_l":264,"dpt_p":266,"dpt_total":530},{"no_tps":11,"dusun":2,"wilayah":"RT 001 RW 003","dpt_l":281,"dpt_p":258,"dpt_total":539},{"no_tps":12,"dusun":2,"wilayah":"RT 001 & 002 RW 003","dpt_l":244,"dpt_p":201,"dpt_total":445},{"no_tps":13,"dusun":2,"wilayah":"RT 003, 004 & 005 RW 003","dpt_l":241,"dpt_p":250,"dpt_total":491},{"no_tps":14,"dusun":2,"wilayah":"RT 004 RW 003","dpt_l":272,"dpt_p":275,"dpt_total":547},{"no_tps":15,"dusun":2,"wilayah":"RT 001, 002 & 005 RW 004","dpt_l":212,"dpt_p":222,"dpt_total":434},{"no_tps":16,"dusun":2,"wilayah":"RT 002 RW 004","dpt_l":282,"dpt_p":268,"dpt_total":550},{"no_tps":17,"dusun":2,"wilayah":"RT 003 RW 004","dpt_l":258,"dpt_p":235,"dpt_total":493},{"no_tps":18,"dusun":2,"wilayah":"RT 005 & 006 RW 004","dpt_l":265,"dpt_p":258,"dpt_total":523},{"no_tps":19,"dusun":2,"wilayah":"RT 006 RW 004","dpt_l":266,"dpt_p":248,"dpt_total":514},{"no_tps":20,"dusun":3,"wilayah":"RT 001 & 004 RW 005","dpt_l":260,"dpt_p":248,"dpt_total":508},{"no_tps":21,"dusun":3,"wilayah":"RT 002 RW 005 & RT 004 RW 004","dpt_l":281,"dpt_p":269,"dpt_total":550},{"no_tps":22,"dusun":3,"wilayah":"RT 003 RW 005 & RT 001 & 006","dpt_l":276,"dpt_p":272,"dpt_total":548},{"no_tps":23,"dusun":3,"wilayah":"RT 003, 004 RW 005 & RT 003 RW 006","dpt_l":260,"dpt_p":285,"dpt_total":545},{"no_tps":24,"dusun":3,"wilayah":"RT 001, 003, 004 RW 006","dpt_l":261,"dpt_p":289,"dpt_total":550},{"no_tps":25,"dusun":3,"wilayah":"RT 002 & 003 RW 006","dpt_l":284,"dpt_p":266,"dpt_total":550},{"no_tps":26,"dusun":3,"wilayah":"RT 004 RW 006","dpt_l":262,"dpt_p":288,"dpt_total":550}],"akun":[{"username":"demo-admin","sandi":"12345","password":"12345","pin":"12345","nama":"Demo admin","peran":"admin","role":"admin","tps":"","dusun":""},{"username":"demo-admin_dusun","sandi":"12345","password":"12345","pin":"12345","nama":"Demo admin_dusun","peran":"admin_dusun","role":"admin_dusun","tps":"","dusun":""},{"username":"demo-admin_tps","sandi":"12345","password":"12345","pin":"12345","nama":"Demo admin_tps","peran":"admin_tps","role":"admin_tps","tps":"","dusun":""},{"username":"demo-pemantau","sandi":"12345","password":"12345","pin":"12345","nama":"Demo pemantau","peran":"observer","role":"observer","tps":"","dusun":""},{"username":"demo-demo","sandi":"12345","password":"12345","pin":"12345","nama":"Demo demo","peran":"demo","role":"demo","tps":"","dusun":""}],"dibuat":"16 September 2026 08:09"}</script>
+<script>/* SAIRAN 2026 — mode mandiri.
+ *
+ *  Tidak ada basis data sama sekali. DPT, daftar akun, dan PIN tertanam di
+ *  dalam berkas ini; penandaan dukungan disimpan di HP masing-masing.
+ *
+ *  Yang harus disadari pemakainya, dan disebutkan di layar:
+ *  penandaan TIDAK berpindah sendiri antar HP. Supaya hasilnya menjadi satu,
+ *  tiap petugas mengekspor berkasnya lalu digabungkan lewat menu
+ *  "Data & Merge". Itu harga yang dibayar untuk bisa berjalan tanpa jaringan
+ *  dan tanpa basis data.
+ */
+(() => {
+  'use strict';
+
+  const D = JSON.parse(document.getElementById('data-sairan').textContent);
+  const K = Object.fromEntries(D.kolom.map((n, i) => [n, i]));
+  const KUNCI_TANDA = 'sairan_tanda_v1';
+  const KUNCI_SUARA = 'sairan_suara_v1';
+  const KUNCI_AKUN = 'sairan_akun_terakhir';
+
+  const KANDIDAT = [
+    { kode: 'hijau', nama: 'SUPPORT', no: 1 },
+    { kode: 'kuning', nama: 'CANDIDATE A', no: 2 },
+    { kode: 'merah', nama: 'CANDIDATE B', no: 3 },
+    { kode: 'abu', nama: 'Belum menentukan', no: null },
+  ];
+  const WARNA = {
+    hijau: '#15803D', kuning: '#CA8A04', merah: '#DC2626', abu: '#94A3B8',
+    sairan: '#15803D', kandidat_a: '#CA8A04', kandidat_b: '#DC2626', golput: '#64748B', tidak_sah: '#B6C0CD',
+  };
+  const NAMA_DUSUN = { 1: 'Sub-village I', 2: 'Sub-village II', 3: 'Sub-village III' };
+  const LABEL_PERAN = {
+    demo: 'Demo account', admin: 'Admin Desa', admin_dusun: 'Admin Dusun',
+    admin_tps: 'Admin TPS', pemantau: 'DEMO ACCOUNT',
+  };
+  const KOLOM_SUARA = ['sairan', 'desi', 'otong', 'golput', 'tidak_sah'];
+  const LABEL_SUARA = {
+    sairan: 'SUPPORT', kandidat_a: 'CANDIDATE A', kandidat_b: 'CANDIDATE B', golput: 'ABSTAIN', tidak_sah: 'INVALID',
+  };
+
+  const dusunDariTps = (t) => (t <= 10 ? 1 : t <= 19 ? 2 : 3);
+
+  /* ---------- keadaan ---------- */
+  let pengguna = null;
+  let panelAktif = 'dasbor';
+  let saring = {};
+  let halaman = 1;
+  const PER = 50;
+
+  const tanda = muat(KUNCI_TANDA, {});      // id -> { s, hp, ct }
+  const suara = muat(KUNCI_SUARA, {});      // tps -> { sairan, ... , kunci }
+
+  function muat(kunci, bawaan) {
+    try {
+      const t = localStorage.getItem(kunci);
+      return t ? JSON.parse(t) : bawaan;
+    } catch { return bawaan; }
+  }
+  function simpan(kunci, nilai) {
+    try { localStorage.setItem(kunci, JSON.stringify(nilai)); return true; } catch { return false; }
+  }
+
+  /* ---------- pembantu tampilan ---------- */
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const angka = (n) => Number(n || 0).toLocaleString('id-ID');
+  const persen = (a, b, d = 1) => (!b ? '0%' : `${(a / b * 100).toFixed(d).replace('.', ',')}%`);
+  const el = (id) => document.getElementById(id);
+
+  let jamBilah;
+  function bilah(pesan, galat = false) {
+    const b = el('bilah-simpan');
+    b.textContent = pesan;
+    b.classList.toggle('galat', galat);
+    b.classList.add('tampil');
+    clearTimeout(jamBilah);
+    jamBilah = setTimeout(() => b.classList.remove('tampil'), galat ? 4000 : 1600);
+  }
+
+  /* ---------- wewenang ---------- */
+  function dalamWilayah(r) {
+    if (pengguna.peran === 'admin_tps') return r[K.tps] === pengguna.tps;
+    if (pengguna.peran === 'admin_dusun') return dusunDariTps(r[K.tps]) === pengguna.dusun;
+    return true;
+  }
+  const bolehUbah = () => pengguna.peran !== 'observer';
+  const tpsSaya = () => D.tps.filter((t) => (pengguna.peran === 'admin_tps'
+    ? t.no_tps === pengguna.tps
+    : pengguna.peran === 'admin_dusun' ? t.dusun === pengguna.dusun : true));
+
+  function labelCakupan() {
+    if (saring.tps) return `TPS ${saring.tps}`;
+    if (saring.dusun) return (NAMA_DUSUN[saring.dusun] || '').toUpperCase();
+    if (pengguna.peran === 'admin_tps') return `TPS ${pengguna.tps}`;
+    if (pengguna.peran === 'admin_dusun') return (NAMA_DUSUN[pengguna.dusun] || '').toUpperCase();
+    return 'SELURUH DESA SUKAMULYA';
+  }
+
+  /* ---------- penyaringan ---------- */
+  const statusDari = (id) => (tanda[id] && tanda[id].s) || 'abu';
+
+  function cocok(r, s) {
+    if (!dalamWilayah(r)) return false;
+    if (s.tps && r[K.tps] !== Number(s.tps)) return false;
+    if (s.dusun && dusunDariTps(r[K.tps]) !== Number(s.dusun)) return false;
+    if (s.rt && r[K.rt] !== Number(s.rt)) return false;
+    if (s.rw && r[K.rw] !== Number(s.rw)) return false;
+    if (s.kampung && r[K.kampung] !== s.kampung) return false;
+    if (s.jk && r[K.jk] !== s.jk) return false;
+    if (s.status) {
+      const st = statusDari(r[K.id]);
+      if (s.status === 'sudah' ? st === 'abu' : st !== s.status) return false;
+    }
+    if (s.cari) {
+      const c = s.cari.toUpperCase();
+      const cocokTeks = String(r[K.nama] || '').includes(c)
+        || String(r[K.nik] || '').includes(s.cari)
+        || String(r[K.alamat] || '').toUpperCase().includes(c);
+      if (!cocokTeks) return false;
+    }
+    return true;
+  }
+
+  const saringan = (s = saring) => D.pemilih.filter((r) => cocok(r, s));
+
+  /* ---------- rekapitulasi ---------- */
+  function hitung(baris) {
+    const t = { dpt: 0, hijau: 0, kuning: 0, merah: 0, abu: 0 };
+    for (const r of baris) { t.dpt += 1; t[statusDari(r[K.id])] += 1; }
+    return t;
+  }
+  function kelompok(baris, ambil) {
+    const peta = new Map();
+    for (const r of baris) {
+      const k = ambil(r);
+      if (k === null || k === undefined || k === '') continue;
+      if (!peta.has(k)) peta.set(k, []);
+      peta.get(k).push(r);
+    }
+    return [...peta.entries()].map(([kunci, isi]) => ({ kunci, ...hitung(isi) }));
+  }
+
+  /* ---------- bagian tampilan ---------- */
+  function batang(t) {
+    const total = t.dpt || 1;
+    const potong = KANDIDAT.filter((k) => t[k.kode] > 0).map((k) =>
+      `<span style="width:${(t[k.kode] / total * 100).toFixed(2)}%;background:${WARNA[k.kode]}"
+             title="${esc(k.nama)}: ${angka(t[k.kode])}"></span>`).join('');
+    return `<div class="batang" role="img" aria-label="${KANDIDAT.map((k) =>
+      `${k.nama} ${angka(t[k.kode])}`).join(', ')}">${potong}</div>`;
+  }
+
+  function donat(bagian, tengahAngka, tengahLabel, ukuran = 190) {
+    const total = bagian.reduce((n, b) => n + b.nilai, 0);
+    const tebal = Math.round(ukuran * 0.17);
+    const jari = (ukuran - tebal) / 2;
+    const keliling = 2 * Math.PI * jari;
+    let mulai = 0;
+    const irisan = total === 0 ? '' : bagian.filter((b) => b.nilai > 0).map((b) => {
+      const bagi = b.nilai / total;
+      const panjang = Math.max(bagi * keliling - 3, 0.6);
+      const p = `<circle class="donat-iris" r="${jari}" cx="${ukuran / 2}" cy="${ukuran / 2}"
+        fill="none" stroke="${b.warna}" stroke-width="${tebal}"
+        stroke-dasharray="${panjang.toFixed(2)} ${(keliling - panjang).toFixed(2)}"
+        stroke-dashoffset="${(-mulai * keliling).toFixed(2)}"
+        transform="rotate(-90 ${ukuran / 2} ${ukuran / 2})"><title>${esc(b.label)}: ${angka(b.nilai)}</title></circle>`;
+      mulai += bagi;
+      return p;
+    }).join('');
+    return `<div class="donat-bungkus">
+      <svg class="donat" viewBox="0 0 ${ukuran} ${ukuran}" width="${ukuran}" height="${ukuran}"
+           role="img" aria-label="${esc(bagian.map((b) => `${b.label} ${angka(b.nilai)}`).join(', '))}">
+        <circle r="${jari}" cx="${ukuran / 2}" cy="${ukuran / 2}" fill="none"
+                stroke="var(--garis)" stroke-width="${tebal}"></circle>${irisan}
+      </svg>
+      <div class="donat-tengah">
+        <div class="donat-angka angka">${esc(tengahAngka)}</div>
+        <div class="donat-label">${esc(tengahLabel)}</div>
+      </div></div>`;
+  }
+
+  function keteranganNilai(bagian) {
+    const total = bagian.reduce((n, b) => n + b.nilai, 0);
+    return `<div class="legenda-nilai">${bagian.map((b) => `
+      <div class="ln"><i style="background:${b.warna}"></i>
+        <div class="ln-nama">${esc(b.label)}</div>
+        <div class="ln-angka angka">${angka(b.nilai)}</div>
+        <div class="ln-persen angka">${persen(b.nilai, total)}</div>
+      </div>`).join('')}</div>`;
+  }
+
+  function peringkat(baris, maks = 100) {
+    if (!baris.length) return '<div class="kosong">No data yet.</div>';
+    return `<div class="grafik">${baris.map((b) => `
+      <div class="gbar">
+        <div class="gbar-label">${esc(b.label)}</div>
+        <div class="gbar-jalur"><span style="width:${Math.max(b.nilai / maks * 100, b.nilai > 0 ? 1.5 : 0).toFixed(2)}%;background:${WARNA.hijau}"></span></div>
+        <div class="gbar-nilai angka">${esc(b.teks)}</div>
+      </div>`).join('')}</div>`;
+  }
+
+  const TANDA_MANDIRI = `<div class="md-tanda">
+    <b>Standalone mode.</b> Aplikasi ini berjalan tanpa basis data, jadi tetap bisa
+    dipakai walau sinyal hilang. Penandaan tersimpan di HP ini saja dan
+    <b>does not sync on its own</b> ke HP lain. Untuk menjadikannya satu laporan,
+    buka menu <b>Data &amp; Gabung</b>.</div>`;
+
+  /* ---------- Dasbor ---------- */
+  function gambarDasbor() {
+    const baris = saringan({ ...saring, status: '', cari: '' });
+    const t = hitung(baris);
+    const terdata = t.dpt - t.abu;
+    const perDusun = kelompok(baris, (r) => dusunDariTps(r[K.tps])).sort((a, b) => a.kunci - b.kunci);
+    const perTps = kelompok(baris, (r) => r[K.tps]).sort((a, b) => a.kunci - b.kunci);
+    const bagian = KANDIDAT.map((k) => ({ label: k.nama, nilai: t[k.kode], warna: WARNA[k.kode] }));
+
+    el('dasbor-isi').innerHTML = `${TANDA_MANDIRI}
+    ${saringanUmum()}
+    <div class="kartu">
+      <div class="kartu-judul">Perolehan dukungan · ${esc(labelCakupan())}</div>
+      <div class="sorot">
+        <div class="sorot-besar angka">${angka(t.hijau)}</div>
+        <div class="sorot-label">CALON NOMOR URUT 1 · SUPPORT</div>
+        <div class="sorot-persen">${persen(t.hijau, t.dpt)} dari ${angka(t.dpt)} DPT</div>
+      </div>
+      <div class="ubin-baris" style="margin-top:14px">
+        ${KANDIDAT.map((k) => `<div class="ubin" style="--warna:${WARNA[k.kode]}">
+          <div class="ubin-nama">${esc(k.nama.toUpperCase())}</div>
+          <div class="ubin-angka angka">${angka(t[k.kode])}</div>
+          <div class="ubin-persen">${persen(t[k.kode], t.dpt)} dari DPT</div>
+        </div>`).join('')}
+      </div>
+      <div style="margin-top:14px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--tinta-2);margin-bottom:6px">
+          <span>Data collection progress</span><span class="angka">${persen(terdata, t.dpt)}</span></div>
+        <div class="batang"><span style="width:${t.dpt ? (terdata / t.dpt * 100).toFixed(2) : 0}%;background:${WARNA.hijau}"></span></div>
+        <div style="font-size:12.5px;color:var(--tinta-3);margin-top:6px">
+          ${angka(terdata)} dari ${angka(t.dpt)} nama sudah ditandai</div>
+      </div>
+    </div>
+
+    <div class="kartu">
+      <div class="kartu-judul">Support breakdown</div>
+      <div class="donat-baris">${donat(bagian, persen(t.hijau, t.dpt), 'SUPPORT')}</div>
+      ${keteranganNilai(bagian)}
+    </div>
+
+    ${perDusun.length > 1 ? `<div class="kartu">
+      <div class="kartu-judul">SUPPORT per dusun</div>
+      ${peringkat(perDusun.map((d) => ({
+      label: NAMA_DUSUN[d.kunci] || `Dusun ${d.kunci}`,
+      nilai: d.dpt ? d.hijau / d.dpt * 100 : 0,
+      teks: `${angka(d.hijau)} · ${persen(d.hijau, d.dpt)}`,
+    })))}
+    </div>` : ''}
+
+    <div class="kartu">
+      <div class="kartu-judul">Detail per polling station</div>
+      ${perTps.map((r) => {
+      const w = D.tps.find((x) => x.no_tps === r.kunci) || {};
+      return `<div class="baris-rekap">
+        <div class="br-atas"><b>TPS ${r.kunci}</b>
+          <span class="hh-kecil">${esc(w.wilayah || '')}</span>
+          <span class="angka" style="margin-left:auto">${persen(r.hijau, r.dpt)}</span></div>
+        ${batang(r)}
+        <div class="br-kaki">${KANDIDAT.map((k) => `${k.nama} ${angka(r[k.kode])}`).join(' · ')} — DPT ${angka(r.dpt)}</div>
+      </div>`;
+    }).join('')}
+    </div>`;
+    pasangSaringan(el('dasbor-isi'));
+  }
+
+  /* ---------- Saringan ---------- */
+  function pilihanKampung() {
+    const set = new Set();
+    for (const r of D.pemilih) {
+      if (!dalamWilayah(r)) continue;
+      if (saring.dusun && dusunDariTps(r[K.tps]) !== Number(saring.dusun)) continue;
+      if (saring.tps && r[K.tps] !== Number(saring.tps)) continue;
+      if (r[K.kampung]) set.add(r[K.kampung]);
+    }
+    return [...set].sort();
+  }
+  function pilihanRtRw() {
+    const rw = new Set(); const rt = new Set();
+    for (const r of D.pemilih) {
+      if (!dalamWilayah(r)) continue;
+      if (saring.dusun && dusunDariTps(r[K.tps]) !== Number(saring.dusun)) continue;
+      if (saring.tps && r[K.tps] !== Number(saring.tps)) continue;
+      if (r[K.rw] != null) rw.add(r[K.rw]);
+      if (r[K.rt] != null && (!saring.rw || r[K.rw] === Number(saring.rw))) rt.add(r[K.rt]);
+    }
+    return { rw: [...rw].sort((a, b) => a - b), rt: [...rt].sort((a, b) => a - b) };
+  }
+
+  function opsi(daftar, terpilih, kosong) {
+    return `<option value="">${esc(kosong)}</option>` + daftar.map(([n, l]) =>
+      `<option value="${esc(n)}"${String(n) === String(terpilih) ? ' selected' : ''}>${esc(l)}</option>`).join('');
+  }
+
+  function saringanUmum({ denganStatus = false, denganCari = false } = {}) {
+    const { rw, rt } = pilihanRtRw();
+    const bagian = [];
+    if (['demo', 'admin', 'observer'].includes(pengguna.peran)) {
+      bagian.push(`<label class="isian"><span>Sub-village</span><select data-saring="dusun">${
+        opsi([[1, 'Sub-village I'], [2, 'Sub-village II'], [3, 'Sub-village III']], saring.dusun, 'Whole village')}</select></label>`);
+    }
+    if (pengguna.peran !== 'admin_tps') {
+      bagian.push(`<label class="isian"><span>TPS</span><select data-saring="tps">${
+        opsi(tpsSaya().filter((t) => !saring.dusun || t.dusun === Number(saring.dusun))
+          .map((t) => [t.no_tps, `TPS ${t.no_tps}`]), saring.tps, 'Semua TPS')}</select></label>`);
+    }
+    bagian.push(`<label class="isian"><span>RW</span><select data-saring="rw">${
+      opsi(rw.map((v) => [v, `RW ${String(v).padStart(3, '0')}`]), saring.rw, 'Semua RW')}</select></label>`);
+    bagian.push(`<label class="isian"><span>RT</span><select data-saring="rt">${
+      opsi(rt.map((v) => [v, `RT ${String(v).padStart(3, '0')}`]), saring.rt, 'Semua RT')}</select></label>`);
+    bagian.push(`<label class="isian"><span>Hamlet</span><select data-saring="kampung">${
+      opsi(pilihanKampung().map((k) => [k, k]), saring.kampung, 'Semua kampung')}</select></label>`);
+    if (denganStatus) {
+      bagian.push(`<label class="isian"><span>Support</span><select data-saring="status">${
+        opsi([...KANDIDAT.map((k) => [k.kode, k.nama]), ['sudah', 'Sudah ditandai']], saring.status, 'Semua')}</select></label>`);
+    }
+    if (denganCari) {
+      bagian.push(`<label class="isian"><span>Search name / ID</span>
+        <input data-saring="cari" value="${esc(saring.cari || '')}" placeholder="ketik lalu Enter"></label>`);
+    }
+    const aktif = Object.values(saring).some(Boolean);
+    return `<div class="kartu tanpa-cetak">
+      <div class="kartu-judul">Filter</div>
+      <div class="saring">${bagian.join('')}</div>
+      ${aktif ? '<div class="baris-tombol" style="margin-top:11px"><button class="tombol kecil" data-bersih="1">Clear filters</button></div>' : ''}
+    </div>`;
+  }
+
+  function pasangSaringan(akar) {
+    akar.querySelectorAll('[data-saring]').forEach((k) => {
+      const kunci = k.dataset.saring;
+      if (k.tagName === 'INPUT') {
+        k.onkeydown = (e) => {
+          if (e.key !== 'Enter') return;
+          e.preventDefault();
+          saring[kunci] = k.value.trim();
+          halaman = 1;
+          gambar();
+        };
+      } else {
+        k.onchange = () => {
+          saring[kunci] = k.value;
+          if (kunci === 'dusun') Object.assign(saring, { tps: '', kampung: '', rw: '', rt: '' });
+          if (kunci === 'tps') Object.assign(saring, { kampung: '', rw: '', rt: '' });
+          if (kunci === 'rw') saring.rt = '';
+          halaman = 1;
+          gambar();
+        };
+      }
+    });
+    const bersih = akar.querySelector('[data-bersih]');
+    if (bersih) bersih.onclick = () => { saring = {}; halaman = 1; gambar(); };
+  }
+
+  /* ---------- Data Pemilih ---------- */
+  function gambarPemilih() {
+    const semua = saringan();
+    const total = semua.length;
+    const halTotal = Math.max(1, Math.ceil(total / PER));
+    if (halaman > halTotal) halaman = halTotal;
+    const bagian = semua.slice((halaman - 1) * PER, halaman * PER);
+
+    el('pemilih-isi').innerHTML = `${TANDA_MANDIRI}
+      ${saringanUmum({ denganStatus: true, denganCari: true })}
+      <div class="kartu tanpa-cetak">
+        <div class="baris-tombol">
+          <button class="tombol kecil" id="p-cetak">Print list (PDF)</button>
+          <span style="margin-left:auto;font-size:13px;color:var(--tinta-3)">
+            ${angka(total)} nama${total > PER ? ` · halaman ${halaman} dari ${halTotal}` : ''}</span>
+        </div>
+      </div>
+      <div class="kartu">
+        ${bagian.length ? bagian.map(kartuOrang).join('') : '<div class="kosong">No matching names.</div>'}
+      </div>
+      ${halTotal > 1 ? `<div class="kartu tanpa-cetak"><div class="baris-tombol">
+        <button class="tombol kecil" id="p-mundur" ${halaman <= 1 ? 'disabled' : ''}>← Previous</button>
+        <button class="tombol kecil" id="p-maju" ${halaman >= halTotal ? 'disabled' : ''}>Next →</button>
+      </div></div>` : ''}`;
+
+    pasangSaringan(el('pemilih-isi'));
+    const mundur = el('p-mundur'); if (mundur) mundur.onclick = () => { halaman -= 1; gambar(); };
+    const maju = el('p-maju'); if (maju) maju.onclick = () => { halaman += 1; gambar(); };
+    el('p-cetak').onclick = cetakDaftar;
+
+    el('pemilih-isi').querySelectorAll('[data-status]').forEach((b) => {
+      b.onclick = () => setStatus(b.dataset.id, b.dataset.status, b);
+    });
+  }
+
+  function kartuOrang(r) {
+    const id = r[K.id];
+    const st = statusDari(id);
+    const bisa = bolehUbah();
+    const tombol = KANDIDAT.map((k) => (bisa
+      ? `<button class="warna w-${k.kode}" data-status="${k.kode}" data-id="${esc(id)}"
+                 aria-pressed="${st === k.kode}" title="${esc(k.nama)}">
+           <span class="titik"></span>${esc(k.nama)}</button>`
+      : `<span class="warna w-${k.kode}" aria-pressed="${st === k.kode}">
+           <span class="titik"></span>${esc(k.nama)}</span>`)).join('');
+    const ct = tanda[id] || {};
+    return `<div class="orang" data-baris="${esc(id)}">
+      <div class="orang-atas-lebar"><div class="orang-atas" style="flex:1">
+        <div class="orang-no angka">${r[K.no_urut]}</div>
+        <div class="orang-isi">
+          <div class="orang-nama">${esc(r[K.nama])}</div>
+          <div class="orang-meta">${esc(r[K.nik] || '')} · ${esc(r[K.jk])} · ${r[K.usia] || '-'} th</div>
+          <div class="orang-meta">${esc(r[K.alamat] || '')} · RT ${String(r[K.rt] || 0).padStart(3, '0')}/RW ${String(r[K.rw] || 0).padStart(3, '0')} · TPS ${r[K.tps]}</div>
+          ${ct.hp || ct.ct ? `<div class="orang-meta">${ct.hp ? `<b>${esc(ct.hp)}</b>` : ''}${ct.ct ? ` · ${esc(ct.ct)}` : ''}</div>` : ''}
+        </div>
+      </div></div>
+      <div class="pilih-warna">${tombol}</div>
+    </div>`;
+  }
+
+  function setStatus(id, status, tombol) {
+    if (!bolehUbah()) { bilah('Akses DEMO ACCOUNT hanya untuk melihat laporan', true); return; }
+    const induk = tombol.closest('.pilih-warna');
+    induk.querySelectorAll('.warna').forEach((b) => {
+      b.setAttribute('aria-pressed', String(b.dataset.status === status));
+    });
+    if (status === 'abu') delete tanda[id];
+    else tanda[id] = { ...(tanda[id] || {}), s: status };
+    if (simpan(KUNCI_TANDA, tanda)) bilah('Tersimpan');
+    else bilah('Penyimpanan HP penuh — ekspor data dulu', true);
+  }
+
+  /* ---------- Cetak daftar ---------- */
+  function cetakDaftar() {
+    const semua = saringan();
+    if (!semua.length) { bilah('Tidak ada data untuk dicetak', true); return; }
+    const nama = { hijau: 'SUPPORT', kuning: 'CANDIDATE A', merah: 'CANDIDATE B', abu: 'Belum menentukan', sudah: 'Sudah ditandai' };
+    const ket = [
+      saring.status ? `Dukungan: ${nama[saring.status] || saring.status}` : 'Seluruh dukungan',
+      saring.dusun ? NAMA_DUSUN[saring.dusun] : null,
+      saring.tps ? `TPS ${saring.tps}` : null,
+      saring.rw ? `RW ${String(saring.rw).padStart(3, '0')}` : null,
+      saring.rt ? `RT ${String(saring.rt).padStart(3, '0')}` : null,
+      saring.kampung || null,
+      saring.cari ? `Pencarian: "${saring.cari}"` : null,
+    ].filter(Boolean).join(' · ');
+    bukaCetak(`
+      <h1>VOTER REGISTER</h1>
+      <p class="anak">Desa Sukamulya · Kec. Sukatani · Kab. Bekasi<br>${esc(ket)}<br>
+        ${angka(semua.length)} nama · dicetak ${new Date().toLocaleString('id-ID')}</p>
+      <table><thead><tr><th>No</th><th>Name</th><th>NIK</th><th>M/F</th>
+        <th>Hamlet</th><th>RT/RW</th><th>TPS</th><th>Support</th></tr></thead>
+      <tbody>${semua.map((r, i) => `<tr>
+        <td>${i + 1}</td><td>${esc(r[K.nama])}</td><td>${esc(r[K.nik] || '')}</td>
+        <td>${esc(r[K.jk])}</td><td>${esc(r[K.kampung] || '')}</td>
+        <td>${String(r[K.rt] || 0).padStart(3, '0')}/${String(r[K.rw] || 0).padStart(3, '0')}</td>
+        <td>${r[K.tps]}</td><td>${esc(nama[statusDari(r[K.id])])}</td></tr>`).join('')}</tbody></table>`);
+  }
+
+  function bukaCetak(isi) {
+    const w = window.open('', '_blank');
+    if (!w) { bilah('Izinkan jendela baru untuk mencetak', true); return; }
+    w.document.write(`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+      <title>Print — Voter Register 2026</title><style>
+      @page { size: A4; margin: 12mm; }
+      body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #0F1B2D; font-size: 11px; }
+      h1 { font-size: 16px; margin: 0 0 4px; letter-spacing: .02em; }
+      .anak { color: #54607A; font-size: 11px; margin: 0 0 12px; line-height: 1.5; }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { border: 1px solid #C6BC9E; padding: 3px 5px; text-align: left; }
+      th { background: #EEF1F5; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
+      tr { break-inside: avoid; }
+      h2 { font-size: 13px; margin: 14px 0 6px; }
+      </style></head><body>${isi}</body></html>`);
+    w.document.close();
+    setTimeout(() => { w.focus(); w.print(); }, 400);
+  }
+
+  /* ---------- Laporan ---------- */
+  function gambarLaporan() {
+    const baris = saringan({ ...saring, status: '', cari: '' });
+    const t = hitung(baris);
+    const perTps = kelompok(baris, (r) => r[K.tps]).sort((a, b) => a.kunci - b.kunci);
+    const perKampung = kelompok(baris, (r) => r[K.kampung]).sort((a, b) => b.dpt - a.dpt);
+    const perRt = kelompok(baris, (r) => `${r[K.rw]}|${r[K.rt]}`)
+      .map((x) => { const [rw, rt] = String(x.kunci).split('|'); return { ...x, rw: +rw, rt: +rt }; })
+      .sort((a, b) => (a.rw - b.rw) || (a.rt - b.rt));
+
+    el('laporan-isi').innerHTML = `${TANDA_MANDIRI}
+      ${saringanUmum()}
+      <div class="kartu tanpa-cetak"><div class="baris-tombol md-alat">
+        <button class="tombol utama kecil" data-lap="ringkas">Print summary report</button>
+        <button class="tombol kecil" data-lap="tps">Print detail per polling station</button>
+        <button class="tombol kecil" data-lap="kampung">Print per hamlet</button>
+        <button class="tombol kecil" data-lap="rt">Print per RT</button>
+      </div></div>
+      <div class="kartu">
+        <div class="kartu-judul">Ringkasan · ${esc(labelCakupan())}</div>
+        <div class="ubin-baris">${KANDIDAT.map((k) => `<div class="ubin" style="--warna:${WARNA[k.kode]}">
+          <div class="ubin-nama">${esc(k.nama.toUpperCase())}</div>
+          <div class="ubin-angka angka">${angka(t[k.kode])}</div>
+          <div class="ubin-persen">${persen(t[k.kode], t.dpt)}</div></div>`).join('')}</div>
+        <div style="margin-top:12px">${batang(t)}</div>
+      </div>`;
+    pasangSaringan(el('laporan-isi'));
+
+    const tabel = (judul, baris2, labelKunci) => `<h2>${esc(judul)}</h2>
+      <table><thead><tr><th>${esc(labelKunci)}</th><th>Voter roll</th>
+        ${KANDIDAT.map((k) => `<th>${esc(k.nama)}</th>`).join('')}<th>% SUPPORT</th></tr></thead>
+      <tbody>${baris2.map((r) => `<tr><td>${esc(r.label)}</td><td>${angka(r.dpt)}</td>
+        ${KANDIDAT.map((k) => `<td>${angka(r[k.kode])}</td>`).join('')}
+        <td>${persen(r.hijau, r.dpt)}</td></tr>`).join('')}
+      <tr><td><b>TOTAL</b></td><td><b>${angka(t.dpt)}</b></td>
+        ${KANDIDAT.map((k) => `<td><b>${angka(t[k.kode])}</b></td>`).join('')}
+        <td><b>${persen(t.hijau, t.dpt)}</b></td></tr></tbody></table>`;
+
+    const kepala = `<h1>SUPPORT REPORT — CANDIDATE No. 1</h1>
+      <p class="anak">Desa Sukamulya · Kec. Sukatani · Kab. Bekasi<br>
+      ${esc(labelCakupan())} · ${angka(t.dpt)} DPT<br>
+      Dicetak ${new Date().toLocaleString('id-ID')} oleh ${esc(pengguna.nama)}</p>
+      <table><thead><tr><th>Pilihan</th><th>Total</th><th>Persen</th></tr></thead><tbody>
+      ${KANDIDAT.map((k) => `<tr><td>${esc(k.nama)}</td><td>${angka(t[k.kode])}</td>
+        <td>${persen(t[k.kode], t.dpt)}</td></tr>`).join('')}
+      <tr><td><b>Voter roll</b></td><td><b>${angka(t.dpt)}</b></td><td><b>100%</b></td></tr></tbody></table>`;
+
+    el('laporan-isi').querySelectorAll('[data-lap]').forEach((b) => {
+      b.onclick = () => {
+        const jenis = b.dataset.lap;
+        if (jenis === 'ringkas') return bukaCetak(kepala);
+        if (jenis === 'tps') {
+          return bukaCetak(kepala + tabel('Detail per polling station',
+            perTps.map((r) => ({ ...r, label: `TPS ${r.kunci}` })), 'TPS'));
+        }
+        if (jenis === 'kampung') {
+          return bukaCetak(kepala + tabel('Rincian per kampung',
+            perKampung.map((r) => ({ ...r, label: r.kunci })), 'Hamlet'));
+        }
+        return bukaCetak(kepala + tabel('Rincian per RT',
+          perRt.map((r) => ({ ...r, label: `RT ${String(r.rt).padStart(3, '0')} / RW ${String(r.rw).padStart(3, '0')}` })), 'RT / RW'));
+      };
+    });
+  }
+
+  /* ---------- Hitung suara ---------- */
+  function gambarSuara() {
+    const daftar = tpsSaya();
+    const total = {};
+    for (const k of KOLOM_SUARA) total[k] = 0;
+    let dpt = 0; let masuk = 0;
+    for (const t of daftar) {
+      dpt += t.dpt_total || 0;
+      const s = suara[t.no_tps];
+      if (s) { masuk += 1; for (const k of KOLOM_SUARA) total[k] += Number(s[k]) || 0; }
+    }
+    const sah = total.sairan + total.desi + total.otong;
+    const bagian = ['sairan', 'desi', 'otong'].map((k) => ({
+      label: LABEL_SUARA[k], nilai: total[k], warna: WARNA[k],
+    }));
+
+    el('suara-isi').innerHTML = `${TANDA_MANDIRI}
+      <div class="kartu">
+        <div class="kartu-judul">Hitung cepat · 20 September 2026</div>
+        <div class="sorot">
+          <div class="sorot-besar angka">${angka(total.sairan)}</div>
+          <div class="sorot-label">SUARA UNTUK NOMOR 1 · SUPPORT</div>
+          <div class="sorot-persen">${persen(total.sairan, sah)} dari ${angka(sah)} suara sah</div>
+        </div>
+        <div class="hh-kemajuan">
+          <div class="hh-kemajuan-atas"><span><b>${angka(masuk)}</b> dari ${angka(daftar.length)} TPS terisi</span>
+            <span class="angka">${persen(masuk, daftar.length, 0)}</span></div>
+          <div class="batang"><span style="width:${daftar.length ? (masuk / daftar.length * 100).toFixed(2) : 0}%;background:${WARNA.hijau}"></span></div>
+          <div class="hh-kemajuan-kaki">${angka(sah + total.tidak_sah)} surat suara terpakai dari ${angka(dpt)} DPT
+            (partisipasi ${persen(sah + total.tidak_sah, dpt)})</div>
+        </div>
+      </div>
+      ${sah ? `<div class="kartu"><div class="kartu-judul">Komposisi suara sah</div>
+        <div class="donat-baris">${donat(bagian, persen(total.sairan, sah), 'SUPPORT')}</div>
+        ${keteranganNilai(bagian)}</div>` : ''}
+      <div class="kartu">
+        <div class="kartu-judul">Isi angka per TPS</div>
+        <div class="gulir-x"><table class="tabel">
+          <thead><tr><th>TPS</th>${KOLOM_SUARA.map((k) => `<th class="ka">${esc(LABEL_SUARA[k])}</th>`).join('')}</tr></thead>
+          <tbody>${daftar.map((t) => {
+      const s = suara[t.no_tps] || {};
+      return `<tr><td><b>TPS ${t.no_tps}</b><br><span class="hh-kecil">DPT ${angka(t.dpt_total)}</span></td>
+        ${KOLOM_SUARA.map((k) => `<td class="ka"><input class="md-suara" data-tps="${t.no_tps}" data-kolom="${k}"
+          inputmode="numeric" value="${s[k] != null ? s[k] : ''}" ${bolehUbah() ? '' : 'disabled'}
+          style="width:72px;text-align:right;font:inherit;padding:5px 7px;border:1px solid var(--garis-kuat);border-radius:6px"></td>`).join('')}
+      </tr>`;
+    }).join('')}</tbody>
+          <tfoot><tr><th>TOTAL</th>${KOLOM_SUARA.map((k) => `<th class="ka angka">${angka(total[k])}</th>`).join('')}</tr></tfoot>
+        </table></div>
+        <div class="baris-tombol" style="margin-top:12px">
+          <button class="tombol kecil" id="s-cetak">Print hasil (PDF)</button>
+        </div>
+      </div>`;
+
+    el('suara-isi').querySelectorAll('.md-suara').forEach((i) => {
+      i.onchange = () => {
+        const t = i.dataset.tps;
+        const n = Math.max(0, Math.trunc(Number(i.value) || 0));
+        suara[t] = { ...(suara[t] || {}), [i.dataset.kolom]: n };
+        simpan(KUNCI_SUARA, suara);
+        bilah('Tersimpan');
+        gambarSuara();
+      };
+    });
+    el('s-cetak').onclick = () => bukaCetak(`
+      <h1>QUICK COUNT RESULT — 20 SEPTEMBER 2026</h1>
+      <p class="anak">Desa Sukamulya · Kec. Sukatani · Kab. Bekasi<br>
+      ${esc(labelCakupan())} · ${angka(masuk)} dari ${angka(daftar.length)} TPS terisi<br>
+      Dicetak ${new Date().toLocaleString('id-ID')} oleh ${esc(pengguna.nama)}</p>
+      <table><thead><tr><th>TPS</th><th>Voter roll</th>
+        ${KOLOM_SUARA.map((k) => `<th>${esc(LABEL_SUARA[k])}</th>`).join('')}<th>% SUPPORT</th></tr></thead>
+      <tbody>${daftar.map((t) => {
+      const s = suara[t.no_tps] || {};
+      const sh = (Number(s.sairan) || 0) + (Number(s.desi) || 0) + (Number(s.otong) || 0);
+      return `<tr><td>TPS ${t.no_tps}</td><td>${angka(t.dpt_total)}</td>
+        ${KOLOM_SUARA.map((k) => `<td>${angka(s[k] || 0)}</td>`).join('')}
+        <td>${sh ? persen(s.sairan || 0, sh) : '—'}</td></tr>`;
+    }).join('')}
+      <tr><td><b>TOTAL</b></td><td><b>${angka(dpt)}</b></td>
+        ${KOLOM_SUARA.map((k) => `<td><b>${angka(total[k])}</b></td>`).join('')}
+        <td><b>${persen(total.sairan, sah)}</b></td></tr></tbody></table>`);
+  }
+
+  /* ---------- Data & Gabung ---------- */
+  function gambarBerkas() {
+    const jml = Object.keys(tanda).length;
+    el('berkas-isi').innerHTML = `
+      <div class="md-tanda"><b>Menjadikan hasil satu laporan.</b>
+        Setiap HP menyimpan penandaannya sendiri. Supaya menjadi satu, tiap petugas
+        menekan <b>Save to file</b>, mengirimkan berkasnya ke pengelola
+        (WhatsApp, surel, apa saja), lalu pengelola menekan
+        <b>Merge files</b> satu per satu.</div>
+      <div class="kartu">
+        <div class="kartu-judul">Data di HP ini</div>
+        <p style="font-size:14px;line-height:1.6;margin:0 0 12px">
+          <b>${angka(jml)}</b> nama sudah ditandai ·
+          <b>${angka(Object.keys(suara).length)}</b> TPS terisi angka suaranya.</p>
+        <div class="baris-tombol md-alat">
+          <button class="tombol utama kecil" id="b-simpan">Save to file</button>
+          <button class="tombol kecil" id="b-gabung">Merge files</button>
+          <button class="tombol kecil bahaya" id="b-kosong">Kosongkan data HP ini</button>
+        </div>
+        <input type="file" id="b-berkas" accept="application/json" class="sembunyi">
+      </div>
+      <div class="kartu">
+        <div class="kartu-judul">Keterangan</div>
+        <p style="font-size:13.5px;line-height:1.7;color:var(--tinta-2);margin:0">
+          Menggabungkan <b>tidak menghapus</b> apa pun: penandaan dari berkas yang masuk
+          ditambahkan, dan bila satu nama ditandai berbeda di dua HP, yang dipakai adalah
+          yang berasal dari berkas yang digabungkan belakangan. Karena itu gabungkan
+          berurutan, dan simpan kembali hasil gabungannya sebagai cadangan.</p>
+      </div>`;
+
+    el('b-simpan').onclick = () => {
+      const isi = JSON.stringify({
+        aplikasi: 'sairan-mandiri', versi: 1, oleh: pengguna.username, nama: pengguna.nama,
+        waktu: new Date().toISOString(), tanda, suara,
+      }, null, 1);
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([isi], { type: 'application/json' }));
+      a.download = `sairan-${pengguna.username}-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+      bilah('Berkas tersimpan');
+    };
+    el('b-gabung').onclick = () => el('b-berkas').click();
+    el('b-berkas').onchange = async (e) => {
+      const berkas = e.target.files[0];
+      if (!berkas) return;
+      try {
+        const masuk = JSON.parse(await berkas.text());
+        if (masuk.aplikasi !== 'sairan-mandiri') throw new Error('Bukan berkas SAIRAN');
+        let baru = 0;
+        for (const [id, v] of Object.entries(masuk.tanda || {})) {
+          if (!tanda[id] || tanda[id].s !== v.s) baru += 1;
+          tanda[id] = v;
+        }
+        for (const [t, v] of Object.entries(masuk.suara || {})) suara[t] = v;
+        simpan(KUNCI_TANDA, tanda);
+        simpan(KUNCI_SUARA, suara);
+        bilah(`${baru} penandaan digabungkan dari ${masuk.nama || masuk.oleh}`);
+        gambar();
+      } catch (err) {
+        bilah(`Berkas tidak dapat dibaca: ${err.message}`, true);
+      }
+      e.target.value = '';
+    };
+    el('b-kosong').onclick = () => {
+      if (!window.confirm('Hapus SELURUH penandaan di HP ini? Tidak dapat dikembalikan.')) return;
+      for (const k of Object.keys(tanda)) delete tanda[k];
+      for (const k of Object.keys(suara)) delete suara[k];
+      simpan(KUNCI_TANDA, tanda);
+      simpan(KUNCI_SUARA, suara);
+      bilah('Data HP ini dikosongkan');
+      gambar();
+    };
+  }
+
+  /* ---------- Panduan ---------- */
+  function gambarPanduan() {
+    const bab = [
+      ['Mode mandiri — apa bedanya', `
+        <p>Aplikasi ini berjalan <b>tanpa basis data</b>. Seluruh 13.155 nama sudah ada
+        di dalam berkasnya, jadi tetap terbuka walau sinyal hilang sama sekali.</p>
+        <p>Penandaan yang Anda buat tersimpan <b>di HP ini saja</b>. Itu perbedaan
+        terpentingnya: hasil tidak berpindah sendiri ke HP lain. Untuk menyatukannya,
+        pakai menu <b>Data &amp; Gabung</b>.</p>`],
+      ['Menandai dukungan', `
+        <p>Buka <b>Voter records</b>, saring sesuai wilayah Anda, lalu tekan salah satu
+        warna pada nama: <b>SUPPORT</b> (hijau), <b>DESI</b> (kuning), <b>OTONG</b> (merah),
+        atau <b>Belum menentukan</b> (abu-abu). Sekali tekan, langsung tersimpan.</p>
+        <p>Tekan warna abu-abu untuk membatalkan penandaan.</p>`],
+      ['Melihat hasil', `
+        <p><b>Dashboard</b> memperlihatkan jumlah dan persentase dukungan beserta grafik
+        bundarnya, semuanya dihitung dari penandaan di HP ini. <b>Report</b> menyusunnya
+        menjadi lembar siap cetak: ringkas, per TPS, per kampung, atau per RT.</p>`],
+      ['Mencetak jadi PDF', `
+        <p>Tekan tombol cetak, lalu pada jendela cetak pilih <b>Simpan sebagai PDF</b>.
+        Di HP, pilihan itu ada di bagian tujuan pencetak.</p>`],
+      ['Hari pemungutan, 20 September', `
+        <p>Menu <b>Vote count</b> untuk mengisi perolehan tiap TPS: SAIRAN, DESI, OTONG,
+        GOLPUT, dan TIDAK SAH. Angkanya langsung tersimpan dan jumlah se-wilayah ikut
+        bergerak sendiri.</p>`],
+      ['Menyatukan hasil semua petugas', `
+        <p>Di menu <b>Data &amp; Gabung</b>: tiap petugas menekan <b>Save to file</b>
+        dan mengirimkan berkasnya kepada pengelola. Pengelola menekan
+        <b>Merge files</b> satu per satu, lalu menyimpan hasil gabungannya kembali
+        sebagai cadangan.</p>`],
+    ];
+    el('panduan-isi').innerHTML = `${TANDA_MANDIRI}
+      ${bab.map(([j, isi], i) => `<details class="kartu panduan" ${i === 0 ? 'open' : ''}>
+        <summary>${esc(j)}</summary><div class="panduan-isi">${isi}</div></details>`).join('')}`;
+  }
+
+  /* ---------- Navigasi ---------- */
+  function gambar() {
+    if (panelAktif === 'dasbor') gambarDasbor();
+    if (panelAktif === 'pemilih') gambarPemilih();
+    if (panelAktif === 'laporan') gambarLaporan();
+    if (panelAktif === 'suara') gambarSuara();
+    if (panelAktif === 'berkas') gambarBerkas();
+    if (panelAktif === 'panduan') gambarPanduan();
+  }
+
+  function bukaPanel(nama) {
+    panelAktif = nama;
+    document.querySelectorAll('#tab-baris .tab').forEach((t) => {
+      t.setAttribute('aria-selected', String(t.dataset.panel === nama));
+    });
+    document.querySelectorAll('main section[data-panel]').forEach((s) => {
+      s.classList.toggle('sembunyi', s.dataset.panel !== nama);
+    });
+    gambar();
+    window.scrollTo({ top: 0 });
+  }
+
+  /* ---------- Masuk ---------- */
+  function isiDaftarAkun() {
+    const kelompok = {};
+    for (const a of D.akun) (kelompok[LABEL_PERAN[a.peran] || a.peran] ||= []).push(a);
+    el('m-username').innerHTML = '<option value="">— pilih akun —</option>'
+      + Object.entries(kelompok).map(([nama, isi]) => `<optgroup label="${esc(nama)}">${
+        isi.map((a) => `<option value="${esc(a.username)}">${esc(a.nama)} (${esc(a.username)})</option>`).join('')
+      }</optgroup>`).join('');
+    let terakhir = null;
+    try { terakhir = localStorage.getItem(KUNCI_AKUN); } catch { /* tanpa simpanan */ }
+    if (terakhir && D.akun.some((a) => a.username === terakhir)) {
+      el('m-username').value = terakhir;
+      el('m-sandi').focus();
+    }
+  }
+
+  el('form-masuk').onsubmit = (e) => {
+    e.preventDefault();
+    const u = el('m-username').value;
+    const p = el('m-sandi').value;
+    const akun = D.akun.find((a) => a.username === u && a.pin === p);
+    const galat = el('m-galat');
+    if (!akun) {
+      galat.textContent = 'PIN salah. Periksa kembali PIN pada lembar akses Anda.';
+      galat.classList.remove('sembunyi');
+      return;
+    }
+    galat.classList.add('sembunyi');
+    pengguna = akun;
+    try { localStorage.setItem(KUNCI_AKUN, u); } catch { /* abaikan */ }
+    el('layar-masuk').classList.add('sembunyi');
+    el('aplikasi').classList.remove('sembunyi');
+    el('cp-peran').textContent = LABEL_PERAN[akun.peran] || akun.peran;
+    if (akun.peran === 'observer') {
+      document.querySelector('.tab[data-panel="suara"]').classList.add('sembunyi');
+    }
+    bukaPanel('dasbor');
+  };
+
+  el('cp-peran').onclick = () => {
+    if (!window.confirm('Keluar dari aplikasi?')) return;
+    location.reload();
+  };
+
+  document.querySelectorAll('#tab-baris .tab').forEach((t) => {
+    t.onclick = () => bukaPanel(t.dataset.panel);
+  });
+
+  isiDaftarAkun();
+})();
+</script>
+
+<script id="xaa-demo-autofill">
+(function () {
+  function wire() {
+    var sel = document.getElementById('m-username');
+    var pin = document.getElementById('m-sandi');
+    if (!sel || !pin) return false;
+    function fill() {
+      if (!sel.value) {
+        var first = Array.prototype.find.call(sel.options, function (o) { return o.value; });
+        if (first) sel.value = first.value;
+      }
+      pin.value = '12345';
+    }
+    sel.addEventListener('change', fill);
+    fill();
+    if (!document.getElementById('xaa-demo-hint')) {
+      var h = document.createElement('div');
+      h.id = 'xaa-demo-hint';
+      h.className = 'xaa-demo-hint';
+      h.textContent = 'Demo access — pick any account, the PIN (12345) fills in automatically.';
+      (sel.closest('.tirai-isi') || sel.parentElement).prepend(h);
+    }
+    return true;
+  }
+  if (!wire()) {
+    var n = 0, t = setInterval(function () { if (wire() || ++n > 40) clearInterval(t); }, 100);
+  }
+})();
+</script>
+</body>
+</html>

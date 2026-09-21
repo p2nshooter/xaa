@@ -134,6 +134,7 @@ export function SiteFooter() {
               ['/services', 'All packages'],
               ['/portfolio', 'Work we have built'],
               ['/portfolio#super-enterprise', 'Super Enterprise'],
+              ['/election-systems', 'Election & civic systems'],
               ['/services#addons', 'Add-on services'],
               ['/care#setup', 'One-time setup'],
               ['/care#maintenance', 'Monthly maintenance'],

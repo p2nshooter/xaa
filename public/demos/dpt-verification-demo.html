@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>[DEMO] Voter Roll — Verification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F1E6;
+    --card:#FFFDF9;
+    --ink:#1E2A44;
+    --ink-soft:#54607A;
+    --ink-faint:#8890A3;
+    --teal:#2F6F6B;
+    --teal-soft:#E3EFEE;
+    --hairline:#DCD4C0;
+    --hairline-strong:#C6BC9E;
+
+    --hijau:#2E7D4F;    --hijau-bg:#E3F2E8;
+    --kuning:#B8790E;   --kuning-bg:#FBF0D9;
+    --abu:#6E7480;      --abu-bg:#E9EAEC;
+    --merah:#B23A3A;    --merah-bg:#F7E5E5;
+
+    --radius-s:8px;
+    --radius-m:14px;
+    --shadow-card:0 1px 2px rgba(30,42,68,0.06), 0 1px 0 rgba(30,42,68,0.04);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background-color:var(--paper);
+    background-image:radial-gradient(circle, rgba(30,42,68,0.07) 1px, transparent 1px);
+    background-size:15px 15px;
+    color:var(--ink);
+    font-family:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    padding-bottom:40px;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:0 14px;}
+
+  /* ---------- Header ---------- */
+  header{
+    padding:22px 14px 16px;
+    text-align:center;
+    position:relative;
+  }
+  .stamp{
+    position:absolute;
+    top:14px; right:14px;
+    width:64px;height:64px;
+    border:1.5px dashed var(--teal);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    transform:rotate(-9deg);
+    opacity:0.75;
+  }
+  .stamp span{
+    font-family:'Public Sans';
+    font-size:7.5px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    color:var(--teal);
+    text-align:center;
+    line-height:1.25;
+    text-transform:uppercase;
+  }
+  .eyebrow{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:6px;
+  }
+  h1{
+    font-family:'Tinos',serif;
+    font-size:27px;
+    font-weight:700;
+    letter-spacing:0.01em;
+    margin:0 0 4px;
+    color:var(--ink);
+  }
+  .sub{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+  .header-rule{
+    max-width:640px;
+    margin:16px auto 0;
+    border:none;
+    border-top:3px double var(--ink);
+    opacity:0.75;
+  }
+
+  /* ---------- Summary ---------- */
+  .summary{
+    margin:16px 0 12px;
+    background:var(--card);
+    border:1px solid var(--hairline);
+    border-radius:var(--radius-m);
+    box-shadow:var(--shadow-card);
+    padding:16px 16px 14px;
+  }
+  .summary-scope{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:10px;
+  }
+  .stat-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .stat{
+    flex:1;
+    text-align:center;
+    padding:8px 4px;
+    border-right:1px solid var(--hairline);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .num{
+    font-family:'Tinos',serif;
+    font-size:21px;
+    font-weight:700;
+    color:var(--ink);
+    display:block;
+    line-height:1.1;
+  }
+  .stat .lbl{
+    font-size:10.5px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+
+  .ledger-bar{
+    display:flex;
+    width:100%;
+    height:16px;
+    border-radius:5px;
+    overflow:hidden;
+    background:var(--abu-bg);
+    border:1px solid var(--hairline-strong);
+  }
+  .ledger-seg{
+    height:100%;
+    transition:width 0.45s cubic-bezier(.4,0,.2,1);
+  }
+  .ledger-seg.hijau{background:var(--hijau);}
+  .ledger-seg.kuning{background:var(--kuning);}
+  .ledger-seg.abu2{background:var(--abu);}
+  .ledger-seg.merah{background:var(--merah);}
+
+  .legend{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:12px;
+  }
+  .chip{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:8px 9px;
+    border-radius:var(--radius-s);
+    border:1.5px solid var(--hairline);
+    background:var(--paper);
+    cursor:pointer;
+    font-family:'Public Sans';
+    text-align:left;
+    transition:border-color 0.15s, background 0.15s;
+  }
+  .chip .dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
+  .chip .dot.hijau{background:var(--hijau);}
+  .chip .dot.kuning{background:var(--kuning);}
+  .chip .dot.abu2{background:var(--abu);}
+  .chip .dot.merah{background:var(--merah);}
+  .chip .txt{display:flex;flex-direction:column;line-height:1.25;}
+  .chip .txt .name{font-size:11.5px;font-weight:600;color:var(--ink);}
+  .chip .txt .pct{font-size:12.5px;font-weight:700;font-family:'Tinos',serif;color:var(--ink);}
+  .chip.active{background:var(--teal-soft);border-color:var(--teal);}
+  .legend-note{
+    font-size:10.5px;
+    color:var(--ink-faint);
+    margin-top:10px;
+    line-height:1.5;
+  }
+  .info-banner{
+    margin-top:10px;
+    padding:8px 10px;
+    background:var(--teal-soft);
+    border-left:3px solid var(--teal);
+    border-radius:0 6px 6px 0;
+    font-size:11px;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+
+  /* ---------- Donut chart ---------- */
+  .donut-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:14px 0 16px;
+  }
+  .donut-figure{
+    position:relative;
+    width:132px;
+    height:132px;
+    flex-shrink:0;
+  }
+  .donut-svg{
+    transform:rotate(-90deg);
+    display:block;
+  }
+  .donut-seg{
+    transition:stroke-dasharray 0.45s cubic-bezier(.4,0,.2,1), stroke-dashoffset 0.45s cubic-bezier(.4,0,.2,1);
+  }
+  .donut-center-text{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    pointer-events:none;
+  }
+  .donut-center-text .num{
+    font-family:'Tinos',serif;
+    font-size:22px;
+    font-weight:700;
+    color:var(--ink);
+    line-height:1.1;
+  }
+  .donut-center-text .lbl{
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-top:2px;
+  }
+
+  /* ---------- Controls ---------- */
+  .controls{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .search-box{
+    position:relative;
+  }
+  .search-box input{
+    width:100%;
+    padding:11px 14px 11px 36px;
+    border-radius:var(--radius-s);
+    border:1.5px solid var(--hairline-strong);
+    background:var(--card);
+    font-size:14.5px;
+    font-family:'Public Sans';
+    color:var(--ink);
+  }
+  .search-box input:focus{
+    outline:none;
+    border-color:var(--teal);
+  }
+  .search-box svg{
+    position:absolute;
+    left:11px;top:50%;
+    transform:translateY(-50%);
+    width:16px;height:16px;
+    stroke:var(--ink-faint);
+  }
+  .filter-row{
+    display:flex;
+    gap:8px;
+  }
+  select{
+    flex:1;
+    padding:9px 10px;
+    border-radius:var(--radius-s);
+    border:1.5px solid var(--hairline-strong);
+    background:var(--card);
+    font-size:12.5px;
+    font-family:'Public Sans';
+    color:var(--ink);
+  }
+  select:focus{outline:none;border-color:var(--teal);}
+  .clear-filter-btn{
+    padding:9px 12px;
+    border-radius:var(--radius-s);
+    border:1.5px solid var(--hairline-strong);
+    background:var(--card);
+    font-size:12px;
+    font-weight:600;
+    color:var(--ink-soft);
+    white-space:nowrap;
+    display:none;
+  }
+  .clear-filter-btn.show{display:block;}
+
+  /* ---------- Results ---------- */
+  .results-count{
+    font-size:11.5px;
+    color:var(--ink-faint);
+    margin:2px 2px 10px;
+  }
+  .results-count b{color:var(--ink-soft);}
+
+  .voter-card{
+    background:var(--card);
+    border:1px solid var(--hairline);
+    border-radius:var(--radius-m);
+    margin-bottom:9px;
+    box-shadow:var(--shadow-card);
+    overflow:hidden;
+  }
+  .voter-main{
+    padding:12px 13px 10px;
+    cursor:pointer;
+  }
+  .voter-name-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .voter-name{
+    font-size:14.5px;
+    font-weight:700;
+    color:var(--ink);
+    line-height:1.3;
+  }
+  .voter-tag{
+    font-size:10px;
+    font-weight:700;
+    color:var(--teal);
+    background:var(--teal-soft);
+    padding:2px 6px;
+    border-radius:20px;
+    white-space:nowrap;
+    flex-shrink:0;
+    margin-top:1px;
+  }
+  .voter-sub{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:3px;
+    line-height:1.45;
+  }
+  .voter-flag{
+    margin-top:7px;
+    padding:6px 8px;
+    background:var(--merah-bg);
+    border-radius:6px;
+    font-size:11px;
+    color:var(--merah);
+    line-height:1.45;
+  }
+  .voter-flag b{font-weight:700;}
+
+  .voter-detail{
+    display:none;
+    padding:0 13px 10px;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--hairline);
+    margin:0 13px;
+    padding-top:8px;
+  }
+  .voter-detail.open{display:block;}
+  .voter-detail .drow{display:flex;justify-content:space-between;padding:2px 0;}
+  .voter-detail .drow span:first-child{color:var(--ink-faint);}
+  .voter-detail .drow span:last-child{font-weight:600;color:var(--ink);text-align:right;}
+
+  .status-row{
+    display:flex;
+    border-top:1px solid var(--hairline);
+  }
+  .status-btn{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    padding:9px 4px 8px;
+    background:var(--card);
+    border:none;
+    border-right:1px solid var(--hairline);
+    cursor:pointer;
+    font-family:'Public Sans';
+  }
+  .status-btn:last-child{border-right:none;}
+  .status-btn .swatch{
+    width:18px;height:18px;
+    border-radius:50%;
+    border:2px solid transparent;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .status-btn .swatch svg{width:11px;height:11px;stroke:white;stroke-width:3;display:none;}
+  .status-btn.on .swatch svg{display:block;}
+  .status-btn .lbl2{font-size:9px;font-weight:600;color:var(--ink-faint);letter-spacing:0.02em;}
+  .status-btn.on .lbl2{color:var(--ink);}
+
+  .status-btn[data-status="hijau"] .swatch{background:var(--hijau-bg);}
+  .status-btn[data-status="hijau"].on .swatch{background:var(--hijau);}
+  .status-btn[data-status="kuning"] .swatch{background:var(--kuning-bg);}
+  .status-btn[data-status="kuning"].on .swatch{background:var(--kuning);}
+  .status-btn[data-status="abu2"] .swatch{background:var(--abu-bg);}
+  .status-btn[data-status="abu2"].on .swatch{background:var(--abu);}
+  .status-btn[data-status="merah"] .swatch{background:var(--merah-bg);}
+  .status-btn[data-status="merah"].on .swatch{background:var(--merah);}
+
+  .empty-state{
+    text-align:center;
+    padding:40px 20px;
+    color:var(--ink-faint);
+    font-size:13px;
+  }
+
+  .load-more{
+    display:block;
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border-radius:var(--radius-s);
+    border:1.5px dashed var(--hairline-strong);
+    background:transparent;
+    color:var(--ink-soft);
+    font-family:'Public Sans';
+    font-size:12.5px;
+    font-weight:600;
+    cursor:pointer;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top:20px;
+    padding-top:14px;
+    border-top:3px double var(--ink);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    opacity:0.9;
+  }
+  .footer-note{
+    font-size:10.5px;
+    color:var(--ink-faint);
+    line-height:1.5;
+    text-align:center;
+    margin-bottom:4px;
+  }
+  .footer-btns{display:flex;gap:8px;}
+  .footer-btn{
+    flex:1;
+    padding:10px;
+    border-radius:var(--radius-s);
+    border:1.5px solid var(--hairline-strong);
+    background:var(--card);
+    color:var(--ink-soft);
+    font-family:'Public Sans';
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .footer-btn.danger{color:var(--merah);border-color:#E3BFBF;}
+
+  /* ---------- Save toast ---------- */
+  .save-toast{
+    position:fixed;
+    bottom:16px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--ink);
+    color:#fff;
+    font-size:12px;
+    font-weight:600;
+    padding:9px 16px;
+    border-radius:20px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.2s, transform 0.2s;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .save-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .save-toast.err{background:var(--merah);}
+
+  /* ---------- Modal ---------- */
+  .modal-backdrop{
+    display:none;
+    position:fixed;inset:0;
+    background:rgba(30,42,68,0.45);
+    z-index:60;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .modal-backdrop.show{display:flex;}
+  .modal-box{
+    background:var(--card);
+    border-radius:var(--radius-m);
+    padding:20px;
+    max-width:340px;
+    width:100%;
+    box-shadow:0 8px 30px rgba(0,0,0,0.2);
+  }
+  .modal-box h3{font-family:'Tinos',serif;font-size:17px;margin:0 0 8px;}
+  .modal-box p{font-size:12.5px;color:var(--ink-soft);line-height:1.55;margin:0 0 16px;}
+  .modal-btns{display:flex;gap:8px;}
+  .modal-btns button{
+    flex:1;padding:10px;border-radius:var(--radius-s);border:1.5px solid var(--hairline-strong);
+    font-family:'Public Sans';font-size:12.5px;font-weight:700;cursor:pointer;background:var(--paper);
+  }
+  .modal-btns button.confirm{background:var(--merah);border-color:var(--merah);color:#fff;}
+
+  /* ---------- Tambah pemilih baru ---------- */
+  .add-voter-btn{
+    width:100%;
+    padding:10px;
+    border-radius:var(--radius-s);
+    border:1.5px dashed var(--teal);
+    background:var(--card);
+    color:var(--teal);
+    font-family:'Public Sans';
+    font-size:12.5px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:8px;
+  }
+  .modal-box.form-box{ max-width:420px; max-height:85vh; overflow-y:auto; text-align:left; }
+  .form-grid{ display:flex; flex-direction:column; gap:10px; margin-bottom:4px; }
+
+  /* ---------- Badge pemilih baru / impor ---------- */
+  .voter-tag-wrap{ display:flex; align-items:center; gap:4px; flex-wrap:wrap; justify-content:flex-end; flex-shrink:0; }
+  .voter-tag-new{
+    font-size:9.5px; font-weight:700; color:#fff; background:var(--teal);
+    padding:2px 6px; border-radius:20px; white-space:nowrap; margin-top:1px;
+  }
+
+  /* ---------- Tombol tambah data (baris ganda) ---------- */
+  .add-actions-row{ display:flex; gap:8px; margin-top:8px; }
+  .add-actions-row .add-voter-btn{ margin-top:0; flex:1; }
+  .import-btn{
+    flex:1; padding:10px; border-radius:var(--radius-s); border:1.5px dashed var(--ink-faint);
+    background:var(--card); color:var(--ink-soft); font-family:'Public Sans'; font-size:12.5px;
+    font-weight:700; cursor:pointer;
+  }
+
+  /* ---------- Mode penyimpanan & peringatan gagal simpan ---------- */
+  .storage-mode{ font-size:10.5px; line-height:1.5; text-align:center; padding:0 4px; }
+  .storage-mode.ok{ color:var(--hijau); }
+  .storage-mode.fallback{ color:var(--ink-faint); }
+  .persist-warning{
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+    background:var(--merah-bg); color:var(--merah); border-radius:8px; padding:8px 10px; font-size:11px; line-height:1.4;
+  }
+  .persist-warning button{
+    flex-shrink:0; border:1.5px solid var(--merah); background:#fff; color:var(--merah);
+    border-radius:6px; padding:5px 9px; font-size:10.5px; font-weight:700; font-family:'Public Sans'; cursor:pointer;
+  }
+
+  /* ---------- Impor pembaruan Excel ---------- */
+  .imp-input-row{ margin:10px 0; }
+  .imp-input-row input[type="file"]{
+    width:100%; font-size:11.5px; font-family:'Public Sans'; color:var(--ink-soft);
+    border:1.5px dashed var(--hairline-strong); border-radius:var(--radius-s); padding:10px; background:var(--paper);
+  }
+  .imp-loading{ font-size:12px; color:var(--teal); padding:8px 0; }
+  .imp-error{ font-size:11.5px; color:var(--merah); padding:4px 0; }
+  .imp-summary{ display:flex; flex-direction:column; gap:6px; margin:10px 0 14px; }
+  .imp-sum-item{ font-size:12px; color:var(--ink-soft); background:var(--paper); border-radius:6px; padding:7px 9px; }
+  .imp-sum-item b{ color:var(--ink); font-family:'Tinos',serif; font-size:13.5px; }
+  .imp-sum-item.imp-new b{ color:var(--hijau); }
+  .imp-sum-item.imp-chg b{ color:var(--kuning); }
+  .imp-sum-item.imp-dup b, .imp-sum-item.imp-skip b{ color:var(--merah); }
+  .imp-empty{ font-size:12px; color:var(--ink-faint); text-align:center; padding:20px 8px; }
+  .imp-group-head{
+    display:flex; justify-content:space-between; align-items:center; gap:8px;
+    font-size:11.5px; font-weight:700; color:var(--ink); margin:14px 0 6px; padding-bottom:4px;
+    border-bottom:1.5px solid var(--hairline);
+  }
+  .imp-all{ display:flex; align-items:center; gap:4px; font-size:10.5px; font-weight:600; color:var(--ink-soft); white-space:nowrap; }
+  .imp-item{
+    display:flex; gap:8px; align-items:flex-start; padding:9px 6px; border-bottom:1px solid var(--hairline); cursor:pointer;
+  }
+  .imp-item input{ margin-top:3px; flex-shrink:0; }
+  .imp-item-warn{ background:var(--merah-bg); border-radius:6px; }
+  .imp-item-body{ display:flex; flex-direction:column; gap:2px; flex:1; min-width:0; }
+  .imp-item-name{ font-size:12.5px; font-weight:700; color:var(--ink); }
+  .imp-item-sub{ font-size:10.5px; color:var(--ink-faint); }
+  .imp-item-warn-txt{ font-size:10.5px; color:var(--merah); margin-top:2px; }
+  .imp-diff{ display:flex; flex-direction:column; gap:3px; margin-top:4px; }
+  .imp-diff-row{ font-size:10.5px; display:flex; flex-wrap:wrap; gap:4px; align-items:center; }
+  .imp-diff-field{ font-weight:700; color:var(--ink-soft); min-width:78px; }
+  .imp-diff-old{ color:var(--merah); text-decoration:line-through; }
+  .imp-diff-arrow{ color:var(--ink-faint); }
+  .imp-diff-new{ color:var(--hijau); font-weight:700; }
+  .fld{ display:flex; flex-direction:column; gap:4px; font-size:12px; color:var(--ink-soft); font-weight:600; }
+  .fld input, .fld select{
+    padding:9px 10px; border-radius:var(--radius-s); border:1.5px solid var(--hairline-strong);
+    background:var(--card); font-size:13.5px; font-family:'Public Sans'; color:var(--ink); font-weight:400;
+  }
+  .fld input:focus, .fld select:focus{ outline:none; border-color:var(--teal); }
+  .fld-row{ display:flex; gap:8px; }
+  .fld-row .fld{ flex:1; min-width:0; }
+  .form-err{ font-size:11.5px; color:var(--merah); min-height:14px; margin:6px 0 2px; }
+
+  @media (min-width:520px){
+    .voter-name{font-size:15px;}
+  }
+
+  /* ---------- Laporan cetak / PDF ---------- */
+  #printReport{display:none;}
+  .pr-head{text-align:center;margin-bottom:14px;}
+  .pr-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:4px;}
+  .pr-title{font-family:'Tinos',serif;font-size:21px;font-weight:700;margin:0 0 4px;color:var(--ink);}
+  .pr-sub{font-size:12px;color:var(--ink-soft);}
+  .pr-meta{font-size:10.5px;color:var(--ink-faint);margin-top:8px;line-height:1.6;}
+  .pr-rule{border:none;border-top:3px double var(--ink);margin:10px 0 16px;}
+  .pr-legend{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;margin-bottom:20px;font-size:11px;color:var(--ink-soft);}
+  .pr-legend-item{display:flex;align-items:center;gap:5px;}
+  .pr-dot{display:inline-block;width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+  .pr-dot.hijau{background:var(--hijau);}
+  .pr-dot.kuning{background:var(--kuning);}
+  .pr-dot.abu2{background:var(--abu);}
+  .pr-dot.merah{background:var(--merah);}
+  .pr-section{margin-bottom:24px;}
+  .pr-section h2{font-family:'Tinos',serif;font-size:15px;font-weight:700;border-bottom:1.5px solid var(--hairline-strong);padding-bottom:5px;margin:0 0 12px;}
+  .pr-bar{display:flex;width:100%;height:16px;border-radius:4px;overflow:hidden;background:var(--abu-bg);border:1px solid var(--hairline-strong);margin-bottom:10px;}
+  .pr-bar-seg{height:100%;}
+  .pr-bar-seg.hijau{background:var(--hijau);}
+  .pr-bar-seg.kuning{background:var(--kuning);}
+  .pr-bar-seg.abu2{background:var(--abu);}
+  .pr-bar-seg.merah{background:var(--merah);}
+  .pr-stats{display:flex;flex-wrap:wrap;gap:10px 24px;}
+  .pr-stat{display:flex;align-items:center;gap:6px;font-size:12.5px;}
+  .pr-stat-label{font-weight:600;color:var(--ink);}
+  .pr-stat-val{color:var(--ink-soft);}
+  .pr-table{width:100%;border-collapse:collapse;font-size:11px;}
+  .pr-table th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.03em;color:var(--ink-faint);padding:6px 5px;border-bottom:1.5px solid var(--ink);}
+  .pr-table td{padding:6px 5px;border-bottom:1px solid var(--hairline);vertical-align:top;}
+  .pr-tps-name{font-weight:700;white-space:nowrap;}
+  .pr-tps-wilayah{display:block;font-weight:400;font-size:9.5px;color:var(--ink-faint);}
+  .pr-pct{color:var(--ink-faint);font-size:10px;}
+  .pr-bar-row td{padding:0 5px 10px;border-bottom:1px solid var(--hairline);}
+  .pr-bar-row .pr-bar{margin-bottom:0;height:8px;}
+  .pr-footer{margin-top:22px;padding-top:10px;border-top:1px dashed var(--hairline-strong);font-size:10px;color:var(--ink-faint);text-align:center;line-height:1.6;}
+
+  @media print{
+    @page{size:A4;margin:14mm;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
+    html,body{background:#fff;}
+    .wrap,.save-toast,.modal-backdrop{display:none !important;}
+    #printReport{display:block !important;}
+    .pr-section,.pr-table tr{break-inside:avoid;page-break-inside:avoid;}
+  }
+</style>
+
+<style id="xaa-demo-stamp">
+  .xaa-demo-banner{position:sticky;top:0;z-index:99999;background:#b91c1c;color:#fff;
+    font:600 13px/1.45 system-ui,sans-serif;padding:9px 14px;text-align:center}
+  .xaa-demo-banner a{color:#fff;text-decoration:underline}
+  .xaa-demo-stamp{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);
+    z-index:99998;pointer-events:none;font:900 clamp(56px,14vw,190px)/0.95 system-ui,sans-serif;
+    color:rgba(185,28,28,.15);border:.14em solid rgba(185,28,28,.15);border-radius:.12em;
+    padding:.06em .18em;white-space:nowrap;text-align:center}
+  .xaa-demo-stamp small{display:block;font-size:.17em;letter-spacing:.22em;margin-top:.18em}
+  .xaa-demo-hint{background:#fef3c7;border:1px solid #fcd34d;color:#92400e;border-radius:8px;
+    padding:8px 10px;font:600 12px/1.45 system-ui,sans-serif;margin:0 0 10px}
+  @media print{.xaa-demo-stamp{position:absolute}.xaa-demo-banner{position:static}}
+</style>
+</head>
+<body>
+<div class="xaa-demo-banner">
+  DEMO — SAMPLING ONLY, NOT REAL DATA. Every name, ID, address and account on this page is generated.
+  Voter roll verification built by <a href="https://xaa.es" target="_blank" rel="noopener">xaa.es</a>
+</div>
+<div class="xaa-demo-stamp" aria-hidden="true">DEMO<small>SAMPLING ONLY · NOT REAL DATA</small></div>
+
+
+<div class="wrap">
+  <header>
+    <div class="stamp"><span>Verifikasi<br>Pilkades<br>2026</span></div>
+    <div class="eyebrow">Panitia Pemilihan Kepala Desa</div>
+    <h1>Demo Village Voter Roll</h1>
+    <div class="sub">Kecamatan Demo Village · Kabupaten Bekasi &nbsp;|&nbsp; Daftar Pemilih Tetap — Tahun 2026</div>
+  </header>
+  <hr class="header-rule">
+
+  <main>
+    <section class="summary">
+      <div class="summary-scope" id="summaryScope">SELURUH DESA</div>
+      <div class="stat-row" id="statRow"></div>
+      <div class="donut-wrap" id="donutWrap"></div>
+      <div class="ledger-bar" id="ledgerBar" role="img" aria-label="Grafik prosentase status verifikasi"></div>
+      <div class="legend" id="legendChips"></div>
+      <div class="legend-note">Ketuk salah satu warna di atas untuk menyaring daftar sesuai status tersebut. Ketuk lagi untuk menampilkan semua.</div>
+      <div class="info-banner" id="infoBanner"></div>
+    </section>
+
+    <div class="controls">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="text" id="searchInput" placeholder="Cari nama, NIK, alamat, atau TPS..." autocomplete="off">
+      </div>
+      <div class="filter-row">
+        <select id="tpsSelect"></select>
+        <button class="clear-filter-btn" id="clearFilterBtn">Reset filter</button>
+      </div>
+      <div class="add-actions-row">
+        <button type="button" class="add-voter-btn" id="addVoterBtn">+ Tambah Pemilih Baru</button>
+        <button type="button" class="import-btn" id="importBtn">📥 Impor Excel</button>
+      </div>
+    </div>
+
+    <div class="results-count" id="resultsCount"></div>
+    <div id="listContainer"></div>
+  </main>
+
+  <footer>
+    <div class="footer-note">Data bersumber dari berkas Voter roll Coklit yang diunggah.</div>
+    <div class="storage-mode" id="storageModeNote"></div>
+    <div class="persist-warning" id="persistWarning" style="display:none;">
+      <span>Sedang tidak bisa menyimpan otomatis.</span>
+      <button type="button" id="persistRetryBtn">Coba lagi</button>
+    </div>
+    <div class="footer-btns">
+      <button class="footer-btn" id="printReportBtn">⬇ Print / Unduh PDF Report</button>
+    </div>
+    <div class="footer-btns">
+      <button class="footer-btn" id="exportBtn">⬇ Ekspor CSV</button>
+      <button class="footer-btn danger" id="resetBtn">↺ Reset semua tanda</button>
+    </div>
+  </footer>
+</div>
+
+<div class="save-toast" id="saveToast"></div>
+
+<div id="printReport"></div>
+
+<div class="modal-backdrop" id="resetModal">
+  <div class="modal-box">
+    <h3>Reset semua tanda?</h3>
+    <p>Semua tanda warna yang sudah Anda buat untuk 4.778 pemilih akan dikembalikan ke status awal (Merah untuk temuan bermasalah, Abu-abu untuk sisanya). Tindakan ini tidak bisa dibatalkan.</p>
+    <div class="modal-btns">
+      <button id="modalCancel">Batal</button>
+      <button class="confirm" id="modalConfirm">Ya, reset</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="addVoterModal">
+  <div class="modal-box form-box">
+    <h3>Tambah Pemilih Baru</h3>
+    <p>Untuk pemilih yang ditemukan saat coklit tapi belum ada di Voter roll. Tersimpan otomatis begitu ditekan Simpan.</p>
+    <div class="form-grid">
+      <label class="fld">
+        <span>Name Lengkap *</span>
+        <input type="text" id="fNama" autocomplete="off">
+      </label>
+      <label class="fld">
+        <span>TPS *</span>
+        <select id="fTps"></select>
+      </label>
+      <label class="fld">
+        <span>Hamlet (KP) *</span>
+        <select id="fAlamat"></select>
+      </label>
+      <div class="fld-row">
+        <label class="fld">
+          <span>RT *</span>
+          <select id="fRt"></select>
+        </label>
+        <label class="fld">
+          <span>RW *</span>
+          <select id="fRw"></select>
+        </label>
+      </div>
+      <label class="fld">
+        <span>Jenis Kelamin *</span>
+        <select id="fJk">
+          <option value="L">L - Laki-laki</option>
+          <option value="P">P - Perempuan</option>
+        </select>
+      </label>
+      <div class="fld-row">
+        <label class="fld">
+          <span>NIK</span>
+          <input type="text" id="fNik" inputmode="numeric" maxlength="16" autocomplete="off">
+        </label>
+        <label class="fld">
+          <span>No. KK</span>
+          <input type="text" id="fNkk" inputmode="numeric" maxlength="16" autocomplete="off">
+        </label>
+      </div>
+      <div class="fld-row">
+        <label class="fld">
+          <span>Tempat Lahir</span>
+          <input type="text" id="fTtl" autocomplete="off">
+        </label>
+        <label class="fld">
+          <span>Tanggal Lahir</span>
+          <input type="date" id="fTgl">
+        </label>
+      </div>
+      <div class="fld-row">
+        <label class="fld">
+          <span>Age</span>
+          <input type="number" id="fUsia" min="0" max="120" inputmode="numeric">
+        </label>
+        <label class="fld">
+          <span>Status Kawin</span>
+          <select id="fKawin">
+            <option value="B">B - Belum Kawin</option>
+            <option value="S">S - Kawin</option>
+            <option value="P">P - Pernah Kawin</option>
+          </select>
+        </label>
+      </div>
+      <label class="fld">
+        <span>Keterangan / Disabilitas</span>
+        <select id="fKet">
+          <option value="">- Tidak ada -</option>
+          <option value="Tuna Netra">Tuna Netra</option>
+          <option value="Fisik">Fisik</option>
+          <option value="Mental">Mental</option>
+          <option value="Intelektual">Intelektual</option>
+        </select>
+      </label>
+    </div>
+    <div class="form-err" id="addVoterErr"></div>
+    <div class="modal-btns">
+      <button id="addVoterCancel">Batal</button>
+      <button class="confirm" id="addVoterSubmit">Simpan Pemilih</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="importModal">
+  <div class="modal-box form-box">
+    <div id="importStep1">
+      <h3>Impor Pembaruan Excel</h3>
+      <p>Unggah berkas Voter roll/Voter rollHP baru dengan format sheet per TPS yang sama (TPS 01, TPS 02, dst). Setiap orang dicocokkan lewat NIK — data baru dan data yang berbeda akan ditampilkan dulu untuk Anda periksa, <b>tidak ada yang langsung diterapkan tanpa persetujuan Anda</b>.</p>
+      <div class="imp-input-row">
+        <input type="file" id="importFileInput" accept=".xlsx,.xls">
+      </div>
+      <div class="imp-loading" id="importLoading" style="display:none;">Membaca berkas…</div>
+      <div class="imp-error" id="importError"></div>
+      <div class="modal-btns">
+        <button id="importCancel">Tutup</button>
+      </div>
+    </div>
+    <div id="importStep2" style="display:none;">
+      <h3>Tinjau Hasil Impor</h3>
+      <div id="importSummary"></div>
+      <div id="importList"></div>
+      <div class="modal-btns">
+        <button id="importBackBtn">Pilih Berkas Lain</button>
+        <button class="confirm" id="importApplyBtn" style="display:none;">Terapkan Terpilih</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="dps-data" type="application/json">{"meta":{"desa":"DEMO VILLAGE","kecamatan":"SAMPLE DISTRICT","kabupaten":"DEMO REGION","tahun":2026,"refDate":"21-09-2026","wilayahPerTps":{"TPS 01":"TEST HAMLET, SAMPLE HAMLET","TPS 02":"DEMO HAMLET THREE, DEMO HAMLET TWO","TPS 03":"DEMO HAMLET ONE, DEMO HAMLET THREE","TPS 04":"DEMO HAMLET THREE, DEMO HAMLET ONE","TPS 05":"SAMPLE HAMLET, DEMO HAMLET THREE","TPS 06":"SAMPLE HAMLET, TEST HAMLET","TPS 07":"SAMPLE HAMLET, DEMO HAMLET THREE","TPS 08":"TEST HAMLET, DEMO HAMLET TWO","TPS 09":"DEMO HAMLET ONE, TEST HAMLET","TPS 10":"TEST HAMLET, DEMO HAMLET THREE","TPS 11":"DEMO HAMLET TWO, SAMPLE HAMLET"}},"records":[{"id":"01-0001","tps":"TPS 01","no":1,"nkk":"0000000000000001","nik":"0000000000000001","nama":"HELVIN DEMOPUTRA","ttl":"DEMO CITY, 03-01-2005","tgl":"06-07-1982","usia":30,"kawin":"B","jk":"L","alamat":"DEMO HAMLET TWO NO. 93","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"01-0002","tps":"TPS 01","no":2,"nkk":"0000000000000002","nik":"0000000000000002","nama":"KALUNA DUMIYANA","ttl":"DEMO CITY, 12-05-2004","tgl":"03-07-1996","usia":41,"kawin":"P","jk":"L","alamat":"DEMO HAMLET TWO NO. 112","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"01-0003","tps":"TPS 01","no":3,"nkk":"0000000000000003","nik":"0000000000000003","nama":"ANDRO FIKTIFIANI","ttl":"TEST DISTRICT, 17-04-2001","tgl":"25-07-1978","usia":20,"kawin":"S","jk":"P","alamat":"SAMPLE HAMLET NO. 69","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"01-0004","tps":"TPS 01","no":4,"nkk":"0000000000000004","nik":"0000000000000004","nama":"WIRAJA RANCANGSA","ttl":"TEST DISTRICT, 21-03-1962","tgl":"28-10-1987","usia":60,"kawin":"S","jk":"P","alamat":"DEMO HAMLET ONE NO. 35","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"01-0005","tps":"TPS 01","no":5,"nkk":"0000000000000005","nik":"0000000000000005","nama":"GANDRA RANCANGSA","ttl":"SAMPLE REGION, 24-09-1996","tgl":"19-08-1973","usia":23,"kawin":"B","jk":"L","alamat":"DEMO HAMLET TWO NO. 80","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"01-0006","tps":"TPS 01","no":6,"nkk":"0000000000000006","nik":"0000000000000006","nama":"XANORA CONTOHSARI","ttl":"TEST DISTRICT, 02-11-1968","tgl":"17-06-1985","usia":29,"kawin":"B","jk":"L","alamat":"SAMPLE HAMLET NO. 6","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"02-0001","tps":"TPS 02","no":1,"nkk":"0000000000000007","nik":"0000000000000007","nama":"GANDRA UJICOBAWAN","ttl":"TEST DISTRICT, 02-08-2006","tgl":"04-08-2000","usia":40,"kawin":"S","jk":"L","alamat":"DEMO HAMLET ONE NO. 79","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"02-0002","tps":"TPS 02","no":2,"nkk":"0000000000000008","nik":"0000000000000008","nama":"PRANAVI SAMPELYANTO","ttl":"TEST DISTRICT, 07-07-1968","tgl":"02-03-1980","usia":40,"kawin":"S","jk":"P","alamat":"SAMPLE HAMLET NO. 2","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"02-0003","tps":"TPS 02","no":3,"nkk":"0000000000000009","nik":"0000000000000009","nama":"ANDRO CONTOHSARI","ttl":"SAMPLE REGION, 25-09-1974","tgl":"06-07-1968","usia":17,"kawin":"B","jk":"P","alamat":"DEMO HAMLET TWO NO. 16","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"02-0004","tps":"TPS 02","no":4,"nkk":"0000000000000010","nik":"0000000000000010","nama":"LIMRA CONTOHSARI","ttl":"TEST DISTRICT, 13-10-1976","tgl":"13-05-1969","usia":45,"kawin":"S","jk":"P","alamat":"DEMO HAMLET ONE NO. 99","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"02-0005","tps":"TPS 02","no":5,"nkk":"0000000000000011","nik":"0000000000000011","nama":"FIRZA UJICOBAWAN","ttl":"DEMO CITY, 26-12-2002","tgl":"19-11-1969","usia":38,"kawin":"S","jk":"L","alamat":"DEMO HAMLET THREE NO. 15","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"02-0006","tps":"TPS 02","no":6,"nkk":"0000000000000012","nik":"0000000000000012","nama":"XANORA FIKTIFIANI","ttl":"SAMPLE REGION, 09-08-1990","tgl":"27-10-1994","usia":35,"kawin":"S","jk":"L","alamat":"DEMO HAMLET THREE NO. 82","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"03-0001","tps":"TPS 03","no":1,"nkk":"0000000000000013","nik":"0000000000000013","nama":"CENDA UJICOBAWAN","ttl":"TEST DISTRICT, 04-08-2003","tgl":"19-07-1991","usia":38,"kawin":"P","jk":"P","alamat":"DEMO HAMLET TWO NO. 86","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"03-0002","tps":"TPS 03","no":2,"nkk":"0000000000000014","nik":"0000000000000014","nama":"RIVANDA SAMPELYANTO","ttl":"TEST DISTRICT, 10-04-2000","tgl":"03-05-2004","usia":45,"kawin":"S","jk":"L","alamat":"DEMO HAMLET ONE NO. 98","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"03-0003","tps":"TPS 03","no":3,"nkk":"0000000000000015","nik":"0000000000000015","nama":"OKTARA CONTOHSARI","ttl":"TEST DISTRICT, 10-10-1990","tgl":"21-06-1966","usia":56,"kawin":"S","jk":"L","alamat":"TEST HAMLET NO. 99","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"03-0004","tps":"TPS 03","no":4,"nkk":"0000000000000016","nik":"0000000000000016","nama":"BRAMA MISALUDIN","ttl":"TEST DISTRICT, 04-12-1963","tgl":"28-03-2006","usia":49,"kawin":"S","jk":"P","alamat":"TEST HAMLET NO. 120","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"03-0005","tps":"TPS 03","no":5,"nkk":"0000000000000017","nik":"0000000000000017","nama":"RIVANDA UJICOBAWAN","ttl":"DEMO CITY, 09-08-2001","tgl":"27-01-1984","usia":18,"kawin":"B","jk":"L","alamat":"DEMO HAMLET THREE NO. 40","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"03-0006","tps":"TPS 03","no":6,"nkk":"0000000000000018","nik":"0000000000000018","nama":"XANORA RANCANGSA","ttl":"SAMPLE REGION, 05-11-1960","tgl":"24-04-1961","usia":65,"kawin":"S","jk":"L","alamat":"SAMPLE HAMLET NO. 8","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"04-0001","tps":"TPS 04","no":1,"nkk":"0000000000000019","nik":"0000000000000019","nama":"CENDA UMPAMAWATI","ttl":"SAMPLE REGION, 25-04-1977","tgl":"19-08-1979","usia":35,"kawin":"P","jk":"L","alamat":"SAMPLE HAMLET NO. 24","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"04-0002","tps":"TPS 04","no":2,"nkk":"0000000000000020","nik":"0000000000000020","nama":"XANORA MISALUDIN","ttl":"SAMPLE REGION, 22-07-1981","tgl":"13-07-1995","usia":28,"kawin":"S","jk":"L","alamat":"DEMO HAMLET ONE NO. 74","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"04-0003","tps":"TPS 04","no":3,"nkk":"0000000000000021","nik":"0000000000000021","nama":"FIRZA PERCOBANI","ttl":"SAMPLE REGION, 28-09-1964","tgl":"26-06-1997","usia":26,"kawin":"B","jk":"L","alamat":"DEMO HAMLET THREE NO. 91","rt":3,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"04-0004","tps":"TPS 04","no":4,"nkk":"0000000000000022","nik":"0000000000000022","nama":"XANORA SIMULINDO","ttl":"SAMPLE REGION, 26-11-1998","tgl":"15-06-1974","usia":64,"kawin":"S","jk":"P","alamat":"DEMO HAMLET TWO NO. 68","rt":3,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"04-0005","tps":"TPS 04","no":5,"nkk":"0000000000000023","nik":"0000000000000023","nama":"RIVANDA FIKTIFIANI","ttl":"SAMPLE REGION, 17-09-2003","tgl":"04-09-1962","usia":26,"kawin":"B","jk":"L","alamat":"DEMO HAMLET ONE NO. 2","rt":3,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"04-0006","tps":"TPS 04","no":6,"nkk":"0000000000000024","nik":"0000000000000024","nama":"VERINDA SIMULINDO","ttl":"DEMO CITY, 28-05-1969","tgl":"23-12-1991","usia":56,"kawin":"S","jk":"L","alamat":"TEST HAMLET NO. 78","rt":3,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"05-0001","tps":"TPS 05","no":1,"nkk":"0000000000000025","nik":"0000000000000025","nama":"FIRZA MISALUDIN","ttl":"SAMPLE REGION, 06-05-1970","tgl":"24-06-1962","usia":35,"kawin":"S","jk":"P","alamat":"DEMO HAMLET TWO NO. 2","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"05-0002","tps":"TPS 05","no":2,"nkk":"0000000000000026","nik":"0000000000000026","nama":"VERINDA SAMPELYANTO","ttl":"SAMPLE REGION, 25-07-1985","tgl":"11-10-1997","usia":37,"kawin":"S","jk":"L","alamat":"SAMPLE HAMLET NO. 112","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"05-0003","tps":"TPS 05","no":3,"nkk":"0000000000000027","nik":"0000000000000027","nama":"NIRWAN UMPAMAWATI","ttl":"SAMPLE REGION, 28-09-1961","tgl":"10-04-1998","usia":46,"kawin":"S","jk":"P","alamat":"DEMO HAMLET THREE NO. 51","rt":3,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"05-0004","tps":"TPS 05","no":4,"nkk":"0000000000000028","nik":"0000000000000028","nama":"SELARA SIMULINDO","ttl":"SAMPLE REGION, 03-04-1996","tgl":"01-03-1974","usia":55,"kawin":"S","jk":"L","alamat":"SAMPLE HAMLET NO. 48","rt":3,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"05-0005","tps":"TPS 05","no":5,"nkk":"0000000000000029","nik":"0000000000000029","nama":"CENDA TESTAMIJAYA","ttl":"TEST DISTRICT, 20-11-1997","tgl":"20-12-2000","usia":22,"kawin":"B","jk":"L","alamat":"TEST HAMLET NO. 14","rt":3,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"05-0006","tps":"TPS 05","no":6,"nkk":"0000000000000030","nik":"0000000000000030","nama":"RIVANDA CONTOHSARI","ttl":"DEMO CITY, 08-07-1995","tgl":"27-11-1966","usia":18,"kawin":"B","jk":"P","alamat":"DEMO HAMLET TWO NO. 120","rt":3,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"06-0001","tps":"TPS 06","no":1,"nkk":"0000000000000031","nik":"0000000000000031","nama":"NIRWAN UJICOBAWAN","ttl":"TEST DISTRICT, 12-03-2000","tgl":"25-12-1964","usia":28,"kawin":"S","jk":"L","alamat":"TEST HAMLET NO. 17","rt":1,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"06-0002","tps":"TPS 06","no":2,"nkk":"0000000000000032","nik":"0000000000000032","nama":"HELVIN CONTOHSARI","ttl":"DEMO CITY, 01-02-1963","tgl":"25-12-1970","usia":20,"kawin":"B","jk":"P","alamat":"SAMPLE HAMLET NO. 109","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"06-0003","tps":"TPS 06","no":3,"nkk":"0000000000000033","nik":"0000000000000033","nama":"WIRAJA DEMOPUTRA","ttl":"TEST DISTRICT, 24-05-1976","tgl":"04-09-1990","usia":25,"kawin":"B","jk":"P","alamat":"SAMPLE HAMLET NO. 66","rt":3,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"06-0004","tps":"TPS 06","no":4,"nkk":"0000000000000034","nik":"0000000000000034","nama":"NIRWAN UJICOBAWAN","ttl":"TEST DISTRICT, 27-03-1966","tgl":"12-06-1986","usia":33,"kawin":"S","jk":"P","alamat":"DEMO HAMLET ONE NO. 6","rt":5,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"06-0005","tps":"TPS 06","no":5,"nkk":"0000000000000035","nik":"0000000000000035","nama":"QUENZA PERCOBANI","ttl":"SAMPLE REGION, 10-02-1979","tgl":"24-01-1977","usia":30,"kawin":"S","jk":"L","alamat":"SAMPLE HAMLET NO. 6","rt":5,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"06-0006","tps":"TPS 06","no":6,"nkk":"0000000000000036","nik":"0000000000000036","nama":"HELVIN FIKTIFIANI","ttl":"SAMPLE REGION, 07-10-1989","tgl":"27-12-1997","usia":48,"kawin":"P","jk":"P","alamat":"TEST HAMLET NO. 48","rt":1,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"07-0001","tps":"TPS 07","no":1,"nkk":"0000000000000037","nik":"0000000000000037","nama":"HELVIN CONTOHSARI","ttl":"SAMPLE REGION, 28-03-1967","tgl":"22-04-1975","usia":42,"kawin":"S","jk":"P","alamat":"TEST HAMLET NO. 63","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"07-0002","tps":"TPS 07","no":2,"nkk":"0000000000000038","nik":"0000000000000038","nama":"ZEVANA DEMOPUTRA","ttl":"SAMPLE REGION, 11-04-1975","tgl":"09-01-1966","usia":56,"kawin":"S","jk":"L","alamat":"TEST HAMLET NO. 6","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"07-0003","tps":"TPS 07","no":3,"nkk":"0000000000000039","nik":"0000000000000039","nama":"DIVARA SAMPELYANTO","ttl":"SAMPLE REGION, 13-08-2005","tgl":"06-06-1997","usia":67,"kawin":"S","jk":"L","alamat":"DEMO HAMLET ONE NO. 26","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"07-0004","tps":"TPS 07","no":4,"nkk":"0000000000000040","nik":"0000000000000040","nama":"LIMRA TESTAMIJAYA","ttl":"TEST DISTRICT, 04-07-1974","tgl":"16-06-1970","usia":40,"kawin":"S","jk":"P","alamat":"SAMPLE HAMLET NO. 86","rt":1,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"07-0005","tps":"TPS 07","no":5,"nkk":"0000000000000041","nik":"0000000000000041","nama":"TARUNIA CONTOHSARI","ttl":"SAMPLE REGION, 07-01-1989","tgl":"16-08-1978","usia":34,"kawin":"S","jk":"L","alamat":"SAMPLE HAMLET NO. 98","rt":1,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"07-0006","tps":"TPS 07","no":6,"nkk":"0000000000000042","nik":"0000000000000042","nama":"CENDA TESTAMIJAYA","ttl":"DEMO CITY, 19-04-1961","tgl":"14-07-1990","usia":49,"kawin":"S","jk":"P","alamat":"DEMO HAMLET THREE NO. 95","rt":1,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"08-0001","tps":"TPS 08","no":1,"nkk":"0000000000000043","nik":"0000000000000043","nama":"MAVENDRA UJICOBAWAN","ttl":"TEST DISTRICT, 07-01-1996","tgl":"28-02-1961","usia":55,"kawin":"S","jk":"L","alamat":"TEST HAMLET NO. 102","rt":3,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"08-0002","tps":"TPS 08","no":2,"nkk":"0000000000000044","nik":"0000000000000044","nama":"DIVARA SAMPELYANTO","ttl":"SAMPLE REGION, 18-08-1964","tgl":"19-06-1977","usia":58,"kawin":"S","jk":"L","alamat":"DEMO HAMLET THREE NO. 82","rt":2,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"08-0003","tps":"TPS 08","no":3,"nkk":"0000000000000045","nik":"0000000000000045","nama":"ULVARA TESTAMIJAYA","ttl":"DEMO CITY, 22-02-2005","tgl":"16-11-2005","usia":54,"kawin":"S","jk":"P","alamat":"SAMPLE HAMLET NO. 53","rt":2,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"08-0004","tps":"TPS 08","no":4,"nkk":"0000000000000046","nik":"0000000000000046","nama":"SELARA SAMPELYANTO","ttl":"SAMPLE REGION, 04-03-1993","tgl":"06-03-1961","usia":59,"kawin":"S","jk":"L","alamat":"TEST HAMLET NO. 77","rt":3,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"08-0005","tps":"TPS 08","no":5,"nkk":"0000000000000047","nik":"0000000000000047","nama":"PRANAVI PERCOBANI","ttl":"TEST DISTRICT, 16-08-1978","tgl":"14-09-1970","usia":50,"kawin":"S","jk":"P","alamat":"SAMPLE HAMLET NO. 16","rt":3,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"08-0006","tps":"TPS 08","no":6,"nkk":"0000000000000048","nik":"0000000000000048","nama":"KALUNA SAMPELYANTO","ttl":"TEST DISTRICT, 16-07-1995","tgl":"18-05-1972","usia":36,"kawin":"S","jk":"L","alamat":"DEMO HAMLET ONE NO. 60","rt":3,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"09-0001","tps":"TPS 09","no":1,"nkk":"0000000000000049","nik":"0000000000000049","nama":"SELARA CONTOHSARI","ttl":"TEST DISTRICT, 22-11-1981","tgl":"15-08-1985","usia":26,"kawin":"B","jk":"L","alamat":"DEMO HAMLET THREE NO. 21","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"09-0002","tps":"TPS 09","no":2,"nkk":"0000000000000050","nik":"0000000000000050","nama":"BRAMA SIMULINDO","ttl":"TEST DISTRICT, 24-07-1996","tgl":"09-08-1964","usia":18,"kawin":"B","jk":"L","alamat":"SAMPLE HAMLET NO. 39","rt":2,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"09-0003","tps":"TPS 09","no":3,"nkk":"0000000000000051","nik":"0000000000000051","nama":"IRSANO UJICOBAWAN","ttl":"SAMPLE REGION, 21-07-2000","tgl":"18-02-2001","usia":23,"kawin":"S","jk":"L","alamat":"DEMO HAMLET ONE NO. 115","rt":3,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"09-0004","tps":"TPS 09","no":4,"nkk":"0000000000000052","nik":"0000000000000052","nama":"HELVIN RANCANGSA","ttl":"SAMPLE REGION, 03-01-1993","tgl":"21-01-1976","usia":24,"kawin":"B","jk":"L","alamat":"DEMO HAMLET ONE NO. 50","rt":1,"rw":3,"ket":"","flagType":"","flagNote":""},{"id":"09-0005","tps":"TPS 09","no":5,"nkk":"0000000000000053","nik":"0000000000000053","nama":"QUENZA RANCANGSA","ttl":"DEMO CITY, 17-04-1990","tgl":"16-07-1966","usia":54,"kawin":"S","jk":"L","alamat":"TEST HAMLET NO. 66","rt":1,"rw":3,"ket":"","flagType":"","flagNote":""},{"id":"09-0006","tps":"TPS 09","no":6,"nkk":"0000000000000054","nik":"0000000000000054","nama":"FIRZA RANCANGSA","ttl":"TEST DISTRICT, 06-11-1965","tgl":"22-04-1992","usia":48,"kawin":"S","jk":"P","alamat":"DEMO HAMLET THREE NO. 106","rt":1,"rw":3,"ket":"","flagType":"","flagNote":""},{"id":"10-0001","tps":"TPS 10","no":1,"nkk":"0000000000000055","nik":"0000000000000055","nama":"VERINDA SIMULINDO","ttl":"SAMPLE REGION, 17-10-1986","tgl":"21-05-1997","usia":31,"kawin":"B","jk":"L","alamat":"TEST HAMLET NO. 90","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"10-0002","tps":"TPS 10","no":2,"nkk":"0000000000000056","nik":"0000000000000056","nama":"PRANAVI TESTAMIJAYA","ttl":"SAMPLE REGION, 02-08-2003","tgl":"14-08-1963","usia":32,"kawin":"S","jk":"P","alamat":"DEMO HAMLET THREE NO. 42","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"10-0003","tps":"TPS 10","no":3,"nkk":"0000000000000057","nik":"0000000000000057","nama":"JEVARA CONTOHSARI","ttl":"DEMO CITY, 16-02-2002","tgl":"21-07-1986","usia":17,"kawin":"B","jk":"L","alamat":"DEMO HAMLET THREE NO. 50","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"10-0004","tps":"TPS 10","no":4,"nkk":"0000000000000058","nik":"0000000000000058","nama":"JEVARA UJICOBAWAN","ttl":"DEMO CITY, 03-03-1991","tgl":"08-04-1961","usia":53,"kawin":"S","jk":"L","alamat":"DEMO HAMLET THREE NO. 62","rt":3,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"10-0005","tps":"TPS 10","no":5,"nkk":"0000000000000059","nik":"0000000000000059","nama":"DIVARA UJICOBAWAN","ttl":"DEMO CITY, 24-01-1995","tgl":"01-05-2000","usia":50,"kawin":"S","jk":"P","alamat":"DEMO HAMLET THREE NO. 74","rt":3,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"10-0006","tps":"TPS 10","no":6,"nkk":"0000000000000060","nik":"0000000000000060","nama":"KALUNA RANCANGSA","ttl":"SAMPLE REGION, 12-03-2006","tgl":"22-02-2001","usia":46,"kawin":"S","jk":"L","alamat":"TEST HAMLET NO. 51","rt":3,"rw":2,"ket":"","flagType":"","flagNote":""},{"id":"11-0001","tps":"TPS 11","no":1,"nkk":"0000000000000061","nik":"0000000000000061","nama":"XANORA SAMPELYANTO","ttl":"DEMO CITY, 27-12-1997","tgl":"10-03-1985","usia":46,"kawin":"P","jk":"P","alamat":"DEMO HAMLET ONE NO. 99","rt":2,"rw":1,"ket":"","flagType":"","flagNote":""},{"id":"11-0002","tps":"TPS 11","no":2,"nkk":"0000000000000062","nik":"0000000000000062","nama":"RIVANDA FIKTIFIANI","ttl":"TEST DISTRICT, 26-08-1993","tgl":"02-10-1960","usia":31,"kawin":"S","jk":"L","alamat":"DEMO HAMLET TWO NO. 53","rt":2,"rw":3,"ket":"","flagType":"","flagNote":""},{"id":"11-0003","tps":"TPS 11","no":3,"nkk":"0000000000000063","nik":"0000000000000063","nama":"QUENZA UMPAMAWATI","ttl":"DEMO CITY, 13-01-1977","tgl":"25-06-1972","usia":37,"kawin":"S","jk":"P","alamat":"SAMPLE HAMLET NO. 72","rt":4,"rw":3,"ket":"","flagType":"","flagNote":""},{"id":"11-0004","tps":"TPS 11","no":4,"nkk":"0000000000000064","nik":"0000000000000064","nama":"NIRWAN UJICOBAWAN","ttl":"SAMPLE REGION, 17-08-1968","tgl":"01-10-1969","usia":19,"kawin":"B","jk":"P","alamat":"SAMPLE HAMLET NO. 105","rt":4,"rw":3,"ket":"","flagType":"","flagNote":""},{"id":"11-0005","tps":"TPS 11","no":5,"nkk":"0000000000000065","nik":"0000000000000065","nama":"MAVENDRA RANCANGSA","ttl":"SAMPLE REGION, 01-12-1964","tgl":"08-02-1999","usia":35,"kawin":"S","jk":"P","alamat":"DEMO HAMLET TWO NO. 54","rt":4,"rw":3,"ket":"","flagType":"","flagNote":""},{"id":"11-0006","tps":"TPS 11","no":6,"nkk":"0000000000000066","nik":"0000000000000066","nama":"YULVARA PERCOBANI","ttl":"SAMPLE REGION, 02-04-1966","tgl":"16-01-1969","usia":37,"kawin":"S","jk":"L","alamat":"DEMO HAMLET THREE NO. 66","rt":4,"rw":3,"ket":"","flagType":"","flagNote":""}]}</script>
+<script>
+
+(function(){
+  "use strict";
+
+  var DATA = JSON.parse(document.getElementById('dps-data').textContent);
+  var RECORDS = DATA.records;
+  var META = DATA.meta;
+  var WILAYAH = META.wilayahPerTps;
+
+  var STATUS_KEY = 'voter_status_map_v1';
+  var EXTRA_KEY = 'voter_extra_records_v1';
+  var CORRECTIONS_KEY = 'voter_field_corrections_v1';
+
+  var PAGE_SIZE = 30;
+  var STATUS_ORDER = ['hijau','kuning','abu2','merah'];
+  var STATUS_META = {
+    hijau:  { label:'Hijau',    desc:'Memenuhi syarat' },
+    kuning: { label:'Kuning',   desc:'Perlu verifikasi' },
+    abu2:   { label:'Abu-abu',  desc:'Belum diperiksa' },
+    merah:  { label:'Merah',    desc:'Bermasalah' }
+  };
+  var STATUS_COLOR_VAR = { hijau:'--hijau', kuning:'--kuning', abu2:'--abu', merah:'--merah' };
+  var FIELD_LABELS = { nama:'Name', tps:'TPS', nkk:'No. KK', nik:'NIK', ttl:'Tempat Lahir', tgl:'Tanggal Lahir',
+    kawin:'Status Kawin', jk:'Jenis Kelamin', alamat:'Alamat/Kampung', rt:'RT', rw:'RW', ket:'Keterangan' };
+
+  var statusMap = {};
+  var expandedIds = {};
+  var flaggedCount = 0;
+  var extraRecords = [];      // pemilih tambahan (manual / impor), disimpan penuh
+  var fieldCorrections = {};  // {id: {field: value}} -- koreksi utk data ASLI dari impor
+
+  var state = { search:'', tps:'ALL', statusFilter:null, shown:PAGE_SIZE };
+  var importState = null; // hasil parse+diff impor Excel yang sedang direview
+
+  var els = {}; // diisi di init() setelah DOM pasti siap
+
+  function fmtNum(n){ return Number(n).toLocaleString('id-ID'); }
+  function fmtPct(n){ return n.toFixed(1).replace('.', ',') + '%'; }
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function pad2(n){ return n<10 ? '0'+n : ''+n; }
+  function pad4(n){ var s=''+n; while(s.length<4) s='0'+s; return s; }
+
+  /* ================= STORAGE ================= */
+  /* Prioritas: localStorage di HP -- offline, tanpa cloud, sesuai yang diminta.
+     Dites sekali di awal dengan tulis+baca+hapus nyata (bukan cuma cek
+     "typeof"), karena di beberapa tempat localStorage ada tapi tetap
+     menolak saat dipakai. Kalau localStorage ditolak (mis. dibuka lewat
+     preview DI DALAM aplikasi Claude, yang memblokirnya demi keamanan),
+     otomatis pindah ke window.storage bawaan Claude supaya tetap tersimpan
+     -- bukan diam-diam gagal seperti sebelumnya. */
+
+  function detectLocalStorage(){
+    try {
+      if (typeof localStorage === 'undefined' || !localStorage) return false;
+      var k = '__ls_probe__';
+      localStorage.setItem(k, '1');
+      var ok = localStorage.getItem(k) === '1';
+      localStorage.removeItem(k);
+      return ok;
+    } catch(e){ return false; }
+  }
+  var USE_LOCAL = detectLocalStorage();
+
+  // Sengaja TANPA retry: kalau key belum pernah ada (pemakaian pertama kali),
+  // window.storage.get() akan menolak (bukan mengembalikan null) -- itu wajar,
+  // bukan error sementara. Retry di sini dulu pernah bikin startup jadi lambat
+  // (0,35 detik per key) dan memicu race condition dgn aksi pengguna yg cepat
+  // (mis. langsung tambah pemilih sebelum data lama selesai dimuat).
+  function storageGet(key){
+    if (USE_LOCAL){
+      try {
+        var v = localStorage.getItem(key);
+        if (v === null) return Promise.reject(new Error('tidak ada data tersimpan utk '+key));
+        return Promise.resolve({ key:key, value:v });
+      } catch(e){ return Promise.reject(e); }
+    }
+    return window.storage.get(key, false);
+  }
+  function storageSet(key, value){
+    if (USE_LOCAL){
+      try { localStorage.setItem(key, value); return Promise.resolve({ key:key, value:value }); }
+      catch(e){ return Promise.reject(e); }
+    }
+    return window.storage.set(key, value, false);
+  }
+  function readJsonKey(key, fallback){
+    return storageGet(key).then(function(res){
+      if (res && typeof res.value === 'string'){
+        try { var p = JSON.parse(res.value); if (p !== null && p !== undefined) return p; } catch(e){}
+      }
+      return fallback;
+    }).catch(function(){ return fallback; });
+  }
+
+  function defaultStatus(rec){ return rec.flagType ? 'merah' : 'abu2'; }
+
+  function initDefaults(){
+    statusMap = {};
+    flaggedCount = 0;
+    for (var i=0;i<RECORDS.length;i++){
+      var r = RECORDS[i];
+      statusMap[r.id] = defaultStatus(r);
+      if (r.flagType) flaggedCount++;
+    }
+  }
+  function countFlagged(){
+    var c = 0;
+    for (var i=0;i<RECORDS.length;i++){ if (RECORDS[i].flagType) c++; }
+    return c;
+  }
+  // Hanya id yang tandanya BEDA dari default yang disimpan -> payload kecil & ringan dikirim.
+  function buildDiffSnapshot(){
+    var diff = {};
+    for (var i=0;i<RECORDS.length;i++){
+      var r = RECORDS[i];
+      var st = statusMap[r.id];
+      if (st !== defaultStatus(r)) diff[r.id] = st;
+    }
+    return diff;
+  }
+
+  function loadStatuses(){
+    flaggedCount = countFlagged();
+    initDefaults(); // selalu mulai dari default yang benar utk data saat ini
+    return readJsonKey(STATUS_KEY, {}).then(function(diff){
+      if (diff && typeof diff === 'object'){
+        for (var id in diff){
+          if (Object.prototype.hasOwnProperty.call(diff, id) && id in statusMap){
+            statusMap[id] = diff[id];
+          }
+        }
+      }
+    });
+  }
+
+  // Satu sistem simpan utk ketiganya (tanda status, pemilih tambahan, koreksi
+  // data dari impor) supaya: (1) tidak ada retry berlapis yg bikin lambat,
+  // (2) tombol "Coba lagi" di banner otomatis menyimpan APAPUN yg masih
+  // tertunda, bukan cuma tanda status.
+  var dirty = { status:false, extra:false, corrections:false };
+  var saveInFlight = false, savePending = false, savePendingSilent = true;
+  var saveRetryCount = 0, SAVE_MAX_RETRY = 3;
+  var persistDegraded = false;
+
+  function markDirty(kind){ dirty[kind] = true; }
+  function scheduleSave(silent){
+    if (!silent) showToast('Menyimpan...', false, true);
+    if (saveInFlight){ savePending = true; if(!silent) savePendingSilent=false; return; }
+    runSaveCycle(silent);
+  }
+  function runSaveCycle(silent){
+    saveInFlight = true;
+    var jobs = [];
+    if (dirty.status){
+      jobs.push(storageSet(STATUS_KEY, JSON.stringify(buildDiffSnapshot())).then(function(){ dirty.status=false; }));
+    }
+    if (dirty.extra){
+      jobs.push(storageSet(EXTRA_KEY, JSON.stringify(extraRecords)).then(function(){ dirty.extra=false; }));
+    }
+    if (dirty.corrections){
+      jobs.push(storageSet(CORRECTIONS_KEY, JSON.stringify(fieldCorrections)).then(function(){ dirty.corrections=false; }));
+    }
+    if (jobs.length === 0){ saveInFlight = false; if (!silent) showToast('Tersimpan', false); return; }
+    Promise.all(jobs).then(function(){
+      saveInFlight = false; saveRetryCount = 0;
+      setPersistDegraded(false);
+      if (savePending){ var ns=savePendingSilent; savePending=false; savePendingSilent=true; runSaveCycle(ns); return; }
+      if (!silent) showToast('Tersimpan', false);
+    }).catch(function(err){
+      saveInFlight = false;
+      console.error('Gagal menyimpan', err);
+      if (saveRetryCount < SAVE_MAX_RETRY){
+        saveRetryCount++;
+        setTimeout(function(){ runSaveCycle(silent); }, 900 * saveRetryCount);
+      } else {
+        saveRetryCount = 0;
+        if (!silent) showToast('Gagal menyimpan', true);
+        setPersistDegraded(true);
+      }
+    });
+  }
+
+  function setPersistDegraded(on){
+    persistDegraded = on;
+    var el = document.getElementById('persistWarning');
+    if (!el) return;
+    el.style.display = on ? 'flex' : 'none';
+  }
+
+  function updateStorageModeUI(){
+    var el = document.getElementById('storageModeNote');
+    if (!el) return;
+    if (USE_LOCAL){
+      el.textContent = 'Mode: tersimpan LANGSUNG di penyimpanan HP ini (offline, tanpa internet/cloud).';
+      el.className = 'storage-mode ok';
+    } else {
+      el.textContent = 'Mode: cache HP diblokir di preview ini, jadi tanda disimpan lewat sistem penyimpanan Claude (perlu app/situs Claude terbuka). Untuk 100% offline di cache HP: unduh file ini lalu buka LANGSUNG pakai browser HP (bukan lewat preview Claude).';
+      el.className = 'storage-mode fallback';
+    }
+  }
+
+  var toastTimer = null;
+  function showToast(msg, isErr, sticky){
+    els.saveToast.textContent = msg;
+    els.saveToast.className = 'save-toast show' + (isErr ? ' err' : '');
+    clearTimeout(toastTimer);
+    if (!sticky){ toastTimer = setTimeout(function(){ els.saveToast.className='save-toast'; }, 1400); }
+  }
+
+  /* ================= Terapkan data tersimpan ke RECORDS ================= */
+
+  // Aman dipanggil berkali-kali: melewati id yg sudah ada di RECORDS supaya
+  // tidak pernah menggandakan baris (mis. kalau pengguna sempat menambah
+  // data sendiri sebelum proses memuat data tersimpan selesai).
+  function mergeExtraRecords(){
+    var existingIds = {};
+    for (var i=0;i<RECORDS.length;i++){ existingIds[RECORDS[i].id] = true; }
+    for (var j=0;j<extraRecords.length;j++){
+      var rec = extraRecords[j];
+      if (!existingIds[rec.id]){ RECORDS.push(rec); existingIds[rec.id] = true; }
+    }
+  }
+
+  function applyFieldCorrections(){
+    for (var id in fieldCorrections){
+      if (!Object.prototype.hasOwnProperty.call(fieldCorrections, id)) continue;
+      var rec = RECORDS_BY_ID[id];
+      if (!rec) continue;
+      var patch = fieldCorrections[id];
+      for (var f in patch){
+        if (Object.prototype.hasOwnProperty.call(patch, f)) rec[f] = patch[f];
+      }
+      if (patch.tgl){ rec.usia = calcAge(rec.tgl, META.refDate); }
+    }
+  }
+
+  // Mengubah satu field pada satu record (dipakai saat menerapkan hasil impor).
+  // Data asli (bukan tambahan) -> ditulis ke lapisan koreksi terpisah supaya
+  // data mentah bawaan tetap utuh dan koreksi bisa dipertanggungjawabkan.
+  function applyFieldUpdate(rec, field, value){
+    rec[field] = value;
+    if (field === 'tgl'){ rec.usia = calcAge(value, META.refDate); }
+    if (rec.tambahan){
+      return; // cukup mutasi objeknya; markDirty('extra') dipanggil di pemanggil
+    }
+    if (!fieldCorrections[rec.id]) fieldCorrections[rec.id] = {};
+    fieldCorrections[rec.id][field] = value;
+    if (field==='tgl') fieldCorrections[rec.id].usia = rec.usia;
+  }
+
+  /* ================= Indeks alamat utk dropdown bertingkat ================= */
+
+  var TPS_LIST = Object.keys(WILAYAH).sort();
+  var TPS_ALAMAT = {}, ALAMAT_RT = {}, RT_RW = {};
+  var RECORDS_BY_ID = {};
+  var NIK_INDEX = {}; // nik (non-kosong) -> record, utk pencocokan impor
+
+  function rebuildIndices(){
+    TPS_ALAMAT = {}; ALAMAT_RT = {}; RT_RW = {}; RECORDS_BY_ID = {}; NIK_INDEX = {};
+    for (var i=0;i<RECORDS.length;i++){
+      var r = RECORDS[i];
+      RECORDS_BY_ID[r.id] = r;
+      if (r.nik) NIK_INDEX[r.nik] = r;
+      if (!TPS_ALAMAT[r.tps]) TPS_ALAMAT[r.tps] = [];
+      if (TPS_ALAMAT[r.tps].indexOf(r.alamat) === -1){ TPS_ALAMAT[r.tps].push(r.alamat); TPS_ALAMAT[r.tps].sort(); }
+      var k1 = r.tps+'|'+r.alamat;
+      if (!ALAMAT_RT[k1]) ALAMAT_RT[k1] = [];
+      if (ALAMAT_RT[k1].indexOf(r.rt) === -1){ ALAMAT_RT[k1].push(r.rt); ALAMAT_RT[k1].sort(function(a,b){return a-b;}); }
+      var k2 = k1+'|'+r.rt;
+      if (!RT_RW[k2]) RT_RW[k2] = [];
+      if (RT_RW[k2].indexOf(r.rw) === -1){ RT_RW[k2].push(r.rw); RT_RW[k2].sort(function(a,b){return a-b;}); }
+    }
+  }
+
+  function parseDMY(s){
+    var parts = String(s||'').split('-');
+    if (parts.length !== 3) return null;
+    var d=parseInt(parts[0],10), m=parseInt(parts[1],10), y=parseInt(parts[2],10);
+    if (!d||!m||!y) return null;
+    return new Date(y, m-1, d);
+  }
+  function calcAge(birthDMY, refDMY){
+    var b=parseDMY(birthDMY), r=parseDMY(refDMY);
+    if (!b||!r) return null;
+    var age = r.getFullYear()-b.getFullYear();
+    var md = r.getMonth()-b.getMonth();
+    if (md<0 || (md===0 && r.getDate()<b.getDate())) age--;
+    return age;
+  }
+  function nextIdForTps(tps){
+    var tpsNum = tps.replace(/\D/g,'');
+    var max = 0;
+    for (var i=0;i<RECORDS.length;i++){
+      if (RECORDS[i].tps === tps){
+        var m = /-(\d+)$/.exec(RECORDS[i].id);
+        if (m){ var n=parseInt(m[1],10); if (n>max) max=n; }
+      }
+    }
+    var seq = max+1;
+    return { id: tpsNum+'-'+pad4(seq), no: seq };
+  }
+
+  /* ================= Filtering & rendering (utama) ================= */
+
+  function matchesSearch(rec, q){
+    if (!q) return true;
+    return (rec.nama && rec.nama.toLowerCase().indexOf(q) !== -1) ||
+           (rec.nik && rec.nik.indexOf(q) !== -1) ||
+           (rec.nkk && rec.nkk.indexOf(q) !== -1) ||
+           (rec.alamat && rec.alamat.toLowerCase().indexOf(q) !== -1) ||
+           (rec.tps && rec.tps.toLowerCase().indexOf(q) !== -1);
+  }
+  function getScoped(){
+    var q = state.search.trim().toLowerCase();
+    var tps = state.tps;
+    var out = [];
+    for (var i=0;i<RECORDS.length;i++){
+      var r = RECORDS[i];
+      if (tps !== 'ALL' && r.tps !== tps) continue;
+      if (!matchesSearch(r, q)) continue;
+      out.push(r);
+    }
+    return out;
+  }
+  function getListRecords(scoped){
+    if (!state.statusFilter) return scoped;
+    var out = [];
+    for (var i=0;i<scoped.length;i++){ if (statusMap[scoped[i].id]===state.statusFilter) out.push(scoped[i]); }
+    return out;
+  }
+  function computeCounts(scoped){
+    var counts = { hijau:0, kuning:0, abu2:0, merah:0 };
+    for (var i=0;i<scoped.length;i++){
+      var st = statusMap[scoped[i].id] || 'abu2';
+      counts[st] = (counts[st]||0)+1;
+    }
+    return counts;
+  }
+
+  function donutSvg(counts, total){
+    var r=52, sw=16, size=132, c=size/2;
+    var circumference = 2*Math.PI*r;
+    var svg = '<svg class="donut-svg" width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" role="img" aria-label="Grafik lingkaran persentase status verifikasi">'+
+      '<circle cx="'+c+'" cy="'+c+'" r="'+r+'" fill="none" stroke="var(--abu-bg)" stroke-width="'+sw+'"/>';
+    var cumulative = 0;
+    if (total>0){
+      for (var s=0;s<STATUS_ORDER.length;s++){
+        var key=STATUS_ORDER[s], n=counts[key]||0;
+        if (n<=0) continue;
+        var segLen=(n/total)*circumference;
+        var dashArray = segLen.toFixed(2)+' '+(circumference-segLen).toFixed(2);
+        var dashOffset = (-cumulative).toFixed(2);
+        svg += '<circle class="donut-seg" cx="'+c+'" cy="'+c+'" r="'+r+'" fill="none" stroke="var('+STATUS_COLOR_VAR[key]+')" stroke-width="'+sw+'" stroke-dasharray="'+dashArray+'" stroke-dashoffset="'+dashOffset+'"/>';
+        cumulative += segLen;
+      }
+    }
+    svg += '</svg>';
+    return '<div class="donut-figure">'+svg+'<div class="donut-center-text"><span class="num">'+fmtNum(total)+'</span><span class="lbl">Pemilih</span></div></div>';
+  }
+
+  function renderSummary(scoped){
+    var total = scoped.length, laki=0, perempuan=0;
+    for (var i=0;i<scoped.length;i++){ if (scoped[i].jk==='L') laki++; else if (scoped[i].jk==='P') perempuan++; }
+    els.summaryScope.textContent = state.tps==='ALL' ? 'SELURUH DESA SUKAKARYA' : (state.tps+' — '+(WILAYAH[state.tps]||''));
+    els.statRow.innerHTML =
+      '<div class="stat"><span class="num">'+fmtNum(total)+'</span><span class="lbl">Pemilih</span></div>'+
+      '<div class="stat"><span class="num">'+fmtNum(laki)+'</span><span class="lbl">Laki-laki</span></div>'+
+      '<div class="stat"><span class="num">'+fmtNum(perempuan)+'</span><span class="lbl">Perempuan</span></div>';
+
+    var counts = computeCounts(scoped);
+    els.donutWrap.innerHTML = donutSvg(counts, total);
+    var barHtml='', chipHtml='';
+    for (var s=0;s<STATUS_ORDER.length;s++){
+      var key=STATUS_ORDER[s], n=counts[key]||0;
+      var pct = total>0 ? (n/total*100) : 0;
+      barHtml += '<div class="ledger-seg '+key+'" style="width:'+pct.toFixed(2)+'%"></div>';
+      var activeCls = state.statusFilter===key ? ' active' : '';
+      chipHtml += '<button class="chip'+activeCls+'" data-statusfilter="'+key+'">'+
+        '<span class="dot '+key+'"></span><span class="txt"><span class="name">'+STATUS_META[key].label+'</span>'+
+        '<span class="pct">'+fmtPct(pct)+' · '+fmtNum(n)+'</span></span></button>';
+    }
+    els.ledgerBar.innerHTML = barHtml;
+    els.legendChips.innerHTML = chipHtml;
+
+    if (state.tps==='ALL' && !state.search){
+      els.infoBanner.style.display = 'block';
+      els.infoBanner.innerHTML = fmtNum(flaggedCount)+' data otomatis ditandai <b style="color:var(--merah)">Merah</b> berdasarkan Catatan Verifikasi bawaan berkas (NIK ganda / usia di bawah 17 tahun). Sisanya dimulai dari <b>Abu-abu</b>. Semua tanda bisa Anda ubah kapan saja &mdash; keputusan akhir tetap di tangan Panitia.';
+    } else {
+      els.infoBanner.style.display = 'none';
+    }
+  }
+
+  function voterCardHtml(rec){
+    var st = statusMap[rec.id] || 'abu2';
+    var isOpen = !!expandedIds[rec.id];
+    var subLine = 'No. '+rec.no+' · NIK '+esc(rec.nik||'—')+' · '+esc(rec.jk)+(rec.usia!=null?(' · '+rec.usia+' th'):'');
+    var addrLine = esc(rec.alamat)+(rec.rt!==''?(' · RT '+String(rec.rt).padStart(3,'0')):'')+(rec.rw!==''?'/RW '+String(rec.rw).padStart(3,'0'):'');
+    var badges = '';
+    if (rec.tambahan) badges = '<span class="voter-tag voter-tag-new">'+(rec.sumber==='impor'?'DARI IMPOR':'PEMILIH BARU')+'</span>';
+
+    var flagHtml = '';
+    if (rec.flagType){ flagHtml = '<div class="voter-flag">&#9888; <b>'+esc(rec.flagType)+'.</b> '+esc(rec.flagNote)+'</div>'; }
+
+    var detailHtml =
+      '<div class="voter-detail'+(isOpen?' open':'')+'" data-detail-for="'+rec.id+'">'+
+        '<div class="drow"><span>No. Kartu Keluarga</span><span>'+esc(rec.nkk||'—')+'</span></div>'+
+        '<div class="drow"><span>Tempat, Tgl Lahir</span><span>'+esc(rec.ttl||'—')+', '+esc(rec.tgl||'—')+'</span></div>'+
+        '<div class="drow"><span>Status Kawin</span><span>'+esc(rec.kawin||'—')+'</span></div>'+
+        (rec.ket ? '<div class="drow"><span>Keterangan</span><span>'+esc(rec.ket)+'</span></div>' : '')+
+      '</div>';
+
+    var statusBtns = '';
+    for (var s=0;s<STATUS_ORDER.length;s++){
+      var key=STATUS_ORDER[s], on = st===key ? ' on' : '';
+      statusBtns += '<button class="status-btn'+on+'" data-id="'+rec.id+'" data-status="'+key+'" aria-pressed="'+(st===key)+'" aria-label="Tandai '+STATUS_META[key].label+'">'+
+        '<span class="swatch"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>'+
+        '<span class="lbl2">'+STATUS_META[key].label+'</span></button>';
+    }
+
+    return '<div class="voter-card" data-rec-id="'+rec.id+'">'+
+      '<div class="voter-main" data-toggle="'+rec.id+'">'+
+        '<div class="voter-name-row"><span class="voter-name">'+esc(rec.nama)+'</span>'+
+          '<span class="voter-tag-wrap">'+badges+'<span class="voter-tag">'+esc(rec.tps)+'</span></span></div>'+
+        '<div class="voter-sub">'+subLine+'</div>'+
+        '<div class="voter-sub">'+addrLine+'</div>'+
+        flagHtml+
+      '</div>'+detailHtml+
+      '<div class="status-row">'+statusBtns+'</div>'+
+    '</div>';
+  }
+
+  function renderList(listRecords){
+    var total = listRecords.length;
+    var shown = Math.min(state.shown, total);
+    if (total===0){
+      els.resultsCount.textContent = 'Tidak ada pemilih yang cocok.';
+      els.listContainer.innerHTML = '<div class="empty-state">Coba ubah kata kunci pencarian atau filter TPS / status.</div>';
+      return;
+    }
+    els.resultsCount.innerHTML = 'Menampilkan <b>'+fmtNum(shown)+'</b> dari <b>'+fmtNum(total)+'</b> pemilih';
+    var html = '';
+    for (var i=0;i<shown;i++){ html += voterCardHtml(listRecords[i]); }
+    if (shown<total){ html += '<button class="load-more" id="loadMoreBtn">Muat '+Math.min(PAGE_SIZE,total-shown)+' lagi &darr;</button>'; }
+    els.listContainer.innerHTML = html;
+    var lm = document.getElementById('loadMoreBtn');
+    if (lm){ lm.addEventListener('click', function(){ state.shown += PAGE_SIZE; renderAll(); }); }
+  }
+
+  function renderAll(){
+    var scoped = getScoped();
+    renderSummary(scoped);
+    renderList(getListRecords(scoped));
+  }
+
+  /* ================= Laporan cetak / PDF (tidak berubah) ================= */
+
+  function sortedTpsKeys(){ var k=Object.keys(WILAYAH); k.sort(); return k; }
+  function recordsForTps(tps){ var o=[]; for (var i=0;i<RECORDS.length;i++){ if (RECORDS[i].tps===tps) o.push(RECORDS[i]); } return o; }
+  function prMiniBarHtml(counts,total){
+    var html='<div class="pr-bar">';
+    for (var s=0;s<STATUS_ORDER.length;s++){ var key=STATUS_ORDER[s], n=counts[key]||0, pct= total>0?(n/total*100):0;
+      html += '<div class="pr-bar-seg '+key+'" style="width:'+pct.toFixed(2)+'%"></div>'; }
+    html+='</div>'; return html;
+  }
+  function prStatsHtml(counts,total){
+    var html='';
+    for (var s=0;s<STATUS_ORDER.length;s++){ var key=STATUS_ORDER[s], n=counts[key]||0, pct=total>0?(n/total*100):0;
+      html += '<div class="pr-stat"><span class="pr-dot '+key+'"></span><span class="pr-stat-label">'+STATUS_META[key].label+'</span>'+
+        '<span class="pr-stat-val">'+fmtNum(n)+' pemilih &middot; '+fmtPct(pct)+'</span></div>'; }
+    return html;
+  }
+  function renderPrintReport(){
+    var tpsKeys = sortedTpsKeys();
+    var overallCounts = computeCounts(RECORDS);
+    var overallTotal = RECORDS.length;
+    var now = new Date();
+    var tanggal = now.toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'});
+    var jam = now.toLocaleTimeString('id-ID', {hour:'2-digit',minute:'2-digit'});
+    var html = '<div class="pr-head"><div class="pr-eyebrow">Panitia Pemilihan Kepala Desa</div>'+
+      '<h1 class="pr-title">Voter Roll Verification Summary</h1>'+
+      '<div class="pr-sub">Desa Sukakarya &middot; Kecamatan Sukakarya &middot; Kabupaten Bekasi &mdash; Tahun 2026</div>'+
+      '<div class="pr-meta">Dicetak '+tanggal+' pukul '+jam+' &nbsp;|&nbsp; Total pemilih: '+fmtNum(overallTotal)+' &nbsp;|&nbsp; Jumlah TPS: '+tpsKeys.length+'</div></div><hr class="pr-rule">';
+    html += '<div class="pr-legend">';
+    for (var s=0;s<STATUS_ORDER.length;s++){ var key=STATUS_ORDER[s];
+      html += '<div class="pr-legend-item"><span class="pr-dot '+key+'"></span>'+STATUS_META[key].label+' &mdash; '+STATUS_META[key].desc+'</div>'; }
+    html += '</div>';
+    html += '<section class="pr-section"><h2>Rekapitulasi Keseluruhan (Semua '+tpsKeys.length+' TPS)</h2>'+
+      prMiniBarHtml(overallCounts, overallTotal)+'<div class="pr-stats">'+prStatsHtml(overallCounts, overallTotal)+'</div></section>';
+    html += '<section class="pr-section"><h2>Summary per TPS</h2><table class="pr-table"><thead><tr>'+
+      '<th>TPS</th><th>Total</th><th>Hijau</th><th>Kuning</th><th>Abu-abu</th><th>Merah</th></tr></thead><tbody>';
+    for (var i=0;i<tpsKeys.length;i++){
+      var tps=tpsKeys[i], recs=recordsForTps(tps), counts=computeCounts(recs), total=recs.length;
+      html += '<tr><td class="pr-tps-name">'+esc(tps)+'<span class="pr-tps-wilayah">'+esc(WILAYAH[tps]||'')+'</span></td><td>'+fmtNum(total)+'</td>';
+      for (var s2=0;s2<STATUS_ORDER.length;s2++){ var key2=STATUS_ORDER[s2], n2=counts[key2]||0, pct2=total>0?(n2/total*100):0;
+        html += '<td><span class="pr-dot '+key2+'"></span>'+fmtNum(n2)+' <span class="pr-pct">('+fmtPct(pct2)+')</span></td>'; }
+      html += '</tr><tr class="pr-bar-row"><td colspan="6">'+prMiniBarHtml(counts,total)+'</td></tr>';
+    }
+    html += '</tbody></table></section>';
+    html += '<div class="pr-footer">Laporan dibuat otomatis oleh aplikasi verifikasi DPT berdasarkan tanda warna yang tersimpan saat dicetak. Keputusan akhir status setiap pemilih tetap berada di tangan Panitia.</div>';
+    els.printReport.innerHTML = html;
+  }
+
+  /* ================= Tambah Pemilih Baru (manual) ================= */
+
+  function populateSelect(selectEl, options, selectedValue){
+    var html='';
+    for (var i=0;i<options.length;i++){ var v=options[i];
+      html += '<option value="'+esc(v)+'"'+(String(v)===String(selectedValue)?' selected':'')+'>'+esc(v)+'</option>'; }
+    selectEl.innerHTML = html;
+  }
+  function refreshAlamatOptions(){
+    var tps = document.getElementById('fTps').value;
+    populateSelect(document.getElementById('fAlamat'), TPS_ALAMAT[tps]||[]);
+    refreshRtOptions();
+  }
+  function refreshRtOptions(){
+    var tps=document.getElementById('fTps').value, alamat=document.getElementById('fAlamat').value;
+    populateSelect(document.getElementById('fRt'), ALAMAT_RT[tps+'|'+alamat]||[]);
+    refreshRwOptions();
+  }
+  function refreshRwOptions(){
+    var tps=document.getElementById('fTps').value, alamat=document.getElementById('fAlamat').value, rt=document.getElementById('fRt').value;
+    populateSelect(document.getElementById('fRw'), RT_RW[tps+'|'+alamat+'|'+rt]||[]);
+  }
+
+  function openAddVoterModal(){
+    populateSelect(document.getElementById('fTps'), TPS_LIST);
+    refreshAlamatOptions();
+    ['fNama','fNik','fNkk','fTtl','fTgl','fUsia','fKet'].forEach(function(id){ document.getElementById(id).value=''; });
+    document.getElementById('fJk').value='L';
+    document.getElementById('fKawin').value='B';
+    document.getElementById('addVoterErr').textContent='';
+    els.addVoterModal.className='modal-backdrop show';
+    document.getElementById('fNama').focus();
+  }
+
+  function submitAddVoter(){
+    var errEl = document.getElementById('addVoterErr');
+    var nama = document.getElementById('fNama').value.trim();
+    var tps = document.getElementById('fTps').value;
+    var alamat = document.getElementById('fAlamat').value;
+    var rt = document.getElementById('fRt').value;
+    var rw = document.getElementById('fRw').value;
+    var jk = document.getElementById('fJk').value;
+    if (!nama){ errEl.textContent='Nama wajib diisi.'; return; }
+    if (!tps || !alamat || rt==='' || rw===''){ errEl.textContent='TPS, Kampung, RT, dan RW wajib dipilih.'; return; }
+
+    var nik = document.getElementById('fNik').value.trim();
+    var nkk = document.getElementById('fNkk').value.trim();
+    var ttl = document.getElementById('fTtl').value.trim();
+    var tglRaw = document.getElementById('fTgl').value;
+    var tgl = '';
+    if (tglRaw){ var p=tglRaw.split('-'); tgl = p[2]+'-'+p[1]+'-'+p[0]; }
+    var usiaInput = document.getElementById('fUsia').value;
+    var usia = usiaInput!=='' ? parseInt(usiaInput,10) : (tgl ? calcAge(tgl, META.refDate) : null);
+    var kawin = document.getElementById('fKawin').value;
+    var ket = document.getElementById('fKet').value;
+
+    var idInfo = nextIdForTps(tps);
+    var rec = { id:idInfo.id, tps:tps, no:idInfo.no, nkk:nkk, nik:nik, nama:nama, ttl:ttl, tgl:tgl, usia:usia,
+      kawin:kawin, jk:jk, alamat:alamat, rt:parseInt(rt,10), rw:parseInt(rw,10), ket:ket,
+      flagType:'', flagNote:'', tambahan:true, sumber:'manual' };
+
+    RECORDS.push(rec);
+    extraRecords.push(rec);
+    rebuildIndices();
+    statusMap[rec.id] = 'abu2';
+
+    els.addVoterModal.className = 'modal-backdrop';
+    state.search = rec.nama; state.tps = tps; state.statusFilter = null; state.shown = PAGE_SIZE;
+    els.searchInput.value = rec.nama;
+    els.tpsSelect.value = tps;
+    updateClearBtn();
+    renderAll();
+    showToast('Pemilih baru ditambahkan', false);
+
+    markDirty('extra'); markDirty('status'); scheduleSave(true);
+  }
+
+  /* ================= Impor pembaruan dari Excel ================= */
+
+  var XLSX_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+  var xlsxLoadPromise = null;
+  function ensureXlsxLib(){
+    if (window.XLSX) return Promise.resolve();
+    if (xlsxLoadPromise) return xlsxLoadPromise;
+    xlsxLoadPromise = new Promise(function(resolve, reject){
+      var s = document.createElement('script');
+      s.src = XLSX_CDN;
+      s.onload = function(){ resolve(); };
+      s.onerror = function(){ xlsxLoadPromise = null; reject(new Error('Gagal memuat pustaka pembaca Excel. Periksa koneksi internet.')); };
+      document.head.appendChild(s);
+    });
+    return xlsxLoadPromise;
+  }
+
+  function normalizeTps(raw){
+    var m = /(\d+)/.exec(String(raw||''));
+    if (!m) return null;
+    return 'TPS ' + pad2(parseInt(m[1],10));
+  }
+  function normalizeTgl(v){
+    if (v instanceof Date && !isNaN(v)) return pad2(v.getDate())+'-'+pad2(v.getMonth()+1)+'-'+v.getFullYear();
+    if (typeof v === 'number'){
+      var d = window.XLSX.SSF ? window.XLSX.SSF.parse_date_code(v) : null;
+      if (d) return pad2(d.d)+'-'+pad2(d.m)+'-'+d.y;
+    }
+    var s = String(v||'').trim();
+    var m = s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/);
+    if (m) return pad2(+m[1])+'-'+pad2(+m[2])+'-'+m[3];
+    return s;
+  }
+  function findHeaderRowIdx(aoa){
+    for (var r=0; r<Math.min(aoa.length,20); r++){
+      var row = aoa[r]||[]; var hasNik=false, hasNama=false;
+      for (var c=0;c<row.length;c++){
+        var v = String(row[c]==null?'':row[c]).toUpperCase();
+        if (v.indexOf('NIK')!==-1) hasNik=true;
+        if (v.indexOf('NAMA')!==-1) hasNama=true;
+      }
+      if (hasNik && hasNama) return r;
+    }
+    return -1;
+  }
+  function mapColumns(headerRow){
+    var map = {};
+    for (var c=0;c<headerRow.length;c++){
+      var v = String(headerRow[c]==null?'':headerRow[c]).toUpperCase();
+      if (/NOMOR KARTU KELUARGA|^NKK$/.test(v)) map.nkk=c;
+      else if (v==='NIK') map.nik=c;
+      else if (v.indexOf('NAMA')!==-1) map.nama=c;
+      else if (v.indexOf('TEMPAT LAHIR')!==-1) map.ttl=c;
+      else if (v.indexOf('TANGGAL LAHIR')!==-1) map.tgl=c;
+      else if (v.indexOf('PERKAWINAN')!==-1 || v==='KAWIN') map.kawin=c;
+      else if (v.indexOf('JENIS KELAMIN')!==-1) map.jk=c;
+      else if (v.indexOf('JALAN')!==-1 || v.indexOf('DUKUH')!==-1 || v.indexOf('ALAMAT')!==-1) map.alamat=c;
+      else if (v==='RT') map.rt=c;
+      else if (v==='RW') map.rw=c;
+      else if (v.indexOf('KETERANGAN')!==-1) map.ket=c;
+      else if (v==='NO') map.no=c;
+    }
+    return map;
+  }
+  function looksLikeIndexRow(row, colCount){
+    var matches=0;
+    for (var i=0;i<Math.min(colCount,row.length);i++){ if (Number(row[i])===i+1) matches++; }
+    return matches >= Math.min(6,colCount);
+  }
+
+  // Membaca semua sheet "TPS xx" dari workbook -> daftar baris pemilih mentah.
+  function parseWorkbookToRows(workbook){
+    var rows = [];
+    var problems = [];
+    var sheetNames = workbook.SheetNames.filter(function(n){ return /TPS\s*\d+/i.test(n); });
+    if (sheetNames.length === 0){
+      throw new Error('Tidak ditemukan sheet bernama "TPS 01", "TPS 02", dst di berkas ini.');
+    }
+    for (var si=0; si<sheetNames.length; si++){
+      var sheetName = sheetNames[si];
+      var tps = normalizeTps(sheetName);
+      if (!tps) continue;
+      var sheet = workbook.Sheets[sheetName];
+      var aoa = window.XLSX.utils.sheet_to_json(sheet, { header:1, raw:true, defval:'' });
+      var headerIdx = findHeaderRowIdx(aoa);
+      if (headerIdx === -1){ problems.push(sheetName+': baris header (NO/NIK/NAMA) tidak ditemukan, sheet dilewati.'); continue; }
+      var colMap = mapColumns(aoa[headerIdx]);
+      if (colMap.nik===undefined || colMap.nama===undefined){ problems.push(sheetName+': kolom NIK/NAMA tidak lengkap, sheet dilewati.'); continue; }
+      var colCount = aoa[headerIdx].length;
+      var start = headerIdx+1;
+      if (aoa[start] && looksLikeIndexRow(aoa[start], colCount)) start++;
+
+      for (var r=start; r<aoa.length; r++){
+        var row = aoa[r];
+        if (!row || row.length===0) break;
+        var namaVal = colMap.nama!==undefined ? row[colMap.nama] : '';
+        var nikVal = colMap.nik!==undefined ? row[colMap.nik] : '';
+        var noVal = colMap.no!==undefined ? row[colMap.no] : null;
+        var isBlank = (!namaVal || String(namaVal).trim()==='') && (!nikVal || String(nikVal).trim()==='');
+        if (isBlank){
+          if (colMap.no!==undefined && (noVal===''||noVal==null)) break; // baris kosong = akhir tabel
+          continue;
+        }
+        rows.push({
+          tps: tps,
+          nkk: colMap.nkk!==undefined ? String(row[colMap.nkk]||'').trim() : '',
+          nik: colMap.nik!==undefined ? String(row[colMap.nik]||'').trim() : '',
+          nama: String(namaVal||'').trim(),
+          ttl: colMap.ttl!==undefined ? String(row[colMap.ttl]||'').trim() : '',
+          tgl: colMap.tgl!==undefined ? normalizeTgl(row[colMap.tgl]) : '',
+          kawin: colMap.kawin!==undefined ? String(row[colMap.kawin]||'').trim() : '',
+          jk: colMap.jk!==undefined ? String(row[colMap.jk]||'').trim().toUpperCase().charAt(0) : '',
+          alamat: colMap.alamat!==undefined ? String(row[colMap.alamat]||'').trim() : '',
+          rt: colMap.rt!==undefined ? parseInt(row[colMap.rt],10)||0 : 0,
+          rw: colMap.rw!==undefined ? parseInt(row[colMap.rw],10)||0 : 0,
+          ket: colMap.ket!==undefined ? String(row[colMap.ket]||'').trim() : '',
+          _sheet: sheetName, _row: r+1
+        });
+      }
+    }
+    return { rows: rows, problems: problems };
+  }
+
+  var COMPARE_FIELDS = ['nama','tps','alamat','rt','rw','ttl','tgl','kawin','jk','ket'];
+
+  function diffRecord(current, incoming){
+    var changes = [];
+    for (var i=0;i<COMPARE_FIELDS.length;i++){
+      var f = COMPARE_FIELDS[i];
+      var oldV = current[f]==null ? '' : String(current[f]).trim();
+      var newV = incoming[f]==null ? '' : String(incoming[f]).trim();
+      if (!newV) continue; // kolom kosong di file baru -> jangan menimpa data lama
+      if (oldV !== newV) changes.push({ field:f, old:current[f], value:incoming[f] });
+    }
+    return changes;
+  }
+
+  function reconcileImport(rows){
+    var baru = [], berubah = [], duplikatDalamFile = [], tanpaNik = [];
+    var seenNik = {};
+    for (var i=0;i<rows.length;i++){
+      var row = rows[i];
+      if (!row.nik){ tanpaNik.push(row); continue; }
+      if (seenNik[row.nik]){ seenNik[row.nik].push(row); continue; }
+      seenNik[row.nik] = [row];
+    }
+    for (var nik in seenNik){
+      if (!Object.prototype.hasOwnProperty.call(seenNik, nik)) continue;
+      var group = seenNik[nik];
+      var row = group[group.length-1]; // ambil kemunculan terakhir sbg acuan
+      var isDup = group.length > 1;
+      if (isDup) duplikatDalamFile.push({ nik:nik, rows:group });
+
+      var current = NIK_INDEX[nik];
+      if (!current){
+        baru.push({ row:row, duplikatDalamFile:isDup });
+      } else {
+        var changes = diffRecord(current, row);
+        if (changes.length>0) berubah.push({ current:current, row:row, changes:changes });
+      }
+    }
+    return { baru:baru, berubah:berubah, duplikatDalamFile:duplikatDalamFile, tanpaNik:tanpaNik, totalRows:rows.length };
+  }
+
+  function importSummaryHtml(result){
+    return '<div class="imp-summary">'+
+      '<div class="imp-sum-item"><b>'+fmtNum(result.totalRows)+'</b> baris terbaca dari berkas</div>'+
+      '<div class="imp-sum-item imp-new"><b>'+fmtNum(result.baru.length)+'</b> data baru (belum ada di Voter roll)</div>'+
+      '<div class="imp-sum-item imp-chg"><b>'+fmtNum(result.berubah.length)+'</b> data berubah dari yang tersimpan</div>'+
+      (result.duplikatDalamFile.length ? '<div class="imp-sum-item imp-dup"><b>'+fmtNum(result.duplikatDalamFile.length)+'</b> NIK duplikat di dalam berkas ini</div>' : '')+
+      (result.tanpaNik.length ? '<div class="imp-sum-item imp-skip"><b>'+fmtNum(result.tanpaNik.length)+'</b> baris tanpa NIK dilewati (tidak bisa dicocokkan otomatis)</div>' : '')+
+      '</div>';
+  }
+
+  function importListHtml(result){
+    if (result.baru.length===0 && result.berubah.length===0){
+      return '<div class="imp-empty">Tidak ada data baru atau perubahan yang perlu diterapkan. Data pada berkas ini sudah sesuai dengan yang tersimpan.</div>';
+    }
+    var html = '';
+    if (result.baru.length){
+      html += '<div class="imp-group-head"><span>Data Baru — akan ditambahkan sebagai pemilih baru</span>'+
+        '<label class="imp-all"><input type="checkbox" class="imp-toggle-all" data-group="baru" checked> Pilih semua</label></div>';
+      for (var i=0;i<result.baru.length;i++){
+        var b = result.baru[i], row = b.row;
+        html += '<label class="imp-item'+(b.duplikatDalamFile?' imp-item-warn':'')+'">'+
+          '<input type="checkbox" class="imp-check" data-cat="baru" data-idx="'+i+'" checked>'+
+          '<span class="imp-item-body"><span class="imp-item-name">'+esc(row.nama)+'</span>'+
+          '<span class="imp-item-sub">'+esc(row.tps)+' · NIK '+esc(row.nik)+' · '+esc(row.alamat)+'</span>'+
+          (b.duplikatDalamFile ? '<span class="imp-item-warn-txt">&#9888; NIK ini muncul lebih dari sekali di berkas — periksa sebelum diterapkan</span>' : '')+
+          '</span></label>';
+      }
+    }
+    if (result.berubah.length){
+      html += '<div class="imp-group-head"><span>Data Berubah — akan memperbarui data tersimpan</span>'+
+        '<label class="imp-all"><input type="checkbox" class="imp-toggle-all" data-group="berubah" checked> Pilih semua</label></div>';
+      for (var j=0;j<result.berubah.length;j++){
+        var u = result.berubah[j];
+        var diffTxt = u.changes.map(function(ch){
+          return '<div class="imp-diff-row"><span class="imp-diff-field">'+esc(FIELD_LABELS[ch.field]||ch.field)+'</span>'+
+            '<span class="imp-diff-old">'+esc(ch.old||'—')+'</span><span class="imp-diff-arrow">&rarr;</span>'+
+            '<span class="imp-diff-new">'+esc(ch.value)+'</span></div>';
+        }).join('');
+        html += '<label class="imp-item">'+
+          '<input type="checkbox" class="imp-check" data-cat="berubah" data-idx="'+j+'" checked>'+
+          '<span class="imp-item-body"><span class="imp-item-name">'+esc(u.current.nama)+'</span>'+
+          '<span class="imp-item-sub">'+esc(u.current.tps)+' · NIK '+esc(u.current.nik)+'</span>'+
+          '<span class="imp-diff">'+diffTxt+'</span></span></label>';
+      }
+    }
+    return html;
+  }
+
+  function renderImportReview(result){
+    importState = result;
+    document.getElementById('importSummary').innerHTML = importSummaryHtml(result);
+    document.getElementById('importList').innerHTML = importListHtml(result);
+    var applyBtn = document.getElementById('importApplyBtn');
+    applyBtn.style.display = (result.baru.length+result.berubah.length>0) ? 'block' : 'none';
+    showImportStep(2);
+  }
+
+  function applyImportSelections(){
+    if (!importState) return;
+    var checks = document.querySelectorAll('#importList .imp-check:checked');
+    var nBaru=0, nBerubah=0;
+    for (var i=0;i<checks.length;i++){
+      var cat = checks[i].getAttribute('data-cat');
+      var idx = parseInt(checks[i].getAttribute('data-idx'),10);
+      if (cat==='baru'){
+        var b = importState.baru[idx]; if (!b) continue;
+        var row = b.row;
+        var idInfo = nextIdForTps(row.tps);
+        var rec = { id:idInfo.id, tps:row.tps, no:idInfo.no, nkk:row.nkk, nik:row.nik, nama:row.nama,
+          ttl:row.ttl, tgl:row.tgl, usia: row.tgl ? calcAge(row.tgl, META.refDate) : null,
+          kawin:row.kawin, jk:row.jk, alamat:row.alamat, rt:row.rt, rw:row.rw, ket:row.ket,
+          flagType: b.duplikatDalamFile ? 'NIK ganda' : '', flagNote: b.duplikatDalamFile ? 'NIK ini muncul lebih dari sekali pada berkas impor yang sama.' : '',
+          tambahan:true, sumber:'impor' };
+        RECORDS.push(rec); extraRecords.push(rec);
+        statusMap[rec.id] = defaultStatus(rec);
+        nBaru++;
+      } else if (cat==='berubah'){
+        var u = importState.berubah[idx]; if (!u) continue;
+        for (var c=0;c<u.changes.length;c++){ applyFieldUpdate(u.current, u.changes[c].field, u.changes[c].value); }
+        nBerubah++;
+      }
+    }
+    rebuildIndices();
+    closeImportModal();
+    renderAll();
+    showToast(fmtNum(nBaru)+' data baru & '+fmtNum(nBerubah)+' data diperbarui', false);
+
+    markDirty('extra'); markDirty('corrections'); markDirty('status'); scheduleSave(true);
+  }
+
+  function showImportStep(step){
+    document.getElementById('importStep1').style.display = step===1 ? 'block' : 'none';
+    document.getElementById('importStep2').style.display = step===2 ? 'block' : 'none';
+  }
+  function openImportModal(){
+    importState = null;
+    document.getElementById('importFileInput').value = '';
+    document.getElementById('importError').textContent = '';
+    document.getElementById('importLoading').style.display = 'none';
+    showImportStep(1);
+    els.importModal.className = 'modal-backdrop show';
+  }
+  function closeImportModal(){
+    els.importModal.className = 'modal-backdrop';
+    importState = null;
+  }
+
+  function handleImportFile(file){
+    var errEl = document.getElementById('importError');
+    errEl.textContent = '';
+    document.getElementById('importLoading').style.display = 'block';
+    ensureXlsxLib().then(function(){
+      return file.arrayBuffer();
+    }).then(function(buf){
+      var workbook = window.XLSX.read(buf, { type:'array', cellDates:true });
+      var parsed = parseWorkbookToRows(workbook);
+      var result = reconcileImport(parsed.rows);
+      result.problems = parsed.problems;
+      document.getElementById('importLoading').style.display = 'none';
+      renderImportReview(result);
+    }).catch(function(err){
+      document.getElementById('importLoading').style.display = 'none';
+      errEl.textContent = err && err.message ? err.message : 'Gagal membaca berkas Excel ini.';
+      console.error('Import error', err);
+    });
+  }
+
+  /* ================= TPS dropdown ================= */
+
+  function buildTpsOptions(){
+    var html = '<option value="ALL">Semua TPS (Desa Demo Village)</option>';
+    var keys = Object.keys(WILAYAH); keys.sort();
+    for (var i=0;i<keys.length;i++){ var k=keys[i]; html += '<option value="'+esc(k)+'">'+esc(k)+' — '+esc(WILAYAH[k])+'</option>'; }
+    els.tpsSelect.innerHTML = html;
+  }
+  function updateClearBtn(){
+    var active = state.search || state.tps!=='ALL' || state.statusFilter;
+    els.clearFilterBtn.className = 'clear-filter-btn' + (active ? ' show' : '');
+  }
+
+  /* ================= Events & init ================= */
+
+  function wireEvents(){
+    var searchDebounce=null;
+    els.searchInput.addEventListener('input', function(e){
+      var v = e.target.value;
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(function(){ state.search=v; state.shown=PAGE_SIZE; updateClearBtn(); renderAll(); }, 160);
+    });
+    els.tpsSelect.addEventListener('change', function(e){ state.tps=e.target.value; state.shown=PAGE_SIZE; updateClearBtn(); renderAll(); });
+    els.clearFilterBtn.addEventListener('click', function(){
+      state.search=''; state.tps='ALL'; state.statusFilter=null; state.shown=PAGE_SIZE;
+      els.searchInput.value=''; els.tpsSelect.value='ALL'; updateClearBtn(); renderAll();
+    });
+    els.legendChips.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-statusfilter]'); if (!btn) return;
+      var key = btn.getAttribute('data-statusfilter');
+      state.statusFilter = (state.statusFilter===key) ? null : key;
+      state.shown = PAGE_SIZE; updateClearBtn(); renderAll();
+    });
+    els.listContainer.addEventListener('click', function(e){
+      var sbtn = e.target.closest('.status-btn');
+      if (sbtn){
+        var id=sbtn.getAttribute('data-id'), status=sbtn.getAttribute('data-status');
+        if (statusMap[id]===status) return;
+        statusMap[id]=status; renderAll(); markDirty('status'); scheduleSave(false);
+        return;
+      }
+      var toggle = e.target.closest('[data-toggle]');
+      if (toggle){
+        var tid = toggle.getAttribute('data-toggle');
+        expandedIds[tid] = !expandedIds[tid];
+        var d = els.listContainer.querySelector('[data-detail-for="'+tid+'"]');
+        if (d) d.className = 'voter-detail'+(expandedIds[tid]?' open':'');
+      }
+    });
+
+    els.addVoterBtn.addEventListener('click', openAddVoterModal);
+    document.getElementById('addVoterCancel').addEventListener('click', function(){ els.addVoterModal.className='modal-backdrop'; });
+    document.getElementById('addVoterSubmit').addEventListener('click', submitAddVoter);
+    document.getElementById('fTps').addEventListener('change', refreshAlamatOptions);
+    document.getElementById('fAlamat').addEventListener('change', refreshRtOptions);
+    document.getElementById('fRt').addEventListener('change', refreshRwOptions);
+    document.getElementById('fTgl').addEventListener('change', function(){
+      if (!this.value) return;
+      var p=this.value.split('-'); var age=calcAge(p[2]+'-'+p[1]+'-'+p[0], META.refDate);
+      if (age!=null) document.getElementById('fUsia').value = age;
+    });
+
+    els.resetBtn.addEventListener('click', function(){ els.resetModal.className='modal-backdrop show'; });
+    document.getElementById('modalCancel').addEventListener('click', function(){ els.resetModal.className='modal-backdrop'; });
+    document.getElementById('modalConfirm').addEventListener('click', function(){
+      initDefaults(); els.resetModal.className='modal-backdrop'; renderAll(); markDirty('status'); scheduleSave(false);
+    });
+
+    els.exportBtn.addEventListener('click', function(){
+      var header=['NO','TPS','NKK','NIK','NAMA','TEMPAT_LAHIR','TANGGAL_LAHIR','USIA','STATUS_KAWIN','JK','ALAMAT','RT','RW','KETERANGAN','TEMUAN','CATATAN','STATUS_TANDA','SUMBER'];
+      var rows=[header.join(',')];
+      for (var i=0;i<RECORDS.length;i++){
+        var r=RECORDS[i], st=statusMap[r.id]||'abu2';
+        var line=[r.no,r.tps,r.nkk,r.nik,r.nama,r.ttl,r.tgl,r.usia,r.kawin,r.jk,r.alamat,r.rt,r.rw,r.ket,r.flagType,r.flagNote,STATUS_META[st].label, r.tambahan?(r.sumber||'manual'):'DPT asli'];
+        rows.push(line.map(csvEscape).join(','));
+      }
+      var csv = '\uFEFF'+rows.join('\r\n');
+      var blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a'); a.href=url; a.download='DPT_Sukakarya_2026_hasil_verifikasi.csv';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    });
+
+    els.printReportBtn.addEventListener('click', function(){ renderPrintReport(); setTimeout(function(){ window.print(); }, 60); });
+
+    els.importBtn.addEventListener('click', openImportModal);
+    document.getElementById('importCancel').addEventListener('click', closeImportModal);
+    document.getElementById('importFileInput').addEventListener('change', function(e){
+      if (e.target.files && e.target.files[0]) handleImportFile(e.target.files[0]);
+    });
+    document.getElementById('importBackBtn').addEventListener('click', function(){ showImportStep(1); });
+    document.getElementById('importApplyBtn').addEventListener('click', applyImportSelections);
+    document.getElementById('importList').addEventListener('change', function(e){
+      if (e.target.classList.contains('imp-toggle-all')){
+        var group = e.target.getAttribute('data-group');
+        var boxes = document.querySelectorAll('#importList .imp-check[data-cat="'+group+'"]');
+        for (var i=0;i<boxes.length;i++){ boxes[i].checked = e.target.checked; }
+      }
+    });
+    document.getElementById('persistRetryBtn').addEventListener('click', function(){ scheduleSave(false); });
+  }
+
+  function csvEscape(v){
+    var s = String(v==null?'':v);
+    if (/[",\n]/.test(s)) s = '"'+s.replace(/"/g,'""')+'"';
+    return s;
+  }
+
+  function cacheEls(){
+    ['statRow','summaryScope','ledgerBar','donutWrap','legendChips','infoBanner','searchInput','tpsSelect',
+     'clearFilterBtn','resultsCount','listContainer','saveToast','resetModal','exportBtn','resetBtn',
+     'printReportBtn','printReport','addVoterBtn','addVoterModal','importBtn','importModal'
+    ].forEach(function(id){ els[id] = document.getElementById(id); });
+  }
+
+  function init(){
+    cacheEls();
+    buildTpsOptions();
+    wireEvents();
+    updateStorageModeUI();
+
+    Promise.all([
+      readJsonKey(EXTRA_KEY, []),
+      readJsonKey(CORRECTIONS_KEY, {})
+    ]).then(function(res){
+      // Digabung, BUKAN ditimpa: kalau pengguna sempat menambah pemilih atau
+      // menerapkan impor sebelum data lama ini selesai dimuat, hasilnya tidak
+      // boleh hilang begitu proses memuat ini selesai.
+      var loadedExtra = Array.isArray(res[0]) ? res[0] : [];
+      var haveIds = {};
+      for (var i=0;i<extraRecords.length;i++){ haveIds[extraRecords[i].id] = true; }
+      for (var j=0;j<loadedExtra.length;j++){
+        if (!haveIds[loadedExtra[j].id]){ extraRecords.push(loadedExtra[j]); haveIds[loadedExtra[j].id] = true; }
+      }
+      var loadedCorrections = (res[1] && typeof res[1]==='object') ? res[1] : {};
+      for (var id in loadedCorrections){
+        if (Object.prototype.hasOwnProperty.call(loadedCorrections,id) && !(id in fieldCorrections)) fieldCorrections[id] = loadedCorrections[id];
+      }
+      mergeExtraRecords();
+      rebuildIndices();
+      applyFieldCorrections();
+      return loadStatuses();
+    }).then(function(){
+      renderAll();
+    }).catch(function(err){
+      console.error('Gagal memuat data tersimpan, memakai data awal', err);
+      rebuildIndices();
+      initDefaults();
+      renderAll();
+    });
+  }
+
+  init();
+
+})();
+
+</script>
+</body>
+</html>

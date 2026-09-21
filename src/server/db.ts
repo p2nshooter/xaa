@@ -17,6 +17,8 @@ export interface AppEnv {
   UPLOADS?: R2Bucket;
   /** HMAC key for signed cookies. Set with `wrangler secret put AUTH_SECRET`. */
   AUTH_SECRET?: string;
+  /** Dedicated key for encrypting admin-entered settings at rest. */
+  SETTINGS_KEY?: string;
   /** Accounts registering with this email are made admins. */
   ADMIN_EMAIL?: string;
   /** Payment destinations shown on the checkout screens. */
@@ -136,14 +138,82 @@ const SCHEMA = [
      message TEXT NOT NULL,
      created_at TEXT NOT NULL
    )`,
+  // Encryption key and any other internal secret. Written by server/crypto.ts.
+  `CREATE TABLE IF NOT EXISTS app_secrets (
+     key TEXT PRIMARY KEY,
+     value TEXT NOT NULL,
+     updated_at TEXT NOT NULL
+   )`,
+  /**
+   * Where clients send money. Maintained entirely from the admin UI — the
+   * address and any tag/memo are encrypted at rest, which is why they are
+   * TEXT blobs rather than plain columns.
+   */
+  `CREATE TABLE IF NOT EXISTS payment_methods (
+     id TEXT PRIMARY KEY,
+     kind TEXT NOT NULL,
+     label TEXT NOT NULL,
+     network TEXT,
+     currency TEXT NOT NULL DEFAULT 'EUR',
+     address_enc TEXT NOT NULL,
+     memo_enc TEXT,
+     link TEXT,
+     instructions TEXT,
+     active INTEGER NOT NULL DEFAULT 1,
+     sort_order INTEGER NOT NULL DEFAULT 0,
+     created_at TEXT NOT NULL,
+     updated_at TEXT NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS idx_payment_methods_active ON payment_methods(active, sort_order)`,
+  /** Studio configuration typed by an admin; secret values are encrypted. */
+  `CREATE TABLE IF NOT EXISTS app_settings (
+     key TEXT PRIMARY KEY,
+     value TEXT NOT NULL DEFAULT '',
+     is_secret INTEGER NOT NULL DEFAULT 0,
+     updated_at TEXT NOT NULL,
+     updated_by TEXT
+   )`,
+];
+
+/**
+ * Columns added after the first release.
+ *
+ * D1 has no migration state here by design — CREATE TABLE IF NOT EXISTS gets
+ * a fresh database right, but it does nothing for a table that already
+ * exists. ALTER TABLE ADD COLUMN is the missing half: it errors with
+ * "duplicate column" once applied, which is exactly the signal that the work
+ * is already done, so each one runs on its own and that error is swallowed.
+ * Anything else is a real failure and is rethrown.
+ */
+const COLUMN_MIGRATIONS = [
+  `ALTER TABLE enquiries ADD COLUMN status TEXT NOT NULL DEFAULT 'new'`,
+  `ALTER TABLE enquiries ADD COLUMN handled_at TEXT`,
+  `ALTER TABLE enquiries ADD COLUMN handled_by TEXT`,
+  `ALTER TABLE enquiries ADD COLUMN note TEXT`,
+  `ALTER TABLE payments ADD COLUMN invoice_no TEXT`,
+  `ALTER TABLE payments ADD COLUMN method_id TEXT`,
 ];
 
 let ready: Promise<void> | null = null;
+
+/** "duplicate column name: x" — the column is already there, nothing to do. */
+function isDuplicateColumn(err: unknown): boolean {
+  return /duplicate column/i.test(err instanceof Error ? err.message : String(err));
+}
 
 async function ensureSchema(database: D1Database): Promise<void> {
   if (!ready) {
     ready = (async () => {
       await database.batch(SCHEMA.map((sql) => database.prepare(sql)));
+      // Not batched: a batch is one transaction, so the first already-applied
+      // ALTER would roll the rest back on every single request.
+      for (const sql of COLUMN_MIGRATIONS) {
+        try {
+          await database.prepare(sql).run();
+        } catch (err) {
+          if (!isDuplicateColumn(err)) throw err;
+        }
+      }
     })().catch((err) => {
       // Let the next request try again rather than poisoning the isolate.
       ready = null;

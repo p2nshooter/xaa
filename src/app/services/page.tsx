@@ -131,6 +131,21 @@ export default function ServicesPage() {
         );
       })}
 
+      {/* A vertical with its own scaling law, so it gets its own page. */}
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <div className="panel flex flex-wrap items-center justify-between gap-4 p-6">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Specialist vertical</p>
+            <h2 className="mt-1.5 font-display text-xl font-extrabold">Election &amp; civic systems</h2>
+            <p className="mt-2 text-sm leading-relaxed text-steel-500">
+              Voter-roll verification, offline field registers and live tallying, priced by administrative scale —
+              from a single village at {eur(6000)} to a national programme at {eur(600000)}+.
+            </p>
+          </div>
+          <Link href="/election-systems" className="btn btn-dark btn-sm shrink-0">See the tiers</Link>
+        </div>
+      </section>
+
       {/* Add-ons */}
       <section id="addons" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-14">
         <SectionHead

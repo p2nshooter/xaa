@@ -10,10 +10,15 @@
  */
 
 /**
- * The studio's workers.dev subdomain, used for systems that have no custom
- * domain attached. One place to correct it if it ever changes.
+ * The studio's workers.dev subdomain, for systems with no custom domain.
+ *
+ * Deliberately EMPTY until someone has opened the resulting URL and seen it
+ * answer. This environment cannot reach *.workers.dev to check, and a dead
+ * link on a portfolio page costs more credibility than a missing one — so a
+ * work with no verified URL renders without a button instead of guessing.
+ * Fill this in once, and every entry using it goes live.
  */
-export const WORKERS_SUBDOMAIN = 'xaa';
+export const WORKERS_SUBDOMAIN = '';
 
 export interface Work {
   slug: string;
@@ -21,6 +26,14 @@ export interface Work {
   /** Live URL, or null when the system is internal / not publicly reachable. */
   url: string | null;
   urlLabel?: string;
+  /** Shown in place of a button when a URL exists but is not yet verified. */
+  urlPending?: string;
+  /** Extra production domains served by the same codebase. */
+  tenants?: { domain: string; url: string; note: string }[];
+  /** Playable demos. Stamped, sampled and stripped of every real person. */
+  demos?: { label: string; href: string; note: string }[];
+  /** Renders the large DEMO / sampling-only stamp across the entry. */
+  stamped?: boolean;
   kind: string;
   summary: string;
   /** What is actually in it — read off the codebase, not marketing. */
@@ -65,28 +78,37 @@ export const WORKS: Work[] = [
   },
   {
     slug: 'ulyah',
-    name: 'Ulyah',
+    name: 'Ulyah ecosystem',
     url: 'https://ulyah.com',
-    kind: 'Multi-module consumer platform',
+    kind: 'Multi-tenant platform · 5 production domains',
     summary:
-      'An Islamic reference and study platform — Quran, hadith, classical texts, audio, prayer times and a children’s section — served in multiple languages off a shared API.',
+      'One codebase serving five independent sites, each on its own domain, in its own language, with its own visual identity — an Islamic reference and study platform covering Quran, hadith, classical texts, audio and daily practice.',
     highlights: [
-      'Quran, hadith collections, tafsir editions and pesantren texts',
+      'Five tenants from a single codebase, each with a distinct theme',
+      'One native language per domain, enforced in both directions',
+      'Quran translations in 11 languages; scripture never machine-translated',
+      'Hadith collections, tafsir editions and pesantren texts',
       'Prayer times, qibla, hijri calendar and imsakiyah tools',
       'Kids section with iqro levels and games',
-      'Audiobook and murottal streaming with multiple sources',
+      'Audiobook and murottal streaming across multiple CDN sources',
       'Donations, user accounts and issued certificates',
-      'Multi-language routing, search and an admin panel',
       'Separate worker API with an API-key pool coordinator',
     ],
-    stack: ['TypeScript', 'Next.js', 'Cloudflare Workers', 'D1', 'pnpm monorepo'],
+    stack: ['TypeScript', 'Next.js', 'Cloudflare Workers', 'D1', 'KV', 'pnpm monorepo'],
     routes: 131,
     loc: 97709,
-    packageSlug: 'saas-platform',
-    packageName: 'SaaS / Web Application',
-    priceMin: 120000,
-    priceMax: 350000,
+    packageSlug: 'enterprise-platform',
+    packageName: 'Enterprise Platform',
+    priceMin: 150000,
+    priceMax: 400000,
     featured: true,
+    tenants: [
+      { domain: 'ulyah.com', url: 'https://ulyah.com', note: 'Indonesian · hub' },
+      { domain: 'xad.es', url: 'https://xad.es', note: 'English' },
+      { domain: '1fr.fr', url: 'https://1fr.fr', note: 'French' },
+      { domain: 'tilawa.de', url: 'https://tilawa.de', note: 'German' },
+      { domain: 'dawa.es', url: 'https://dawa.es', note: 'Spanish' },
+    ],
   },
   {
     slug: 'axto-us',
@@ -114,8 +136,9 @@ export const WORKS: Work[] = [
   {
     slug: 'quantum-karoseri',
     name: 'Sistem Karoseri — CV. Quantum Karya Bersama',
-    url: `https://quantum-karoseri.${WORKERS_SUBDOMAIN}.workers.dev`,
-    urlLabel: `quantum-karoseri.${WORKERS_SUBDOMAIN}.workers.dev`,
+    url: WORKERS_SUBDOMAIN ? `https://quantum-karoseri.${WORKERS_SUBDOMAIN}.workers.dev` : null,
+    urlLabel: WORKERS_SUBDOMAIN ? `quantum-karoseri.${WORKERS_SUBDOMAIN}.workers.dev` : undefined,
+    urlPending: 'Deployed on workers.dev — link published once verified',
     kind: 'Production management platform',
     summary:
       'Workshop production management for a vehicle body-building company: from quotation to work order, through per-unit build stages, to payment terms — with a public page so customers track their own unit.',
@@ -137,25 +160,45 @@ export const WORKS: Work[] = [
   },
   {
     slug: 'app-desa',
-    name: 'App Desa — Sukakarya',
+    name: 'Desa Sukakarya — civic & election suite',
     url: null,
+    urlPending: 'Production system — demos below',
     kind: 'Public administration platform',
+    stamped: true,
     summary:
-      'A village administration system covering resident records, document requests and reporting, with QR-verifiable outputs.',
+      'A village administration platform and the election tooling built alongside it: resident records and document issuing, voter-roll verification, a standalone voter register that runs offline, and live vote tallying.',
     highlights: [
-      'Resident and household records',
-      'Document request and issuing workflow',
-      'QR verification on issued documents',
-      'Role-separated administrative access',
-      'Reporting views',
+      'Resident and household records with QR-verifiable documents',
+      'Voter-roll verification with per-household grouping and flagging',
+      'Offline-first voter register — no database, files merged between officers',
+      'Role separation down to individual polling stations',
+      'Live vote count with per-station and per-hamlet breakdowns',
+      'Printable reports and recapitulation sheets',
     ],
-    stack: ['TypeScript', 'Next.js', 'Cloudflare'],
+    stack: ['TypeScript', 'Next.js', 'Cloudflare', 'Offline-first HTML'],
     routes: 46,
     loc: 24063,
     packageSlug: 'business-platform',
     packageName: 'Business Web Platform',
     priceMin: 25000,
     priceMax: 60000,
+    demos: [
+      {
+        label: 'Voter register',
+        href: '/demos/voter-list-demo',
+        note: 'Sign in with any account — the PIN fills itself in',
+      },
+      {
+        label: 'Voter-roll verification',
+        href: '/demos/dpt-verification-demo',
+        note: 'Household grouping, flagging and recapitulation',
+      },
+      {
+        label: 'Live vote count',
+        href: '/demos/real-count-demo',
+        note: 'Per-station tallying and progress',
+      },
+    ],
   },
   {
     slug: 'xaa',
@@ -206,13 +249,12 @@ export const WORKS: Work[] = [
 export const NETWORK = {
   name: 'Editorial network',
   summary:
-    'Five independent publishing sites on a shared template, each with its own editorial content, structured data and ad configuration, reporting into one central analytics and ad-control service.',
+    'Independent publishing sites on a shared template, each with its own editorial content, structured data and ad configuration, reporting into one central analytics and ad-control service.',
   sites: [
     { name: 'jai.lat', url: 'https://jai.lat', loc: 8972 },
     { name: 'lie.skin', url: 'https://lie.skin', loc: 10427 },
     { name: 'oldco.in', url: 'https://oldco.in', loc: 13176 },
     { name: 'profity.in', url: 'https://profity.in', loc: 10864 },
-    { name: 'xad.es', url: 'https://xad.es', loc: 2138 },
   ],
   packageName: 'Personal / Portfolio → Company Profile',
   priceMin: 4000,

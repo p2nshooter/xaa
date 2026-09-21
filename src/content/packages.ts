@@ -682,3 +682,138 @@ export const SUPER_ENTERPRISE = {
     'Named delivery manager and escalation path',
   ],
 } as const;
+
+/* ───────────── Election & civic technology ───────────── */
+
+/**
+ * A separate vertical with its own scaling law.
+ *
+ * These systems are not priced like a website. What drives cost is the number
+ * of polling stations and simultaneous field officers, the audit and
+ * reconciliation obligations, and the fact that the whole thing is used hard
+ * for one day and must not fail on that day. The tiers below are named for
+ * administrative scale because that is what the buyer actually knows.
+ */
+export interface CivicTier {
+  slug: string;
+  code: string;
+  name: string;
+  scale: string;
+  summary: string;
+  priceMin: number;
+  priceMax: number;
+  openEnded?: boolean;
+  timeline: string;
+  capacity: string;
+  includes: string[];
+  popular?: boolean;
+}
+
+export const CIVIC_TIERS: CivicTier[] = [
+  {
+    slug: 'civic-village',
+    code: 'E-01',
+    name: 'Village',
+    scale: 'One village · up to ~30 polling stations',
+    summary:
+      'Voter-roll verification, a field register that works with no signal, and a tally that produces a printable recapitulation the same evening.',
+    priceMin: 6000,
+    priceMax: 18000,
+    timeline: '3–6 weeks',
+    capacity: 'Up to 25,000 records',
+    includes: [
+      'Voter-roll import, cleaning and duplicate detection',
+      'Household grouping and per-record flagging with notes',
+      'Offline-first field register — no connection required',
+      'File export and merge between officers',
+      'Live vote tally with per-station entry',
+      'Printable recapitulation and per-station detail sheets',
+      'Role separation: administrator, sub-area, polling station, observer',
+      'PIN-based access with a printed access sheet',
+    ],
+  },
+  {
+    slug: 'civic-district',
+    code: 'E-02',
+    name: 'District / Regency',
+    scale: 'Many villages · hundreds of polling stations',
+    summary:
+      'Everything the village tier does, aggregated across villages, with a coordinator layer, reconciliation between officers and an audit trail on every correction.',
+    priceMin: 18000,
+    priceMax: 55000,
+    timeline: '6–12 weeks',
+    capacity: '25,000 – 400,000 records',
+    popular: true,
+    includes: [
+      'Everything in the Village tier',
+      'Multi-village aggregation with per-level dashboards',
+      'Coordinator hierarchy and delegated administration',
+      'Conflict resolution when two officers edit the same record',
+      'Full audit trail: who changed what, when, and from where',
+      'Bulk import and validation against official register formats',
+      'Progress monitoring per area, per officer, per day',
+      'Photographic evidence upload against each tally sheet',
+      'Exportable datasets for external verification',
+    ],
+  },
+  {
+    slug: 'civic-provincial',
+    code: 'E-03',
+    name: 'Provincial',
+    scale: 'Many regencies · thousands of polling stations',
+    summary:
+      'Real-time aggregation across an entire province, built to absorb every field officer reporting within the same two hours without degrading.',
+    priceMin: 55000,
+    priceMax: 180000,
+    timeline: '12–20 weeks',
+    capacity: '400,000 – 5,000,000 records',
+    includes: [
+      'Everything in the District tier',
+      'Real-time aggregation with sub-minute propagation',
+      'Load testing against peak-hour submission volume',
+      'Anomaly detection on implausible tallies and late corrections',
+      'Public results page, cached at the edge, separate from the operational system',
+      'Observer and press access with read-only scoped views',
+      'Redundant regional deployment with automatic failover',
+      'Data retention and archival policy implementation',
+      'Security review and penetration testing before go-live',
+      'On-call engineering cover for election day',
+    ],
+  },
+  {
+    slug: 'civic-national',
+    code: 'E-04',
+    name: 'National',
+    scale: 'Multi-province · nationwide field operation',
+    summary:
+      'A national programme: multi-region infrastructure, formal compliance and audit obligations, rehearsed disaster recovery, and a contracted SLA covering election day itself.',
+    priceMin: 180000,
+    priceMax: 600000,
+    openEnded: true,
+    timeline: '20–40 weeks',
+    capacity: '5,000,000+ records',
+    includes: [
+      'Everything in the Provincial tier',
+      'Multi-region active-active infrastructure',
+      'Independent security audit and published remediation',
+      'Formal disaster recovery plan, rehearsed under load',
+      'Cryptographic integrity on submitted tallies',
+      'Chain-of-custody records suitable for a legal challenge',
+      'Accessibility compliance across field and public interfaces',
+      'Multi-language field and public interfaces',
+      'Training programme and materials for field officers',
+      'Dedicated operations centre and 24/7 SLA around the election window',
+      'Post-election audit export and independent reconciliation support',
+    ],
+  },
+];
+
+/** Capabilities the studio brings to this vertical, whatever the tier. */
+export const CIVIC_CAPABILITIES: { title: string; body: string }[] = [
+  { title: 'Works without a signal', body: 'Field tools run entirely in the browser with no server round-trip, hold their state locally, and merge cleanly when officers come back into coverage. A village hall with one bar of reception is the normal case, not the edge case.' },
+  { title: 'Correct under contention', body: 'Two officers editing the same record is routine. Conflicts are detected and resolved explicitly rather than silently overwritten, and every correction keeps the value it replaced.' },
+  { title: 'Auditable by construction', body: 'Every change carries who, what, when and from where. The audit log is a first-class table, not a debugging afterthought, and it exports in a form an outside party can read.' },
+  { title: 'Built for one hard day', body: 'Capacity is proven with load tests modelled on the real submission curve — thousands of officers reporting inside the same two hours — not on average traffic.' },
+  { title: 'Private by default', body: 'Personal records are minimised, access is scoped to the smallest area an officer needs, and public surfaces are served from aggregates that cannot be reversed into individuals.' },
+  { title: 'Handed over completely', body: 'Source, infrastructure, data and documentation transfer at the end. Nothing about an election system should depend on the continued goodwill of its vendor.' },
+];

@@ -3,17 +3,23 @@
 import { useActionState, useState } from 'react';
 import {
   uploadConceptAction, submitPaymentAction, setProgressAction, setContractAction,
-  postUpdateAction, confirmPaymentAction, uploadDeliverableAction, type ActionState,
+  postUpdateAction, confirmPaymentAction, uploadDeliverableAction, uploadBusinessDataAction,
+  type ActionState,
 } from '@/server/actions';
 import { eur, usd } from '@/content/packages';
 import { Submit, Notice } from './Submit';
 
-export interface PayTo {
-  trc20?: string;
-  erc20?: string;
-  bep20?: string;
-  paypalEmail?: string;
-  paypalLink?: string;
+/** A destination as the client sees it, resolved from the admin's list. */
+export interface PayDestination {
+  id: string;
+  kind: 'crypto' | 'paypal' | 'bank';
+  label: string;
+  network: string | null;
+  currency: string;
+  address: string;
+  memo: string;
+  link: string | null;
+  instructions: string | null;
 }
 
 /* ───────────────────── Client: concept upload ───────────────────── */
@@ -63,19 +69,35 @@ export function PaymentForm({
   milestone,
   label,
   amount,
-  payTo,
+  destinations,
 }: {
   projectId: string;
   milestone: string;
   label: string;
   amount: number;
-  payTo: PayTo;
+  destinations: PayDestination[];
 }) {
   const [state, action] = useActionState<ActionState, FormData>(submitPaymentAction, {});
-  const [method, setMethod] = useState<'usdt' | 'paypal'>('usdt');
-  const [network, setNetwork] = useState<'TRC20' | 'ERC20' | 'BEP20'>('TRC20');
+  const [selectedId, setSelectedId] = useState(destinations[0]?.id ?? '');
+  const selected = destinations.find((d) => d.id === selectedId) ?? destinations[0];
 
-  const address = network === 'TRC20' ? payTo.trc20 : network === 'ERC20' ? payTo.erc20 : payTo.bep20;
+  if (destinations.length === 0) {
+    return (
+      <div className="panel border-l-4 border-l-amber-400 p-6">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 className="font-display text-lg font-extrabold">{label}</h3>
+          <p className="font-display text-2xl font-extrabold accent-text">{eur(amount)}</p>
+        </div>
+        <p className="mt-3 text-sm leading-relaxed text-steel-500">
+          No payment destination is published yet, so there is nowhere for us to honestly ask you to send this. We have
+          been notified. Please hold — and never act on a wallet address sent to you by email or chat, from us or
+          anyone claiming to be us.
+        </p>
+      </div>
+    );
+  }
+
+  const isCrypto = selected?.kind === 'crypto';
 
   return (
     <form action={action} className="panel border-l-4 border-l-[color:var(--accent)] p-6">
@@ -83,95 +105,71 @@ export function PaymentForm({
         <h3 className="font-display text-lg font-extrabold">{label}</h3>
         <p className="font-display text-2xl font-extrabold accent-text">{eur(amount)}</p>
       </div>
-      <p className="text-xs text-steel-500">≈ {usd(amount)} in USDT</p>
+      <p className="text-xs text-steel-400">≈ {usd(amount)} in USDT</p>
 
       <div className="mt-5">
         <Notice error={state.error} ok={state.ok} />
         <input type="hidden" name="projectId" value={projectId} />
         <input type="hidden" name="milestone" value={milestone} />
         <input type="hidden" name="label" value={label} />
+        <input type="hidden" name="methodId" value={selected?.id ?? ''} />
+        <input type="hidden" name="method" value={isCrypto ? 'usdt' : 'paypal'} />
+        <input type="hidden" name="network" value={selected?.network ?? ''} />
 
-        <div className="flex gap-2">
-          {(['usdt', 'paypal'] as const).map((m) => (
+        <p className="text-xs font-bold uppercase tracking-wide text-steel-400">Choose how to pay</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {destinations.map((d) => (
             <button
-              key={m}
+              key={d.id}
               type="button"
-              onClick={() => setMethod(m)}
-              className={`btn btn-sm flex-1 ${method === m ? 'btn-primary' : 'btn-ghost'}`}
+              onClick={() => setSelectedId(d.id)}
+              className={`btn btn-sm ${selectedId === d.id ? 'btn-primary' : 'btn-ghost'}`}
             >
-              {m === 'usdt' ? 'Pay in USDT' : 'Pay with PayPal'}
+              {d.label}
             </button>
           ))}
         </div>
-        <input type="hidden" name="method" value={method} />
 
-        {method === 'usdt' ? (
-          <div className="mt-5">
-            <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">Network</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {(['TRC20', 'ERC20', 'BEP20'] as const).map((n) => (
-                <button
-                  key={n}
-                  type="button"
-                  onClick={() => setNetwork(n)}
-                  className={`btn btn-sm ${network === n ? 'btn-dark' : 'btn-ghost'}`}
-                >
-                  {n}
-                </button>
-              ))}
-            </div>
-            <input type="hidden" name="network" value={network} />
-
-            <div className="mt-4 rounded-lg bg-ivory-100/70 p-4">
-              <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">Send {usd(amount)} USDT ({network}) to</p>
-              {address ? (
-                <code className="mt-2 block break-all rounded bg-white p-3 text-xs font-semibold">{address}</code>
-              ) : (
-                <p className="mt-2 text-sm text-steel-500">
-                  The {network} address for this project has not been published yet. Choose another network, or email us
-                  and we will enable it — never accept an address sent to you any other way.
-                </p>
-              )}
-              <p className="hint mt-2">
-                Send only USDT on {network}. A transfer on the wrong network cannot be recovered. Network fees are paid
-                by the sender.
+        {selected ? (
+          <div className="mt-4 rounded-xl bg-[color:var(--surface)] p-4">
+            <p className="text-xs font-bold uppercase tracking-wide text-steel-400">
+              Send {isCrypto ? `${usd(amount)} ${selected.currency}` : eur(amount)} to
+            </p>
+            <code className="mt-2 block break-all rounded-lg bg-white p-3 text-xs font-semibold">
+              {selected.address}
+            </code>
+            {selected.memo ? (
+              <p className="mt-2 text-xs">
+                <strong>Memo / tag (required):</strong>{' '}
+                <code className="rounded bg-white px-1.5 py-0.5">{selected.memo}</code>
               </p>
-            </div>
-
-            <label className="field mt-4">
-              <span>Transaction hash *</span>
-              <input name="reference" className="input" required placeholder="0x… or the TRON txid" />
-              <span className="hint">We verify it on-chain and confirm within one business day.</span>
-            </label>
+            ) : null}
+            {selected.link ? (
+              <a href={selected.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm mt-3">
+                Open {selected.label}
+              </a>
+            ) : null}
+            <p className="hint mt-2">
+              {selected.instructions ??
+                (isCrypto
+                  ? `Send only ${selected.currency} on ${selected.network}. A transfer on the wrong network cannot be recovered, and network fees are paid by the sender.`
+                  : 'Send as a payment for goods and services and quote your project reference.')}
+            </p>
           </div>
-        ) : (
-          <div className="mt-5">
-            <div className="rounded-lg bg-ivory-100/70 p-4">
-              <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">Send {eur(amount)} via PayPal to</p>
-              {payTo.paypalEmail || payTo.paypalLink ? (
-                <>
-                  {payTo.paypalEmail ? <code className="mt-2 block break-all rounded bg-white p-3 text-xs font-semibold">{payTo.paypalEmail}</code> : null}
-                  {payTo.paypalLink ? (
-                    <a href={payTo.paypalLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm mt-3">
-                      Open PayPal
-                    </a>
-                  ) : null}
-                </>
-              ) : (
-                <p className="mt-2 text-sm text-steel-500">PayPal has not been published for this deployment yet. Use USDT, or contact us.</p>
-              )}
-              <p className="hint mt-2">
-                Send as a payment for goods and services and quote your project reference. Friends-and-family transfers
-                remove your buyer protection.
-              </p>
-            </div>
+        ) : null}
 
-            <label className="field mt-4">
-              <span>PayPal transaction ID *</span>
-              <input name="reference" className="input" required placeholder="e.g. 8XY12345AB678901C" />
-            </label>
-          </div>
-        )}
+        <label className="field mt-4">
+          <span>{isCrypto ? 'Transaction hash *' : 'Transaction ID *'}</span>
+          <input
+            name="reference"
+            className="input font-mono text-sm"
+            required
+            autoComplete="off"
+            spellCheck={false}
+            placeholder={isCrypto ? '0x… or the TRON txid' : 'e.g. 8XY12345AB678901C'}
+          />
+          <span className="hint">We verify it against the transfer and confirm within one business day.</span>
+        </label>
 
         <div className="grid gap-x-5 sm:grid-cols-2">
           <label className="field">
@@ -285,6 +283,43 @@ export function PaymentDecision({ paymentId }: { paymentId: string }) {
       <button type="submit" name="decision" value="reject" className="btn btn-ghost btn-sm">Reject</button>
       {state.error ? <span className="text-xs text-red-700">{state.error}</span> : null}
       {state.ok ? <span className="text-xs text-green-700">{state.ok}</span> : null}
+    </form>
+  );
+}
+
+/* ───────────────────── Client: business data ───────────────────── */
+
+/**
+ * Company and member data the build needs — registration documents, team and
+ * customer lists, product data. Separate from the concept upload because it
+ * arrives later and for a different reason, and mixing the two made the
+ * project page ambiguous about what was still owed.
+ */
+export function BusinessDataForm({ projectId }: { projectId: string }) {
+  const [state, action] = useActionState<ActionState, FormData>(uploadBusinessDataAction, {});
+  return (
+    <form action={action} className="panel p-6">
+      <h3 className="font-display text-lg font-extrabold">Business &amp; member data</h3>
+      <p className="mt-1 text-sm text-steel-500">
+        Company registration, team or member lists, product data, price lists — whatever the build has to be loaded
+        with. Private to your project: only you and the delivery team can open these.
+      </p>
+      <div className="mt-5">
+        <Notice error={state.error} ok={state.ok} />
+        <input type="hidden" name="projectId" value={projectId} />
+        <label className="field">
+          <span>Files</span>
+          <input type="file" name="files" multiple className="input" />
+          <span className="hint">
+            Spreadsheets, documents, images or a ZIP. Up to 25 MB per file, 10 files at a time.
+          </span>
+        </label>
+        <label className="field">
+          <span>Notes</span>
+          <textarea name="note" className="textarea" rows={3} placeholder="How the data is structured, what is missing, anything confidential we should handle carefully." />
+        </label>
+        <Submit pendingLabel="Uploading…">Send data</Submit>
+      </div>
     </form>
   );
 }

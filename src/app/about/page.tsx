@@ -37,11 +37,12 @@ export default function AboutPage() {
         <div className="article-body">
           <h2>The name</h2>
           <p>
-            XAA stands for <strong>eXperience, Architecture and Applications</strong> — the three things that have to be
-            right for a digital product to work. <strong>Experience</strong> is what the visitor feels: interface,
-            speed, clarity, trust. <strong>Architecture</strong> is what holds it up: data models, services, security,
-            infrastructure. <strong>Applications</strong> is what it actually does: accounts, payments, dashboards,
-            automation. Get one wrong and the other two do not matter.
+            XAA.ES stands for <strong>eXperience, Automation and Architecture — Ecosystem Services</strong>, which is
+            the order the work actually happens in. <strong>Experience</strong> is what the visitor feels: interface,
+            speed, clarity, trust. <strong>Automation</strong> is what removes the manual step — the payment that
+            reconciles itself, the report nobody has to assemble, the status a client can read without asking.
+            <strong>Architecture</strong> is what holds it up: data models, services, security, infrastructure. And
+            <strong>Ecosystem Services</strong> is the part most studios skip: keeping the thing alive once it ships.
           </p>
           <p>
             The studio operates from the <strong>.es</strong> domain and works in English with clients across Europe and

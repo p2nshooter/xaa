@@ -11,14 +11,14 @@
 export const SITE = {
   id: 'xaa-es', // central ad-control + analytics key (matches ulyah admin)
   name: 'XAA',
-  /** What the three letters stand for. Used across the site chrome. */
-  expansion: 'eXperience · Architecture · Applications',
-  expansionPlain: 'eXperience, Architecture & Applications',
+  /** What the name stands for. Used across the site chrome. */
+  expansion: 'eXperience · Automation · Architecture',
+  expansionPlain: 'eXperience, Automation & Architecture — Ecosystem Services',
   domain: 'xaa.es',
   url: 'https://xaa.es',
   tagline: 'Professional website & software development',
   description:
-    'XAA — eXperience, Architecture & Applications. A European web development studio building landing pages, corporate websites, e-commerce, marketplaces, SaaS and enterprise platforms, with milestone-based payments in USDT or PayPal.',
+    'XAA — eXperience, Automation & Architecture, Ecosystem Services. A European web development studio building landing pages, corporate websites, e-commerce, marketplaces, SaaS and enterprise platforms, with milestone-based payments in USDT or PayPal.',
   locale: 'en',
   email: 'hello@xaa.es',
   salesEmail: 'sales@xaa.es',

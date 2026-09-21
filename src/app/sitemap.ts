@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Studio
     { url: `${b}/services`, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${b}/portfolio`, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${b}/election-systems`, changeFrequency: 'monthly', priority: 0.85 },
     ...PACKAGES.map((p) => ({ url: `${b}/services/${p.slug}`, changeFrequency: 'monthly' as const, priority: 0.85 })),
     { url: `${b}/process`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${b}/care`, changeFrequency: 'monthly', priority: 0.8 },

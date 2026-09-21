@@ -326,3 +326,41 @@ h1 { letter-spacing: -0.032em; }
   transition: transform 0.15s ease, background 0.15s ease;
 }
 .ad-sponsored:hover { transform: translateY(-1px); background: #e4edff; }
+
+/* ───────────────────────── Print ─────────────────────────
+   Invoices and receipts are printed and saved as PDFs, so the site chrome
+   has to disappear and the document has to sit on the page properly. */
+@media print {
+  header, footer, nav, .print\:hidden { display: none !important; }
+  body { background: #fff; }
+  main { min-height: 0 !important; }
+  .panel, .premium-card {
+    border: 1px solid #d8e0ee !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  a { text-decoration: none !important; color: inherit !important; }
+  .badge { border: 1px solid #c8d2e2 !important; }
+  @page { margin: 14mm; }
+}
+
+/* ───────── Demo stamp (portfolio) ─────────
+   Marks an entry whose published demos run on generated data, so nobody
+   mistakes a sampled screenshot for a live system holding real records. */
+.stamped { position: relative; overflow: hidden; }
+.stamped::after {
+  content: 'DEMO';
+  position: absolute; top: 50%; right: 2.5rem;
+  transform: translateY(-50%) rotate(-18deg);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800; font-size: clamp(3rem, 9vw, 7rem); line-height: 1;
+  letter-spacing: .04em; color: rgba(185, 28, 28, .09);
+  border: .08em solid rgba(185, 28, 28, .09); border-radius: .08em;
+  padding: .04em .12em; pointer-events: none; white-space: nowrap;
+}
+.stamp-note {
+  display: inline-flex; align-items: center; gap: .4rem;
+  border: 1px solid #fca5a5; background: #fff5f5; color: #b91c1c;
+  border-radius: 9999px; padding: .28rem .75rem;
+  font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+}
