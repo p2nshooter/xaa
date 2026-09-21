@@ -78,13 +78,14 @@ function PasswordField({
           minLength={minLength}
           autoComplete={autoComplete}
         />
+        {/* The input is a light box in every context (including the dark admin
+            panel), so the toggle text is always dark — a white label here would
+            be invisible on white, which is exactly what hid the first version. */}
         <button
           type="button"
           onClick={() => setVisible((v) => !v)}
           aria-pressed={visible}
-          className={`absolute inset-y-0 right-0 flex items-center pr-3 text-xs font-bold uppercase tracking-wide ${
-            dark ? 'text-white/60 hover:text-white' : 'text-steel-500 hover:text-gold-500'
-          }`}
+          className="absolute inset-y-0 right-0 flex items-center pr-3 text-xs font-bold uppercase tracking-wide text-steel-500 hover:text-gold-500"
           tabIndex={-1}
         >
           {visible ? c.hide : c.show}

@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import type { D1Database } from '@cloudflare/workers-types';
-import { db, newId, nowIso, appEnv } from './db';
+import { db, bucket, newId, nowIso, appEnv } from './db';
 
 /**
  * Account and session handling for the client portal.
@@ -155,14 +155,34 @@ export async function createUser(input: {
   return user;
 }
 
-export async function startSession(userId: string): Promise<void> {
-  const database = await db();
+/**
+ * Sessions live in R2, not D1.
+ *
+ * D1's free tier caps daily row *reads*, and currentUser() runs on every single
+ * portal page load — one JOIN per request is the busiest read in the whole app.
+ * When the account's shared D1 read budget is exhausted (the election databases
+ * on the same account are large), that one read starts failing and the studio
+ * owner cannot even sign in. R2 has a separate, far larger budget and stores
+ * the whole session as one small object, so authentication no longer depends on
+ * D1 being under quota. The object carries a snapshot of the user, so reading a
+ * session returns the signed-in user with no database round-trip at all.
+ */
+const SESSION_PREFIX = 'sess/';
+
+interface SessionBlob {
+  user: User;
+  expires_at: string;
+}
+
+export async function startSession(user: User): Promise<void> {
   const id = `${newId()}${newId()}`.replace(/-/g, '');
   const expires = new Date(Date.now() + SESSION_DAYS * 864e5);
-  await database
-    .prepare('INSERT INTO sessions (id, user_id, created_at, expires_at) VALUES (?, ?, ?, ?)')
-    .bind(id, userId, nowIso(), expires.toISOString())
-    .run();
+  const b = await bucket();
+  if (!b) throw new Error('Session storage (R2) is not configured.');
+  const blob: SessionBlob = { user, expires_at: expires.toISOString() };
+  await b.put(`${SESSION_PREFIX}${id}`, JSON.stringify(blob), {
+    httpMetadata: { contentType: 'application/json' },
+  });
   const jar = await cookies();
   jar.set(COOKIE, id, {
     httpOnly: true,
@@ -179,14 +199,14 @@ export async function endSession(): Promise<void> {
   jar.delete(COOKIE);
   if (!id) return;
   try {
-    const database = await db();
-    await database.prepare('DELETE FROM sessions WHERE id = ?').bind(id).run();
+    const b = await bucket();
+    if (b) await b.delete(`${SESSION_PREFIX}${id}`);
   } catch {
     /* the cookie is gone either way */
   }
 }
 
-/** The signed-in user, or null. Safe to call on any page. */
+/** The signed-in user, or null. Safe to call on any page. Reads R2, not D1. */
 export async function currentUser(): Promise<User | null> {
   let id: string | undefined;
   try {
@@ -195,17 +215,19 @@ export async function currentUser(): Promise<User | null> {
   } catch {
     return null;
   }
-  if (!id) return null;
+  if (!id || !/^[a-f0-9]{32,}$/i.test(id)) return null;
   try {
-    const database = await db();
-    const row = await database
-      .prepare(
-        `SELECT u.* FROM sessions s JOIN users u ON u.id = s.user_id
-         WHERE s.id = ? AND s.expires_at > ?`
-      )
-      .bind(id, nowIso())
-      .first<User>();
-    return row ?? null;
+    const b = await bucket();
+    if (!b) return null;
+    const obj = await b.get(`${SESSION_PREFIX}${id}`);
+    if (!obj) return null;
+    const blob = JSON.parse(await obj.text()) as SessionBlob;
+    if (!blob.expires_at || new Date(blob.expires_at) <= new Date()) {
+      // Expired: best-effort tidy so it does not linger in the bucket.
+      try { await b.delete(`${SESSION_PREFIX}${id}`); } catch { /* ignore */ }
+      return null;
+    }
+    return blob.user ?? null;
   } catch {
     return null;
   }
@@ -262,4 +284,50 @@ export async function seedAdmin(database: D1Database, env: { ADMIN_PASSWORD?: st
     )
     .bind(newId(), email, SEED_ADMIN.name, passwordHash, nowIso())
     .run();
+}
+
+/** True when `email` is the studio account (built-in list or ADMIN_EMAIL). */
+export function isAdminEmail(email: string, env: { ADMIN_EMAIL?: string }): boolean {
+  const e = normaliseEmail(email);
+  return ADMIN_EMAILS.includes(e) || Boolean(env.ADMIN_EMAIL && normaliseEmail(env.ADMIN_EMAIL) === e);
+}
+
+/** Length-independent-ish constant-time string comparison. */
+function slowEqual(a: string, b: string): boolean {
+  let diff = a.length ^ b.length;
+  const n = Math.max(a.length, b.length);
+  for (let i = 0; i < n; i += 1) diff |= (a.charCodeAt(i) || 0) ^ (b.charCodeAt(i) || 0);
+  return diff === 0;
+}
+
+/**
+ * Verify the studio password WITHOUT touching D1.
+ *
+ * This is the whole point of the R2 pivot: the owner must be able to sign in
+ * even when the account's D1 read budget is exhausted. When an ADMIN_PASSWORD
+ * secret is set, the secret *is* the plaintext, so we compare directly; with no
+ * secret, the intended password is the committed hash, verified with the same
+ * PBKDF2 scheme as every other account. Either way, no database is read.
+ */
+export async function verifyAdminPassword(password: string, env: { ADMIN_PASSWORD?: string }): Promise<boolean> {
+  if (env.ADMIN_PASSWORD) return slowEqual(password, env.ADMIN_PASSWORD);
+  return verifyPassword(password, SEED_ADMIN.passwordHash);
+}
+
+/**
+ * The studio admin as a session user, built from source — no D1 row required.
+ * A stable synthetic id keeps the session valid across deploys; the admin desk
+ * lists every client's work rather than its own, so this id needs no projects.
+ */
+export function adminSessionUser(email: string): User {
+  return {
+    id: `studio:${normaliseEmail(email)}`,
+    email: normaliseEmail(email),
+    name: SEED_ADMIN.name,
+    company: null,
+    country: null,
+    phone: null,
+    role: 'admin',
+    created_at: nowIso(),
+  };
 }

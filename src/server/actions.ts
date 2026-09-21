@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { db, newId, nowIso, NotConfiguredError, appEnv } from './db';
-import { createUser, currentUser, endSession, findUserByEmail, normaliseEmail, startSession, verifyPassword, ADMIN_EMAILS, seedAdmin } from './auth';
+import { createUser, currentUser, endSession, findUserByEmail, normaliseEmail, startSession, verifyPassword, isAdminEmail, verifyAdminPassword, adminSessionUser } from './auth';
 import {
   addUpdate, cancelProject, createProject, getProject, listPayments, money, recordPayment,
   setContract, setPaymentStatus, setProgress, type Milestone, type Project,
@@ -83,7 +83,7 @@ export async function registerAction(_prev: ActionState, form: FormData): Promis
       country: str(form, 'country'),
       phone: str(form, 'phone'),
     });
-    await startSession(user.id);
+    await startSession(user);
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);
@@ -96,26 +96,31 @@ export async function loginAction(_prev: ActionState, form: FormData): Promise<A
   try {
     const email = str(form, 'email');
     const password = str(form, 'password');
+    const env = await appEnv();
 
-    // The studio account must always be able to sign in. If this is an admin
-    // email, seed/heal the row synchronously right here — independent of the
-    // background seed in db() — so a missing or stale studio row is repaired
-    // before we verify, not on some later request. Best-effort: a failure must
-    // not block a normal client login, and /api/health surfaces the reason.
-    if (ADMIN_EMAILS.includes(normaliseEmail(email))) {
-      try {
-        const env = await appEnv();
-        if (env.DB) await seedAdmin(env.DB, { ADMIN_PASSWORD: env.ADMIN_PASSWORD });
-      } catch {
-        /* health endpoint reports why; do not block the login attempt */
+    // The studio owner signs in WITHOUT reading D1 at all. The admin password is
+    // verified against the ADMIN_PASSWORD secret or the committed hash, and the
+    // session is written to R2 (see startSession). This is what lets the owner
+    // in even when the account's shared D1 read budget is exhausted — the exact
+    // failure the sign-in kept hitting. The user record is built from source.
+    if (isAdminEmail(email, env)) {
+      if (!(await verifyAdminPassword(password, env))) {
+        return { error: 'Email or password is incorrect.' };
       }
+      await startSession(adminSessionUser(email));
+      redirect(next.startsWith('/') ? next : '/portal');
     }
 
+    // Clients are stored in D1, so their sign-in still reads it. If D1 is over
+    // quota this fails with the real reason (below); the studio account above is
+    // unaffected. On success the session snapshot goes to R2, so their later
+    // page loads no longer read D1 for auth either.
     const user = await findUserByEmail(email);
     if (!user || !(await verifyPassword(password, user.password_hash))) {
       return { error: 'Email or password is incorrect.' };
     }
-    await startSession(user.id);
+    const { password_hash: _omit, ...safe } = user;
+    await startSession(safe);
   } catch (err) {
     if (isRedirect(err)) throw err;
     // Sign-in is the one action where the *real* reason matters more than a
