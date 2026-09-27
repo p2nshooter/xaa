@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/services/${pkg.slug}`,
     copy: {
       en: { title: `${en.name} — ${price}`, description: clip(`${en.summary} Delivery in ${en.timeline}. Start with a 10% deposit, pay by USDT or PayPal.`) },
-      es: { title: `${es.name} — ${price}`, description: clip(`${es.summary} Entrega en ${es.timeline}. Empieza con un depósito del 10%, paga en USDT o PayPal.`) },
-      id: { title: `${id.name} — ${price}`, description: clip(`${id.summary} Selesai dalam ${id.timeline}. Mulai dengan DP 10%, bayar via USDT atau PayPal.`) },
+      es: { title: `${es.name} — ${price}: precio y plazos`, description: clip(`${es.summary} Entrega en ${es.timeline}. Empieza con un depósito del 10%, paga en USDT o PayPal.`) },
+      id: { title: `Jasa ${id.name} — ${price}`, description: clip(`${id.summary} Selesai dalam ${id.timeline}. Mulai dengan DP 10%, bayar via USDT atau PayPal.`) },
     },
   });
 }

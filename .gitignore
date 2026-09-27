@@ -10,3 +10,8 @@ node_modules/
 # `wrangler dev` drops in .wrangler/tmp (tens of MB).
 .wrangler/
 .dev.vars
+
+# e2e run output
+tests/e2e/node_modules/
+tests/e2e/shots/
+tests/e2e/mock-ai.log

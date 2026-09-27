@@ -1,0 +1,9 @@
+{
+  "name": "xaa-e2e",
+  "private": true,
+  "type": "module",
+  "description": "End-to-end checks run against a local Worker (npm run cf:preview) or production. See docs/BLUEPRINT.md.",
+  "dependencies": {
+    "playwright-core": "1.56"
+  }
+}
