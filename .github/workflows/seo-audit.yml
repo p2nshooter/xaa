@@ -32,6 +32,7 @@ jobs:
         env:
           DOMAINS: ${{ inputs.domains || 'xaa.es' }}
           PSI_KEY: ${{ secrets.PAGESPEED_API_KEY }}
+          LIGHTHOUSE: '1'
       - name: Show report
         run: cat docs/seo/REPORT.md | head -40
       # Commits only when the findings changed. A push made with GITHUB_TOKEN

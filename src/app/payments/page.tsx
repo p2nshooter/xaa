@@ -4,13 +4,13 @@ import { SectionHead, CtaBand } from '@/components/Studio';
 import { eur, usd, USD_PER_EUR } from '@/content/packages';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Payments — USDT & PayPal',
-  description:
-    'XAA invoices in euros and accepts USDT (TRC20, ERC20, BEP20) and PayPal. Milestone payments of 10%, 40% and 50%, confirmed within one business day.',
-  alternates: { canonical: '/payments' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/payments', copy: SEO.payments });
+}
 
 type Copy = {
   chip: string; h1a: string; h1b: string; heroLead: string;
@@ -163,6 +163,7 @@ export default async function PaymentsPage() {
   const c = pick(await getLang(), COPY);
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.payments' }]} />
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">

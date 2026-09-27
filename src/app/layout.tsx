@@ -10,6 +10,7 @@ import { PageAds } from '@/components/PageAds';
 import { jsonLdHtml } from '@/lib/json-ld';
 import { PACKAGES, eur } from '@/content/packages';
 import { getLang } from '@/lib/i18n.server';
+import { DEFAULT_OG_IMAGE } from '@/lib/seo';
 
 // Display face for headings. A clean grotesk rather than the old Playfair:
 // the serif read as ornamental next to a pricing table.
@@ -20,7 +21,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: `${SITE.name} — ${SITE.tagline}`, template: `%s · ${SITE.name}` },
   description: SITE.description,
-  alternates: { canonical: '/' },
+  // No site-wide canonical here: inherited by every page that set none, it
+  // told search engines those pages were duplicates of the home page. Each
+  // page sets its own through pageMetadata (src/lib/seo.ts).
   icons: {
     icon: [
       { url: '/brand/xaa-mark-64.png', sizes: '64x64', type: 'image/png' },
@@ -30,8 +33,8 @@ export const metadata: Metadata = {
     apple: '/brand/xaa-mark-192.png',
   },
   robots: { index: true, follow: true },
-  openGraph: { siteName: SITE.name, type: 'website', locale: 'en_US', images: ['/brand/xaa-mark.png'] },
-  twitter: { card: 'summary', images: ['/brand/xaa-mark.png'] },
+  openGraph: { siteName: SITE.name, type: 'website', locale: 'en_US', images: [DEFAULT_OG_IMAGE] },
+  twitter: { card: 'summary_large_image', images: [DEFAULT_OG_IMAGE.url] },
   other: { 'google-adsense-account': SITE.adClient },
 };
 
@@ -75,7 +78,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   name: SITE.name,
                   url: SITE.url,
                   publisher: { '@id': `${SITE.url}#org` },
-                  inLanguage: 'en',
+                  inLanguage: ['en', 'es', 'id'],
                 },
                 {
                   '@type': 'OfferCatalog',

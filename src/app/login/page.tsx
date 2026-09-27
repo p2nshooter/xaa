@@ -5,6 +5,8 @@ import { LoginForm, AdminAccessLogin } from '@/components/forms/AuthForms';
 import { currentUser } from '@/server/auth';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
 
 type Copy = { eyebrow: string; title: string; lead: string; secNote0: string; secLink: string; secNote1: string };
 const COPY: Record<Lang, Copy> = {
@@ -25,12 +27,9 @@ const COPY: Record<Lang, Copy> = {
   },
 };
 
-export const metadata: Metadata = {
-  title: 'Sign in',
-  description: 'Sign in to the XAA client portal to see your project progress, milestones and invoices.',
-  alternates: { canonical: '/login' },
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/login', copy: SEO.login, noindex: true });
+}
 
 export const dynamic = 'force-dynamic';
 

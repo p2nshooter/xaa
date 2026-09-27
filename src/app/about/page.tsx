@@ -5,12 +5,13 @@ import { BrandMark } from '@/components/Site';
 import { PACKAGES, eur } from '@/content/packages';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'About',
-  description: `${SITE.name} — ${SITE.expansionPlain}. A European web development studio building websites, stores and platforms with milestone-based payments and a client portal that shows real progress.`,
-  alternates: { canonical: '/about' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/about', copy: SEO.about });
+}
 
 type Section = { h: string; html: string[] };
 type Copy = {
@@ -133,6 +134,7 @@ export default async function AboutPage() {
   const c = pick(await getLang(), COPY);
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'footer.about' }]} />
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">

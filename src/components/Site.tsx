@@ -32,18 +32,23 @@ const NAV = [
   { href: '/company', key: 'nav.company' },
 ];
 
-export function BrandMark({ size = 40, className = '' }: { size?: number; className?: string }) {
+export function BrandMark({ size = 40, className = '', lazy = false }: { size?: number; className?: string; lazy?: boolean }) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src="/brand/xaa-mark-192.png"
-      alt=""
-      aria-hidden
-      width={size}
-      height={size}
-      className={className}
-      style={{ width: size, height: size }}
-    />
+    <picture>
+      <source srcSet="/brand/xaa-mark-192.webp" type="image/webp" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/brand/xaa-mark-192.png"
+        alt=""
+        aria-hidden
+        width={size}
+        height={size}
+        loading={lazy ? 'lazy' : undefined}
+        decoding="async"
+        className={className}
+        style={{ width: size, height: size }}
+      />
+    </picture>
   );
 }
 
@@ -123,7 +128,7 @@ export async function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5">
-              <BrandMark size={36} />
+              <BrandMark size={36} lazy />
               <p className="font-display text-xl font-extrabold tracking-tight">
                 XAA<span className="accent-text">.es</span>
               </p>

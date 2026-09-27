@@ -5,13 +5,13 @@ import { localisedSetupPlans, localisedCarePlans } from '@/content/packages.i18n
 import { SectionHead, CtaBand } from '@/components/Studio';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Setup & AI Backup / Recovery',
-  description:
-    'One-time setup from €149, plus an AI backup-and-recovery system installed into your site: one-click daily, weekly and monthly backups, restore, database reset and AI web-fix — self-served on your own AI key. No 24/7 SLA, no monthly retainer.',
-  alternates: { canonical: '/care' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/care', copy: SEO.care });
+}
 
 type Copy = {
   chip: string; h1a: string; h1b: string; heroLead: string;
@@ -150,6 +150,7 @@ export default async function CarePage() {
   void SETUP_PLANS;
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.care' }]} />
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">

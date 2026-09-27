@@ -1,16 +1,18 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { SITE } from '@/lib/site';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Terms of engagement',
-  description: `The terms under which ${SITE.name} accepts, builds and delivers website and platform projects — payments, timelines, ownership, cancellation and liability.`,
-  alternates: { canonical: '/terms' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/terms', copy: SEO.terms });
+}
 
 export default function TermsPage() {
   return (
     <div className="mx-auto max-w-prose2 px-4 py-14">
+      <Breadcrumbs trail={[{ k: 'footer.terms' }]} className="!px-0 !pt-0 mb-6" />
       <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">Legal</p>
       <h1 className="mt-2 font-display text-3xl font-extrabold">Terms of engagement</h1>
       <div className="ornament-rule mt-4 max-w-sm" />

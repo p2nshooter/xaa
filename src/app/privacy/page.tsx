@@ -1,16 +1,18 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { SITE } from '@/lib/site';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Privacy policy',
-  description: `How ${SITE.name} collects, uses and protects personal data across the studio site, the client portal and the editorial archive.`,
-  alternates: { canonical: '/privacy' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/privacy', copy: SEO.privacy });
+}
 
 export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-prose2 px-4 py-14">
+      <Breadcrumbs trail={[{ k: 'footer.privacy' }]} className="!px-0 !pt-0 mb-6" />
       <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">Legal</p>
       <h1 className="mt-2 font-display text-3xl font-extrabold">Privacy policy</h1>
       <div className="ornament-rule mt-4 max-w-sm" />

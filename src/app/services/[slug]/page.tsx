@@ -9,6 +9,8 @@ import { SITE } from '@/lib/site';
 import { jsonLdHtml } from '@/lib/json-ld';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata, clip } from '@/lib/seo';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -21,11 +23,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const pkg = getPackage(slug);
   if (!pkg) return {};
-  return {
-    title: `${pkg.name} — ${priceRange(pkg.priceMin, pkg.priceMax, pkg.openEnded)}`,
-    description: `${pkg.summary} Delivery in ${pkg.timeline}. Start with a 10% deposit, pay by USDT or PayPal.`,
-    alternates: { canonical: `/services/${pkg.slug}` },
-  };
+  const price = priceRange(pkg.priceMin, pkg.priceMax, pkg.openEnded);
+  const en = localisedPackage(pkg, 'en');
+  const es = localisedPackage(pkg, 'es');
+  const id = localisedPackage(pkg, 'id');
+  return pageMetadata({
+    path: `/services/${pkg.slug}`,
+    copy: {
+      en: { title: `${en.name} — ${price}`, description: clip(`${en.summary} Delivery in ${en.timeline}. Start with a 10% deposit, pay by USDT or PayPal.`) },
+      es: { title: `${es.name} — ${price}`, description: clip(`${es.summary} Entrega en ${es.timeline}. Empieza con un depósito del 10%, paga en USDT o PayPal.`) },
+      id: { title: `${id.name} — ${price}`, description: clip(`${id.summary} Selesai dalam ${id.timeline}. Mulai dengan DP 10%, bayar via USDT atau PayPal.`) },
+    },
+  });
 }
 
 type Copy = {
@@ -103,6 +112,7 @@ export default async function PackagePage({ params }: Props) {
 
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.services', href: '/services' }, { label: pkg.name }]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

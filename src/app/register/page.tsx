@@ -6,12 +6,12 @@ import { currentUser } from '@/server/auth';
 import { localisedStages } from '@/content/process';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
 
-export const metadata: Metadata = {
-  title: 'Create an account',
-  description: 'Register for the XAA client portal — free, and nothing is charged until you open a project and choose to pay the deposit.',
-  alternates: { canonical: '/register' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/register', copy: SEO.register });
+}
 
 export const dynamic = 'force-dynamic';
 

@@ -5,12 +5,13 @@ import { EnquiryForm } from '@/components/forms/EnquiryForm';
 import { SectionHead } from '@/components/Studio';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Contact',
-  description: `Send XAA a brief. We reply within one business day with the package your project fits, a realistic price and a delivery estimate.`,
-  alternates: { canonical: '/contact' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/contact', copy: SEO.contact });
+}
 
 export const dynamic = 'force-dynamic';
 
@@ -70,6 +71,7 @@ export default async function ContactPage() {
   const c = pick(lang, COPY);
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.contact' }]} />
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-10 sm:py-14">

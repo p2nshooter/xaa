@@ -3,12 +3,15 @@ import type { Metadata } from 'next';
 import { HomeContent } from '@/components/Article';
 import { ARCHIVE, SITE } from '@/lib/site';
 import { ARTICLES, CATEGORIES } from '@/content/articles';
+import { pageMetadata, clip } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: `${SITE.magazine.name} — ${ARCHIVE.tagline}`,
-  description: ARCHIVE.description,
-  alternates: { canonical: '/insights' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({
+    path: SITE.magazine.path,
+    copy: { title: `${SITE.magazine.name} — ${ARCHIVE.tagline}`, description: clip(ARCHIVE.description) },
+    multilingual: false,
+  });
+}
 
 /**
  * The editorial archive. xaa.es began as a World Cup 2026 magazine and every

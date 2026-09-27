@@ -5,13 +5,13 @@ import { jsonLdHtml } from '@/lib/json-ld';
 import { eur } from '@/content/packages';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'FAQ',
-  description:
-    'Common questions about XAA: pricing, the 10/40/50 milestone schedule, timelines, ownership of code, USDT and PayPal payments, setup and maintenance.',
-  alternates: { canonical: '/faq' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/faq', copy: SEO.faq });
+}
 
 type Group = { group: string; qa: { q: string; a: string }[] };
 type Copy = {
@@ -126,6 +126,7 @@ export default async function FaqPage() {
   const c = pick(await getLang(), COPY);
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.faq' }]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

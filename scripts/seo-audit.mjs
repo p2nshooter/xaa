@@ -16,7 +16,8 @@
  * No dependencies: Node 22 fetch + regex over <head>, which is all these checks
  * need. Usage: node scripts/seo-audit.mjs [domain ...]
  */
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 
 export const DOMAINS = [
   { domain: 'xaa.es', repo: 'p2nshooter/xaa' },
@@ -97,7 +98,29 @@ async function hops(url, max = 6) {
   return { chain, final: cur, status: 0, error: 'too many redirects' };
 }
 
+/** Lighthouse on the runner itself — used when the PageSpeed API rate-limits. */
+function lighthouse(url) {
+  if (process.env.LIGHTHOUSE !== '1') return { error: 'Lighthouse fallback disabled' };
+  try {
+    execFileSync('npx', ['-y', 'lighthouse@12', url, '--only-categories=performance', '--form-factor=mobile', '--output=json', '--output-path=/tmp/lh.json', '--quiet', '--chrome-flags=--headless=new --no-sandbox'], { stdio: 'ignore', timeout: 180_000 });
+    const j = JSON.parse(readFileSync('/tmp/lh.json', 'utf8'));
+    const a = j.audits ?? {};
+    return { score: Math.round((j.categories?.performance?.score ?? 0) * 100), lcp: a['largest-contentful-paint']?.numericValue, cls: a['cumulative-layout-shift']?.numericValue, tbt: a['total-blocking-time']?.numericValue, field: {}, source: 'Lighthouse (runner)' };
+  } catch (e) {
+    return { error: `Lighthouse failed: ${e.message.slice(0, 120)}` };
+  }
+}
+
 async function pagespeed(url) {
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const r = await pagespeedOnce(url);
+    if (!r.error || !/429/.test(r.error)) return r.error ? lighthouse(url) : r;
+    await new Promise((res) => setTimeout(res, 15_000 * (attempt + 1)));
+  }
+  return lighthouse(url);
+}
+
+async function pagespeedOnce(url) {
   const api = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile&category=performance${process.env.PSI_KEY ? `&key=${process.env.PSI_KEY}` : ''}`;
   const ctrl = new AbortController(); const timer = setTimeout(() => ctrl.abort(), 90_000);
   try {
@@ -110,6 +133,7 @@ async function pagespeed(url) {
       score: Math.round((j.lighthouseResult?.categories?.performance?.score ?? 0) * 100),
       lcp: a['largest-contentful-paint']?.numericValue, cls: a['cumulative-layout-shift']?.numericValue, tbt: a['total-blocking-time']?.numericValue,
       field: { lcp: f.LARGEST_CONTENTFUL_PAINT_MS?.percentile, inp: f.INTERACTION_TO_NEXT_PAINT?.percentile, cls: f.CUMULATIVE_LAYOUT_SHIFT_SCORE?.percentile },
+      source: 'PageSpeed Insights',
     };
   } catch (e) { return { error: e.message }; } finally { clearTimeout(timer); }
 }
@@ -185,7 +209,7 @@ async function audit({ domain, repo }) {
   add('2', 'cdn', 'Served through a CDN', /Cloudflare|Vercel|Fastly|CloudFront|cloudflare/i.test(cdn) ? 'pass' : 'warn', cdn || 'unknown');
   add('2', 'ttfb', 'Server response time', home.ttfb < 800 ? 'pass' : home.ttfb < 1800 ? 'warn' : 'fail', `${home.ttfb} ms (from a GitHub runner)`);
   add('2', 'html_cache', 'Browser/edge caching headers', h('cache-control') ? 'pass' : 'warn', h('cache-control') ?? 'no cache-control');
-  const blocking = tags(head, 'script').filter((a) => a.src && !('async' in a) && !('defer' in a) && a.type !== 'module').length;
+  const blocking = tags(head, 'script').filter((a) => a.src && !('async' in a) && !('defer' in a) && !('nomodule' in a) && a.type !== 'module').length;
   add('2', 'render_blocking', 'No render-blocking scripts in <head>', blocking === 0 ? 'pass' : blocking <= 2 ? 'warn' : 'fail', `${blocking} blocking script(s)`);
   const imgs = tags(html, 'img');
   const lazy = imgs.slice(1).filter((a) => a.loading === 'lazy').length;
@@ -296,7 +320,7 @@ async function audit({ domain, repo }) {
   if (ps.error) add('2', 'cwv', 'Core Web Vitals (PageSpeed, mobile)', 'manual', ps.error);
   else {
     const lcpS = ps.lcp / 1000;
-    add('2', 'perf_score', 'PageSpeed performance score (mobile)', ps.score >= 90 ? 'pass' : ps.score >= 50 ? 'warn' : 'fail', `${ps.score}/100`);
+    add('2', 'perf_score', 'Performance score (mobile)', ps.score >= 90 ? 'pass' : ps.score >= 50 ? 'warn' : 'fail', `${ps.score}/100 — ${ps.source}`);
     add('2', 'lcp', 'LCP ≤ 2.5 s', lcpS <= 2.5 ? 'pass' : lcpS <= 4 ? 'warn' : 'fail', `${lcpS.toFixed(2)} s lab${ps.field.lcp ? `, ${(ps.field.lcp / 1000).toFixed(2)} s field` : ''}`);
     add('2', 'cls', 'CLS ≤ 0.1', ps.cls <= 0.1 ? 'pass' : ps.cls <= 0.25 ? 'warn' : 'fail', `${ps.cls.toFixed(3)} lab`);
     add('2', 'inp', 'INP ≤ 200 ms (TBT as lab proxy)', ps.field.inp ? (ps.field.inp <= 200 ? 'pass' : ps.field.inp <= 500 ? 'warn' : 'fail') : ps.tbt <= 200 ? 'pass' : ps.tbt <= 600 ? 'warn' : 'fail', ps.field.inp ? `${ps.field.inp} ms field` : `TBT ${Math.round(ps.tbt)} ms lab (no field data yet)`);

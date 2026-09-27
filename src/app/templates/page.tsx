@@ -5,13 +5,13 @@ import { eur } from '@/content/packages';
 import { SectionHead, CtaBand } from '@/components/Studio';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Ready-made SaaS templates',
-  description:
-    'Production-ready SaaS you buy once and rebrand: full source code, database and setup guide, delivered as one downloadable bundle. From €390 starters to super-enterprise platforms whose source alone is worth hundreds of thousands to millions.',
-  alternates: { canonical: '/templates' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/templates', copy: SEO.templates });
+}
 
 function price(t: { price: number; priceMax?: number }): string {
   return t.priceMax ? `${eur(t.price)} – ${eur(t.priceMax)}` : eur(t.price);
@@ -82,6 +82,7 @@ export default async function TemplatesPage() {
   const c = pick(lang, COPY);
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.templates' }]} />
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">

@@ -8,12 +8,12 @@ import { BrandMark } from '@/components/Site';
 import { localisedStages } from '@/content/process';
 import { translator } from '@/lib/i18n';
 import { getLang } from '@/lib/i18n.server';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
 
-export const metadata: Metadata = {
-  title: `${SITE.name} — ${SITE.tagline}`,
-  description: SITE.description,
-  alternates: { canonical: '/' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/', copy: SEO.home, absoluteTitle: true });
+}
 
 const CAPABILITIES = [
   { icon: '◈', title: 'Websites that sell', body: 'Landing pages, portfolios, company profiles and corporate sites — fast, indexed, and written to convert rather than to decorate.' },

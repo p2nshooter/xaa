@@ -6,6 +6,9 @@ import { PartnershipCertificate } from '@/components/PartnershipCertificate';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
 import { jsonLdHtml } from '@/lib/json-ld';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 /**
  * Company profile — the legal entity behind the studio, its leadership, the
@@ -21,20 +24,9 @@ import { jsonLdHtml } from '@/lib/json-ld';
 
 const PAGE_URL = `${SITE.url}/company`;
 
-export const metadata: Metadata = {
-  title: 'Company profile — PT AXTO DIGITAL GLOBAL',
-  description:
-    'Company profile of PT AXTO DIGITAL GLOBAL, the company behind XAA.es and AXTO: leadership (CEO Ulyah Munayah, CTO Yusron Efendi), partnership agreement, registered business activities and legal entity details.',
-  alternates: { canonical: '/company' },
-  openGraph: {
-    type: 'profile',
-    url: PAGE_URL,
-    title: 'PT AXTO DIGITAL GLOBAL — Company profile',
-    description: 'The company behind XAA.es and AXTO: leadership, partnership agreement and legal entity.',
-    images: [{ url: '/company/og-company-profile.jpg', width: 1200, height: 630, alt: 'XAA.ES Digital Global partnership agreement' }],
-  },
-  twitter: { card: 'summary_large_image', images: ['/company/og-company-profile.jpg'] },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/company', copy: SEO.company, type: 'profile', image: { url: '/company/og-company-profile.jpg', width: 1200, height: 630, alt: 'XAA.ES Digital Global partnership agreement' } });
+}
 
 type Copy = {
   chip: string; h1a: string; h1b: string; lead: string;
@@ -261,13 +253,6 @@ export default async function CompanyPage() {
         isPartOf: { '@id': `${SITE.url}#site` },
         about: { '@id': `${PAGE_URL}#axto` },
         primaryImageOfPage: { '@id': `${PAGE_URL}#agreement` },
-        breadcrumb: {
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
-            { '@type': 'ListItem', position: 2, name: 'Company profile', item: PAGE_URL },
-          ],
-        },
       },
       {
         '@type': 'ImageObject',
@@ -283,16 +268,14 @@ export default async function CompanyPage() {
 
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.company' }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml(jsonLd) }} />
 
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-12 sm:py-16 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <nav aria-label="Breadcrumb" className="text-xs text-steel-500">
-              <Link href="/" className="hover:text-gold-500">XAA.es</Link> <span aria-hidden>›</span> {c.chip}
-            </nav>
-            <span className="chip mt-4">{c.chip}</span>
+            <span className="chip">{c.chip}</span>
             <h1 className="mt-3 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
               {c.h1a} — <span className="accent-text">{c.h1b}</span>
             </h1>

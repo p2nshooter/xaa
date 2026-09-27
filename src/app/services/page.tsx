@@ -5,13 +5,13 @@ import { localisedPackages, localisedAddons, localisedSuperEnterprise, tierLabel
 import { PackageCard, AddOnCard, SectionHead, CtaBand } from '@/components/Studio';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Services & pricing',
-  description:
-    'Ten website and platform development packages, from a €500 landing page to a €1.5M global enterprise ecosystem. European pricing, published up front, paid in milestones via USDT or PayPal.',
-  alternates: { canonical: '/services' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/services', copy: SEO.services });
+}
 
 const TIER_ORDER: Tier[] = ['starter', 'business', 'advanced', 'enterprise'];
 
@@ -121,6 +121,7 @@ export default async function ServicesPage() {
 
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.services' }]} />
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">

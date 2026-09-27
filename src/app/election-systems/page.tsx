@@ -6,13 +6,13 @@ import { WORKS } from '@/content/portfolio';
 import { SectionHead, CtaBand } from '@/components/Studio';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Election & civic systems',
-  description:
-    'Voter-roll verification, offline field registers and live vote tallying — priced from a single village at €6,000 to a national programme at €600,000+. Built, and running.',
-  alternates: { canonical: '/election-systems' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/election-systems', copy: SEO.election });
+}
 
 type Copy = {
   chip: string; h1a: string; h1b: string; heroLead: string; seeBtn: string; discussBtn: string;
@@ -94,6 +94,7 @@ export default async function ElectionSystemsPage() {
 
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'footer.election' }]} />
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">

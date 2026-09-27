@@ -4,6 +4,7 @@ import { ARTICLES, CATEGORIES, getArticle, getArticlesByCategory } from '@/conte
 import { ArticleBody, RelatedArticles, ArchiveNav } from '@/components/Article';
 import { SITE } from '@/lib/site';
 import { jsonLdHtml } from '@/lib/json-ld';
+import { pageMetadata, clip } from '@/lib/seo';
 
 interface Props { params: Promise<{ slug: string }>; }
 export function generateStaticParams() { return ARTICLES.map((a) => ({ slug: a.slug })); }
@@ -13,17 +14,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const a = getArticle(slug);
   if (!a) return {};
-  const url = `${SITE.url}/articles/${slug}`;
+  const base = await pageMetadata({
+    path: `/articles/${slug}`,
+    copy: { title: a.title, description: clip(a.excerpt) },
+    type: 'article',
+    multilingual: false,
+  });
   return {
-    title: a.title,
-    description: a.excerpt,
-    alternates: { canonical: `/articles/${slug}` },
+    ...base,
     openGraph: {
-      title: a.title,
-      description: a.excerpt,
+      ...base.openGraph,
       type: 'article',
-      url,
-      siteName: SITE.name,
       publishedTime: a.date,
       modifiedTime: a.date,
       authors: [a.author],

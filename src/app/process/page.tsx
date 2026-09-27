@@ -5,13 +5,13 @@ import { localisedStages } from '@/content/process';
 import { PACKAGES, eur } from '@/content/packages';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'How a project runs',
-  description:
-    'Register, choose a package, pay a 10% deposit, upload your concept, receive a completion date, pay 40% to start production, settle the final 50% at 75–80% progress, and take handover at 100%.',
-  alternates: { canonical: '/process' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/process', copy: SEO.process });
+}
 
 type Step = { n: string; title: string; body: string; detail: string[] };
 type Copy = {
@@ -162,6 +162,7 @@ export default async function ProcessPage() {
 
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.process' }]} />
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">

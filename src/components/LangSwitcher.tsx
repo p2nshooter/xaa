@@ -25,6 +25,16 @@ export function LangSwitcher({ current, label }: { current: Lang; label: string 
     if (lang === current) return;
     // One year, site-wide, survives refresh and navigation.
     document.cookie = `${LANG_COOKIE}=${lang}; path=/; max-age=31536000; samesite=lax`;
+    // A language URL (?lang=es, from search results or a shared link) outranks
+    // the cookie, so it has to change with the choice — otherwise the URL would
+    // keep forcing the old language. English is the plain URL.
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('lang')) {
+      if (lang === 'en') url.searchParams.delete('lang');
+      else url.searchParams.set('lang', lang);
+      startTransition(() => router.replace(`${url.pathname}${url.search}${url.hash}`, { scroll: false }));
+      return;
+    }
     startTransition(() => router.refresh());
   };
 

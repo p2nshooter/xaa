@@ -6,13 +6,13 @@ import { localisedSuperEnterprise } from '@/content/packages.i18n';
 import { SectionHead, CtaBand } from '@/components/Studio';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Work',
-  description:
-    'Systems XAA has built and runs: an AI and security platform, a multi-module consumer platform, production management software, web applications and an editorial network — with the build price each one represents.',
-  alternates: { canonical: '/portfolio' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/portfolio', copy: SEO.portfolio });
+}
 
 const fmtLoc = (n: number) => `${Math.round(n / 1000)}k`;
 
@@ -116,6 +116,7 @@ export default async function PortfolioPage() {
 
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.work' }]} />
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">

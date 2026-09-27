@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import { SectionHead, CtaBand } from '@/components/Studio';
 import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
+import { SEO } from '@/content/seo-copy';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Capabilities & stack',
-  description:
-    'What XAA builds with and how: modern web frameworks, edge deployment, relational data, payments, security and AI integration — and the engineering standards every build is held to.',
-  alternates: { canonical: '/capabilities' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: '/capabilities', copy: SEO.capabilities });
+}
 
 // Stack items keep their product/framework names in every language; only the
 // area label and any descriptive phrase is localised.
@@ -150,6 +150,7 @@ export default async function CapabilitiesPage() {
   const c = pick(await getLang(), COPY);
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.capabilities' }]} />
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">

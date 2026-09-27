@@ -112,6 +112,22 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # HTTP → HTTPS at the edge. The middleware also redirects when Cloudflare
+      # reports an HTTP visit, but the zone setting is the first line: it answers
+      # before the Worker runs. Non-fatal — the token may lack Zone Settings:Edit,
+      # in which case the log says so and the middleware still covers it.
+      - name: Always use HTTPS
+        if: steps.cf.outputs.ok == 'true'
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          zone=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/zones?name=xaa.es" | node -e "try{const d=JSON.parse(require('fs').readFileSync(0,'utf8'));process.stdout.write((d.result&&d.result[0]&&d.result[0].id)||'')}catch(e){}")
+          [ -z "$zone" ] && { echo "::warning::zone not visible to token"; exit 0; }
+          r=$(curl -s -X PATCH -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" -d '{"value":"on"}' "https://api.cloudflare.com/client/v4/zones/$zone/settings/always_use_https")
+          node -e "const d=JSON.parse(process.argv[1]);console.log(d.success?'Always Use HTTPS: on':'Always Use HTTPS not changed: '+JSON.stringify(d.errors))" "$r"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       # Pushes the portal's runtime configuration from repository secrets, so
       # payment addresses never live in the repo. Each is optional: one that is
       # not set is skipped, and the payment screen says so plainly rather than
@@ -155,8 +171,23 @@ jobs:
           done
           echo "── /api/health ──"; echo "$body"
           echo "── page status ──"
-          for path in / /login /register /services /templates /portfolio /company /care /payments /faq /about /contact /sitemap.xml /robots.txt /portal /portal/admin; do
+          for path in / /login /register /services /templates /portfolio /company /care /payments /faq /about /contact /sitemap.xml /robots.txt /llms.txt /portal /portal/admin; do
             code=$(curl -s -o /dev/null --max-time 20 -w '%{http_code}' "https://xaa.es$path")
             echo "$code  $path"
+          done
+          echo "── canonical origin ──"
+          for u in http://xaa.es/services https://www.xaa.es/services http://www.xaa.es/; do
+            echo "$(curl -s -o /dev/null --max-time 20 -w '%{http_code} → %{redirect_url}' "$u")  $u"
+          done
+          echo "── security headers ──"
+          curl -sI --max-time 20 https://xaa.es/ | grep -iE '^(strict-transport|x-content-type|x-frame|referrer-policy|permissions-policy|content-security)' || echo "none found"
+          echo "── head metadata by language ──"
+          for q in "" "?lang=es" "?lang=id"; do
+            page=$(curl -s --max-time 20 "https://xaa.es/services$q")
+            head=${page%%</head>*}
+            title=$(grep -o '<title>[^<]*' <<<"$head" | head -1 | sed 's/<title>//')
+            canon=$(grep -o '<link rel="canonical" href="[^"]*"' <<<"$head" | head -1 | sed 's/.*href="//;s/"$//')
+            hl=$(grep -o 'hrefLang="[^"]*"' <<<"$head" | tr '\n' ' ')
+            echo "/services$q | $title | canonical=$canon | $hl"
           done
 

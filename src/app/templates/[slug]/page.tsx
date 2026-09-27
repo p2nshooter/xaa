@@ -11,6 +11,8 @@ import { getLang } from '@/lib/i18n.server';
 import { pick, type Lang } from '@/lib/i18n';
 import { jsonLdHtml } from '@/lib/json-ld';
 import { SITE } from '@/lib/site';
+import { pageMetadata, clip } from '@/lib/seo';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,7 +21,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const t = getTemplate(slug);
   if (!t) return {};
   const p = t.priceMax ? `${eur(t.price)}–${eur(t.priceMax)}` : eur(t.price);
-  return { title: `${t.name} — ${p}`, description: `${t.summary} Full source, database and setup guide, delivered as one bundle.`, alternates: { canonical: `/templates/${t.slug}` } };
+  const title = `${t.name} SaaS template — ${p}`;
+  return pageMetadata({
+    path: `/templates/${t.slug}`,
+    type: 'website',
+    copy: {
+      en: { title, description: clip(`${t.summary} Full source code, database and setup guide in one download.`) },
+      es: { title: `Plantilla SaaS ${t.name} — ${p}`, description: clip(`${t.summary} Código fuente completo, base de datos y guía de instalación en una descarga.`) },
+      id: { title: `Template SaaS ${t.name} — ${p}`, description: clip(`${t.summary} Source code lengkap, database dan panduan setup dalam satu unduhan.`) },
+    },
+  });
 }
 
 type Copy = {
@@ -63,6 +74,7 @@ export default async function TemplateDetail({ params }: { params: Promise<{ slu
 
   return (
     <>
+      <Breadcrumbs trail={[{ k: 'nav.templates', href: '/templates' }, { label: t.name }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml({
         '@context': 'https://schema.org', '@type': 'Product', name: t.name, description: t.summary,
         offers: { '@type': 'Offer', price: t.price, priceCurrency: 'EUR', url: `${SITE.url}/templates/${t.slug}` },
