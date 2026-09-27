@@ -282,6 +282,13 @@ const INDEXES = [
   `CREATE INDEX IF NOT EXISTS idx_payment_methods_active ON payment_methods(active, sort_order)`,
   `CREATE INDEX IF NOT EXISTS idx_recovery_project ON recovery_events(project_id, created_at)`,
   `CREATE INDEX IF NOT EXISTS idx_template_orders_user ON template_orders(user_id, created_at)`,
+  // Admin counters and lists: without these each badge count scans the table.
+  `CREATE INDEX IF NOT EXISTS idx_enquiries_status ON enquiries(status)`,
+  `CREATE INDEX IF NOT EXISTS idx_enquiries_created ON enquiries(created_at)`,
+  `CREATE INDEX IF NOT EXISTS idx_payments_status ON payments(status)`,
+  `CREATE INDEX IF NOT EXISTS idx_support_threads_unread ON support_threads(status, unread_admin)`,
+  `CREATE INDEX IF NOT EXISTS idx_template_orders_created ON template_orders(created_at)`,
+  `CREATE INDEX IF NOT EXISTS idx_projects_created ON projects(created_at)`,
 ];
 
 /** The two tables sign-in cannot work without. If either of these cannot be
@@ -350,7 +357,7 @@ function tableOf(createSql: string): string {
  * multiplied by every cold isolate, was a real share of the daily D1 read
  * budget that ran out.
  */
-const SCHEMA_VERSION = '2026-09-27.3';
+const SCHEMA_VERSION = '2026-09-28.1';
 const SCHEMA_VERSION_ROW = '__schema_version__';
 
 async function schemaIsCurrent(database: D1Database): Promise<boolean> {

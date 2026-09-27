@@ -58,7 +58,13 @@ function token(): string {
 
 /* ───────── presence ───────── */
 
+// Presence is read on every chat poll; a short per-isolate cache keeps those
+// polls from each costing a database read.
+const PRESENCE_CACHE_MS = 10_000;
+let presenceCache: { at: number; online: boolean } | null = null;
+
 export async function markAdminOnline(): Promise<void> {
+  presenceCache = { at: Date.now(), online: true };
   const database = await db();
   await database
     .prepare("INSERT INTO app_settings (key, value, is_secret, updated_at) VALUES (?, ?, 0, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at")
@@ -67,10 +73,13 @@ export async function markAdminOnline(): Promise<void> {
 }
 
 export async function adminOnline(): Promise<boolean> {
+  if (presenceCache && Date.now() - presenceCache.at < PRESENCE_CACHE_MS) return presenceCache.online;
   try {
     const database = await db();
     const row = await database.prepare('SELECT value FROM app_settings WHERE key = ?').bind(PRESENCE_KEY).first<{ value: string }>();
-    return row ? Date.now() - Number(row.value) < ONLINE_WINDOW_MS : false;
+    const online = row ? Date.now() - Number(row.value) < ONLINE_WINDOW_MS : false;
+    presenceCache = { at: Date.now(), online };
+    return online;
   } catch {
     return false;
   }
