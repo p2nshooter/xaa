@@ -1,14 +1,14 @@
 # SEO audit — all domains
 
-Generated 2026-09-27T00:29:36.808Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
+Generated 2026-09-27T00:52:02.340Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
 
 | Domain | Score | ✅ | ❌ | ⚠️ | 📝 | Repo |
 |---|---|---|---|---|---|---|
-| [xaa.es](https://xaa.es) | 65% | 35 | 16 | 11 | 11 | p2nshooter/xaa |
+| [xaa.es](https://xaa.es) | 93% | 61 | 4 | 2 | 9 | p2nshooter/xaa |
 
-## xaa.es — 65%
+## xaa.es — 93%
 
-**Not done yet (27):** HTTP redirects to HTTPS; One canonical host (www ↔ apex redirect); Canonical URL on the home page; Server response time; No render-blocking scripts in <head>; Lazy-loading below-the-fold images; WebP / AVIF images; Fonts optimised (preload / font-display: swap); Title tag (10–65 chars); Meta description (50–160 chars); og:title; og:description; og:image; og:url; og:type; Twitter / X card; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; llms.txt for AI assistants; Unique title on every page; Unique meta description on every page; Canonical on every sampled page; Breadcrumbs on inner pages
+**Not done yet (6):** Server response time; Fonts optimised (preload / font-display: swap); Unique title on every page; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -16,8 +16,8 @@ Generated 2026-09-27T00:29:36.808Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | HTTPS with a valid SSL certificate | 200 https://xaa.es/ |
-| ❌ | HTTP redirects to HTTPS | 200 http://xaa.es/ → http://xaa.es/ |
-| ❌ | One canonical host (www ↔ apex redirect) | www.xaa.es → https://www.xaa.es/ |
+| ✅ | HTTP redirects to HTTPS | 301 http://xaa.es/ → 200 https://xaa.es/ → https://xaa.es/ |
+| ✅ | One canonical host (www ↔ apex redirect) | www.xaa.es → https://xaa.es/ |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
 | ✅ | robots.txt present | 9 lines |
@@ -28,31 +28,34 @@ Generated 2026-09-27T00:29:36.808Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | No redirect chains (≤1 hop to the final URL) | 0 hop(s) from http://xaa.es/ |
-| ❌ | Canonical URL on the home page | missing |
+| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://xaa.es/ |
+| ✅ | Canonical URL on the home page | https://xaa.es |
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 830 ms (from a GitHub runner) |
+| ⚠️ | Server response time | 1360 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | private, no-cache, no-store, max-age=0, must-revalidate |
-| ⚠️ | No render-blocking scripts in <head> | 1 blocking script(s) |
+| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ⚠️ | Fonts optimised (preload / font-display: swap) |  |
-| ⚠️ | Canonical on every sampled page | 1 without |
+| ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API 429 |
+| ❌ | Performance score (mobile) | 47/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 4.94 s lab |
+| ✅ | CLS ≤ 0.1 | 0.000 lab |
+| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 3694 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
 | | Check | Detail |
 |---|---|---|
-| ❌ | Title tag (10–65 chars) | missing |
-| ❌ | Meta description (50–160 chars) | missing |
+| ✅ | Title tag (10–65 chars) | 56: XAA — Web development studio: websites, SaaS & platforms |
+| ✅ | Meta description (50–160 chars) | 156: European web development studio: landing pages, company websites, e-commerce, SaaS and ent… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 7 H2 |
-| ❌ | Unique title on every page | 9 pages sampled; 1 duplicate, 2 missing |
-| ⚠️ | Unique meta description on every page | 0 duplicate, 2 missing |
+| ❌ | Unique title on every page | 9 pages sampled; 3 duplicate, 0 missing |
+| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ⚠️ | Breadcrumbs on inner pages | 0/8 |
+| ✅ | Breadcrumbs on inner pages | 8/8 |
 
 **4. Content SEO**
 
@@ -73,8 +76,8 @@ Generated 2026-09-27T00:29:36.808Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ⚠️ | Lazy-loading below-the-fold images | 0/2 lazy |
-| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Lazy-loading below-the-fold images | 1/2 lazy |
+| ✅ | WebP / AVIF images |  |
 | ✅ | Images carry width & height (no layout shift) | 3/3 |
 | ✅ | Alt text on images | 0/3 missing alt |
 | ✅ | Descriptive image file names |  |
@@ -84,7 +87,7 @@ Generated 2026-09-27T00:29:36.808Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | Language declared (<html lang>) | en |
-| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
+| ✅ | hreflang for language versions | en, es, id, x-default |
 
 **9. Internal linking**
 
@@ -120,12 +123,12 @@ Generated 2026-09-27T00:29:36.808Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ❌ | HSTS header | missing |
-| ❌ | X-Content-Type-Options: nosniff |  |
-| ❌ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
-| ❌ | Referrer-Policy |  |
-| ⚠️ | Permissions-Policy |  |
-| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
+| ✅ | HSTS header | max-age=31536000; includeSubDomains |
+| ✅ | X-Content-Type-Options: nosniff |  |
+| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
+| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
+| ✅ | Permissions-Policy |  |
+| ✅ | Content-Security-Policy | frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-req |
 | ✅ | No mixed content |  |
 
 **15. Crawl & indexing**
@@ -133,33 +136,33 @@ Generated 2026-09-27T00:29:36.808Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt lets crawlers reach the site |  |
-| ✅ | Home page is indexable (no noindex) |  |
+| ✅ | Home page is indexable (no noindex) | index, follow |
 
 **16. Sitemap**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://xaa.es/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://xaa.es/sitemap.xml — 207 URLs |
+| ✅ | XML sitemap | HTTP 200 https://xaa.es/sitemap.xml — 295 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
 
 | | Check | Detail |
 |---|---|---|
-| ❌ | og:title | missing |
-| ❌ | og:description | missing |
-| ❌ | og:image | missing |
-| ❌ | og:url | missing |
-| ❌ | og:type | missing |
-| ❌ | Twitter / X card | missing |
+| ✅ | og:title | XAA — Web development studio: websites, SaaS & platforms |
+| ✅ | og:description | European web development studio: landing pages, company websites, e-commerce, SaaS and ent |
+| ✅ | og:image | https://xaa.es/og/xaa-og.jpg |
+| ✅ | og:url | https://xaa.es |
+| ✅ | og:type | website |
+| ✅ | Twitter / X card | summary_large_image |
 
 **18. AI / generative search**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | AI / generative-search crawlers allowed |  |
-| ⚠️ | llms.txt for AI assistants | HTTP 404 |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
 
 **19. Analytics & monitoring**
 

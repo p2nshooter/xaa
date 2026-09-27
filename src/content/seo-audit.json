@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-27T00:29:36.808Z",
+ "generatedAt": "2026-09-27T00:52:02.340Z",
  "sites": [
   {
    "domain": "xaa.es",
@@ -18,22 +18,22 @@
      "section": "1",
      "id": "http_redirect",
      "label": "HTTP redirects to HTTPS",
-     "status": "fail",
-     "detail": "200 http://xaa.es/ → http://xaa.es/"
+     "status": "pass",
+     "detail": "301 http://xaa.es/ → 200 https://xaa.es/ → https://xaa.es/"
     },
     {
      "section": "2",
      "id": "redirect_chain",
      "label": "No redirect chains (≤1 hop to the final URL)",
      "status": "pass",
-     "detail": "0 hop(s) from http://xaa.es/"
+     "detail": "1 hop(s) from http://xaa.es/"
     },
     {
      "section": "1",
      "id": "canonical_host",
      "label": "One canonical host (www ↔ apex redirect)",
-     "status": "fail",
-     "detail": "www.xaa.es → https://www.xaa.es/"
+     "status": "pass",
+     "detail": "www.xaa.es → https://xaa.es/"
     },
     {
      "section": "1",
@@ -82,7 +82,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://xaa.es/sitemap.xml — 207 URLs"
+     "detail": "HTTP 200 https://xaa.es/sitemap.xml — 295 URLs"
     },
     {
      "section": "16",
@@ -109,8 +109,8 @@
      "section": "2",
      "id": "canonical",
      "label": "Canonical URL on the home page",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "https://xaa.es"
     },
     {
      "section": "2",
@@ -138,7 +138,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "warn",
-     "detail": "830 ms (from a GitHub runner)"
+     "detail": "1360 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -151,22 +151,22 @@
      "section": "2",
      "id": "render_blocking",
      "label": "No render-blocking scripts in <head>",
-     "status": "warn",
-     "detail": "1 blocking script(s)"
+     "status": "pass",
+     "detail": "0 blocking script(s)"
     },
     {
      "section": "6",
      "id": "lazy",
      "label": "Lazy-loading below-the-fold images",
-     "status": "warn",
-     "detail": "0/2 lazy"
+     "status": "pass",
+     "detail": "1/2 lazy"
     },
     {
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "warn",
-     "detail": "no WebP/AVIF found on the home page"
+     "status": "pass",
+     "detail": ""
     },
     {
      "section": "6",
@@ -187,21 +187,21 @@
      "id": "indexable",
      "label": "Home page is indexable (no noindex)",
      "status": "pass",
-     "detail": ""
+     "detail": "index, follow"
     },
     {
      "section": "3",
      "id": "title",
      "label": "Title tag (10–65 chars)",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "56: XAA — Web development studio: websites, SaaS & platforms"
     },
     {
      "section": "3",
      "id": "meta_description",
      "label": "Meta description (50–160 chars)",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "156: European web development studio: landing pages, company websites, e-commerce, SaaS and ent…"
     },
     {
      "section": "3",
@@ -249,8 +249,8 @@
      "section": "8",
      "id": "hreflang",
      "label": "hreflang for language versions",
-     "status": "manual",
-     "detail": "none — needed only if the site serves several languages"
+     "status": "pass",
+     "detail": "en, es, id, x-default"
     },
     {
      "section": "5",
@@ -277,85 +277,85 @@
      "section": "17",
      "id": "og_title",
      "label": "og:title",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "XAA — Web development studio: websites, SaaS & platforms"
     },
     {
      "section": "17",
      "id": "og_description",
      "label": "og:description",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "European web development studio: landing pages, company websites, e-commerce, SaaS and ent"
     },
     {
      "section": "17",
      "id": "og_image",
      "label": "og:image",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "https://xaa.es/og/xaa-og.jpg"
     },
     {
      "section": "17",
      "id": "og_url",
      "label": "og:url",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "https://xaa.es"
     },
     {
      "section": "17",
      "id": "og_type",
      "label": "og:type",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "website"
     },
     {
      "section": "17",
      "id": "twitter_card",
      "label": "Twitter / X card",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "summary_large_image"
     },
     {
      "section": "14",
      "id": "hsts",
      "label": "HSTS header",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "max-age=31536000; includeSubDomains"
     },
     {
      "section": "14",
      "id": "nosniff",
      "label": "X-Content-Type-Options: nosniff",
-     "status": "fail",
+     "status": "pass",
      "detail": ""
     },
     {
      "section": "14",
      "id": "frame",
      "label": "Clickjacking protection (X-Frame-Options / frame-ancestors)",
-     "status": "fail",
+     "status": "pass",
      "detail": ""
     },
     {
      "section": "14",
      "id": "referrer",
      "label": "Referrer-Policy",
-     "status": "fail",
-     "detail": ""
+     "status": "pass",
+     "detail": "strict-origin-when-cross-origin"
     },
     {
      "section": "14",
      "id": "permissions",
      "label": "Permissions-Policy",
-     "status": "warn",
+     "status": "pass",
      "detail": ""
     },
     {
      "section": "14",
      "id": "csp",
      "label": "Content-Security-Policy",
-     "status": "warn",
-     "detail": "none (optional, but recommended)"
+     "status": "pass",
+     "detail": "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-req"
     },
     {
      "section": "14",
@@ -410,22 +410,22 @@
      "section": "18",
      "id": "llms_txt",
      "label": "llms.txt for AI assistants",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "3",
      "id": "unique_titles",
      "label": "Unique title on every page",
      "status": "fail",
-     "detail": "9 pages sampled; 1 duplicate, 2 missing"
+     "detail": "9 pages sampled; 3 duplicate, 0 missing"
     },
     {
      "section": "3",
      "id": "unique_descriptions",
      "label": "Unique meta description on every page",
-     "status": "warn",
-     "detail": "0 duplicate, 2 missing"
+     "status": "pass",
+     "detail": "0 duplicate, 0 missing"
     },
     {
      "section": "3",
@@ -438,15 +438,15 @@
      "section": "2",
      "id": "canonical_all",
      "label": "Canonical on every sampled page",
-     "status": "warn",
-     "detail": "1 without"
+     "status": "pass",
+     "detail": "0 without"
     },
     {
      "section": "3",
      "id": "breadcrumbs",
      "label": "Breadcrumbs on inner pages",
-     "status": "warn",
-     "detail": "0/8"
+     "status": "pass",
+     "detail": "8/8"
     },
     {
      "section": "2",
@@ -457,10 +457,31 @@
     },
     {
      "section": "2",
-     "id": "cwv",
-     "label": "Core Web Vitals (PageSpeed, mobile)",
-     "status": "manual",
-     "detail": "PageSpeed API 429"
+     "id": "perf_score",
+     "label": "Performance score (mobile)",
+     "status": "fail",
+     "detail": "47/100 — Lighthouse (runner)"
+    },
+    {
+     "section": "2",
+     "id": "lcp",
+     "label": "LCP ≤ 2.5 s",
+     "status": "fail",
+     "detail": "4.94 s lab"
+    },
+    {
+     "section": "2",
+     "id": "cls",
+     "label": "CLS ≤ 0.1",
+     "status": "pass",
+     "detail": "0.000 lab"
+    },
+    {
+     "section": "2",
+     "id": "inp",
+     "label": "INP ≤ 200 ms (TBT as lab proxy)",
+     "status": "fail",
+     "detail": "TBT 3694 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -522,72 +543,72 @@
    "pages": [
     {
      "url": "https://xaa.es/",
-     "title": null,
-     "desc": null,
+     "title": "XAA — Web development studio: websites, SaaS & platforms",
+     "desc": "European web development studio: landing pages, company websites, e-commerce, SaaS and enterprise platforms from €500. Milestone payments in USDT or PayPal.",
      "h1": 1
     },
     {
      "url": "https://xaa.es/services",
      "status": 200,
-     "title": "Services & pricing · XAA",
-     "desc": "Ten website and platform development packages, from a €500 landing page to a €1.5M global enterprise ecosystem. European pricing, published up front, paid in milestones via USDT or PayPal.",
+     "title": "Website & platform development packages and prices · XAA",
+     "desc": "Ten development packages, from a €500 landing page to a €500,000+ enterprise ecosystem. Prices published up front, paid in 10/40/50 milestones.",
      "h1": 1
     },
     {
-     "url": "https://xaa.es/portfolio",
+     "url": "https://xaa.es/services?lang=es",
      "status": 200,
-     "title": null,
-     "desc": null,
+     "title": "Paquetes y precios de desarrollo web y plataformas · XAA",
+     "desc": "Diez paquetes de desarrollo, desde una landing page de €500 hasta un ecosistema empresarial de €500,000+. Precios publicados y pago por hitos 10/40/50.",
      "h1": 1
     },
     {
-     "url": "https://xaa.es/election-systems",
+     "url": "https://xaa.es/services?lang=id",
      "status": 200,
-     "title": "Election & civic systems · XAA",
-     "desc": "Voter-roll verification, offline field registers and live vote tallying — priced from a single village at €6,000 to a national programme at €600,000+. Built, and running.",
+     "title": "Paket & harga jasa pembuatan website dan platform · XAA",
+     "desc": "Sepuluh paket pengembangan, dari landing page €500 hingga ekosistem enterprise €500,000+. Harga dipublikasikan di awal, dibayar bertahap 10/40/50.",
      "h1": 1
     },
     {
-     "url": "https://xaa.es/templates",
+     "url": "https://xaa.es/services/landing-page",
      "status": 200,
-     "title": "Ready-made SaaS templates · XAA",
-     "desc": "Production-ready SaaS you buy once and rebrand: full source code, database and setup guide, delivered as one downloadable bundle. From €390 starters to super-enterprise platforms whose source alone is worth hundreds of thousands to millions.",
+     "title": "Landing Page — €500 – €1,500 · XAA",
+     "desc": "One page, engineered to convert: a single offer, a single audience and a single call to action, built for speed and measured from day one. Delivery in 3–10…",
      "h1": 1
     },
     {
-     "url": "https://xaa.es/templates/waitlist",
+     "url": "https://xaa.es/services/landing-page?lang=es",
      "status": 200,
-     "title": "Waitlist & Landing — €390 · XAA",
-     "desc": "A launch page with a waitlist, referral positions, email capture and a simple admin. Ship a pre-launch page in an afternoon. Full source, database and setup guide, delivered as one bundle.",
+     "title": "Landing Page — €500 – €1,500 · XAA",
+     "desc": "Una página, diseñada para convertir: una oferta, un público y una llamada a la acción, construida para la velocidad y medida desde el primer día. Entrega en…",
      "h1": 1
     },
     {
-     "url": "https://xaa.es/templates/linkinbio",
+     "url": "https://xaa.es/services/landing-page?lang=id",
      "status": 200,
-     "title": "Link-in-Bio — €490 · XAA",
-     "desc": "A multi-user link-in-bio: profiles, blocks, themes and click analytics. Run it for yourself or as a small hosted product. Full source, database and setup guide, delivered as one bundle.",
+     "title": "Landing Page — €500 – €1,500 · XAA",
+     "desc": "Satu halaman, dirancang untuk konversi: satu tawaran, satu audiens, dan satu ajakan bertindak, dibangun untuk kecepatan dan diukur sejak hari pertama…",
      "h1": 1
     },
     {
-     "url": "https://xaa.es/templates/formbuilder",
+     "url": "https://xaa.es/services/portfolio-website",
      "status": 200,
-     "title": "Forms & Surveys — €690 · XAA",
-     "desc": "A form and survey builder: drag-drop fields, logic, response collection, charts and CSV export. Embeddable anywhere. Full source, database and setup guide, delivered as one bundle.",
+     "title": "Personal / Portfolio Website — €1,000 – €3,000 · XAA",
+     "desc": "A personal platform with a real content system behind it, so your work, writing and contact points stay yours to update. Delivery in 1–3 weeks. Start with a…",
      "h1": 1
     },
     {
-     "url": "https://xaa.es/templates/crm-starter",
+     "url": "https://xaa.es/services/portfolio-website?lang=es",
      "status": 200,
-     "title": "CRM & Sales Pipeline — €1,490 · XAA",
-     "desc": "A complete CRM: contacts and companies, a Kanban deal pipeline, tasks, notes and activity timeline, with team roles and a dashboard. Multi-tenant from the first commit. Full source, database and setup guide, delivered as one bundle.",
+     "title": "Personal / Portfolio Website — €1,000 – €3,000 · XAA",
+     "desc": "Una plataforma personal con un verdadero sistema de contenido detrás, para que tu trabajo, tus textos y tus contactos sigan siendo tuyos y actualizables…",
      "h1": 1
     }
    ],
-   "score": 65,
-   "pass": 35,
-   "fail": 16,
-   "warn": 11,
-   "manual": 11
+   "score": 93,
+   "pass": 61,
+   "fail": 4,
+   "warn": 2,
+   "manual": 9
   }
  ]
 }
