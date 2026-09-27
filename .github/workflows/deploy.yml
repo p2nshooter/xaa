@@ -53,6 +53,24 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # Sessions are HMAC-signed cookies keyed by SESSION_SECRET. Created ONCE:
+      # rotating it would sign everyone out, so an existing secret is never
+      # replaced, and if the list call fails we leave things alone rather than
+      # guess. It is separate from AUTH_SECRET/SETTINGS_KEY on purpose — those
+      # feed the at-rest encryption key, which must not change under stored data.
+      - name: Ensure session secret
+        if: steps.cf.outputs.ok == 'true'
+        run: |
+          set -uo pipefail
+          list=$(npx wrangler secret list --name xaa-es 2>/dev/null) || { echo "::warning::Could not list Worker secrets; SESSION_SECRET left as is."; exit 0; }
+          if grep -q '"SESSION_SECRET"' <<<"$list"; then
+            echo "SESSION_SECRET already set"
+          else
+            openssl rand -hex 32 | npx wrangler secret put SESSION_SECRET --name xaa-es >/dev/null && echo "SESSION_SECRET created"
+          fi
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       # Points xaa.es and www.xaa.es at this worker.
       #
       # `override_existing_origin` is load-bearing: both hostnames were already
@@ -121,3 +139,24 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # Eyes on production. The build environment cannot reach xaa.es, but this
+      # runner can: print the credential-free health report and the status of
+      # the key pages, so every deploy's log shows whether sign-in is ready and
+      # whether D1 is answering. Informational — it never fails the deploy.
+      - name: Post-deploy smoke test
+        if: steps.cf.outputs.ok == 'true'
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          for i in 1 2 3 4 5 6; do
+            body=$(curl -s --max-time 20 "https://xaa.es/api/health?ts=$(date +%s)")
+            if grep -q '"signInReady": true' <<<"$body"; then break; fi
+            sleep 10
+          done
+          echo "── /api/health ──"; echo "$body"
+          echo "── page status ──"
+          for path in / /login /register /services /templates /portfolio /company /care /payments /faq /about /contact /sitemap.xml /robots.txt /portal /portal/admin; do
+            code=$(curl -s -o /dev/null --max-time 20 -w '%{http_code}' "https://xaa.es$path")
+            echo "$code  $path"
+          done
+

@@ -1,15 +1,15 @@
 import { cookies } from 'next/headers';
 import type { D1Database } from '@cloudflare/workers-types';
-import { db, bucket, newId, nowIso, appEnv } from './db';
+import { db, newId, nowIso, appEnv } from './db';
+import { signToken, verifyToken } from './session';
 
 /**
  * Account and session handling for the client portal.
  *
- * Passwords are PBKDF2-SHA256 (210k iterations, per-user salt) through
- * WebCrypto, which exists identically in the Workers runtime and in Node, so
- * there is no native dependency to break the Cloudflare build. Sessions are
- * opaque random tokens stored in D1 — revocable server-side, which a
- * self-contained JWT would not be.
+ * Passwords are PBKDF2-SHA256 (per-user salt) through WebCrypto, which exists
+ * identically in the Workers runtime and in Node, so there is no native
+ * dependency to break the Cloudflare build. Sessions are HMAC-signed cookies
+ * (see startSession) so that signing in never depends on a database.
  */
 
 const COOKIE = 'xaa_session';
@@ -156,35 +156,20 @@ export async function createUser(input: {
 }
 
 /**
- * Sessions live in R2, not D1.
+ * Sessions are signed cookies (server/session.ts), not database rows.
  *
- * D1's free tier caps daily row *reads*, and currentUser() runs on every single
- * portal page load — one JOIN per request is the busiest read in the whole app.
- * When the account's shared D1 read budget is exhausted (the election databases
- * on the same account are large), that one read starts failing and the studio
- * owner cannot even sign in. R2 has a separate, far larger budget and stores
- * the whole session as one small object, so authentication no longer depends on
- * D1 being under quota. The object carries a snapshot of the user, so reading a
- * session returns the signed-in user with no database round-trip at all.
+ * The cookie carries a small snapshot of the user plus an expiry, signed with
+ * HMAC-SHA256. Signing in and reading the session need no storage at all, so
+ * neither D1 (whose shared daily read budget ran out and took sign-in down) nor
+ * R2 (not enabled on this Cloudflare account) can lock anyone out. currentUser()
+ * runs on every portal page load, so this also removes the busiest D1 read the
+ * app used to make.
  */
-const SESSION_PREFIX = 'sess/';
-
-interface SessionBlob {
-  user: User;
-  expires_at: string;
-}
-
 export async function startSession(user: User): Promise<void> {
-  const id = `${newId()}${newId()}`.replace(/-/g, '');
   const expires = new Date(Date.now() + SESSION_DAYS * 864e5);
-  const b = await bucket();
-  if (!b) throw new Error('Session storage (R2) is not configured.');
-  const blob: SessionBlob = { user, expires_at: expires.toISOString() };
-  await b.put(`${SESSION_PREFIX}${id}`, JSON.stringify(blob), {
-    httpMetadata: { contentType: 'application/json' },
-  });
+  const token = await signToken<User>(user, expires);
   const jar = await cookies();
-  jar.set(COOKIE, id, {
+  jar.set(COOKIE, token, {
     httpOnly: true,
     secure: true,
     sameSite: 'lax',
@@ -195,39 +180,21 @@ export async function startSession(user: User): Promise<void> {
 
 export async function endSession(): Promise<void> {
   const jar = await cookies();
-  const id = jar.get(COOKIE)?.value;
   jar.delete(COOKIE);
-  if (!id) return;
-  try {
-    const b = await bucket();
-    if (b) await b.delete(`${SESSION_PREFIX}${id}`);
-  } catch {
-    /* the cookie is gone either way */
-  }
 }
 
-/** The signed-in user, or null. Safe to call on any page. Reads R2, not D1. */
+/** The signed-in user, or null. Safe to call on any page. Touches no storage. */
 export async function currentUser(): Promise<User | null> {
-  let id: string | undefined;
+  let token: string | undefined;
   try {
     const jar = await cookies();
-    id = jar.get(COOKIE)?.value;
+    token = jar.get(COOKIE)?.value;
   } catch {
     return null;
   }
-  if (!id || !/^[a-f0-9]{32,}$/i.test(id)) return null;
+  if (!token) return null;
   try {
-    const b = await bucket();
-    if (!b) return null;
-    const obj = await b.get(`${SESSION_PREFIX}${id}`);
-    if (!obj) return null;
-    const blob = JSON.parse(await obj.text()) as SessionBlob;
-    if (!blob.expires_at || new Date(blob.expires_at) <= new Date()) {
-      // Expired: best-effort tidy so it does not linger in the bucket.
-      try { await b.delete(`${SESSION_PREFIX}${id}`); } catch { /* ignore */ }
-      return null;
-    }
-    return blob.user ?? null;
+    return await verifyToken<User>(token);
   } catch {
     return null;
   }

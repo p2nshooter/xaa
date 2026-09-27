@@ -19,6 +19,9 @@ export interface AppEnv {
   AUTH_SECRET?: string;
   /** Dedicated key for encrypting admin-entered settings at rest. */
   SETTINGS_KEY?: string;
+  /** HMAC key for the signed session cookie (server/session.ts). Created once
+   *  by the deploy workflow; separate from the encryption keys on purpose. */
+  SESSION_SECRET?: string;
   /** Accounts registering with this email are made admins. */
   ADMIN_EMAIL?: string;
   /** When set, the seeded studio admin uses this password instead of the
@@ -311,9 +314,32 @@ function tableOf(createSql: string): string {
  *   3. indexes run last, each tolerated — they are only query optimisations.
  * The result: a half-built or drifted database still lets the owner in.
  */
+/**
+ * Bump when TABLES, COLUMN_MIGRATIONS or INDEXES change. The applied version is
+ * kept in app_secrets, so a warm database costs ONE primary-key read per
+ * isolate instead of ~36 DDL statements that each scan sqlite_master — which,
+ * multiplied by every cold isolate, was a real share of the daily D1 read
+ * budget that ran out.
+ */
+const SCHEMA_VERSION = '2026-09-27.1';
+const SCHEMA_VERSION_ROW = '__schema_version__';
+
+async function schemaIsCurrent(database: D1Database): Promise<boolean> {
+  try {
+    const row = await database
+      .prepare('SELECT value FROM app_secrets WHERE key = ?')
+      .bind(SCHEMA_VERSION_ROW)
+      .first<{ value: string }>();
+    return row?.value === SCHEMA_VERSION;
+  } catch {
+    return false; // no app_secrets table yet → a fresh database
+  }
+}
+
 async function ensureSchema(database: D1Database): Promise<void> {
   if (!ready) {
     ready = (async () => {
+      if (await schemaIsCurrent(database)) return;
       for (const sql of TABLES) {
         try {
           await database.prepare(sql).run();
@@ -336,6 +362,20 @@ async function ensureSchema(database: D1Database): Promise<void> {
           console.error('schema: index create failed (continuing):', err);
         }
       }
+      // Seed the studio row with the migration, not on every isolate. Sign-in
+      // no longer reads it (the admin is verified from source), so this only
+      // keeps the users table complete for reports and joins.
+      try {
+        const { seedAdmin } = await import('./auth');
+        const env = await appEnv();
+        await seedAdmin(database, { ADMIN_PASSWORD: env.ADMIN_PASSWORD });
+      } catch (err) {
+        console.error('seedAdmin failed (non-fatal):', err);
+      }
+      await database
+        .prepare('INSERT OR REPLACE INTO app_secrets (key, value, updated_at) VALUES (?, ?, ?)')
+        .bind(SCHEMA_VERSION_ROW, SCHEMA_VERSION, nowIso())
+        .run();
     })().catch((err) => {
       // Let the next request try again rather than poisoning the isolate.
       ready = null;
@@ -345,33 +385,11 @@ async function ensureSchema(database: D1Database): Promise<void> {
   return ready;
 }
 
-let seeded: Promise<void> | null = null;
-
-/** The database, with its schema guaranteed to exist and the admin seeded. */
+/** The database, with its schema guaranteed to be current. */
 export async function db(): Promise<D1Database> {
-  const env = await appEnv();
-  const { DB } = env;
+  const { DB } = await appEnv();
   if (!DB) throw new NotConfiguredError();
   await ensureSchema(DB);
-  // Seed the studio admin once per isolate, after the schema is ready. The
-  // dynamic import breaks the db ↔ auth import cycle, and passing DB in means
-  // seedAdmin never re-enters db() (which would deadlock on this same call).
-  //
-  // Best-effort, and deliberately NOT awaited into the caller's fate: a failed
-  // seed must never take the whole portal down. Earlier this threw, so any
-  // hiccup while seeding the admin broke *every* database call — including the
-  // sign-in that only needs to read the users table. Now a seed error is logged
-  // and swallowed, the seed is retried on the next request, and db() always
-  // returns a working handle.
-  if (!seeded) {
-    seeded = import('./auth')
-      .then((m) => m.seedAdmin(DB, { ADMIN_PASSWORD: env.ADMIN_PASSWORD }))
-      .catch((err) => {
-        console.error('seedAdmin failed (non-fatal):', err);
-        seeded = null; // let a later request try again
-      });
-  }
-  await seeded;
   return DB;
 }
 

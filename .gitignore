@@ -9,3 +9,4 @@ node_modules/
 # Local wrangler dev artefacts: D1 sqlite, R2 objects, and the bundles
 # `wrangler dev` drops in .wrangler/tmp (tens of MB).
 .wrangler/
+.dev.vars

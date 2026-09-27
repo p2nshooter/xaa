@@ -1,19 +1,22 @@
 import { appEnv } from '@/server/db';
-import { ADMIN_EMAILS, seedAdmin, findUserByEmail, verifyPassword, normaliseEmail } from '@/server/auth';
+import { signToken, verifyToken, sessionKeySource } from '@/server/session';
 
 /**
- * A safe, credential-free health probe for the client portal.
+ * A safe, credential-free health probe for the portal.
  *
- * It exists because the production database lives in a Cloudflare account we
- * cannot inspect from the build environment, and outbound access to the live
- * site is blocked — so when sign-in fails in production there is otherwise no
- * way to see why. This endpoint reports what the sign-in path actually hits:
- * whether the D1 binding is present, whether the schema and admin seed run,
- * whether the studio row exists and verifies against the committed password.
+ * The production database lives in a Cloudflare account this build environment
+ * cannot inspect, and outbound access to the live site is blocked from here, so
+ * the deploy workflow calls this after every deploy and prints the result in the
+ * Actions log. It reports what sign-in and the portal actually depend on:
  *
- * It never returns a password hash, an API key, a wallet address or any secret
- * value — only booleans, roles, counts and error *messages*. It also force-runs
- * the admin seed/heal, so opening it repairs a missing or stale studio row.
+ *   - which bindings/secrets exist (booleans only, never values);
+ *   - whether a session token can be signed and verified (what sign-in needs);
+ *   - whether D1 answers a one-row read (it will not when the account's daily
+ *     read budget is exhausted — the failure that took sign-in down before).
+ *
+ * It never returns a hash, key, address or any secret value. It deliberately
+ * does NOT run the schema or the admin seed any more: those read many rows, and
+ * a health check must not spend the very D1 budget it is there to watch.
  */
 export const dynamic = 'force-dynamic';
 
@@ -22,78 +25,56 @@ function short(err: unknown): string {
   return m.length > 300 ? m.slice(0, 300) + '…' : m;
 }
 
-export async function GET(req: Request) {
-  const out: Record<string, unknown> = { ok: false, ts: new Date().toISOString() };
+export async function GET() {
+  const out: Record<string, unknown> = { ts: new Date().toISOString() };
 
-  // 1. Which bindings and secrets are present (booleans only).
   let env: Awaited<ReturnType<typeof appEnv>> = {};
   try {
     env = await appEnv();
-    out.bindings = {
-      DB: Boolean(env.DB),
-      UPLOADS: Boolean(env.UPLOADS),
-      AUTH_SECRET: Boolean(env.AUTH_SECRET),
-      SETTINGS_KEY: Boolean(env.SETTINGS_KEY),
-      ADMIN_EMAIL: Boolean(env.ADMIN_EMAIL),
-      ADMIN_PASSWORD: Boolean(env.ADMIN_PASSWORD),
-    };
   } catch (e) {
     out.bindings_error = short(e);
-    return json(out);
+    return json(out, false);
   }
+  out.bindings = {
+    DB: Boolean(env.DB),
+    UPLOADS_R2: Boolean(env.UPLOADS),
+    SESSION_SECRET: Boolean(env.SESSION_SECRET),
+    AUTH_SECRET: Boolean(env.AUTH_SECRET),
+    SETTINGS_KEY: Boolean(env.SETTINGS_KEY),
+    ADMIN_PASSWORD: Boolean(env.ADMIN_PASSWORD),
+  };
 
-  if (!env.DB) {
-    out.error = 'No D1 binding (DB) in production — the portal database is not bound to this Worker.';
-    return json(out);
-  }
-
-  // 2. Schema + admin seed/heal, run directly against the binding so a failure
-  //    here is the failure sign-in would hit.
+  // Sign-in readiness: a session must round-trip through sign → verify.
+  let sessionOk = false;
   try {
-    const { db } = await import('@/server/db');
-    await db(); // ensures schema, then runs the (best-effort) seed
-    out.schema = 'ok';
+    const token = await signToken({ probe: true }, new Date(Date.now() + 60_000));
+    const back = await verifyToken<{ probe: boolean }>(token);
+    const forged = await verifyToken<{ probe: boolean }>(token.slice(0, -2) + (token.endsWith('AA') ? 'BB' : 'AA'));
+    sessionOk = Boolean(back?.probe) && forged === null;
+    out.session = { ok: sessionOk, keySource: await sessionKeySource() };
   } catch (e) {
-    out.schema_error = short(e);
+    out.session = { ok: false, error: short(e) };
   }
 
-  try {
-    await seedAdmin(env.DB, { ADMIN_PASSWORD: env.ADMIN_PASSWORD });
-    out.seed = 'ok';
-  } catch (e) {
-    out.seed_error = short(e);
+  // D1 reachability: one tiny read. Its failure does not block sign-in any more,
+  // but it does block project/payment data, so it is reported plainly.
+  if (env.DB) {
+    try {
+      await env.DB.prepare('SELECT 1 AS one').first();
+      out.d1 = { ok: true };
+    } catch (e) {
+      out.d1 = { ok: false, error: short(e) };
+    }
+  } else {
+    out.d1 = { ok: false, error: 'No D1 binding.' };
   }
 
-  // 3. Users table + the studio row.
-  try {
-    const row = await env.DB.prepare('SELECT COUNT(*) AS n FROM users').first<{ n: number }>();
-    out.users = row?.n ?? 0;
-  } catch (e) {
-    out.users_error = short(e);
-  }
-
-  try {
-    const email = normaliseEmail(ADMIN_EMAILS[0]!);
-    const admin = await findUserByEmail(email);
-    out.admin = admin
-      ? { exists: true, role: admin.role, hashScheme: (admin.password_hash || '').split('$').slice(0, 2).join('$') }
-      : { exists: false };
-
-    // Optional password self-check: /api/health?probe=THEPASSWORD tells you
-    // whether that password verifies against the stored studio hash, without
-    // ever returning the hash. Handy to confirm the committed password works.
-    const probe = new URL(req.url).searchParams.get('probe');
-    if (probe && admin) out.admin = { ...(out.admin as object), passwordVerifies: await verifyPassword(probe, admin.password_hash) };
-  } catch (e) {
-    out.admin_error = short(e);
-  }
-
-  out.ok = !out.schema_error && !out.seed_error && !out.users_error && !out.admin_error;
-  return json(out);
+  out.signInReady = sessionOk;
+  return json(out, sessionOk);
 }
 
-function json(body: Record<string, unknown>): Response {
-  return new Response(JSON.stringify(body, null, 2), {
+function json(body: Record<string, unknown>, ok: boolean): Response {
+  return new Response(JSON.stringify({ ok, ...body }, null, 2), {
     headers: { 'content-type': 'application/json', 'cache-control': 'no-store' },
   });
 }
