@@ -1,4 +1,593 @@
 {
- "generatedAt": null,
- "sites": []
+ "generatedAt": "2026-09-27T00:29:36.808Z",
+ "sites": [
+  {
+   "domain": "xaa.es",
+   "repo": "p2nshooter/xaa",
+   "reachable": true,
+   "finalUrl": "https://xaa.es/",
+   "checks": [
+    {
+     "section": "1",
+     "id": "https",
+     "label": "HTTPS with a valid SSL certificate",
+     "status": "pass",
+     "detail": "200 https://xaa.es/"
+    },
+    {
+     "section": "1",
+     "id": "http_redirect",
+     "label": "HTTP redirects to HTTPS",
+     "status": "fail",
+     "detail": "200 http://xaa.es/ → http://xaa.es/"
+    },
+    {
+     "section": "2",
+     "id": "redirect_chain",
+     "label": "No redirect chains (≤1 hop to the final URL)",
+     "status": "pass",
+     "detail": "0 hop(s) from http://xaa.es/"
+    },
+    {
+     "section": "1",
+     "id": "canonical_host",
+     "label": "One canonical host (www ↔ apex redirect)",
+     "status": "fail",
+     "detail": "www.xaa.es → https://www.xaa.es/"
+    },
+    {
+     "section": "1",
+     "id": "gsc",
+     "label": "Google Search Console",
+     "status": "pass",
+     "detail": "Domain property verified"
+    },
+    {
+     "section": "1",
+     "id": "bing",
+     "label": "Bing Webmaster Tools verification",
+     "status": "manual",
+     "detail": "No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works)"
+    },
+    {
+     "section": "1",
+     "id": "robots",
+     "label": "robots.txt present",
+     "status": "pass",
+     "detail": "9 lines"
+    },
+    {
+     "section": "16",
+     "id": "robots_sitemap",
+     "label": "robots.txt declares the sitemap",
+     "status": "pass",
+     "detail": "https://xaa.es/sitemap.xml"
+    },
+    {
+     "section": "15",
+     "id": "robots_open",
+     "label": "robots.txt lets crawlers reach the site",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "18",
+     "id": "ai_crawlers",
+     "label": "AI / generative-search crawlers allowed",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "16",
+     "id": "sitemap",
+     "label": "XML sitemap",
+     "status": "pass",
+     "detail": "HTTP 200 https://xaa.es/sitemap.xml — 207 URLs"
+    },
+    {
+     "section": "16",
+     "id": "sitemap_canonical",
+     "label": "Sitemap lists only canonical-host URLs",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "1",
+     "id": "clean_urls",
+     "label": "Clean, readable URLs",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "1",
+     "id": "real_404",
+     "label": "Missing pages return a real 404",
+     "status": "pass",
+     "detail": "HTTP 404"
+    },
+    {
+     "section": "2",
+     "id": "canonical",
+     "label": "Canonical URL on the home page",
+     "status": "fail",
+     "detail": "missing"
+    },
+    {
+     "section": "2",
+     "id": "mobile",
+     "label": "Mobile-friendly viewport",
+     "status": "pass",
+     "detail": "width=device-width, initial-scale=1"
+    },
+    {
+     "section": "2",
+     "id": "compression",
+     "label": "GZIP / Brotli compression",
+     "status": "pass",
+     "detail": "br"
+    },
+    {
+     "section": "2",
+     "id": "cdn",
+     "label": "Served through a CDN",
+     "status": "pass",
+     "detail": "Cloudflare"
+    },
+    {
+     "section": "2",
+     "id": "ttfb",
+     "label": "Server response time",
+     "status": "warn",
+     "detail": "830 ms (from a GitHub runner)"
+    },
+    {
+     "section": "2",
+     "id": "html_cache",
+     "label": "Browser/edge caching headers",
+     "status": "pass",
+     "detail": "private, no-cache, no-store, max-age=0, must-revalidate"
+    },
+    {
+     "section": "2",
+     "id": "render_blocking",
+     "label": "No render-blocking scripts in <head>",
+     "status": "warn",
+     "detail": "1 blocking script(s)"
+    },
+    {
+     "section": "6",
+     "id": "lazy",
+     "label": "Lazy-loading below-the-fold images",
+     "status": "warn",
+     "detail": "0/2 lazy"
+    },
+    {
+     "section": "6",
+     "id": "webp",
+     "label": "WebP / AVIF images",
+     "status": "warn",
+     "detail": "no WebP/AVIF found on the home page"
+    },
+    {
+     "section": "6",
+     "id": "img_dims",
+     "label": "Images carry width & height (no layout shift)",
+     "status": "pass",
+     "detail": "3/3"
+    },
+    {
+     "section": "2",
+     "id": "fonts",
+     "label": "Fonts optimised (preload / font-display: swap)",
+     "status": "warn",
+     "detail": ""
+    },
+    {
+     "section": "15",
+     "id": "indexable",
+     "label": "Home page is indexable (no noindex)",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "3",
+     "id": "title",
+     "label": "Title tag (10–65 chars)",
+     "status": "fail",
+     "detail": "missing"
+    },
+    {
+     "section": "3",
+     "id": "meta_description",
+     "label": "Meta description (50–160 chars)",
+     "status": "fail",
+     "detail": "missing"
+    },
+    {
+     "section": "3",
+     "id": "h1",
+     "label": "Exactly one H1",
+     "status": "pass",
+     "detail": "1 H1"
+    },
+    {
+     "section": "3",
+     "id": "h2",
+     "label": "H2–H6 structure",
+     "status": "pass",
+     "detail": "7 H2"
+    },
+    {
+     "section": "6",
+     "id": "alt",
+     "label": "Alt text on images",
+     "status": "pass",
+     "detail": "0/3 missing alt"
+    },
+    {
+     "section": "6",
+     "id": "img_names",
+     "label": "Descriptive image file names",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "9",
+     "id": "internal_links",
+     "label": "Internal links from the home page",
+     "status": "pass",
+     "detail": "36 unique"
+    },
+    {
+     "section": "8",
+     "id": "lang_attr",
+     "label": "Language declared (<html lang>)",
+     "status": "pass",
+     "detail": "en"
+    },
+    {
+     "section": "8",
+     "id": "hreflang",
+     "label": "hreflang for language versions",
+     "status": "manual",
+     "detail": "none — needed only if the site serves several languages"
+    },
+    {
+     "section": "5",
+     "id": "jsonld",
+     "label": "JSON-LD structured data",
+     "status": "pass",
+     "detail": "Organization, ProfessionalService, WebSite, OfferCatalog, Offer, PriceSpecification"
+    },
+    {
+     "section": "5",
+     "id": "org_schema",
+     "label": "Organization schema",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "5",
+     "id": "website_schema",
+     "label": "WebSite schema",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "17",
+     "id": "og_title",
+     "label": "og:title",
+     "status": "fail",
+     "detail": "missing"
+    },
+    {
+     "section": "17",
+     "id": "og_description",
+     "label": "og:description",
+     "status": "fail",
+     "detail": "missing"
+    },
+    {
+     "section": "17",
+     "id": "og_image",
+     "label": "og:image",
+     "status": "fail",
+     "detail": "missing"
+    },
+    {
+     "section": "17",
+     "id": "og_url",
+     "label": "og:url",
+     "status": "fail",
+     "detail": "missing"
+    },
+    {
+     "section": "17",
+     "id": "og_type",
+     "label": "og:type",
+     "status": "fail",
+     "detail": "missing"
+    },
+    {
+     "section": "17",
+     "id": "twitter_card",
+     "label": "Twitter / X card",
+     "status": "fail",
+     "detail": "missing"
+    },
+    {
+     "section": "14",
+     "id": "hsts",
+     "label": "HSTS header",
+     "status": "fail",
+     "detail": "missing"
+    },
+    {
+     "section": "14",
+     "id": "nosniff",
+     "label": "X-Content-Type-Options: nosniff",
+     "status": "fail",
+     "detail": ""
+    },
+    {
+     "section": "14",
+     "id": "frame",
+     "label": "Clickjacking protection (X-Frame-Options / frame-ancestors)",
+     "status": "fail",
+     "detail": ""
+    },
+    {
+     "section": "14",
+     "id": "referrer",
+     "label": "Referrer-Policy",
+     "status": "fail",
+     "detail": ""
+    },
+    {
+     "section": "14",
+     "id": "permissions",
+     "label": "Permissions-Policy",
+     "status": "warn",
+     "detail": ""
+    },
+    {
+     "section": "14",
+     "id": "csp",
+     "label": "Content-Security-Policy",
+     "status": "warn",
+     "detail": "none (optional, but recommended)"
+    },
+    {
+     "section": "14",
+     "id": "mixed",
+     "label": "No mixed content",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "13",
+     "id": "about",
+     "label": "About page",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "13",
+     "id": "contact",
+     "label": "Contact page",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "13",
+     "id": "privacy",
+     "label": "Privacy policy",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "13",
+     "id": "terms",
+     "label": "Terms & conditions",
+     "status": "pass",
+     "detail": ""
+    },
+    {
+     "section": "19",
+     "id": "analytics",
+     "label": "Analytics installed",
+     "status": "pass",
+     "detail": "other analytics"
+    },
+    {
+     "section": "20",
+     "id": "periodic",
+     "label": "Periodic automated SEO audit",
+     "status": "pass",
+     "detail": "this weekly audit"
+    },
+    {
+     "section": "18",
+     "id": "llms_txt",
+     "label": "llms.txt for AI assistants",
+     "status": "warn",
+     "detail": "HTTP 404"
+    },
+    {
+     "section": "3",
+     "id": "unique_titles",
+     "label": "Unique title on every page",
+     "status": "fail",
+     "detail": "9 pages sampled; 1 duplicate, 2 missing"
+    },
+    {
+     "section": "3",
+     "id": "unique_descriptions",
+     "label": "Unique meta description on every page",
+     "status": "warn",
+     "detail": "0 duplicate, 2 missing"
+    },
+    {
+     "section": "3",
+     "id": "h1_all",
+     "label": "One H1 on every sampled page",
+     "status": "pass",
+     "detail": "0 page(s) with 0 or several H1"
+    },
+    {
+     "section": "2",
+     "id": "canonical_all",
+     "label": "Canonical on every sampled page",
+     "status": "warn",
+     "detail": "1 without"
+    },
+    {
+     "section": "3",
+     "id": "breadcrumbs",
+     "label": "Breadcrumbs on inner pages",
+     "status": "warn",
+     "detail": "0/8"
+    },
+    {
+     "section": "2",
+     "id": "broken",
+     "label": "Sitemap URLs load (no broken pages)",
+     "status": "pass",
+     "detail": "0/8 failing"
+    },
+    {
+     "section": "2",
+     "id": "cwv",
+     "label": "Core Web Vitals (PageSpeed, mobile)",
+     "status": "manual",
+     "detail": "PageSpeed API 429"
+    },
+    {
+     "section": "4",
+     "id": "content_quality",
+     "label": "Original, useful content that answers search intent",
+     "status": "manual",
+     "detail": ""
+    },
+    {
+     "section": "4",
+     "id": "content_refresh",
+     "label": "Old content updated; thin/duplicate content removed",
+     "status": "manual",
+     "detail": ""
+    },
+    {
+     "section": "9",
+     "id": "topic_clusters",
+     "label": "Topic clusters: pillar pages + supporting articles",
+     "status": "manual",
+     "detail": ""
+    },
+    {
+     "section": "10",
+     "id": "backlinks",
+     "label": "Quality, relevant backlinks; no spam/PBN",
+     "status": "manual",
+     "detail": ""
+    },
+    {
+     "section": "10",
+     "id": "digital_pr",
+     "label": "Digital PR, brand mentions, official social profiles",
+     "status": "manual",
+     "detail": ""
+    },
+    {
+     "section": "11",
+     "id": "gbp",
+     "label": "Google Business Profile + consistent NAP (if a physical location)",
+     "status": "manual",
+     "detail": ""
+    },
+    {
+     "section": "13",
+     "id": "authors",
+     "label": "Author profiles, publish/update dates, sources",
+     "status": "manual",
+     "detail": ""
+    },
+    {
+     "section": "19",
+     "id": "monitoring",
+     "label": "Monitor clicks, CTR, position, indexed pages in Search Console",
+     "status": "manual",
+     "detail": ""
+    }
+   ],
+   "pages": [
+    {
+     "url": "https://xaa.es/",
+     "title": null,
+     "desc": null,
+     "h1": 1
+    },
+    {
+     "url": "https://xaa.es/services",
+     "status": 200,
+     "title": "Services & pricing · XAA",
+     "desc": "Ten website and platform development packages, from a €500 landing page to a €1.5M global enterprise ecosystem. European pricing, published up front, paid in milestones via USDT or PayPal.",
+     "h1": 1
+    },
+    {
+     "url": "https://xaa.es/portfolio",
+     "status": 200,
+     "title": null,
+     "desc": null,
+     "h1": 1
+    },
+    {
+     "url": "https://xaa.es/election-systems",
+     "status": 200,
+     "title": "Election & civic systems · XAA",
+     "desc": "Voter-roll verification, offline field registers and live vote tallying — priced from a single village at €6,000 to a national programme at €600,000+. Built, and running.",
+     "h1": 1
+    },
+    {
+     "url": "https://xaa.es/templates",
+     "status": 200,
+     "title": "Ready-made SaaS templates · XAA",
+     "desc": "Production-ready SaaS you buy once and rebrand: full source code, database and setup guide, delivered as one downloadable bundle. From €390 starters to super-enterprise platforms whose source alone is worth hundreds of thousands to millions.",
+     "h1": 1
+    },
+    {
+     "url": "https://xaa.es/templates/waitlist",
+     "status": 200,
+     "title": "Waitlist & Landing — €390 · XAA",
+     "desc": "A launch page with a waitlist, referral positions, email capture and a simple admin. Ship a pre-launch page in an afternoon. Full source, database and setup guide, delivered as one bundle.",
+     "h1": 1
+    },
+    {
+     "url": "https://xaa.es/templates/linkinbio",
+     "status": 200,
+     "title": "Link-in-Bio — €490 · XAA",
+     "desc": "A multi-user link-in-bio: profiles, blocks, themes and click analytics. Run it for yourself or as a small hosted product. Full source, database and setup guide, delivered as one bundle.",
+     "h1": 1
+    },
+    {
+     "url": "https://xaa.es/templates/formbuilder",
+     "status": 200,
+     "title": "Forms & Surveys — €690 · XAA",
+     "desc": "A form and survey builder: drag-drop fields, logic, response collection, charts and CSV export. Embeddable anywhere. Full source, database and setup guide, delivered as one bundle.",
+     "h1": 1
+    },
+    {
+     "url": "https://xaa.es/templates/crm-starter",
+     "status": 200,
+     "title": "CRM & Sales Pipeline — €1,490 · XAA",
+     "desc": "A complete CRM: contacts and companies, a Kanban deal pipeline, tasks, notes and activity timeline, with team roles and a dashboard. Multi-tenant from the first commit. Full source, database and setup guide, delivered as one bundle.",
+     "h1": 1
+    }
+   ],
+   "score": 65,
+   "pass": 35,
+   "fail": 16,
+   "warn": 11,
+   "manual": 11
+  }
+ ]
 }
