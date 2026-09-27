@@ -6,6 +6,7 @@ export function AdminNav({ current, newLeads = 0 }: { current: string; newLeads?
     { href: '/portal/admin', label: 'Overview' },
     { href: '/portal/admin/leads', label: 'Enquiries', badge: newLeads },
     { href: '/portal/admin/payments', label: 'Payment destinations' },
+    { href: '/portal/admin/seo', label: 'SEO audit' },
     { href: '/portal/admin/settings', label: 'Settings' },
   ];
   return (

@@ -1,0 +1,54 @@
+name: SEO audit
+# Audits xaa.es against the SEO checklist and records the result in
+# src/content/seo-audit.json (shown at /portal/admin/seo) and docs/seo/REPORT.md.
+# Weekly, and on demand from the Actions tab. The other company domains are
+# listed in scripts/seo-audit.mjs but are not audited until they are back in
+# scope — pass their names as the `domains` input to include them.
+on:
+  schedule:
+    - cron: '0 3 * * 1' # Mondays 03:00 UTC
+  workflow_dispatch:
+    inputs:
+      domains:
+        description: 'Space-separated domains to audit'
+        required: false
+        default: 'xaa.es'
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: seo-audit
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Audit
+        run: node scripts/seo-audit.mjs $DOMAINS
+        env:
+          DOMAINS: ${{ inputs.domains || 'xaa.es' }}
+          PSI_KEY: ${{ secrets.PAGESPEED_API_KEY }}
+      - name: Show report
+        run: cat docs/seo/REPORT.md | head -40
+      # Commits only when the findings changed. A push made with GITHUB_TOKEN
+      # does not trigger other workflows, so the deploy is started explicitly —
+      # workflow_dispatch is the one event that token is allowed to fire.
+      - name: Record results and redeploy
+        run: |
+          set -e
+          git config user.name "xaa-seo-audit"
+          git config user.email "seo-audit@users.noreply.github.com"
+          git add src/content/seo-audit.json docs/seo/REPORT.md
+          if git diff --cached --quiet; then
+            echo "No change in findings."
+            exit 0
+          fi
+          git commit -m "SEO audit: record findings"
+          git push
+          gh workflow run deploy.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}
