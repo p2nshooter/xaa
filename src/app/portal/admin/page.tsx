@@ -9,6 +9,8 @@ import { eur } from '@/content/packages';
 import { AdminNav } from '@/components/AdminNav';
 import { countNewLeads } from '@/server/leads';
 import { listPaymentMethods } from '@/server/settings';
+import { soft, type Problems } from '@/server/soft';
+import { DbNotice } from '@/components/DbNotice';
 
 export const metadata: Metadata = { title: 'Studio desk', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -25,11 +27,12 @@ export default async function AdminPage() {
   if (!user) redirect('/login?next=/portal/admin');
   if (user.role !== 'admin') redirect('/portal');
 
+  const problems: Problems = [];
   const [pending, projects, newLeads, methods] = await Promise.all([
-    listPendingPayments(),
-    listAllProjects(),
-    countNewLeads(),
-    listPaymentMethods(true),
+    soft(problems, () => listPendingPayments(), [] as Awaited<ReturnType<typeof listPendingPayments>>),
+    soft(problems, () => listAllProjects(), [] as Awaited<ReturnType<typeof listAllProjects>>),
+    soft(problems, () => countNewLeads(), 0),
+    soft(problems, () => listPaymentMethods(true), [] as Awaited<ReturnType<typeof listPaymentMethods>>),
   ]);
   const payable = methods.filter((m) => !m.unreadable && m.address).length;
   const active = projects.filter((p) => p.status !== 'delivered' && p.status !== 'cancelled');
@@ -46,6 +49,7 @@ export default async function AdminPage() {
       <div className="mt-8">
         <AdminNav current="/portal/admin" newLeads={newLeads} />
       </div>
+      <DbNotice problems={problems} />
 
       {payable === 0 ? (
         <div className="panel mb-8 border-l-4 border-l-amber-400 bg-amber-50/50 p-5">

@@ -7,6 +7,8 @@ import { listProjects, listPayments, money, nextAction, STATUS_LABEL, STATUS_BAD
 import { listUserOrders, listAllOrders, type TemplateOrder } from '@/server/store';
 import { eur } from '@/content/packages';
 import { STAGES } from '@/content/process';
+import { soft, type Problems } from '@/server/soft';
+import { DbNotice } from '@/components/DbNotice';
 
 export const metadata: Metadata = {
   title: 'Client portal',
@@ -20,14 +22,15 @@ export default async function PortalPage() {
   const user = await currentUser();
   if (!user) redirect('/login?next=/portal');
 
-  const projects = await listProjects(user.id);
+  const problems: Problems = [];
+  const projects = await soft(problems, () => listProjects(user.id), [] as Project[]);
   const withMoney = await Promise.all(
     projects.map(async (p) => {
-      const payments = await listPayments(p.id);
+      const payments = await soft(problems, () => listPayments(p.id), [] as Payment[]);
       return { project: p, payments };
     })
   );
-  const orders = user.role === 'admin' ? await listAllOrders() : await listUserOrders(user.id);
+  const orders = await soft<TemplateOrder[]>(problems, () => (user.role === 'admin' ? listAllOrders() : listUserOrders(user.id)), []);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
@@ -39,6 +42,7 @@ export default async function PortalPage() {
         </div>
         <Link href="/portal/new" className="btn btn-primary">Open a new project</Link>
       </div>
+      <DbNotice problems={problems} />
 
       {user.role === 'admin' ? (
         <div className="panel mt-6 border-l-4 border-l-ink-900 p-5">
@@ -50,7 +54,7 @@ export default async function PortalPage() {
         </div>
       ) : null}
 
-      {projects.length === 0 && orders.length === 0 ? <EmptyState /> : (
+      {projects.length === 0 && orders.length === 0 && problems.length === 0 ? <EmptyState /> : (
         <div className="mt-10 space-y-5">
           {withMoney.map(({ project, payments }) => (
             <ProjectRow key={project.id} project={project} payments={payments} />

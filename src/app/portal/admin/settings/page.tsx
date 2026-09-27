@@ -7,6 +7,8 @@ import { keySource, selfTest } from '@/server/crypto';
 import { countNewLeads } from '@/server/leads';
 import { AdminNav } from '@/components/AdminNav';
 import { SettingsGroupForm, type SettingView } from '@/components/forms/AdminForms';
+import { soft, type Problems } from '@/server/soft';
+import { DbNotice } from '@/components/DbNotice';
 
 export const metadata: Metadata = { title: 'Settings', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -17,11 +19,12 @@ export default async function AdminSettingsPage() {
   if (!user) redirect('/login?next=/portal/admin/settings');
   if (user.role !== 'admin') redirect('/portal');
 
+  const problems: Problems = [];
   const [values, source, ok, newLeads] = await Promise.all([
-    listSettings(),
-    keySource(),
-    selfTest(),
-    countNewLeads(),
+    soft(problems, () => listSettings(), [] as Awaited<ReturnType<typeof listSettings>>),
+    soft<Awaited<ReturnType<typeof keySource>>>(problems, () => keySource(), 'database'),
+    soft(problems, () => selfTest(), false),
+    soft(problems, () => countNewLeads(), 0),
   ]);
   const byKey = new Map(values.map((v) => [v.key, v]));
 
@@ -55,6 +58,7 @@ export default async function AdminSettingsPage() {
       <div className="mt-8">
         <AdminNav current="/portal/admin/settings" newLeads={newLeads} />
       </div>
+      <DbNotice problems={problems} />
 
       <div className="panel mb-8 border-l-4 border-l-[color:var(--accent)] p-5">
         <div className="flex flex-wrap items-center gap-3">

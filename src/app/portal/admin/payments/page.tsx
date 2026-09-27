@@ -8,6 +8,8 @@ import { keySource, selfTest } from '@/server/crypto';
 import { countNewLeads } from '@/server/leads';
 import { AdminNav } from '@/components/AdminNav';
 import { PaymentMethodForm, PaymentMethodRow, ImportEnvMethods, ImportCompanyMethods, type MethodView } from '@/components/forms/AdminForms';
+import { soft, type Problems } from '@/server/soft';
+import { DbNotice } from '@/components/DbNotice';
 
 export const metadata: Metadata = { title: 'Payment destinations', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -33,11 +35,12 @@ export default async function AdminPaymentsPage() {
   if (!user) redirect('/login?next=/portal/admin/payments');
   if (user.role !== 'admin') redirect('/portal');
 
+  const problems: Problems = [];
   const [methods, source, ok, newLeads] = await Promise.all([
-    listPaymentMethods(),
-    keySource(),
-    selfTest(),
-    countNewLeads(),
+    soft(problems, () => listPaymentMethods(), [] as Awaited<ReturnType<typeof listPaymentMethods>>),
+    soft<Awaited<ReturnType<typeof keySource>>>(problems, () => keySource(), 'database'),
+    soft(problems, () => selfTest(), false),
+    soft(problems, () => countNewLeads(), 0),
   ]);
 
   const views: MethodView[] = methods.map((m) => ({
@@ -75,6 +78,7 @@ export default async function AdminPaymentsPage() {
       <div className="mt-8">
         <AdminNav current="/portal/admin/payments" newLeads={newLeads} />
       </div>
+      <DbNotice problems={problems} />
 
       {/* Encryption status — stated plainly rather than implied by a padlock. */}
       <div className="panel mb-8 border-l-4 border-l-[color:var(--accent)] p-5">

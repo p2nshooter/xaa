@@ -69,6 +69,7 @@ Arti tanda:
 | 20 | Dropdown pertanyaan: penawaran, nego harga, crypto, transfer bank, template, proyek, lainnya | ✅ | Pilihan topik di widget chat |
 | 21 | Blueprint dari awal sampai akhir | ✅ | Dokumen ini |
 | 22 | Judul halaman paket unik per bahasa (temuan audit SEO) | ✅ | ES: "…: precio y plazos", ID: "Jasa …" |
+| 24 | Portal masih error karena kuota baca D1 harian habis (5 juta baris/hari, dipakai bersama semua situs di akun Cloudflare) | ✅ | Semua halaman portal tetap tampil dengan pemberitahuan kuning; diuji lokal dengan D1 dipaksa error kuota: 6/6 lulus. Solusi permanen: upgrade Workers Paid $5/bulan |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
 ---
@@ -117,6 +118,7 @@ Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup
 
 | Prioritas | Pekerjaan | Siapa | Catatan |
 |---|---|---|---|
+| Tinggi | Upgrade akun Cloudflare ke Workers Paid ($5/bulan) supaya kuota D1 tidak habis tiap hari | Pemilik | Kuota gratis dipakai bersama semua situs di akun |
 | Tinggi | Aktifkan R2 di dashboard Cloudflare (R2 → Purchase/Enable, paket gratis 10 GB) | Pemilik | Setelah aktif, deploy berikutnya otomatis memasang binding `UPLOADS`; unggah file dan bundle template langsung jalan |
 | Tinggi | Tekan "Import company accounts (crypto + BNI)" sekali di `/portal/admin/payments` | Pemilik | Tanpa ini klien belum melihat tujuan pembayaran perusahaan |
 | Tinggi | Bangun produk template SaaS (mulai dari yang paling laku), lengkap dengan demo | Studio | Lihat bagian 5 |

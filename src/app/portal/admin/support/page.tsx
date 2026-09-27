@@ -5,6 +5,8 @@ import { currentUser } from '@/server/auth';
 import { AdminNav } from '@/components/AdminNav';
 import { listThreads, getThread, listMessages, markThreadRead, markAdminOnline, TOPIC_LABEL } from '@/server/support';
 import { SupportLive, SupportReplyForm, SupportStatusButton } from '@/components/forms/SupportForms';
+import { soft, type Problems } from '@/server/soft';
+import { DbNotice } from '@/components/DbNotice';
 
 /**
  * Support inbox: live chats and contact-form briefs in one place. While this
@@ -28,10 +30,11 @@ export default async function SupportDesk({ searchParams }: { searchParams: Prom
 
   await markAdminOnline().catch(() => {});
   const { t } = await searchParams;
-  const threads = await listThreads();
-  const active = t ? await getThread(t) : threads[0] ?? null;
-  const messages = active ? await listMessages(active.id) : [];
-  if (active && active.unread_admin > 0) await markThreadRead(active.id);
+  const problems: Problems = [];
+  const threads = await soft(problems, () => listThreads(), [] as Awaited<ReturnType<typeof listThreads>>);
+  const active = t ? await soft(problems, () => getThread(t), null) : threads[0] ?? null;
+  const messages = active ? await soft(problems, () => listMessages(active.id), [] as Awaited<ReturnType<typeof listMessages>>) : [];
+  if (active && active.unread_admin > 0) await markThreadRead(active.id).catch(() => {});
   const unread = threads.filter((x) => x.unread_admin > 0 && x.status === 'open').length;
 
   return (
@@ -44,6 +47,7 @@ export default async function SupportDesk({ searchParams }: { searchParams: Prom
         AI assistant only answers when nobody is here, using public site information only. {unread} conversation{unread === 1 ? '' : 's'} waiting.
       </p>
       <div className="mt-8"><AdminNav current="/portal/admin/support" /></div>
+      <DbNotice problems={problems} />
 
       {threads.length === 0 ? (
         <div className="panel p-8 text-center">

@@ -7,6 +7,8 @@ import { getPackage } from '@/content/packages';
 import { formatDate } from '@/server/projects';
 import { AdminNav } from '@/components/AdminNav';
 import { LeadActions } from '@/components/forms/AdminForms';
+import { soft, type Problems } from '@/server/soft';
+import { DbNotice } from '@/components/DbNotice';
 
 export const metadata: Metadata = { title: 'Enquiries', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -17,7 +19,11 @@ export default async function LeadsPage() {
   if (!user) redirect('/login?next=/portal/admin/leads');
   if (user.role !== 'admin') redirect('/portal');
 
-  const [leads, newCount] = await Promise.all([listLeads(), countNewLeads()]);
+  const problems: Problems = [];
+  const [leads, newCount] = await Promise.all([
+    soft(problems, () => listLeads(), [] as Awaited<ReturnType<typeof listLeads>>),
+    soft(problems, () => countNewLeads(), 0),
+  ]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
@@ -30,6 +36,7 @@ export default async function LeadsPage() {
       <div className="mt-8">
         <AdminNav current="/portal/admin/leads" newLeads={newCount} />
       </div>
+      <DbNotice problems={problems} />
 
       {leads.length === 0 ? (
         <div className="panel p-8 text-center">
