@@ -29,6 +29,7 @@ const NAV = [
   { href: '/payments', key: 'nav.payments' },
   { href: '/capabilities', key: 'nav.capabilities' },
   { href: '/faq', key: 'nav.faq' },
+  { href: '/company', key: 'nav.company' },
 ];
 
 export function BrandMark({ size = 40, className = '' }: { size?: number; className?: string }) {
@@ -69,8 +70,8 @@ export async function SiteHeader() {
       {/* Masthead + navigation on one bar. Only this part sticks, so the
           promo strip scrolls away instead of eating the viewport. */}
       <div className="sticky top-0 z-40 border-b border-[color:var(--line)] bg-white/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-          <Link href="/" className="flex items-center gap-2.5">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4">
+          <Link href="/" className="flex min-w-0 items-center gap-2.5">
             <BrandMark size={38} />
             <span>
               <span className="block font-display text-[22px] font-extrabold leading-none tracking-tight">
@@ -84,32 +85,30 @@ export async function SiteHeader() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-6 text-sm font-medium text-ink-800 lg:flex">
-            {NAV.map((n) => (
-              <Link key={n.href} href={n.href} className="mk-underline whitespace-nowrap transition hover:text-gold-500">
-                {t(n.key)}
-              </Link>
-            ))}
-          </nav>
-
           <div className="flex shrink-0 items-center gap-2">
             <LangSwitcher current={lang} label={t('lang.label')} />
             <Link href="/portal" className="btn btn-ghost btn-sm hidden sm:inline-flex">{t('nav.portal')}</Link>
-            <Link href="/register" className="btn btn-primary btn-sm">{t('nav.start')}</Link>
+            <Link href="/register" className="btn btn-primary btn-sm whitespace-nowrap">
+              <span className="sm:hidden">{t('nav.startShort')}</span>
+              <span className="hidden sm:inline">{t('nav.start')}</span>
+            </Link>
           </div>
         </div>
 
-        {/* Below the masthead on small screens, so nothing is hidden in a menu. */}
-        <div className="mx-auto flex max-w-6xl items-center gap-5 overflow-x-auto px-4 pb-2.5 text-sm font-medium text-ink-800 [scrollbar-width:none] lg:hidden">
+        {/* The link row sits below the masthead at every width. Inline beside the
+            brand it overflowed the page (1280px wide and 240px too wide) once the
+            menu grew past eight items; here it scrolls on phones and fits on one
+            line from tablet up, and nothing is ever hidden in a menu. */}
+        <nav aria-label="Main" className="mx-auto flex max-w-6xl items-center gap-5 overflow-x-auto px-4 pb-2.5 text-sm font-medium text-ink-800 [scrollbar-width:none] lg:gap-6">
           {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="shrink-0 whitespace-nowrap transition hover:text-gold-500">
+            <Link key={n.href} href={n.href} className="mk-underline shrink-0 whitespace-nowrap transition hover:text-gold-500">
               {t(n.key)}
             </Link>
           ))}
           <Link href="/contact" className="shrink-0 whitespace-nowrap text-steel-500 transition hover:text-gold-500">
             {t('nav.contact')}
           </Link>
-        </div>
+        </nav>
       </div>
     </header>
   );
@@ -162,6 +161,7 @@ export async function SiteFooter() {
           <FooterColumn
             title={t('footer.studio')}
             links={[
+              ['/company', t('footer.company')],
               ['/about', t('footer.about')],
               ['/contact', t('footer.contact')],
               [SITE.magazine.path, t('footer.archive')],
