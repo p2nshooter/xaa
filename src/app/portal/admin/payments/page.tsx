@@ -7,7 +7,7 @@ import { listPaymentMethods, maskedAddress } from '@/server/settings';
 import { keySource, selfTest } from '@/server/crypto';
 import { countNewLeads } from '@/server/leads';
 import { AdminNav } from '@/components/AdminNav';
-import { PaymentMethodForm, PaymentMethodRow, ImportEnvMethods, type MethodView } from '@/components/forms/AdminForms';
+import { PaymentMethodForm, PaymentMethodRow, ImportEnvMethods, ImportCompanyMethods, type MethodView } from '@/components/forms/AdminForms';
 
 export const metadata: Metadata = { title: 'Payment destinations', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -97,7 +97,7 @@ export default async function AdminPaymentsPage() {
             until at least one destination is active. Add one below.
           </p>
           <div className="mt-3">
-            <ImportEnvMethods />
+            <div className="flex flex-wrap justify-center gap-2"><ImportCompanyMethods /><ImportEnvMethods /></div>
           </div>
         </div>
       ) : null}
@@ -108,7 +108,7 @@ export default async function AdminPaymentsPage() {
             {views.length} destination{views.length === 1 ? '' : 's'}
             <span className="ml-2 text-sm font-normal text-steel-400">{active} active</span>
           </h2>
-          {views.length > 0 ? <ImportEnvMethods /> : null}
+          {views.length > 0 ? <div className="flex flex-wrap gap-2"><ImportCompanyMethods /><ImportEnvMethods /></div> : null}
         </div>
         <div className="space-y-4">
           {views.map((m) => (

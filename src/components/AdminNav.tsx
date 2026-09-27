@@ -4,6 +4,7 @@ import Link from 'next/link';
 export function AdminNav({ current, newLeads = 0 }: { current: string; newLeads?: number }) {
   const items: { href: string; label: string; badge?: number }[] = [
     { href: '/portal/admin', label: 'Overview' },
+    { href: '/portal/admin/support', label: 'Support chat' },
     { href: '/portal/admin/leads', label: 'Enquiries', badge: newLeads },
     { href: '/portal/admin/payments', label: 'Payment destinations' },
     { href: '/portal/admin/seo', label: 'SEO audit' },

@@ -17,9 +17,13 @@ interface Health {
   d1?: { ok: boolean; error?: string };
   signInReady?: boolean;
 }
+interface Diagnosis {
+  steps?: { step: string; ok: boolean; error?: string }[];
+}
 
 export default function PortalError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   const [health, setHealth] = useState<Health | null>(null);
+  const [diag, setDiag] = useState<Diagnosis | null>(null);
 
   useEffect(() => {
     console.error(error);
@@ -27,7 +31,13 @@ export default function PortalError({ error, reset }: { error: Error & { digest?
       .then((r) => r.json())
       .then(setHealth)
       .catch(() => setHealth({}));
+    // Admins only (the route returns 403 to anyone else): which loader failed, and why.
+    fetch('/api/portal/diagnose', { cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => setDiag(d))
+      .catch(() => setDiag(null));
   }, [error]);
+  const failed = diag?.steps?.filter((s) => !s.ok) ?? [];
 
   const d1Down = health?.d1 && !health.d1.ok;
   const quota = d1Down && /limit|quota|exceeded/i.test(health?.d1?.error ?? '');
@@ -56,6 +66,14 @@ export default function PortalError({ error, reset }: { error: Error & { digest?
         </p>
         {health?.d1?.error ? (
           <p className="mt-3 break-words rounded-md bg-[color:var(--surface)] p-3 font-mono text-[11px] text-steel-500">{health.d1.error}</p>
+        ) : null}
+        {failed.length ? (
+          <div className="mt-3 rounded-md border border-red-200 bg-red-50 p-3 text-[12px]">
+            <p className="font-bold text-red-700">Admin diagnosis — failing step{failed.length > 1 ? 's' : ''}:</p>
+            <ul className="mt-1 space-y-1 font-mono text-[11px] text-red-800">
+              {failed.map((s) => <li key={s.step}><b>{s.step}</b>: {s.error}</li>)}
+            </ul>
+          </div>
         ) : null}
         {error.digest ? <p className="mt-2 font-mono text-[11px] text-steel-400">Reference: {error.digest}</p> : null}
         <div className="mt-6 flex flex-wrap gap-3">

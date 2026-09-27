@@ -3,7 +3,7 @@
 import { useActionState, useState } from 'react';
 import {
   savePaymentMethodAction, togglePaymentMethodAction, deletePaymentMethodAction,
-  importEnvMethodsAction, saveSettingsAction, clearSettingAction,
+  importEnvMethodsAction, importCompanyMethodsAction, saveSettingsAction, clearSettingAction,
   updateLeadAction, deleteLeadAction, revealMethodAction, revealSettingAction,
   type ActionState, type RevealState,
 } from '@/server/actions';
@@ -304,6 +304,16 @@ export function ImportEnvMethods() {
     <form action={action}>
       <Notice error={state.error} ok={state.ok} />
       <Submit className="btn btn-ghost btn-sm" pendingLabel="Importing…">Import from Worker secrets</Submit>
+    </form>
+  );
+}
+
+export function ImportCompanyMethods() {
+  const [state, action] = useActionState<ActionState, FormData>(importCompanyMethodsAction, {});
+  return (
+    <form action={action}>
+      <Notice error={state.error} ok={state.ok} />
+      <Submit className="btn btn-primary btn-sm" pendingLabel="Importing…">Import company accounts (crypto + BNI)</Submit>
     </form>
   );
 }

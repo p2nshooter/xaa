@@ -11,6 +11,7 @@ import { jsonLdHtml } from '@/lib/json-ld';
 import { PACKAGES, eur } from '@/content/packages';
 import { getLang } from '@/lib/i18n.server';
 import { DEFAULT_OG_IMAGE } from '@/lib/seo';
+import { SupportWidget } from '@/components/SupportWidget';
 
 // Display face for headings. A clean grotesk rather than the old Playfair:
 // the serif read as ornamental next to a pricing table.
@@ -113,6 +114,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             and the client portal stay clean. PageAds enforces that itself. */}
         <PageAds />
         <SiteFooter />
+        <SupportWidget lang={lang} />
         <Analytics />
         <GlobalAds />
       </body>

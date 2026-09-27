@@ -411,6 +411,24 @@ export async function clearSetting(key: string): Promise<void> {
  * secrets before this screen existed, so upgrading does not silently empty
  * the client's payment page. Runs only when no method has been created yet.
  */
+/**
+ * Import the company's own destinations (src/content/company-payments.ts,
+ * taken from the ulyah.com repository). Idempotent: a destination whose
+ * address is already stored — active or not — is skipped, so pressing the
+ * button twice never creates duplicates.
+ */
+export async function importCompanyMethods(): Promise<number> {
+  const { COMPANY_PAYMENT_METHODS } = await import('@/content/company-payments');
+  const existing = new Set((await listPaymentMethods()).map((m) => (m.address ?? '').trim()).filter(Boolean));
+  let added = 0;
+  for (const m of COMPANY_PAYMENT_METHODS) {
+    if (existing.has(m.address.trim())) continue;
+    await createPaymentMethod(m);
+    added += 1;
+  }
+  return added;
+}
+
 export async function seedMethodsFromEnv(): Promise<number> {
   const existing = await listPaymentMethods();
   if (existing.length > 0) return 0;

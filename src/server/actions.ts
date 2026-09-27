@@ -12,7 +12,7 @@ import { storeFile, UploadError } from './uploads';
 import { getCarePlan, getSetupPlan } from '@/content/packages';
 import {
   createPaymentMethod, updatePaymentMethod, deletePaymentMethod, setPaymentMethodActive,
-  saveSetting, clearSetting, seedMethodsFromEnv, revealPaymentMethod, getSetting,
+  saveSetting, clearSetting, seedMethodsFromEnv, importCompanyMethods, revealPaymentMethod, getSetting,
   bniTransferGuide, BNI_SWIFT, SETTING_DEFS, type MethodKind,
 } from './settings';
 import { setLeadStatus, deleteLead, type LeadStatus } from './leads';
@@ -22,6 +22,7 @@ import {
 } from './recovery';
 import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle } from './store';
 import { getTemplate } from '@/content/templates';
+import { adminReply, getThread, markAdminOnline, setThreadStatus, createThread } from './support';
 
 /**
  * Every mutation in the portal. Server actions rather than REST handlers:
@@ -591,6 +592,16 @@ export async function enquiryAction(_prev: ActionState, form: FormData): Promise
       .prepare('INSERT INTO enquiries (id, name, email, company, budget, package_slug, message, created_at) VALUES (?,?,?,?,?,?,?,?)')
       .bind(newId(), name, normaliseEmail(email), str(form, 'company') || null, str(form, 'budget') || null, str(form, 'package') || null, message.slice(0, 5000), nowIso())
       .run();
+    // Every brief also lands in the Support inbox as a conversation, so the
+    // studio answers contact-form messages and chats from one place.
+    try {
+      await createThread({
+        name, email: normaliseEmail(email), topic: 'quote', lang: 'en', source: 'contact',
+        firstMessage: [message, str(form, 'company') && `Company: ${str(form, 'company')}`, str(form, 'budget') && `Budget: ${str(form, 'budget')}`, str(form, 'package') && `Package: ${str(form, 'package')}`].filter(Boolean).join('\n'),
+      });
+    } catch (e) {
+      console.error('support thread for enquiry failed (enquiry still saved):', e);
+    }
     return { ok: 'Thank you — your brief is with us. We reply within one business day.' };
   } catch (err) {
     if (isRedirect(err)) throw err;
@@ -732,6 +743,20 @@ export async function importEnvMethodsAction(_prev: ActionState, _form: FormData
   }
 }
 
+export async function importCompanyMethodsAction(_prev: ActionState, _form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const n = await importCompanyMethods();
+    revalidatePath('/portal/admin/payments');
+    return n > 0
+      ? { ok: `Imported ${n} company destination${n > 1 ? 's' : ''} (crypto wallets and BNI accounts), stored encrypted.` }
+      : { ok: 'All company destinations are already here — nothing to import.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
 /* ───────────────── Studio: settings ───────────────── */
 
 export async function saveSettingsAction(_prev: ActionState, form: FormData): Promise<ActionState> {
@@ -828,3 +853,47 @@ export async function uploadBusinessDataAction(_prev: ActionState, form: FormDat
     return fail(err);
   }
 }
+
+/* ───────────────── Studio: support chat ───────────────── */
+
+export async function supportReplyAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const threadId = str(form, 'threadId');
+    const body = str(form, 'body');
+    if (!threadId || !body) return { error: 'Write a reply first.' };
+    if (!(await getThread(threadId))) return { error: 'Conversation not found.' };
+    await adminReply(threadId, body.slice(0, 4000));
+    await markAdminOnline();
+    revalidatePath('/portal/admin/support');
+    return { ok: 'Sent.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+export async function supportStatusAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const threadId = str(form, 'threadId');
+    const status = str(form, 'status') === 'closed' ? 'closed' : 'open';
+    await setThreadStatus(threadId, status);
+    revalidatePath('/portal/admin/support');
+    return { ok: status === 'closed' ? 'Conversation closed.' : 'Conversation reopened.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/** Heartbeat from the open Support desk: while it runs, the AI stays quiet. */
+export async function supportPresenceAction(): Promise<void> {
+  try {
+    await requireAdmin();
+    await markAdminOnline();
+  } catch {
+    /* not an admin, or D1 unavailable — nothing to record */
+  }
+}
+

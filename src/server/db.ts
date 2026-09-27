@@ -49,6 +49,33 @@ export class NotConfiguredError extends Error {
 }
 
 const TABLES = [
+  /**
+   * Live support chat. A thread belongs to a visitor through a random token
+   * kept in an httpOnly cookie (no account needed); contact-form briefs open a
+   * thread too, so every inbound message lands in one Support inbox.
+   */
+  `CREATE TABLE IF NOT EXISTS support_threads (
+     id TEXT PRIMARY KEY,
+     token TEXT NOT NULL UNIQUE,
+     name TEXT NOT NULL,
+     email TEXT NOT NULL,
+     topic TEXT NOT NULL,
+     source TEXT NOT NULL DEFAULT 'chat',
+     lang TEXT NOT NULL DEFAULT 'en',
+     status TEXT NOT NULL DEFAULT 'open',
+     user_id TEXT,
+     unread_admin INTEGER NOT NULL DEFAULT 0,
+     ai_replies INTEGER NOT NULL DEFAULT 0,
+     created_at TEXT NOT NULL,
+     updated_at TEXT NOT NULL
+   )`,
+  `CREATE TABLE IF NOT EXISTS support_messages (
+     id TEXT PRIMARY KEY,
+     thread_id TEXT NOT NULL,
+     sender TEXT NOT NULL,
+     body TEXT NOT NULL,
+     created_at TEXT NOT NULL
+   )`,
   `CREATE TABLE IF NOT EXISTS users (
      id TEXT PRIMARY KEY,
      email TEXT NOT NULL UNIQUE,
@@ -245,6 +272,8 @@ const TABLES = [
  * names sort_order, a column added after that table's first release.)
  */
 const INDEXES = [
+  `CREATE INDEX IF NOT EXISTS idx_support_threads_updated ON support_threads(updated_at)`,
+  `CREATE INDEX IF NOT EXISTS idx_support_messages_thread ON support_messages(thread_id, created_at)`,
   `CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id)`,
   `CREATE INDEX IF NOT EXISTS idx_projects_user ON projects(user_id)`,
   `CREATE INDEX IF NOT EXISTS idx_payments_project ON payments(project_id)`,
@@ -321,7 +350,7 @@ function tableOf(createSql: string): string {
  * multiplied by every cold isolate, was a real share of the daily D1 read
  * budget that ran out.
  */
-const SCHEMA_VERSION = '2026-09-27.1';
+const SCHEMA_VERSION = '2026-09-27.3';
 const SCHEMA_VERSION_ROW = '__schema_version__';
 
 async function schemaIsCurrent(database: D1Database): Promise<boolean> {
@@ -340,11 +369,16 @@ async function ensureSchema(database: D1Database): Promise<void> {
   if (!ready) {
     ready = (async () => {
       if (await schemaIsCurrent(database)) return;
+      // Anything that fails here is retried on a later cold start: the version
+      // marker is only written when every table and column is in place, so a
+      // transient error can never leave a table permanently missing.
+      let incomplete = 0;
       for (const sql of TABLES) {
         try {
           await database.prepare(sql).run();
         } catch (err) {
           if (CRITICAL_TABLES.includes(tableOf(sql))) throw err;
+          incomplete += 1;
           console.error('schema: non-critical table create failed (continuing):', err);
         }
       }
@@ -352,7 +386,10 @@ async function ensureSchema(database: D1Database): Promise<void> {
         try {
           await database.prepare(sql).run();
         } catch (err) {
-          if (!isDuplicateColumn(err)) console.error('schema: column migration failed (continuing):', err);
+          if (!isDuplicateColumn(err)) {
+            incomplete += 1;
+            console.error('schema: column migration failed (continuing):', err);
+          }
         }
       }
       for (const sql of INDEXES) {
@@ -372,10 +409,12 @@ async function ensureSchema(database: D1Database): Promise<void> {
       } catch (err) {
         console.error('seedAdmin failed (non-fatal):', err);
       }
-      await database
-        .prepare('INSERT OR REPLACE INTO app_secrets (key, value, updated_at) VALUES (?, ?, ?)')
-        .bind(SCHEMA_VERSION_ROW, SCHEMA_VERSION, nowIso())
-        .run();
+      if (incomplete === 0) {
+        await database
+          .prepare('INSERT OR REPLACE INTO app_secrets (key, value, updated_at) VALUES (?, ?, ?)')
+          .bind(SCHEMA_VERSION_ROW, SCHEMA_VERSION, nowIso())
+          .run();
+      }
     })().catch((err) => {
       // Let the next request try again rather than poisoning the isolate.
       ready = null;
