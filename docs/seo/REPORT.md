@@ -1,14 +1,14 @@
 # SEO audit — all domains
 
-Generated 2026-09-27T00:52:02.340Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
+Generated 2026-09-28T09:37:42.127Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
 
 | Domain | Score | ✅ | ❌ | ⚠️ | 📝 | Repo |
 |---|---|---|---|---|---|---|
-| [xaa.es](https://xaa.es) | 93% | 61 | 4 | 2 | 9 | p2nshooter/xaa |
+| [xaa.es](https://xaa.es) | 96% | 62 | 1 | 4 | 9 | p2nshooter/xaa |
 
-## xaa.es — 93%
+## xaa.es — 96%
 
-**Not done yet (6):** Server response time; Fonts optimised (preload / font-display: swap); Unique title on every page; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (5):** Server response time; Fonts optimised (preload / font-display: swap); Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -33,16 +33,16 @@ Generated 2026-09-27T00:52:02.340Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 1360 ms (from a GitHub runner) |
+| ⚠️ | Server response time | 961 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | private, no-cache, no-store, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ⚠️ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ❌ | Performance score (mobile) | 47/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 4.94 s lab |
+| ⚠️ | Performance score (mobile) | 72/100 — Lighthouse (runner) |
+| ⚠️ | LCP ≤ 2.5 s | 2.98 s lab |
 | ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 3694 ms lab (no field data yet) |
+| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 772 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -52,7 +52,7 @@ Generated 2026-09-27T00:52:02.340Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Meta description (50–160 chars) | 156: European web development studio: landing pages, company websites, e-commerce, SaaS and ent… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 7 H2 |
-| ❌ | Unique title on every page | 9 pages sampled; 3 duplicate, 0 missing |
+| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
 | ✅ | Breadcrumbs on inner pages | 8/8 |

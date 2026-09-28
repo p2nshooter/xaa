@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-27T00:52:02.340Z",
+ "generatedAt": "2026-09-28T09:37:42.127Z",
  "sites": [
   {
    "domain": "xaa.es",
@@ -138,7 +138,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "warn",
-     "detail": "1360 ms (from a GitHub runner)"
+     "detail": "961 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -417,8 +417,8 @@
      "section": "3",
      "id": "unique_titles",
      "label": "Unique title on every page",
-     "status": "fail",
-     "detail": "9 pages sampled; 3 duplicate, 0 missing"
+     "status": "pass",
+     "detail": "9 pages sampled; 0 duplicate, 0 missing"
     },
     {
      "section": "3",
@@ -459,15 +459,15 @@
      "section": "2",
      "id": "perf_score",
      "label": "Performance score (mobile)",
-     "status": "fail",
-     "detail": "47/100 — Lighthouse (runner)"
+     "status": "warn",
+     "detail": "72/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "fail",
-     "detail": "4.94 s lab"
+     "status": "warn",
+     "detail": "2.98 s lab"
     },
     {
      "section": "2",
@@ -481,7 +481,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "fail",
-     "detail": "TBT 3694 ms lab (no field data yet)"
+     "detail": "TBT 772 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -578,14 +578,14 @@
     {
      "url": "https://xaa.es/services/landing-page?lang=es",
      "status": 200,
-     "title": "Landing Page — €500 – €1,500 · XAA",
+     "title": "Landing Page — €500 – €1,500: precio y plazos · XAA",
      "desc": "Una página, diseñada para convertir: una oferta, un público y una llamada a la acción, construida para la velocidad y medida desde el primer día. Entrega en…",
      "h1": 1
     },
     {
      "url": "https://xaa.es/services/landing-page?lang=id",
      "status": 200,
-     "title": "Landing Page — €500 – €1,500 · XAA",
+     "title": "Jasa Landing Page — €500 – €1,500 · XAA",
      "desc": "Satu halaman, dirancang untuk konversi: satu tawaran, satu audiens, dan satu ajakan bertindak, dibangun untuk kecepatan dan diukur sejak hari pertama…",
      "h1": 1
     },
@@ -599,15 +599,15 @@
     {
      "url": "https://xaa.es/services/portfolio-website?lang=es",
      "status": 200,
-     "title": "Personal / Portfolio Website — €1,000 – €3,000 · XAA",
+     "title": "Personal / Portfolio Website — €1,000 – €3,000: precio y plazos · XAA",
      "desc": "Una plataforma personal con un verdadero sistema de contenido detrás, para que tu trabajo, tus textos y tus contactos sigan siendo tuyos y actualizables…",
      "h1": 1
     }
    ],
-   "score": 93,
-   "pass": 61,
-   "fail": 4,
-   "warn": 2,
+   "score": 96,
+   "pass": 62,
+   "fail": 1,
+   "warn": 4,
    "manual": 9
   }
  ]
