@@ -5,8 +5,6 @@ import './globals.css';
 import { SITE } from '@/lib/site';
 import { SiteHeader, SiteFooter } from '@/components/Site';
 import { Analytics } from '@/components/Analytics';
-import { GlobalAds } from '@/components/Ads';
-import { PageAds } from '@/components/PageAds';
 import { jsonLdHtml } from '@/lib/json-ld';
 import { PACKAGES, eur } from '@/content/packages';
 import { getLang } from '@/lib/i18n.server';
@@ -110,13 +108,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <SiteBeacon />
         <SiteHeader />
         <main className="min-h-[60vh]">{children}</main>
-        {/* Ad units run on the editorial archive only — the commercial pages
-            and the client portal stay clean. PageAds enforces that itself. */}
-        <PageAds />
         <SiteFooter />
         <SupportWidget lang={lang} />
         <Analytics />
-        <GlobalAds />
       </body>
     </html>
   );

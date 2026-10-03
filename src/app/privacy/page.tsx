@@ -60,14 +60,14 @@ export default function PrivacyPage() {
           because the portal cannot function without it.
         </p>
         <p>
-          The editorial archive carries advertising, and advertising partners may set their own cookies on those pages.
-          The studio pages and the client portal carry no advertising and no advertising cookies.
+          Public pages of this site may carry advertising from Google AdSense, and Google may set its own cookies on
+          those pages. The client portal carries no advertising and no advertising cookies.
         </p>
 
-        <h2>Advertising on the archive</h2>
+        <h2>Advertising</h2>
         <p>
-          Articles under <Link href={SITE.magazine.path}>{SITE.magazine.name}</Link> are supported by advertising,
-          including Google AdSense and Adsterra. Third-party vendors, including Google, use cookies to serve ads based
+          Public pages, including the articles under <Link href={SITE.magazine.path}>{SITE.magazine.name}</Link>, are
+          supported by advertising from Google AdSense. Third-party vendors, including Google, use cookies to serve ads based
           on prior visits to this or other websites. You can opt out of personalised Google advertising at{' '}
           <a href="https://www.google.com/settings/ads" rel="nofollow noopener" target="_blank">Google Ads Settings</a>,
           and out of third-party vendor cookies at{' '}

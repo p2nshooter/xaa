@@ -25,9 +25,8 @@ export const SITE = {
   billingEmail: 'billing@xaa.es',
   heroLead: 'Custom websites and platforms,',
   heroAccent: 'engineered to scale',
-  adClient: 'ca-pub-6371903555702163',
+  adClient: 'ca-pub-8991272269211824',
   analyticsEndpoint: 'https://api.ulyah.com/track',
-  adConfigEndpoint: 'https://api.ulyah.com/content/ad-config',
   /**
    * Editorial archive kept from the original site. Named plainly: calling
    * football coverage "Insights" in a studio's menu sets an expectation the
