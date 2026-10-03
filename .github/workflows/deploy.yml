@@ -34,7 +34,21 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      - run: npm run cf:build
+      # next/font downloads the Google Fonts CSS while it builds. On
+      # 2026-10-03 Google answered with CSS the loader could not parse
+      # ("Cannot read properties of null (reading '1')" in next/font) and the
+      # deploy died, though the same commit builds locally. A failure that
+      # names next/font is retried twice; any other build error fails at once.
+      - name: Build for Cloudflare
+        run: |
+          set -o pipefail
+          for attempt in 1 2 3; do
+            if npm run cf:build 2>&1 | tee /tmp/build.log; then exit 0; fi
+            if ! grep -q "An error occurred in \`next/font\`" /tmp/build.log; then exit 1; fi
+            echo "::warning::next/font could not fetch Google Fonts (attempt $attempt) — retrying in $((attempt * 20))s"
+            sleep $((attempt * 20))
+          done
+          exit 1
       - name: Ensure workers.dev subdomain
         if: steps.cf.outputs.ok == 'true'
         run: |
