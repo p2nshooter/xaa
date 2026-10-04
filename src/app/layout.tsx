@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/brand/xaa-mark-64.png', sizes: '64x64', type: 'image/png' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon.svg?v=2', type: 'image/svg+xml' },
     ],
     shortcut: '/brand/xaa-mark-64.png',
     apple: '/brand/xaa-mark-192.png',
