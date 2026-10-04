@@ -172,6 +172,9 @@ export async function SiteFooter() {
               [SITE.magazine.path, t('footer.archive')],
               ['/terms', t('footer.terms')],
               ['/privacy', t('footer.privacy')],
+              ['/cookies', t('footer.cookies')],
+              ['/disclaimer', t('footer.disclaimer')],
+              ['/editorial-policy', t('footer.editorial')],
             ]}
           />
         </div>
