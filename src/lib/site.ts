@@ -25,7 +25,7 @@ export const SITE = {
   billingEmail: 'billing@xaa.es',
   heroLead: 'Custom websites and platforms,',
   heroAccent: 'engineered to scale',
-  adClient: 'ca-pub-8991272269211824',
+  adClient: 'ca-pub-5693981744147503',
   analyticsEndpoint: 'https://api.ulyah.com/track',
   /**
    * Editorial archive kept from the original site. Named plainly: calling
