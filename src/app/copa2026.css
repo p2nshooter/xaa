@@ -1,0 +1,23 @@
+/* Spain, world champion 2026 — the ribbon at the top of every page
+   (owner: "animasi pemenang piala Dunia 2026 Spanyol" on every site).
+   Palace room: Trono de marfil y oro. Decoration only; nothing here is clickable. */
+/* xaa.es — ivory and gold throne: a blueprint grid drawn in platinum on
+   ivory, with a gold line that traces across it like a pen finishing a plan. */
+.marfil26{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;
+  min-height:34px;padding:4px 12px;color:#3a3326;border-bottom:1px solid #d9cfb8;
+  background-color:#f7f2e7;background-image:linear-gradient(rgba(150,140,120,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(150,140,120,.14) 1px,transparent 1px);background-size:12px 12px;
+  font:500 12.5px/1.2 inherit;letter-spacing:.08em;text-transform:uppercase}
+.marfil26::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,#b9a06a,#ffc400,#c60b1e);transform-origin:0 50%;animation:marfil26-trace 7s cubic-bezier(.7,0,.3,1) infinite}
+@keyframes marfil26-trace{0%{transform:scaleX(0)}50%,85%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+.marfil26-flag{width:18px;height:12px;background:linear-gradient(#c60b1e 0 25%,#ffc400 25% 75%,#c60b1e 75%);box-shadow:2px 2px 0 #cfc6b4}
+.marfil26-trophy{font-size:15px}
+.marfil26-pitch{position:relative;width:46px;height:20px;border-bottom:1px dashed #b9a06a}
+.marfil26-ballx{position:absolute;left:0;bottom:0;animation:marfil26-x 2.8s ease-in-out infinite}
+.marfil26-ball{display:block;font-size:12px;animation:marfil26-y .7s ease-in infinite alternate}
+@keyframes marfil26-x{50%{transform:translateX(32px)}}
+@keyframes marfil26-y{to{transform:translateY(-9px) rotate(180deg)}}
+.marfil26-chip{padding:2px 7px;font:700 10px/1.4 system-ui,sans-serif;color:#f7f2e7;background:#3a3326}
+
+.marfil26-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:480px){.marfil26-pitch{display:none}.marfil26{font-size:11.5px;gap:7px}}
+@media (prefers-reduced-motion:reduce){.marfil26,.marfil26 *,.marfil26::before,.marfil26::after,.marfil26 *::before,.marfil26 *::after{animation:none!important}}
