@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import { SiteBeacon } from '@/components/SiteBeacon';
 import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
 import './globals.css';
+import './copa2026.css';
 import { SITE } from '@/lib/site';
 import { SiteHeader, SiteFooter } from '@/components/Site';
+import { Copa2026 } from '@/components/Copa2026';
 import { Analytics } from '@/components/Analytics';
 import { jsonLdHtml } from '@/lib/json-ld';
 import { PACKAGES, eur } from '@/content/packages';
@@ -106,6 +108,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body className="font-sans">
         <SiteBeacon />
+        <Copa2026 lang={lang} />
         <SiteHeader />
         <main className="min-h-[60vh]">{children}</main>
         <SiteFooter />
