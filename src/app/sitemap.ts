@@ -45,6 +45,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...multilingual('/register', 0.4, 'yearly'),
     ...multilingual('/privacy', 0.2, 'yearly'),
     ...multilingual('/terms', 0.2, 'yearly'),
+    ...multilingual('/cookies', 0.2, 'yearly'),
+    ...multilingual('/disclaimer', 0.2, 'yearly'),
+    ...multilingual('/editorial-policy', 0.3, 'yearly'),
     // Editorial archive (English only)
     { url: abs(SITE.magazine.path), changeFrequency: 'weekly', priority: 0.6 },
     ...CATEGORIES.map((c) => ({ url: abs(`/category/${c.slug}`), changeFrequency: 'weekly' as const, priority: 0.5 })),

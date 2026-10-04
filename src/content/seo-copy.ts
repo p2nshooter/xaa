@@ -90,6 +90,21 @@ export const SEO: Record<string, SeoCopy> = {
     es: { title: 'Política de privacidad — datos personales en XAA', description: 'Cómo XAA recoge, usa y protege los datos personales en la web del estudio, el portal de clientes y el archivo editorial.' },
     id: { title: 'Kebijakan privasi — pengelolaan data pribadi XAA', description: 'Cara XAA mengumpulkan, menggunakan dan melindungi data pribadi di situs studio, portal klien dan arsip editorial.' },
   },
+  cookies: {
+    en: { title: 'Cookie policy — which cookies XAA uses and why', description: 'Which cookies are set on xaa.es, which are strictly necessary for the client portal, how Google AdSense uses advertising cookies and how to control them.' },
+    es: { title: 'Política de cookies — qué cookies usa XAA y por qué', description: 'Qué cookies se usan en xaa.es, cuáles son necesarias para el portal de clientes, cómo usa Google AdSense las cookies publicitarias y cómo gestionarlas.' },
+    id: { title: 'Kebijakan kuki — kuki yang dipakai XAA dan alasannya', description: 'Kuki apa saja yang dipakai di xaa.es, mana yang wajib untuk portal klien, bagaimana Google AdSense memakai kuki iklan dan cara mengaturnya.' },
+  },
+  disclaimer: {
+    en: { title: 'Disclaimer — the limits of the guides and examples on XAA', description: 'What the guides, estimates and code examples published by XAA are and are not, and when to get professional advice for your own project.' },
+    es: { title: 'Aviso de responsabilidad — límites de las guías de XAA', description: 'Qué son y qué no son las guías, estimaciones y ejemplos de código que publica XAA, y cuándo pedir asesoramiento profesional para tu proyecto.' },
+    id: { title: 'Penafian — batas panduan dan contoh di XAA', description: 'Apa yang dimaksud dan tidak dimaksud dari panduan, estimasi dan contoh kode yang diterbitkan XAA, dan kapan perlu nasihat profesional.' },
+  },
+  editorial: {
+    en: { title: 'Editorial policy — how XAA researches and writes its guides', description: 'The standards, sources, review process and corrections policy behind every guide and article published by XAA.' },
+    es: { title: 'Política editorial — cómo investiga y escribe XAA sus guías', description: 'Los criterios, fuentes, revisión y política de correcciones detrás de cada guía y artículo que publica XAA.' },
+    id: { title: 'Kebijakan editorial — cara XAA meneliti dan menulis panduannya', description: 'Standar, sumber, proses tinjauan dan kebijakan koreksi di balik setiap panduan dan artikel yang diterbitkan XAA.' },
+  },
   terms: {
     en: { title: 'Terms of engagement for web development projects', description: 'The terms under which XAA accepts, builds and delivers website and platform projects — payments, timelines, ownership, cancellation and liability.' },
     es: { title: 'Condiciones de contratación de proyectos web', description: 'Las condiciones con las que XAA acepta, desarrolla y entrega proyectos web y de plataforma: pagos, plazos, propiedad, cancelación y responsabilidad.' },
