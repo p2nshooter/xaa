@@ -364,3 +364,9 @@ h1 { letter-spacing: -0.032em; }
   border-radius: 9999px; padding: .28rem .75rem;
   font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
 }
+
+/* `.btn` sets display after Tailwind's utilities, so `hidden sm:inline-flex`
+   on a button never hid it: on phones the header carried every button and
+   squeezed the logo. Restore the utilities' intent for buttons. */
+.btn.hidden { display: none; }
+@media (min-width: 640px) { .btn.sm\:inline-flex { display: inline-flex; } }

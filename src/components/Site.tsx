@@ -76,7 +76,7 @@ export async function SiteHeader() {
           promo strip scrolls away instead of eating the viewport. */}
       <div className="sticky top-0 z-40 border-b border-[color:var(--line)] bg-white/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4">
-          <Link href="/" className="flex min-w-0 items-center gap-2.5">
+          <Link href="/" className="flex shrink-0 items-center gap-2.5">
             <BrandMark size={38} />
             <span>
               <span className="block font-display text-[22px] font-extrabold leading-none tracking-tight">
