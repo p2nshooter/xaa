@@ -109,11 +109,11 @@ export const WORKS: Work[] = [
     slug: 'ulyah',
     name: 'Ulyah ecosystem',
     url: 'https://ulyah.com',
-    kind: 'Multi-tenant platform · 5 production domains',
+    kind: 'Multi-tenant platform · 4 production domains',
     summary:
-      'One codebase serving five independent sites, each on its own domain, in its own language, with its own visual identity — an Islamic reference and study platform covering Quran, hadith, classical texts, audio and daily practice.',
+      'One codebase serving four independent sites, each on its own domain, in its own language, with its own visual identity — an Islamic reference and study platform covering Quran, hadith, classical texts, audio and daily practice.',
     highlights: [
-      'Five tenants from a single codebase, each with a distinct theme',
+      'Four tenants from a single codebase, each with a distinct theme',
       'One native language per domain, enforced in both directions',
       'Quran translations in 11 languages; scripture never machine-translated',
       'Hadith collections, tafsir editions and pesantren texts',
@@ -136,7 +136,6 @@ export const WORKS: Work[] = [
       { domain: 'xad.es', url: 'https://xad.es', note: 'English' },
       { domain: '1fr.fr', url: 'https://1fr.fr', note: 'French' },
       { domain: 'tilawa.de', url: 'https://tilawa.de', note: 'German' },
-      { domain: 'dawa.es', url: 'https://dawa.es', note: 'Spanish' },
     ],
   },
   {

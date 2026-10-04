@@ -31,11 +31,10 @@ export const DOMAINS = [
   { domain: 'oldco.in', repo: 'p2nshooter/oldco.in' },
   { domain: 'profity.in', repo: 'p2nshooter/profity.in' },
   { domain: '1fr.fr', repo: null },
-  { domain: 'dawa.es', repo: null },
   { domain: 'tilawa.de', repo: null },
 ];
 
-/** All 13 are Domain properties in Search Console (owner's screenshot, 2026-09). */
+/** All of these are Domain properties in Search Console (owner's screenshot, 2026-09). */
 const GSC_VERIFIED = new Set(DOMAINS.map((d) => d.domain));
 
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36 XAA-SEO-Audit/1.0 (+https://xaa.es/company)';
