@@ -1,14 +1,14 @@
 # SEO audit — all domains
 
-Generated 2026-09-28T09:37:42.127Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
+Generated 2026-10-05T10:16:36.900Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
 
 | Domain | Score | ✅ | ❌ | ⚠️ | 📝 | Repo |
 |---|---|---|---|---|---|---|
-| [xaa.es](https://xaa.es) | 96% | 62 | 1 | 4 | 9 | p2nshooter/xaa |
+| [xaa.es](https://xaa.es) | 97% | 64 | 1 | 2 | 9 | p2nshooter/xaa |
 
-## xaa.es — 96%
+## xaa.es — 97%
 
-**Not done yet (5):** Server response time; Fonts optimised (preload / font-display: swap); Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (3):** Fonts optimised (preload / font-display: swap); Performance score (mobile); LCP ≤ 2.5 s
 
 
 **1. Foundation**
@@ -33,16 +33,16 @@ Generated 2026-09-28T09:37:42.127Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 961 ms (from a GitHub runner) |
+| ✅ | Server response time | 655 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | private, no-cache, no-store, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ⚠️ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 72/100 — Lighthouse (runner) |
-| ⚠️ | LCP ≤ 2.5 s | 2.98 s lab |
+| ⚠️ | Performance score (mobile) | 64/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 7.08 s lab |
 | ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 772 ms lab (no field data yet) |
+| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 159 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -93,7 +93,7 @@ Generated 2026-09-28T09:37:42.127Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 36 unique |
+| ✅ | Internal links from the home page | 39 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -143,7 +143,7 @@ Generated 2026-09-28T09:37:42.127Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://xaa.es/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://xaa.es/sitemap.xml — 295 URLs |
+| ✅ | XML sitemap | HTTP 200 https://xaa.es/sitemap.xml — 228 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
