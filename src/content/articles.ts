@@ -694,3 +694,10 @@ ARTICLES.push(...ARTICLES_BATCH3);
 // The 76 that were removed redirect to their football desk (next.config.js).
 
 applyExpansions(ARTICLES);
+
+// Reading time follows the real length of each article (about 200 words a
+// minute), so the "min read" label can never drift away from the text.
+for (const a of ARTICLES) {
+  const text = a.sections.map((s) => [s.h, ...s.p].join(' ')).join(' ');
+  a.minutes = Math.max(1, Math.round(text.split(/\s+/).filter(Boolean).length / 200));
+}
