@@ -7,8 +7,9 @@ import { usePathname } from "next/navigation";
  * Cookieless pageview beacon + live-presence heartbeat → the ulyah.com admin.
  * On every navigation it POSTs { site, path } to api.ulyah.com/track (counted
  * in "Trafik Situs di Luar Ekosistem"); while the tab is open it also pings
- * /track/ping every 3s with an anonymous device token so the admin's "online
- * sekarang" shows REAL devices within ~5s — identical to the ecosystem sites.
+ * /track/ping every 30s with an anonymous device token so the admin's "online
+ * sekarang" shows REAL devices (45-second window) — the same beat as the
+ * ecosystem sites (ulyah.com packages/shared/src/presence.ts).
  * All text/plain (no CORS preflight); every failure is swallowed so analytics
  * can never break a page.
  */
@@ -46,7 +47,13 @@ export function SiteBeacon() {
     }
   }, [pathname]);
 
-  // Presence heartbeat while the tab is visible → real-time "online now" (≤5s).
+  // Presence heartbeat while the tab is visible → "online now".
+  //
+  // Every 30s, not 3s. Each ping is a request to api.ulyah.com and a write to
+  // its D1, which share the Workers Free plan's 100,000 requests and 100,000
+  // writes a day with every site on the account. At 3s one open tab cost
+  // twenty of each a minute, and the account ran out — every site, this one
+  // included, went down until midnight UTC (owner, 12 Oct 2026).
   useEffect(() => {
     const device = deviceId();
     if (!device) return;
@@ -60,7 +67,7 @@ export function SiteBeacon() {
       if (typeof navigator !== "undefined" && navigator.sendBeacon) navigator.sendBeacon(`${API}/track/leave`, blob);
     };
     ping();
-    const t = setInterval(ping, 3000);
+    const t = setInterval(ping, 30_000);
     const onVis = () => (document.visibilityState === "visible" ? ping() : leave());
     document.addEventListener("visibilitychange", onVis);
     window.addEventListener("pagehide", leave);
