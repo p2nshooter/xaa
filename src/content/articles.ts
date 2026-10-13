@@ -1,6 +1,7 @@
 import type { Article, Category } from './types';
 import { ARTICLES_BATCH2 } from './articles-batch2';
 import { ARTICLES_BATCH3 } from './articles-batch3';
+import { ARTICLES_BATCH4 } from './articles-batch4';
 import { applyExpansions } from './expansions';
 
 /**
@@ -689,6 +690,8 @@ export function getArticlesByCategory(cat: string): Article[] {
 // home, category pages, sitemap, related articles — automatically complete).
 ARTICLES.push(...ARTICLES_BATCH2);
 ARTICLES.push(...ARTICLES_BATCH3);
+// Batch 4 — five new hand-written features (13 Oct 2026).
+ARTICLES.push(...ARTICLES_BATCH4);
 
 // Machine-written articles are no longer published here: hand-written only.
 // The 76 that were removed redirect to their football desk (next.config.js).
