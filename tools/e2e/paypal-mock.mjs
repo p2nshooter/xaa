@@ -16,6 +16,7 @@ export const MOCK_CLIENT_ID = 'mock-sandbox-client-id';
 export const MOCK_SECRET = 'mock-sandbox-secret';
 const TOKEN = 'mock-access-token';
 const orders = new Map();
+const webhooks = new Map();
 let seq = 0;
 
 function send(res, code, body, headers = {}) {
@@ -86,6 +87,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (url.pathname === '/__orders') return send(res, 200, [...orders.values()].map(view));
+  if (url.pathname === '/__webhooks') return send(res, 200, [...webhooks.values()]);
   if (url.pathname === '/favicon.ico') return send(res, 404, '');
 
   if (auth !== `Bearer ${TOKEN}`) return send(res, 401, { name: 'AUTHENTICATION_FAILURE', message: 'bad token' });
@@ -111,6 +113,27 @@ const server = http.createServer(async (req, res) => {
       o.capture = { id: `CAP-${o.id}`, status: process.env.MOCK_CAPTURE_STATUS || 'COMPLETED', amount: pu.amount, custom_id: pu.custom_id };
       return send(res, 201, view(o));
     }
+  }
+
+  // Webhooks of this app — what the portal creates for itself.
+  if (url.pathname === '/v1/notifications/webhooks') {
+    if (req.method === 'GET') return send(res, 200, { webhooks: [...webhooks.values()] });
+    if (req.method === 'POST') {
+      const body = JSON.parse(raw || '{}');
+      if (!/^https?:\/\//.test(body.url || '')) return send(res, 400, { name: 'VALIDATION_ERROR', details: [{ issue: 'INVALID_PARAMETER_SYNTAX' }] });
+      if ([...webhooks.values()].some((w) => w.url === body.url)) return send(res, 400, { name: 'WEBHOOK_URL_ALREADY_EXISTS', details: [{ issue: 'WEBHOOK_URL_ALREADY_EXISTS' }] });
+      if (webhooks.size >= 10) return send(res, 400, { name: 'WEBHOOK_NUMBER_LIMIT_EXCEEDED', details: [{ issue: 'WEBHOOK_NUMBER_LIMIT_EXCEEDED' }] });
+      const w = { id: `WH-${++seq}`, url: body.url, event_types: body.event_types || [] };
+      webhooks.set(w.id, w);
+      return send(res, 201, w);
+    }
+  }
+  const wm = url.pathname.match(/^\/v1\/notifications\/webhooks\/([^/]+)$/);
+  if (wm && req.method === 'PATCH') {
+    const w = webhooks.get(decodeURIComponent(wm[1]));
+    if (!w) return send(res, 404, { name: 'INVALID_RESOURCE_ID' });
+    for (const op of JSON.parse(raw || '[]')) if (op.path === '/event_types') w.event_types = op.value;
+    return send(res, 200, w);
   }
 
   if (req.method === 'POST' && url.pathname === '/v1/notifications/verify-webhook-signature') {

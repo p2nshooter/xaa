@@ -114,10 +114,9 @@ export default async function AdminSettingsPage() {
                   <TestPayPal env="sandbox" />
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-steel-500">
-                  Optional webhook, for a client who pays and closes the tab before coming back: on each PayPal app add{' '}
-                  <code className="rounded bg-[color:var(--surface-2)] px-1.5 py-0.5 text-xs">https://xaa.es/api/paypal/webhook</code> with the
-                  events <em>Checkout order approved</em> and <em>Payment capture completed / pending / denied / refunded / reversed</em>,
-                  then paste its ID above. Payments confirm without it too — the buyer&rsquo;s return captures them.
+                  The webhook is set up by the portal itself: saving (or testing) a set of keys creates{' '}
+                  <code className="rounded bg-[color:var(--surface-2)] px-1.5 py-0.5 text-xs">https://xaa.es/api/paypal/webhook</code> on that
+                  PayPal app with the checkout and payment-capture events, and fills in its ID above. Nothing to do in the PayPal dashboard.
                 </p>
               </div>
             ) : null}

@@ -349,10 +349,10 @@ export const SETTING_DEFS: SettingDef[] = [
   },
   { key: 'paypal_client_id', label: 'Live client ID', hint: 'developer.paypal.com → Apps & Credentials → Live → your app.', secret: false, group: 'paypal' },
   { key: 'paypal_client_secret', label: 'Live secret', hint: 'Same screen, “Secret key 1”. Encrypted at rest.', secret: true, group: 'paypal' },
-  { key: 'paypal_webhook_id', label: 'Live webhook ID (optional)', hint: 'Lets the portal check PayPal’s signature on notifications. Payments confirm without it.', secret: false, group: 'paypal' },
+  { key: 'paypal_webhook_id', label: 'Live webhook ID', hint: 'Filled in automatically: saving or testing the Live keys creates the webhook on PayPal. Lets the portal check PayPal’s signature on notifications.', secret: false, group: 'paypal' },
   { key: 'paypal_sandbox_client_id', label: 'Sandbox client ID', hint: 'developer.paypal.com → Apps & Credentials → Sandbox → your app.', secret: false, group: 'paypal' },
   { key: 'paypal_sandbox_client_secret', label: 'Sandbox secret', hint: 'Encrypted at rest.', secret: true, group: 'paypal' },
-  { key: 'paypal_sandbox_webhook_id', label: 'Sandbox webhook ID (optional)', hint: 'The webhook created on the Sandbox app.', secret: false, group: 'paypal' },
+  { key: 'paypal_sandbox_webhook_id', label: 'Sandbox webhook ID', hint: 'Filled in automatically when the Sandbox keys are saved or tested.', secret: false, group: 'paypal' },
 ];
 
 export const SETTING_GROUPS: { id: SettingDef['group']; title: string; blurb: string }[] = [
@@ -360,7 +360,7 @@ export const SETTING_GROUPS: { id: SettingDef['group']; title: string; blurb: st
   { id: 'invoicing', title: 'Invoicing', blurb: 'Numbering and the wording that appears beneath the totals.' },
   {
     id: 'paypal', title: 'PayPal Checkout',
-    blurb: 'Clients pay with their PayPal balance or any card through PayPal, and the payment confirms itself the moment PayPal captures it — no transaction ID to paste, nothing to check by hand. Fill in a Live and a Sandbox set; the switch decides which one checkout uses.',
+    blurb: 'Clients pay with their PayPal balance or any card through PayPal, and the payment confirms itself the moment PayPal captures it — no transaction ID to paste, nothing to check by hand. Paste a Live and a Sandbox set and save: each set is checked with PayPal and its webhook is created automatically. The switch decides which set checkout uses.',
   },
   { id: 'integrations', title: 'Integrations', blurb: 'Keys for email, alerting and automated payment verification. Secret values are encrypted before they are written.' },
 ];

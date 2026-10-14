@@ -66,8 +66,14 @@ await ppForm.locator('select[name=paypal_mode]').selectOption('sandbox');
 await ppForm.locator('input[name=paypal_sandbox_client_id]').fill('mock-sandbox-client-id');
 await ppForm.locator('input[name=paypal_sandbox_client_secret]').fill('mock-sandbox-secret');
 await ppForm.locator('button[type=submit]').click();
-await ap.waitForTimeout(2000);
-check('PayPal settings saved', /Saved \d+ field/.test((await ppForm.textContent()) ?? ''));
+await ap.waitForTimeout(3000);
+const saveMsg = (await ppForm.textContent()) ?? '';
+check('PayPal settings saved', /Saved \d+ field/.test(saveMsg));
+check('saving the keys checks them with PayPal', /Sandbox: PayPal accepted these credentials/.test(saveMsg), saveMsg.slice(0, 160));
+check('saving the keys creates the webhook on PayPal by itself', /Sandbox webhook created on PayPal/.test(saveMsg));
+const hooks = await (await fetch(`${MOCK}/__webhooks`)).json();
+const siteHook = hooks.find((w) => w.url.endsWith('/api/paypal/webhook'));
+check('the webhook points at this site with every event it handles', !!siteHook && ['CHECKOUT.ORDER.APPROVED', 'PAYMENT.CAPTURE.COMPLETED', 'PAYMENT.CAPTURE.PENDING', 'PAYMENT.CAPTURE.DENIED', 'PAYMENT.CAPTURE.REFUNDED', 'PAYMENT.CAPTURE.REVERSED'].every((e) => siteHook.event_types.some((x) => x.name === e)), JSON.stringify(siteHook));
 const html = await ap.content();
 check('the stored secret never comes back to the page', !html.includes('mock-sandbox-secret'));
 
@@ -81,6 +87,8 @@ const testForm = ap.locator('form', { has: ap.locator('input[name=env][value=san
 await testForm.locator('button[type=submit]').click();
 await ap.waitForTimeout(2500);
 check('Sandbox credentials test passes', /PayPal accepted these credentials/.test((await testForm.textContent()) ?? ''), (await testForm.textContent()) ?? '');
+check('testing again keeps the same webhook (no duplicate)', /Sandbox webhook ready on PayPal/.test((await testForm.textContent()) ?? '') && (await (await fetch(`${MOCK}/__webhooks`)).json()).filter((w) => w.url === siteHook?.url).length === 1);
+check('the webhook id is filled in on the settings page', ((await ap.inputValue('input[name=paypal_sandbox_webhook_id]')) || '') === siteHook?.id, await ap.inputValue('input[name=paypal_sandbox_webhook_id]'));
 const liveTest = ap.locator('form', { has: ap.locator('input[name=env][value=live]') });
 await liveTest.locator('button[type=submit]').click();
 await ap.waitForTimeout(2000);
