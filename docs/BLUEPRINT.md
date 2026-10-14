@@ -162,9 +162,12 @@ Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup
   "Test Live/Sandbox credentials" memeriksa kunci ke PayPal. Kunci rahasia dienkripsi (AES-GCM) dan tidak
   pernah dikirim balik ke browser.
 - **Tanpa webhook pun aman**: capture yang ditahan PayPal atau pembeli yang menutup tab dikonfirmasi saat
-  halaman proyek/pesanan dibuka lagi. Webhook opsional: `https://xaa.es/api/paypal/webhook`
-  (Checkout order approved, Payment capture completed/pending/denied/refunded/reversed); payload tidak pernah
-  dipercaya — pesanan selalu dibaca ulang dari PayPal.
+  halaman proyek/pesanan dibuka lagi. Payload webhook tidak pernah dipercaya — pesanan selalu dibaca ulang
+  dari PayPal.
+- **Webhook dibuat situs sendiri** (permintaan pemilik 14 Okt: "langsung saja dari situsnya"): menyimpan atau
+  menguji kunci Live/Sandbox memeriksa kunci ke PayPal lalu membuat (atau memperbarui) webhook
+  `https://xaa.es/api/paypal/webhook` dengan event Checkout order approved + Payment capture
+  completed/pending/denied/refunded/reversed, dan mengisi Webhook ID otomatis. Tidak ada duplikat.
 - **BNI EUR + USD**: pada database yang belum punya tujuan pembayaran, dua rekening ini dipasang otomatis
   (sekali saja per database; yang dihapus/dimatikan admin tidak dipasang lagi). Rekening USD menampilkan
   jumlah dalam dolar (kurs acuan `USD_PER_EUR`, dibulatkan ke atas).
@@ -195,6 +198,6 @@ Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup
 
 ## 9. Changelog blueprint
 
-- **14 Okt 2026**: permintaan 25 — PayPal Checkout otomatis (Live + Sandbox) dan rekening BNI EUR/USD siap pakai.
+- **14 Okt 2026**: permintaan 25 — PayPal Checkout otomatis (Live + Sandbox) dan rekening BNI EUR/USD siap pakai; webhook PayPal dibuat otomatis oleh situs.
 
 - **27 Sep 2026**: blueprint dibuat. Tercatat: chat support, pembayaran, diagnosis portal, judul SEO unik per bahasa, tes E2E masuk repo, status CV/Indeed.

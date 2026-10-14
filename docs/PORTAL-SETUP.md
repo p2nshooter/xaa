@@ -107,9 +107,10 @@ as the `database_id` in local mode, and state lands in `.wrangler/state`
 2. Paste the **Live** client ID and secret (developer.paypal.com → Apps & Credentials → Live), and the
    **Sandbox** pair if you want to test first. Secrets are encrypted before they are written and never
    shown again unless you press *Show*.
-3. Choose **Checkout uses: Live** (or Sandbox for a test run), save, and press **Test Live credentials**.
-4. Optional: add a webhook on the PayPal app pointing at `https://xaa.es/api/paypal/webhook` with the
-   *Checkout order approved* and *Payment capture …* events, and paste its ID. Payments confirm without it.
+3. Choose **Checkout uses: Live** (or Sandbox for a test run) and save. Saving checks each complete set
+   with PayPal and **creates the webhook by itself** (`https://xaa.es/api/paypal/webhook`, checkout and
+   payment-capture events) on that PayPal app, then fills in its ID. Nothing to do in the PayPal dashboard;
+   **Test Live credentials** repeats the check at any time without creating a duplicate.
 
 From then on every milestone and template order shows **Pay with PayPal**; the payment is captured and
 confirmed automatically when the client comes back from PayPal. Bank transfers to the BNI EUR and USD

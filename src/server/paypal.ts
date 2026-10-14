@@ -1,5 +1,5 @@
 import { appEnv, db, newId, nowIso } from './db';
-import { getSettings } from './settings';
+import { getSettings, saveSetting } from './settings';
 
 /**
  * PayPal Checkout (Orders v2), confirmed automatically.
@@ -135,7 +135,7 @@ async function accessToken(cfg: PayPalConfig): Promise<string> {
   return data.access_token;
 }
 
-async function call<T>(cfg: PayPalConfig, method: 'GET' | 'POST', path: string, body?: unknown, requestId?: string): Promise<T> {
+async function call<T>(cfg: PayPalConfig, method: 'GET' | 'POST' | 'PATCH', path: string, body?: unknown, requestId?: string): Promise<T> {
   const res = await fetch(`${await apiBase(cfg.env)}${path}`, {
     method,
     headers: {
@@ -270,6 +270,69 @@ export function judgeCapture(capture: PayPalCapture | null, expected: { checkout
     return { ok: true, state: 'pending', captureId: capture.id, reason: capture.status_details?.reason ?? 'PENDING_REVIEW' };
   }
   return { ok: false, reason: `PayPal reports the capture as ${capture.status}.` };
+}
+
+/* ───────────────────────── Webhook, set up by the site itself ───────────────────────── */
+
+/** What the webhook listens to — exactly what handleWebhookEvent acts on. */
+export const WEBHOOK_EVENTS = [
+  'CHECKOUT.ORDER.APPROVED',
+  'PAYMENT.CAPTURE.COMPLETED',
+  'PAYMENT.CAPTURE.PENDING',
+  'PAYMENT.CAPTURE.DENIED',
+  'PAYMENT.CAPTURE.REFUNDED',
+  'PAYMENT.CAPTURE.REVERSED',
+];
+
+interface PayPalWebhook {
+  id: string;
+  url: string;
+  event_types?: { name: string }[];
+}
+
+/**
+ * Make sure the PayPal app has a webhook pointing at this site, with the
+ * events above, and remember its id — so nobody has to create one by hand in
+ * the PayPal dashboard. Finds an existing webhook for the same URL first
+ * (PayPal refuses duplicates), updates its events when some are missing,
+ * otherwise creates it. Safe to run any number of times.
+ */
+export async function ensureWebhook(env: PayPalEnv, url: string): Promise<{ ok: boolean; message: string }> {
+  const cfg = await paypalConfig(env);
+  const name = env === 'live' ? 'Live' : 'Sandbox';
+  if (!cfg) return { ok: false, message: `${name}: enter the client ID and secret first.` };
+  const target = url.replace(/\/+$/, '');
+  try {
+    const list = await call<{ webhooks?: PayPalWebhook[] }>(cfg, 'GET', '/v1/notifications/webhooks');
+    const mine = (list.webhooks ?? []).find((w) => w.url.replace(/\/+$/, '') === target);
+    let id = mine?.id ?? '';
+    let what = 'ready';
+    if (mine) {
+      const have = new Set((mine.event_types ?? []).map((e) => e.name));
+      if (!have.has('*') && WEBHOOK_EVENTS.some((e) => !have.has(e))) {
+        await call(cfg, 'PATCH', `/v1/notifications/webhooks/${encodeURIComponent(mine.id)}`, [
+          { op: 'replace', path: '/event_types', value: WEBHOOK_EVENTS.map((n) => ({ name: n })) },
+        ]);
+        what = 'updated';
+      }
+    } else {
+      const created = await call<PayPalWebhook>(cfg, 'POST', '/v1/notifications/webhooks', {
+        url: target,
+        event_types: WEBHOOK_EVENTS.map((n) => ({ name: n })),
+      });
+      id = created.id;
+      what = 'created';
+    }
+    if (!id) return { ok: false, message: `${name}: PayPal did not return a webhook id.` };
+    if (id !== cfg.webhookId) await saveSetting(KEYS[env].webhook, id, 'PayPal setup');
+    return { ok: true, message: `${name} webhook ${what} on PayPal (${target}).` };
+  } catch (err) {
+    const issue = err instanceof PayPalError ? err.issue : '';
+    if (issue === 'WEBHOOK_NUMBER_LIMIT_EXCEEDED') {
+      return { ok: false, message: `${name}: this PayPal app already has 10 webhooks — delete an unused one in the PayPal dashboard, then save again.` };
+    }
+    return { ok: false, message: `${name} webhook: ${err instanceof Error ? err.message : 'PayPal could not be reached.'}` };
+  }
 }
 
 /** Check a set of credentials by signing in with them. */

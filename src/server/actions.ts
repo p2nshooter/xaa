@@ -22,7 +22,7 @@ import {
   restoreFromBackup, resetDatabase, CADENCES, PROVIDERS, type Cadence, type Provider,
 } from './recovery';
 import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle } from './store';
-import { activePayPal, createPayPalOrder, insertCheckout, isPayPalEnv, newCheckoutId, testPayPal } from './paypal';
+import { activePayPal, createPayPalOrder, ensureWebhook, insertCheckout, isPayPalEnv, newCheckoutId, paypalConfig, testPayPal, type PayPalEnv } from './paypal';
 import { getTemplate } from '@/content/templates';
 import { adminReply, getThread, markAdminOnline, setThreadStatus, createThread } from './support';
 
@@ -415,13 +415,26 @@ export async function startPaypalOrderAction(_prev: ActionState, form: FormData)
   redirect(approveUrl);
 }
 
-/** Admin: sign in to PayPal with the stored Live or Sandbox credentials. */
+/**
+ * Sign in to PayPal with one environment's keys and, when PayPal accepts
+ * them, make sure that app has this site's webhook (created on the spot —
+ * nothing to set up by hand in the PayPal dashboard).
+ */
+async function setupPayPal(env: PayPalEnv): Promise<{ ok: boolean; message: string }> {
+  const signIn = await testPayPal(env);
+  if (!signIn.ok) return signIn;
+  const hook = await ensureWebhook(env, `${await returnOrigin()}/api/paypal/webhook`);
+  return { ok: hook.ok, message: `${signIn.message} ${hook.message}` };
+}
+
+/** Admin: test the stored Live or Sandbox credentials (and set up the webhook). */
 export async function testPaypalAction(_prev: ActionState, form: FormData): Promise<ActionState> {
   try {
     await requireAdmin();
     const env = str(form, 'env');
     if (!isPayPalEnv(env)) return { error: 'Choose Live or Sandbox.' };
-    const r = await testPayPal(env);
+    const r = await setupPayPal(env);
+    revalidatePath('/portal/admin/settings');
     return r.ok ? { ok: r.message } : { error: r.message };
   } catch (err) {
     if (isRedirect(err)) throw err;
@@ -874,7 +887,18 @@ export async function saveSettingsAction(_prev: ActionState, form: FormData): Pr
       saved += 1;
     }
     revalidatePath('/portal/admin/settings');
-    return { ok: `Saved ${saved} field${saved === 1 ? '' : 's'}.` };
+    const done = `Saved ${saved} field${saved === 1 ? '' : 's'}.`;
+    if (group === 'paypal') {
+      // Saving the keys is the whole job: each complete set is checked with
+      // PayPal and its webhook is created or confirmed right away.
+      const results: { ok: boolean; message: string }[] = [];
+      for (const env of ['live', 'sandbox'] as const) {
+        if (await paypalConfig(env)) results.push(await setupPayPal(env));
+      }
+      const text = [done, ...results.map((r) => r.message)].join(' ');
+      return results.every((r) => r.ok) ? { ok: text } : { error: text };
+    }
+    return { ok: done };
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);
