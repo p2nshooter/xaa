@@ -159,6 +159,7 @@ export async function SiteFooter() {
               ['/process', t('footer.processRuns')],
               ['/payments', t('footer.usdtPaypal')],
               ['/faq', t('footer.faqLong')],
+              ['https://axto.io/invest', t('footer.invest')],
               ['/register', t('footer.openProject')],
               ['/portal', t('nav.portal')],
             ]}

@@ -15,6 +15,7 @@ Then, against the port it prints (the scripts default to a fixed one — edit
 | `admin.mjs` | Payment-destination CRUD, encryption self-test, that a wallet address is masked in the admin list and shown in full only to a paying client, that a stored secret never returns to the browser, invoice numbering stability, and the enquiry inbox. |
 | `crawl.mjs` | Every internal link reachable from the home page answers 200 (or an expected auth redirect). |
 | `testdemos.mjs` | The published demos load, log in, render generated data, and raise no JavaScript errors. |
+| `revenue.mjs` | Run after `paypal.mjs`: the revenue feed for the AXTO & XAA investor portal answers 401 without the token, the token is shown once, the feed equals the confirmed revenue in the local D1 (PayPal sandbox and refunded payments left out, bank payments and template sales in), a new token retires the old one, turning the feed off shuts it. |
 
 ```bash
 node tools/e2e/flow.mjs && node tools/e2e/admin.mjs \

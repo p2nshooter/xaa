@@ -23,6 +23,7 @@ import {
 } from './recovery';
 import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle } from './store';
 import { activePayPal, createPayPalOrder, ensureWebhook, insertCheckout, isPayPalEnv, newCheckoutId, paypalConfig, testPayPal, type PayPalEnv } from './paypal';
+import { rotateRevenueToken, revokeRevenueToken } from './revenue';
 import { getTemplate } from '@/content/templates';
 import { adminReply, getThread, markAdminOnline, setThreadStatus, createThread } from './support';
 
@@ -436,6 +437,36 @@ export async function testPaypalAction(_prev: ActionState, form: FormData): Prom
     const r = await setupPayPal(env);
     revalidatePath('/portal/admin/settings');
     return r.ok ? { ok: r.message } : { error: r.message };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/* ─────────────────── Revenue feed (AXTO & XAA capital raise) ─────────────────── */
+
+export interface TokenState extends ActionState { token?: string }
+
+/** Admin: create a new revenue-feed token for the axto.io investor portal (shown once). */
+export async function rotateRevenueTokenAction(_prev: TokenState, _form: FormData): Promise<TokenState> {
+  try {
+    await requireAdmin();
+    const token = await rotateRevenueToken();
+    revalidatePath('/portal/admin/settings');
+    return { ok: 'New token created. Copy it now — it is shown only this once — and paste it in axto.io Admin → Investors → xaa.es revenue feed. Any older token stopped working.', token };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/** Admin: switch the revenue feed off (no token opens it any more). */
+export async function revokeRevenueTokenAction(_prev: TokenState, _form: FormData): Promise<TokenState> {
+  try {
+    await requireAdmin();
+    await revokeRevenueToken();
+    revalidatePath('/portal/admin/settings');
+    return { ok: 'The revenue feed is off.' };
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);
