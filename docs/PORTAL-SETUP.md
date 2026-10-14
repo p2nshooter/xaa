@@ -101,6 +101,20 @@ as the `database_id` in local mode, and state lands in `.wrangler/state`
 3. On the studio desk, confirm the deposit once the client submits it — that is
    what unlocks their concept upload and starts the schedule.
 
+### PayPal Checkout
+
+1. Open **Studio desk → Settings → PayPal Checkout**.
+2. Paste the **Live** client ID and secret (developer.paypal.com → Apps & Credentials → Live), and the
+   **Sandbox** pair if you want to test first. Secrets are encrypted before they are written and never
+   shown again unless you press *Show*.
+3. Choose **Checkout uses: Live** (or Sandbox for a test run), save, and press **Test Live credentials**.
+4. Optional: add a webhook on the PayPal app pointing at `https://xaa.es/api/paypal/webhook` with the
+   *Checkout order approved* and *Payment capture …* events, and paste its ID. Payments confirm without it.
+
+From then on every milestone and template order shows **Pay with PayPal**; the payment is captured and
+confirmed automatically when the client comes back from PayPal. Bank transfers to the BNI EUR and USD
+accounts (put in place automatically on a fresh database) still need a confirmation on the studio desk.
+
 ## How the rules are enforced
 
 All of it lives in `src/server/projects.ts`, not in the UI:

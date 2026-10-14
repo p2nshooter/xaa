@@ -80,7 +80,51 @@ async function openMethod(row: PaymentMethodRow): Promise<PaymentMethod> {
   };
 }
 
+const COMPANY_SEEDED = '__company_methods_seeded__';
+let companyChecked = false;
+
+/** The two accounts the owner asked to be ready on day one (14 Oct 2026). */
+export const isStarterBankAccount = (m: PaymentMethodInput) => m.kind === 'bank' && (m.currency === 'EUR' || m.currency === 'USD');
+
+/**
+ * A fresh install never shows a client an empty payment screen: the first
+ * time destinations are listed, the company's BNI EUR and USD accounts are
+ * put in place (encrypted like any other). This happens once per database —
+ * the marker is written even when destinations already exist, so whatever an
+ * admin later disables or deletes stays that way. The rest of the company
+ * list (crypto, other currencies) stays one click away under Payments.
+ */
+export async function ensureStarterMethods(): Promise<void> {
+  if (companyChecked) return;
+  const database = await db();
+  const claim = await database
+    .prepare('INSERT OR IGNORE INTO app_secrets (key, value, updated_at) VALUES (?, ?, ?)')
+    .bind(COMPANY_SEEDED, 'seeding', nowIso())
+    .run();
+  if ((claim.meta?.changes ?? 0) > 0) {
+    try {
+      const count = await database.prepare('SELECT COUNT(*) AS n FROM payment_methods').first<{ n: number }>();
+      if (!count?.n) await importCompanyMethods(isStarterBankAccount);
+      await database.prepare('UPDATE app_secrets SET value = ?, updated_at = ? WHERE key = ?').bind('done', nowIso(), COMPANY_SEEDED).run();
+    } catch (err) {
+      // Let a later request try again rather than leave the marker half-set.
+      await database.prepare('DELETE FROM app_secrets WHERE key = ?').bind(COMPANY_SEEDED).run();
+      throw err;
+    }
+  }
+  companyChecked = true;
+}
+
 export async function listPaymentMethods(onlyActive = false): Promise<PaymentMethod[]> {
+  try {
+    await ensureStarterMethods();
+  } catch (err) {
+    console.error('starter payment methods could not be prepared (continuing):', err);
+  }
+  return listStoredMethods(onlyActive);
+}
+
+async function listStoredMethods(onlyActive: boolean): Promise<PaymentMethod[]> {
   const database = await db();
   const { results } = await database
     .prepare(
@@ -263,8 +307,10 @@ export interface SettingDef {
   label: string;
   hint: string;
   secret: boolean;
-  group: 'company' | 'invoicing' | 'integrations';
+  group: 'company' | 'invoicing' | 'paypal' | 'integrations';
   placeholder?: string;
+  /** Fixed choices: rendered as a select instead of a text field. */
+  options?: { value: string; label: string }[];
 }
 
 /**
@@ -292,13 +338,30 @@ export const SETTING_DEFS: SettingDef[] = [
   { key: 'telegram_chat_id', label: 'Telegram chat ID', hint: 'Where alerts are delivered.', secret: false, group: 'integrations' },
   { key: 'tron_api_key', label: 'TronGrid API key', hint: 'For automated on-chain USDT verification. Encrypted at rest.', secret: true, group: 'integrations' },
   { key: 'etherscan_api_key', label: 'Etherscan API key', hint: 'For automated ERC20 verification. Encrypted at rest.', secret: true, group: 'integrations' },
-  { key: 'paypal_client_id', label: 'PayPal client ID', hint: 'For automated PayPal verification.', secret: false, group: 'integrations' },
-  { key: 'paypal_client_secret', label: 'PayPal client secret', hint: 'Encrypted at rest.', secret: true, group: 'integrations' },
+
+  // PayPal Checkout (server/paypal.ts). Two complete credential sets; the mode
+  // decides which one checkout uses. Client IDs are public by design (PayPal
+  // puts them in every buyer's browser); secrets are encrypted at rest.
+  {
+    key: 'paypal_mode', label: 'Checkout uses', hint: 'Live moves real money. Sandbox is PayPal’s test environment — nothing is charged and test payments are labelled as such.',
+    secret: false, group: 'paypal',
+    options: [{ value: 'live', label: 'Live — real payments' }, { value: 'sandbox', label: 'Sandbox — test payments only' }],
+  },
+  { key: 'paypal_client_id', label: 'Live client ID', hint: 'developer.paypal.com → Apps & Credentials → Live → your app.', secret: false, group: 'paypal' },
+  { key: 'paypal_client_secret', label: 'Live secret', hint: 'Same screen, “Secret key 1”. Encrypted at rest.', secret: true, group: 'paypal' },
+  { key: 'paypal_webhook_id', label: 'Live webhook ID (optional)', hint: 'Lets the portal check PayPal’s signature on notifications. Payments confirm without it.', secret: false, group: 'paypal' },
+  { key: 'paypal_sandbox_client_id', label: 'Sandbox client ID', hint: 'developer.paypal.com → Apps & Credentials → Sandbox → your app.', secret: false, group: 'paypal' },
+  { key: 'paypal_sandbox_client_secret', label: 'Sandbox secret', hint: 'Encrypted at rest.', secret: true, group: 'paypal' },
+  { key: 'paypal_sandbox_webhook_id', label: 'Sandbox webhook ID (optional)', hint: 'The webhook created on the Sandbox app.', secret: false, group: 'paypal' },
 ];
 
 export const SETTING_GROUPS: { id: SettingDef['group']; title: string; blurb: string }[] = [
   { id: 'company', title: 'Company details', blurb: 'Who the invoice is from. Printed on every document the client receives.' },
   { id: 'invoicing', title: 'Invoicing', blurb: 'Numbering and the wording that appears beneath the totals.' },
+  {
+    id: 'paypal', title: 'PayPal Checkout',
+    blurb: 'Clients pay with their PayPal balance or any card through PayPal, and the payment confirms itself the moment PayPal captures it — no transaction ID to paste, nothing to check by hand. Fill in a Live and a Sandbox set; the switch decides which one checkout uses.',
+  },
   { id: 'integrations', title: 'Integrations', blurb: 'Keys for email, alerting and automated payment verification. Secret values are encrypted before they are written.' },
 ];
 
@@ -342,6 +405,26 @@ export async function listSettings(): Promise<SettingValue[]> {
       };
     })
   );
+}
+
+/**
+ * Read several settings in one query, secrets opened — server-side only.
+ * A key that is not stored (or no longer opens) comes back as ''.
+ */
+export async function getSettings(keys: string[]): Promise<Record<string, string>> {
+  const out: Record<string, string> = Object.fromEntries(keys.map((k) => [k, '']));
+  if (keys.length === 0) return out;
+  const database = await db();
+  const { results } = await database
+    .prepare(`SELECT key, value FROM app_settings WHERE key IN (${keys.map(() => '?').join(',')})`)
+    .bind(...keys)
+    .all<{ key: string; value: string }>();
+  for (const row of results ?? []) {
+    if (!row.value) continue;
+    const def = SETTING_DEFS.find((d) => d.key === row.key);
+    out[row.key] = def?.secret ? await decryptValue(row.value) : row.value;
+  }
+  return out;
 }
 
 /** Read one setting's real value, server-side only. */
@@ -389,6 +472,7 @@ export async function saveSetting(key: string, raw: string, updatedBy: string): 
   // Blank on a secret means "keep what is stored"; the form never echoes it
   // back, so treating blank as a delete would wipe a key on every save.
   if (def.secret && !value) return;
+  if (def.options && value && !def.options.some((o) => o.value === value)) throw new Error(`${def.label}: choose one of the listed options.`);
 
   await database
     .prepare(
@@ -417,11 +501,12 @@ export async function clearSetting(key: string): Promise<void> {
  * address is already stored — active or not — is skipped, so pressing the
  * button twice never creates duplicates.
  */
-export async function importCompanyMethods(): Promise<number> {
+export async function importCompanyMethods(only?: (m: PaymentMethodInput) => boolean): Promise<number> {
   const { COMPANY_PAYMENT_METHODS } = await import('@/content/company-payments');
-  const existing = new Set((await listPaymentMethods()).map((m) => (m.address ?? '').trim()).filter(Boolean));
+  const existing = new Set((await listStoredMethods(false)).map((m) => (m.address ?? '').trim()).filter(Boolean));
   let added = 0;
   for (const m of COMPANY_PAYMENT_METHODS) {
+    if (only && !only(m)) continue;
     if (existing.has(m.address.trim())) continue;
     await createPaymentMethod(m);
     added += 1;
@@ -430,8 +515,9 @@ export async function importCompanyMethods(): Promise<number> {
 }
 
 export async function seedMethodsFromEnv(): Promise<number> {
-  const existing = await listPaymentMethods();
-  if (existing.length > 0) return 0;
+  // Skips any address already stored, so it can run beside the starter BNI
+  // accounts (and twice) without creating duplicates.
+  const existing = new Set((await listStoredMethods(false)).map((m) => (m.address ?? '').trim()).filter(Boolean));
 
   const env = await appEnv();
   const candidates: PaymentMethodInput[] = [];
@@ -448,6 +534,7 @@ export async function seedMethodsFromEnv(): Promise<number> {
       sortOrder: 4,
     });
   }
-  for (const c of candidates) await createPaymentMethod(c);
-  return candidates.length;
+  const fresh = candidates.filter((c) => c.address.trim() && !existing.has(c.address.trim()));
+  for (const c of fresh) await createPaymentMethod(c);
+  return fresh.length;
 }

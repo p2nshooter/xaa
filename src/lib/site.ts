@@ -3,7 +3,7 @@
  *
  * xaa.es is a professional web development studio: custom websites, web
  * platforms, e-commerce, marketplaces, SaaS and enterprise systems, built for
- * European and international clients and paid in USDT or PayPal.
+ * European and international clients and paid by PayPal, bank wire or USDT.
  *
  * The site also keeps the editorial archive it grew out of — the World Cup
  * 2026 magazine now lives under /insights and is still fully published.
@@ -18,7 +18,7 @@ export const SITE = {
   url: 'https://xaa.es',
   tagline: 'Professional website & software development',
   description:
-    'XAA — eXperience, Automation & Architecture, Ecosystem Services. A European web development studio building landing pages, corporate websites, e-commerce, marketplaces, SaaS and enterprise platforms, with milestone-based payments in USDT or PayPal.',
+    'XAA — eXperience, Automation & Architecture, Ecosystem Services. A European web development studio building landing pages, corporate websites, e-commerce, marketplaces, SaaS and enterprise platforms, with milestone-based payments by PayPal, bank wire or USDT.',
   locale: 'en',
   email: 'hello@xaa.es',
   salesEmail: 'sales@xaa.es',

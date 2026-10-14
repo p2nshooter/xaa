@@ -4,6 +4,8 @@ import { notFound, redirect } from 'next/navigation';
 import { currentUser } from '@/server/auth';
 import { portalReady } from '@/server/db';
 import { listPaymentMethods } from '@/server/settings';
+import { paypalOffer, refreshOpenCheckouts } from '@/server/paypal';
+import { PayPalOutcome } from '@/components/forms/PayPalForms';
 import {
   getProject, listPayments, listFiles, listUpdates, money, nextAction, stageState,
   addonNames, formatDate, STATUS_LABEL, STATUS_BADGE, SETTLEMENT_TRIGGER, UNPAID_PROGRESS_CAP, FINAL_PCT,
@@ -19,8 +21,15 @@ import { getLang } from '@/lib/i18n.server';
 export const metadata: Metadata = { title: 'Project', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
 
-export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function ProjectPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ paypal?: string; reason?: string }>;
+}) {
   const { id } = await params;
+  const { paypal: paypalOutcome, reason: paypalReason } = await searchParams;
   if (!(await portalReady())) redirect('/portal');
 
   const user = await currentUser();
@@ -29,12 +38,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   const project = await getProject(id);
   if (!project) notFound();
   if (project.user_id !== user.id && user.role !== 'admin') notFound();
+  // A PayPal payment held for review, or approved by a buyer who closed the tab,
+  // is confirmed here once PayPal releases it — before the page reads the money.
+  await refreshOpenCheckouts({ projectId: project.id }).catch(() => false);
 
-  const [payments, files, updates, methods, aiConfig, recoveryEvents, backups, lang] = await Promise.all([
+  const [payments, files, updates, methods, paypal, aiConfig, recoveryEvents, backups, lang] = await Promise.all([
     listPayments(project.id),
     listFiles(project.id),
     listUpdates(project.id),
     listPaymentMethods(true),
+    paypalOffer(),
     getAiConfig(project.id),
     listRecoveryEvents(project.id),
     listBackups(project.id),
@@ -156,7 +169,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
       </section>
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[1.35fr_.65fr] lg:items-start">
-        <div className="space-y-8">
+        <div className="min-w-0 space-y-8">
+          <PayPalOutcome outcome={paypalOutcome} reason={paypalReason} />
           {/* Next action */}
           {action ? (
             <PaymentForm
@@ -165,6 +179,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               label={action.label}
               amount={action.amount}
               destinations={destinations}
+              paypal={paypal}
             />
           ) : null}
 

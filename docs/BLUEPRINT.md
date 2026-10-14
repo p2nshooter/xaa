@@ -70,6 +70,7 @@ Arti tanda:
 | 21 | Blueprint dari awal sampai akhir | ✅ | Dokumen ini |
 | 22 | Judul halaman paket unik per bahasa (temuan audit SEO) | ✅ | ES: "…: precio y plazos", ID: "Jasa …" |
 | 24 | Portal masih error karena kuota baca D1 harian habis (5 juta baris/hari, dipakai bersama semua situs di akun Cloudflare) | ✅ | Semua halaman portal tetap tampil dengan pemberitahuan kuning; diuji lokal dengan D1 dipaksa error kuota: 6/6 lulus. Solusi permanen: upgrade Workers Paid $5/bulan |
+| 25 | (14 Okt 2026) "Masukin pembayaran ini, pastikan langsung bisa digunakan untuk pembayaran, termasuk pembayaran manual bank BNI rekening USD & Euro" — kunci PayPal Live xaa.es + kunci Sandbox | ✅ kode, 🟡 kunci | PayPal Checkout otomatis (bagian 7 "PayPal Checkout"); rekening BNI EUR + USD otomatis tersedia di database baru; kunci PayPal diisi pemilik di Admin → Settings → PayPal Checkout (terenkripsi), tidak pernah di repo |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
 ---
@@ -150,6 +151,26 @@ Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup
 - **BNI wondr:** 6 akun aktif (EUR, USD, IDR, GBP, AUD, SGD) dan 7 nonaktif (CNY, HKD, JPY, MYR, SAR, KRW, THB).
 - **Penyimpanan:** tersimpan terenkripsi AES-GCM di D1 dan tampil tersamar di daftar admin (tombol reveal).
 
+### PayPal Checkout + BNI EUR/USD (permintaan 25)
+
+- **PayPal otomatis** (`src/server/paypal.ts`, Orders v2): klien menekan "Pay with PayPal", menyetujui di
+  paypal.com, kembali ke portal, dan server langsung menagih (capture) lalu mencatat pembayaran sebagai
+  *confirmed* — termin proyek maupun pesanan template terbuka saat itu juga, tanpa admin.
+- **Jumlah selalu dari catatan kita**, bukan dari browser; capture hanya diterima bila COMPLETED, EUR, jumlah
+  persis dan membawa id checkout kita. Semua langkah idempoten (kembali dari PayPal, webhook, refresh).
+- **Dua set kunci** di Admin → Settings → PayPal Checkout: Live dan Sandbox, plus pilihan mode. Tombol
+  "Test Live/Sandbox credentials" memeriksa kunci ke PayPal. Kunci rahasia dienkripsi (AES-GCM) dan tidak
+  pernah dikirim balik ke browser.
+- **Tanpa webhook pun aman**: capture yang ditahan PayPal atau pembeli yang menutup tab dikonfirmasi saat
+  halaman proyek/pesanan dibuka lagi. Webhook opsional: `https://xaa.es/api/paypal/webhook`
+  (Checkout order approved, Payment capture completed/pending/denied/refunded/reversed); payload tidak pernah
+  dipercaya — pesanan selalu dibaca ulang dari PayPal.
+- **BNI EUR + USD**: pada database yang belum punya tujuan pembayaran, dua rekening ini dipasang otomatis
+  (sekali saja per database; yang dihapus/dimatikan admin tidak dipasang lagi). Rekening USD menampilkan
+  jumlah dalam dolar (kurs acuan `USD_PER_EUR`, dibulatkan ke atas).
+- **Admin → Payments** menampilkan status PayPal dan 15 checkout terakhir.
+- **Uji**: `tools/e2e/paypal.mjs` + `tools/e2e/paypal-mock.mjs` (PayPal tiruan, tanpa kunci asli).
+
 ### Diagnosis portal (permintaan 14)
 
 - `/api/portal/diagnose` (khusus admin) menjalankan setiap loader portal.
@@ -173,5 +194,7 @@ Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup
 ---
 
 ## 9. Changelog blueprint
+
+- **14 Okt 2026**: permintaan 25 — PayPal Checkout otomatis (Live + Sandbox) dan rekening BNI EUR/USD siap pakai.
 
 - **27 Sep 2026**: blueprint dibuat. Tercatat: chat support, pembayaran, diagnosis portal, judul SEO unik per bahasa, tes E2E masuk repo, status CV/Indeed.

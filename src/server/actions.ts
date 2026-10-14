@@ -2,10 +2,11 @@
 
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { headers } from 'next/headers';
 import { db, newId, nowIso, NotConfiguredError, appEnv } from './db';
 import { createUser, currentUser, endSession, findUserByEmail, normaliseEmail, startSession, verifyPassword, isAdminEmail, verifyAdminPassword, adminSessionUser } from './auth';
 import {
-  addUpdate, cancelProject, createProject, getProject, listPayments, money, recordPayment,
+  addUpdate, cancelProject, createProject, getProject, listPayments, money, nextAction, recordPayment,
   setContract, setPaymentStatus, setProgress, type Milestone, type Project,
 } from './projects';
 import { storeFile, UploadError } from './uploads';
@@ -21,6 +22,7 @@ import {
   restoreFromBackup, resetDatabase, CADENCES, PROVIDERS, type Cadence, type Provider,
 } from './recovery';
 import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle } from './store';
+import { activePayPal, createPayPalOrder, insertCheckout, isPayPalEnv, newCheckoutId, testPayPal } from './paypal';
 import { getTemplate } from '@/content/templates';
 import { adminReply, getThread, markAdminOnline, setThreadStatus, createThread } from './support';
 
@@ -324,6 +326,103 @@ export async function submitOrderPaymentAction(_prev: ActionState, form: FormDat
     await submitOrderPayment(order.id, { method, reference, note: str(form, 'note') });
     revalidatePath(`/portal/orders/${order.id}`);
     return { ok: 'Payment submitted. We will confirm it and unlock your download.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/* ─────────────────── PayPal Checkout (automatic) ─────────────────── */
+
+/**
+ * Where PayPal sends the buyer back. The canonical origin in production; the
+ * request's own origin only for a local build, so a test run never bounces a
+ * buyer to the live site (and a forged Host header can never pick the URL).
+ */
+async function returnOrigin(): Promise<string> {
+  const h = await headers();
+  // A server action is a POST, so the browser states its own origin.
+  const origin = (h.get('origin') || '').trim();
+  if (/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) return origin;
+  const host = (h.get('x-forwarded-host') || h.get('host') || '').split(',')[0].trim();
+  if (/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(host)) return `http://${host}`;
+  const env = await appEnv();
+  return (env.APP_URL || 'https://xaa.es').replace(/\/+$/, '');
+}
+
+/** Start PayPal for the milestone that is due now. The amount is ours, never the form's. */
+export async function startPaypalMilestoneAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  let approveUrl = '';
+  try {
+    const { project, userId } = await ownedProject(str(form, 'projectId'));
+    const cfg = await activePayPal();
+    if (!cfg) return { error: 'PayPal is not available right now. Please choose another way to pay.' };
+    const due = nextAction(project, await listPayments(project.id));
+    if (!due || due.amount < 1) return { error: 'Nothing is due on this project right now.' };
+    if (str(form, 'milestone') && str(form, 'milestone') !== due.milestone) {
+      return { error: 'This payment step has changed — please reload the page.' };
+    }
+
+    const checkoutId = newCheckoutId();
+    const origin = await returnOrigin();
+    const order = await createPayPalOrder(cfg, {
+      checkoutId,
+      amountEur: due.amount,
+      description: `${project.ref} · ${due.label}`,
+      returnUrl: `${origin}/api/paypal/return?c=${checkoutId}`,
+      cancelUrl: `${origin}/api/paypal/cancel?c=${checkoutId}`,
+    });
+    await insertCheckout({
+      id: checkoutId, paypal_order_id: order.id, env: cfg.env, kind: 'milestone', user_id: userId,
+      project_id: project.id, milestone: due.milestone, label: due.label, template_order_id: null, amount: due.amount,
+    });
+    approveUrl = order.approveUrl;
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+  redirect(approveUrl);
+}
+
+/** Start PayPal for a template order, at the order's own price. */
+export async function startPaypalOrderAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  let approveUrl = '';
+  try {
+    const { order, user } = await ownedOrder(str(form, 'orderId'));
+    if (order.status === 'paid') return { ok: 'This order is already paid.' };
+    if (order.status === 'cancelled') return { error: 'This order was cancelled.' };
+    const cfg = await activePayPal();
+    if (!cfg) return { error: 'PayPal is not available right now. Please choose another way to pay.' };
+
+    const checkoutId = newCheckoutId();
+    const origin = await returnOrigin();
+    const pp = await createPayPalOrder(cfg, {
+      checkoutId,
+      amountEur: order.price,
+      description: `${order.ref} · ${order.name}`,
+      returnUrl: `${origin}/api/paypal/return?c=${checkoutId}`,
+      cancelUrl: `${origin}/api/paypal/cancel?c=${checkoutId}`,
+    });
+    await insertCheckout({
+      id: checkoutId, paypal_order_id: pp.id, env: cfg.env, kind: 'template', user_id: order.user_id || user.id,
+      project_id: null, milestone: null, label: order.name, template_order_id: order.id, amount: order.price,
+    });
+    approveUrl = pp.approveUrl;
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+  redirect(approveUrl);
+}
+
+/** Admin: sign in to PayPal with the stored Live or Sandbox credentials. */
+export async function testPaypalAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const env = str(form, 'env');
+    if (!isPayPalEnv(env)) return { error: 'Choose Live or Sandbox.' };
+    const r = await testPayPal(env);
+    return r.ok ? { ok: r.message } : { error: r.message };
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);
@@ -736,7 +835,7 @@ export async function importEnvMethodsAction(_prev: ActionState, _form: FormData
     revalidatePath('/portal/admin/payments');
     return n > 0
       ? { ok: `Imported ${n} destination${n > 1 ? 's' : ''} from the Worker secrets.` }
-      : { error: 'Nothing to import — either destinations already exist, or no payment secrets are set on the Worker.' };
+      : { error: 'Nothing to import — those destinations are already here, or no payment secrets are set on the Worker.' };
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);

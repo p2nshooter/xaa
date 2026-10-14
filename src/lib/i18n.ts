@@ -46,7 +46,7 @@ type Dict = Record<string, string>;
 const EN: Dict = {
   // Chrome — promo strip
   'promo.slot': 'Taking projects for the next production slot — start from a 10% deposit',
-  'promo.paid': 'Paid in USDT or PayPal',
+  'promo.paid': 'Paid by PayPal, bank wire or USDT',
   'promo.milestone': 'Milestone-based, never all up front',
   // Chrome — nav
   'nav.services': 'Services',
@@ -76,7 +76,7 @@ const EN: Dict = {
   'footer.maintenance': 'AI backup & recovery',
   'footer.capabilities': 'Capabilities & stack',
   'footer.processRuns': 'How a project runs',
-  'footer.usdtPaypal': 'USDT & PayPal',
+  'footer.usdtPaypal': 'PayPal, wire & USDT',
   'footer.faqLong': 'Frequently asked questions',
   'footer.openProject': 'Open a project',
   'footer.about': 'About XAA',
@@ -151,7 +151,7 @@ const EN: Dict = {
   // Home — stat strip
   'home.stat.pkgL': 'Landing page → global ecosystem',
   'home.stat.splitV': '10 / 40 / 50', 'home.stat.splitL': 'Milestone payment split',
-  'home.stat.railsL': 'Payment rails: USDT & PayPal',
+  'home.stat.railsL': 'Payment rails: PayPal, bank wire & USDT',
   'home.stat.ownL': 'Code & assets transferred to you',
   'home.stat.pkgV': '10 packages',
   // CTA band (shared)
@@ -159,12 +159,12 @@ const EN: Dict = {
   'cta.lead': 'Open a project, pay the 10% booking deposit and upload your concept. You will have a delivery date the same week.',
   'cta.primary': 'Open a project',
   'cta.secondary': 'Talk to us first',
-  'cta.rails': 'USDT (TRC20 · ERC20 · BEP20) and PayPal accepted · invoices in EUR',
+  'cta.rails': 'PayPal, bank wire (EUR · USD) and USDT accepted · invoices in EUR',
 };
 
 const ES: Dict = {
   'promo.slot': 'Aceptamos proyectos para el próximo turno de producción — desde un 10% de depósito',
-  'promo.paid': 'Pago en USDT o PayPal',
+  'promo.paid': 'Pago con PayPal, transferencia o USDT',
   'promo.milestone': 'Por hitos, nunca todo por adelantado',
   'nav.services': 'Servicios',
   'nav.templates': 'Plantillas SaaS',
@@ -192,7 +192,7 @@ const ES: Dict = {
   'footer.maintenance': 'Backup y recuperación IA',
   'footer.capabilities': 'Capacidades y tecnología',
   'footer.processRuns': 'Cómo se desarrolla un proyecto',
-  'footer.usdtPaypal': 'USDT y PayPal',
+  'footer.usdtPaypal': 'PayPal, transferencia y USDT',
   'footer.faqLong': 'Preguntas frecuentes',
   'footer.openProject': 'Abrir un proyecto',
   'footer.about': 'Sobre XAA',
@@ -263,19 +263,19 @@ const ES: Dict = {
   'home.care.link': 'Ver backup y recuperación →',
   'home.stat.pkgL': 'Landing → ecosistema global',
   'home.stat.splitV': '10 / 40 / 50', 'home.stat.splitL': 'Reparto de pagos por hitos',
-  'home.stat.railsL': 'Vías de pago: USDT y PayPal',
+  'home.stat.railsL': 'Vías de pago: PayPal, transferencia y USDT',
   'home.stat.ownL': 'Código y activos transferidos a ti',
   'home.stat.pkgV': '10 paquetes',
   'cta.title': '¿Listo para empezar?',
   'cta.lead': 'Abre un proyecto, paga el 10% de depósito de reserva y sube tu concepto. Tendrás una fecha de entrega esa misma semana.',
   'cta.primary': 'Abrir un proyecto',
   'cta.secondary': 'Hablar primero con nosotros',
-  'cta.rails': 'Aceptamos USDT (TRC20 · ERC20 · BEP20) y PayPal · facturas en EUR',
+  'cta.rails': 'Aceptamos PayPal, transferencia (EUR · USD) y USDT · facturas en EUR',
 };
 
 const ID: Dict = {
   'promo.slot': 'Menerima proyek untuk slot produksi berikutnya — mulai dari DP 10%',
-  'promo.paid': 'Pembayaran via USDT atau PayPal',
+  'promo.paid': 'Pembayaran via PayPal, transfer bank, atau USDT',
   'promo.milestone': 'Berbasis termin, tidak pernah lunas di depan',
   'nav.services': 'Layanan',
   'nav.templates': 'Template SaaS',
@@ -303,7 +303,7 @@ const ID: Dict = {
   'footer.maintenance': 'Backup & recovery AI',
   'footer.capabilities': 'Kemampuan & teknologi',
   'footer.processRuns': 'Cara sebuah proyek berjalan',
-  'footer.usdtPaypal': 'USDT & PayPal',
+  'footer.usdtPaypal': 'PayPal, transfer & USDT',
   'footer.faqLong': 'Pertanyaan yang sering diajukan',
   'footer.openProject': 'Buka proyek',
   'footer.about': 'Tentang XAA',
@@ -374,14 +374,14 @@ const ID: Dict = {
   'home.care.link': 'Lihat backup & recovery →',
   'home.stat.pkgL': 'Halaman arahan → ekosistem global',
   'home.stat.splitV': '10 / 40 / 50', 'home.stat.splitL': 'Pembagian pembayaran termin',
-  'home.stat.railsL': 'Jalur pembayaran: USDT & PayPal',
+  'home.stat.railsL': 'Jalur pembayaran: PayPal, transfer bank & USDT',
   'home.stat.ownL': 'Kode & aset dipindahkan ke Anda',
   'home.stat.pkgV': '10 paket',
   'cta.title': 'Siap memulai?',
   'cta.lead': 'Buka proyek, bayar DP 10%, dan unggah konsep Anda. Tanggal selesai keluar minggu itu juga.',
   'cta.primary': 'Buka proyek',
   'cta.secondary': 'Bicara dulu dengan kami',
-  'cta.rails': 'Menerima USDT (TRC20 · ERC20 · BEP20) dan PayPal · faktur dalam EUR',
+  'cta.rails': 'Menerima PayPal, transfer bank (EUR · USD) dan USDT · faktur dalam EUR',
 };
 
 const DICT: Record<Lang, Dict> = { en: EN, es: ES, id: ID };

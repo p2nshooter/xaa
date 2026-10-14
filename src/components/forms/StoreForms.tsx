@@ -6,6 +6,8 @@ import {
   type ActionState,
 } from '@/server/actions';
 import { Submit, Notice } from './Submit';
+import { PayPalPay, type PayPalOffer } from './PayPalForms';
+import { wireAmount } from './ProjectForms';
 
 type Dest = {
   id: string; kind: string; label: string; network: string | null; currency: string;
@@ -24,42 +26,73 @@ export function BuyButton({ slug, label, className = 'btn btn-primary' }: { slug
   );
 }
 
-export function OrderPaymentForm({ orderId, destinations }: { orderId: string; destinations: Dest[] }) {
+export function OrderPaymentForm({
+  orderId,
+  price,
+  destinations,
+  paypal = null,
+}: {
+  orderId: string;
+  price: number;
+  destinations: Dest[];
+  paypal?: PayPalOffer;
+}) {
   const [state, action] = useActionState<ActionState, FormData>(submitOrderPaymentAction, {});
-  const usdt = destinations.filter((d) => d.kind === 'usdt');
-  const paypal = destinations.filter((d) => d.kind === 'paypal');
+  const crypto = destinations.filter((d) => d.kind === 'crypto');
+  // With PayPal Checkout on, a manual PayPal destination is a slower copy of it.
+  const paypalManual = paypal ? [] : destinations.filter((d) => d.kind === 'paypal');
   const bank = destinations.filter((d) => d.kind === 'bank');
-  const method = usdt.length ? 'usdt' : paypal.length ? 'paypal' : bank.length ? 'bank' : 'usdt';
+  const manualCount = crypto.length + paypalManual.length + bank.length;
+  const method = crypto.length ? 'usdt' : paypalManual.length ? 'paypal' : bank.length ? 'bank' : 'usdt';
 
   return (
-    <form action={action} className="panel p-6">
+    <div className="panel p-6">
       <h2 className="font-display text-lg font-extrabold">Pay for your bundle</h2>
-      <Notice error={state.error} ok={state.ok} />
 
-      {destinations.length === 0 ? (
+      {paypal ? <PayPalPay target="order" id={orderId} amount={price} env={paypal.env} /> : null}
+
+      {manualCount === 0 && !paypal ? (
         <p className="mt-3 text-sm text-steel-500">
           Payment destinations are not configured yet. Please <a href="/contact" className="text-gold-500 underline">contact us</a> to complete the purchase.
         </p>
-      ) : (
-        <>
+      ) : null}
+
+      {manualCount > 0 ? (
+        <form action={action}>
+          {paypal ? <p className="pay-divider">or pay by bank transfer{crypto.length ? ' or crypto' : ''}</p> : null}
+          <Notice error={state.error} ok={state.ok} />
           <div className="mt-4 space-y-3">
-            {usdt.map((d) => (
-              <Dest key={d.id} title={`USDT${d.network ? ` · ${d.network}` : ''}`} rows={[['Address', d.address], d.memo ? ['Memo/Tag', d.memo] : null]} instructions={d.instructions} />
+            {crypto.map((d) => (
+              <Dest key={d.id} title={`${d.currency}${d.network ? ` · ${d.network}` : ''}`} rows={[['Address', d.address], d.memo ? ['Memo/Tag', d.memo] : null]} instructions={d.instructions} />
             ))}
-            {paypal.map((d) => (
+            {paypalManual.map((d) => (
               <Dest key={d.id} title="PayPal" rows={[['Account', d.address], d.link ? ['Link', d.link] : null]} instructions={d.instructions} />
             ))}
-            {bank.map((d) => (
-              <Dest key={d.id} title={`Bank transfer${d.bankName ? ` · ${d.bankName}` : ''}`} rows={[['Account', d.address], d.holder ? ['Holder', d.holder] : null, d.swift ? ['SWIFT/BIC', d.swift] : null, d.branch ? ['Branch', d.branch] : null]} instructions={d.instructions} />
-            ))}
+            {bank.map((d) => {
+              const wire = wireAmount(price, d.currency);
+              return (
+                <Dest
+                  key={d.id}
+                  title={`Bank transfer · ${d.currency}${d.bankName ? ` · ${d.bankName}` : ''}`}
+                  rows={[
+                    ['Send', wire.main],
+                    ['Account', d.address],
+                    d.holder ? ['Holder', d.holder] : null,
+                    d.swift ? ['SWIFT/BIC', d.swift] : null,
+                    d.branch ? ['Branch', d.branch] : null,
+                  ]}
+                  instructions={[wire.note, d.instructions].filter(Boolean).join('\n') || null}
+                />
+              );
+            })}
           </div>
 
           <input type="hidden" name="orderId" value={orderId} />
           <label className="field mt-4">
             <span>Method</span>
             <select name="method" className="select" defaultValue={method}>
-              {usdt.length ? <option value="usdt">USDT</option> : null}
-              {paypal.length ? <option value="paypal">PayPal</option> : null}
+              {crypto.length ? <option value="usdt">Crypto</option> : null}
+              {paypalManual.length ? <option value="paypal">PayPal</option> : null}
               {bank.length ? <option value="bank">Bank transfer</option> : null}
             </select>
           </label>
@@ -73,9 +106,9 @@ export function OrderPaymentForm({ orderId, destinations }: { orderId: string; d
           </label>
           <Submit pendingLabel="Submitting…">I have paid — submit</Submit>
           <p className="hint mt-2">We confirm within one business day and your download unlocks automatically.</p>
-        </>
-      )}
-    </form>
+        </form>
+      ) : null}
+    </div>
   );
 }
 
