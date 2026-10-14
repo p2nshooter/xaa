@@ -70,7 +70,7 @@ export default async function HomePage() {
               </div>
               <div>
                 <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{t('home.hero.paidIn')}</dt>
-                <dd className="mt-1 font-display text-base font-extrabold sm:text-xl">USDT · PayPal</dd>
+                <dd className="mt-1 font-display text-base font-extrabold sm:text-xl">PayPal · Wire · USDT</dd>
               </div>
               <div>
                 <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{t('home.hero.deliveryFrom')}</dt>

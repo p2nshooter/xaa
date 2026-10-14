@@ -7,6 +7,7 @@ import { keySource, selfTest } from '@/server/crypto';
 import { countNewLeads } from '@/server/leads';
 import { AdminNav } from '@/components/AdminNav';
 import { SettingsGroupForm, type SettingView } from '@/components/forms/AdminForms';
+import { TestPayPal } from '@/components/forms/PayPalForms';
 import { soft, type Problems } from '@/server/soft';
 import { DbNotice } from '@/components/DbNotice';
 
@@ -36,6 +37,7 @@ export default async function AdminSettingsPage() {
       hint: def.hint,
       secret: def.secret,
       placeholder: def.placeholder,
+      options: def.options,
       value: v?.value ?? '',
       present: v?.present ?? false,
       masked: v?.masked ?? '',
@@ -44,6 +46,10 @@ export default async function AdminSettingsPage() {
   });
 
   const secretsStored = views.filter((v) => v.secret && v.present).length;
+  const has = (key: string) => Boolean(byKey.get(key)?.present && !byKey.get(key)?.unreadable);
+  const paypalLive = has('paypal_client_id') && has('paypal_client_secret');
+  const paypalSandbox = has('paypal_sandbox_client_id') && has('paypal_sandbox_client_secret');
+  const paypalMode = byKey.get('paypal_mode')?.value === 'sandbox' ? 'sandbox' : 'live';
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
@@ -87,13 +93,35 @@ export default async function AdminSettingsPage() {
 
       <div className="space-y-8">
         {SETTING_GROUPS.map((g) => (
-          <SettingsGroupForm
-            key={g.id}
-            group={g.id}
-            title={g.title}
-            blurb={g.blurb}
-            fields={views.filter((v) => SETTING_DEFS.find((d) => d.key === v.key)?.group === g.id)}
-          />
+          <div key={g.id} id={`settings-${g.id}`} className="space-y-3">
+            <SettingsGroupForm
+              group={g.id}
+              title={g.title}
+              blurb={g.blurb}
+              fields={views.filter((v) => SETTING_DEFS.find((d) => d.key === v.key)?.group === g.id)}
+            />
+            {g.id === 'paypal' ? (
+              <div className="panel p-5">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className={`badge ${paypalLive ? 'badge-green' : 'badge-grey'}`}>Live {paypalLive ? 'ready' : 'not set'}</span>
+                  <span className={`badge ${paypalSandbox ? 'badge-green' : 'badge-grey'}`}>Sandbox {paypalSandbox ? 'ready' : 'not set'}</span>
+                  <span className={`badge ${paypalMode === 'sandbox' ? 'badge-amber' : 'badge-blue'}`}>
+                    Checkout uses {paypalMode === 'sandbox' ? 'Sandbox' : 'Live'}
+                  </span>
+                </div>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  <TestPayPal env="live" />
+                  <TestPayPal env="sandbox" />
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-steel-500">
+                  Optional webhook, for a client who pays and closes the tab before coming back: on each PayPal app add{' '}
+                  <code className="rounded bg-[color:var(--surface-2)] px-1.5 py-0.5 text-xs">https://xaa.es/api/paypal/webhook</code> with the
+                  events <em>Checkout order approved</em> and <em>Payment capture completed / pending / denied / refunded / reversed</em>,
+                  then paste its ID above. Payments confirm without it too — the buyer&rsquo;s return captures them.
+                </p>
+              </div>
+            ) : null}
+          </div>
         ))}
       </div>
 

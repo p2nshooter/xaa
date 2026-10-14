@@ -26,7 +26,7 @@ const COPY: Record<Lang, Copy> = {
     groups: [
       { group: 'Pricing', qa: [
         { q: 'Why is every price a range rather than one number?', a: 'Because the same package can be a lean build or a heavily customised one. The range is the honest span between those. After a scope review we fix a single figure in writing, and the milestone amounts recalculate from it — the number does not move afterwards unless you ask for something new.' },
-        { q: 'Are the prices in euros?', a: 'Yes. Every contract and invoice is in EUR, at European market rates, before VAT where it applies. You can settle in USDT or PayPal; the conversion is shown on the payment screen.' },
+        { q: 'Are the prices in euros?', a: 'Yes. Every contract and invoice is in EUR, at European market rates, before VAT where it applies. You can settle by PayPal, by bank wire in EUR or USD, or in USDT; any conversion is shown on the payment screen.' },
         { q: 'What is not included in the build price?', a: 'Domain registration, third-party licences and subscriptions, payment gateway fees, external API usage, paid stock assets, and the optional setup and care services. All of these are either passed through at cost or quoted separately before you commit.' },
         { q: 'Do you charge for the quote?', a: 'No. Registration, the quote and the scope review are free. The first money that changes hands is the 10% booking deposit, and that is deducted from the total.' },
       ]},
@@ -35,7 +35,7 @@ const COPY: Record<Lang, Copy> = {
         { q: 'Can I pay more than 10% up front?', a: 'Yes. Anything above the minimum simply counts towards the next milestone. Some clients settle the first 50% in one transfer to move straight into production.' },
         { q: 'What happens at 80% progress?', a: 'Progress is capped there until the settlement clears. It is a deliberate stop: it protects you from paying for work that does not exist, and protects us from delivering work that has not been paid for. The moment the payment is confirmed the cap lifts automatically.' },
         { q: 'Which USDT networks do you accept?', a: 'TRC20, ERC20 and BEP20. TRC20 is cheapest and what most clients use. The receiving address is shown only on your signed-in project page — we never send an address by email or chat.' },
-        { q: 'Can I pay by bank transfer?', a: 'The two standard rails are USDT and PayPal. For enterprise engagements with procurement requirements, ask us — we can usually accommodate SEPA against a formal contract.' },
+        { q: 'Can I pay by bank transfer?', a: 'Yes. Wire the milestone to our multi-currency account at BNI (Bank Negara Indonesia, SWIFT BNINIDJA): euros to the EUR account or dollars to the USD account. The account details appear only inside your signed-in project page; paste your wire reference there and the payment is confirmed within one business day of arrival.' },
       ]},
       { group: 'Timelines & process', qa: [
         { q: 'When do I get a delivery date?', a: 'The moment your concept files land. The portal fixes an estimate from the package timeline and shows it on your project page, and we confirm scope against what you uploaded within one business day.' },
@@ -59,7 +59,7 @@ const COPY: Record<Lang, Copy> = {
     groups: [
       { group: 'Precios', qa: [
         { q: '¿Por qué cada precio es un rango y no una cifra única?', a: 'Porque el mismo paquete puede ser un desarrollo austero o uno muy personalizado. El rango es el intervalo honesto entre ambos. Tras una revisión del alcance fijamos una cifra única por escrito, y los importes de los hitos se recalculan a partir de ella — la cifra no se mueve después salvo que pidas algo nuevo.' },
-        { q: '¿Los precios son en euros?', a: 'Sí. Cada contrato y factura es en EUR, a tarifas de mercado europeas, antes de IVA cuando aplica. Puedes pagar en USDT o PayPal; la conversión se muestra en la pantalla de pago.' },
+        { q: '¿Los precios son en euros?', a: 'Sí. Cada contrato y factura es en EUR, a tarifas de mercado europeas, antes de IVA cuando aplica. Puedes pagar con PayPal, por transferencia bancaria en EUR o USD, o en USDT; cualquier conversión se muestra en la pantalla de pago.' },
         { q: '¿Qué no incluye el precio del desarrollo?', a: 'Registro de dominio, licencias y suscripciones de terceros, comisiones de pasarela de pago, uso de API externas, recursos de stock de pago, y los servicios opcionales de puesta en marcha y mantenimiento. Todo esto se traslada a coste o se cotiza aparte antes de que te comprometas.' },
         { q: '¿Cobráis por el presupuesto?', a: 'No. El registro, el presupuesto y la revisión del alcance son gratis. El primer dinero que cambia de manos es el 10% de depósito de reserva, y se descuenta del total.' },
       ]},
@@ -68,7 +68,7 @@ const COPY: Record<Lang, Copy> = {
         { q: '¿Puedo pagar más del 10% por adelantado?', a: 'Sí. Todo lo que supere el mínimo cuenta para el siguiente hito. Algunos clientes pagan el primer 50% en una sola transferencia para pasar directo a producción.' },
         { q: '¿Qué pasa al 80% de avance?', a: 'El avance se limita ahí hasta que se liquida. Es una parada deliberada: te protege de pagar por trabajo que no existe, y a nosotros de entregar trabajo que no se ha pagado. En cuanto se confirma el pago, el límite se levanta automáticamente.' },
         { q: '¿Qué redes de USDT aceptáis?', a: 'TRC20, ERC20 y BEP20. TRC20 es la más barata y la que usa la mayoría. La dirección de recepción se muestra solo en tu página de proyecto con sesión iniciada — nunca enviamos una dirección por email o chat.' },
-        { q: '¿Puedo pagar por transferencia bancaria?', a: 'Las dos vías estándar son USDT y PayPal. Para proyectos enterprise con requisitos de compras, pregúntanos — normalmente podemos aceptar SEPA contra un contrato formal.' },
+        { q: '¿Puedo pagar por transferencia bancaria?', a: 'Sí. Transfiere el hito a nuestra cuenta multidivisa en BNI (Bank Negara Indonesia, SWIFT BNINIDJA): euros a la cuenta en EUR o dólares a la cuenta en USD. Los datos de la cuenta solo aparecen dentro de tu página de proyecto con sesión iniciada; pega allí la referencia de la transferencia y el pago se confirma en un día hábil desde su llegada.' },
       ]},
       { group: 'Plazos y proceso', qa: [
         { q: '¿Cuándo recibo una fecha de entrega?', a: 'En cuanto llegan tus archivos de concepto. El portal fija una estimación según el plazo del paquete y la muestra en tu página de proyecto, y confirmamos el alcance frente a lo que subiste en un día hábil.' },
@@ -92,7 +92,7 @@ const COPY: Record<Lang, Copy> = {
     groups: [
       { group: 'Harga', qa: [
         { q: 'Kenapa tiap harga berupa rentang, bukan satu angka?', a: 'Karena paket yang sama bisa jadi build ramping atau yang sangat dikustomisasi. Rentang adalah jarak jujur di antara keduanya. Setelah tinjauan ruang lingkup kami kunci satu angka tertulis, dan jumlah tiap termin dihitung ulang darinya — angkanya tak bergerak setelah itu kecuali Anda minta hal baru.' },
-        { q: 'Apakah harga dalam euro?', a: 'Ya. Tiap kontrak dan faktur dalam EUR, dengan tarif pasar Eropa, belum termasuk PPN bila berlaku. Anda bisa bayar via USDT atau PayPal; konversinya tampil di layar pembayaran.' },
+        { q: 'Apakah harga dalam euro?', a: 'Ya. Tiap kontrak dan faktur dalam EUR, dengan tarif pasar Eropa, belum termasuk PPN bila berlaku. Anda bisa bayar via PayPal, transfer bank dalam EUR atau USD, atau USDT; konversi apa pun tampil di layar pembayaran.' },
         { q: 'Apa yang tidak termasuk dalam harga pembuatan?', a: 'Registrasi domain, lisensi dan langganan pihak ketiga, biaya payment gateway, penggunaan API eksternal, aset stok berbayar, serta layanan setup dan perawatan opsional. Semua ini diteruskan sesuai biaya atau ditawar terpisah sebelum Anda menyetujui.' },
         { q: 'Apakah penawaran dikenai biaya?', a: 'Tidak. Pendaftaran, penawaran, dan tinjauan ruang lingkup gratis. Uang pertama yang berpindah tangan adalah DP pemesanan 10%, dan itu dipotong dari total.' },
       ]},
@@ -101,7 +101,7 @@ const COPY: Record<Lang, Copy> = {
         { q: 'Bisakah saya bayar lebih dari 10% di depan?', a: 'Bisa. Apa pun di atas minimum dihitung ke termin berikutnya. Sebagian klien membayar 50% pertama dalam satu transfer untuk langsung masuk produksi.' },
         { q: 'Apa yang terjadi pada progres 80%?', a: 'Progres dibatasi di situ hingga pelunasan masuk. Ini penghentian yang disengaja: melindungi Anda dari membayar pekerjaan yang tak ada, dan melindungi kami dari menyerahkan pekerjaan yang belum dibayar. Begitu pembayaran dikonfirmasi, batas terangkat otomatis.' },
         { q: 'Jaringan USDT apa yang Anda terima?', a: 'TRC20, ERC20, dan BEP20. TRC20 paling murah dan paling banyak dipakai klien. Alamat penerima hanya tampil di halaman proyek Anda saat masuk — kami tak pernah mengirim alamat via email atau chat.' },
-        { q: 'Bisakah saya bayar via transfer bank?', a: 'Dua jalur standar adalah USDT dan PayPal. Untuk proyek enterprise dengan syarat pengadaan, tanyakan kami — biasanya kami bisa mengakomodasi SEPA dengan kontrak formal.' },
+        { q: 'Bisakah saya bayar via transfer bank?', a: 'Bisa. Transfer termin ke rekening multi-mata-uang kami di BNI (Bank Negara Indonesia, SWIFT BNINIDJA): euro ke rekening EUR atau dolar ke rekening USD. Detail rekening hanya tampil di halaman proyek Anda setelah masuk; tempel referensi transfer di sana dan pembayaran dikonfirmasi dalam satu hari kerja sejak dana tiba.' },
       ]},
       { group: 'Lini masa & proses', qa: [
         { q: 'Kapan saya mendapat tanggal selesai?', a: 'Begitu berkas konsep Anda masuk. Portal menetapkan perkiraan dari lini masa paket dan menampilkannya di halaman proyek Anda, dan kami mengunci ruang lingkup terhadap yang Anda unggah dalam satu hari kerja.' },

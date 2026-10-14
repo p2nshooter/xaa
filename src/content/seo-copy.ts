@@ -21,9 +21,9 @@ const setupLo = eur(Math.min(...SETUP_PLANS.map((p) => p.price)));
 
 export const SEO: Record<string, SeoCopy> = {
   home: {
-    en: { title: 'XAA — Web development studio: websites, SaaS & platforms', description: `European web development studio: landing pages, company websites, e-commerce, SaaS and enterprise platforms from ${lo}. Milestone payments in USDT or PayPal.` },
-    es: { title: 'XAA — Estudio de desarrollo web: webs, SaaS y plataformas', description: `Estudio europeo de desarrollo web: landing pages, webs corporativas, tiendas online, SaaS y plataformas empresariales desde ${lo}. Pago por hitos en USDT o PayPal.` },
-    id: { title: 'XAA — Jasa pembuatan website, aplikasi SaaS & platform', description: `Studio pengembangan web: landing page, website perusahaan, toko online, SaaS dan platform enterprise mulai ${lo}. Pembayaran bertahap via USDT atau PayPal.` },
+    en: { title: 'XAA — Web development studio: websites, SaaS & platforms', description: `European web development studio: landing pages, company websites, e-commerce, SaaS and enterprise platforms from ${lo}. Milestone payments by PayPal, bank wire or USDT.` },
+    es: { title: 'XAA — Estudio de desarrollo web: webs, SaaS y plataformas', description: `Estudio europeo de desarrollo web: landing pages, webs corporativas, tiendas online, SaaS y plataformas empresariales desde ${lo}. Pago por hitos con PayPal, transferencia bancaria o USDT.` },
+    id: { title: 'XAA — Jasa pembuatan website, aplikasi SaaS & platform', description: `Studio pengembangan web: landing page, website perusahaan, toko online, SaaS dan platform enterprise mulai ${lo}. Pembayaran bertahap via PayPal, transfer bank, atau USDT.` },
   },
   services: {
     en: { title: 'Website & platform development packages and prices', description: `Ten development packages, from a ${lo} landing page to a ${hi}+ enterprise ecosystem. Prices published up front, paid in 10/40/50 milestones.` },
@@ -51,9 +51,9 @@ export const SEO: Record<string, SeoCopy> = {
     id: { title: 'Setup website dan AI backup & recovery', description: `Setup sekali bayar mulai ${setupLo} plus sistem AI backup & recovery: backup harian, mingguan dan bulanan sekali klik, restore, reset database dan perbaikan AI.` },
   },
   payments: {
-    en: { title: 'Payments in USDT and PayPal, milestone-based', description: 'XAA invoices in euros and accepts USDT (TRC20, ERC20, BEP20) and PayPal. Milestone payments of 10%, 40% and 50%, confirmed within one business day.' },
-    es: { title: 'Pagos en USDT y PayPal, por hitos', description: 'XAA factura en euros y acepta USDT (TRC20, ERC20, BEP20) y PayPal. Pagos por hitos del 10%, 40% y 50%, confirmados en un día laborable.' },
-    id: { title: 'Pembayaran USDT dan PayPal, bertahap per milestone', description: 'XAA menagih dalam euro dan menerima USDT (TRC20, ERC20, BEP20) serta PayPal. Pembayaran bertahap 10%, 40% dan 50%, dikonfirmasi dalam satu hari kerja.' },
+    en: { title: 'Payments by PayPal, bank wire or USDT, milestone-based', description: 'XAA invoices in euros. Pay by PayPal (card or balance, confirmed instantly), by SWIFT wire in EUR or USD, or in USDT. Milestones of 10%, 40% and 50%.' },
+    es: { title: 'Pagos con PayPal, transferencia o USDT, por hitos', description: 'XAA factura en euros. Paga con PayPal (tarjeta o saldo, confirmado al instante), por transferencia SWIFT en EUR o USD, o en USDT. Hitos del 10%, 40% y 50%.' },
+    id: { title: 'Pembayaran via PayPal, transfer bank, atau USDT, bertahap', description: 'XAA menagih dalam euro. Bayar via PayPal (kartu atau saldo, terkonfirmasi seketika), transfer SWIFT dalam EUR atau USD, atau USDT. Termin 10%, 40% dan 50%.' },
   },
   capabilities: {
     en: { title: 'Capabilities & tech stack for web and SaaS builds', description: 'What XAA builds with: modern web frameworks, edge deployment, relational data, payments, security and AI integration, and the standards behind every build.' },
@@ -61,9 +61,9 @@ export const SEO: Record<string, SeoCopy> = {
     id: { title: 'Kemampuan & teknologi untuk website dan SaaS', description: 'Teknologi yang dipakai XAA: framework web modern, deployment di edge, database relasional, pembayaran, keamanan dan integrasi AI di setiap proyek.' },
   },
   faq: {
-    en: { title: 'FAQ — pricing, milestones, timelines and ownership', description: 'Answers about XAA: pricing, the 10/40/50 milestone schedule, timelines, code ownership, USDT and PayPal payments, setup and AI backup & recovery.' },
-    es: { title: 'Preguntas frecuentes: precios, hitos, plazos y código', description: 'Respuestas sobre XAA: precios, el calendario de hitos 10/40/50, plazos, propiedad del código, pagos en USDT y PayPal, instalación y backup con IA.' },
-    id: { title: 'FAQ — harga, milestone, durasi dan kepemilikan kode', description: 'Jawaban seputar XAA: harga, jadwal pembayaran 10/40/50, durasi pengerjaan, kepemilikan source code, pembayaran USDT dan PayPal, setup dan AI backup.' },
+    en: { title: 'FAQ — pricing, milestones, timelines and ownership', description: 'Answers about XAA: pricing, the 10/40/50 milestone schedule, timelines, code ownership, PayPal, bank wire and USDT payments, setup and AI backup & recovery.' },
+    es: { title: 'Preguntas frecuentes: precios, hitos, plazos y código', description: 'Respuestas sobre XAA: precios, el calendario de hitos 10/40/50, plazos, propiedad del código, pagos con PayPal, transferencia y USDT, instalación y backup con IA.' },
+    id: { title: 'FAQ — harga, milestone, durasi dan kepemilikan kode', description: 'Jawaban seputar XAA: harga, jadwal pembayaran 10/40/50, durasi pengerjaan, kepemilikan source code, pembayaran PayPal, transfer bank dan USDT, setup dan AI backup.' },
   },
   about: {
     en: { title: 'About XAA — eXperience, Automation & Architecture', description: 'XAA is a web development studio building websites, stores and platforms with milestone-based payments and a client portal that shows real progress.' },

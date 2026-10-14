@@ -9,6 +9,8 @@ import { listPaymentMethods } from '@/server/settings';
 import { eur } from '@/content/packages';
 import { formatDate } from '@/server/projects';
 import { OrderPaymentForm, ConfirmOrderControls } from '@/components/forms/StoreForms';
+import { PayPalOutcome } from '@/components/forms/PayPalForms';
+import { paypalOffer, refreshOpenCheckouts } from '@/server/paypal';
 
 export const metadata: Metadata = { title: 'Order', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -18,20 +20,32 @@ const STATUS_LABEL: Record<string, string> = {
 };
 const STATUS_BADGE: Record<string, string> = { pending: 'badge-amber', submitted: 'badge-blue', paid: 'badge-green', cancelled: 'badge-grey' };
 
-export default async function OrderPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function OrderPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ paypal?: string; reason?: string }>;
+}) {
   const { id } = await params;
+  const { paypal: paypalOutcome, reason: paypalReason } = await searchParams;
   if (!(await portalReady())) redirect('/portal');
   const user = await currentUser();
   if (!user) redirect(`/login?next=${encodeURIComponent(`/portal/orders/${id}`)}`);
 
-  const order = await getOrder(id);
+  let order = await getOrder(id);
   if (!order) notFound();
   if (order.user_id !== user.id && user.role !== 'admin') notFound();
+  // See the project page: a held or tab-closed PayPal payment confirms here.
+  if (order.status !== 'paid' && (await refreshOpenCheckouts({ templateOrderId: order.id }).catch(() => false))) {
+    order = (await getOrder(id)) ?? order;
+  }
 
-  const [tpl, bundle, methods] = await Promise.all([
+  const [tpl, bundle, methods, paypal] = await Promise.all([
     Promise.resolve(getTemplate(order.slug)),
     getBundleMeta(order.slug),
     listPaymentMethods(true),
+    paypalOffer(),
   ]);
 
   const destinations = methods
@@ -50,6 +64,8 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
         <h1 className="mt-1 font-display text-3xl font-extrabold">{order.name}</h1>
         <span className={`badge ${STATUS_BADGE[order.status]}`}>{STATUS_LABEL[order.status]}</span>
       </div>
+
+      <PayPalOutcome outcome={paypalOutcome} reason={paypalReason} />
 
       <section className="panel mt-6 p-6">
         <dl className="grid gap-4 sm:grid-cols-3">
@@ -92,7 +108,7 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
               You submitted a payment ({order.reference}). We will confirm it within one business day and your download unlocks automatically. You can re-submit if you paid again.
             </p>
           ) : null}
-          <OrderPaymentForm orderId={order.id} destinations={destinations} />
+          <OrderPaymentForm orderId={order.id} price={order.price} destinations={destinations} paypal={paypal} />
         </div>
       ) : null}
 

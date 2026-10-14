@@ -33,6 +33,10 @@ export interface AppEnv {
   USDT_BEP20_ADDRESS?: string;
   PAYPAL_EMAIL?: string;
   PAYPAL_LINK?: string;
+  /** Canonical origin (wrangler vars), used for links handed to PayPal. */
+  APP_URL?: string;
+  /** Local tests only: a stand-in for PayPal's Sandbox API (server/paypal.ts). */
+  PAYPAL_SANDBOX_API?: string;
 }
 
 export async function appEnv(): Promise<AppEnv> {
@@ -253,6 +257,30 @@ const TABLES = [
      created_at TEXT NOT NULL,
      confirmed_at TEXT
    )`,
+  /**
+   * PayPal Checkout ledger (server/paypal.ts): one row per PayPal order we
+   * create. It ties PayPal's order id to the project milestone or template
+   * order it pays for, holds the amount we asked for, and makes capturing
+   * idempotent — the buyer's return and PayPal's webhook can race safely.
+   */
+  `CREATE TABLE IF NOT EXISTS paypal_checkouts (
+     id TEXT PRIMARY KEY,
+     paypal_order_id TEXT,
+     env TEXT NOT NULL,
+     kind TEXT NOT NULL,
+     user_id TEXT NOT NULL,
+     project_id TEXT,
+     milestone TEXT,
+     label TEXT,
+     template_order_id TEXT,
+     amount INTEGER NOT NULL,
+     status TEXT NOT NULL,
+     capture_id TEXT,
+     payment_id TEXT,
+     detail TEXT,
+     created_at TEXT NOT NULL,
+     updated_at TEXT NOT NULL
+   )`,
   `CREATE TABLE IF NOT EXISTS template_bundles (
      slug TEXT PRIMARY KEY,
      object_key TEXT NOT NULL,
@@ -282,6 +310,8 @@ const INDEXES = [
   `CREATE INDEX IF NOT EXISTS idx_payment_methods_active ON payment_methods(active, sort_order)`,
   `CREATE INDEX IF NOT EXISTS idx_recovery_project ON recovery_events(project_id, created_at)`,
   `CREATE INDEX IF NOT EXISTS idx_template_orders_user ON template_orders(user_id, created_at)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS idx_paypal_checkouts_order ON paypal_checkouts(paypal_order_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_paypal_checkouts_project ON paypal_checkouts(project_id, created_at)`,
 ];
 
 /** The two tables sign-in cannot work without. If either of these cannot be
@@ -350,7 +380,7 @@ function tableOf(createSql: string): string {
  * multiplied by every cold isolate, was a real share of the daily D1 read
  * budget that ran out.
  */
-const SCHEMA_VERSION = '2026-09-27.3';
+const SCHEMA_VERSION = '2026-10-14.1';
 const SCHEMA_VERSION_ROW = '__schema_version__';
 
 async function schemaIsCurrent(database: D1Database): Promise<boolean> {

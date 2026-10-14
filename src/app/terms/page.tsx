@@ -46,9 +46,11 @@ export default function TermsPage() {
           it is received.
         </p>
         <p>
-          Payment is accepted in USDT (TRC20, ERC20 or BEP20) or by PayPal in euros. Network and sender fees are borne
-          by the client; our published prices are net of the PayPal commercial fee. Payments are confirmed within one
-          business day of receipt, and confirmation is recorded automatically on the project&apos;s activity log.
+          Payment is accepted by PayPal in euros (PayPal balance or card, confirmed automatically when PayPal captures
+          it), by bank wire to our BNI account in EUR or USD, or in USDT where the payment screen offers it. Network,
+          sender and correspondent-bank fees are borne by the client; our published prices are net of the PayPal
+          commercial fee. Wires and USDT are confirmed within one business day of receipt, and every confirmation is
+          recorded automatically on the project&apos;s activity log.
         </p>
         <p>
           Payment details are published only inside the signed-in client portal. We do not send wallet addresses or

@@ -1,6 +1,6 @@
 'use client';
 
-import { useActionState, useState } from 'react';
+import { startTransition, useActionState, useState } from 'react';
 import {
   savePaymentMethodAction, togglePaymentMethodAction, deletePaymentMethodAction,
   importEnvMethodsAction, importCompanyMethodsAction, saveSettingsAction, clearSettingAction,
@@ -10,24 +10,30 @@ import {
 import { Submit, Notice } from './Submit';
 
 /** Show/hide a stored secret on demand. Admin-only; the value is fetched from
- *  the server only when Show is pressed, and hidden again on Hide. */
+ *  the server only when Show is pressed, and hidden again on Hide.
+ *  It calls the action directly instead of rendering a <form>: it sits inside
+ *  the settings form, and a form nested in a form is dropped by the HTML
+ *  parser, which broke hydration as soon as a secret was stored. */
 function RevealValue({ kind, id }: { kind: 'method' | 'setting'; id: string }) {
-  const [state, action] = useActionState<RevealState, FormData>(
+  const [state, action, pending] = useActionState<RevealState, FormData>(
     kind === 'method' ? revealMethodAction : revealSettingAction,
     {}
   );
   const [shown, setShown] = useState(false);
   const has = state.value !== undefined || state.error !== undefined;
+  const reveal = () => {
+    const fd = new FormData();
+    fd.set(kind === 'method' ? 'id' : 'key', id);
+    setShown(true);
+    startTransition(() => action(fd));
+  };
 
   return (
     <span className="inline-flex flex-wrap items-center gap-2">
       {!shown || !has ? (
-        <form action={action} className="inline">
-          <input type="hidden" name={kind === 'method' ? 'id' : 'key'} value={id} />
-          <button type="submit" className="btn btn-ghost btn-sm" onClick={() => setShown(true)}>
-            Show
-          </button>
-        </form>
+        <button type="button" className="btn btn-ghost btn-sm" onClick={reveal} disabled={pending} aria-busy={pending}>
+          Show
+        </button>
       ) : (
         <button type="button" className="btn btn-ghost btn-sm" onClick={() => setShown(false)}>
           Hide
@@ -326,6 +332,7 @@ export interface SettingView {
   hint: string;
   secret: boolean;
   placeholder?: string;
+  options?: { value: string; label: string }[];
   value: string;
   present: boolean;
   masked: string;
@@ -358,7 +365,13 @@ export function SettingsGroupForm({
               {f.secret ? <span className="ml-2 badge badge-blue">Encrypted</span> : null}
               {f.unreadable ? <span className="ml-2 badge badge-red">Unreadable</span> : null}
             </span>
-            {f.key === 'company_address' || f.key === 'invoice_footer' || f.key === 'vat_note' ? (
+            {f.options ? (
+              <select name={f.key} className="select" defaultValue={f.value || f.options[0]?.value}>
+                {f.options.map((o) => (
+                  <option key={o.value} value={o.value}>{o.label}</option>
+                ))}
+              </select>
+            ) : f.key === 'company_address' || f.key === 'invoice_footer' || f.key === 'vat_note' ? (
               <textarea name={f.key} className="textarea" rows={3} defaultValue={f.value} placeholder={f.placeholder} />
             ) : (
               <input

@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { currentUser } from '@/server/auth';
 import { portalReady } from '@/server/db';
 import { listPaymentMethods, maskedAddress } from '@/server/settings';
+import { listRecentCheckouts, paypalStatus } from '@/server/paypal';
 import { keySource, selfTest } from '@/server/crypto';
 import { countNewLeads } from '@/server/leads';
 import { AdminNav } from '@/components/AdminNav';
@@ -36,12 +37,15 @@ export default async function AdminPaymentsPage() {
   if (user.role !== 'admin') redirect('/portal');
 
   const problems: Problems = [];
-  const [methods, source, ok, newLeads] = await Promise.all([
+  const [methods, source, ok, newLeads, pp, checkouts] = await Promise.all([
     soft(problems, () => listPaymentMethods(), [] as Awaited<ReturnType<typeof listPaymentMethods>>),
     soft<Awaited<ReturnType<typeof keySource>>>(problems, () => keySource(), 'database'),
     soft(problems, () => selfTest(), false),
     soft(problems, () => countNewLeads(), 0),
+    soft(problems, () => paypalStatus(), { live: false, sandbox: false, mode: 'live' as const }),
+    soft(problems, () => listRecentCheckouts(15), [] as Awaited<ReturnType<typeof listRecentCheckouts>>),
   ]);
+  const ppReady = pp.mode === 'sandbox' ? pp.sandbox : pp.live;
 
   const views: MethodView[] = methods.map((m) => ({
     id: m.id,
@@ -93,7 +97,58 @@ export default async function AdminPaymentsPage() {
         <p className="mt-2.5 text-sm leading-relaxed text-steel-500">{note.text}</p>
       </div>
 
-      {active === 0 ? (
+      {/* PayPal Checkout — automatic, configured under Settings. */}
+      <section className="panel mb-8 p-5">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-display text-lg font-extrabold">PayPal Checkout</h2>
+            <span className={`badge ${ppReady ? 'badge-green' : 'badge-amber'}`}>
+              {ppReady ? `On · ${pp.mode === 'sandbox' ? 'Sandbox (test money)' : 'Live'}` : 'Off — credentials missing'}
+            </span>
+          </div>
+          <Link href="/portal/admin/settings#settings-paypal" className="btn btn-ghost btn-sm">PayPal settings</Link>
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-steel-500">
+          Clients pay with their PayPal balance or a card through PayPal; each payment is captured and confirmed
+          automatically, and the project or download unlocks at once. Manual PayPal destinations below are hidden from
+          clients while this is on.
+        </p>
+        {checkouts.length ? (
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full min-w-[560px] text-left text-xs">
+              <thead className="text-steel-400">
+                <tr>
+                  <th className="py-1.5 pr-3 font-semibold">When</th>
+                  <th className="py-1.5 pr-3 font-semibold">For</th>
+                  <th className="py-1.5 pr-3 font-semibold">Amount</th>
+                  <th className="py-1.5 pr-3 font-semibold">Status</th>
+                  <th className="py-1.5 font-semibold">PayPal capture</th>
+                </tr>
+              </thead>
+              <tbody>
+                {checkouts.map((c) => (
+                  <tr key={c.id} className="border-t border-[color:var(--line)]">
+                    <td className="py-1.5 pr-3 whitespace-nowrap">{c.created_at.slice(0, 16).replace('T', ' ')}</td>
+                    <td className="py-1.5 pr-3">
+                      {c.ref ?? '—'} <span className="text-steel-400">{c.label ?? ''}</span>
+                      {c.env === 'sandbox' ? <span className="ml-1 badge badge-amber">test</span> : null}
+                    </td>
+                    <td className="py-1.5 pr-3">€{c.amount.toLocaleString('en-GB')}</td>
+                    <td className="py-1.5 pr-3" title={c.detail ?? ''}>
+                      <span className={`badge ${c.status === 'completed' ? 'badge-green' : c.status === 'failed' ? 'badge-red' : c.status === 'pending' ? 'badge-amber' : 'badge-grey'}`}>{c.status}</span>
+                    </td>
+                    <td className="py-1.5 font-mono">{c.capture_id ?? '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="mt-3 text-xs text-steel-400">No PayPal checkouts yet.</p>
+        )}
+      </section>
+
+      {active === 0 && !ppReady ? (
         <div className="panel mb-8 border-l-4 border-l-amber-400 bg-amber-50/50 p-5">
           <p className="font-bold text-ink-900">No active destination — clients cannot pay</p>
           <p className="mt-1.5 text-sm text-steel-500">

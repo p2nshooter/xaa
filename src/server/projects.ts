@@ -487,8 +487,13 @@ export async function recordPayment(input: {
   note?: string | null;
   proofFileId?: string | null;
   methodId?: string | null;
+  /** Set by an automatic gateway that has already verified the money (PayPal). */
+  status?: PaymentStatus;
+  /** Who the project timeline credits; defaults to the client. */
+  author?: string;
 }): Promise<Payment> {
   const database = await db();
+  const status: PaymentStatus = input.status ?? 'pending';
   const payment: Payment = {
     id: newId(),
     project_id: input.project.id,
@@ -501,9 +506,9 @@ export async function recordPayment(input: {
     reference: input.reference?.trim().slice(0, 200) ?? null,
     note: input.note?.trim().slice(0, 1000) ?? null,
     proof_file_id: input.proofFileId ?? null,
-    status: 'pending',
+    status,
     created_at: nowIso(),
-    confirmed_at: null,
+    confirmed_at: status === 'confirmed' ? nowIso() : null,
     invoice_no: null,
     method_id: input.methodId ?? null,
   };
@@ -519,10 +524,17 @@ export async function recordPayment(input: {
       payment.status, payment.created_at, payment.confirmed_at, payment.method_id
     )
     .run();
+  const via = payment.method === 'usdt' ? `USDT ${payment.network ?? ''}`.trim() : payment.method === 'bank' ? 'bank transfer' : 'PayPal';
   await addUpdate(input.project.id, {
-    title: `Payment submitted — €${payment.amount.toLocaleString('en-GB')}`,
-    body: `${payment.label} via ${payment.method === 'usdt' ? `USDT ${payment.network ?? ''}`.trim() : payment.method === 'bank' ? 'bank transfer' : 'PayPal'}. Awaiting confirmation.`,
-    author: 'Client',
+    title:
+      status === 'confirmed'
+        ? `Payment confirmed — €${payment.amount.toLocaleString('en-GB')}`
+        : `Payment submitted — €${payment.amount.toLocaleString('en-GB')}`,
+    body:
+      status === 'confirmed'
+        ? `${payment.label} via ${via}, verified automatically.`
+        : `${payment.label} via ${via}. Awaiting confirmation.`,
+    author: input.author ?? 'Client',
   });
   return payment;
 }

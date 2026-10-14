@@ -6,8 +6,9 @@ import {
   postUpdateAction, confirmPaymentAction, uploadDeliverableAction, uploadBusinessDataAction,
   type ActionState,
 } from '@/server/actions';
-import { eur, usd } from '@/content/packages';
+import { eur, usd, USD_PER_EUR } from '@/content/packages';
 import { Submit, Notice } from './Submit';
+import { PayPalPay, type PayPalOffer } from './PayPalForms';
 
 /** A destination as the client sees it, resolved from the admin's list. */
 export interface PayDestination {
@@ -79,24 +80,48 @@ function Row({ k, v, mono = false }: { k: string; v: string; mono?: boolean }) {
 
 /* ───────────────────── Client: milestone payment ───────────────────── */
 
+/**
+ * What to wire, in the account's own currency. EUR accounts get the exact
+ * euro amount; the USD account gets dollars at the studio's reference rate,
+ * rounded up so the euro amount always arrives; any other currency is quoted
+ * as the euro equivalent for the client's bank to convert.
+ */
+export function wireAmount(amountEur: number, currency: string): { main: string; note: string } {
+  const ccy = currency.toUpperCase();
+  if (ccy === 'EUR') return { main: eur(amountEur), note: '' };
+  if (ccy === 'USD') {
+    const dollars = Math.ceil(amountEur * USD_PER_EUR);
+    return {
+      main: `$${dollars.toLocaleString('en-GB')} (USD)`,
+      note: `${eur(amountEur)} at our reference rate of 1 EUR = ${USD_PER_EUR} USD. A small difference from your bank's rate is reconciled, never refused.`,
+    };
+  }
+  return { main: `the equivalent of ${eur(amountEur)} in ${ccy}`, note: `Your bank converts from euros to ${ccy} at its own rate.` };
+}
+
 export function PaymentForm({
   projectId,
   milestone,
   label,
   amount,
   destinations,
+  paypal = null,
 }: {
   projectId: string;
   milestone: string;
   label: string;
   amount: number;
   destinations: PayDestination[];
+  paypal?: PayPalOffer;
 }) {
   const [state, action] = useActionState<ActionState, FormData>(submitPaymentAction, {});
-  const [selectedId, setSelectedId] = useState(destinations[0]?.id ?? '');
-  const selected = destinations.find((d) => d.id === selectedId) ?? destinations[0];
+  // With PayPal Checkout on, a manual PayPal destination would only be a
+  // slower copy of the same thing, so the transfer list leaves it out.
+  const manual = paypal ? destinations.filter((d) => d.kind !== 'paypal') : destinations;
+  const [selectedId, setSelectedId] = useState(manual[0]?.id ?? '');
+  const selected = manual.find((d) => d.id === selectedId) ?? manual[0];
 
-  if (destinations.length === 0) {
+  if (manual.length === 0 && !paypal) {
     return (
       <div className="panel border-l-4 border-l-amber-400 p-6">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -115,16 +140,21 @@ export function PaymentForm({
   const isCrypto = selected?.kind === 'crypto';
   const isBank = selected?.kind === 'bank';
   const methodValue = isCrypto ? 'usdt' : isBank ? 'bank' : 'paypal';
+  const wire = isBank && selected ? wireAmount(amount, selected.currency) : null;
 
   return (
-    <form action={action} className="panel border-l-4 border-l-[color:var(--accent)] p-6">
+    <div className="panel border-l-4 border-l-[color:var(--accent)] p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-display text-lg font-extrabold">{label}</h3>
         <p className="font-display text-2xl font-extrabold accent-text">{eur(amount)}</p>
       </div>
       <p className="text-xs text-steel-400">≈ {usd(amount)} in USDT</p>
 
-      <div className="mt-5">
+      {paypal ? <PayPalPay target="milestone" id={projectId} milestone={milestone} amount={amount} env={paypal.env} /> : null}
+      {paypal && manual.length ? <p className="pay-divider">or pay by bank transfer{manual.some((d) => d.kind === 'crypto') ? ' or crypto' : ''}</p> : null}
+
+      {manual.length ? (
+      <form action={action} className={paypal ? 'mt-3' : 'mt-5'}>
         <Notice error={state.error} ok={state.ok} />
         <input type="hidden" name="projectId" value={projectId} />
         <input type="hidden" name="milestone" value={milestone} />
@@ -135,12 +165,12 @@ export function PaymentForm({
 
         <p className="text-xs font-bold uppercase tracking-wide text-steel-400">Choose how to pay</p>
         <div className="mt-2 flex flex-wrap gap-2">
-          {destinations.map((d) => (
+          {manual.map((d) => (
             <button
               key={d.id}
               type="button"
               onClick={() => setSelectedId(d.id)}
-              className={`btn btn-sm ${selectedId === d.id ? 'btn-primary' : 'btn-ghost'}`}
+              className={`btn btn-sm ${selected?.id === d.id ? 'btn-primary' : 'btn-ghost'}`}
             >
               {d.label}
             </button>
@@ -150,7 +180,7 @@ export function PaymentForm({
         {selected ? (
           <div className="mt-4 rounded-xl bg-[color:var(--surface)] p-4">
             <p className="text-xs font-bold uppercase tracking-wide text-steel-400">
-              Send {isCrypto ? `${usd(amount)} ${selected.currency}` : `${eur(amount)}${isBank && selected.currency !== 'EUR' ? ` (${selected.currency})` : ''}`} to
+              Send {isCrypto ? `${usd(amount)} ${selected.currency}` : wire ? wire.main : eur(amount)} to
             </p>
 
             {isBank ? (
@@ -164,6 +194,7 @@ export function PaymentForm({
                   {selected.bankCountry ? <Row k="Country" v={selected.bankCountry} /> : null}
                   <Row k="Currency" v={selected.currency} />
                 </dl>
+                {wire?.note ? <p className="mt-2 text-[11px] leading-relaxed text-steel-500">{wire.note}</p> : null}
               </div>
             ) : (
               <code className="mt-2 block break-all rounded-lg bg-white p-3 text-xs font-semibold">
@@ -214,6 +245,7 @@ export function PaymentForm({
           <label className="field">
             <span>Amount sent (EUR) *</span>
             <input name="amount" type="number" min={1} step={1} defaultValue={amount} className="input" required />
+            {wire && selected?.currency.toUpperCase() !== 'EUR' ? <span className="hint">The euro amount this transfer settles.</span> : null}
           </label>
           <label className="field">
             <span>Receipt / screenshot</span>
@@ -229,8 +261,9 @@ export function PaymentForm({
         <p className="hint mt-2">
           Submitting records the payment as pending. Your project status updates by itself once we have verified it.
         </p>
-      </div>
-    </form>
+      </form>
+      ) : null}
+    </div>
   );
 }
 

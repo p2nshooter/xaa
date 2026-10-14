@@ -21,7 +21,9 @@ check('admin registered', ap.url().endsWith('/portal'));
 await ap.goto('/portal/admin/payments', { waitUntil: 'networkidle' });
 let body = await ap.textContent('body');
 check('encryption self-test passes', /Self-test passed/.test(body ?? ''));
-check('warns when no destination exists', /clients cannot pay/i.test(body ?? ''));
+// A fresh database comes with the company's BNI EUR + USD accounts (owner, 14 Oct 2026),
+// so the "clients cannot pay" warning no longer shows on day one.
+check('starter BNI EUR + USD accounts are ready on a fresh database', /BNI · EUR account/.test(body ?? '') && /BNI · USD account/.test(body ?? '') && !/clients cannot pay/i.test(body ?? ''));
 
 const ADDR = 'TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE';
 await ap.selectOption('select[name=kind]', 'crypto');
