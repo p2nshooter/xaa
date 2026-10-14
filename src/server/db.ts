@@ -312,6 +312,11 @@ const INDEXES = [
   `CREATE INDEX IF NOT EXISTS idx_template_orders_user ON template_orders(user_id, created_at)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS idx_paypal_checkouts_order ON paypal_checkouts(paypal_order_id)`,
   `CREATE INDEX IF NOT EXISTS idx_paypal_checkouts_project ON paypal_checkouts(project_id, created_at)`,
+  // The revenue feed (server/revenue.ts) reads confirmed money by date and checks each row's PayPal checkout.
+  `CREATE INDEX IF NOT EXISTS idx_paypal_checkouts_payment ON paypal_checkouts(payment_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_paypal_checkouts_template ON paypal_checkouts(template_order_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_payments_status_confirmed ON payments(status, confirmed_at)`,
+  `CREATE INDEX IF NOT EXISTS idx_template_orders_status_confirmed ON template_orders(status, confirmed_at)`,
 ];
 
 /** The two tables sign-in cannot work without. If either of these cannot be
@@ -380,7 +385,7 @@ function tableOf(createSql: string): string {
  * multiplied by every cold isolate, was a real share of the daily D1 read
  * budget that ran out.
  */
-const SCHEMA_VERSION = '2026-10-14.1';
+const SCHEMA_VERSION = '2026-10-14.2';
 const SCHEMA_VERSION_ROW = '__schema_version__';
 
 async function schemaIsCurrent(database: D1Database): Promise<boolean> {

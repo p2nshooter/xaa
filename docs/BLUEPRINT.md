@@ -71,6 +71,7 @@ Arti tanda:
 | 22 | Judul halaman paket unik per bahasa (temuan audit SEO) | ✅ | ES: "…: precio y plazos", ID: "Jasa …" |
 | 24 | Portal masih error karena kuota baca D1 harian habis (5 juta baris/hari, dipakai bersama semua situs di akun Cloudflare) | ✅ | Semua halaman portal tetap tampil dengan pemberitahuan kuning; diuji lokal dengan D1 dipaksa error kuota: 6/6 lulus. Solusi permanen: upgrade Workers Paid $5/bulan |
 | 25 | (14 Okt 2026) "Masukin pembayaran ini, pastikan langsung bisa digunakan untuk pembayaran, termasuk pembayaran manual bank BNI rekening USD & Euro" — kunci PayPal Live xaa.es + kunci Sandbox | ✅ kode, 🟡 kunci | PayPal Checkout otomatis (bagian 7 "PayPal Checkout"); rekening BNI EUR + USD otomatis tersedia di database baru; kunci PayPal diisi pemilik di Admin → Settings → PayPal Checkout (terenkripsi), tidak pernah di repo |
+| 26 | (14 Okt 2026) Penawaran modal gabungan axto.io + xaa.es US$2.000.000, bagi hasil 30 % dari setiap transaksi kedua situs, portal pemodal hanya untuk yang sudah terverifikasi | ✅ sisi xaa.es | Portal & penawaran ada di axto.io (`/invest`, `/app/investor`). xaa.es menyumbang pendapatannya lewat **feed pendapatan** (bagian 7 "Feed pendapatan"); footer xaa.es menautkan ke https://axto.io/invest |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
 ---
@@ -196,8 +197,23 @@ Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup
 
 ---
 
+### Feed pendapatan untuk portal pemodal AXTO & XAA (permintaan 26)
+
+- **Mengapa**: pemodal penghimpunan modal gabungan (US$2 juta, 30 % dari setiap transaksi axto.io + xaa.es)
+  melihat pendapatan kedua situs di portal pemodal axto.io. D1 xaa.es ada di akun Cloudflare lain, jadi
+  xaa.es menerbitkan pendapatannya — dan hanya itu — lewat `GET /api/revenue?since=YYYY-MM-DD`.
+- **Isi**: termin proyek berstatus *confirmed* dan pesanan template *paid*, dalam euro, pada saat dikonfirmasi.
+  Setiap baris hanya jumlah, waktu, dan jenis — tanpa klien, proyek, referensi. **Tidak dihitung**: pembayaran
+  PayPal Sandbox (uji) dan pembayaran PayPal yang di-refund/di-reverse.
+- **Kunci**: token Bearer dibuat di Admin → Settings → Revenue feed (ditampilkan sekali; yang disimpan hanya
+  hash SHA-256 di `app_secrets`). Token baru mematikan yang lama; tombol "Turn the feed off" menutup feed.
+  Token ditempel di axto.io Admin → Investors → xaa.es revenue feed.
+- **Uji**: `tools/e2e/revenue.mjs` (setelah `paypal.mjs`): 401 tanpa/ token palsu, token tampil sekali, isi feed
+  = kebenaran dari D1 lokal (sandbox & refund dikecualikan, transfer bank & template dihitung), rotasi, mati.
+
 ## 9. Changelog blueprint
 
+- **14 Okt 2026**: permintaan 26 — feed pendapatan bertoken untuk portal pemodal AXTO & XAA (axto.io), tautan footer ke axto.io/invest.
 - **14 Okt 2026**: permintaan 25 — PayPal Checkout otomatis (Live + Sandbox) dan rekening BNI EUR/USD siap pakai; webhook PayPal dibuat otomatis oleh situs.
 
 - **27 Sep 2026**: blueprint dibuat. Tercatat: chat support, pembayaran, diagnosis portal, judul SEO unik per bahasa, tes E2E masuk repo, status CV/Indeed.
