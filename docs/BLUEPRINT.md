@@ -72,6 +72,14 @@ Arti tanda:
 | 24 | Portal masih error karena kuota baca D1 harian habis (5 juta baris/hari, dipakai bersama semua situs di akun Cloudflare) | ✅ | Semua halaman portal tetap tampil dengan pemberitahuan kuning; diuji lokal dengan D1 dipaksa error kuota: 6/6 lulus. Solusi permanen: upgrade Workers Paid $5/bulan |
 | 25 | (14 Okt 2026) "Masukin pembayaran ini, pastikan langsung bisa digunakan untuk pembayaran, termasuk pembayaran manual bank BNI rekening USD & Euro" — kunci PayPal Live xaa.es + kunci Sandbox | ✅ kode, 🟡 kunci | PayPal Checkout otomatis (bagian 7 "PayPal Checkout"); rekening BNI EUR + USD otomatis tersedia di database baru; kunci PayPal diisi pemilik di Admin → Settings → PayPal Checkout (terenkripsi), tidak pernah di repo |
 | 26 | (14 Okt 2026) Penawaran modal gabungan axto.io + xaa.es US$2.000.000, bagi hasil 30 % dari setiap transaksi kedua situs, portal pemodal hanya untuk yang sudah terverifikasi | ✅ sisi xaa.es | Portal & penawaran ada di axto.io (`/invest`, `/app/investor`). xaa.es menyumbang pendapatannya lewat **feed pendapatan** (bagian 7 "Feed pendapatan"); footer xaa.es menautkan ke https://axto.io/invest |
+| 27 | (14 Okt 2026 malam) "Sudah ada PayPal sandbox, PayPal tiruan hapus saja" | ⏳ | Hapus `tools/e2e/paypal-mock.mjs` + override `PAYPAL_SANDBOX_API`; uji PayPal memakai Sandbox asli bila kuncinya ada |
+| 28 | (14 Okt 2026 malam) "Pakai nomer WhatsApp ini untuk konfirmasi manual di situs xaa.es & axto.io & ubah semua nomer WA yang lama: +62 856-9287-9465" | ⏳ | `+6285692879465` di kode, halaman, dan pengaturan tersimpan |
+| 29 | (14 Okt 2026 malam) "Harga akuisisi xaa.es $10jt & ada tombol jika ingin menawar, bikin yg elegan profesional, dan jelaskan keuntungannya" (menggantikan harga pembuka $2 juta di permintaan 26) | ⏳ | `/acquire` EN/ES/ID: harga US$10.000.000, keuntungan, isi paket, langkah pembeli, checkout, tombol "Ajukan penawaran" → formulir tersimpan + pemberitahuan pemilik |
+| 30 | (14 Okt 2026 malam) Pemilik memberikan login admin xaa.es di chat | ⚠️ | Tidak pernah ditulis ke file mana pun |
+| 31 | (14 Okt 2026 malam) "Buatkan penghitung pengunjung harian, mingguan, bulanan, tahunan & total … pengunjung harian tampil di index, sisanya di portal admin" | ⏳ | Satu baris per hari di D1, pengunjung unik lewat cookie harian tanpa data pribadi |
+| 32 | (14 Okt 2026 malam) "Pastikan semua pembayaran sudah live … isi semua" | ⏳ | PayPal Live (kunci xaa.es) + Sandbox tersimpan, mode Live; BNI EUR + USD aktif; tidak ada metode bertanda TEST di halaman pembayaran publik |
+| 33 | (14 Okt 2026 malam) AdSense xaa.es → `google.com, pub-6908951782430508, DIRECT, f08c47fec0942fa0` (bersama axto.io, rough.es, ulyah.com, 1fr.fr) | ✅ kode (tayang setelah deploy) | Loader `adsbygoogle.js?client=ca-pub-6908951782430508`, `public/ads.txt`, tag meta `google-adsense-account` |
+| 34 | (14 Okt 2026 malam) "Sempurnakan seluruh aplikasinya … berkelas dunia, mudah digunakan, full fitur high class, super premium & super enterprise" dan "SEO seluruh website … agar menjadi nomor 1" | 🔄 | Aturan tetap untuk setiap perubahan; daftar terbuka di bagian 6 |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
 ---
@@ -117,6 +125,13 @@ Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup
 ---
 
 ## 6. Belum dikerjakan / tindakan berikutnya
+
+> **Serah terima 14 Okt 2026 (malam) — urutan untuk AI berikutnya.** Perintah lengkap pemilik (axto.io + xaa.es)
+> ada di repo guardian-ai `docs/BLUEPRINT-V4.md` §22. Untuk xaa.es: (1) AdSense pub-6908951782430508 (permintaan
+> 33, paling dulu); (2) pembayaran live (32); (3) WhatsApp +6285692879465 (28); (4) `/acquire` US$10 juta + tombol
+> tawar (29); (5) penghitung pengunjung (31); (6) feed pendapatan untuk portal pemodal tayang (26); (7) hapus PayPal
+> tiruan (27); (8) hydration React #418 yang sesekali muncul di Admin → Leads; (9) template SaaS "super" (bagian 5);
+> (10) SEO & penyempurnaan berkelas dunia (34).
 
 | Prioritas | Pekerjaan | Siapa | Catatan |
 |---|---|---|---|

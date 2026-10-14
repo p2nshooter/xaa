@@ -25,7 +25,8 @@ export const SITE = {
   billingEmail: 'billing@xaa.es',
   heroLead: 'Custom websites and platforms,',
   heroAccent: 'engineered to scale',
-  adClient: 'ca-pub-5693981744147503',
+  /** AdSense publisher (owner, 14 Oct 2026): loader, meta tag and public/ads.txt all name this account. */
+  adClient: 'ca-pub-6908951782430508',
   analyticsEndpoint: 'https://api.ulyah.com/track',
   /**
    * Editorial archive kept from the original site. Named plainly: calling
