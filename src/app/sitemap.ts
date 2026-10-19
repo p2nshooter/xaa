@@ -5,6 +5,10 @@ import { TEMPLATES } from '@/content/templates';
 import { SITE } from '@/lib/site';
 import { LANGS } from '@/lib/i18n';
 import { langPath } from '@/lib/seo';
+import { getInvest } from '@/server/invest';
+
+// Read at request time: whether /invest is listed is an admin setting.
+export const dynamic = 'force-dynamic';
 
 type Entry = MetadataRoute.Sitemap[number];
 type Freq = Entry['changeFrequency'];
@@ -14,9 +18,12 @@ type Freq = Entry['changeFrequency'];
  * Spanish and Indonesian at ?lang=es / ?lang=id), each carrying the full set of
  * hreflang alternates — the pattern search engines use to index and serve the
  * right language. The football archive is English only and is listed once.
- * Only canonical, indexable URLs are listed: no portal, login or API routes.
+ * Only canonical, indexable URLs are listed: no portal, login or API routes,
+ * and /invest only when the owner has chosen to let search engines index it
+ * (Settings → Investor offering; off by default).
  */
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const invest = await getInvest();
   const b = SITE.url;
   const abs = (p: string) => `${b}${p === '/' ? '' : p}`;
 
@@ -41,6 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...multilingual('/faq', 0.6, 'monthly'),
     ...multilingual('/company', 0.7, 'monthly'),
     ...multilingual('/acquire', 0.7, 'monthly'),
+    ...(invest.indexed ? multilingual('/invest', 0.6, 'monthly') : []),
     ...multilingual('/about', 0.5, 'yearly'),
     ...multilingual('/contact', 0.5, 'yearly'),
     ...multilingual('/register', 0.4, 'yearly'),

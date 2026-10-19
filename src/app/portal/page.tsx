@@ -7,6 +7,7 @@ import { listProjects, listPayments, money, nextAction, STATUS_LABEL, STATUS_BAD
 import { listUserOrders, listAllOrders, type TemplateOrder } from '@/server/store';
 import { eur } from '@/content/packages';
 import { STAGES } from '@/content/process';
+import { investorsByEmail, type Investor } from '@/server/invest';
 import { soft, type Problems } from '@/server/soft';
 import { DbNotice } from '@/components/DbNotice';
 
@@ -31,6 +32,7 @@ export default async function PortalPage() {
     })
   );
   const orders = await soft<TemplateOrder[]>(problems, () => (user.role === 'admin' ? listAllOrders() : listUserOrders(user.id)), []);
+  const stakes = await soft<Investor[]>(problems, () => investorsByEmail(user.email), []);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
@@ -54,7 +56,16 @@ export default async function PortalPage() {
         </div>
       ) : null}
 
-      {projects.length === 0 && orders.length === 0 && problems.length === 0 ? <EmptyState /> : (
+      {stakes.length ? (
+        <div className="panel mt-6 border-l-4 border-l-[color:var(--accent)] p-5" data-testid="portal-investor-card">
+          <p className="text-sm">
+            You hold {stakes.length === 1 ? 'a verified investment' : `${stakes.length} verified investments`} in xaa.es.{' '}
+            <Link href="/portal/investor" className="font-bold text-gold-500 underline">See your revenue-share statement</Link>.
+          </p>
+        </div>
+      ) : null}
+
+      {projects.length === 0 && orders.length === 0 && stakes.length === 0 && problems.length === 0 ? <EmptyState /> : (
         <div className="mt-10 space-y-5">
           {withMoney.map(({ project, payments }) => (
             <ProjectRow key={project.id} project={project} payments={payments} />

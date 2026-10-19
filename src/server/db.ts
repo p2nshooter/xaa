@@ -281,6 +281,39 @@ const TABLES = [
      created_at TEXT NOT NULL,
      updated_at TEXT NOT NULL
    )`,
+  /**
+   * The xaa.es investor offering (server/invest.ts). One row per application;
+   * the studio verifies the capital it received, and from that moment the
+   * investor's share of xaa.es revenue is computed. Payouts are recorded per
+   * month so the portal can show what is due and what is still open.
+   */
+  `CREATE TABLE IF NOT EXISTS investors (
+     id TEXT PRIMARY KEY,
+     name TEXT NOT NULL,
+     email TEXT NOT NULL,
+     company TEXT,
+     country TEXT,
+     pledge_usd INTEGER NOT NULL,
+     capital_usd INTEGER NOT NULL DEFAULT 0,
+     method TEXT,
+     status TEXT NOT NULL DEFAULT 'applied',
+     lang TEXT NOT NULL DEFAULT 'en',
+     message TEXT,
+     note TEXT,
+     created_at TEXT NOT NULL,
+     verified_at TEXT,
+     verified_by TEXT,
+     returned_at TEXT
+   )`,
+  `CREATE TABLE IF NOT EXISTS investor_payouts (
+     id TEXT PRIMARY KEY,
+     investor_id TEXT NOT NULL,
+     period TEXT NOT NULL,
+     amount_eur REAL NOT NULL,
+     reference TEXT,
+     paid_at TEXT NOT NULL,
+     created_by TEXT
+   )`,
   `CREATE TABLE IF NOT EXISTS template_bundles (
      slug TEXT PRIMARY KEY,
      object_key TEXT NOT NULL,
@@ -312,11 +345,22 @@ const INDEXES = [
   `CREATE INDEX IF NOT EXISTS idx_template_orders_user ON template_orders(user_id, created_at)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS idx_paypal_checkouts_order ON paypal_checkouts(paypal_order_id)`,
   `CREATE INDEX IF NOT EXISTS idx_paypal_checkouts_project ON paypal_checkouts(project_id, created_at)`,
-  // The revenue feed (server/revenue.ts) reads confirmed money by date and checks each row's PayPal checkout.
+  // Revenue (server/revenue.ts) is read by date for the investor statements, checking each row's PayPal checkout.
   `CREATE INDEX IF NOT EXISTS idx_paypal_checkouts_payment ON paypal_checkouts(payment_id)`,
   `CREATE INDEX IF NOT EXISTS idx_paypal_checkouts_template ON paypal_checkouts(template_order_id)`,
   `CREATE INDEX IF NOT EXISTS idx_payments_status_confirmed ON payments(status, confirmed_at)`,
   `CREATE INDEX IF NOT EXISTS idx_template_orders_status_confirmed ON template_orders(status, confirmed_at)`,
+  `CREATE INDEX IF NOT EXISTS idx_investors_email ON investors(email, status)`,
+  `CREATE INDEX IF NOT EXISTS idx_investor_payouts_investor ON investor_payouts(investor_id, period)`,
+];
+
+/**
+ * One-off clean-ups that ride the schema version. The revenue-feed token of
+ * the former joint AXTO & XAA raise is no longer read by anything (server/
+ * revenue.ts), so its hash is removed rather than left behind.
+ */
+const CLEANUPS = [
+  `DELETE FROM app_secrets WHERE key IN ('revenue_feed_token_sha256', 'revenue_feed_token_at')`,
 ];
 
 /** The two tables sign-in cannot work without. If either of these cannot be
@@ -379,13 +423,13 @@ function tableOf(createSql: string): string {
  * The result: a half-built or drifted database still lets the owner in.
  */
 /**
- * Bump when TABLES, COLUMN_MIGRATIONS or INDEXES change. The applied version is
+ * Bump when TABLES, COLUMN_MIGRATIONS, INDEXES or CLEANUPS change. The applied version is
  * kept in app_secrets, so a warm database costs ONE primary-key read per
  * isolate instead of ~36 DDL statements that each scan sqlite_master — which,
  * multiplied by every cold isolate, was a real share of the daily D1 read
  * budget that ran out.
  */
-const SCHEMA_VERSION = '2026-10-14.2';
+const SCHEMA_VERSION = '2026-10-19.1';
 const SCHEMA_VERSION_ROW = '__schema_version__';
 
 async function schemaIsCurrent(database: D1Database): Promise<boolean> {
@@ -432,6 +476,13 @@ async function ensureSchema(database: D1Database): Promise<void> {
           await database.prepare(sql).run();
         } catch (err) {
           console.error('schema: index create failed (continuing):', err);
+        }
+      }
+      for (const sql of CLEANUPS) {
+        try {
+          await database.prepare(sql).run();
+        } catch (err) {
+          console.error('schema: clean-up failed (continuing):', err);
         }
       }
       // Seed the studio row with the migration, not on every isolate. Sign-in

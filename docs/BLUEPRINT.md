@@ -71,7 +71,7 @@ Arti tanda:
 | 22 | Judul halaman paket unik per bahasa (temuan audit SEO) | ✅ | ES: "…: precio y plazos", ID: "Jasa …" |
 | 24 | Portal masih error karena kuota baca D1 harian habis (5 juta baris/hari, dipakai bersama semua situs di akun Cloudflare) | ✅ | Semua halaman portal tetap tampil dengan pemberitahuan kuning; diuji lokal dengan D1 dipaksa error kuota: 6/6 lulus. Solusi permanen: upgrade Workers Paid $5/bulan |
 | 25 | (14 Okt 2026) "Masukin pembayaran ini, pastikan langsung bisa digunakan untuk pembayaran, termasuk pembayaran manual bank BNI rekening USD & Euro" — kunci PayPal Live xaa.es + kunci Sandbox | ✅ kode, 🟡 kunci | PayPal Checkout otomatis (bagian 7 "PayPal Checkout"); rekening BNI EUR + USD otomatis tersedia di database baru; kunci PayPal diisi pemilik di Admin → Settings → PayPal Checkout (terenkripsi), tidak pernah di repo |
-| 26 | (14 Okt 2026) Penawaran modal gabungan axto.io + xaa.es US$2.000.000, bagi hasil 30 % dari setiap transaksi kedua situs, portal pemodal hanya untuk yang sudah terverifikasi | ✅ sisi xaa.es | Portal & penawaran ada di axto.io (`/invest`, `/app/investor`). xaa.es menyumbang pendapatannya lewat **feed pendapatan** (bagian 7 "Feed pendapatan"); footer xaa.es menautkan ke https://axto.io/invest |
+| 26 | (14 Okt 2026) Penawaran modal gabungan axto.io + xaa.es US$2.000.000, bagi hasil 30 % dari setiap transaksi kedua situs, portal pemodal hanya untuk yang sudah terverifikasi | ↪️ diganti #39 | Pemilik 19 Okt: „masing2 web nyari investornya, bukan gabungan". Feed pendapatan bertoken `GET /api/revenue` ke axto.io dihapus; xaa.es punya penawaran pemodalnya sendiri (#39) |
 | 27 | (14 Okt 2026 malam) "Sudah ada PayPal sandbox, PayPal tiruan hapus saja" | ⏳ | Hapus `tools/e2e/paypal-mock.mjs` + override `PAYPAL_SANDBOX_API`; uji PayPal memakai Sandbox asli bila kuncinya ada |
 | 28 | (14 Okt 2026 malam) "Pakai nomer WhatsApp ini untuk konfirmasi manual di situs xaa.es & axto.io & ubah semua nomer WA yang lama: +62 856-9287-9465" | ↪️ diganti #36 | Pemilik mengganti nomornya lagi pada 18 Okt (permintaan 36) |
 | 29 | (14 Okt 2026 malam) "Harga akuisisi xaa.es $10jt & ada tombol jika ingin menawar, bikin yg elegan profesional, dan jelaskan keuntungannya" (menggantikan harga pembuka $2 juta di permintaan 26) | ✅ (19 Okt) | `/acquire` EN/ES/ID: harga US$10.000.000, keuntungan, isi paket, langkah pembeli, checkout, tombol "Ajukan penawaran" → formulir tersimpan + pemberitahuan pemilik |
@@ -84,6 +84,8 @@ Arti tanda:
 | 36 | (18 Okt 2026) "Ubah seluruh nomer HP yg ada di axto.io & xaa.es menjadi +6285691234561, ini adalah nomer kirim bukti transaksi manual fast respon" | ✅ | xaa.es: `SALE_DEFAULT_WHATSAPP` (`src/server/sale.ts`), tampil di /acquire dan di balasan formulir; tidak ada nomor lain di kode xaa.es. axto.io sudah memakai nomor ini (`lib/acquisition.ts`) |
 | 37 | (18 Okt 2026) Promosikan axto.io & xaa.es di setiap situs pemilik dengan menu khusus premium, bahasa masing-masing situs, kalimat berbeda di setiap situs | 🔄 | Dicatat di `ulyah.com/docs/ADSENSE-BLUEPRINT.md` §13.5 |
 | 38 | (18 Okt 2026) Blueprint template xaa.es yang belum dibuat, fitur kelas tinggi, tangkapan layar animasi setiap menu & dashboard, link demo untuk klien | 🔄 | Lihat bagian 5 dan 6 |
+| 39 | (19 Okt 2026) Tangkapan layar xaa.es/acquire „Prefer a stake to the whole? A joint offering for AXTO and XAA…" — „ini maksudnya apa? Maksudnya masing2 web nyari investornya, bukan gabungan" | ✅ | `/invest` khusus xaa.es (EN/ES/ID): ketentuan dari Admin → Settings → Investor offering (bawaan = syarat 14 Okt untuk xaa.es saja: target US$2 jt, minimum US$50 rb, pool 30 % pendapatan xaa.es, bulanan, sampai akuisisi penuh → modal kembali 100 %), contoh bagi hasil dihitung otomatis, pemberitahuan risiko, formulir pengajuan → Studio desk → Investors + Leads + Support. Admin memverifikasi modal, mencatat pembayaran bulanan; pemodal melihat laporan di `/portal/investor`. Bawaan noindex & di luar sitemap (bisa diubah di admin). `/acquire` dan footer menunjuk ke `/invest`. Uji: `tools/e2e/invest.mjs` (33 cek) |
+| 40 | (19 Okt 2026) „Selesaikan seluruh tugas sampai bersih, tidak merge+PR manual, semua anda kerjakan" | 🔄 | Claude membuat PR, menunggu CI, merge sendiri, lalu memeriksa deploy |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
 ---
@@ -216,22 +218,32 @@ Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup
 
 ---
 
-### Feed pendapatan untuk portal pemodal AXTO & XAA (permintaan 26)
+### Penawaran pemodal xaa.es (permintaan 39, menggantikan 26)
 
-- **Mengapa**: pemodal penghimpunan modal gabungan (US$2 juta, 30 % dari setiap transaksi axto.io + xaa.es)
-  melihat pendapatan kedua situs di portal pemodal axto.io. D1 xaa.es ada di akun Cloudflare lain, jadi
-  xaa.es menerbitkan pendapatannya — dan hanya itu — lewat `GET /api/revenue?since=YYYY-MM-DD`.
-- **Isi**: termin proyek berstatus *confirmed* dan pesanan template *paid*, dalam euro, pada saat dikonfirmasi.
-  Setiap baris hanya jumlah, waktu, dan jenis — tanpa klien, proyek, referensi. **Tidak dihitung**: pembayaran
-  PayPal Sandbox (uji) dan pembayaran PayPal yang di-refund/di-reverse.
-- **Kunci**: token Bearer dibuat di Admin → Settings → Revenue feed (ditampilkan sekali; yang disimpan hanya
-  hash SHA-256 di `app_secrets`). Token baru mematikan yang lama; tombol "Turn the feed off" menutup feed.
-  Token ditempel di axto.io Admin → Investors → xaa.es revenue feed.
-- **Uji**: `tools/e2e/revenue.mjs` (setelah `paypal.mjs`): 401 tanpa/ token palsu, token tampil sekali, isi feed
-  = kebenaran dari D1 lokal (sandbox & refund dikecualikan, transfer bank & template dihitung), rotasi, mati.
+- **Mengapa**: pemilik 19 Okt — setiap situs mencari pemodalnya sendiri, bukan penghimpunan gabungan AXTO & XAA.
+  Feed `GET /api/revenue` (pendapatan xaa.es untuk portal pemodal di axto.io) dihapus beserta token & form-nya;
+  hash token lama dihapus dari `app_secrets` oleh migrasi skema `2026-10-19.1`.
+- **Halaman `/invest`** (EN/ES/ID, `src/app/invest/page.tsx`): ketentuan putaran, rumus bagi hasil + contoh yang
+  dihitung dari pengaturan, apa yang dihitung sebagai pendapatan, yang sudah ada vs untuk apa modal (jujur: produk
+  template SaaS belum dibangun — bagian 5), 7 langkah, pemberitahuan risiko, FAQ (FAQPage JSON-LD), formulir.
+  Bawaan **noindex dan tidak di sitemap**; pemilik bisa mengaktifkan di Settings → Investor offering.
+- **Ketentuan** (`src/server/invest.ts`, Settings → Investor offering): status open/paused/closed, target, minimum,
+  pool %, indeks. Bawaan = syarat 14 Okt untuk xaa.es saja: US$2.000.000, minimum US$50.000, 30 % pendapatan,
+  bagian pemodal = pool × modal ÷ target (US$50.000 = 0,75 %).
+- **Alur**: pengajuan → tabel `investors` + Leads (badge "xaa.es investor") + Support → admin memverifikasi modal
+  yang diterima (transfer bank USD/EUR atau PayPal) di Studio desk → Investors → laporan bulanan dihitung otomatis
+  sejak tanggal verifikasi (definisi pendapatan sama: termin terkonfirmasi + template lunas, tanpa Sandbox & refund)
+  → admin mencatat pembayaran (`investor_payouts`) → saldo terbuka. Pemodal melihat laporannya di `/portal/investor`
+  (dicocokkan lewat email pengajuan; hanya total per bulan, tanpa data klien). "Mark capital returned" saat akuisisi.
+- **Uji**: `tools/e2e/invest.mjs` — 33 cek lulus di build lokal (wrangler dev): halaman 3 bahasa, noindex & sitemap,
+  tidak ada tawaran gabungan, `/api/revenue` 404, minimum ditolak (isian tetap), pengajuan masuk admin & Leads,
+  verifikasi 0,75 %, saldo = 0,75 % pendapatan sebenarnya (Sandbox, refund, dan pendapatan sebelum verifikasi tidak
+  dihitung), payout mengurangi saldo, portal pemodal sama dengan admin, akun lain tidak melihat apa pun, pengaturan
+  index/paused bekerja, tanpa error halaman. `tools/e2e/crawl.mjs`: tidak ada tautan rusak.
 
 ## 9. Changelog blueprint
 
+- **19 Okt 2026 (2)**: permintaan 39 — xaa.es punya penawaran pemodalnya sendiri (`/invest`, Studio desk → Investors, `/portal/investor`); feed pendapatan gabungan ke axto.io dihapus; permintaan 26 ditandai diganti; permintaan 40 dicatat.
 - **19 Okt 2026**: permintaan 35–36 — `/acquire` (xaa.es dijual US$10 juta, penawaran & pembelian, pengaturan Sale of xaa.es di admin), WhatsApp pembeli +6285691234561; permintaan 37–38 dicatat.
 
 - **14 Okt 2026**: permintaan 26 — feed pendapatan bertoken untuk portal pemodal AXTO & XAA (axto.io), tautan footer ke axto.io/invest.

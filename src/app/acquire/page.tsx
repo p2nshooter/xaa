@@ -59,7 +59,7 @@ const COPY: Record<Lang, Copy> = {
       { t: 'A client portal, not a contact form', b: 'Clients register, open projects, pay milestones, upload concepts and track progress. The admin side runs leads, invoices, payment destinations, support and backups.' },
       { t: 'Three languages, written by hand', b: 'English, Spanish and Indonesian across the studio pages, with hreflang, structured data and per-language canonicals — a search footprint that would take months to rebuild.' },
       { t: 'Lean to run', b: 'Built on Cloudflare Workers with D1: no servers to patch, global delivery, and running costs measured in tens of dollars a month rather than thousands.' },
-      { t: 'Room to grow', b: 'A SaaS template catalogue ready to fill with products, an editorial archive that can carry advertising, and an investor revenue feed already in place.' },
+      { t: 'Room to grow', b: 'A SaaS template catalogue ready to fill with products, an editorial archive that can carry advertising, and a revenue-share programme for xaa.es investors already running.' },
       { t: 'A clean, documented handover', b: 'A written blueprint of every system, automated tests and deployment pipelines, so your team understands exactly what it is taking over.' },
     ],
     incEyebrow: 'What changes hands', incTitle: 'Everything, in one transaction',
@@ -102,7 +102,7 @@ const COPY: Record<Lang, Copy> = {
       { q: 'Can the studio’s team stay on?', a: 'Thirty days of handover support are included. Longer arrangements can be agreed as part of the purchase.' },
       { q: 'Which law governs the sale?', a: 'The purchase agreement sets the governing law and jurisdiction; it is agreed between buyer and seller before any payment is made.' },
     ],
-    investT: 'Prefer a stake to the whole?', investB: 'A joint offering for AXTO and XAA is open to verified investors.', investLink: 'See the investor offering',
+    investT: 'Prefer a stake to the whole?', investB: 'xaa.es runs its own investor round: a monthly share of xaa.es revenue, pro rata to your capital, until a full acquisition returns it.', investLink: 'See the xaa.es investor offering',
   },
   es: {
     chip: 'Adquisición',
@@ -123,7 +123,7 @@ const COPY: Record<Lang, Copy> = {
       { t: 'Un portal de clientes, no un formulario', b: 'Los clientes se registran, abren proyectos, pagan hitos, suben conceptos y siguen el avance. La administración gestiona leads, facturas, destinos de pago, soporte y copias de seguridad.' },
       { t: 'Tres idiomas, escritos a mano', b: 'Inglés, español e indonesio en las páginas del estudio, con hreflang, datos estructurados y canónicas por idioma: una huella en buscadores que costaría meses reconstruir.' },
       { t: 'Ligero de operar', b: 'Construido sobre Cloudflare Workers y D1: sin servidores que parchear, entrega global y costes de funcionamiento de decenas de dólares al mes, no de miles.' },
-      { t: 'Margen para crecer', b: 'Un catálogo de plantillas SaaS listo para llenarse de productos, un archivo editorial que admite publicidad y un feed de ingresos para inversores ya instalado.' },
+      { t: 'Margen para crecer', b: 'Un catálogo de plantillas SaaS listo para llenarse de productos, un archivo editorial que admite publicidad y un programa de reparto de ingresos para inversores de xaa.es ya en marcha.' },
       { t: 'Un traspaso limpio y documentado', b: 'Un blueprint escrito de cada sistema, pruebas automatizadas y pipelines de despliegue, para que su equipo sepa exactamente qué recibe.' },
     ],
     incEyebrow: 'Qué cambia de manos', incTitle: 'Todo, en una sola operación',
@@ -166,7 +166,7 @@ const COPY: Record<Lang, Copy> = {
       { q: '¿Puede quedarse el equipo del estudio?', a: 'Se incluyen treinta días de soporte de traspaso. Acuerdos más largos pueden pactarse dentro de la compra.' },
       { q: '¿Qué ley rige la venta?', a: 'El contrato de compraventa fija la ley aplicable y la jurisdicción; se acuerda entre comprador y vendedor antes de cualquier pago.' },
     ],
-    investT: '¿Prefiere una participación en lugar del todo?', investB: 'Una oferta conjunta para AXTO y XAA está abierta a inversores verificados.', investLink: 'Ver la oferta para inversores',
+    investT: '¿Prefiere una participación en lugar del todo?', investB: 'xaa.es tiene su propia ronda para inversores: una parte mensual de los ingresos de xaa.es, proporcional a tu capital, hasta una adquisición completa que lo devuelve.', investLink: 'Ver la oferta para inversores de xaa.es',
   },
   id: {
     chip: 'Akuisisi',
@@ -187,7 +187,7 @@ const COPY: Record<Lang, Copy> = {
       { t: 'Portal klien, bukan sekadar formulir', b: 'Klien mendaftar, membuka proyek, membayar termin, mengunggah konsep, dan memantau progres. Sisi admin mengelola leads, invoice, tujuan pembayaran, support dan backup.' },
       { t: 'Tiga bahasa, ditulis manual', b: 'Inggris, Spanyol dan Indonesia di halaman-halaman studio, lengkap dengan hreflang, data terstruktur dan kanonis per bahasa — jejak mesin pencari yang butuh berbulan-bulan untuk dibangun ulang.' },
       { t: 'Ringan dijalankan', b: 'Dibangun di Cloudflare Workers dan D1: tanpa server yang perlu ditambal, pengiriman global, dan biaya operasional puluhan dolar per bulan, bukan ribuan.' },
-      { t: 'Ruang untuk tumbuh', b: 'Katalog template SaaS yang siap diisi produk, arsip editorial yang bisa memuat iklan, dan feed pendapatan untuk pemodal yang sudah terpasang.' },
+      { t: 'Ruang untuk tumbuh', b: 'Katalog template SaaS yang siap diisi produk, arsip editorial yang bisa memuat iklan, dan program bagi hasil untuk pemodal xaa.es yang sudah berjalan.' },
       { t: 'Serah terima bersih dan terdokumentasi', b: 'Blueprint tertulis setiap sistem, tes otomatis dan pipeline deploy, sehingga tim Anda tahu persis apa yang diambil alih.' },
     ],
     incEyebrow: 'Yang berpindah tangan', incTitle: 'Semuanya, dalam satu transaksi',
@@ -230,7 +230,7 @@ const COPY: Record<Lang, Copy> = {
       { q: 'Bisakah tim studio tetap membantu?', a: 'Tiga puluh hari dukungan serah terima sudah termasuk. Kerja sama lebih lama bisa disepakati sebagai bagian dari pembelian.' },
       { q: 'Hukum mana yang berlaku?', a: 'Perjanjian jual beli menentukan hukum yang berlaku dan yurisdiksinya; disepakati pembeli dan penjual sebelum ada pembayaran.' },
     ],
-    investT: 'Lebih suka saham daripada keseluruhan?', investB: 'Penawaran gabungan AXTO dan XAA terbuka bagi pemodal terverifikasi.', investLink: 'Lihat penawaran untuk pemodal',
+    investT: 'Lebih suka bagi hasil daripada membeli seluruhnya?', investB: 'xaa.es punya putaran pemodalnya sendiri: bagi hasil bulanan dari pendapatan xaa.es, sebanding dengan modal Anda, sampai akuisisi penuh mengembalikannya.', investLink: 'Lihat penawaran pemodal xaa.es',
   },
 };
 
@@ -368,7 +368,7 @@ export default async function AcquirePage() {
           <div className="mt-8 panel p-6">
             <p className="font-display text-lg font-extrabold">{c.investT}</p>
             <p className="mt-2 text-sm text-steel-500">{c.investB}</p>
-            <a href="https://axto.io/invest" className="mt-3 inline-block text-sm font-semibold underline">{c.investLink} →</a>
+            <Link href="/invest" className="mt-3 inline-block text-sm font-semibold underline">{c.investLink} →</Link>
           </div>
         </div>
         {open ? (

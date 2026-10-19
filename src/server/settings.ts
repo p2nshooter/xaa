@@ -307,7 +307,7 @@ export interface SettingDef {
   label: string;
   hint: string;
   secret: boolean;
-  group: 'company' | 'invoicing' | 'paypal' | 'sale' | 'integrations';
+  group: 'company' | 'invoicing' | 'paypal' | 'sale' | 'invest' | 'integrations';
   placeholder?: string;
   /** Fixed choices: rendered as a select instead of a text field. */
   options?: { value: string; label: string }[];
@@ -364,6 +364,23 @@ export const SETTING_DEFS: SettingDef[] = [
   },
   { key: 'sale_price_usd', label: 'Asking price (USD)', hint: 'Whole dollars, digits only. Shown on /acquire and in the structured data search engines read.', secret: false, group: 'sale', placeholder: '10000000' },
   { key: 'sale_whatsapp', label: 'WhatsApp for buyers', hint: 'Where buyers send proof of funds and payment proof. International format.', secret: false, group: 'sale', placeholder: '+6285691234561' },
+
+  // The investor offering of xaa.es alone (/invest, server/invest.ts). Owner,
+  // 19 Oct 2026: "masing2 web nyari investornya, bukan gabungan". Blank fields
+  // fall back to the defaults in server/invest.ts (the 14 Oct 2026 terms).
+  {
+    key: 'invest_status', label: 'Offering status', hint: 'Open takes applications on /invest. Paused keeps the page but stops new applications. Closed marks the raise as complete.',
+    secret: false, group: 'invest',
+    options: [{ value: 'open', label: 'Open — taking applications' }, { value: 'paused', label: 'Paused — page visible, no new applications' }, { value: 'closed', label: 'Closed — raise complete' }],
+  },
+  { key: 'invest_target_usd', label: 'Raise target (USD)', hint: 'Whole dollars. An investor’s share is pool × capital ÷ target, so the target also fixes what each dollar earns.', secret: false, group: 'invest', placeholder: '2000000' },
+  { key: 'invest_min_usd', label: 'Minimum ticket (USD)', hint: 'Smallest application /invest accepts.', secret: false, group: 'invest', placeholder: '50000' },
+  { key: 'invest_pool_pct', label: 'Revenue pool (% of every xaa.es revenue transaction)', hint: 'Shared among verified investors pro rata to capital. Changing it changes every statement from that moment on — agree it with investors first.', secret: false, group: 'invest', placeholder: '30' },
+  {
+    key: 'invest_indexed', label: 'Show /invest in search engines', hint: 'Off by default: the page opens from its link and the site footer, but search engines are asked not to index it and it is left out of the sitemap.',
+    secret: false, group: 'invest',
+    options: [{ value: 'no', label: 'No — link only (recommended)' }, { value: 'yes', label: 'Yes — index and list in the sitemap' }],
+  },
 ];
 
 export const SETTING_GROUPS: { id: SettingDef['group']; title: string; blurb: string }[] = [
@@ -376,6 +393,10 @@ export const SETTING_GROUPS: { id: SettingDef['group']; title: string; blurb: st
   {
     id: 'sale', title: 'Sale of xaa.es',
     blurb: 'The /acquire page: whether the site is for sale, the asking price and the WhatsApp number buyers use. Offers and purchase requests arrive in Leads and in Support.',
+  },
+  {
+    id: 'invest', title: 'Investor offering (xaa.es only)',
+    blurb: 'The /invest page: whether xaa.es is raising, the target, the minimum ticket and the share of xaa.es revenue paid to investors. Applications arrive in Studio desk → Investors (and in Leads and Support); verified investors follow their statement in the portal. axto.io raises separately on its own site.',
   },
   { id: 'integrations', title: 'Integrations', blurb: 'Keys for email, alerting and automated payment verification. Secret values are encrypted before they are written.' },
 ];
