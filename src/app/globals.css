@@ -421,3 +421,27 @@ h1 { letter-spacing: -0.032em; }
   .btn-paypal::after, .paypal-outcome { animation: none; }
   .btn-paypal { transition: none; }
 }
+
+/* ── /acquire: xaa.es for sale (owner, 18 Oct 2026) ─────────────────────── */
+.acq-glow {
+  position: absolute; inset: -20% -10% auto auto; width: 620px; height: 620px; border-radius: 9999px; pointer-events: none;
+  background: radial-gradient(circle, rgba(77, 139, 255, 0.45), rgba(77, 139, 255, 0) 65%);
+  animation: acq-drift 14s ease-in-out infinite alternate;
+}
+@keyframes acq-drift { to { transform: translate(-80px, 60px) scale(1.08); } }
+.acq-price { position: relative; box-shadow: 0 30px 70px -40px rgba(0, 0, 0, 0.7); animation: acq-rise 0.9s cubic-bezier(.2, .8, .2, 1) both; }
+.acq-price::before {
+  content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(77, 139, 255, 0.2) 40%, rgba(255, 255, 255, 0.5));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+}
+@keyframes acq-rise { from { opacity: 0; transform: translateY(18px); } }
+.acq-card { animation: acq-rise 0.7s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i, 0) * 70ms); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.acq-card:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -28px rgba(15, 31, 70, 0.55); }
+.nav-acquire { background: linear-gradient(90deg, #0f1f46, #2b6bff); color: #fff !important; border-radius: 9999px; padding: 0.2rem 0.75rem; }
+.nav-acquire:hover { filter: brightness(1.12); }
+@media (prefers-reduced-motion: reduce) {
+  .acq-glow, .acq-price, .acq-card { animation: none !important; }
+  .acq-card:hover { transform: none; }
+}
+.acq-hero { background: radial-gradient(900px 420px at 85% 10%, rgba(77, 139, 255, 0.35), transparent 60%), linear-gradient(135deg, #070f24 0%, #0f2350 55%, #173a8a 100%); }

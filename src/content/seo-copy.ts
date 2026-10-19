@@ -50,6 +50,11 @@ export const SEO: Record<string, SeoCopy> = {
     es: { title: 'Instalación web y backup y recuperación con IA', description: `Instalación única desde ${setupLo} y un sistema de backup y recuperación con IA: copias diarias, semanales y mensuales con un clic, restauración y reparación.` },
     id: { title: 'Setup website dan AI backup & recovery', description: `Setup sekali bayar mulai ${setupLo} plus sistem AI backup & recovery: backup harian, mingguan dan bulanan sekali klik, restore, reset database dan perbaikan AI.` },
   },
+  acquire: {
+    en: { title: 'xaa.es for sale — premium .es domain and live studio', description: 'xaa.es is for sale: a three-letter .es domain with a working multilingual studio, client portal, live PayPal, wire and USDT payments and a SaaS catalogue. Asking price US$10 million.' },
+    es: { title: 'xaa.es en venta — dominio .es premium y estudio activo', description: 'xaa.es está en venta: dominio .es de tres letras con un estudio multilingüe en marcha, portal de clientes, pagos reales y catálogo SaaS. Precio solicitado: 10 millones de USD.' },
+    id: { title: 'xaa.es dijual — domain .es premium dan studio aktif', description: 'xaa.es dijual: domain .es tiga huruf dengan studio multibahasa yang sudah berjalan, portal klien, pembayaran live dan katalog SaaS. Harga yang diminta US$10 juta.' },
+  },
   payments: {
     en: { title: 'Payments by PayPal, bank wire or USDT, milestone-based', description: 'XAA invoices in euros. Pay by PayPal (card or balance, confirmed instantly), by SWIFT wire in EUR or USD, or in USDT. Milestones of 10%, 40% and 50%.' },
     es: { title: 'Pagos con PayPal, transferencia o USDT, por hitos', description: 'XAA factura en euros. Paga con PayPal (tarjeta o saldo, confirmado al instante), por transferencia SWIFT en EUR o USD, o en USDT. Hitos del 10%, 40% y 50%.' },

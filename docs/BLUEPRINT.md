@@ -5,7 +5,7 @@ dikerjakan, apa yang belum, dan apa yang belum diuji. **Setiap permintaan baru
 atau perubahan wajib dicatat di sini dulu** (bagian 3 dan 8), lalu statusnya
 diperbarui setelah diuji.
 
-Terakhir diperbarui: 27 September 2026.
+Terakhir diperbarui: 19 Oktober 2026.
 
 Arti tanda:
 
@@ -73,13 +73,17 @@ Arti tanda:
 | 25 | (14 Okt 2026) "Masukin pembayaran ini, pastikan langsung bisa digunakan untuk pembayaran, termasuk pembayaran manual bank BNI rekening USD & Euro" — kunci PayPal Live xaa.es + kunci Sandbox | ✅ kode, 🟡 kunci | PayPal Checkout otomatis (bagian 7 "PayPal Checkout"); rekening BNI EUR + USD otomatis tersedia di database baru; kunci PayPal diisi pemilik di Admin → Settings → PayPal Checkout (terenkripsi), tidak pernah di repo |
 | 26 | (14 Okt 2026) Penawaran modal gabungan axto.io + xaa.es US$2.000.000, bagi hasil 30 % dari setiap transaksi kedua situs, portal pemodal hanya untuk yang sudah terverifikasi | ✅ sisi xaa.es | Portal & penawaran ada di axto.io (`/invest`, `/app/investor`). xaa.es menyumbang pendapatannya lewat **feed pendapatan** (bagian 7 "Feed pendapatan"); footer xaa.es menautkan ke https://axto.io/invest |
 | 27 | (14 Okt 2026 malam) "Sudah ada PayPal sandbox, PayPal tiruan hapus saja" | ⏳ | Hapus `tools/e2e/paypal-mock.mjs` + override `PAYPAL_SANDBOX_API`; uji PayPal memakai Sandbox asli bila kuncinya ada |
-| 28 | (14 Okt 2026 malam) "Pakai nomer WhatsApp ini untuk konfirmasi manual di situs xaa.es & axto.io & ubah semua nomer WA yang lama: +62 856-9287-9465" | ⏳ | `+6285692879465` di kode, halaman, dan pengaturan tersimpan |
-| 29 | (14 Okt 2026 malam) "Harga akuisisi xaa.es $10jt & ada tombol jika ingin menawar, bikin yg elegan profesional, dan jelaskan keuntungannya" (menggantikan harga pembuka $2 juta di permintaan 26) | ⏳ | `/acquire` EN/ES/ID: harga US$10.000.000, keuntungan, isi paket, langkah pembeli, checkout, tombol "Ajukan penawaran" → formulir tersimpan + pemberitahuan pemilik |
+| 28 | (14 Okt 2026 malam) "Pakai nomer WhatsApp ini untuk konfirmasi manual di situs xaa.es & axto.io & ubah semua nomer WA yang lama: +62 856-9287-9465" | ↪️ diganti #36 | Pemilik mengganti nomornya lagi pada 18 Okt (permintaan 36) |
+| 29 | (14 Okt 2026 malam) "Harga akuisisi xaa.es $10jt & ada tombol jika ingin menawar, bikin yg elegan profesional, dan jelaskan keuntungannya" (menggantikan harga pembuka $2 juta di permintaan 26) | ✅ (19 Okt) | `/acquire` EN/ES/ID: harga US$10.000.000, keuntungan, isi paket, langkah pembeli, checkout, tombol "Ajukan penawaran" → formulir tersimpan + pemberitahuan pemilik |
 | 30 | (14 Okt 2026 malam) Pemilik memberikan login admin xaa.es di chat | ⚠️ | Tidak pernah ditulis ke file mana pun |
 | 31 | (14 Okt 2026 malam) "Buatkan penghitung pengunjung harian, mingguan, bulanan, tahunan & total … pengunjung harian tampil di index, sisanya di portal admin" | ⏳ | Satu baris per hari di D1, pengunjung unik lewat cookie harian tanpa data pribadi |
 | 32 | (14 Okt 2026 malam) "Pastikan semua pembayaran sudah live … isi semua" | ⏳ | PayPal Live (kunci xaa.es) + Sandbox tersimpan, mode Live; BNI EUR + USD aktif; tidak ada metode bertanda TEST di halaman pembayaran publik |
 | 33 | (14 Okt 2026 malam) AdSense xaa.es → `google.com, pub-6908951782430508, DIRECT, f08c47fec0942fa0` (bersama axto.io, rough.es, ulyah.com, 1fr.fr) | ✅ kode (tayang setelah deploy) | Loader `adsbygoogle.js?client=ca-pub-6908951782430508`, `public/ads.txt`, tag meta `google-adsense-account` |
 | 34 | (14 Okt 2026 malam) "Sempurnakan seluruh aplikasinya … berkelas dunia, mudah digunakan, full fitur high class, super premium & super enterprise" dan "SEO seluruh website … agar menjadi nomor 1" | 🔄 | Aturan tetap untuk setiap perubahan; daftar terbuka di bagian 6 |
+| 35 | (18 Okt 2026) "Buatkan menu husus di xaa.es untuk menjual lepas xaa.es dengan bahasa profesional, elegan dan berkelas dengan harga $10jt seperti axto.io, dan pastikan pembayaran full seluruhnya 100% live, ubah dari portal admin" | ✅ halaman, 🟡 kunci | `/acquire` EN/ES/ID (menu khusus "Acquire xaa.es" di header + footer, sitemap, JSON-LD Product/Offer + FAQ): harga US$10.000.000, 8 keunggulan, isi paket, 5 langkah pembelian, cara bayar (SWIFT BNI, escrow, USDT, PayPal untuk uang muka), formulir "Ajukan penawaran" / "Beli di harga yang diminta" → Admin → Leads (lencana "xaa.es acquisition") + Support (topik negotiate). Status/harga/WhatsApp diubah di Admin → Settings → **Sale of xaa.es**. PayPal memakai Live secara bawaan (`paypal_mode` kosong = live); kunci Live diisi pemilik sendiri di Admin → Settings → PayPal Checkout — kunci tidak pernah ditulis ke repo |
+| 36 | (18 Okt 2026) "Ubah seluruh nomer HP yg ada di axto.io & xaa.es menjadi +6285691234561, ini adalah nomer kirim bukti transaksi manual fast respon" | ✅ | xaa.es: `SALE_DEFAULT_WHATSAPP` (`src/server/sale.ts`), tampil di /acquire dan di balasan formulir; tidak ada nomor lain di kode xaa.es. axto.io sudah memakai nomor ini (`lib/acquisition.ts`) |
+| 37 | (18 Okt 2026) Promosikan axto.io & xaa.es di setiap situs pemilik dengan menu khusus premium, bahasa masing-masing situs, kalimat berbeda di setiap situs | 🔄 | Dicatat di `ulyah.com/docs/ADSENSE-BLUEPRINT.md` §13.5 |
+| 38 | (18 Okt 2026) Blueprint template xaa.es yang belum dibuat, fitur kelas tinggi, tangkapan layar animasi setiap menu & dashboard, link demo untuk klien | 🔄 | Lihat bagian 5 dan 6 |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
 ---
@@ -227,6 +231,8 @@ Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup
   = kebenaran dari D1 lokal (sandbox & refund dikecualikan, transfer bank & template dihitung), rotasi, mati.
 
 ## 9. Changelog blueprint
+
+- **19 Okt 2026**: permintaan 35–36 — `/acquire` (xaa.es dijual US$10 juta, penawaran & pembelian, pengaturan Sale of xaa.es di admin), WhatsApp pembeli +6285691234561; permintaan 37–38 dicatat.
 
 - **14 Okt 2026**: permintaan 26 — feed pendapatan bertoken untuk portal pemodal AXTO & XAA (axto.io), tautan footer ke axto.io/invest.
 - **14 Okt 2026**: permintaan 25 — PayPal Checkout otomatis (Live + Sandbox) dan rekening BNI EUR/USD siap pakai; webhook PayPal dibuat otomatis oleh situs.

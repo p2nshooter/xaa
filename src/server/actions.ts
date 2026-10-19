@@ -26,6 +26,7 @@ import { activePayPal, createPayPalOrder, ensureWebhook, insertCheckout, isPayPa
 import { rotateRevenueToken, revokeRevenueToken } from './revenue';
 import { getTemplate } from '@/content/templates';
 import { adminReply, getThread, markAdminOnline, setThreadStatus, createThread } from './support';
+import { getSale, usdWhole } from './sale';
 
 /**
  * Every mutation in the portal. Server actions rather than REST handlers:
@@ -746,6 +747,67 @@ export async function enquiryAction(_prev: ActionState, form: FormData): Promise
       console.error('support thread for enquiry failed (enquiry still saved):', e);
     }
     return { ok: 'Thank you — your brief is with us. We reply within one business day.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/**
+ * An offer for xaa.es, or a request to buy it at the asking price (/acquire).
+ *
+ * Saved in the enquiries inbox (Admin → Leads, package "site-acquisition") and
+ * opened as a Support conversation (topic "negotiate"), so the owner sees it
+ * where every other lead arrives. No payment is taken here: a sale of this size
+ * closes by agreement, proof of funds and a SWIFT wire or escrow.
+ */
+export async function acquireAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const kind = str(form, 'kind') === 'buy' ? 'buy' : 'offer';
+    const name = str(form, 'name');
+    const email = str(form, 'email');
+    const company = str(form, 'company');
+    const country = str(form, 'country');
+    const funds = str(form, 'funds');
+    const message = str(form, 'message');
+    const lang = ['en', 'es', 'id'].includes(str(form, 'lang')) ? str(form, 'lang') : 'en';
+    if (str(form, 'website')) return { ok: 'Thank you.' }; // honeypot
+    if (!name || !email) return { error: 'Your name and email, please.' };
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return { error: 'That email address does not look right.' };
+
+    const sale = await getSale();
+    if (sale.status === 'sold') return { error: 'xaa.es has been sold. Thank you for your interest.' };
+    if (sale.status === 'paused') return { error: 'The sale is paused at the moment. Please write to hello@xaa.es.' };
+
+    const amount = kind === 'buy' ? sale.priceUsd : Number(str(form, 'amount').replace(/[^\d]/g, ''));
+    if (!Number.isFinite(amount) || amount < 100_000) return { error: 'Please enter your offer in US dollars (at least $100,000).' };
+    if (amount > sale.priceUsd * 2) return { error: 'Please check the amount of your offer.' };
+
+    const label = kind === 'buy' ? `Purchase at asking price ${usdWhole(amount)}` : `Offer ${usdWhole(amount)} (asking ${usdWhole(sale.priceUsd)})`;
+    const brief = [
+      label,
+      company && `Company: ${company}`,
+      country && `Country: ${country}`,
+      funds && `Proof of funds / financing: ${funds}`,
+      message && `Message: ${message}`,
+    ].filter(Boolean).join('\n');
+
+    const database = await db();
+    await database
+      .prepare('INSERT INTO enquiries (id, name, email, company, budget, package_slug, message, created_at) VALUES (?,?,?,?,?,?,?,?)')
+      .bind(newId(), name.slice(0, 120), normaliseEmail(email), company.slice(0, 160) || null, usdWhole(amount), 'site-acquisition', brief.slice(0, 5000), nowIso())
+      .run();
+    try {
+      await createThread({ name, email: normaliseEmail(email), topic: 'negotiate', lang, source: 'contact', firstMessage: `[xaa.es acquisition] ${brief}` });
+    } catch (e) {
+      console.error('support thread for acquisition failed (enquiry still saved):', e);
+    }
+    const ok: Record<string, string> = {
+      en: `Thank you — your ${kind === 'buy' ? 'purchase request' : 'offer'} of ${usdWhole(amount)} is with the owner. You will receive a reply and an NDA within one business day. To speed things up, send proof of funds on WhatsApp ${sale.whatsapp}.`,
+      es: `Gracias — tu ${kind === 'buy' ? 'solicitud de compra' : 'oferta'} de ${usdWhole(amount)} ya la tiene el propietario. Recibirás respuesta y un NDA en un día hábil. Para agilizar, envía la prueba de fondos por WhatsApp al ${sale.whatsapp}.`,
+      id: `Terima kasih — ${kind === 'buy' ? 'permintaan pembelian' : 'penawaran'} Anda sebesar ${usdWhole(amount)} sudah diterima pemilik. Balasan dan NDA dikirim dalam satu hari kerja. Agar lebih cepat, kirim bukti dana lewat WhatsApp ${sale.whatsapp}.`,
+    };
+    return { ok: ok[lang] };
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);

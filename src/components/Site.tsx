@@ -113,6 +113,10 @@ export async function SiteHeader() {
           <Link href="/contact" className="shrink-0 whitespace-nowrap text-steel-500 transition hover:text-gold-500">
             {t('nav.contact')}
           </Link>
+          {/* The sale of the site itself, set apart from the studio menu (owner, 18 Oct 2026). */}
+          <Link href="/acquire" className="nav-acquire shrink-0 whitespace-nowrap text-[13px] font-semibold transition">
+            {t('nav.acquire')}
+          </Link>
         </nav>
       </div>
     </header>
@@ -160,6 +164,7 @@ export async function SiteFooter() {
               ['/payments', t('footer.usdtPaypal')],
               ['/faq', t('footer.faqLong')],
               ['https://axto.io/invest', t('footer.invest')],
+              ['/acquire', t('footer.acquire')],
               ['/register', t('footer.openProject')],
               ['/portal', t('nav.portal')],
             ]}

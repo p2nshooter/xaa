@@ -40,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...multilingual('/capabilities', 0.7, 'monthly'),
     ...multilingual('/faq', 0.6, 'monthly'),
     ...multilingual('/company', 0.7, 'monthly'),
+    ...multilingual('/acquire', 0.7, 'monthly'),
     ...multilingual('/about', 0.5, 'yearly'),
     ...multilingual('/contact', 0.5, 'yearly'),
     ...multilingual('/register', 0.4, 'yearly'),
