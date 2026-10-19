@@ -307,7 +307,7 @@ export interface SettingDef {
   label: string;
   hint: string;
   secret: boolean;
-  group: 'company' | 'invoicing' | 'paypal' | 'integrations';
+  group: 'company' | 'invoicing' | 'paypal' | 'sale' | 'integrations';
   placeholder?: string;
   /** Fixed choices: rendered as a select instead of a text field. */
   options?: { value: string; label: string }[];
@@ -353,6 +353,17 @@ export const SETTING_DEFS: SettingDef[] = [
   { key: 'paypal_sandbox_client_id', label: 'Sandbox client ID', hint: 'developer.paypal.com → Apps & Credentials → Sandbox → your app.', secret: false, group: 'paypal' },
   { key: 'paypal_sandbox_client_secret', label: 'Sandbox secret', hint: 'Encrypted at rest.', secret: true, group: 'paypal' },
   { key: 'paypal_sandbox_webhook_id', label: 'Sandbox webhook ID', hint: 'Filled in automatically when the Sandbox keys are saved or tested.', secret: false, group: 'paypal' },
+
+  // The sale of xaa.es itself (/acquire, server/sale.ts). Owner, 18 Oct 2026:
+  // "menu husus di xaa.es untuk menjual lepas xaa.es … harga $10jt … ubah dari
+  // portal admin". Blank fields fall back to the defaults in server/sale.ts.
+  {
+    key: 'sale_status', label: 'Sale status', hint: 'Open shows the price and takes offers on /acquire. Paused keeps the page but stops new offers. Sold marks the site as sold.',
+    secret: false, group: 'sale',
+    options: [{ value: 'open', label: 'Open — accepting offers' }, { value: 'paused', label: 'Paused — page visible, no new offers' }, { value: 'sold', label: 'Sold' }],
+  },
+  { key: 'sale_price_usd', label: 'Asking price (USD)', hint: 'Whole dollars, digits only. Shown on /acquire and in the structured data search engines read.', secret: false, group: 'sale', placeholder: '10000000' },
+  { key: 'sale_whatsapp', label: 'WhatsApp for buyers', hint: 'Where buyers send proof of funds and payment proof. International format.', secret: false, group: 'sale', placeholder: '+6285691234561' },
 ];
 
 export const SETTING_GROUPS: { id: SettingDef['group']; title: string; blurb: string }[] = [
@@ -361,6 +372,10 @@ export const SETTING_GROUPS: { id: SettingDef['group']; title: string; blurb: st
   {
     id: 'paypal', title: 'PayPal Checkout',
     blurb: 'Clients pay with their PayPal balance or any card through PayPal, and the payment confirms itself the moment PayPal captures it — no transaction ID to paste, nothing to check by hand. Paste a Live and a Sandbox set and save: each set is checked with PayPal and its webhook is created automatically. The switch decides which set checkout uses.',
+  },
+  {
+    id: 'sale', title: 'Sale of xaa.es',
+    blurb: 'The /acquire page: whether the site is for sale, the asking price and the WhatsApp number buyers use. Offers and purchase requests arrive in Leads and in Support.',
   },
   { id: 'integrations', title: 'Integrations', blurb: 'Keys for email, alerting and automated payment verification. Secret values are encrypted before they are written.' },
 ];

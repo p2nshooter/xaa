@@ -56,6 +56,7 @@ export default async function LeadsPage() {
                     <div className="flex flex-wrap items-center gap-2">
                       <h2 className="font-display text-lg font-extrabold">{l.name}</h2>
                       <span className={`badge ${LEAD_STATUS_BADGE[l.status]}`}>{LEAD_STATUS_LABEL[l.status]}</span>
+                      {l.package_slug === 'site-acquisition' ? <span className="badge badge-blue">xaa.es acquisition</span> : null}
                     </div>
                     <p className="mt-1 text-sm text-steel-500">
                       <a href={`mailto:${l.email}`} className="text-gold-500 underline">{l.email}</a>
@@ -63,7 +64,7 @@ export default async function LeadsPage() {
                     </p>
                     <p className="mt-1 text-xs text-steel-400">
                       {formatDate(l.created_at)}
-                      {l.budget ? ` · budget ${l.budget}` : ''}
+                      {l.budget ? ` · ${l.package_slug === 'site-acquisition' ? 'amount' : 'budget'} ${l.budget}` : ''}
                       {pkg ? ` · interested in ${pkg.name}` : ''}
                     </p>
                   </div>
