@@ -23,7 +23,7 @@ import {
 } from './recovery';
 import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle } from './store';
 import { activePayPal, createPayPalOrder, ensureWebhook, insertCheckout, isPayPalEnv, newCheckoutId, paypalConfig, testPayPal, type PayPalEnv } from './paypal';
-import { rotateRevenueToken, revokeRevenueToken } from './revenue';
+import { applyInvestor, getInvest, getInvestor, recordPayout, setInvestorStatus, verifyInvestor, usd } from './invest';
 import { getTemplate } from '@/content/templates';
 import { adminReply, getThread, markAdminOnline, setThreadStatus, createThread } from './support';
 import { getSale, usdWhole } from './sale';
@@ -38,6 +38,8 @@ import { getSale, usdWhole } from './sale';
 export interface ActionState {
   error?: string;
   ok?: string;
+  /** What the visitor typed, echoed back with an error so the form can keep it (React resets forms after an action). */
+  values?: Record<string, string>;
 }
 
 /** Result of a reveal (show/hide) action: the plaintext, or an error. */
@@ -444,36 +446,6 @@ export async function testPaypalAction(_prev: ActionState, form: FormData): Prom
   }
 }
 
-/* ─────────────────── Revenue feed (AXTO & XAA capital raise) ─────────────────── */
-
-export interface TokenState extends ActionState { token?: string }
-
-/** Admin: create a new revenue-feed token for the axto.io investor portal (shown once). */
-export async function rotateRevenueTokenAction(_prev: TokenState, _form: FormData): Promise<TokenState> {
-  try {
-    await requireAdmin();
-    const token = await rotateRevenueToken();
-    revalidatePath('/portal/admin/settings');
-    return { ok: 'New token created. Copy it now — it is shown only this once — and paste it in axto.io Admin → Investors → xaa.es revenue feed. Any older token stopped working.', token };
-  } catch (err) {
-    if (isRedirect(err)) throw err;
-    return fail(err);
-  }
-}
-
-/** Admin: switch the revenue feed off (no token opens it any more). */
-export async function revokeRevenueTokenAction(_prev: TokenState, _form: FormData): Promise<TokenState> {
-  try {
-    await requireAdmin();
-    await revokeRevenueToken();
-    revalidatePath('/portal/admin/settings');
-    return { ok: 'The revenue feed is off.' };
-  } catch (err) {
-    if (isRedirect(err)) throw err;
-    return fail(err);
-  }
-}
-
 /* ─────────────────── AI backup & recovery (project owner) ─────────────────── */
 
 export async function saveAiKeyAction(_prev: ActionState, form: FormData): Promise<ActionState> {
@@ -808,6 +780,136 @@ export async function acquireAction(_prev: ActionState, form: FormData): Promise
       id: `Terima kasih — ${kind === 'buy' ? 'permintaan pembelian' : 'penawaran'} Anda sebesar ${usdWhole(amount)} sudah diterima pemilik. Balasan dan NDA dikirim dalam satu hari kerja. Agar lebih cepat, kirim bukti dana lewat WhatsApp ${sale.whatsapp}.`,
     };
     return { ok: ok[lang] };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/* ───────────────── Investors in xaa.es (/invest) ───────────────── */
+
+/**
+ * Public: an application to invest in xaa.es — xaa.es alone (owner, 19 Oct
+ * 2026: "masing2 web nyari investornya, bukan gabungan"). It lands in Studio
+ * desk → Investors, in Leads and in Support, so it is never missed. Nothing is
+ * paid here: capital moves only after the agreement is signed, and the studio
+ * verifies it when it arrives.
+ */
+export async function investApplyAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const lang = ['en', 'es', 'id'].includes(str(form, 'lang')) ? str(form, 'lang') : 'en';
+    const name = str(form, 'name');
+    const email = str(form, 'email');
+    const company = str(form, 'company');
+    const country = str(form, 'country');
+    const method = ['wire', 'paypal'].includes(str(form, 'method')) ? str(form, 'method') : 'wire';
+    const message = str(form, 'message');
+    const T = (en: string, es: string, id: string) => (lang === 'es' ? es : lang === 'id' ? id : en);
+    const values = { name, email, company, country, method, message, amount: str(form, 'amount') };
+    const bad = (error: string): ActionState => ({ error, values });
+    if (str(form, 'website')) return { ok: 'Thank you.' }; // honeypot
+    if (!name || !email) return bad(T('Your name and email, please.', 'Tu nombre y tu email, por favor.', 'Nama dan email Anda, mohon.'));
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return bad(T('That email address does not look right.', 'Ese email no parece correcto.', 'Alamat email tampaknya tidak benar.'));
+    if (form.get('ack') === null) {
+      return bad(T('Please confirm you have read the risk notice.', 'Confirma que has leído el aviso de riesgos.', 'Mohon konfirmasi bahwa Anda telah membaca pemberitahuan risiko.'));
+    }
+
+    const offer = await getInvest();
+    if (offer.status === 'closed') return bad(T('The xaa.es raise is complete. Thank you for your interest.', 'La ronda de xaa.es está completa. Gracias por tu interés.', 'Penghimpunan modal xaa.es sudah selesai. Terima kasih atas minat Anda.'));
+    if (offer.status === 'paused') return bad(T('Applications are paused at the moment. Please write to hello@xaa.es.', 'Las solicitudes están en pausa. Escribe a hello@xaa.es.', 'Pengajuan sedang dijeda. Silakan tulis ke hello@xaa.es.'));
+
+    const pledge = Number(str(form, 'amount').replace(/[^\d]/g, ''));
+    if (!Number.isFinite(pledge) || pledge < offer.minUsd) {
+      return bad(T(`The minimum ticket is ${usd(offer.minUsd)}.`, `La inversión mínima es de ${usd(offer.minUsd)}.`, `Investasi minimum ${usd(offer.minUsd)}.`));
+    }
+    if (pledge > offer.targetUsd) {
+      return bad(T(`The whole raise is ${usd(offer.targetUsd)}; please enter an amount up to that.`, `La ronda completa es de ${usd(offer.targetUsd)}; indica un importe hasta esa cifra.`, `Total penghimpunan ${usd(offer.targetUsd)}; masukkan jumlah sampai angka itu.`));
+    }
+
+    const cleanEmail = normaliseEmail(email);
+    await applyInvestor({ name, email: cleanEmail, company, country, pledgeUsd: pledge, method, lang, message });
+    const brief = [
+      `Investment application ${usd(pledge)} (${method === 'paypal' ? 'PayPal' : 'bank wire'})`,
+      company && `Company: ${company}`,
+      country && `Country: ${country}`,
+      message && `Message: ${message}`,
+    ].filter(Boolean).join('\n');
+    const database = await db();
+    await database
+      .prepare('INSERT INTO enquiries (id, name, email, company, budget, package_slug, message, created_at) VALUES (?,?,?,?,?,?,?,?)')
+      .bind(newId(), name.slice(0, 120), cleanEmail, company.slice(0, 160) || null, usd(pledge), 'investor', brief.slice(0, 5000), nowIso())
+      .run();
+    try {
+      await createThread({ name, email: cleanEmail, topic: 'negotiate', lang, source: 'contact', firstMessage: `[xaa.es investor] ${brief}` });
+    } catch (e) {
+      console.error('support thread for investor application failed (application still saved):', e);
+    }
+    return {
+      ok: T(
+        `Thank you — your application for ${usd(pledge)} is with the owner. You will receive the investor memorandum and the draft agreement within one business day; capital is sent only after both are signed.`,
+        `Gracias — tu solicitud por ${usd(pledge)} ya la tiene el propietario. Recibirás el memorando para inversores y el borrador del contrato en un día hábil; el capital se envía solo después de firmar ambos.`,
+        `Terima kasih — pengajuan Anda sebesar ${usd(pledge)} sudah diterima pemilik. Memorandum pemodal dan draf perjanjian dikirim dalam satu hari kerja; modal baru dikirim setelah keduanya ditandatangani.`,
+      ),
+    };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/** Admin: the capital has arrived — verify the stake. From now on its share of xaa.es revenue is computed. */
+export async function verifyInvestorAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    const investor = await getInvestor(str(form, 'id'));
+    if (!investor) return { error: 'Investor not found.' };
+    if (investor.status === 'declined' || investor.status === 'returned') return { error: 'This application is closed.' };
+    const capital = Number(str(form, 'capital').replace(/[^\d]/g, ''));
+    if (!Number.isFinite(capital) || capital <= 0) return { error: 'Enter the capital actually received, in whole US dollars.' };
+    const offer = await getInvest();
+    if (capital > offer.targetUsd) return { error: `That is more than the whole raise (${usd(offer.targetUsd)}).` };
+    const method = ['wire', 'paypal'].includes(str(form, 'method')) ? str(form, 'method') : 'wire';
+    await verifyInvestor(investor.id, capital, method, admin.name);
+    revalidatePath('/portal/admin/investors');
+    return { ok: `Verified: ${usd(capital)} from ${investor.name}. Their statement starts today.` };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/** Admin: decline an application, or mark a stake as repaid (capital returned at the acquisition). */
+export async function investorStatusAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    const status = str(form, 'status');
+    if (status !== 'declined' && status !== 'returned') return { error: 'Unknown status.' };
+    const investor = await getInvestor(str(form, 'id'));
+    if (!investor) return { error: 'Investor not found.' };
+    if (status === 'returned' && investor.status !== 'verified') return { error: 'Only a verified stake can be repaid.' };
+    if (status === 'declined' && investor.status !== 'applied') return { error: 'Only an open application can be declined.' };
+    await setInvestorStatus(investor.id, status, str(form, 'note'), admin.name);
+    revalidatePath('/portal/admin/investors');
+    return { ok: status === 'returned' ? 'Marked as repaid: the revenue share stops today.' : 'Application declined.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/** Admin: record a monthly revenue-share payment to a verified investor. */
+export async function recordPayoutAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    const investor = await getInvestor(str(form, 'id'));
+    if (!investor || (investor.status !== 'verified' && investor.status !== 'returned')) return { error: 'Payouts are for verified investors.' };
+    const period = str(form, 'period');
+    if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(period)) return { error: 'Choose the month this payment covers.' };
+    const amount = Number(str(form, 'amount').replace(',', '.').replace(/[^\d.]/g, ''));
+    if (!Number.isFinite(amount) || amount <= 0) return { error: 'Enter the amount paid, in euros.' };
+    await recordPayout(investor.id, period, amount, str(form, 'reference'), admin.name);
+    revalidatePath('/portal/admin/investors');
+    return { ok: `Recorded €${amount.toFixed(2)} for ${period}.` };
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);

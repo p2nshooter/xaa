@@ -8,8 +8,7 @@ import { countNewLeads } from '@/server/leads';
 import { AdminNav } from '@/components/AdminNav';
 import { SettingsGroupForm, type SettingView } from '@/components/forms/AdminForms';
 import { TestPayPal } from '@/components/forms/PayPalForms';
-import { RevenueFeed } from '@/components/forms/RevenueFeedForms';
-import { revenueTokenCreatedAt } from '@/server/revenue';
+import Link from 'next/link';
 import { soft, type Problems } from '@/server/soft';
 import { DbNotice } from '@/components/DbNotice';
 
@@ -23,12 +22,11 @@ export default async function AdminSettingsPage() {
   if (user.role !== 'admin') redirect('/portal');
 
   const problems: Problems = [];
-  const [values, source, ok, newLeads, feedAt] = await Promise.all([
+  const [values, source, ok, newLeads] = await Promise.all([
     soft(problems, () => listSettings(), [] as Awaited<ReturnType<typeof listSettings>>),
     soft<Awaited<ReturnType<typeof keySource>>>(problems, () => keySource(), 'database'),
     soft(problems, () => selfTest(), false),
     soft(problems, () => countNewLeads(), 0),
-    soft(problems, () => revenueTokenCreatedAt(), ''),
   ]);
   const byKey = new Map(values.map((v) => [v.key, v]));
 
@@ -127,8 +125,14 @@ export default async function AdminSettingsPage() {
         ))}
       </div>
 
-      <div className="mt-8">
-        <RevenueFeed createdAt={feedAt} />
+      <div className="panel mt-8 p-5">
+        <h2 className="font-display text-base font-extrabold">Investors</h2>
+        <p className="mt-2 text-sm leading-relaxed text-steel-500">
+          xaa.es raises from its own investors, on its own revenue — nothing is shared with axto.io any more. Applications,
+          verification of the capital received, monthly payouts and each investor&rsquo;s statement live in{' '}
+          <Link href="/portal/admin/investors" className="font-semibold underline">Studio desk → Investors</Link>; the terms are in the
+          “Investor offering” group above.
+        </p>
       </div>
 
       <div className="panel mt-8 p-5">
