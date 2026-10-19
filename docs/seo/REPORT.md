@@ -1,14 +1,14 @@
 # SEO audit — all domains
 
-Generated 2026-10-12T10:34:32.302Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
+Generated 2026-10-19T08:43:25.061Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
 
 | Domain | Score | ✅ | ❌ | ⚠️ | 📝 | Repo |
 |---|---|---|---|---|---|---|
-| [xaa.es](https://xaa.es) | 97% | 64 | 1 | 2 | 9 | p2nshooter/xaa |
+| [xaa.es](https://xaa.es) | 95% | 62 | 2 | 3 | 9 | p2nshooter/xaa |
 
-## xaa.es — 97%
+## xaa.es — 95%
 
-**Not done yet (3):** Fonts optimised (preload / font-display: swap); Performance score (mobile); LCP ≤ 2.5 s
+**Not done yet (5):** Fonts optimised (preload / font-display: swap); Meta description (50–160 chars); Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -33,23 +33,23 @@ Generated 2026-10-12T10:34:32.302Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 633 ms (from a GitHub runner) |
+| ✅ | Server response time | 596 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | private, no-cache, no-store, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ⚠️ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 71/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 5.08 s lab |
-| ✅ | CLS ≤ 0.1 | 0.034 lab |
-| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 131 ms lab (no field data yet) |
+| ⚠️ | Performance score (mobile) | 50/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 5.05 s lab |
+| ✅ | CLS ≤ 0.1 | 0.000 lab |
+| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 1107 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | Title tag (10–65 chars) | 56: XAA — Web development studio: websites, SaaS & platforms |
-| ✅ | Meta description (50–160 chars) | 156: European web development studio: landing pages, company websites, e-commerce, SaaS and ent… |
+| ⚠️ | Meta description (50–160 chars) | 167: European web development studio: landing pages, company websites, e-commerce, SaaS and ent… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 7 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
@@ -93,7 +93,7 @@ Generated 2026-10-12T10:34:32.302Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 39 unique |
+| ✅ | Internal links from the home page | 40 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -143,7 +143,7 @@ Generated 2026-10-12T10:34:32.302Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://xaa.es/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://xaa.es/sitemap.xml — 228 URLs |
+| ✅ | XML sitemap | HTTP 200 https://xaa.es/sitemap.xml — 236 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**

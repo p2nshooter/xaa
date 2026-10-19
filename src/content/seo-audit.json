@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-12T10:34:32.302Z",
+ "generatedAt": "2026-10-19T08:43:25.061Z",
  "sites": [
   {
    "domain": "xaa.es",
@@ -82,7 +82,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://xaa.es/sitemap.xml — 228 URLs"
+     "detail": "HTTP 200 https://xaa.es/sitemap.xml — 236 URLs"
     },
     {
      "section": "16",
@@ -138,7 +138,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "633 ms (from a GitHub runner)"
+     "detail": "596 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -200,8 +200,8 @@
      "section": "3",
      "id": "meta_description",
      "label": "Meta description (50–160 chars)",
-     "status": "pass",
-     "detail": "156: European web development studio: landing pages, company websites, e-commerce, SaaS and ent…"
+     "status": "warn",
+     "detail": "167: European web development studio: landing pages, company websites, e-commerce, SaaS and ent…"
     },
     {
      "section": "3",
@@ -236,7 +236,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "39 unique"
+     "detail": "40 unique"
     },
     {
      "section": "8",
@@ -460,28 +460,28 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "71/100 — Lighthouse (runner)"
+     "detail": "50/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "5.08 s lab"
+     "detail": "5.05 s lab"
     },
     {
      "section": "2",
      "id": "cls",
      "label": "CLS ≤ 0.1",
      "status": "pass",
-     "detail": "0.034 lab"
+     "detail": "0.000 lab"
     },
     {
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
-     "status": "pass",
-     "detail": "TBT 131 ms lab (no field data yet)"
+     "status": "fail",
+     "detail": "TBT 1107 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -544,7 +544,7 @@
     {
      "url": "https://xaa.es/",
      "title": "XAA — Web development studio: websites, SaaS & platforms",
-     "desc": "European web development studio: landing pages, company websites, e-commerce, SaaS and enterprise platforms from €500. Milestone payments in USDT or PayPal.",
+     "desc": "European web development studio: landing pages, company websites, e-commerce, SaaS and enterprise platforms from €500. Milestone payments by PayPal, bank wire or USDT.",
      "h1": 1
     },
     {
@@ -604,10 +604,10 @@
      "h1": 1
     }
    ],
-   "score": 97,
-   "pass": 64,
-   "fail": 1,
-   "warn": 2,
+   "score": 95,
+   "pass": 62,
+   "fail": 2,
+   "warn": 3,
    "manual": 9
   }
  ]
