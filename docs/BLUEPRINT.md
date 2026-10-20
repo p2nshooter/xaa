@@ -94,7 +94,7 @@ Arti tanda:
 | 46 | (20 Okt 2026) „Blue print setiap logika di axto & xaa wajib kuat, kumplit, komplex mudah di gunakan, termasuk animasi panduan untuk customer, jika bluprint sudah sangat kuat dan sudah 100% siap produksi bukan sampah langsung kerjakan dengan live payment, jgn ada sampah app" | 🔄 | Aturan tetap: blueprint dulu, lalu dibangun dan diuji. Animasi panduan pelanggan (10 alur + 6 admin, EN/ES/ID): `docs/R2-DATA-BLUEPRINT.md` bagian 5 dan 8. Pembayaran tetap Live dari Admin → Pembayaran (bagian 6) |
 | 47 | (20 Okt 2026) „Catat ya baik di axto.io maupun di xaa.es, ulyah.com  xad.es 1fr.fr tilawa.de dan semua yg membutuhkan penyimpanan, wajib ke R2, jgn pernah ke D1" | ✅ dicatat | Aturan tetap di `CLAUDE.md` repo ini dan di setiap repo pemilik (guardian-ai, ulyah.com, Quantum, dan lainnya); cakupan per situs di guardian-ai `docs/R2-DATA-BLUEPRINT.md` §10 |
 | 48 | (20 Okt 2026) „Setelah xaa.es selesai skrg pindah ke axto.io pastikan 100% siap produksi, docker sudah di cek dan sudah siap produksi, jgn ada aplikasi sampah, pastikan pembayaran semua sudah live" | 🔄 urutan | xaa.es dulu (data ke R2 tayang), lalu axto.io (guardian-ai `docs/BLUEPRINT-V4.md` §25) |
-| 49 | (20 Okt 2026) „SaaS template di xaa.es sudah d buat belum? Dari harga termurah sampai termahal dan buatkan link demonya" + „Kerjakan ke duanya, 1 dulu baru lanjut" | 🔄 | Jawaban jujur: baru Waitlist & Landing (€390) yang jadi + demo; 17 lainnya baru blueprint. Urutan: data xaa.es ke R2 tayang dulu, lalu template dibangun berurutan dari termurah (Link-in-Bio €490 → … → Global Enterprise Ecosystem €500.000), masing-masing dengan demo hidup, akun demo di portal dan klip animasi (`docs/TEMPLATES-BLUEPRINT.md`) |
+| 49 | (20 Okt 2026) „SaaS template di xaa.es sudah d buat belum? Dari harga termurah sampai termahal dan buatkan link demonya" + „Kerjakan ke duanya, 1 dulu baru lanjut" | 🔄 | Jawaban jujur: baru Waitlist & Landing (€390) yang jadi + demo; 17 lainnya baru blueprint. Urutan: data xaa.es ke R2 tayang dulu (✅), lalu template dibangun berurutan dari termurah (Link-in-Bio €490 → … → Global Enterprise Ecosystem €500.000), masing-masing dengan demo hidup, akun demo di portal dan klip animasi (`docs/TEMPLATES-BLUEPRINT.md`). **20 Okt:** kit + Waitlist pindah ke R2 (89 tes, E2E 7/7, menu Backups), demo `/demos/waitlist/` diperbarui; berikutnya Link-in-Bio |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
 ---
@@ -128,7 +128,7 @@ node seo-verify.mjs http://localhost:8799                     # 41 cek SEO
 
 | Tier | Template | Harga | Katalog dan halaman | Pembayaran | Produk (source code) | Demo |
 |---|---|---|---|---|---|---|
-| Starter | **waitlist** | €390 | ✅ | ✅ | ✅ selesai (repo privat `xaa-templates`) | ✅ `/demos/waitlist/` + 15 klip animasi |
+| Starter | **waitlist** | €390 | ✅ | ✅ | ✅ selesai, data di R2 (repo privat `xaa-templates`) | ✅ `/demos/waitlist/` + 15 klip animasi |
 | Starter | linkinbio, formbuilder | €490–€690 | ✅ | ✅ | ❌ belum dibangun | ❌ |
 | Business | CRM, invoicing, booking, e-commerce, helpdesk, project management, LMS, restaurant, subscription box | €1.190–€1.990 | ✅ | ✅ | ❌ belum dibangun | ❌ |
 | Enterprise/Super | multi-tenant SaaS kit, marketplace, ERP suite, AI SaaS platform, fintech core, global ecosystem | €40.000–€1.200.000 | ✅ | ✅ | ❌ belum dibangun | ❌ |

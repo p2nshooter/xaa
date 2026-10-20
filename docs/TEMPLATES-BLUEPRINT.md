@@ -90,8 +90,25 @@ log append-only), dengan tiga backend berbentuk R2 yang semantiknya sama persis 
 | Docker / Node 22 | R2 di disk lokal (file per objek + etag, tulis bersyarat atomik dengan kunci file) — atau bucket R2/S3 pembeli | produksi di server sendiri, tes |
 | Browser | R2 di IndexedDB | **demo** di xaa.es |
 
-Tabel di atas (§2.2) yang menyebut D1/SQLite berlaku untuk Waitlist & Landing yang sudah jadi; Waitlist dipindah ke
-R2 Store yang sama (sebelum dirilis ulang), sehingga tidak ada template yang memakai D1.
+**Status 20 Okt 2026: selesai.** XAA Kit dan Waitlist sudah pindah seluruhnya ke R2 Store; tidak ada lagi SQL, D1,
+`node:sqlite` atau sql.js di repo `xaa-templates` (tabel §2.2 di atas tinggal sejarah):
+
+- kit `r2/`: store yang sama dengan xaa.es + `disk.ts` (Docker: satu file per objek, tulis ke nama sementara lalu
+  rename), `idb.ts` (demo: IndexedDB, setiap perubahan tersimpan sebelum dijawab), `fake.ts` (tes), `backup.ts`,
+  `blobs-disk.ts` / `blobs-memory.ts` (tempat cadangan Docker / demo);
+- kit `server/data.ts`: tim, sesi, tautan sekali pakai, log email, webhook + pengiriman, API key, pengaturan; jejak
+  audit = log create-once urutan terbaru dulu, tetap berantai hash; batas laju = hit append-only (tanpa kunci panas);
+- `maintenance.ts`: tiap 5 menit retry webhook; harian pangkas, bangun ulang indeks dari dokumen (memperbaiki tulis
+  yang terputus), cadangan disimpan 35 hari. **Admin → Backups** (hanya owner, EN/ES/ID): buat, unduh, pulihkan
+  dengan ketik RESTORE; salinan pengaman dibuat sebelum setiap pemulihan;
+- Waitlist: posisi, daftar, ekspor dan dasbor dibaca dari „line" (ringkasan di entri indeks, 1 panggilan list per
+  1.000 orang); nomor antre dari urutan bergabung dan jumlah referral dihitung dari referral-nya sendiri, jadi tidak
+  ada penghitung bersama (R2: 1 tulis/detik per kunci). Setiap transisi compare-and-swap;
+- bukti: 89 tes (24 store, 16 kit, 49 Waitlist termasuk balapan hari peluncuran, disk store setelah restart,
+  perbaikan/cadangan/pemulihan harian, route backup), E2E demo 7/7 (desktop, Android, iPhone, axe), E2E produksi di
+  Node, paket pembeli dicek dari instalasi bersih. Demo baru di `/demos/waitlist/` (tanpa WebAssembly SQLite).
+
+Template #2–#18 dibangun langsung di atas kit R2 ini.
 
 ### 2.3 Inti bersama (XAA Kit) — dipakai semua template
 
@@ -145,8 +162,8 @@ bundle), lalu Business menurut kemungkinan laku, lalu Enterprise dan Super yang 
 
 | # | Template | Tier | Harga | Logika (bagian 4) | Kode | Demo | Gambar animasi | Status |
 |---|---|---|---|---|---|---|---|---|
-| 0 | XAA Kit (inti bersama) | — | — | ✅ §2.3 | ✅ | — | — | ✅ 20 Okt |
-| 1 | Waitlist & Landing | Starter | €390 | ✅ §4.1 | ✅ | ✅ | ✅ 15 klip | ✅ 20 Okt (§2.5 terpenuhi) |
+| 0 | XAA Kit (inti bersama) | — | — | ✅ §2.3 | ✅ R2 | — | — | ✅ 20 Okt (pindah ke R2 + menu Backups) |
+| 1 | Waitlist & Landing | Starter | €390 | ✅ §4.1 | ✅ R2 | ✅ R2 | ✅ 15 klip | ✅ 20 Okt (§2.5 terpenuhi, data di R2) |
 | 2 | Link-in-Bio | Starter | €490 | ✅ §4.2 | ❌ | ❌ | ❌ | ❌ |
 | 3 | Forms & Surveys | Starter | €690 | ✅ §4.3 | ❌ | ❌ | ❌ | ❌ |
 | 4 | CRM & Sales Pipeline | Business | €1.490 | ✅ §4.4 | ❌ | ❌ | ❌ | ❌ |
@@ -458,6 +475,9 @@ animasi), **dashboard**, data, logika inti, integrasi, dan "selesai bila".
 
 ## 6. Changelog
 
+- **20 Okt 2026 (3)**: §2.2a selesai — kit + Waitlist di R2, menu Backups, demo baru; tabel §3 diperbarui. Klaim
+  stack di katalog xaa.es (`src/content/templates.ts`) disesuaikan: React 19 + Hono + Cloudflare R2 + Docker untuk
+  semua template (bukan Next.js/PostgreSQL/D1).
 - **20 Okt 2026 (2)**: §2.2a — template menyimpan data di R2 (Workers), R2 di disk (Docker) dan R2 di IndexedDB (demo),
   tidak lagi D1/SQLite; Waitlist dipindah juga. Urutan pembangunan setelah data xaa.es ke R2 tayang: dari termurah
   (Link-in-Bio €490) ke termahal.
