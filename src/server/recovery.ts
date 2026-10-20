@@ -1,4 +1,6 @@
-import { db, bucket, newId, nowIso } from './db';
+import { bucket, newId, nowIso } from './db';
+import { data } from './data';
+import type { Payment } from './projects';
 import { encryptValue, decryptValue } from './crypto';
 import { addUpdate } from './projects';
 
@@ -11,7 +13,9 @@ import { addUpdate } from './projects';
  * SLA and no monthly retainer: the operations here are one-click, self-served,
  * and — the point of this module — every one of them is written to
  * `recovery_events` and to the project activity log, so the whole procedure is
- * recorded and auditable in the admin project portal.
+ * recorded and auditable in the admin project portal. Ledger, configuration
+ * and snapshots-index are R2 documents (recovery_events, project_ai); the
+ * snapshots themselves are JSON objects in the uploads bucket.
  */
 
 export type RecoveryKind = 'backup' | 'restore' | 'reset' | 'web-fix' | 'schedule' | 'key-set' | 'key-clear';
@@ -48,11 +52,7 @@ function parseSchedule(csv: string): Cadence[] {
 }
 
 export async function getAiConfig(projectId: string): Promise<AiConfig> {
-  const database = await db();
-  const row = await database
-    .prepare('SELECT provider, api_key_enc, schedule, updated_at FROM project_ai WHERE project_id = ?')
-    .bind(projectId)
-    .first<{ provider: string; api_key_enc: string | null; schedule: string; updated_at: string }>();
+  const row = await (await data()).projectAi.get(projectId);
   if (!row) return { provider: 'openai', hasKey: false, schedule: [], updatedAt: null };
   return {
     provider: (PROVIDERS as readonly string[]).includes(row.provider) ? (row.provider as Provider) : 'custom',
@@ -67,23 +67,15 @@ async function upsertConfig(
   patch: { provider?: string; apiKeyEnc?: string | null; schedule?: string },
   actor: string
 ): Promise<void> {
-  const database = await db();
-  const current = await database
-    .prepare('SELECT provider, api_key_enc, schedule FROM project_ai WHERE project_id = ?')
-    .bind(projectId)
-    .first<{ provider: string; api_key_enc: string | null; schedule: string }>();
-  const provider = patch.provider ?? current?.provider ?? 'openai';
-  const apiKeyEnc = patch.apiKeyEnc !== undefined ? patch.apiKeyEnc : current?.api_key_enc ?? null;
-  const schedule = patch.schedule ?? current?.schedule ?? '';
-  await database
-    .prepare(
-      `INSERT INTO project_ai (project_id, provider, api_key_enc, schedule, updated_at, updated_by)
-       VALUES (?,?,?,?,?,?)
-       ON CONFLICT(project_id) DO UPDATE SET provider=excluded.provider, api_key_enc=excluded.api_key_enc,
-         schedule=excluded.schedule, updated_at=excluded.updated_at, updated_by=excluded.updated_by`
-    )
-    .bind(projectId, provider, apiKeyEnc, schedule, nowIso(), actor)
-    .run();
+  await (await data()).projectAi.upsert(projectId, (current) => ({
+    id: projectId,
+    project_id: projectId,
+    provider: patch.provider ?? current?.provider ?? 'openai',
+    api_key_enc: patch.apiKeyEnc !== undefined ? patch.apiKeyEnc : current?.api_key_enc ?? null,
+    schedule: patch.schedule ?? current?.schedule ?? '',
+    updated_at: nowIso(),
+    updated_by: actor,
+  }));
 }
 
 /** Store (or replace) the client's AI API key, encrypted at rest. */
@@ -100,11 +92,7 @@ export async function clearAiKey(projectId: string, actor: string): Promise<void
 
 /** Decrypt the stored key. Admin-only; never sent to a client surface. */
 export async function revealAiKey(projectId: string): Promise<string> {
-  const database = await db();
-  const row = await database
-    .prepare('SELECT api_key_enc FROM project_ai WHERE project_id = ?')
-    .bind(projectId)
-    .first<{ api_key_enc: string | null }>();
+  const row = await (await data()).projectAi.get(projectId);
   if (!row?.api_key_enc) return '';
   return decryptValue(row.api_key_enc);
 }
@@ -124,7 +112,6 @@ async function record(
   kind: RecoveryKind,
   opts: { cadence?: string; detail?: string; objectKey?: string; bytes?: number; status?: string; actor: string }
 ): Promise<RecoveryEvent> {
-  const database = await db();
   const ev: RecoveryEvent = {
     id: newId(),
     project_id: projectId,
@@ -137,13 +124,7 @@ async function record(
     actor: opts.actor,
     created_at: nowIso(),
   };
-  await database
-    .prepare(
-      `INSERT INTO recovery_events (id, project_id, kind, cadence, detail, object_key, bytes, status, actor, created_at)
-       VALUES (?,?,?,?,?,?,?,?,?,?)`
-    )
-    .bind(ev.id, ev.project_id, ev.kind, ev.cadence, ev.detail, ev.object_key, ev.bytes, ev.status, ev.actor, ev.created_at)
-    .run();
+  await (await data()).recoveryEvents.create(ev);
   return ev;
 }
 
@@ -159,20 +140,21 @@ const KIND_TITLE: Record<string, string> = {
  * the JSON snapshot. Everything is written to the ledger and the activity log.
  */
 export async function runBackup(projectId: string, cadence: Cadence, actor: string): Promise<RecoveryEvent> {
-  const database = await db();
-  const [proj, pays, files, updates] = await Promise.all([
-    database.prepare('SELECT * FROM projects WHERE id = ?').bind(projectId).first(),
-    database.prepare('SELECT * FROM payments WHERE project_id = ?').bind(projectId).all(),
-    database.prepare('SELECT id, name, size, kind, created_at FROM files WHERE project_id = ?').bind(projectId).all(),
-    database.prepare('SELECT * FROM updates WHERE project_id = ?').bind(projectId).all(),
+  const d = await data();
+  const [proj, pays, fileDocs, updates] = await Promise.all([
+    d.projects.get(projectId),
+    d.payments.listAllDocs('project', projectId),
+    d.files.listAllDocs('project', projectId),
+    d.updates.listAllDocs('project', projectId),
   ]);
+  const files = fileDocs.map((f) => ({ id: f.id, name: f.name, size: f.size, kind: f.kind, created_at: f.created_at }));
   const snapshot = {
     taken_at: nowIso(),
     cadence,
     project: proj,
-    payments: pays.results ?? [],
-    files: files.results ?? [],
-    updates: updates.results ?? [],
+    payments: pays,
+    files,
+    updates,
   };
   const json = JSON.stringify(snapshot);
   const bytes = new TextEncoder().encode(json).length;
@@ -189,7 +171,7 @@ export async function runBackup(projectId: string, cadence: Cadence, actor: stri
     stored = false;
   }
 
-  const counts = `${(pays.results ?? []).length} payments · ${(files.results ?? []).length} files · ${(updates.results ?? []).length} log entries`;
+  const counts = `${pays.length} payments · ${files.length} files · ${updates.length} log entries`;
   const ev = await record(projectId, 'backup', {
     cadence,
     detail: stored ? `Snapshot stored (${counts})` : `Snapshot taken (${counts}) — stored in the ledger`,
@@ -230,28 +212,23 @@ export async function runOperation(
 }
 
 export async function listRecoveryEvents(projectId: string, limit = 40): Promise<RecoveryEvent[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare('SELECT * FROM recovery_events WHERE project_id = ? ORDER BY created_at DESC LIMIT ?')
-    .bind(projectId, limit)
-    .all<RecoveryEvent>();
-  return results ?? [];
+  return (await (await data()).recoveryEvents.listDocs('project', projectId, { limit })).docs;
 }
 
 /** One recovery event by id — used by the backup download route for its ownership check. */
 export async function getRecoveryEvent(id: string): Promise<RecoveryEvent | null> {
-  const database = await db();
-  return (await database.prepare('SELECT * FROM recovery_events WHERE id = ?').bind(id).first<RecoveryEvent>()) ?? null;
+  return (await data()).recoveryEvents.get(id);
 }
 
 /** Stored, downloadable snapshots for a project, newest first. */
 export async function listBackups(projectId: string): Promise<RecoveryEvent[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare("SELECT * FROM recovery_events WHERE project_id = ? AND kind = 'backup' AND object_key IS NOT NULL ORDER BY created_at DESC LIMIT 20")
-    .bind(projectId)
-    .all<RecoveryEvent>();
-  return results ?? [];
+  return (await (await data()).recoveryEvents.listDocs('backups', projectId, { limit: 20 })).docs;
+}
+
+/** Remove every payment of a project from the ledger (restore and reset start here). */
+async function clearPayments(projectId: string): Promise<void> {
+  const d = await data();
+  for (const p of await d.payments.listAllDocs('project', projectId)) await d.payments.delete(p.id);
 }
 
 /**
@@ -278,28 +255,22 @@ export async function restoreFromBackup(projectId: string, eventId: string, acto
   // Safety snapshot before we touch anything.
   await runBackup(projectId, 'now', `${actor} (pre-restore safety)`);
 
-  const database = await db();
-  // Replace the recoverable rows for this project from the snapshot. The
-  // project row itself and uploaded file bytes are left in place; what a
-  // point-in-time restore rebuilds here is the payment ledger and the activity
-  // log, which is what the snapshot carries.
-  const stmts = [database.prepare('DELETE FROM payments WHERE project_id = ?').bind(projectId)];
+  // Replace the recoverable records for this project from the snapshot. The
+  // project itself and uploaded file bytes are left in place; what a
+  // point-in-time restore rebuilds here is the payment ledger, which is what
+  // the snapshot carries.
+  await clearPayments(projectId);
+  const d = await data();
   for (const p of snap.payments ?? []) {
-    stmts.push(
-      database
-        .prepare(
-          `INSERT OR REPLACE INTO payments (id, project_id, user_id, milestone, label, amount, method, network,
-             reference, note, proof_file_id, status, created_at, confirmed_at, invoice_no, method_id)
-           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
-        )
-        .bind(
-          p.id, projectId, p.user_id, p.milestone, p.label, p.amount, p.method, p.network ?? null,
-          p.reference ?? null, p.note ?? null, p.proof_file_id ?? null, p.status, p.created_at,
-          p.confirmed_at ?? null, p.invoice_no ?? null, p.method_id ?? null
-        )
-    );
+    const row: Payment = {
+      id: String(p.id), project_id: projectId, user_id: String(p.user_id), milestone: p.milestone as Payment['milestone'],
+      label: String(p.label), amount: Number(p.amount), method: p.method as Payment['method'], network: (p.network as string | null) ?? null,
+      reference: (p.reference as string | null) ?? null, note: (p.note as string | null) ?? null, proof_file_id: (p.proof_file_id as string | null) ?? null,
+      status: p.status as Payment['status'], created_at: String(p.created_at), confirmed_at: (p.confirmed_at as string | null) ?? null,
+      invoice_no: (p.invoice_no as string | null) ?? null, method_id: (p.method_id as string | null) ?? null,
+    };
+    await d.payments.upsert(row.id, () => row);
   }
-  await database.batch(stmts);
 
   const ev = await record(projectId, 'restore', {
     detail: `Restored from snapshot of ${new Date(source.created_at).toLocaleString('en-GB')} (${(snap.payments ?? []).length} payments)`,
@@ -323,8 +294,7 @@ export async function restoreFromBackup(projectId: string, eventId: string, acto
  */
 export async function resetDatabase(projectId: string, actor: string): Promise<RecoveryEvent> {
   await runBackup(projectId, 'now', `${actor} (pre-reset safety)`);
-  const database = await db();
-  await database.prepare('DELETE FROM payments WHERE project_id = ?').bind(projectId).run();
+  await clearPayments(projectId);
   const ev = await record(projectId, 'reset', { detail: 'Database emptied (payments cleared). A safety snapshot was taken first.', status: 'done', actor });
   await addUpdate(projectId, {
     title: 'Database reset — emptied',

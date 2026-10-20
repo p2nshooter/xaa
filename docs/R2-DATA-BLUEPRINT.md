@@ -122,7 +122,7 @@ ringkasan. Dokumen utama selalu yang menentukan kebenaran:
 ### 3.8 Pengujian (wajib lulus sebelum tayang)
 
 1. **R2 palsu di memori** dengan semantik yang sama persis (If-None-Match, If-Match/etag, list urut + cursor +
-   customMetadata, batas 2 KB). Tes: 50 tulis bersamaan ke satu dokumen → tidak ada yang hilang; 20 pendaftaran
+   customMetadata, batas 8 KB metadata). Tes: 50 tulis bersamaan ke satu dokumen → tidak ada yang hilang; 20 pendaftaran
    bersamaan dengan email sama → tepat 1 berhasil; 10 konfirmasi pembayaran bersamaan → tepat 1 transisi + 1 lisensi.
 2. R2 palsu juga menegakkan batas 1 tulis/detik per kunci dan 8 KB metadata, sehingga desain yang melanggarnya gagal
    di tes, bukan di produksi.
@@ -133,16 +133,19 @@ ringkasan. Dokumen utama selalu yang menentukan kebenaran:
 
 ## 4. Migrasi D1 → R2 (per situs, tanpa kehilangan data atau pembayaran)
 
-1. **Rilis A — kode baru, data lama.** Semua modul memakai R2 Store; rute admin `POST /api/admin/migrate-d1`
-   (khusus pemilik, idempoten) membaca setiap tabel D1 dan menulis dokumen + index + penjaga keunikan ke R2 dengan
-   ID yang sama. Laporan: jumlah baris D1 vs dokumen R2 per tabel + checksum.
-2. **Jendela pindah (± 2 menit).** Spanduk „pemeliharaan singkat" di checkout; tulis ke D1 dihentikan; migrasi
-   dijalankan sekali lagi (hanya selisih); laporan harus 100 % cocok; saklar `DATA_BACKEND=r2` aktif. Pembayaran
-   yang datang lewat webhook selama jendela ditahan PayPal dan dikirim ulang (PayPal mengulang webhook yang gagal).
-3. **Pengamatan 7 hari.** D1 tetap ada tetapi hanya-baca sebagai cadangan; ekspor D1 terakhir disimpan di bucket
-   backup.
-4. **Rilis B — D1 dilepas.** Binding D1 dihapus dari konfigurasi; kode SQL dihapus; database D1 lama dihapus pemilik
-   (atau dibiarkan kosong). Mulai di sini **tidak ada yang ke D1**.
+1. **Rilis A — kode baru, pindah otomatis (zero-touch).** Semua modul memakai R2 Store. Permintaan pertama sesudah
+   deploy menjalankan pemindahan sekali (`src/server/migrate.ts`): satu pemanggil mengambil *lease*
+   (`k/meta/migration-lock`, create-only, diambil alih bila lebih tua dari 1 menit), memeriksa sekali bahwa bucket
+   menghormati tulis bersyarat (probe create-only + etag basi), lalu menyalin setiap tabel D1 dengan **ID yang sama**
+   lewat create-if-absent (menjalankan ulang tidak pernah menggandakan atau menimpa). Setiap baris D1 diperiksa sudah
+   ada di R2; hanya bila semua tabel cocok 100 % ditulis `k/meta/migration` (status `done` + laporan per tabel).
+   Selama itu halaman data menjawab „sedang pindah, coba lagi beberapa detik" — PayPal mengirim ulang webhook yang
+   gagal, jadi tidak ada pembayaran yang hilang. Langkah deploy menunggu `/api/health` melaporkan `done`.
+2. **Pengamatan 7 hari.** D1 tetap terikat tetapi hanya-baca (tidak ada kode yang menulis ke D1). Admin → Settings →
+   Data storage menampilkan laporan per tabel dan tombol „Check D1 again and copy anything missing" (create-if-absent,
+   R2 tidak pernah ditimpa) untuk tulisan yang sempat masuk D1 pada detik pergantian.
+3. **Rilis B — D1 dilepas.** Binding D1 dan `migrate.ts` dihapus; database D1 lama dihapus pemilik (atau dibiarkan
+   kosong). Mulai di sini **tidak ada yang ke D1**.
 
 KV (axto.io: batas laju & cache kecil) **bukan D1** dan tetap dipakai untuk batas laju, karena menulis R2 pada setiap
 permintaan untuk batas laju justru mahal (Kelas A). Bila pemilik ingin KV juga dipindah, batas laju dipindah ke
@@ -223,9 +226,9 @@ Bahasa: EN, ES, ID.
 | Butir | Status |
 |---|---|
 | Blueprint R2 (dokumen ini) | ✅ 20 Okt |
-| Pustaka R2 Store + R2 palsu + tes konkurensi | ⏳ |
-| Modul dipindah ke R2 (19 tabel) | ⏳ 0/19 |
-| Rute migrasi D1 → R2 + laporan cocok 100 % | ⏳ |
-| Jendela pindah + pengamatan 7 hari | ⏳ |
-| D1 dilepas | ⏳ |
+| Pustaka R2 Store + R2 palsu + tes konkurensi (`src/server/r2`, `tests/unit`) | ✅ 20 Okt — 28 tes: tulis bersamaan, email ganda, konfirmasi pembayaran ganda, 429, paging, perbaikan index, reindex, penjaga yatim, migrasi, backup/restore |
+| Modul dipindah ke R2 (19 tabel) | ✅ 20 Okt — 19/19 |
+| Pindah otomatis D1 → R2 + laporan cocok 100 % | ✅ diuji di runtime Cloudflare lokal dengan D1 skema lama (E2E `tests/e2e/r2.e2e.mjs` 26/26, portal 41/41, support 27/27) — tayang menunggu deploy |
+| Backup harian (Cron 03:17 UTC → `xaa-backups`, 35 hari) + unduh + pulihkan dari admin | ✅ dibangun, diuji lokal |
+| Pengamatan 7 hari, lalu D1 dilepas | ⏳ |
 | Animasi panduan (10 + 6 admin) | ⏳ 0/16 |

@@ -1,5 +1,5 @@
 import { currentUser } from '@/server/auth';
-import { db } from '@/server/db';
+import { data } from '@/server/data';
 import { listProjects, listAllProjects, listPendingPayments, listPayments } from '@/server/projects';
 import { listUserOrders, listAllOrders } from '@/server/store';
 import { countNewLeads, listLeads } from '@/server/leads';
@@ -38,7 +38,7 @@ export async function GET() {
     }
   };
 
-  await run('database + schema', () => db());
+  await run('R2 data + migration', () => data());
   await run('my projects', () => listProjects(user.id));
   await run('all projects (desk)', () => listAllProjects());
   await run('pending payments', () => listPendingPayments());

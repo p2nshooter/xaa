@@ -1,4 +1,6 @@
-import { db, appEnv, newId, nowIso } from './db';
+import { appEnv, newId, nowIso } from './db';
+import { data } from './data';
+import { messageId, messageStream, messagesAfter } from './r2/schema';
 import { knowledgeFor, scrub, type Topic } from './support-kb';
 
 /**
@@ -11,6 +13,10 @@ import { knowledgeFor, scrub, type Topic } from './support-kb';
  * through the ulyah.com Orchestra key pool, and every AI reply is scrubbed
  * before it is stored. Contact-form briefs open a thread too, so the admin has
  * one inbox for everything.
+ *
+ * Storage (R2): a thread is a document (c/support_threads/…, unique token);
+ * its messages are an append-only log l/support/<threadId>/<time>-<id>, so
+ * "messages after X" is one list call from a position, never a scan.
  */
 
 export interface SupportThread {
@@ -37,7 +43,7 @@ export interface SupportMessage {
   created_at: string;
 }
 
-const PRESENCE_KEY = 'support.admin_last_seen';
+const PRESENCE_KEY = 'presence/support-admin';
 const ONLINE_WINDOW_MS = 90_000;
 const MAX_AI_REPLIES_PER_THREAD = 25;
 const DEFAULT_AI_URL = 'https://api.ulyah.com/ai/reader';
@@ -59,18 +65,15 @@ function token(): string {
 /* ───────── presence ───────── */
 
 export async function markAdminOnline(): Promise<void> {
-  const database = await db();
-  await database
-    .prepare("INSERT INTO app_settings (key, value, is_secret, updated_at) VALUES (?, ?, 0, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at")
-    .bind(PRESENCE_KEY, String(Date.now()), nowIso())
-    .run();
+  const d = await data();
+  await d.store.updateDoc<{ at: number }>(PRESENCE_KEY, { at: 0 }, () => ({ at: Date.now() }));
 }
 
 export async function adminOnline(): Promise<boolean> {
   try {
-    const database = await db();
-    const row = await database.prepare('SELECT value FROM app_settings WHERE key = ?').bind(PRESENCE_KEY).first<{ value: string }>();
-    return row ? Date.now() - Number(row.value) < ONLINE_WINDOW_MS : false;
+    const d = await data();
+    const seen = await d.store.getDoc<{ at: number }>(PRESENCE_KEY, { at: 0 });
+    return Date.now() - Number(seen.at) < ONLINE_WINDOW_MS;
   } catch {
     return false;
   }
@@ -79,64 +82,57 @@ export async function adminOnline(): Promise<boolean> {
 /* ───────── threads & messages ───────── */
 
 async function insertMessage(threadId: string, sender: SupportMessage['sender'], body: string): Promise<SupportMessage> {
-  const database = await db();
+  const d = await data();
   const m: SupportMessage = { id: newId(), thread_id: threadId, sender, body: body.slice(0, 4000), created_at: nowIso() };
-  await database.prepare('INSERT INTO support_messages (id, thread_id, sender, body, created_at) VALUES (?,?,?,?,?)')
-    .bind(m.id, m.thread_id, m.sender, m.body, m.created_at).run();
-  const bump = sender === 'visitor' ? ', unread_admin = unread_admin + 1' : sender === 'admin' ? ', unread_admin = 0' : '';
-  await database.prepare(`UPDATE support_threads SET updated_at = ?${bump}${sender === 'ai' ? ', ai_replies = ai_replies + 1' : ''} WHERE id = ?`)
-    .bind(m.created_at, threadId).run();
+  await d.store.append(messageStream(threadId), messageId(m.created_at, m.id), m);
+  if (await d.threads.get(threadId)) {
+    await d.threads.update(threadId, (t) => ({
+      ...t,
+      updated_at: m.created_at,
+      unread_admin: sender === 'visitor' ? t.unread_admin + 1 : sender === 'admin' ? 0 : t.unread_admin,
+      ai_replies: sender === 'ai' ? t.ai_replies + 1 : t.ai_replies,
+    }));
+  }
   return m;
 }
 
 export async function createThread(input: {
   name: string; email: string; topic: Topic; lang: string; source?: 'chat' | 'contact'; userId?: string | null; firstMessage: string;
 }): Promise<SupportThread> {
-  const database = await db();
+  const d = await data();
   const now = nowIso();
   const t: SupportThread = {
     id: newId(), token: token(), name: input.name.slice(0, 80), email: input.email.slice(0, 160).toLowerCase(),
     topic: input.topic, source: input.source ?? 'chat', lang: input.lang, status: 'open', user_id: input.userId ?? null,
     unread_admin: 0, ai_replies: 0, created_at: now, updated_at: now,
   };
-  await database.prepare(
-    `INSERT INTO support_threads (id, token, name, email, topic, source, lang, status, user_id, unread_admin, ai_replies, created_at, updated_at)
-     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`
-  ).bind(t.id, t.token, t.name, t.email, t.topic, t.source, t.lang, t.status, t.user_id, 0, 0, now, now).run();
+  await d.threads.create(t);
   await insertMessage(t.id, 'visitor', input.firstMessage);
   return t;
 }
 
 export async function threadByToken(tok: string | undefined | null): Promise<SupportThread | null> {
   if (!tok || !/^[0-9a-f]{48}$/.test(tok)) return null;
-  const database = await db();
-  return (await database.prepare('SELECT * FROM support_threads WHERE token = ?').bind(tok).first<SupportThread>()) ?? null;
+  return (await data()).threads.find('token', tok);
 }
 
 export async function getThread(id: string): Promise<SupportThread | null> {
-  const database = await db();
-  return (await database.prepare('SELECT * FROM support_threads WHERE id = ?').bind(id).first<SupportThread>()) ?? null;
+  return (await data()).threads.get(id);
 }
 
 export async function listMessages(threadId: string, after?: string): Promise<SupportMessage[]> {
-  const database = await db();
-  const { results } = after
-    ? await database.prepare('SELECT * FROM support_messages WHERE thread_id = ? AND created_at > ? ORDER BY created_at').bind(threadId, after).all<SupportMessage>()
-    : await database.prepare('SELECT * FROM support_messages WHERE thread_id = ? ORDER BY created_at').bind(threadId).all<SupportMessage>();
-  return results ?? [];
+  const d = await data();
+  const entries = await d.store.readLog<SupportMessage>(messageStream(threadId), after ? { after: messagesAfter(after) } : {});
+  return entries.map((e) => e.value);
 }
 
 export async function listThreads(limit = 100): Promise<SupportThread[]> {
-  const database = await db();
-  const { results } = await database.prepare('SELECT * FROM support_threads ORDER BY updated_at DESC LIMIT ?').bind(limit).all<SupportThread>();
-  return results ?? [];
+  return (await (await data()).threads.listDocs('recent', 'all', { limit })).docs;
 }
 
 export async function countUnreadThreads(): Promise<number> {
   try {
-    const database = await db();
-    const row = await database.prepare("SELECT COUNT(*) AS n FROM support_threads WHERE unread_admin > 0 AND status = 'open'").first<{ n: number }>();
-    return row?.n ?? 0;
+    return await (await data()).threads.count('unread', 'all');
   } catch {
     return 0;
   }
@@ -147,13 +143,15 @@ export async function adminReply(threadId: string, body: string): Promise<void> 
 }
 
 export async function markThreadRead(threadId: string): Promise<void> {
-  const database = await db();
-  await database.prepare('UPDATE support_threads SET unread_admin = 0 WHERE id = ?').bind(threadId).run();
+  const d = await data();
+  if (!(await d.threads.get(threadId))) return;
+  await d.threads.update(threadId, (t) => (t.unread_admin === 0 ? null : { ...t, unread_admin: 0 }));
 }
 
 export async function setThreadStatus(threadId: string, status: 'open' | 'closed'): Promise<void> {
-  const database = await db();
-  await database.prepare('UPDATE support_threads SET status = ?, updated_at = ? WHERE id = ?').bind(status, nowIso(), threadId).run();
+  const d = await data();
+  if (!(await d.threads.get(threadId))) return;
+  await d.threads.update(threadId, (t) => ({ ...t, status, updated_at: nowIso() }));
 }
 
 /* ───────── visitor message + AI fallback ───────── */

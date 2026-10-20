@@ -31,8 +31,10 @@ export async function GET(req: Request) {
     const thread = await threadByToken(jar.get(COOKIE)?.value);
     const online = await adminOnline();
     if (!thread) return Response.json({ thread: null, messages: [], online });
-    const after = new URL(req.url).searchParams.get('after') ?? undefined;
-    const messages = await listMessages(thread.id, after && /^\d{4}-\d\d-\d\dT[\d:.]+Z$/.test(after) ? after : undefined);
+    const raw = new URL(req.url).searchParams.get('after') ?? undefined;
+    const after = raw && /^\d{4}-\d\d-\d\dT[\d:.]+Z$/.test(raw) ? raw : undefined;
+    // The thread records when its last message was written: a poll with nothing new reads no messages.
+    const messages = after && thread.updated_at <= after ? [] : await listMessages(thread.id, after);
     return Response.json(
       { thread: { name: thread.name, topic: thread.topic, status: thread.status }, messages: publicMessages(messages), online },
       { headers: { 'cache-control': 'no-store' } }

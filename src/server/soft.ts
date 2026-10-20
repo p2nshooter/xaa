@@ -1,8 +1,8 @@
 /**
- * Page loaders that survive a database outage. When D1 refuses a read — most
- * often the free plan's daily row-read limit, which is shared by every Worker
- * on the Cloudflare account — the page still renders with empty data and a
- * notice instead of failing as a whole.
+ * Page loaders that survive a storage outage. When a read fails — or the
+ * one-time move of the old records into R2 is still running in the seconds
+ * after a deploy — the page still renders with empty data and a notice
+ * instead of failing as a whole.
  */
 
 export type Problems = string[];
@@ -17,6 +17,7 @@ export async function soft<T>(problems: Problems, fn: () => Promise<T>, fallback
   }
 }
 
-export function isQuota(problems: Problems): boolean {
-  return problems.some((m) => /daily row read limit|exceeded .*limit|free tier/i.test(m));
+/** True when the only trouble is the short move to new storage (server/migrate.ts). */
+export function isMoving(problems: Problems): boolean {
+  return problems.some((m) => /moving its records to new storage/i.test(m));
 }

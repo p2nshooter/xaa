@@ -1,4 +1,5 @@
-import { db, nowIso } from './db';
+import { nowIso } from './db';
+import { data } from './data';
 import { invoiceIdentity } from './settings';
 import { listPayments, getProject, type Payment, type Project } from './projects';
 import type { User } from './auth';
@@ -14,8 +15,8 @@ import type { User } from './auth';
  * The number is allocated on first view and written back to the payment row,
  * because an invoice number that changes is not an invoice number. It is
  * derived from the project reference and the payment's position in that
- * project, so it is stable, readable and unique without a global counter —
- * which D1 would make racy anyway.
+ * project, so it is stable, readable and unique without a global counter (a
+ * single counter object would also be a hot key in R2).
  */
 
 export interface InvoiceLine {
@@ -44,8 +45,9 @@ function pad(n: number): string {
 
 /**
  * Allocate this payment's number if it has none yet, then return it.
- * Idempotent: the WHERE guard means two concurrent views cannot overwrite
- * each other, and whoever loses simply reads the winner's value back.
+ * Idempotent: the number is set by compare-and-swap only while the payment
+ * has none, so two concurrent views cannot overwrite each other, and whoever
+ * loses simply reads the winner's value back.
  */
 async function ensureNumber(payment: Payment, project: Project, prefix: string): Promise<string> {
   if (payment.invoice_no) return payment.invoice_no;
@@ -56,22 +58,12 @@ async function ensureNumber(payment: Payment, project: Project, prefix: string):
   const shortRef = project.ref.replace(/^XAA-/, '');
   const number = `${prefix}-${shortRef}-${pad(index + 1)}`;
 
-  const database = await db();
-  await database
-    .prepare('UPDATE payments SET invoice_no = ? WHERE id = ? AND (invoice_no IS NULL OR invoice_no = ?)')
-    .bind(number, payment.id, '')
-    .run();
-
-  const fresh = await database
-    .prepare('SELECT invoice_no FROM payments WHERE id = ?')
-    .bind(payment.id)
-    .first<{ invoice_no: string | null }>();
-  return fresh?.invoice_no || number;
+  const fresh = await (await data()).payments.update(payment.id, (p) => (p.invoice_no ? null : { ...p, invoice_no: number }));
+  return fresh.invoice_no || number;
 }
 
 export async function getPayment(id: string): Promise<Payment | null> {
-  const database = await db();
-  return (await database.prepare('SELECT * FROM payments WHERE id = ?').bind(id).first<Payment>()) ?? null;
+  return (await data()).payments.get(id);
 }
 
 export async function buildInvoice(paymentId: string): Promise<Invoice | null> {
@@ -80,11 +72,8 @@ export async function buildInvoice(paymentId: string): Promise<Invoice | null> {
   const project = await getProject(payment.project_id);
   if (!project) return null;
 
-  const database = await db();
-  const client = await database
-    .prepare('SELECT name, email, company, country FROM users WHERE id = ?')
-    .bind(project.user_id)
-    .first<Pick<User, 'name' | 'email' | 'company' | 'country'>>();
+  const owner = await (await data()).users.get(project.user_id);
+  const client = owner ? { name: owner.name, email: owner.email, company: owner.company, country: owner.country } : null;
 
   const from = await invoiceIdentity();
   const number = await ensureNumber(payment, project, from.prefix);

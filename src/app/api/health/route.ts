@@ -1,4 +1,6 @@
 import { appEnv } from '@/server/db';
+import { data, rawData } from '@/server/data';
+import { migrationState } from '@/server/migrate';
 import { signToken, verifyToken, sessionKeySource } from '@/server/session';
 
 /**
@@ -11,12 +13,12 @@ import { signToken, verifyToken, sessionKeySource } from '@/server/session';
  *
  *   - which bindings/secrets exist (booleans only, never values);
  *   - whether a session token can be signed and verified (what sign-in needs);
- *   - whether D1 answers a one-row read (it will not when the account's daily
- *     read budget is exhausted — the failure that took sign-in down before).
+ *   - whether the R2 data bucket answers, and the state of the one-time move
+ *     of the old D1 records into it (per table: rows in D1 vs documents in R2).
  *
- * It never returns a hash, key, address or any secret value. It deliberately
- * does NOT run the schema or the admin seed any more: those read many rows, and
- * a health check must not spend the very D1 budget it is there to watch.
+ * Calling it also lets that one-time move run (server/migrate.ts) — the deploy
+ * workflow polls it until the move reports "done". It never returns a hash,
+ * key, address, record or any secret value: only booleans, counts and states.
  */
 export const dynamic = 'force-dynamic';
 
@@ -36,7 +38,8 @@ export async function GET() {
     return json(out, false);
   }
   out.bindings = {
-    DB: Boolean(env.DB),
+    DATA_R2: Boolean(env.DATA),
+    LEGACY_D1: Boolean(env.DB),
     UPLOADS_R2: Boolean(env.UPLOADS),
     SESSION_SECRET: Boolean(env.SESSION_SECRET),
     AUTH_SECRET: Boolean(env.AUTH_SECRET),
@@ -56,17 +59,23 @@ export async function GET() {
     out.session = { ok: false, error: short(e) };
   }
 
-  // D1 reachability: one tiny read. Its failure does not block sign-in any more,
-  // but it does block project/payment data, so it is reported plainly.
-  if (env.DB) {
+  // R2 data: one read of the migration record, then the gate itself (which runs the
+  // one-time D1 → R2 move if it has not happened yet).
+  if (env.DATA) {
     try {
-      await env.DB.prepare('SELECT 1 AS one').first();
-      out.d1 = { ok: true };
+      const d = await rawData();
+      const before = await migrationState(d);
+      let gate = '';
+      if (!before) await data().catch((e) => (gate = short(e)));
+      const state = before ?? (await migrationState(d));
+      out.data = state
+        ? { ok: true, migration: state.status, source: state.source, at: state.at, tables: state.tables }
+        : { ok: true, migration: 'pending', ...(gate ? { note: gate } : {}) };
     } catch (e) {
-      out.d1 = { ok: false, error: short(e) };
+      out.data = { ok: false, error: short(e) };
     }
   } else {
-    out.d1 = { ok: false, error: 'No D1 binding.' };
+    out.data = { ok: false, error: 'No DATA (R2) binding.' };
   }
 
   out.signInReady = sessionOk;

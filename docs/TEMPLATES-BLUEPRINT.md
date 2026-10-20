@@ -77,6 +77,22 @@ dengan produk yang dibeli — bukan tiruan. Data demo hanya tersimpan di browser
 bisa di-reset dengan satu tombol. Email di demo tidak terkirim: masuk ke "Kotak masuk demo" supaya klien bisa melihat
 isi email verifikasi, undangan, dan lain-lain.
 
+### 2.2a Penyimpanan template: R2, bukan D1 (aturan pemilik 20 Okt 2026)
+
+Pemilik: „… semua yg membutuhkan penyimpanan, wajib ke R2, jgn pernah ke D1" (`CLAUDE.md`, `BLUEPRINT.md` 47). Aturan
+ini juga berlaku untuk template yang dijual. Mulai template #2, data aplikasi memakai **R2 Store** yang sama dengan
+xaa.es (`src/server/r2` di repo xaa: dokumen, penjaga keunikan create-once, compare-and-swap, index + ringkasan,
+log append-only), dengan tiga backend berbentuk R2 yang semantiknya sama persis dan diuji dengan tes yang sama:
+
+| Tempat | Backend | Untuk |
+|---|---|---|
+| Cloudflare Workers | **R2** (binding bucket pembeli) | produksi pembeli |
+| Docker / Node 22 | R2 di disk lokal (file per objek + etag, tulis bersyarat atomik dengan kunci file) — atau bucket R2/S3 pembeli | produksi di server sendiri, tes |
+| Browser | R2 di IndexedDB | **demo** di xaa.es |
+
+Tabel di atas (§2.2) yang menyebut D1/SQLite berlaku untuk Waitlist & Landing yang sudah jadi; Waitlist dipindah ke
+R2 Store yang sama (sebelum dirilis ulang), sehingga tidak ada template yang memakai D1.
+
 ### 2.3 Inti bersama (XAA Kit) — dipakai semua template
 
 | Modul | Isi | Standar |
@@ -442,6 +458,9 @@ animasi), **dashboard**, data, logika inti, integrasi, dan "selesai bila".
 
 ## 6. Changelog
 
+- **20 Okt 2026 (2)**: §2.2a — template menyimpan data di R2 (Workers), R2 di disk (Docker) dan R2 di IndexedDB (demo),
+  tidak lagi D1/SQLite; Waitlist dipindah juga. Urutan pembangunan setelah data xaa.es ke R2 tayang: dari termurah
+  (Link-in-Bio €490) ke termahal.
 - **20 Okt 2026**: blueprint dibuat dari perintah pemilik 18 Okt — keadaan sebenarnya (0/18 produk), keputusan repo
   privat, arsitektur satu-kode-tiga-tempat, inti bersama, jalur gambar animasi, syarat siap produksi, logika 18 template,
   urutan kerja.

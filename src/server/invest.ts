@@ -1,4 +1,5 @@
-import { db, newId, nowIso } from './db';
+import { newId, nowIso } from './db';
+import { data } from './data';
 import { getSettings } from './settings';
 import { revenueSince } from './revenue';
 
@@ -111,84 +112,89 @@ export interface Payout {
 export async function applyInvestor(input: {
   name: string; email: string; company?: string; country?: string; pledgeUsd: number; method?: string; lang?: string; message?: string;
 }): Promise<string> {
-  const database = await db();
   const id = newId();
-  await database
-    .prepare(
-      `INSERT INTO investors (id, name, email, company, country, pledge_usd, capital_usd, method, status, lang, message, created_at)
-       VALUES (?, ?, ?, ?, ?, ?, 0, ?, 'applied', ?, ?, ?)`,
-    )
-    .bind(
-      id, input.name.slice(0, 120), input.email, (input.company ?? '').slice(0, 160) || null, (input.country ?? '').slice(0, 80) || null,
-      Math.round(input.pledgeUsd), input.method || null, input.lang || 'en', (input.message ?? '').slice(0, 5000) || null, nowIso(),
-    )
-    .run();
+  await (await data()).investors.create({
+    id,
+    name: input.name.slice(0, 120),
+    email: input.email,
+    company: (input.company ?? '').slice(0, 160) || null,
+    country: (input.country ?? '').slice(0, 80) || null,
+    pledge_usd: Math.round(input.pledgeUsd),
+    capital_usd: 0,
+    method: input.method || null,
+    status: 'applied',
+    lang: input.lang || 'en',
+    message: (input.message ?? '').slice(0, 5000) || null,
+    note: null,
+    created_at: nowIso(),
+    verified_at: null,
+    verified_by: null,
+    returned_at: null,
+  });
   return id;
 }
 
 export async function listInvestors(): Promise<Investor[]> {
-  const database = await db();
-  const { results } = await database.prepare('SELECT * FROM investors ORDER BY created_at DESC').all<Investor>();
-  return results ?? [];
+  return (await data()).investors.listAllDocs('all', 'all');
 }
 
 export async function getInvestor(id: string): Promise<Investor | null> {
-  const database = await db();
-  return (await database.prepare('SELECT * FROM investors WHERE id = ?').bind(id).first<Investor>()) ?? null;
+  return (await data()).investors.get(id);
 }
 
 /** The verified (or since repaid) stakes held under this email, newest first. */
 export async function investorsByEmail(email: string): Promise<Investor[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare(`SELECT * FROM investors WHERE email = ? AND status IN ('verified', 'returned') ORDER BY verified_at DESC`)
-    .bind(email)
-    .all<Investor>();
-  return results ?? [];
+  const all = await (await data()).investors.listAllDocs('email', email.trim().toLowerCase());
+  return all
+    .filter((i) => i.status === 'verified' || i.status === 'returned')
+    .sort((a, b) => (b.verified_at ?? '').localeCompare(a.verified_at ?? ''));
 }
 
 /** Capital the raise has actually received (verified stakes still running). */
 export async function raisedUsd(): Promise<number> {
-  const database = await db();
-  const row = await database.prepare(`SELECT COALESCE(SUM(capital_usd), 0) AS total FROM investors WHERE status = 'verified'`).first<{ total: number }>();
-  return Number(row?.total ?? 0);
+  const all = await listInvestors();
+  return all.filter((i) => i.status === 'verified').reduce((sum, i) => sum + Number(i.capital_usd || 0), 0);
 }
 
+/** applied/verified → verified (a re-verification corrects the amount); a declined or repaid stake is never revived. */
 export async function verifyInvestor(id: string, capitalUsd: number, method: string, adminName: string): Promise<void> {
-  const database = await db();
-  await database
-    .prepare(`UPDATE investors SET status = 'verified', capital_usd = ?, method = ?, verified_at = ?, verified_by = ? WHERE id = ? AND status IN ('applied', 'verified')`)
-    .bind(Math.round(capitalUsd), method || null, nowIso(), adminName, id)
-    .run();
+  const d = await data();
+  if (!(await d.investors.get(id))) return;
+  await d.investors.update(id, (i) =>
+    i.status === 'applied' || i.status === 'verified'
+      ? { ...i, status: 'verified', capital_usd: Math.round(capitalUsd), method: method || null, verified_at: nowIso(), verified_by: adminName }
+      : null,
+  );
 }
 
 export async function setInvestorStatus(id: string, status: 'declined' | 'returned', note: string, adminName: string): Promise<void> {
-  const database = await db();
+  const d = await data();
+  if (!(await d.investors.get(id))) return;
   const stamp = nowIso();
-  await database
-    .prepare(
-      `UPDATE investors SET status = ?, note = ?, returned_at = CASE WHEN ? = 'returned' THEN ? ELSE returned_at END,
-         verified_by = COALESCE(verified_by, ?) WHERE id = ?`,
-    )
-    .bind(status, note.slice(0, 2000) || null, status, stamp, adminName, id)
-    .run();
+  await d.investors.update(id, (i) => ({
+    ...i,
+    status,
+    note: note.slice(0, 2000) || null,
+    returned_at: status === 'returned' ? stamp : i.returned_at,
+    verified_by: i.verified_by ?? adminName,
+  }));
 }
 
 export async function recordPayout(investorId: string, period: string, amountEur: number, reference: string, adminName: string): Promise<void> {
-  const database = await db();
-  await database
-    .prepare('INSERT INTO investor_payouts (id, investor_id, period, amount_eur, reference, paid_at, created_by) VALUES (?, ?, ?, ?, ?, ?, ?)')
-    .bind(newId(), investorId, period, Math.round(amountEur * 100) / 100, reference.slice(0, 200) || null, nowIso(), adminName)
-    .run();
+  await (await data()).payouts.create({
+    id: newId(),
+    investor_id: investorId,
+    period,
+    amount_eur: Math.round(amountEur * 100) / 100,
+    reference: reference.slice(0, 200) || null,
+    paid_at: nowIso(),
+    created_by: adminName,
+  });
 }
 
 export async function listPayouts(investorId?: string): Promise<Payout[]> {
-  const database = await db();
-  const q = investorId
-    ? database.prepare('SELECT * FROM investor_payouts WHERE investor_id = ? ORDER BY period, paid_at').bind(investorId)
-    : database.prepare('SELECT * FROM investor_payouts ORDER BY period, paid_at');
-  const { results } = await q.all<Payout>();
-  return results ?? [];
+  const d = await data();
+  return investorId ? d.payouts.listAllDocs('investor', investorId) : d.payouts.listAllDocs('all', 'all');
 }
 
 export interface StatementMonth {

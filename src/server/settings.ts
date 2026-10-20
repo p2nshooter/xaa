@@ -1,11 +1,14 @@
-import { db, newId, nowIso, appEnv } from './db';
+import { newId, nowIso, appEnv } from './db';
+import { data } from './data';
+import type { SecretDoc, SettingDoc } from './r2/schema';
 import { encryptValue, decryptValue, maskSecret } from './crypto';
 
 /**
  * Payment destinations and studio configuration, both maintained from the
  * admin UI rather than from Worker secrets.
  *
- * The point of moving them into the database is operational: a wallet address
+ * The point of keeping them in storage (R2: one object per destination and per
+ * setting) is operational: a wallet address
  * should be changeable by the person who owns it, in thirty seconds, without a
  * deploy. Anything sensitive is encrypted before it is written (see crypto.ts)
  * and only ever leaves the server masked, except on the one screen where the
@@ -96,19 +99,16 @@ export const isStarterBankAccount = (m: PaymentMethodInput) => m.kind === 'bank'
  */
 export async function ensureStarterMethods(): Promise<void> {
   if (companyChecked) return;
-  const database = await db();
-  const claim = await database
-    .prepare('INSERT OR IGNORE INTO app_secrets (key, value, updated_at) VALUES (?, ?, ?)')
-    .bind(COMPANY_SEEDED, 'seeding', nowIso())
-    .run();
-  if ((claim.meta?.changes ?? 0) > 0) {
+  const d = await data();
+  const marker = `secret/${COMPANY_SEEDED}`;
+  const claim = await d.store.createDoc<SecretDoc>(marker, { value: 'seeding', updated_at: nowIso() });
+  if (claim.created) {
     try {
-      const count = await database.prepare('SELECT COUNT(*) AS n FROM payment_methods').first<{ n: number }>();
-      if (!count?.n) await importCompanyMethods(isStarterBankAccount);
-      await database.prepare('UPDATE app_secrets SET value = ?, updated_at = ? WHERE key = ?').bind('done', nowIso(), COMPANY_SEEDED).run();
+      if ((await d.paymentMethods.countDocs()) === 0) await importCompanyMethods(isStarterBankAccount);
+      await d.store.updateDoc<SecretDoc>(marker, claim.doc, () => ({ value: 'done', updated_at: nowIso() }));
     } catch (err) {
       // Let a later request try again rather than leave the marker half-set.
-      await database.prepare('DELETE FROM app_secrets WHERE key = ?').bind(COMPANY_SEEDED).run();
+      await d.store.deleteDoc(marker).catch(() => undefined);
       throw err;
     }
   }
@@ -125,20 +125,15 @@ export async function listPaymentMethods(onlyActive = false): Promise<PaymentMet
 }
 
 async function listStoredMethods(onlyActive: boolean): Promise<PaymentMethod[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare(
-      onlyActive
-        ? 'SELECT * FROM payment_methods WHERE active = 1 ORDER BY sort_order ASC, created_at ASC'
-        : 'SELECT * FROM payment_methods ORDER BY active DESC, sort_order ASC, created_at ASC'
-    )
-    .all<PaymentMethodRow>();
-  return Promise.all((results ?? []).map(openMethod));
+  const d = await data();
+  const rows = (await d.paymentMethods.all())
+    .filter((r) => !onlyActive || r.active === 1)
+    .sort((a, b) => (onlyActive ? 0 : b.active - a.active) || a.sort_order - b.sort_order || a.created_at.localeCompare(b.created_at));
+  return Promise.all(rows.map(openMethod));
 }
 
 export async function getPaymentMethod(id: string): Promise<PaymentMethod | null> {
-  const database = await db();
-  const row = await database.prepare('SELECT * FROM payment_methods WHERE id = ?').bind(id).first<PaymentMethodRow>();
+  const row = await (await data()).paymentMethods.get(id);
   return row ? openMethod(row) : null;
 }
 
@@ -160,93 +155,53 @@ export interface PaymentMethodInput {
   bankCountry?: string;
 }
 
+/** The stored fields of a destination; secrets are encrypted here, before they are written. */
+async function methodFields(input: PaymentMethodInput, keep?: { address_enc: string; memo_enc: string | null }) {
+  return {
+    kind: input.kind,
+    label: input.label.trim().slice(0, 80),
+    network: input.network?.trim() || null,
+    currency: input.currency?.trim() || (input.kind === 'crypto' ? 'USDT' : 'EUR'),
+    // An empty address field on edit means "leave the stored one alone" — the
+    // form never shows the real value back, so blank must not wipe it.
+    address_enc: input.address.trim() ? await encryptValue(input.address.trim()) : keep?.address_enc ?? (await encryptValue('')),
+    memo_enc: input.memo?.trim() ? await encryptValue(input.memo.trim()) : keep ? keep.memo_enc : null,
+    link: input.link?.trim() || null,
+    instructions: input.instructions?.trim().slice(0, 1000) || null,
+    active: input.active === false ? 0 : 1,
+    sort_order: input.sortOrder ?? 0,
+    holder: input.holder?.trim() || null,
+    bank_name: input.bankName?.trim() || null,
+    swift: input.swift?.trim() || null,
+    branch: input.branch?.trim() || null,
+    bank_country: input.bankCountry?.trim() || null,
+  };
+}
+
 export async function createPaymentMethod(input: PaymentMethodInput): Promise<string> {
-  const database = await db();
+  const d = await data();
   const id = newId();
   const now = nowIso();
-  await database
-    .prepare(
-      `INSERT INTO payment_methods (id, kind, label, network, currency, address_enc, memo_enc, link,
-        instructions, active, sort_order, holder, bank_name, swift, branch, bank_country, created_at, updated_at)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
-    )
-    .bind(
-      id,
-      input.kind,
-      input.label.trim().slice(0, 80),
-      input.network?.trim() || null,
-      input.currency?.trim() || (input.kind === 'crypto' ? 'USDT' : 'EUR'),
-      await encryptValue(input.address.trim()),
-      input.memo?.trim() ? await encryptValue(input.memo.trim()) : null,
-      input.link?.trim() || null,
-      input.instructions?.trim().slice(0, 1000) || null,
-      input.active === false ? 0 : 1,
-      input.sortOrder ?? 0,
-      input.holder?.trim() || null,
-      input.bankName?.trim() || null,
-      input.swift?.trim() || null,
-      input.branch?.trim() || null,
-      input.bankCountry?.trim() || null,
-      now,
-      now
-    )
-    .run();
+  await d.paymentMethods.create({ id, ...(await methodFields(input)), created_at: now, updated_at: now });
   return id;
 }
 
 export async function updatePaymentMethod(id: string, input: PaymentMethodInput): Promise<void> {
-  const database = await db();
-  // An empty address field means "leave the stored one alone" — the form
-  // never shows the real value back, so blank must not wipe it.
-  const existing = await database
-    .prepare('SELECT address_enc, memo_enc FROM payment_methods WHERE id = ?')
-    .bind(id)
-    .first<{ address_enc: string; memo_enc: string | null }>();
+  const d = await data();
+  const existing = await d.paymentMethods.get(id);
   if (!existing) throw new Error('Payment method not found.');
-
-  const addressEnc = input.address.trim() ? await encryptValue(input.address.trim()) : existing.address_enc;
-  const memoEnc = input.memo?.trim() ? await encryptValue(input.memo.trim()) : existing.memo_enc;
-
-  await database
-    .prepare(
-      `UPDATE payment_methods SET kind = ?, label = ?, network = ?, currency = ?, address_enc = ?,
-        memo_enc = ?, link = ?, instructions = ?, active = ?, sort_order = ?, holder = ?, bank_name = ?,
-        swift = ?, branch = ?, bank_country = ?, updated_at = ?
-       WHERE id = ?`
-    )
-    .bind(
-      input.kind,
-      input.label.trim().slice(0, 80),
-      input.network?.trim() || null,
-      input.currency?.trim() || (input.kind === 'crypto' ? 'USDT' : 'EUR'),
-      addressEnc,
-      memoEnc,
-      input.link?.trim() || null,
-      input.instructions?.trim().slice(0, 1000) || null,
-      input.active === false ? 0 : 1,
-      input.sortOrder ?? 0,
-      input.holder?.trim() || null,
-      input.bankName?.trim() || null,
-      input.swift?.trim() || null,
-      input.branch?.trim() || null,
-      input.bankCountry?.trim() || null,
-      nowIso(),
-      id
-    )
-    .run();
+  const fields = await methodFields(input, existing);
+  await d.paymentMethods.update(id, (cur) => ({ ...cur, ...fields, updated_at: nowIso() }));
 }
 
 export async function setPaymentMethodActive(id: string, active: boolean): Promise<void> {
-  const database = await db();
-  await database
-    .prepare('UPDATE payment_methods SET active = ?, updated_at = ? WHERE id = ?')
-    .bind(active ? 1 : 0, nowIso(), id)
-    .run();
+  const d = await data();
+  if (!(await d.paymentMethods.get(id))) return;
+  await d.paymentMethods.update(id, (cur) => (cur.active === (active ? 1 : 0) ? null : { ...cur, active: active ? 1 : 0, updated_at: nowIso() }));
 }
 
 export async function deletePaymentMethod(id: string): Promise<void> {
-  const database = await db();
-  await database.prepare('DELETE FROM payment_methods WHERE id = ?').bind(id).run();
+  await (await data()).paymentMethods.delete(id);
 }
 
 /** What an admin sees in the list: enough to identify, never enough to use. */
@@ -412,13 +367,17 @@ export interface SettingValue {
   updatedAt: string | null;
 }
 
+const settingName = (key: string) => `setting/${key}`;
+
+async function readSettings(keys: string[]): Promise<Map<string, SettingDoc>> {
+  const d = await data();
+  const docs = await Promise.all(keys.map((k) => d.store.getDoc<SettingDoc | null>(settingName(k), null)));
+  return new Map(keys.flatMap((k, i) => (docs[i] ? [[k, docs[i]!] as const] : [])));
+}
+
 /** All settings, with secret values masked — safe to render in the admin UI. */
 export async function listSettings(): Promise<SettingValue[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare('SELECT key, value, is_secret, updated_at FROM app_settings')
-    .all<{ key: string; value: string; is_secret: number; updated_at: string }>();
-  const stored = new Map((results ?? []).map((r) => [r.key, r]));
+  const stored = await readSettings(SETTING_DEFS.map((d) => d.key));
 
   return Promise.all(
     SETTING_DEFS.map(async (def) => {
@@ -444,32 +403,23 @@ export async function listSettings(): Promise<SettingValue[]> {
 }
 
 /**
- * Read several settings in one query, secrets opened — server-side only.
+ * Read several settings at once, secrets opened — server-side only.
  * A key that is not stored (or no longer opens) comes back as ''.
  */
 export async function getSettings(keys: string[]): Promise<Record<string, string>> {
   const out: Record<string, string> = Object.fromEntries(keys.map((k) => [k, '']));
   if (keys.length === 0) return out;
-  const database = await db();
-  const { results } = await database
-    .prepare(`SELECT key, value FROM app_settings WHERE key IN (${keys.map(() => '?').join(',')})`)
-    .bind(...keys)
-    .all<{ key: string; value: string }>();
-  for (const row of results ?? []) {
+  for (const [key, row] of await readSettings(keys)) {
     if (!row.value) continue;
-    const def = SETTING_DEFS.find((d) => d.key === row.key);
-    out[row.key] = def?.secret ? await decryptValue(row.value) : row.value;
+    const def = SETTING_DEFS.find((d) => d.key === key);
+    out[key] = def?.secret ? await decryptValue(row.value) : row.value;
   }
   return out;
 }
 
 /** Read one setting's real value, server-side only. */
 export async function getSetting(key: string): Promise<string> {
-  const def = SETTING_DEFS.find((d) => d.key === key);
-  const database = await db();
-  const row = await database.prepare('SELECT value FROM app_settings WHERE key = ?').bind(key).first<{ value: string }>();
-  if (!row?.value) return '';
-  return def?.secret ? decryptValue(row.value) : row.value;
+  return (await getSettings([key]))[key] ?? '';
 }
 
 /**
@@ -502,7 +452,6 @@ export async function invoiceIdentity() {
 export async function saveSetting(key: string, raw: string, updatedBy: string): Promise<void> {
   const def = SETTING_DEFS.find((d) => d.key === key);
   if (!def) throw new Error(`Unknown setting: ${key}`);
-  const database = await db();
   const value = raw.trim();
 
   // Blank on a secret means "keep what is stored"; the form never echoes it
@@ -510,20 +459,13 @@ export async function saveSetting(key: string, raw: string, updatedBy: string): 
   if (def.secret && !value) return;
   if (def.options && value && !def.options.some((o) => o.value === value)) throw new Error(`${def.label}: choose one of the listed options.`);
 
-  await database
-    .prepare(
-      `INSERT INTO app_settings (key, value, is_secret, updated_at, updated_by)
-       VALUES (?, ?, ?, ?, ?)
-       ON CONFLICT(key) DO UPDATE SET value = excluded.value, is_secret = excluded.is_secret,
-         updated_at = excluded.updated_at, updated_by = excluded.updated_by`
-    )
-    .bind(key, def.secret ? await encryptValue(value) : value, def.secret ? 1 : 0, nowIso(), updatedBy)
-    .run();
+  const doc: SettingDoc = { value: def.secret ? await encryptValue(value) : value, is_secret: def.secret ? 1 : 0, updated_at: nowIso(), updated_by: updatedBy };
+  const d = await data();
+  await d.store.updateDoc<SettingDoc | null>(settingName(key), null, () => doc);
 }
 
 export async function clearSetting(key: string): Promise<void> {
-  const database = await db();
-  await database.prepare('DELETE FROM app_settings WHERE key = ?').bind(key).run();
+  await (await data()).store.deleteDoc(settingName(key));
 }
 
 /**

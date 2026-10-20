@@ -11,6 +11,8 @@ import { TestPayPal } from '@/components/forms/PayPalForms';
 import Link from 'next/link';
 import { soft, type Problems } from '@/server/soft';
 import { DbNotice } from '@/components/DbNotice';
+import { storageReport, type StorageReport } from '@/server/storage';
+import { BackupNow, RecopyD1, RestoreBackup } from '@/components/forms/StorageForms';
 
 export const metadata: Metadata = { title: 'Settings', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -22,11 +24,12 @@ export default async function AdminSettingsPage() {
   if (user.role !== 'admin') redirect('/portal');
 
   const problems: Problems = [];
-  const [values, source, ok, newLeads] = await Promise.all([
+  const [values, source, ok, newLeads, storage] = await Promise.all([
     soft(problems, () => listSettings(), [] as Awaited<ReturnType<typeof listSettings>>),
     soft<Awaited<ReturnType<typeof keySource>>>(problems, () => keySource(), 'database'),
     soft(problems, () => selfTest(), false),
     soft(problems, () => countNewLeads(), 0),
+    soft<StorageReport | null>(problems, () => storageReport(), null),
   ]);
   const byKey = new Map(values.map((v) => [v.key, v]));
 
@@ -79,15 +82,15 @@ export default async function AdminSettingsPage() {
         </div>
         {source === 'database' ? (
           <p className="mt-2.5 text-sm leading-relaxed text-steel-500">
-            The encryption key lives in the database, which protects a leaked export or backup but not someone holding
-            both the database and the Worker. Upgrade once with{' '}
+            The encryption key lives in the private data bucket, which protects a leaked export or backup but not someone
+            holding both the bucket and the Worker. Upgrade once with{' '}
             <code className="rounded bg-[color:var(--surface-2)] px-1.5 py-0.5 text-xs">npx wrangler secret put SETTINGS_KEY</code>
             , then re-enter each secret — old values will show as unreadable until you do, which is the expected
             behaviour, not a fault.
           </p>
         ) : (
           <p className="mt-2.5 text-sm leading-relaxed text-steel-500">
-            The key is held as a Worker secret and never written to the database.
+            The key is held as a Worker secret and never written to storage.
           </p>
         )}
       </div>
@@ -124,6 +127,97 @@ export default async function AdminSettingsPage() {
           </div>
         ))}
       </div>
+
+      <section id="settings-storage" className="panel mt-8 p-5" aria-labelledby="storage-title">
+        <h2 id="storage-title" className="font-display text-base font-extrabold">Data storage (R2)</h2>
+        <p className="mt-2 text-sm leading-relaxed text-steel-500">
+          Every record — accounts, projects, payments, orders, settings, investors, support — is kept in the private R2
+          bucket <code className="rounded bg-[color:var(--surface-2)] px-1.5 py-0.5 text-xs">xaa-data</code>; files are in{' '}
+          <code className="rounded bg-[color:var(--surface-2)] px-1.5 py-0.5 text-xs">xaa-uploads</code>. Nothing is written to D1.
+          A full backup is taken every day at 03:17 UTC and kept 35 days.
+        </p>
+        {storage ? (
+          <>
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              {storage.migration ? (
+                <span className="badge badge-green">
+                  Move from D1: done {new Date(storage.migration.at).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' })} UTC
+                  {storage.migration.source === 'fresh' ? ' (fresh start)' : ''}
+                </span>
+              ) : (
+                <span className="badge badge-amber">Move from D1: running</span>
+              )}
+              <span className={`badge ${storage.legacyD1 ? 'badge-grey' : 'badge-green'}`}>
+                {storage.legacyD1 ? 'Old D1 still bound (read-only copy)' : 'D1 removed'}
+              </span>
+            </div>
+
+            {storage.migration && Object.keys(storage.migration.tables).length ? (
+              <div className="mt-4 overflow-x-auto" role="region" aria-label="Rows moved from D1" tabIndex={0}>
+                <table className="w-full text-left text-xs">
+                  <caption className="sr-only">Rows in D1 and documents in R2, per table, at the move</caption>
+                  <thead>
+                    <tr className="text-steel-400">
+                      <th scope="col" className="py-1 pr-4 font-semibold">D1 table</th>
+                      <th scope="col" className="py-1 pr-4 font-semibold">Rows in D1</th>
+                      <th scope="col" className="py-1 font-semibold">In R2</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.entries(storage.migration.tables).map(([t, r]) => (
+                      <tr key={t} className="border-t border-[color:var(--line)]">
+                        <td className="py-1 pr-4 font-mono">{t}</td>
+                        <td className="py-1 pr-4">{r.d1}</td>
+                        <td className={`py-1 font-semibold ${r.r2 >= r.d1 ? 'text-green-700' : 'text-red-700'}`}>{r.r2}{r.r2 >= r.d1 ? ' ✓' : ''}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : null}
+
+            <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-steel-400">Documents now</p>
+            <ul className="mt-1 flex flex-wrap gap-2 text-xs">
+              {storage.counts.map((c) => (
+                <li key={c.name} className="rounded-md bg-[color:var(--surface)] px-2 py-1">
+                  <span className="font-mono">{c.name}</span> <strong>{c.docs}</strong>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-5 flex flex-wrap items-start gap-3">
+              <BackupNow />
+              {storage.legacyD1 ? <RecopyD1 /> : null}
+            </div>
+
+            <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-steel-400">Backups (newest first)</p>
+            {storage.backups === null ? (
+              <p className="mt-1 text-sm text-steel-500">No backup bucket is bound to this deployment.</p>
+            ) : storage.backups.length === 0 ? (
+              <p className="mt-1 text-sm text-steel-500">No backup yet — the first daily one runs tonight, or press “Back up now”.</p>
+            ) : (
+              <ul className="mt-2 space-y-3">
+                {storage.backups.map((b) => {
+                  const when = new Date(b.takenAt).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' });
+                  return (
+                    <li key={b.key} data-backup-key={b.key} className="rounded-md border border-[color:var(--line)] p-3 text-sm">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <strong>{when} UTC</strong>
+                        <span className="badge badge-grey">{b.reason || 'backup'}</span>
+                        <span className="text-xs text-steel-500">{b.objects} objects · {(b.bytes / 1024).toFixed(1)} KB</span>
+                        <a className="text-xs font-semibold underline" href={`/api/admin/backups?key=${encodeURIComponent(b.key)}`}>Download</a>
+                      </div>
+                      <RestoreBackup backupKey={b.key} label={`${when} UTC`} />
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </>
+        ) : (
+          <p className="mt-3 text-sm text-steel-500">The storage report could not be read right now.</p>
+        )}
+      </section>
 
       <div className="panel mt-8 p-5">
         <h2 className="font-display text-base font-extrabold">Investors</h2>

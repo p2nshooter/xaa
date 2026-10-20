@@ -1,4 +1,4 @@
-import { db } from './db';
+import { data } from './data';
 
 /**
  * What counts as xaa.es revenue — one definition for the investor statements
@@ -18,29 +18,27 @@ import { db } from './db';
 
 export interface RevenueTx { at: string; amount: number; currency: 'EUR'; kind: 'milestone' | 'template' }
 
-// A PayPal payment counts unless it was taken in the sandbox or refunded / reversed afterwards.
-const NOT_EXCLUDED = (col: string) => `NOT EXISTS (
-  SELECT 1 FROM paypal_checkouts c
-   WHERE c.${col}
-     AND (c.env = 'sandbox' OR c.detail LIKE 'PayPal refunded%' OR c.detail LIKE 'PayPal reversed%'))`;
-
 /** Confirmed revenue since a moment (ISO), oldest first. */
 export async function revenueSince(sinceIso: string): Promise<RevenueTx[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare(
-      `SELECT p.confirmed_at AS at, p.amount AS amount, 'milestone' AS kind FROM payments p
-        WHERE p.status = 'confirmed' AND p.confirmed_at IS NOT NULL AND p.confirmed_at >= ?
-          AND ${NOT_EXCLUDED('payment_id = p.id')}
-       UNION ALL
-       SELECT t.confirmed_at AS at, t.price AS amount, 'template' AS kind FROM template_orders t
-        WHERE t.status = 'paid' AND t.confirmed_at IS NOT NULL AND t.confirmed_at >= ?
-          AND ${NOT_EXCLUDED('template_order_id = t.id')}
-       ORDER BY at`,
-    )
-    .bind(sinceIso, sinceIso)
-    .all<{ at: string; amount: number; kind: 'milestone' | 'template' }>();
-  return (results ?? [])
+  const d = await data();
+  // A PayPal payment counts unless it was taken in the sandbox or refunded / reversed afterwards.
+  const [payments, orders, excluded] = await Promise.all([
+    d.payments.listAllDocs('confirmed', 'all', 100_000),
+    d.templateOrders.listAllDocs('paid', 'all', 100_000),
+    d.checkouts.listAllDocs('excluded', 'all', 100_000),
+  ]);
+  const notPayments = new Set(excluded.flatMap((c) => (c.payment_id ? [c.payment_id] : [])));
+  const notOrders = new Set(excluded.flatMap((c) => (c.template_order_id ? [c.template_order_id] : [])));
+  const tx: { at: string; amount: number; kind: 'milestone' | 'template' }[] = [
+    ...payments
+      .filter((p) => p.status === 'confirmed' && p.confirmed_at && p.confirmed_at >= sinceIso && !notPayments.has(p.id))
+      .map((p) => ({ at: p.confirmed_at!, amount: p.amount, kind: 'milestone' as const })),
+    ...orders
+      .filter((o) => o.status === 'paid' && o.confirmed_at && o.confirmed_at >= sinceIso && !notOrders.has(o.id))
+      .map((o) => ({ at: o.confirmed_at!, amount: o.price, kind: 'template' as const })),
+  ];
+  return tx
     .filter((r) => Number(r.amount) > 0)
+    .sort((a, b) => a.at.localeCompare(b.at))
     .map((r) => ({ at: r.at, amount: Number(r.amount), currency: 'EUR' as const, kind: r.kind }));
 }
