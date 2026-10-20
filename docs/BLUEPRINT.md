@@ -5,7 +5,7 @@ dikerjakan, apa yang belum, dan apa yang belum diuji. **Setiap permintaan baru
 atau perubahan wajib dicatat di sini dulu** (bagian 3 dan 8), lalu statusnya
 diperbarui setelah diuji.
 
-Terakhir diperbarui: 19 Oktober 2026.
+Terakhir diperbarui: 20 Oktober 2026.
 
 Arti tanda:
 
@@ -83,7 +83,7 @@ Arti tanda:
 | 35 | (18 Okt 2026) "Buatkan menu husus di xaa.es untuk menjual lepas xaa.es dengan bahasa profesional, elegan dan berkelas dengan harga $10jt seperti axto.io, dan pastikan pembayaran full seluruhnya 100% live, ubah dari portal admin" | ✅ halaman, 🟡 kunci | `/acquire` EN/ES/ID (menu khusus "Acquire xaa.es" di header + footer, sitemap, JSON-LD Product/Offer + FAQ): harga US$10.000.000, 8 keunggulan, isi paket, 5 langkah pembelian, cara bayar (SWIFT BNI, escrow, USDT, PayPal untuk uang muka), formulir "Ajukan penawaran" / "Beli di harga yang diminta" → Admin → Leads (lencana "xaa.es acquisition") + Support (topik negotiate). Status/harga/WhatsApp diubah di Admin → Settings → **Sale of xaa.es**. PayPal memakai Live secara bawaan (`paypal_mode` kosong = live); kunci Live diisi pemilik sendiri di Admin → Settings → PayPal Checkout — kunci tidak pernah ditulis ke repo |
 | 36 | (18 Okt 2026) "Ubah seluruh nomer HP yg ada di axto.io & xaa.es menjadi +6285691234561, ini adalah nomer kirim bukti transaksi manual fast respon" | ✅ | xaa.es: `SALE_DEFAULT_WHATSAPP` (`src/server/sale.ts`), tampil di /acquire dan di balasan formulir; tidak ada nomor lain di kode xaa.es. axto.io sudah memakai nomor ini (`lib/acquisition.ts`) |
 | 37 | (18 Okt 2026) Promosikan axto.io & xaa.es di setiap situs pemilik dengan menu khusus premium, bahasa masing-masing situs, kalimat berbeda di setiap situs | ✅ (20 Okt) | Di xaa.es: tautan "✦ AXTO" berpendar di footer (EN/ES/ID, `footer.axto` di `src/lib/i18n.ts`, UTM `utm_source=xaa.es`, animasi mati bila `prefers-reduced-motion`). axto.io menautkan balik ke xaa.es di footernya (10 bahasa). Situs lain: `ulyah.com/docs/ADSENSE-BLUEPRINT.md` §13.5 |
-| 38 | (18 Okt 2026) Blueprint template xaa.es yang belum dibuat, fitur kelas tinggi, tangkapan layar animasi setiap menu & dashboard, link demo untuk klien | 🔄 | Lihat bagian 5 dan 6 |
+| 38 | (18 Okt 2026) Blueprint template xaa.es yang belum dibuat, fitur kelas tinggi, tangkapan layar animasi setiap menu & dashboard, link demo untuk klien | 🔄 logika ✅ (20 Okt) · produk 0/18 | **`docs/TEMPLATES-BLUEPRINT.md`**: keadaan sebenarnya (0 dari 18 template punya produk/demo), kode sumber di repo privat `xaa-templates` (repo xaa publik), satu kode jalan di Workers + D1 / Docker + SQLite / browser (demo), inti bersama, jalur gambar animasi per menu, syarat siap produksi, logika 18 template, urutan kerja |
 | 39 | (19 Okt 2026) Tangkapan layar xaa.es/acquire „Prefer a stake to the whole? A joint offering for AXTO and XAA…" — „ini maksudnya apa? Maksudnya masing2 web nyari investornya, bukan gabungan" | ✅ | `/invest` khusus xaa.es (EN/ES/ID): ketentuan dari Admin → Settings → Investor offering (bawaan = syarat 14 Okt untuk xaa.es saja: target US$2 jt, minimum US$50 rb, pool 30 % pendapatan xaa.es, bulanan, sampai akuisisi penuh → modal kembali 100 %), contoh bagi hasil dihitung otomatis, pemberitahuan risiko, formulir pengajuan → Studio desk → Investors + Leads + Support. Admin memverifikasi modal, mencatat pembayaran bulanan; pemodal melihat laporan di `/portal/investor`. Bawaan noindex & di luar sitemap (bisa diubah di admin). `/acquire` dan footer menunjuk ke `/invest`. Uji: `tools/e2e/invest.mjs` (33 cek) |
 | 40 | (19 Okt 2026) „Selesaikan seluruh tugas sampai bersih, tidak merge+PR manual, semua anda kerjakan" | 🔄 | Claude membuat PR, menunggu CI, merge sendiri, lalu memeriksa deploy |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
@@ -121,12 +121,14 @@ node seo-verify.mjs http://localhost:8799                     # 41 cek SEO
 |---|---|---|---|---|---|---|
 | Starter | waitlist, linkinbio, formbuilder | €390–€690 | ✅ | ✅ | ❌ belum dibangun | ❌ |
 | Business | CRM, invoicing, booking, e-commerce, helpdesk, project management, LMS, restaurant, subscription box | €1.190–€1.990 | ✅ | ✅ | ❌ belum dibangun | ❌ |
-| Enterprise/Super | multi-tenant SaaS kit, marketplace, ERP suite, AI SaaS platform | €40.000–€180.000 | ✅ | ✅ | ❌ belum dibangun | ❌ |
+| Enterprise/Super | multi-tenant SaaS kit, marketplace, ERP suite, AI SaaS platform, fintech core, global ecosystem | €40.000–€1.200.000 | ✅ | ✅ | ❌ belum dibangun | ❌ |
 
 Setelah bayar, pembeli melihat status "bundle sedang disiapkan" sampai studio
 melampirkan file zip. Melampirkan zip butuh R2 (belum aktif). **Template ini belum
 bisa disebut "100% berfungsi"**: produknya sendiri harus dibangun satu per satu.
 Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup.
+
+Rencana lengkap per template (logika, menu, dashboard, demo, gambar animasi, status): **`docs/TEMPLATES-BLUEPRINT.md`**.
 
 ---
 
@@ -243,6 +245,7 @@ Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup
 
 ## 9. Changelog blueprint
 
+- **20 Okt 2026 (2)**: permintaan 38 — `docs/TEMPLATES-BLUEPRINT.md` (logika 18 template, repo privat, demo & gambar animasi, syarat siap produksi).
 - **20 Okt 2026**: permintaan 37 — footer xaa.es menautkan axto.io (EN/ES/ID); axto.io menautkan xaa.es.
 - **19 Okt 2026 (2)**: permintaan 39 — xaa.es punya penawaran pemodalnya sendiri (`/invest`, Studio desk → Investors, `/portal/investor`); feed pendapatan gabungan ke axto.io dihapus; permintaan 26 ditandai diganti; permintaan 40 dicatat.
 - **19 Okt 2026**: permintaan 35–36 — `/acquire` (xaa.es dijual US$10 juta, penawaran & pembelian, pengaturan Sale of xaa.es di admin), WhatsApp pembeli +6285691234561; permintaan 37–38 dicatat.
