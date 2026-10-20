@@ -129,8 +129,8 @@ bundle), lalu Business menurut kemungkinan laku, lalu Enterprise dan Super yang 
 
 | # | Template | Tier | Harga | Logika (bagian 4) | Kode | Demo | Gambar animasi | Status |
 |---|---|---|---|---|---|---|---|---|
-| 0 | XAA Kit (inti bersama) | — | — | ✅ §2.3 | ❌ | — | — | 🔄 berikutnya |
-| 1 | Waitlist & Landing | Starter | €390 | ✅ §4.1 | ❌ | ❌ | ❌ | 🔄 berikutnya |
+| 0 | XAA Kit (inti bersama) | — | — | ✅ §2.3 | ✅ | — | — | ✅ 20 Okt |
+| 1 | Waitlist & Landing | Starter | €390 | ✅ §4.1 | ✅ | ✅ | ✅ 15 klip | ✅ 20 Okt (§2.5 terpenuhi) |
 | 2 | Link-in-Bio | Starter | €490 | ✅ §4.2 | ❌ | ❌ | ❌ | ❌ |
 | 3 | Forms & Surveys | Starter | €690 | ✅ §4.3 | ❌ | ❌ | ❌ | ❌ |
 | 4 | CRM & Sales Pipeline | Business | €1.490 | ✅ §4.4 | ❌ | ❌ | ❌ | ❌ |
@@ -149,7 +149,7 @@ bundle), lalu Business menurut kemungkinan laku, lalu Enterprise dan Super yang 
 | 17 | Fintech / Neobank Core | Super | €300.000–900.000 | ✅ §4.17 | ❌ | ❌ | ❌ | ❌ |
 | 18 | Global Enterprise Ecosystem | Super | €500.000–1.200.000 | ✅ §4.18 | ❌ | ❌ | ❌ | ❌ |
 
-**Progres keseluruhan: logika 18/18 tertulis · produk 0/18 · demo 0/18 · gambar animasi 0/18.**
+**Progres keseluruhan: logika 18/18 tertulis · produk 1/18 · demo 1/18 · gambar animasi 1/18.**
 
 ---
 

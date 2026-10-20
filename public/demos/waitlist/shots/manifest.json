@@ -1,0 +1,291 @@
+{
+  "template": "waitlist",
+  "generated": "2026-10-20",
+  "shots": [
+    {
+      "id": "01-landing",
+      "device": "desktop",
+      "title": {
+        "en": "Landing page and sign-up",
+        "es": "Página de inicio y registro",
+        "id": "Halaman depan dan pendaftaran"
+      },
+      "caption": {
+        "en": "Your launch page: headline, reasons to join, FAQ and a sign-up form with consent and your own questions.",
+        "es": "Tu página de lanzamiento: titular, motivos para unirse, preguntas frecuentes y un formulario con consentimiento y tus propias preguntas.",
+        "id": "Halaman peluncuran Anda: judul, alasan bergabung, FAQ, dan formulir pendaftaran dengan persetujuan serta pertanyaan Anda sendiri."
+      },
+      "file": "01-landing.webp",
+      "poster": "01-landing-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 802226
+    },
+    {
+      "id": "02-status",
+      "device": "desktop",
+      "title": {
+        "en": "Personal status page",
+        "es": "Página de estado personal",
+        "id": "Halaman status pribadi"
+      },
+      "caption": {
+        "en": "After confirming their email, each person sees their place in line, their referral link, rewards and the leaderboard.",
+        "es": "Tras confirmar su correo, cada persona ve su puesto, su enlace de referido, sus recompensas y la clasificación.",
+        "id": "Setelah mengonfirmasi email, setiap orang melihat posisinya, tautan referral, hadiah, dan papan peringkat."
+      },
+      "file": "02-status.webp",
+      "poster": "02-status-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 432984
+    },
+    {
+      "id": "03-dashboard",
+      "device": "desktop",
+      "title": {
+        "en": "Dashboard",
+        "es": "Panel",
+        "id": "Dasbor"
+      },
+      "caption": {
+        "en": "Sign-ups, confirmation rate, viral factor, daily chart direct vs referred, funnel, sources and top referrers.",
+        "es": "Inscripciones, tasa de confirmación, factor viral, gráfico diario directo vs referido, embudo, fuentes y mejores referentes.",
+        "id": "Pendaftar, tingkat konfirmasi, faktor viral, grafik harian langsung vs referral, corong, sumber, dan pengajak teratas."
+      },
+      "file": "03-dashboard.webp",
+      "poster": "03-dashboard-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 771428
+    },
+    {
+      "id": "04-signups",
+      "device": "desktop",
+      "title": {
+        "en": "Sign-ups",
+        "es": "Inscripciones",
+        "id": "Pendaftar"
+      },
+      "caption": {
+        "en": "Filter by status, search, open a person to see their timeline, referrals, emails and actions; export to CSV.",
+        "es": "Filtra por estado, busca y abre a una persona para ver su historial, referidos, correos y acciones; exporta a CSV.",
+        "id": "Saring per status, cari, buka satu orang untuk melihat riwayat, referral, email, dan tindakan; ekspor ke CSV."
+      },
+      "file": "04-signups.webp",
+      "poster": "04-signups-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 363048
+    },
+    {
+      "id": "05-referrals",
+      "device": "desktop",
+      "title": {
+        "en": "Referrals and fraud review",
+        "es": "Referidos y revisión de fraude",
+        "id": "Referral dan peninjauan kecurangan"
+      },
+      "caption": {
+        "en": "Referrals from the referrer's own network wait for your approval; the leaderboard shows who brings people in.",
+        "es": "Los referidos desde la misma red del referente esperan tu aprobación; la clasificación muestra quién atrae a más gente.",
+        "id": "Referral dari jaringan yang sama dengan pengajak menunggu persetujuan Anda; papan peringkat menunjukkan siapa yang paling banyak mengajak."
+      },
+      "file": "05-referrals.webp",
+      "poster": "05-referrals-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 676794
+    },
+    {
+      "id": "06-invitations",
+      "device": "desktop",
+      "title": {
+        "en": "Invitation waves",
+        "es": "Invitaciones por tandas",
+        "id": "Undangan bertahap"
+      },
+      "caption": {
+        "en": "Invite the next N people from the top of the line in one go, preview who gets in and track acceptance.",
+        "es": "Invita de una vez a las siguientes N personas de la lista, previsualiza quién entra y sigue la aceptación.",
+        "id": "Undang N orang teratas sekaligus, lihat dulu siapa yang masuk, dan pantau tingkat penerimaan."
+      },
+      "file": "06-invitations.webp",
+      "poster": "06-invitations-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 262048
+    },
+    {
+      "id": "07-milestones",
+      "device": "desktop",
+      "title": {
+        "en": "Milestones and rewards",
+        "es": "Hitos y recompensas",
+        "id": "Milestone dan hadiah"
+      },
+      "caption": {
+        "en": "Rewards unlocked at N confirmed friends, emailed automatically and shown on each status page.",
+        "es": "Recompensas al llegar a N amigos confirmados, enviadas por correo automáticamente y visibles en cada página de estado.",
+        "id": "Hadiah terbuka pada N teman terkonfirmasi, dikirim otomatis lewat email dan tampil di halaman status."
+      },
+      "file": "07-milestones.webp",
+      "poster": "07-milestones-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 232704
+    },
+    {
+      "id": "08-emails",
+      "device": "desktop",
+      "title": {
+        "en": "Emails",
+        "es": "Correos",
+        "id": "Email"
+      },
+      "caption": {
+        "en": "Edit the four emails with variables and a live preview, connect Resend, Postmark or Brevo, and see every email sent.",
+        "es": "Edita los cuatro correos con variables y vista previa, conecta Resend, Postmark o Brevo y consulta cada envío.",
+        "id": "Ubah empat email dengan variabel dan pratinjau langsung, hubungkan Resend, Postmark, atau Brevo, dan lihat setiap email terkirim."
+      },
+      "file": "08-emails.webp",
+      "poster": "08-emails-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 215144
+    },
+    {
+      "id": "09-landing-editor",
+      "device": "desktop",
+      "title": {
+        "en": "Landing page editor",
+        "es": "Editor de la página",
+        "id": "Editor halaman depan"
+      },
+      "caption": {
+        "en": "Change name, colours, theme, copy, reasons to join and FAQ with a live preview, then publish.",
+        "es": "Cambia nombre, colores, tema, textos, motivos y preguntas con vista previa en vivo y publica.",
+        "id": "Ubah nama, warna, tema, teks, alasan bergabung, dan FAQ dengan pratinjau langsung, lalu terbitkan."
+      },
+      "file": "09-landing-editor.webp",
+      "poster": "09-landing-editor-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 310816
+    },
+    {
+      "id": "10-form",
+      "device": "desktop",
+      "title": {
+        "en": "Form builder",
+        "es": "Editor del formulario",
+        "id": "Pembuat formulir"
+      },
+      "caption": {
+        "en": "Up to eight extra questions, text or choice; choice answers become a chart on the dashboard.",
+        "es": "Hasta ocho preguntas extra, de texto o de opción; las respuestas de opción se convierten en un gráfico en el panel.",
+        "id": "Hingga delapan pertanyaan tambahan, teks atau pilihan; jawaban pilihan menjadi grafik di dasbor."
+      },
+      "file": "10-form.webp",
+      "poster": "10-form-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 98432
+    },
+    {
+      "id": "11-integrations",
+      "device": "desktop",
+      "title": {
+        "en": "Integrations",
+        "es": "Integraciones",
+        "id": "Integrasi"
+      },
+      "caption": {
+        "en": "Signed webhooks with retries, scoped API keys shown once, the embed code and the REST API reference.",
+        "es": "Webhooks firmados con reintentos, claves de API con permisos que se muestran una sola vez, código para incrustar y referencia de la API.",
+        "id": "Webhook bertanda tangan dengan pengulangan, API key berskop yang ditampilkan sekali, kode sematan, dan referensi REST API."
+      },
+      "file": "11-integrations.webp",
+      "poster": "11-integrations-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 282624
+    },
+    {
+      "id": "12-team-audit",
+      "device": "desktop",
+      "title": {
+        "en": "Team and audit log",
+        "es": "Equipo y registro de auditoría",
+        "id": "Tim dan log audit"
+      },
+      "caption": {
+        "en": "Owner, admin, editor and viewer roles; every change in a hash-chained audit log.",
+        "es": "Roles de propietario, administrador, editor y lector; cada cambio en un registro encadenado por hash.",
+        "id": "Peran pemilik, admin, editor, dan viewer; setiap perubahan tercatat di log audit berantai hash."
+      },
+      "file": "12-team-audit.webp",
+      "poster": "12-team-audit-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 252628
+    },
+    {
+      "id": "13-settings",
+      "device": "desktop",
+      "title": {
+        "en": "Settings",
+        "es": "Ajustes",
+        "id": "Pengaturan"
+      },
+      "caption": {
+        "en": "Places gained per referral, email confirmation, throwaway-inbox policy, rate limits, links and embedding.",
+        "es": "Puestos ganados por referido, confirmación por correo, política de correos desechables, límites, enlaces e incrustación.",
+        "id": "Lompatan per referral, konfirmasi email, kebijakan email sekali pakai, batas laju, tautan, dan sematan."
+      },
+      "file": "13-settings.webp",
+      "poster": "13-settings-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 432834
+    },
+    {
+      "id": "14-languages-dark",
+      "device": "desktop",
+      "title": {
+        "en": "Languages, dark mode, command palette",
+        "es": "Idiomas, modo oscuro y paleta de comandos",
+        "id": "Bahasa, mode gelap, palet perintah"
+      },
+      "caption": {
+        "en": "English, Spanish and Indonesian; light and dark; jump anywhere with Ctrl/⌘ K.",
+        "es": "Inglés, español e indonesio; claro y oscuro; ve a cualquier sitio con Ctrl/⌘ K.",
+        "id": "Inggris, Spanyol, dan Indonesia; terang dan gelap; pindah ke mana saja dengan Ctrl/⌘ K."
+      },
+      "file": "14-languages-dark.webp",
+      "poster": "14-languages-dark-poster.webp",
+      "width": 1024,
+      "height": 640,
+      "bytes": 610044
+    },
+    {
+      "id": "15-phone",
+      "device": "phone",
+      "title": {
+        "en": "On a phone",
+        "es": "En el móvil",
+        "id": "Di ponsel"
+      },
+      "caption": {
+        "en": "The landing page and the whole admin console work on a phone; tables turn into cards.",
+        "es": "La página y toda la consola de administración funcionan en el móvil; las tablas se convierten en tarjetas.",
+        "id": "Halaman depan dan seluruh konsol admin bisa dipakai di ponsel; tabel berubah menjadi kartu."
+      },
+      "file": "15-phone.webp",
+      "poster": "15-phone-poster.webp",
+      "width": 390,
+      "height": 780,
+      "bytes": 956098
+    }
+  ]
+}
