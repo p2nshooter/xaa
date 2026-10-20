@@ -445,3 +445,12 @@ h1 { letter-spacing: -0.032em; }
   .acq-card:hover { transform: none; }
 }
 .acq-hero { background: radial-gradient(900px 420px at 85% 10%, rgba(77, 139, 255, 0.35), transparent 60%), linear-gradient(135deg, #070f24 0%, #0f2350 55%, #173a8a 100%); }
+
+/* The ✦ link to AXTO in the footer (owner, 18 Oct 2026): a slow accent glow, still for anyone who asks for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .eco-promo { animation: eco-promo-glow 3.2s ease-in-out infinite; }
+}
+@keyframes eco-promo-glow {
+  0%, 100% { text-shadow: 0 0 0 rgba(43, 107, 255, 0); }
+  50% { text-shadow: 0 0 14px rgba(43, 107, 255, 0.5); }
+}
