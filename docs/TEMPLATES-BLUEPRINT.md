@@ -144,10 +144,12 @@ Sebuah template baru boleh ditandai ✅ bila **semua** ini terpenuhi:
 
 1. Semua menu & fitur di bagian 4 untuk template itu ada dan bekerja — tidak ada tombol mati atau teks placeholder.
 2. TypeScript strict tanpa error; logika domain diuji unit (cakupan baris ≥ 85 % pada `src/domain`).
-3. Tes API pada `node:sqlite`: setiap route, termasuk penolakan izin dan validasi.
+3. Tes API pada R2 tiruan yang persis (`kit/r2/fake.ts`): setiap route, termasuk penolakan izin dan validasi, plus
+   balapan (klik ganda, dua admin sekaligus) untuk setiap transisi uang/status.
 4. E2E Playwright pada build demo: setiap menu terbuka, alur inti lulus, desktop + mobile, **nol error konsol**,
    axe tanpa pelanggaran serius.
-5. Deploy diuji di dua tempat: `wrangler dev` (Workers + D1 lokal) dan `docker compose up`.
+5. Deploy diuji di dua tempat: `wrangler dev` (Workers + R2 lokal, termasuk cron harian) dan `docker compose up`
+   (berjalan sebagai non-root, sehat, data tetap setelah restart, cadangan tertulis).
 6. Dokumentasi lengkap: SETUP (Workers & Docker), REBRAND, ARCHITECTURE, API.
 7. Gambar animasi setiap menu & dashboard dibuat ulang oleh tur dan tayang di halaman template.
 8. Demo tayang di `xaa.es/demos/<slug>/`, `demoUrl` diisi, `stack` di katalog sesuai teknologi yang sebenarnya.
@@ -221,19 +223,59 @@ animasi), **dashboard**, data, logika inti, integrasi, dan "selesai bila".
 
 ### 4.2 Link-in-Bio (Starter, €490)
 
-- **Pembanding:** Linktree, Beacons, Bento.
-- **Peran:** operator (Owner/Admin/Moderator), pengguna (pemilik profil).
-- **Profil publik `/@handle`:** blok tautan, judul, teks, gambar, sematan (YouTube, Spotify), ikon sosial, formulir
-  email, tautan produk; jadwal tampil (dari/sampai); SEO per profil; kode QR.
-- **Editor:** seret-lepas urutan blok, pratinjau ponsel langsung, tema (preset + warna/huruf/tombol/latar kustom).
-- **Analitik tanpa cookie:** tayangan, klik, CTR per blok, perujuk, negara (header Cloudflare), perangkat; disimpan
-  sebagai agregat harian (hemat database); IP tidak disimpan.
-- **Domain kustom:** instruksi CNAME + verifikasi.
-- **Menu pengguna:** Editor · Tampilan · Analitik · Pelanggan email · Pengaturan (handle, SEO, domain) · Akun.
-- **Menu operator:** Ringkasan · Pengguna · Laporan & moderasi (blokir domain berbahaya) · Paket & batas · Audit ·
-  Pengaturan.
-- **Dashboard:** pengguna aktif, profil dibuat, total tayangan/klik, blok teratas, laporan menunggu moderasi.
-- **Selesai bila:** klik tercatat sekali per kunjungan (tes), jadwal blok dihormati, handle unik & aman, moderasi bekerja.
+- **Pembanding:** Linktree, Beacons, Bento. Produk ini adalah *platform*: pembeli menjalankan layanan halaman tautan
+  untuk banyak kreator (seperti Linktree), bukan satu halaman saja.
+- **Peran:** operator (Owner/Admin/Moderator — tim kit) dan **kreator** (akun pengguna akhir: daftar, verifikasi
+  email, login, lupa kata sandi, hapus akun & ekspor data GDPR). Modul akun kreator dibangun di kit (`kit/server/
+  accounts.ts`) karena template berikutnya (Forms, Booking, LMS, Subscriptions, E-commerce, Help Desk) juga butuh.
+- **Profil publik `/@handle`** (dan domain kustom di `/`): HTML dirender server (cepat, SEO), tanpa bundel SPA. Blok:
+  tautan (judul, URL, ikon/gambar, sorotan), judul bagian, teks, gambar, sematan YouTube/Spotify/SoundCloud/Vimeo
+  (fasad klik-untuk-memuat: tanpa cookie pihak ketiga sampai diklik), ikon sosial, formulir email, produk (judul,
+  harga, gambar, tombol beli), pemisah. Jadwal tampil per blok (dari/sampai, waktu server). Avatar, nama, bio.
+  SEO per profil: judul, deskripsi, gambar OG, noindex; JSON-LD `Person`/`Organization` dengan `sameAs` dari ikon
+  sosial; `sitemap.xml` profil publik. Kode QR (SVG/PNG). Tombol "Laporkan halaman ini".
+- **Editor:** seret-lepas urutan blok (plus tombol naik/turun untuk keyboard & pembaca layar), pratinjau ponsel
+  langsung (iframe dari fungsi render yang sama dengan halaman publik), tema: 8 preset + kustom (latar polos/gradien/
+  gambar, warna teks & tombol, gaya tombol isi/garis/lembut/bayangan, sudut kotak/bulat/pil, 4 keluarga huruf sistem
+  tanpa memuat font luar).
+- **Gambar:** diperkecil di browser (maks 800 px, WebP/JPEG) lalu disimpan di R2 (`f/<id>`), disajikan dengan cache
+  permanen; batas ukuran per paket.
+- **Analitik tanpa cookie & tanpa IP:** pengunjung = hash harian (rahasia aplikasi + hari + IP + user-agent + profil),
+  IP tidak pernah disimpan. Setiap tayangan/klik ditulis **sekali** sebagai objek create-once
+  `l/ev/<hari>/<profil>/<jenis>/<blok>/<hash pengunjung>` (R2 sendiri menolak duplikat → "klik tercatat sekali per
+  kunjungan", tanpa penghitung bersama, tanpa kunci panas). Metadata objek: perujuk, negara (`cf-ipcountry`),
+  perangkat. Klik lewat `/go/<profil>/<blok>` (jalan tanpa JavaScript) lalu 302. Bot & prefetch tidak dihitung.
+  Hari ini dihitung dari list; cron harian merangkum hari sebelumnya ke dokumen bulanan
+  `k/stats/<profil>/<yyyy-mm>` (hanya cron yang menulis → tanpa balapan) lalu menghapus objek peristiwanya. Laporan:
+  tayangan, pengunjung unik, klik, CTR per blok, perujuk, negara, perangkat, grafik harian, ekspor CSV; rentang sesuai
+  paket (mis. Free 7 hari, Pro 90 hari).
+- **Domain kustom:** instruksi CNAME ke target yang diatur operator + TXT `_linkpage.<domain>` = token; tombol
+  Verifikasi memeriksa lewat DNS-over-HTTPS; domain unik (penjaga create-once); permintaan dengan Host itu
+  menyajikan profil di `/`. Hanya untuk paket yang mengizinkan.
+- **Pelanggan email:** blok formulir email → daftar pelanggan per profil (unik per profil + email, persetujuan
+  dicatat), ekspor CSV, hapus; email pemberitahuan ke kreator (bisa dimatikan).
+- **Paket & batas (operator):** paket (nama, harga tampil, jumlah profil, jumlah blok, hari analitik, domain kustom,
+  hapus merek, pelanggan email, ukuran gambar); paket bawaan untuk pendaftar baru; **pembayaran otomatis lewat
+  Stripe Checkout** (kunci rahasia & webhook secret disegel dengan `APP_SECRET`): webhook bertanda tangan diverifikasi,
+  setiap event diproses sekali (penjaga create-once per event id), paket aktif/berhenti otomatis, portal penagihan
+  Stripe untuk kreator. Demo: pembayaran disimulasikan, tidak ada uang yang ditarik.
+- **Moderasi:** laporan pengunjung masuk antrean (alasan, halaman, blok); tindakan: abaikan, sembunyikan blok,
+  tangguhkan profil/kreator; **daftar blokir domain** (tautan ke domain berbahaya ditolak saat disimpan dan
+  disembunyikan saat dirender); handle cadangan (admin, api, app, login, …).
+- **Menu kreator:** Editor · Tampilan · Analitik · Pelanggan email · Pengaturan (handle, SEO, domain, QR) · Paket ·
+  Akun.
+- **Menu operator:** Ringkasan · Kreator · Laporan & moderasi · Paket & batas · Penagihan (Stripe) · Integrasi ·
+  Tim · Audit · Email · Cadangan · Pengaturan (nama platform, pendaftaran terbuka/tertutup/undangan, target domain
+  kustom, handle cadangan, tautan syarat & privasi).
+- **Dashboard operator:** kreator aktif, profil dibuat, tayangan/klik total & per hari, blok teratas, laporan
+  menunggu, kreator per paket, pendapatan langganan aktif.
+- **Data di R2** (§2.2a): koleksi `members` (unik email), `profiles` (unik handle & domain, indeks per pemilik),
+  `blocks` disimpan di dalam dokumen profil (satu tulis per simpan editor, urutan atomik), `subscribers` (unik
+  profil+email), `reports`, `plans`, `blocked_domains` (pengaturan), `files`, `billing_events` (penjaga sekali).
+- **Selesai bila:** klik tercatat sekali per kunjungan (tes balapan), jadwal blok dihormati (tes), handle unik & aman
+  (tes balapan + cadangan + validasi), moderasi bekerja (laporan → sembunyikan → tidak tampil), domain diblokir
+  ditolak, batas paket ditegakkan di server, webhook Stripe idempoten (event ganda tidak mengubah apa pun), dan
+  semua butir §2.5.
 
 ### 4.3 Forms & Surveys (Starter, €690)
 
@@ -475,6 +517,10 @@ animasi), **dashboard**, data, logika inti, integrasi, dan "selesai bila".
 
 ## 6. Changelog
 
+- **20 Okt 2026 (4)**: §4.2 Link-in-Bio dirinci sebelum dibangun (platform multi-kreator, akun kreator di kit,
+  analitik create-once tanpa cookie, Stripe Checkout otomatis, moderasi); §2.5 butir 3 & 5 memakai R2 (tes pada R2
+  tiruan, `wrangler dev` dengan R2 lokal). Waitlist lulus butir 5 di R2: `wrangler dev` (cron harian menulis cadangan)
+  dan `docker compose` (non-root, sehat, data tetap setelah restart).
 - **20 Okt 2026 (3)**: §2.2a selesai — kit + Waitlist di R2, menu Backups, demo baru; tabel §3 diperbarui. Klaim
   stack di katalog xaa.es (`src/content/templates.ts`) disesuaikan: React 19 + Hono + Cloudflare R2 + Docker untuk
   semua template (bukan Next.js/PostgreSQL/D1).
