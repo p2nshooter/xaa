@@ -141,6 +141,17 @@ export async function SiteFooter() {
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-steel-500">
               {t('footer.tagline')}
             </p>
+            {/* Owner, 18 Oct 2026: promote axto.io and xaa.es on every site — the company's own platform, from here. */}
+            <p className="mt-4 text-sm">
+              <a
+                href="https://axto.io/?utm_source=xaa.es&utm_medium=referral&utm_campaign=ecosystem"
+                rel="noopener"
+                className="eco-promo font-semibold text-gold-500 transition hover:text-gold-600"
+                data-testid="footer-axto"
+              >
+                {t('footer.axto')}
+              </a>
+            </p>
           </div>
 
           <FooterColumn
