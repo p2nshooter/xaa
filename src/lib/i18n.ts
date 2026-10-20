@@ -44,6 +44,20 @@ export function isLang(v: string | undefined): v is Lang {
 type Dict = Record<string, string>;
 
 const EN: Dict = {
+  'pwa.label': 'Install the XAA.es app',
+  'pwa.title': 'XAA.es on your phone',
+  'pwa.sub': 'Install the app: opens full screen, without the browser.',
+  'pwa.install': 'Install app',
+  'pwa.later': 'Not now',
+  'pwa.close': 'Got it',
+  'pwa.iosTitle': 'Install XAA.es on your iPhone',
+  'pwa.ios1': 'Tap the Share button',
+  'pwa.ios2': 'Choose “Add to Home Screen”',
+  'pwa.ios3': 'Open XAA.es from your home screen — full screen, no browser bar.',
+  'pwa.androidTitle': 'Install XAA.es on your phone',
+  'pwa.android1': 'Open the browser menu (⋮ at the top right)',
+  'pwa.android2': 'Tap “Install app” or “Add to Home screen”',
+  'pwa.android3': 'Open XAA.es from your home screen — full screen, no browser bar.',
   // Chrome — promo strip
   'promo.slot': 'Taking projects for the next production slot — start from a 10% deposit',
   'promo.paid': 'Paid by PayPal, bank wire or USDT',
@@ -167,6 +181,20 @@ const EN: Dict = {
 };
 
 const ES: Dict = {
+  'pwa.label': 'Instalar la app de XAA.es',
+  'pwa.title': 'XAA.es en tu móvil',
+  'pwa.sub': 'Instala la app: se abre a pantalla completa, sin navegador.',
+  'pwa.install': 'Instalar app',
+  'pwa.later': 'Ahora no',
+  'pwa.close': 'Entendido',
+  'pwa.iosTitle': 'Instala XAA.es en tu iPhone',
+  'pwa.ios1': 'Toca el botón Compartir',
+  'pwa.ios2': 'Elige «Añadir a pantalla de inicio»',
+  'pwa.ios3': 'Abre XAA.es desde tu pantalla de inicio: a pantalla completa, sin barra del navegador.',
+  'pwa.androidTitle': 'Instala XAA.es en tu móvil',
+  'pwa.android1': 'Abre el menú del navegador (⋮ arriba a la derecha)',
+  'pwa.android2': 'Toca «Instalar aplicación» o «Añadir a pantalla de inicio»',
+  'pwa.android3': 'Abre XAA.es desde tu pantalla de inicio: a pantalla completa, sin barra del navegador.',
   'promo.slot': 'Aceptamos proyectos para el próximo turno de producción — desde un 10% de depósito',
   'promo.paid': 'Pago con PayPal, transferencia o USDT',
   'promo.milestone': 'Por hitos, nunca todo por adelantado',
@@ -282,6 +310,20 @@ const ES: Dict = {
 };
 
 const ID: Dict = {
+  'pwa.label': 'Pasang aplikasi XAA.es',
+  'pwa.title': 'XAA.es di HP Anda',
+  'pwa.sub': 'Pasang aplikasinya: terbuka layar penuh, tanpa browser.',
+  'pwa.install': 'Pasang aplikasi',
+  'pwa.later': 'Nanti saja',
+  'pwa.close': 'Mengerti',
+  'pwa.iosTitle': 'Pasang XAA.es di iPhone Anda',
+  'pwa.ios1': 'Ketuk tombol Bagikan (Share)',
+  'pwa.ios2': 'Pilih “Tambahkan ke Layar Utama”',
+  'pwa.ios3': 'Buka XAA.es dari layar utama — layar penuh, tanpa bilah browser.',
+  'pwa.androidTitle': 'Pasang XAA.es di HP Anda',
+  'pwa.android1': 'Buka menu browser (⋮ di kanan atas)',
+  'pwa.android2': 'Ketuk “Instal aplikasi” atau “Tambahkan ke Layar utama”',
+  'pwa.android3': 'Buka XAA.es dari layar utama — layar penuh, tanpa bilah browser.',
   'promo.slot': 'Menerima proyek untuk slot produksi berikutnya — mulai dari DP 10%',
   'promo.paid': 'Pembayaran via PayPal, transfer bank, atau USDT',
   'promo.milestone': 'Berbasis termin, tidak pernah lunas di depan',
