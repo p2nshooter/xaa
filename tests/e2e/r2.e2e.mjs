@@ -21,7 +21,7 @@ const body = (page) => page.locator('body').innerText();
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
 const errors = [];
 const watch = (page) => {
-  page.on('pageerror', (e) => errors.push(e.message));
+  page.on('pageerror', (e) => errors.push(`${new URL(page.url()).pathname}: ${e.message.slice(0, 90)}`));
   page.on('response', (r) => { if (r.status() >= 500) errors.push(`HTTP ${r.status()} ${r.url()}`); });
 };
 
@@ -32,6 +32,7 @@ async function clientLogin(page, email, pass) {
   await form.locator('input[name="password"]').fill(pass);
   await form.getByRole('button', { name: /^Sign in$/ }).click();
   await page.waitForURL((u) => new URL(u).pathname.startsWith('/portal'), { timeout: 15000 }).catch(() => {});
+  await page.waitForLoadState('networkidle').catch(() => {});
 }
 
 async function adminLogin(page) {
@@ -42,6 +43,7 @@ async function adminLogin(page) {
   await form.locator('input[name="password"]').fill(ADMIN_PASS);
   await form.getByRole('button', { name: /Enter studio desk/ }).click();
   await page.waitForURL((u) => new URL(u).pathname.startsWith('/portal/admin'), { timeout: 15000 }).catch(() => {});
+  await page.waitForLoadState('networkidle').catch(() => {});
 }
 
 async function register(page, email, pass) {
@@ -94,6 +96,18 @@ try {
   ok(inPortal === 1 && refused === 1, 'same email registered twice at once → exactly one account', `portal=${inPortal} refused=${refused}`);
 
   // ── 5. The winner opens a project and reports the deposit; admin confirms ──
+  // A fresh store may have no payment destinations yet: the admin imports the company's own.
+  const admin = await (await browser.newContext()).newPage();
+  watch(admin);
+  await adminLogin(admin);
+  ok(new URL(admin.url()).pathname.startsWith('/portal/admin'), 'admin signs in');
+  await admin.goto(BASE + '/portal/admin/payments', { waitUntil: 'networkidle' });
+  const importBtn = admin.getByRole('button', { name: /Import company accounts/ });
+  if (await importBtn.count()) {
+    await importBtn.click();
+    await admin.getByText(/Imported|imported|already/).first().waitFor({ timeout: 20000 }).catch(() => {});
+  }
+
   const client = inPortal && new URL(a.url()).pathname === '/portal' ? a : b;
   await client.goto(BASE + '/portal/new', { waitUntil: 'networkidle' });
   const pkg = client.locator('input[name="package"]').first();
@@ -114,10 +128,7 @@ try {
     ok(false, 'deposit form on the project page', 'no reference field (are payment destinations imported?)');
   }
 
-  const admin = await (await browser.newContext()).newPage();
-  watch(admin);
-  await adminLogin(admin);
-  ok(new URL(admin.url()).pathname.startsWith('/portal/admin'), 'admin signs in');
+  await admin.goto(BASE + '/portal/admin', { waitUntil: 'networkidle' });
   const row = admin.locator('tr').filter({ hasText: email }).filter({ has: admin.getByRole('button', { name: 'Confirm' }) }).first();
   if (await row.count()) {
     await row.getByRole('button', { name: 'Confirm' }).click();
