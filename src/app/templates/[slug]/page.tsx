@@ -13,6 +13,7 @@ import { jsonLdHtml } from '@/lib/json-ld';
 import { SITE } from '@/lib/site';
 import { pageMetadata, clip } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { demoFor } from '@/content/template-demos';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,6 +39,8 @@ type Copy = {
   featTitle: string; incTitle: string; rebrandTitle: string; rebrandLead: string;
   bundleReady: string; bundlePrep: string; howTitle: string; how: string[];
   ctaTitle: string; ctaLead: string;
+  admin: string; account: string; email: string; password: string; accountNote: string;
+  galleryEyebrow: string; galleryTitle: string; galleryLead: string; phone: string;
 };
 const COPY: Record<Lang, Copy> = {
   en: {
@@ -46,6 +49,9 @@ const COPY: Record<Lang, Copy> = {
     bundleReady: 'Bundle ready — download unlocks after payment', bundlePrep: 'Bundle is being prepared — you can still buy; we deliver it on confirmation',
     howTitle: 'How buying works', how: ['Click buy — an order opens in your portal.', 'Pay the one-time price (USDT, PayPal or bank).', 'We confirm the payment.', 'Download the single ZIP bundle — full source, database and setup guide.'],
     ctaTitle: 'Want it customised first?', ctaLead: 'We can rebrand, extend or deploy it for you as a fixed-price add-on. Tell us what you need.',
+    admin: 'Open the admin console', account: 'Demo account', email: 'Email', password: 'Password',
+    accountNote: 'Already filled in on the sign-in page. The demo runs in your browser with sample data; nothing you do is sent anywhere.',
+    galleryEyebrow: 'Look inside', galleryTitle: 'Every menu and dashboard', galleryLead: 'Short clips recorded from the live demo, so you can see each screen before you buy.', phone: 'Phone',
   },
   es: {
     store: 'Plantillas SaaS', buy: 'Comprar — obtener el paquete', demo: 'Demo en vivo', noDemo: 'Demo a petición', price: 'Precio único',
@@ -53,6 +59,9 @@ const COPY: Record<Lang, Copy> = {
     bundleReady: 'Paquete listo — la descarga se desbloquea tras el pago', bundlePrep: 'El paquete se está preparando — puedes comprar; lo entregamos al confirmar',
     howTitle: 'Cómo comprar', how: ['Haz clic en comprar — se abre un pedido en tu portal.', 'Paga el precio único (USDT, PayPal o banco).', 'Confirmamos el pago.', 'Descarga el único paquete ZIP — código, base de datos y guía.'],
     ctaTitle: '¿Lo quieres personalizado antes?', ctaLead: 'Podemos renombrarlo, ampliarlo o desplegarlo por ti como un adicional a precio fijo. Dinos qué necesitas.',
+    admin: 'Abrir la consola de administración', account: 'Cuenta de demostración', email: 'Correo', password: 'Contraseña',
+    accountNote: 'Ya viene rellenada en la página de acceso. La demo funciona en tu navegador con datos de ejemplo; nada de lo que hagas se envía.',
+    galleryEyebrow: 'Por dentro', galleryTitle: 'Cada menú y panel', galleryLead: 'Clips cortos grabados de la demo en vivo, para que veas cada pantalla antes de comprar.', phone: 'Móvil',
   },
   id: {
     store: 'Template SaaS', buy: 'Beli — dapatkan bundel', demo: 'Demo langsung', noDemo: 'Demo sesuai permintaan', price: 'Harga sekali bayar',
@@ -60,6 +69,9 @@ const COPY: Record<Lang, Copy> = {
     bundleReady: 'Bundel siap — unduhan terbuka setelah pembayaran', bundlePrep: 'Bundel sedang disiapkan — Anda tetap bisa membeli; kami kirim saat dikonfirmasi',
     howTitle: 'Cara membeli', how: ['Klik beli — pesanan terbuka di portal Anda.', 'Bayar harga sekali (USDT, PayPal, atau bank).', 'Kami konfirmasi pembayaran.', 'Unduh satu bundel ZIP — kode penuh, database, dan panduan setup.'],
     ctaTitle: 'Ingin dikustomisasi dulu?', ctaLead: 'Kami bisa mengganti merek, memperluas, atau men-deploy-kannya untuk Anda sebagai tambahan harga tetap. Beri tahu kebutuhan Anda.',
+    admin: 'Buka konsol admin', account: 'Akun demo', email: 'Email', password: 'Kata sandi',
+    accountNote: 'Sudah terisi di halaman masuk. Demo berjalan di browser Anda dengan data contoh; tidak ada yang dikirim ke mana pun.',
+    galleryEyebrow: 'Lihat isinya', galleryTitle: 'Setiap menu dan dasbor', galleryLead: 'Klip singkat yang direkam dari demo langsung, supaya Anda bisa melihat setiap layar sebelum membeli.', phone: 'Ponsel',
   },
 };
 
@@ -71,6 +83,7 @@ export default async function TemplateDetail({ params }: { params: Promise<{ slu
   const c = pick(lang, COPY);
   const isAdmin = user?.role === 'admin';
   const priceLabel = t.priceMax ? `${eur(t.price)} – ${eur(t.priceMax)}` : eur(t.price);
+  const demo = demoFor(t.slug);
 
   return (
     <>
@@ -78,6 +91,7 @@ export default async function TemplateDetail({ params }: { params: Promise<{ slu
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml({
         '@context': 'https://schema.org', '@type': 'Product', name: t.name, description: t.summary,
         offers: { '@type': 'Offer', price: t.price, priceCurrency: 'EUR', url: `${SITE.url}/templates/${t.slug}` },
+        ...(demo ? { image: demo.shots.map((x) => `${SITE.url}${x.poster}`) } : {}),
       }) }} />
 
       <section className="hero relative overflow-hidden">
@@ -104,15 +118,51 @@ export default async function TemplateDetail({ params }: { params: Promise<{ slu
               <div className="mt-4 flex flex-col gap-2">
                 <BuyButton slug={t.slug} label={c.buy} className="btn btn-primary w-full" />
                 {t.demoUrl ? (
-                  <a href={t.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost w-full">{c.demo} ↗</a>
+                  <a href={t.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost w-full" data-testid="demo-link">{c.demo} ↗</a>
                 ) : (
                   <Link href="/contact" className="btn btn-ghost w-full">{c.noDemo}</Link>
                 )}
+                {demo ? <a href={demo.login} target="_blank" rel="noopener noreferrer" className="btn btn-ghost w-full">{c.admin} ↗</a> : null}
               </div>
+              {demo ? (
+                <div className="mt-4 rounded-lg bg-[color:var(--surface)] p-3 text-xs" data-testid="demo-account">
+                  <p className="font-bold uppercase tracking-wide text-steel-500">{c.account}</p>
+                  <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
+                    <dt className="text-steel-500">{c.email}</dt><dd className="break-all font-mono">{demo.account.email}</dd>
+                    <dt className="text-steel-500">{c.password}</dt><dd className="break-all font-mono">{demo.account.password}</dd>
+                  </dl>
+                  <p className="mt-2 leading-relaxed text-steel-500">{c.accountNote}</p>
+                </div>
+              ) : null}
             </aside>
           </div>
         </div>
       </section>
+
+      {demo?.shots.length ? (
+        <section className="mx-auto max-w-6xl px-4 pt-12" aria-labelledby="gallery-title" data-testid="demo-gallery">
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">{c.galleryEyebrow}</p>
+          <h2 id="gallery-title" className="mt-1 font-display text-2xl font-extrabold">{c.galleryTitle}</h2>
+          <p className="mt-2 max-w-2xl text-sm text-steel-500">{c.galleryLead}</p>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            {demo.shots.map((x) => (
+              <figure key={x.id} className={`panel mk-lift overflow-hidden ${x.device === 'phone' ? 'sm:col-span-2' : ''}`}>
+                <a href={x.src} target="_blank" rel="noopener" className={`block bg-[color:var(--surface)] ${x.device === 'phone' ? 'mx-auto max-w-[300px] py-4' : ''}`}>
+                  <picture>
+                    {/* Visitors who ask for less motion get the still poster. */}
+                    <source media="(prefers-reduced-motion: reduce)" srcSet={x.poster} />
+                    <img src={x.src} width={x.width} height={x.height} loading="lazy" decoding="async" alt={pick(lang, x.title)} className="h-auto w-full" />
+                  </picture>
+                </a>
+                <figcaption className="p-4">
+                  <p className="font-display font-extrabold">{pick(lang, x.title)}{x.device === 'phone' ? <span className="chip ml-2 align-middle">{c.phone}</span> : null}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-steel-500">{pick(lang, x.caption)}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid gap-10 lg:grid-cols-2">

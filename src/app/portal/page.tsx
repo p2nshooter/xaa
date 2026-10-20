@@ -10,6 +10,8 @@ import { STAGES } from '@/content/process';
 import { investorsByEmail, type Investor } from '@/server/invest';
 import { soft, type Problems } from '@/server/soft';
 import { DbNotice } from '@/components/DbNotice';
+import { TEMPLATE_DEMOS } from '@/content/template-demos';
+import { getTemplate, TIER_LABEL } from '@/content/templates';
 
 export const metadata: Metadata = {
   title: 'Client portal',
@@ -95,7 +97,50 @@ export default async function PortalPage() {
           </div>
         </section>
       ) : null}
+
+      <LiveDemos />
     </div>
+  );
+}
+
+/** Every template with a live demo, and the demo account to sign in with (owner, 20 Oct 2026). */
+function LiveDemos() {
+  const demos = Object.values(TEMPLATE_DEMOS).flatMap((d) => {
+    const t = getTemplate(d.slug);
+    return t ? [{ d, t }] : [];
+  });
+  if (!demos.length) return null;
+  return (
+    <section className="mt-10" data-testid="portal-demos" aria-labelledby="demos-title">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <h2 id="demos-title" className="font-display text-xl font-extrabold">Live demos of our templates</h2>
+        <Link href="/templates" className="text-sm text-gold-500 underline">All SaaS templates →</Link>
+      </div>
+      <p className="mt-2 max-w-3xl text-sm text-steel-500">
+        Try a template before you buy. Each demo is the real application running in your browser with sample data —
+        nothing you do there is sent anywhere, and a reset button brings back the sample data. The demo account is
+        already filled in on its sign-in page.
+      </p>
+      <div className="panel mt-4 divide-y divide-[color:var(--accent-soft)]">
+        {demos.map(({ d, t }) => (
+          <div key={d.slug} className="grid items-center gap-4 p-4 sm:grid-cols-[1fr_auto]">
+            <div>
+              <p className="font-semibold">{t.name} <span className="ml-1 text-xs font-normal text-steel-500">{TIER_LABEL[t.tier]} · {eur(t.price)}</span></p>
+              <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-xs">
+                <dt className="text-steel-500">Demo address</dt><dd className="break-all font-mono">xaa.es{d.url}</dd>
+                <dt className="text-steel-500">Username</dt><dd className="break-all font-mono">{d.account.email}</dd>
+                <dt className="text-steel-500">Password</dt><dd className="break-all font-mono">{d.account.password}</dd>
+              </dl>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <a href={d.url} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm">Open the demo ↗</a>
+              <a href={d.login} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">Admin console ↗</a>
+              <Link href={`/templates/${d.slug}`} className="btn btn-ghost btn-sm">Details</Link>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 

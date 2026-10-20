@@ -89,7 +89,9 @@ Arti tanda:
 | 41 | (20 Okt 2026) „Promosikan axto.io dan xaa.es d semua situs, tp kerjakan dulu apa belum d kerjakan di ke duanya" | 🔄 aturan prioritas | Yang belum dibuat di xaa.es (template SaaS, bagian 5 dan `docs/TEMPLATES-BLUEPRINT.md`) didahulukan |
 | 42 | (20 Okt 2026) „Axto.io & xaa.es bikin SEO nya boom, niche kuat, pastiin trafik organiknya meledak, bagaimanapun caranya" | 🔄 | Niche xaa.es: template SaaS dengan demo hidup + studio pembuatan web; alat gratis (kalkulator biaya website); hanya cara yang sesuai kebijakan Google. Rencana di repo guardian-ai `docs/BLUEPRINT-V4.md` §23 B |
 | 43 | (20 Okt 2026) „Xaa.es & axto.io bikinin app nya biar bisa di install di HP, taro paling atas, kasih tanda icon HP buat install nya, biar bisa langsung d buka tanpa browser, klo sudah ada di HP, hapus icon HP nya" | ✅ (20 Okt) | Manifest (`src/app/manifest.ts`), ikon `public/pwa/*`, service worker `public/sw.js` (halaman portal/login tidak pernah disimpan), halaman `public/offline.html`, skrip awal `src/lib/pwa-early.ts`, bilah pasang ikon HP paling atas `src/components/InstallBar.tsx` (EN/ES/ID): dialog pasang bawaan atau langkah iPhone/Android; hilang bila terpasang (mode aplikasi, `appinstalled`, `getInstalledRelatedApps`); × = sembunyi 14 hari. Playwright 8 skenario lulus |
-| 44 | (20 Okt 2026) „Apakah xaa.es SaaS template nya sudah d buatkan semuanya? Sudah ada link demo nya? Berikan username dan password demo nya di portal member, pastikan semuanya pantas dengan harga nya dan berkualitas tinggi juga mudah d gunakan. Kerjakan" | 🔄 | Dijawab jujur: belum (0/18). Template Waitlist sedang dibangun (`docs/TEMPLATES-BLUEPRINT.md`). Akun demo tampil di portal member hanya untuk template yang demonya sudah tayang |
+| 44 | (20 Okt 2026) „Apakah xaa.es SaaS template nya sudah d buatkan semuanya? Sudah ada link demo nya? Berikan username dan password demo nya di portal member, pastikan semuanya pantas dengan harga nya dan berkualitas tinggi juga mudah d gunakan. Kerjakan" | 🔄 | Dijawab jujur: belum (0/18). **Waitlist & Landing selesai** (repo privat `xaa-templates`): kode, 50 tes API/unit, E2E + axe di desktop & HP, diuji di `wrangler dev` + D1 lokal dan `docker compose`, dokumen, 15 klip animasi. Demo di `/demos/waitlist/`, galeri „Every menu and dashboard" di `/templates/waitlist`, akun demo (email + kata sandi) di portal member bagian „Live demos". 17 template lainnya menyusul |
+| 45 | (20 Okt 2026) „Database semuanya ke R2 ya, jgn ada yg ke d1... Manfaatin R2, penuhin disana, baik xaa.es maupun axto.io.. Hemat D1 maximalin R2, sy siap bayar 100-1000GB buat xaa.es & axto.io" | 🔄 | Rancangan lengkap di **`docs/R2-DATA-BLUEPRINT.md`**: R2 Store (dokumen JSON, tulis bersyarat atomik If-None-Match/If-Match, penjaga keunikan, index lewat `list` + customMetadata, rekonsiliasi, backup harian), peta 19 tabel, migrasi D1 → R2 tanpa kehilangan data/pembayaran, lalu D1 dilepas |
+| 46 | (20 Okt 2026) „Blue print setiap logika di axto & xaa wajib kuat, kumplit, komplex mudah di gunakan, termasuk animasi panduan untuk customer, jika bluprint sudah sangat kuat dan sudah 100% siap produksi bukan sampah langsung kerjakan dengan live payment, jgn ada sampah app" | 🔄 | Aturan tetap: blueprint dulu, lalu dibangun dan diuji. Animasi panduan pelanggan (10 alur + 6 admin, EN/ES/ID): `docs/R2-DATA-BLUEPRINT.md` bagian 5 dan 8. Pembayaran tetap Live dari Admin → Pembayaran (bagian 6) |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
 ---
@@ -123,13 +125,15 @@ node seo-verify.mjs http://localhost:8799                     # 41 cek SEO
 
 | Tier | Template | Harga | Katalog dan halaman | Pembayaran | Produk (source code) | Demo |
 |---|---|---|---|---|---|---|
-| Starter | waitlist, linkinbio, formbuilder | €390–€690 | ✅ | ✅ | ❌ belum dibangun | ❌ |
+| Starter | **waitlist** | €390 | ✅ | ✅ | ✅ selesai (repo privat `xaa-templates`) | ✅ `/demos/waitlist/` + 15 klip animasi |
+| Starter | linkinbio, formbuilder | €490–€690 | ✅ | ✅ | ❌ belum dibangun | ❌ |
 | Business | CRM, invoicing, booking, e-commerce, helpdesk, project management, LMS, restaurant, subscription box | €1.190–€1.990 | ✅ | ✅ | ❌ belum dibangun | ❌ |
 | Enterprise/Super | multi-tenant SaaS kit, marketplace, ERP suite, AI SaaS platform, fintech core, global ecosystem | €40.000–€1.200.000 | ✅ | ✅ | ❌ belum dibangun | ❌ |
 
 Setelah bayar, pembeli melihat status "bundle sedang disiapkan" sampai studio
-melampirkan file zip. Melampirkan zip butuh R2 (belum aktif). **Template ini belum
-bisa disebut "100% berfungsi"**: produknya sendiri harus dibangun satu per satu.
+melampirkan file zip (Studio desk → template → unggah bundle; R2 `xaa-uploads` sudah aktif). Zip Waitlist dibuat
+`node tools/bundle.mjs waitlist --check` di repo privat (instal bersih + typecheck + tes + build). Template lain
+**belum** bisa disebut "100% berfungsi": produknya harus dibangun satu per satu.
 Template harga super perlu proyek tersendiri beserta demo yang benar-benar hidup.
 
 Rencana lengkap per template (logika, menu, dashboard, demo, gambar animasi, status): **`docs/TEMPLATES-BLUEPRINT.md`**.
@@ -248,6 +252,10 @@ Rencana lengkap per template (logika, menu, dashboard, demo, gambar animasi, sta
   index/paused bekerja, tanpa error halaman. `tools/e2e/crawl.mjs`: tidak ada tautan rusak.
 
 ## 9. Changelog blueprint
+
+- **20 Okt 2026 (4)**: permintaan 45–46 dicatat; `docs/R2-DATA-BLUEPRINT.md` (semua data pindah dari D1 ke R2,
+  animasi panduan pelanggan, pembayaran Live). Template Waitlist selesai: demo `/demos/waitlist/`, galeri klip di
+  `/templates/waitlist`, akun demo di portal member, katalog diperbarui sesuai produk sebenarnya.
 
 - **20 Okt 2026 (3)**: permintaan 41–44 dicatat; aplikasi HP (PWA) xaa.es dibangun (permintaan 43).
 - **20 Okt 2026 (2)**: permintaan 38 — `docs/TEMPLATES-BLUEPRINT.md` (logika 18 template, repo privat, demo & gambar animasi, syarat siap produksi).
