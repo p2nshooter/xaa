@@ -104,7 +104,7 @@ Semua tes ada di `tests/e2e/` dan dijalankan terhadap Worker lokal
 ```bash
 cd tests/e2e && npm ci
 ADMIN_PASS='…' node portal.e2e.mjs  http://localhost:8799   # semua menu portal admin + member
-ADMIN_PASS='…' node d1down.e2e.mjs  http://localhost:8799   # login tetap jalan saat D1 kena kuota
+ADMIN_PASS='…' node r2.e2e.mjs      http://localhost:8799   # data R2: pindah dari D1, klien lama login, faktur, email ganda, backup/restore
 node mock-ai.mjs &                                            # AI tiruan di :8899 (SUPPORT_AI_URL di .dev.vars)
 ADMIN_PASS='…' node support.e2e.mjs http://localhost:8799   # chat, AI, pembayaran, diagnosis
 node seo-verify.mjs http://localhost:8799                     # 41 cek SEO

@@ -8,13 +8,12 @@ import { useEffect, useState } from 'react';
  *
  * In production Next.js strips server error messages before they reach the
  * browser, so this boundary cannot read what went wrong. It asks /api/health
- * instead, which reports whether the database is answering. The common real
- * cause is Cloudflare D1's free-tier daily read limit: sign-in keeps working
- * (sessions need no database), but project and payment data cannot load until
- * the limit resets at 00:00 UTC. Saying exactly that beats a blank crash page.
+ * instead, which reports whether the R2 data storage is answering and whether
+ * the one-time move of the old records into it is still running (a matter of
+ * seconds after a deploy). Saying exactly that beats a blank crash page.
  */
 interface Health {
-  d1?: { ok: boolean; error?: string };
+  data?: { ok: boolean; migration?: string; error?: string };
   signInReady?: boolean;
 }
 interface Diagnosis {
@@ -39,33 +38,32 @@ export default function PortalError({ error, reset }: { error: Error & { digest?
   }, [error]);
   const failed = diag?.steps?.filter((s) => !s.ok) ?? [];
 
-  const d1Down = health?.d1 && !health.d1.ok;
-  const quota = d1Down && /limit|quota|exceeded/i.test(health?.d1?.error ?? '');
+  const storeDown = health?.data && !health.data.ok;
+  const moving = health?.data?.ok && health.data.migration === 'pending';
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16">
       <div className="panel border-l-4 border-l-gold-500 p-6">
         <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-gold-500">Portal</p>
         <h1 className="mt-1 font-display text-2xl font-extrabold">
-          {quota ? 'Project data is paused until the daily database limit resets' : d1Down ? 'The portal database is not answering' : 'This page could not load'}
+          {moving ? 'Your records are moving to new storage' : storeDown ? 'The portal storage is not answering' : 'This page could not load'}
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-steel-500">
-          {quota ? (
+          {moving ? (
             <>
-              The hosting database has used its free daily read allowance. You are still signed in and nothing is lost —
-              projects, payments and files come back automatically after <strong>00:00 UTC</strong>. Upgrading the
-              Cloudflare account to Workers Paid removes this limit.
+              XAA is copying its records to new storage. It takes a few seconds and nothing is lost — press
+              <strong> Try again</strong> in a moment.
             </>
-          ) : d1Down ? (
-            <>The database reported an error, so this page cannot show its data right now. Your account and session are fine.</>
+          ) : storeDown ? (
+            <>The storage reported an error, so this page cannot show its data right now. Your account and session are fine.</>
           ) : health ? (
             <>Something failed while building this page. Try again — if it keeps happening, tell us the reference below.</>
           ) : (
             <>Checking what went wrong…</>
           )}
         </p>
-        {health?.d1?.error ? (
-          <p className="mt-3 break-words rounded-md bg-[color:var(--surface)] p-3 font-mono text-[11px] text-steel-500">{health.d1.error}</p>
+        {health?.data?.error ? (
+          <p className="mt-3 break-words rounded-md bg-[color:var(--surface)] p-3 font-mono text-[11px] text-steel-500">{health.data.error}</p>
         ) : null}
         {failed.length ? (
           <div className="mt-3 rounded-md border border-red-200 bg-red-50 p-3 text-[12px]">

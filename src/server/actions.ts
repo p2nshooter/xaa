@@ -3,7 +3,8 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { headers } from 'next/headers';
-import { db, newId, nowIso, NotConfiguredError, appEnv } from './db';
+import { NotConfiguredError, appEnv } from './db';
+import { MaintenanceError } from './migrate';
 import { createUser, currentUser, endSession, findUserByEmail, normaliseEmail, startSession, verifyPassword, isAdminEmail, verifyAdminPassword, adminSessionUser } from './auth';
 import {
   addUpdate, cancelProject, createProject, getProject, listPayments, money, nextAction, recordPayment,
@@ -16,7 +17,7 @@ import {
   saveSetting, clearSetting, seedMethodsFromEnv, importCompanyMethods, revealPaymentMethod, getSetting,
   bniTransferGuide, BNI_SWIFT, SETTING_DEFS, type MethodKind,
 } from './settings';
-import { setLeadStatus, deleteLead, type LeadStatus } from './leads';
+import { addLead, setLeadStatus, deleteLead, type LeadStatus } from './leads';
 import {
   saveAiKey, clearAiKey, revealAiKey, setSchedule, runBackup, runOperation,
   restoreFromBackup, resetDatabase, CADENCES, PROVIDERS, type Cadence, type Provider,
@@ -27,6 +28,7 @@ import { applyInvestor, getInvest, getInvestor, recordPayout, setInvestorStatus,
 import { getTemplate } from '@/content/templates';
 import { adminReply, getThread, markAdminOnline, setThreadStatus, createThread } from './support';
 import { getSale, usdWhole } from './sale';
+import { backupNow, recopyD1, restoreFrom } from './storage';
 
 /**
  * Every mutation in the portal. Server actions rather than REST handlers:
@@ -50,11 +52,11 @@ export interface RevealState {
 }
 
 function fail(err: unknown): ActionState {
-  if (err instanceof NotConfiguredError) return { error: err.message };
+  if (err instanceof NotConfiguredError || err instanceof MaintenanceError) return { error: err.message };
   if (err instanceof UploadError) return { error: err.message };
   if (err instanceof Error) {
     if (err.message === 'AUTH_REQUIRED') return { error: 'Please sign in again.' };
-    // Never leak a raw D1 error string to the browser.
+    // Never leak a raw storage error string to the browser.
     return { error: err.message.length < 200 ? err.message : 'Something went wrong. Please try again.' };
   }
   return { error: 'Something went wrong. Please try again.' };
@@ -105,11 +107,10 @@ export async function loginAction(_prev: ActionState, form: FormData): Promise<A
     const password = str(form, 'password');
     const env = await appEnv();
 
-    // The studio owner signs in WITHOUT reading D1 at all. The admin password is
-    // verified against the ADMIN_PASSWORD secret or the committed hash, and the
-    // session is written to R2 (see startSession). This is what lets the owner
-    // in even when the account's shared D1 read budget is exhausted — the exact
-    // failure the sign-in kept hitting. The user record is built from source.
+    // The studio owner signs in WITHOUT reading any storage. The admin password
+    // is verified against the ADMIN_PASSWORD secret or the committed hash, and
+    // the session is a signed cookie (see startSession), so the owner gets in
+    // whatever state the storage is in. The user record is built from source.
     if (isAdminEmail(email, env)) {
       if (!(await verifyAdminPassword(password, env))) {
         return { error: 'Email or password is incorrect.' };
@@ -118,10 +119,8 @@ export async function loginAction(_prev: ActionState, form: FormData): Promise<A
       redirect(next.startsWith('/') ? next : '/portal');
     }
 
-    // Clients are stored in D1, so their sign-in still reads it. If D1 is over
-    // quota this fails with the real reason (below); the studio account above is
-    // unaffected. On success the session snapshot goes to R2, so their later
-    // page loads no longer read D1 for auth either.
+    // Client accounts are stored in R2, so their sign-in reads the account once;
+    // the signed session cookie then carries them without further reads.
     const user = await findUserByEmail(email);
     if (!user || !(await verifyPassword(password, user.password_hash))) {
       return { error: 'Email or password is incorrect.' };
@@ -703,11 +702,7 @@ export async function enquiryAction(_prev: ActionState, form: FormData): Promise
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return { error: 'That email address does not look right.' };
     if (str(form, 'website')) return { ok: 'Thank you — we will reply within one business day.' }; // honeypot
 
-    const database = await db();
-    await database
-      .prepare('INSERT INTO enquiries (id, name, email, company, budget, package_slug, message, created_at) VALUES (?,?,?,?,?,?,?,?)')
-      .bind(newId(), name, normaliseEmail(email), str(form, 'company') || null, str(form, 'budget') || null, str(form, 'package') || null, message.slice(0, 5000), nowIso())
-      .run();
+    await addLead({ name, email: normaliseEmail(email), company: str(form, 'company'), budget: str(form, 'budget'), packageSlug: str(form, 'package'), message: message.slice(0, 5000) });
     // Every brief also lands in the Support inbox as a conversation, so the
     // studio answers contact-form messages and chats from one place.
     try {
@@ -764,11 +759,7 @@ export async function acquireAction(_prev: ActionState, form: FormData): Promise
       message && `Message: ${message}`,
     ].filter(Boolean).join('\n');
 
-    const database = await db();
-    await database
-      .prepare('INSERT INTO enquiries (id, name, email, company, budget, package_slug, message, created_at) VALUES (?,?,?,?,?,?,?,?)')
-      .bind(newId(), name.slice(0, 120), normaliseEmail(email), company.slice(0, 160) || null, usdWhole(amount), 'site-acquisition', brief.slice(0, 5000), nowIso())
-      .run();
+    await addLead({ name: name.slice(0, 120), email: normaliseEmail(email), company: company.slice(0, 160), budget: usdWhole(amount), packageSlug: 'site-acquisition', message: brief.slice(0, 5000) });
     try {
       await createThread({ name, email: normaliseEmail(email), topic: 'negotiate', lang, source: 'contact', firstMessage: `[xaa.es acquisition] ${brief}` });
     } catch (e) {
@@ -834,11 +825,7 @@ export async function investApplyAction(_prev: ActionState, form: FormData): Pro
       country && `Country: ${country}`,
       message && `Message: ${message}`,
     ].filter(Boolean).join('\n');
-    const database = await db();
-    await database
-      .prepare('INSERT INTO enquiries (id, name, email, company, budget, package_slug, message, created_at) VALUES (?,?,?,?,?,?,?,?)')
-      .bind(newId(), name.slice(0, 120), cleanEmail, company.slice(0, 160) || null, usd(pledge), 'investor', brief.slice(0, 5000), nowIso())
-      .run();
+    await addLead({ name: name.slice(0, 120), email: cleanEmail, company: company.slice(0, 160), budget: usd(pledge), packageSlug: 'investor', message: brief.slice(0, 5000) });
     try {
       await createThread({ name, email: cleanEmail, topic: 'negotiate', lang, source: 'contact', firstMessage: `[xaa.es investor] ${brief}` });
     } catch (e) {
@@ -1211,7 +1198,53 @@ export async function supportPresenceAction(): Promise<void> {
     await requireAdmin();
     await markAdminOnline();
   } catch {
-    /* not an admin, or D1 unavailable — nothing to record */
+    /* not an admin, or storage unavailable — nothing to record */
+  }
+}
+
+/* ───────────────── Data storage (R2) ───────────────── */
+
+/** Admin: take a full backup of the data bucket now. */
+export async function backupNowAction(_prev: ActionState, _form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    const b = await backupNow(admin.name);
+    revalidatePath('/portal/admin/settings');
+    return { ok: `Backup saved: ${b.objects} objects, ${(b.bytes / 1024).toFixed(1)} KB (${b.key}).` };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/** Admin: put the data back as a backup holds it. Takes a safety backup first; needs the word RESTORE typed. */
+export async function restoreBackupAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    if (str(form, 'confirm') !== 'RESTORE') return { error: 'Type RESTORE (in capitals) to confirm.' };
+    const r = await restoreFrom(str(form, 'key'), admin.name);
+    revalidatePath('/portal/admin', 'layout');
+    return { ok: `Restored: ${r.written} objects written, ${r.removed} removed. The state before the restore is saved as ${r.safety.key}.` };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/** Admin: copy again anything the legacy D1 still holds that R2 does not (nothing in R2 is overwritten). */
+export async function recopyD1Action(_prev: ActionState, _form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const report = await recopyD1();
+    if (!report) return { error: 'The legacy D1 database is no longer bound — there is nothing to copy.' };
+    const short = Object.entries(report).filter(([, r]) => r.r2 < r.d1);
+    revalidatePath('/portal/admin/settings');
+    return short.length
+      ? { error: `Some rows did not copy: ${short.map(([t, r]) => `${t} ${r.r2}/${r.d1}`).join(', ')}.` }
+      : { ok: `Every D1 row is in R2 (${Object.values(report).reduce((n, r) => n + r.d1, 0)} rows checked).` };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
   }
 }
 

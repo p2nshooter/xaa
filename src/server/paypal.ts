@@ -1,4 +1,6 @@
-import { appEnv, db, newId, nowIso } from './db';
+import { appEnv, newId, nowIso } from './db';
+import { data } from './data';
+import { ConflictError } from './r2/store';
 import { getSettings, saveSetting } from './settings';
 
 /**
@@ -374,63 +376,48 @@ export interface PayPalCheckout {
 }
 
 export async function insertCheckout(row: Omit<PayPalCheckout, 'created_at' | 'updated_at' | 'capture_id' | 'payment_id' | 'detail' | 'status'>): Promise<void> {
-  const database = await db();
   const now = nowIso();
-  await database
-    .prepare(
-      `INSERT INTO paypal_checkouts (id, paypal_order_id, env, kind, user_id, project_id, milestone, label,
-        template_order_id, amount, status, created_at, updated_at)
-       VALUES (?,?,?,?,?,?,?,?,?,?, 'created', ?, ?)`
-    )
-    .bind(
-      row.id, row.paypal_order_id, row.env, row.kind, row.user_id, row.project_id, row.milestone, row.label,
-      row.template_order_id, row.amount, now, now
-    )
-    .run();
+  await (await data()).checkouts.create({ ...row, status: 'created', capture_id: null, payment_id: null, detail: null, created_at: now, updated_at: now });
+}
+
+/** A stored checkout without the internal claim marker. */
+function plain(c: (PayPalCheckout & { claim?: string }) | null): PayPalCheckout | null {
+  if (!c) return null;
+  const { claim: _claim, ...rest } = c;
+  return rest;
 }
 
 export async function getCheckout(id: string): Promise<PayPalCheckout | null> {
-  const database = await db();
-  return (await database.prepare('SELECT * FROM paypal_checkouts WHERE id = ?').bind(id).first<PayPalCheckout>()) ?? null;
+  return plain(await (await data()).checkouts.get(id));
 }
 
 export async function getCheckoutByOrder(paypalOrderId: string): Promise<PayPalCheckout | null> {
-  const database = await db();
-  return (
-    (await database.prepare('SELECT * FROM paypal_checkouts WHERE paypal_order_id = ?').bind(paypalOrderId).first<PayPalCheckout>()) ?? null
-  );
+  return plain(await (await data()).checkouts.find('paypal_order_id', paypalOrderId));
 }
 
 async function setCheckout(id: string, patch: Partial<Pick<PayPalCheckout, 'status' | 'capture_id' | 'payment_id' | 'detail'>>): Promise<void> {
-  const database = await db();
-  const sets: string[] = [];
-  const values: unknown[] = [];
-  for (const [k, v] of Object.entries(patch)) {
-    sets.push(`${k} = ?`);
-    values.push(v ?? null);
-  }
-  sets.push('updated_at = ?');
-  values.push(nowIso(), id);
-  await database.prepare(`UPDATE paypal_checkouts SET ${sets.join(', ')} WHERE id = ?`).bind(...values).run();
+  const d = await data();
+  if (!(await d.checkouts.get(id))) return;
+  const clean = Object.fromEntries(Object.entries(patch).map(([k, v]) => [k, v ?? null]));
+  await d.checkouts.update(id, (c) => ({ ...c, ...clean, updated_at: nowIso() }));
 }
 
 /**
  * Claim a checkout for capturing. Only one caller wins; the rest step aside.
- * A claim left behind by a request that died mid-way goes stale after two
- * minutes, so a checkout can never be stuck in `capturing` for good.
+ * A compare-and-swap on the checkout document that also stamps a random
+ * claim token, so the winner knows it won. A claim left behind by a request
+ * that died mid-way goes stale after two minutes, so a checkout can never be
+ * stuck in `capturing` for good.
  */
 async function claim(id: string, from: CheckoutStatus[]): Promise<boolean> {
-  const database = await db();
-  const placeholders = from.map(() => '?').join(',');
+  const d = await data();
+  if (!(await d.checkouts.get(id))) return false;
+  const token = crypto.randomUUID();
   const stale = new Date(Date.now() - 120_000).toISOString();
-  const res = await database
-    .prepare(
-      `UPDATE paypal_checkouts SET status = 'capturing', updated_at = ?
-       WHERE id = ? AND (status IN (${placeholders}) OR (status = 'capturing' AND updated_at < ?))`
-    )
-    .bind(nowIso(), id, ...from, stale)
-    .run();
-  return (res.meta?.changes ?? 0) > 0;
+  const after = await d.checkouts.update(id, (c) =>
+    from.includes(c.status) || (c.status === 'capturing' && c.updated_at < stale) ? { ...c, status: 'capturing', updated_at: nowIso(), claim: token } : null,
+  );
+  return after.claim === token;
 }
 
 /**
@@ -445,23 +432,16 @@ export async function refreshOpenCheckouts(where: { projectId?: string; template
   const value = where.projectId ?? where.templateOrderId;
   if (!column || !value) return false;
   const now = Date.now();
-  const database = await db();
-  const { results } = await database
-    .prepare(
-      `SELECT * FROM paypal_checkouts WHERE ${column} = ? AND updated_at < ? AND (
-         (status = 'pending' AND created_at > ?) OR (status = 'created' AND created_at > ? AND created_at < ?)
-       ) ORDER BY created_at DESC LIMIT 3`
-    )
-    .bind(
-      value,
-      new Date(now - 60_000).toISOString(),
-      new Date(now - 30 * 86_400_000).toISOString(),
-      new Date(now - 3 * 3_600_000).toISOString(),
-      new Date(now - 60_000).toISOString()
-    )
-    .all<PayPalCheckout>();
+  const d = await data();
+  const minuteAgo = new Date(now - 60_000).toISOString();
+  const monthAgo = new Date(now - 30 * 86_400_000).toISOString();
+  const hoursAgo = new Date(now - 3 * 3_600_000).toISOString();
+  const results = (await d.checkouts.listAllDocs(column === 'project_id' ? 'project' : 'template_order', value))
+    .filter((c) => c.updated_at < minuteAgo && ((c.status === 'pending' && c.created_at > monthAgo) || (c.status === 'created' && c.created_at > hoursAgo && c.created_at < minuteAgo)))
+    .slice(0, 3)
+    .map((c) => plain(c)!);
   let settled = false;
-  for (const c of results ?? []) {
+  for (const c of results) {
     try {
       const r = await settleCheckout(c, { capture: true });
       if (r.state === 'completed') settled = true;
@@ -474,17 +454,14 @@ export async function refreshOpenCheckouts(where: { projectId?: string; template
 
 /** Recent checkouts for the admin desk, with the reference each one pays. */
 export async function listRecentCheckouts(limit = 15): Promise<(PayPalCheckout & { ref: string | null })[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare(
-      `SELECT c.*, COALESCE(p.ref, o.ref) AS ref FROM paypal_checkouts c
-       LEFT JOIN projects p ON p.id = c.project_id
-       LEFT JOIN template_orders o ON o.id = c.template_order_id
-       ORDER BY c.created_at DESC LIMIT ?`
-    )
-    .bind(limit)
-    .all<PayPalCheckout & { ref: string | null }>();
-  return results ?? [];
+  const d = await data();
+  const { docs } = await d.checkouts.listDocs('all', 'all', { limit });
+  const [projects, orders] = await Promise.all([
+    d.projects.getMany([...new Set(docs.flatMap((c) => (c.project_id ? [c.project_id] : [])))]),
+    d.templateOrders.getMany([...new Set(docs.flatMap((c) => (c.template_order_id ? [c.template_order_id] : [])))]),
+  ]);
+  const refs = new Map([...projects, ...orders].flatMap((x) => (x ? [[x.id, x.ref] as const] : [])));
+  return docs.map((c) => ({ ...plain(c)!, ref: (c.project_id && refs.get(c.project_id)) || (c.template_order_id && refs.get(c.template_order_id)) || null }));
 }
 
 /** Whether each credential set is complete, and which one checkout uses. */
@@ -589,49 +566,55 @@ export async function settleCheckout(checkout: PayPalCheckout, opts: { capture: 
  * capture id that is already booked is never booked twice.
  */
 async function book(checkout: PayPalCheckout, captureId: string, state: 'completed' | 'pending'): Promise<string | null> {
-  const database = await db();
+  const d = await data();
 
   if (checkout.kind === 'template' && checkout.template_order_id) {
+    const orderId = checkout.template_order_id;
+    if (!(await d.templateOrders.get(orderId))) return null;
     if (state === 'completed') {
-      await database
-        .prepare("UPDATE template_orders SET status = 'paid', method = 'paypal', reference = ?, confirmed_at = ? WHERE id = ? AND status != 'paid'")
-        .bind(captureId, nowIso(), checkout.template_order_id)
-        .run();
+      await d.templateOrders.update(orderId, (o) => (o.status === 'paid' ? null : { ...o, status: 'paid', method: 'paypal', reference: captureId, confirmed_at: nowIso() }));
     } else {
-      await database
-        .prepare("UPDATE template_orders SET status = 'submitted', method = 'paypal', reference = ?, note = ? WHERE id = ? AND status IN ('pending','submitted')")
-        .bind(captureId, 'PayPal is holding this payment for review; it confirms automatically.', checkout.template_order_id)
-        .run();
+      await d.templateOrders.update(orderId, (o) =>
+        o.status === 'pending' || o.status === 'submitted'
+          ? { ...o, status: 'submitted', method: 'paypal', reference: captureId, note: 'PayPal is holding this payment for review; it confirms automatically.' }
+          : null,
+      );
     }
     return null;
   }
 
   if (checkout.kind === 'milestone' && checkout.project_id) {
-    const { getProject, recordPayment, setPaymentStatus, reconcile } = await import('./projects');
-    const existing = await database
-      .prepare("SELECT id, status FROM payments WHERE method = 'paypal' AND reference = ? AND project_id = ?")
-      .bind(captureId, checkout.project_id)
-      .first<{ id: string; status: string }>();
+    const { getProject, recordPayment, setPaymentStatus, reconcile, listPayments } = await import('./projects');
+    const existing = (await listPayments(checkout.project_id)).find((p) => p.method === 'paypal' && p.reference === captureId);
     if (existing) {
       if (state === 'completed' && existing.status !== 'confirmed') await setPaymentStatus(existing.id, 'confirmed', 'PayPal');
       return existing.id;
     }
     const project = await getProject(checkout.project_id);
     if (!project) return null;
-    const payment = await recordPayment({
-      project,
-      userId: checkout.user_id,
-      milestone: (checkout.milestone ?? 'extra') as Parameters<typeof recordPayment>[0]['milestone'],
-      label: checkout.label ?? 'Payment',
-      amount: checkout.amount,
-      method: 'paypal',
-      reference: captureId,
-      note: checkout.env === 'sandbox' ? 'PayPal SANDBOX (test money)' : 'PayPal — confirmed automatically',
-      status: state === 'completed' ? 'confirmed' : 'pending',
-      author: 'PayPal',
-    });
-    if (state === 'completed') await reconcile(project.id);
-    return payment.id;
+    // The payment id is derived from the capture and created once (create-only),
+    // so even two bookings of one capture that got past the claim make one payment.
+    const id = `paypal-${captureId.replace(/[^\w-]/g, '')}`;
+    try {
+      const payment = await recordPayment({
+        id,
+        project,
+        userId: checkout.user_id,
+        milestone: (checkout.milestone ?? 'extra') as Parameters<typeof recordPayment>[0]['milestone'],
+        label: checkout.label ?? 'Payment',
+        amount: checkout.amount,
+        method: 'paypal',
+        reference: captureId,
+        note: checkout.env === 'sandbox' ? 'PayPal SANDBOX (test money)' : 'PayPal — confirmed automatically',
+        status: state === 'completed' ? 'confirmed' : 'pending',
+        author: 'PayPal',
+      });
+      if (state === 'completed') await reconcile(project.id);
+      return payment.id;
+    } catch (err) {
+      if (err instanceof ConflictError && err.field === 'id') return id;
+      throw err;
+    }
   }
   return null;
 }
@@ -669,11 +652,12 @@ async function flagReversal(checkout: PayPalCheckout, type: string): Promise<voi
   const what = type === 'PAYMENT.CAPTURE.DENIED' ? 'denied' : type === 'PAYMENT.CAPTURE.REFUNDED' ? 'refunded' : 'reversed';
   await setCheckout(checkout.id, { detail: `PayPal ${what} this payment.` });
   if (checkout.kind === 'template' && checkout.template_order_id && what === 'denied') {
-    const database = await db();
-    await database
-      .prepare("UPDATE template_orders SET status = 'pending', note = ? WHERE id = ? AND status = 'submitted'")
-      .bind('PayPal denied the payment. Please pay again.', checkout.template_order_id)
-      .run();
+    const d = await data();
+    if (await d.templateOrders.get(checkout.template_order_id)) {
+      await d.templateOrders.update(checkout.template_order_id, (o) =>
+        o.status === 'submitted' ? { ...o, status: 'pending', note: 'PayPal denied the payment. Please pay again.' } : null,
+      );
+    }
   }
   if (checkout.kind === 'milestone' && checkout.project_id) {
     const { addUpdate, setPaymentStatus } = await import('./projects');

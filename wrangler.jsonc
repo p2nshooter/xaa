@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "main": ".open-next/worker.js",
+  "main": "worker.ts",
   "name": "xaa-es",
   "compatibility_date": "2025-06-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
@@ -8,21 +8,29 @@
   "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "xaa-es" }],
   "vars": { "APP_URL": "https://xaa.es" },
 
-  // Client portal storage — accounts, projects, milestone payments, uploads.
+  // Client portal storage.
   //
-  // The database_id below is filled in by scripts/ensure-cloudflare-resources.sh,
-  // which CI runs before every deploy and which creates the database and the
-  // bucket if they do not exist yet. So there is nothing to provision by hand,
-  // and the placeholder is what a fresh checkout is supposed to look like.
+  // DATA (R2, private) holds every record: accounts, projects, payments,
+  // template orders, PayPal checkouts, settings, investors, support. The key
+  // layout is in src/server/r2/schema.ts and docs/R2-DATA-BLUEPRINT.md.
+  // UPLOADS (R2, private) holds the files: client uploads, payment proofs,
+  // template bundles and per-project snapshots. BACKUPS (R2, private) holds
+  // the daily full backups of DATA, deleted after 35 days by its lifecycle rule.
   //
-  // Locally, `npm run cf:preview` works with the placeholder as-is: wrangler's
-  // local mode keys its sqlite file off the binding, not off a real id.
-  //
-  // The D1 schema creates itself on first use — there is no migration step.
+  // DB is the former D1 database. Nothing writes to it any more: the first
+  // request after this release copies its records into DATA once
+  // (src/server/migrate.ts) and it stays bound, read-only, for seven days as a
+  // fallback copy. The database_id is filled in by
+  // scripts/ensure-cloudflare-resources.sh, which CI runs before every deploy
+  // and which also creates the buckets if they do not exist yet.
+  "r2_buckets": [
+    { "binding": "DATA", "bucket_name": "xaa-data" },
+    { "binding": "UPLOADS", "bucket_name": "xaa-uploads" },
+    { "binding": "BACKUPS", "bucket_name": "xaa-backups" }
+  ],
+  // worker.ts takes a backup of DATA into BACKUPS every day at 03:17 UTC.
+  "triggers": { "crons": ["17 3 * * *"] },
   "d1_databases": [
     { "binding": "DB", "database_name": "xaa-portal", "database_id": "REPLACE_WITH_D1_DATABASE_ID" }
-  ],
-  "r2_buckets": [
-    { "binding": "UPLOADS", "bucket_name": "xaa-uploads" }
   ]
 }

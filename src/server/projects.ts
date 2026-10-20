@@ -1,4 +1,6 @@
-import { db, newId, nowIso } from './db';
+import { newId, nowIso } from './db';
+import { data } from './data';
+import { ConflictError } from './r2/store';
 import type { User } from './auth';
 import { getPackage, getSetupPlan, getCarePlan, ADDONS } from '@/content/packages';
 import { STAGES, type StageKey } from '@/content/process';
@@ -201,22 +203,17 @@ export async function createProject(user: User, input: NewProjectInput): Promise
     updated_at: nowIso(),
   };
 
-  const database = await db();
-  await database
-    .prepare(
-      `INSERT INTO projects (id, ref, user_id, package_slug, package_name, title, scope_note, addons,
-        setup_plan, care_plan, quote_min, quote_max, contract_amount, contract_locked,
-        est_days_min, est_days_max, status, progress, started_at, due_at, delivered_at, created_at, updated_at)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
-    )
-    .bind(
-      project.id, project.ref, project.user_id, project.package_slug, project.package_name, project.title,
-      project.scope_note, project.addons, project.setup_plan, project.care_plan, project.quote_min,
-      project.quote_max, project.contract_amount, project.contract_locked, project.est_days_min,
-      project.est_days_max, project.status, project.progress, project.started_at, project.due_at,
-      project.delivered_at, project.created_at, project.updated_at
-    )
-    .run();
+  const d = await data();
+  // The reference is random and guarded unique: on the rare collision, draw another.
+  for (let attempt = 0; ; attempt += 1) {
+    try {
+      await d.projects.create(project);
+      break;
+    } catch (err) {
+      if (!(err instanceof ConflictError && err.field === 'ref') || attempt >= 5) throw err;
+      project.ref = makeRef();
+    }
+  }
 
   await addUpdate(project.id, {
     title: 'Project opened',
@@ -232,84 +229,68 @@ export async function createProject(user: User, input: NewProjectInput): Promise
 /* ───────────────────────── Reads ───────────────────────── */
 
 export async function listProjects(userId: string): Promise<Project[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare('SELECT * FROM projects WHERE user_id = ? ORDER BY created_at DESC')
-    .bind(userId)
-    .all<Project>();
-  return results ?? [];
+  return (await data()).projects.listAllDocs('user', userId);
 }
 
 export async function listAllProjects(): Promise<(Project & { client_name: string; client_email: string })[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare(
-      `SELECT p.*, u.name AS client_name, u.email AS client_email
-       FROM projects p JOIN users u ON u.id = p.user_id
-       ORDER BY p.created_at DESC`
-    )
-    .all<Project & { client_name: string; client_email: string }>();
-  return results ?? [];
+  const d = await data();
+  const projects = await d.projects.listAllDocs('all', 'all');
+  const users = new Map((await d.users.getMany([...new Set(projects.map((p) => p.user_id))])).flatMap((u) => (u ? [[u.id, u] as const] : [])));
+  // A project whose account no longer exists is left out, as the old inner join did.
+  return projects.flatMap((p) => {
+    const u = users.get(p.user_id);
+    return u ? [{ ...p, client_name: u.name, client_email: u.email }] : [];
+  });
 }
 
 export async function getProject(id: string): Promise<Project | null> {
-  const database = await db();
-  return (await database.prepare('SELECT * FROM projects WHERE id = ?').bind(id).first<Project>()) ?? null;
+  return (await data()).projects.get(id);
 }
 
 export async function listPayments(projectId: string): Promise<Payment[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare('SELECT * FROM payments WHERE project_id = ? ORDER BY created_at DESC')
-    .bind(projectId)
-    .all<Payment>();
-  return results ?? [];
+  return (await data()).payments.listAllDocs('project', projectId);
 }
 
 export async function listPendingPayments(): Promise<(Payment & { ref: string; client_email: string })[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare(
-      `SELECT pay.*, p.ref AS ref, u.email AS client_email
-       FROM payments pay JOIN projects p ON p.id = pay.project_id JOIN users u ON u.id = pay.user_id
-       WHERE pay.status = 'pending' ORDER BY pay.created_at ASC`
-    )
-    .all<Payment & { ref: string; client_email: string }>();
-  return results ?? [];
+  const d = await data();
+  const pending = await d.payments.listAllDocs('pending', 'all');
+  const [projects, users] = await Promise.all([
+    d.projects.getMany([...new Set(pending.map((p) => p.project_id))]),
+    d.users.getMany([...new Set(pending.map((p) => p.user_id))]),
+  ]);
+  const refs = new Map(projects.flatMap((p) => (p ? [[p.id, p.ref] as const] : [])));
+  const emails = new Map(users.flatMap((u) => (u ? [[u.id, u.email] as const] : [])));
+  return pending.flatMap((p) =>
+    refs.has(p.project_id) && emails.has(p.user_id) ? [{ ...p, ref: refs.get(p.project_id)!, client_email: emails.get(p.user_id)! }] : [],
+  );
 }
 
 export async function listFiles(projectId: string): Promise<ProjectFile[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare('SELECT * FROM files WHERE project_id = ? ORDER BY created_at DESC')
-    .bind(projectId)
-    .all<ProjectFile>();
-  return results ?? [];
+  return (await data()).files.listAllDocs('project', projectId);
 }
 
 export async function getFile(id: string): Promise<ProjectFile | null> {
-  const database = await db();
-  return (await database.prepare('SELECT * FROM files WHERE id = ?').bind(id).first<ProjectFile>()) ?? null;
+  return (await data()).files.get(id);
 }
 
 export async function listUpdates(projectId: string): Promise<ProjectUpdate[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare('SELECT * FROM updates WHERE project_id = ? ORDER BY created_at DESC')
-    .bind(projectId)
-    .all<ProjectUpdate>();
-  return results ?? [];
+  return (await data()).updates.listAllDocs('project', projectId);
 }
 
 export async function addUpdate(
   projectId: string,
   u: { title: string; body?: string | null; author: string; status?: string | null; progress?: number | null }
 ): Promise<void> {
-  const database = await db();
-  await database
-    .prepare('INSERT INTO updates (id, project_id, progress, status, title, body, author, created_at) VALUES (?,?,?,?,?,?,?,?)')
-    .bind(newId(), projectId, u.progress ?? null, u.status ?? null, u.title, u.body ?? null, u.author, nowIso())
-    .run();
+  await (await data()).updates.create({
+    id: newId(),
+    project_id: projectId,
+    progress: u.progress ?? null,
+    status: u.status ?? null,
+    title: u.title,
+    body: u.body ?? null,
+    author: u.author,
+    created_at: nowIso(),
+  });
 }
 
 /* ───────────────────── Derived financial state ───────────────────── */
@@ -403,37 +384,14 @@ export function stageState(project: Project, payments: Payment[], files: Project
 
 /* ───────────────────── Transitions ───────────────────── */
 
-async function save(project: Project): Promise<void> {
-  const database = await db();
-  await database
-    .prepare(
-      `UPDATE projects SET status = ?, progress = ?, started_at = ?, due_at = ?, delivered_at = ?,
-       contract_amount = ?, contract_locked = ?, updated_at = ? WHERE id = ?`
-    )
-    .bind(
-      project.status, project.progress, project.started_at, project.due_at, project.delivered_at,
-      project.contract_amount, project.contract_locked, nowIso(), project.id
-    )
-    .run();
-}
-
 function addDays(from: Date, days: number): string {
   return new Date(from.getTime() + days * 864e5).toISOString();
 }
 
-/**
- * Recompute status from the facts on record. Called after every payment
- * confirmation, upload and progress change, so status can never drift away
- * from what was actually paid and delivered.
- */
-export async function reconcile(projectId: string): Promise<Project | null> {
-  const project = await getProject(projectId);
-  if (!project || project.status === 'cancelled') return project;
-  const payments = await listPayments(projectId);
-  const files = await listFiles(projectId);
+/** Derive status, the delivery estimate and the progress cap from what was paid and uploaded. */
+function derive(project: Project, payments: Payment[], files: ProjectFile[]): void {
   const m = money(project, payments);
   const hasConcept = files.some((f) => f.kind === 'concept');
-  const before = { status: project.status, progress: project.progress, due: project.due_at };
 
   // Progress may never pass the cap while money is outstanding.
   if (m.paidPct < FINAL_PCT && project.progress > UNPAID_PROGRESS_CAP) project.progress = UNPAID_PROGRESS_CAP;
@@ -456,26 +414,51 @@ export async function reconcile(projectId: string): Promise<Project | null> {
 
   if (project.status === 'delivered' && !project.delivered_at) project.delivered_at = nowIso();
   if (project.status !== 'delivered') project.delivered_at = null;
+}
 
-  if (before.status !== project.status || before.progress !== project.progress || before.due !== project.due_at) {
-    await save(project);
-    if (before.status !== project.status) {
-      await addUpdate(project.id, {
-        title: STATUS_LABEL[project.status],
-        body:
-          project.status === 'scheduled' && project.due_at
-            ? `Concept received. Estimated completion: ${new Date(project.due_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}.`
-            : null,
-        author: 'XAA',
-        status: project.status,
-        progress: project.progress,
-      });
-    }
+/**
+ * Recompute status from the facts on record. Called after every payment
+ * confirmation, upload and progress change, so status can never drift away
+ * from what was actually paid and delivered.
+ *
+ * `change` (an admin edit: progress, contract value, cancellation) is applied
+ * in the same compare-and-swap write as the recomputed status, so an edit and
+ * the status it implies are stored together, once.
+ */
+export async function reconcile(projectId: string, change?: (p: Project) => void): Promise<Project | null> {
+  const d = await data();
+  const current = await d.projects.get(projectId);
+  if (!current || (current.status === 'cancelled' && !change)) return current;
+  const [payments, files] = await Promise.all([listPayments(projectId), listFiles(projectId)]);
+
+  let before: Project = current;
+  const after = await d.projects.update(projectId, (cur) => {
+    before = structuredClone(cur);
+    change?.(cur);
+    if (cur.status !== 'cancelled') derive(cur, payments, files);
+    if (JSON.stringify(cur) === JSON.stringify(before)) return null;
+    cur.updated_at = nowIso();
+    return cur;
+  });
+
+  if (before.status !== after.status && after.status !== 'cancelled') {
+    await addUpdate(after.id, {
+      title: STATUS_LABEL[after.status],
+      body:
+        after.status === 'scheduled' && after.due_at
+          ? `Concept received. Estimated completion: ${new Date(after.due_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}.`
+          : null,
+      author: 'XAA',
+      status: after.status,
+      progress: after.progress,
+    });
   }
-  return project;
+  return after;
 }
 
 export async function recordPayment(input: {
+  /** A fixed id makes recording idempotent (PayPal: derived from the capture). */
+  id?: string;
   project: Project;
   userId: string;
   milestone: Milestone;
@@ -492,10 +475,9 @@ export async function recordPayment(input: {
   /** Who the project timeline credits; defaults to the client. */
   author?: string;
 }): Promise<Payment> {
-  const database = await db();
   const status: PaymentStatus = input.status ?? 'pending';
   const payment: Payment = {
-    id: newId(),
+    id: input.id ?? newId(),
     project_id: input.project.id,
     user_id: input.userId,
     milestone: input.milestone,
@@ -512,18 +494,7 @@ export async function recordPayment(input: {
     invoice_no: null,
     method_id: input.methodId ?? null,
   };
-  await database
-    .prepare(
-      `INSERT INTO payments (id, project_id, user_id, milestone, label, amount, method, network,
-        reference, note, proof_file_id, status, created_at, confirmed_at, method_id)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
-    )
-    .bind(
-      payment.id, payment.project_id, payment.user_id, payment.milestone, payment.label, payment.amount,
-      payment.method, payment.network, payment.reference, payment.note, payment.proof_file_id,
-      payment.status, payment.created_at, payment.confirmed_at, payment.method_id
-    )
-    .run();
+  await (await data()).payments.create(payment);
   const via = payment.method === 'usdt' ? `USDT ${payment.network ?? ''}`.trim() : payment.method === 'bank' ? 'bank transfer' : 'PayPal';
   await addUpdate(input.project.id, {
     title:
@@ -539,19 +510,28 @@ export async function recordPayment(input: {
   return payment;
 }
 
+/**
+ * Confirm or reject a payment. A conditional transition on the payment
+ * document: when the admin's button and PayPal's webhook land at the same
+ * moment, exactly one of them changes it and writes the timeline entry; the
+ * other finds it already done.
+ */
 export async function setPaymentStatus(paymentId: string, status: PaymentStatus, adminName: string): Promise<void> {
-  const database = await db();
-  const payment = await database.prepare('SELECT * FROM payments WHERE id = ?').bind(paymentId).first<Payment>();
+  const d = await data();
+  const payment = await d.payments.get(paymentId);
   if (!payment) throw new Error('Payment not found.');
-  await database
-    .prepare('UPDATE payments SET status = ?, confirmed_at = ? WHERE id = ?')
-    .bind(status, status === 'confirmed' ? nowIso() : null, paymentId)
-    .run();
-  await addUpdate(payment.project_id, {
-    title: status === 'confirmed' ? `Payment confirmed — €${payment.amount.toLocaleString('en-GB')}` : `Payment ${status}`,
-    body: payment.label,
-    author: adminName,
+  let changed = false;
+  await d.payments.update(paymentId, (p) => {
+    changed = p.status !== status;
+    return changed ? { ...p, status, confirmed_at: status === 'confirmed' ? nowIso() : null } : null;
   });
+  if (changed) {
+    await addUpdate(payment.project_id, {
+      title: status === 'confirmed' ? `Payment confirmed — €${payment.amount.toLocaleString('en-GB')}` : `Payment ${status}`,
+      body: payment.label,
+      author: adminName,
+    });
+  }
   await reconcile(payment.project_id);
 }
 
@@ -562,36 +542,38 @@ export async function setProgress(projectId: string, progress: number, note: str
   const m = money(project, payments);
   let value = Math.max(0, Math.min(100, Math.round(progress)));
   if (m.paidPct < FINAL_PCT && value > UNPAID_PROGRESS_CAP) value = UNPAID_PROGRESS_CAP;
-  project.progress = value;
-  await save(project);
   await addUpdate(projectId, {
     title: `Progress ${value}%`,
     body: note || null,
     author: adminName,
     progress: value,
   });
-  await reconcile(projectId);
+  await reconcile(projectId, (p) => {
+    p.progress = value;
+  });
 }
 
 export async function setContract(projectId: string, amount: number, adminName: string): Promise<void> {
   const project = await getProject(projectId);
   if (!project) throw new Error('Project not found.');
-  project.contract_amount = Math.max(1, Math.round(amount));
-  project.contract_locked = 1;
-  await save(project);
+  const contract = Math.max(1, Math.round(amount));
   await addUpdate(projectId, {
-    title: `Contract value set — €${project.contract_amount.toLocaleString('en-GB')}`,
+    title: `Contract value set — €${contract.toLocaleString('en-GB')}`,
     body: 'Scope agreed. The milestone amounts below are calculated from this figure.',
     author: adminName,
   });
-  await reconcile(projectId);
+  await reconcile(projectId, (p) => {
+    p.contract_amount = contract;
+    p.contract_locked = 1;
+  });
 }
 
 export async function cancelProject(projectId: string, adminName: string, reason: string): Promise<void> {
   const project = await getProject(projectId);
   if (!project) return;
-  project.status = 'cancelled';
-  await save(project);
+  await reconcile(projectId, (p) => {
+    p.status = 'cancelled';
+  });
   await addUpdate(projectId, { title: 'Project cancelled', body: reason || null, author: adminName, status: 'cancelled' });
 }
 

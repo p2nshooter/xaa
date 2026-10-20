@@ -1,5 +1,6 @@
-import { db, appEnv, nowIso } from './db';
-import type { D1Database } from '@cloudflare/workers-types';
+import { appEnv, nowIso } from './db';
+import { data } from './data';
+import type { SecretDoc } from './r2/schema';
 
 /**
  * Encryption at rest for the values an admin types into the portal —
@@ -11,10 +12,11 @@ import type { D1Database } from '@cloudflare/workers-types';
  *
  * KEY SOURCE, and what it does and does not buy you:
  *
- *   1. SETTINGS_KEY (Worker secret)  — best. The key never touches D1.
+ *   1. SETTINGS_KEY (Worker secret)  — best. The key never touches storage.
  *   2. AUTH_SECRET (Worker secret)   — fine, reuses the existing secret.
- *   3. A key generated on first use and kept in D1 — the fallback, so the
- *      portal works the moment it is deployed with nothing else configured.
+ *   3. A key generated on first use and kept in the private R2 data bucket
+ *      (k/secret/__master_key__, copied there from D1 by server/migrate.ts) —
+ *      the fallback, so the portal works the moment it is deployed.
  *
  * Be straight about option 3: a key stored beside the ciphertext protects
  * against a leaked database export, a stray backup or a support engineer
@@ -70,24 +72,12 @@ async function masterKey(): Promise<CryptoKey> {
     return cachedKey;
   }
 
-  // Fallback: a key of our own, created once and kept in the database.
-  const database = await db();
-  const row = await database
-    .prepare('SELECT value FROM app_secrets WHERE key = ?')
-    .bind(KEY_ROW)
-    .first<{ value: string }>();
-
-  if (row?.value) {
-    cachedKey = await importKey(b64decode(row.value).buffer as ArrayBuffer);
-    return cachedKey;
-  }
-
+  // Fallback: a key of our own, created once (create-only, so two isolates
+  // racing here agree on one) and kept in the data bucket.
+  const d = await data();
   const raw = crypto.getRandomValues(new Uint8Array(32));
-  await database
-    .prepare('INSERT OR REPLACE INTO app_secrets (key, value, updated_at) VALUES (?, ?, ?)')
-    .bind(KEY_ROW, b64encode(raw), nowIso())
-    .run();
-  cachedKey = await importKey(raw.buffer as ArrayBuffer);
+  const { doc } = await d.store.createDoc<SecretDoc>(`secret/${KEY_ROW}`, { value: b64encode(raw), updated_at: nowIso() });
+  cachedKey = await importKey(b64decode(doc.value).buffer as ArrayBuffer);
   return cachedKey;
 }
 
@@ -163,17 +153,4 @@ export async function selfTest(): Promise<boolean> {
   } catch {
     return false;
   }
-}
-
-/** Exposed for db.ts so the secrets table exists before the key is written. */
-export async function ensureSecretsTable(database: D1Database): Promise<void> {
-  await database
-    .prepare(
-      `CREATE TABLE IF NOT EXISTS app_secrets (
-         key TEXT PRIMARY KEY,
-         value TEXT NOT NULL,
-         updated_at TEXT NOT NULL
-       )`
-    )
-    .run();
 }

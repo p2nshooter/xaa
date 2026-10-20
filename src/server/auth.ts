@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
-import type { D1Database } from '@cloudflare/workers-types';
-import { db, newId, nowIso, appEnv } from './db';
+import { newId, nowIso, appEnv } from './db';
+import { data, type Data } from './data';
+import { ConflictError } from './r2/store';
 import { signToken, verifyToken } from './session';
 
 /**
@@ -104,12 +105,8 @@ export function normaliseEmail(email: string): string {
 }
 
 export async function findUserByEmail(email: string): Promise<(User & { password_hash: string }) | null> {
-  const database = await db();
-  const row = await database
-    .prepare('SELECT * FROM users WHERE email = ?')
-    .bind(normaliseEmail(email))
-    .first<User & { password_hash: string }>();
-  return row ?? null;
+  const d = await data();
+  return d.users.find('email', normaliseEmail(email));
 }
 
 export async function createUser(input: {
@@ -120,11 +117,10 @@ export async function createUser(input: {
   country?: string;
   phone?: string;
 }): Promise<User> {
-  const database = await db();
+  const d = await data();
   const env = await appEnv();
   const email = normaliseEmail(input.email);
-  const existing = await database.prepare('SELECT id FROM users WHERE email = ?').bind(email).first();
-  if (existing) throw new Error('An account with that email already exists.');
+  if (await d.users.find('email', email)) throw new Error('An account with that email already exists.');
 
   // Admin is NEVER granted by being first to register — that is an open door.
   // The studio account is seeded directly into the database (see seedAdmin),
@@ -145,13 +141,13 @@ export async function createUser(input: {
     role,
     created_at: nowIso(),
   };
-  await database
-    .prepare(
-      `INSERT INTO users (id, email, name, company, country, phone, password_hash, role, created_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    )
-    .bind(user.id, user.email, user.name, user.company, user.country, user.phone, await hashPassword(input.password), user.role, user.created_at)
-    .run();
+  try {
+    // The email guard is taken atomically: two sign-ups racing with one address get one account.
+    await d.users.create({ ...user, password_hash: await hashPassword(input.password) });
+  } catch (err) {
+    if (err instanceof ConflictError && err.field === 'email') throw new Error('An account with that email already exists.');
+    throw err;
+  }
   return user;
 }
 
@@ -161,9 +157,8 @@ export async function createUser(input: {
  * The cookie carries a small snapshot of the user plus an expiry, signed with
  * HMAC-SHA256. Signing in and reading the session need no storage at all, so
  * neither D1 (whose shared daily read budget ran out and took sign-in down) nor
- * R2 (not enabled on this Cloudflare account) can lock anyone out. currentUser()
- * runs on every portal page load, so this also removes the busiest D1 read the
- * app used to make.
+ * R2 can lock anyone out. currentUser() runs on every portal page load, so it
+ * reads no storage at all.
  */
 export async function startSession(user: User): Promise<void> {
   const expires = new Date(Date.now() + SESSION_DAYS * 864e5);
@@ -210,7 +205,7 @@ export async function requireUser(): Promise<User> {
  * Create the studio admin account if it does not exist, so the owner can sign
  * in the moment the portal is deployed — no registration, no first-comer race.
  *
- * Idempotent, and safe to call on every schema init:
+ * Idempotent, and run once per isolate by server/data.ts:
  *  - if the account exists, it is left alone;
  *  - the password comes from the ADMIN_PASSWORD Worker secret when set,
  *    otherwise from the committed hash (which is not reversible);
@@ -218,39 +213,32 @@ export async function requireUser(): Promise<User> {
  *    has role 'client' is promoted, so a mistaken earlier registration cannot
  *    lock the owner out.
  */
-export async function seedAdmin(database: D1Database, env: { ADMIN_PASSWORD?: string }): Promise<void> {
+export async function seedAdmin(d: Data, env: { ADMIN_PASSWORD?: string }): Promise<void> {
   const email = normaliseEmail(SEED_ADMIN.email);
-
-  const existing = await database
-    .prepare('SELECT id, role, password_hash FROM users WHERE email = ?')
-    .bind(email)
-    .first<{ id: string; role: string; password_hash: string }>();
+  const existing = await d.users.find('email', email);
 
   if (existing) {
-    // Keep the studio account correct even if an earlier deploy left it wrong.
-    if (existing.role !== 'admin') {
-      await database.prepare('UPDATE users SET role = ? WHERE id = ?').bind('admin', existing.id).run();
-    }
-    // Heal the password too. When no ADMIN_PASSWORD secret is set the intended
-    // password is the committed one, so a row carrying a stale or higher-cost
-    // hash (e.g. seeded by an earlier build) is refreshed to the current hash.
-    // This is what lets the owner sign in after the work factor changed, and it
-    // corrects a row that was seeded with the wrong hash. It never runs when a
-    // secret governs the password.
-    if (!env.ADMIN_PASSWORD && existing.password_hash !== SEED_ADMIN.passwordHash) {
-      await database.prepare('UPDATE users SET password_hash = ? WHERE id = ?').bind(SEED_ADMIN.passwordHash, existing.id).run();
-    }
+    // Keep the studio account correct even if an earlier deploy left it wrong:
+    // the role is always admin, and when no ADMIN_PASSWORD secret governs the
+    // password, the intended one is the committed hash (a row carrying a stale
+    // or higher-cost hash is refreshed to it).
+    await d.users.update(existing.id, (u) => {
+      const role = 'admin' as const;
+      const password_hash = env.ADMIN_PASSWORD ? u.password_hash : SEED_ADMIN.passwordHash;
+      return u.role === role && u.password_hash === password_hash ? null : { ...u, role, password_hash };
+    });
     return;
   }
 
   const passwordHash = env.ADMIN_PASSWORD ? await hashPassword(env.ADMIN_PASSWORD) : SEED_ADMIN.passwordHash;
-  await database
-    .prepare(
-      `INSERT INTO users (id, email, name, company, country, phone, password_hash, role, created_at)
-       VALUES (?, ?, ?, NULL, NULL, NULL, ?, 'admin', ?)`
-    )
-    .bind(newId(), email, SEED_ADMIN.name, passwordHash, nowIso())
-    .run();
+  try {
+    await d.users.create({
+      id: newId(), email, name: SEED_ADMIN.name, company: null, country: null, phone: null,
+      password_hash: passwordHash, role: 'admin', created_at: nowIso(),
+    });
+  } catch (err) {
+    if (!(err instanceof ConflictError)) throw err; // another isolate seeded it first
+  }
 }
 
 /** True when `email` is the studio account (built-in list or ADMIN_EMAIL). */
@@ -268,10 +256,10 @@ function slowEqual(a: string, b: string): boolean {
 }
 
 /**
- * Verify the studio password WITHOUT touching D1.
+ * Verify the studio password WITHOUT reading any storage.
  *
- * This is the whole point of the R2 pivot: the owner must be able to sign in
- * even when the account's D1 read budget is exhausted. When an ADMIN_PASSWORD
+ * The owner must be able to sign in whatever state the storage is in (this
+ * once saved the studio when D1's daily read budget ran out). When an ADMIN_PASSWORD
  * secret is set, the secret *is* the plaintext, so we compare directly; with no
  * secret, the intended password is the committed hash, verified with the same
  * PBKDF2 scheme as every other account. Either way, no database is read.
@@ -282,7 +270,7 @@ export async function verifyAdminPassword(password: string, env: { ADMIN_PASSWOR
 }
 
 /**
- * The studio admin as a session user, built from source — no D1 row required.
+ * The studio admin as a session user, built from source — no stored record required.
  * A stable synthetic id keeps the session valid across deploys; the admin desk
  * lists every client's work rather than its own, so this id needs no projects.
  */

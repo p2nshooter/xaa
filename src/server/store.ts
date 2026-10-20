@@ -1,4 +1,5 @@
-import { db, bucket, newId, nowIso } from './db';
+import { bucket, newId, nowIso } from './db';
+import { data } from './data';
 import type { User } from './auth';
 import { getTemplate } from '@/content/templates';
 
@@ -9,8 +10,9 @@ import { getTemplate } from '@/content/templates';
  * the same rails as everything else (the destinations shown on the checkout),
  * an admin confirms the payment, and the order flips to `paid` — at which point
  * the buyer can download that template's bundle (a zip of full source, database
- * and setup guide). The zip lives once per template in R2; buying grants access,
- * it is not copied per order.
+ * and setup guide). The zip lives once per template in the uploads bucket;
+ * buying grants access, it is not copied per order. Orders and bundle records
+ * are R2 documents (server/r2/schema.ts: template_orders, template_bundles).
  */
 
 export type OrderStatus = 'pending' | 'submitted' | 'paid' | 'cancelled';
@@ -48,11 +50,9 @@ export async function createOrder(user: User, slug: string): Promise<TemplateOrd
   const tpl = getTemplate(slug);
   if (!tpl) throw new Error('Unknown template.');
   // Reuse an open order for the same template rather than piling up duplicates.
-  const database = await db();
-  const open = await database
-    .prepare("SELECT * FROM template_orders WHERE user_id = ? AND slug = ? AND status IN ('pending','submitted') ORDER BY created_at DESC LIMIT 1")
-    .bind(user.id, slug)
-    .first<TemplateOrder>();
+  const d = await data();
+  const mine = await d.templateOrders.listAllDocs('user_slug', `${user.id}|${slug}`);
+  const open = mine.find((o) => o.status === 'pending' || o.status === 'submitted');
   if (open) return open;
 
   const order: TemplateOrder = {
@@ -69,74 +69,64 @@ export async function createOrder(user: User, slug: string): Promise<TemplateOrd
     created_at: nowIso(),
     confirmed_at: null,
   };
-  await database
-    .prepare(
-      `INSERT INTO template_orders (id, ref, slug, name, user_id, price, status, method, reference, note, created_at, confirmed_at)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`
-    )
-    .bind(order.id, order.ref, order.slug, order.name, order.user_id, order.price, order.status, null, null, null, order.created_at, null)
-    .run();
+  await d.templateOrders.create(order);
   return order;
 }
 
 export async function getOrder(id: string): Promise<TemplateOrder | null> {
-  const database = await db();
-  return (await database.prepare('SELECT * FROM template_orders WHERE id = ?').bind(id).first<TemplateOrder>()) ?? null;
+  return (await data()).templateOrders.get(id);
 }
 
 export async function listUserOrders(userId: string): Promise<TemplateOrder[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare('SELECT * FROM template_orders WHERE user_id = ? ORDER BY created_at DESC')
-    .bind(userId)
-    .all<TemplateOrder>();
-  return results ?? [];
+  return (await data()).templateOrders.listAllDocs('user', userId);
 }
 
 export async function listAllOrders(): Promise<(TemplateOrder & { client_email: string })[]> {
-  const database = await db();
-  const { results } = await database
-    .prepare('SELECT o.*, u.email AS client_email FROM template_orders o JOIN users u ON u.id = o.user_id ORDER BY o.created_at DESC')
-    .all<TemplateOrder & { client_email: string }>();
-  return results ?? [];
+  const d = await data();
+  const orders = await d.templateOrders.listAllDocs('all', 'all');
+  const ids = [...new Set(orders.map((o) => o.user_id))];
+  const users = new Map((await d.users.getMany(ids)).flatMap((u) => (u ? [[u.id, u.email] as const] : [])));
+  // Orders of an account that no longer exists are left out, as the old inner join did.
+  return orders.flatMap((o) => (users.has(o.user_id) ? [{ ...o, client_email: users.get(o.user_id)! }] : []));
 }
 
+/** The order changes only from pending/submitted — a paid or cancelled order is never reopened by a late form post. */
 export async function submitOrderPayment(orderId: string, patch: { method: string; reference: string; note?: string }): Promise<void> {
-  const database = await db();
-  await database
-    .prepare("UPDATE template_orders SET status = 'submitted', method = ?, reference = ?, note = ? WHERE id = ? AND status IN ('pending','submitted')")
-    .bind(patch.method, patch.reference.slice(0, 200), patch.note?.slice(0, 1000) ?? null, orderId)
-    .run();
+  const d = await data();
+  if (!(await d.templateOrders.get(orderId))) return;
+  await d.templateOrders.update(orderId, (o) =>
+    o.status === 'pending' || o.status === 'submitted'
+      ? { ...o, status: 'submitted', method: patch.method, reference: patch.reference.slice(0, 200), note: patch.note?.slice(0, 1000) ?? null }
+      : null,
+  );
 }
 
+/** pending/submitted → paid, once: a second confirmation (admin + PayPal) keeps the first confirmation time. */
 export async function confirmOrder(orderId: string): Promise<void> {
-  const database = await db();
-  await database
-    .prepare("UPDATE template_orders SET status = 'paid', confirmed_at = ? WHERE id = ?")
-    .bind(nowIso(), orderId)
-    .run();
+  const d = await data();
+  if (!(await d.templateOrders.get(orderId))) return;
+  await d.templateOrders.update(orderId, (o) => (o.status === 'paid' ? null : { ...o, status: 'paid', confirmed_at: nowIso() }));
 }
 
 export async function cancelOrder(orderId: string): Promise<void> {
-  const database = await db();
-  await database.prepare("UPDATE template_orders SET status = 'cancelled' WHERE id = ?").bind(orderId).run();
+  const d = await data();
+  if (!(await d.templateOrders.get(orderId))) return;
+  await d.templateOrders.update(orderId, (o) => (o.status === 'cancelled' ? null : { ...o, status: 'cancelled' }));
 }
 
 /** True when this user has a paid order for the template — the download gate. */
 export async function hasPaidOrder(userId: string, slug: string): Promise<boolean> {
-  const database = await db();
-  const row = await database
-    .prepare("SELECT 1 AS ok FROM template_orders WHERE user_id = ? AND slug = ? AND status = 'paid' LIMIT 1")
-    .bind(userId, slug)
-    .first<{ ok: number }>();
-  return Boolean(row);
+  const mine = await (await data()).templateOrders.listAllDocs('user_slug', `${userId}|${slug}`);
+  return mine.some((o) => o.status === 'paid');
 }
 
 /* ───────────────────────── Bundles ───────────────────────── */
 
 export async function getBundleMeta(slug: string): Promise<BundleMeta | null> {
-  const database = await db();
-  return (await database.prepare('SELECT * FROM template_bundles WHERE slug = ?').bind(slug).first<BundleMeta>()) ?? null;
+  const doc = await (await data()).bundles.get(slug);
+  if (!doc) return null;
+  const { id: _id, updated_by: _by, ...meta } = doc;
+  return meta;
 }
 
 export async function saveBundle(slug: string, file: File, actor: string): Promise<void> {
@@ -147,14 +137,6 @@ export async function saveBundle(slug: string, file: File, actor: string): Promi
   const key = `templates/${slug}/${filename}`;
   const bytes = await file.arrayBuffer();
   await store.put(key, bytes, { httpMetadata: { contentType: file.type || 'application/zip' } });
-  const database = await db();
-  await database
-    .prepare(
-      `INSERT INTO template_bundles (slug, object_key, filename, size, updated_at, updated_by)
-       VALUES (?,?,?,?,?,?)
-       ON CONFLICT(slug) DO UPDATE SET object_key=excluded.object_key, filename=excluded.filename,
-         size=excluded.size, updated_at=excluded.updated_at, updated_by=excluded.updated_by`
-    )
-    .bind(slug, key, filename, file.size, nowIso(), actor)
-    .run();
+  const doc = { id: slug, slug, object_key: key, filename, size: file.size, updated_at: nowIso(), updated_by: actor };
+  await (await data()).bundles.upsert(slug, () => doc);
 }

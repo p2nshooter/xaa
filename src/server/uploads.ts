@@ -1,9 +1,11 @@
-import { bucket, db, newId, nowIso } from './db';
+import { bucket, newId, nowIso } from './db';
+import { data } from './data';
 import type { ProjectFile } from './projects';
 
 /**
- * Client uploads (concept decks, references, payment proofs) go to R2, with
- * only the metadata in D1. Files are never public: they are served back
+ * Client uploads (concept decks, references, payment proofs) go to the R2
+ * uploads bucket, their metadata to the data bucket (c/files/…). Files are
+ * never public: they are served back
  * through /api/files/[id], which re-checks the session on every request.
  */
 
@@ -66,14 +68,7 @@ export async function storeFile(input: {
     uploaded_by: input.uploadedBy,
     created_at: nowIso(),
   };
-  const database = await db();
-  await database
-    .prepare(
-      `INSERT INTO files (id, project_id, user_id, object_key, name, size, content_type, kind, uploaded_by, created_at)
-       VALUES (?,?,?,?,?,?,?,?,?,?)`
-    )
-    .bind(row.id, row.project_id, row.user_id, row.object_key, row.name, row.size, row.content_type, row.kind, row.uploaded_by, row.created_at)
-    .run();
+  await (await data()).files.create(row);
   return row;
 }
 
