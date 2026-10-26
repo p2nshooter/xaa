@@ -13,20 +13,20 @@
     "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {
-    "next": "15.5.20",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "next": "16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "1.20.1",
-    "@cloudflare/workers-types": "4.20260702.1",
-    "typescript": "5.6.3",
-    "tailwindcss": "3.4.13",
-    "postcss": "8.4.47",
-    "autoprefixer": "10.4.20",
+    "@cloudflare/workers-types": "5.20261026.1",
+    "@opennextjs/cloudflare": "1.20.13",
     "@types/node": "20.16.11",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "wrangler": "4.107.0"
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.47",
+    "tailwindcss": "3.4.13",
+    "typescript": "5.6.3",
+    "wrangler": "4.152.0"
   }
 }
