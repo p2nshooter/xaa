@@ -1,12 +1,12 @@
 # SEO audit — all domains
 
-Generated 2026-10-19T08:43:25.061Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
+Generated 2026-10-26T08:45:33.700Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
 
 | Domain | Score | ✅ | ❌ | ⚠️ | 📝 | Repo |
 |---|---|---|---|---|---|---|
-| [xaa.es](https://xaa.es) | 95% | 62 | 2 | 3 | 9 | p2nshooter/xaa |
+| [xaa.es](https://xaa.es) | 96% | 62 | 0 | 5 | 9 | p2nshooter/xaa |
 
-## xaa.es — 95%
+## xaa.es — 96%
 
 **Not done yet (5):** Fonts optimised (preload / font-display: swap); Meta description (50–160 chars); Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
@@ -30,19 +30,19 @@ Generated 2026-10-19T08:43:25.061Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://xaa.es/ |
 | ✅ | Canonical URL on the home page | https://xaa.es |
-| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
+| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 596 ms (from a GitHub runner) |
+| ✅ | Server response time | 620 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | private, no-cache, no-store, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ⚠️ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 50/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 5.05 s lab |
-| ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 1107 ms lab (no field data yet) |
+| ⚠️ | Performance score (mobile) | 83/100 — Lighthouse (runner) |
+| ⚠️ | LCP ≤ 2.5 s | 3.36 s lab |
+| ✅ | CLS ≤ 0.1 | 0.061 lab |
+| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 289 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -93,7 +93,7 @@ Generated 2026-10-19T08:43:25.061Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 40 unique |
+| ✅ | Internal links from the home page | 41 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
