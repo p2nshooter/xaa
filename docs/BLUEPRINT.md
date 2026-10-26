@@ -260,6 +260,8 @@ Rencana lengkap per template (logika, menu, dashboard, demo, gambar animasi, sta
 
 ## 9. Changelog blueprint
 
+- **26 Okt 2026 (2)**: Next.js 15 habis masa dukungan (2 tahun sejak 21 Okt 2024); OpenNext menolak membangunnya, jadi deploy permintaan 50 gagal. xaa.es naik ke **Next.js 16.4.3** + `@opennextjs/cloudflare` 1.20.13 + wrangler 4.152.0 (versi yang didukung, bukan flag pengecualian). Diuji lokal: typecheck, 28 unit test, build OpenNext, crawl tanpa tautan rusak, portal e2e 41/41, desktop + ponsel tanpa error konsol.
+
 - **26 Okt 2026**: permintaan 50–53 dicatat; AdSense xaa.es → ca-pub-8991272269211824 (sebelumnya 6908951782430508), sama dengan axto.io, ulyah.com, 1fr.fr dan tilawa.de.
 
 - **20 Okt 2026 (4)**: permintaan 45–46 dicatat; `docs/R2-DATA-BLUEPRINT.md` (semua data pindah dari D1 ke R2,
