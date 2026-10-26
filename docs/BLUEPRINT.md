@@ -95,6 +95,10 @@ Arti tanda:
 | 47 | (20 Okt 2026) „Catat ya baik di axto.io maupun di xaa.es, ulyah.com  xad.es 1fr.fr tilawa.de dan semua yg membutuhkan penyimpanan, wajib ke R2, jgn pernah ke D1" | ✅ dicatat | Aturan tetap di `CLAUDE.md` repo ini dan di setiap repo pemilik (guardian-ai, ulyah.com, Quantum, dan lainnya); cakupan per situs di guardian-ai `docs/R2-DATA-BLUEPRINT.md` §10 |
 | 48 | (20 Okt 2026) „Setelah xaa.es selesai skrg pindah ke axto.io pastikan 100% siap produksi, docker sudah di cek dan sudah siap produksi, jgn ada aplikasi sampah, pastikan pembayaran semua sudah live" | 🔄 urutan | xaa.es dulu (data ke R2 tayang), lalu axto.io (guardian-ai `docs/BLUEPRINT-V4.md` §25) |
 | 49 | (20 Okt 2026) „SaaS template di xaa.es sudah d buat belum? Dari harga termurah sampai termahal dan buatkan link demonya" + „Kerjakan ke duanya, 1 dulu baru lanjut" | 🔄 | Jawaban jujur: baru Waitlist & Landing (€390) yang jadi + demo; 17 lainnya baru blueprint. Urutan: data xaa.es ke R2 tayang dulu (✅), lalu template dibangun berurutan dari termurah (Link-in-Bio €490 → … → Global Enterprise Ecosystem €500.000), masing-masing dengan demo hidup, akun demo di portal dan klip animasi (`docs/TEMPLATES-BLUEPRINT.md`). **20 Okt:** kit + Waitlist pindah ke R2 (89 tes, E2E 7/7, menu Backups), demo `/demos/waitlist/` diperbarui; berikutnya Link-in-Bio |
+| 50 | (26 Okt 2026, urgent) „Untuk 5 domain ini kode adsense nya ulyah.com 1fr.fr Tilawa.de axto.io xaa.es google.com, pub-8991272269211824, DIRECT, f08c47fec0942fa0“ — ads.txt, tag meta dan cuplikan; „Hati2 jgn sampe ads.txt hilang2an“ | ✅ kode (tayang setelah deploy) | `src/lib/site.ts` (`adClient` → loader + tag meta di HTML), `public/ads.txt` |
+| 51 | (26 Okt 2026) „Kita berhenti dulu aplikasi xaa.es dan axto.io … focus isi minimal 45 artikel di seluruh situs“ (termasuk xaa.es); „jgn pernah mengerjakan aplikasi sebelum di perintahkan atau anda harus minta izin dulu“ | 🔄 aturan tetap: kode AdSense → DNS → situs baru → artikel → blueprint; aplikasi hanya dengan izin | §6 |
+| 52 | (26 Okt 2026) Penawaran investor (hingga 30 %) default tersembunyi di index dan portal member, tombol tampil/sembunyi di portal admin | ⏸ menunggu izin pemilik (permintaan 51) | §6 |
+| 53 | (26 Okt 2026) Pelajari situs dan aplikasi dunia yang sejenis, kembangkan „1000 kali lebih canggih“; kemungkinan xaa.es satu akun Cloudflare dengan axto.io (dibahas dulu) | 📝 dicatat; dikerjakan setelah izin | §6 |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
 ---
@@ -255,6 +259,8 @@ Rencana lengkap per template (logika, menu, dashboard, demo, gambar animasi, sta
   index/paused bekerja, tanpa error halaman. `tools/e2e/crawl.mjs`: tidak ada tautan rusak.
 
 ## 9. Changelog blueprint
+
+- **26 Okt 2026**: permintaan 50–53 dicatat; AdSense xaa.es → ca-pub-8991272269211824 (sebelumnya 6908951782430508), sama dengan axto.io, ulyah.com, 1fr.fr dan tilawa.de.
 
 - **20 Okt 2026 (4)**: permintaan 45–46 dicatat; `docs/R2-DATA-BLUEPRINT.md` (semua data pindah dari D1 ke R2,
   animasi panduan pelanggan, pembayaran Live). Template Waitlist selesai: demo `/demos/waitlist/`, galeri klip di
