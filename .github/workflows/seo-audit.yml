@@ -1,18 +1,18 @@
 name: SEO audit
-# Audits xaa.es against the SEO checklist and records the result in
-# src/content/seo-audit.json (shown at /portal/admin/seo) and docs/seo/REPORT.md.
-# Weekly, and on demand from the Actions tab. The other company domains are
-# listed in scripts/seo-audit.mjs but are not audited until they are back in
-# scope — pass their names as the `domains` input to include them.
+# Audits every domain in scripts/seo-audit.mjs (owner, 27 Oct 2026: "perbaiki dulu
+# seluruh SEO websitenya … d seluruh situs") against the SEO checklist and records
+# the result in src/content/seo-audit.json (shown at /portal/admin/seo) and
+# docs/seo/REPORT.md. Weekly, and on demand from the Actions tab; the `domains`
+# input narrows a run to some of them.
 on:
   schedule:
     - cron: '0 3 * * 1' # Mondays 03:00 UTC
   workflow_dispatch:
     inputs:
       domains:
-        description: 'Space-separated domains to audit'
+        description: 'Space-separated domains to audit (empty = all)'
         required: false
-        default: 'xaa.es'
+        default: ''
 permissions:
   contents: write
   actions: write
@@ -30,7 +30,7 @@ jobs:
       - name: Audit
         run: node scripts/seo-audit.mjs $DOMAINS
         env:
-          DOMAINS: ${{ inputs.domains || 'xaa.es' }}
+          DOMAINS: ${{ inputs.domains || '' }}
           PSI_KEY: ${{ secrets.PAGESPEED_API_KEY }}
           LIGHTHOUSE: '1'
       - name: Show report

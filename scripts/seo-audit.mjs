@@ -25,17 +25,33 @@ export const DOMAINS = [
   { domain: 'axto.dev', repo: 'p2nshooter/axtodev' },
   { domain: 'axto.us', repo: 'p2nshooter/axto.us' },
   { domain: 'ulyah.com', repo: 'p2nshooter/ulyah.com' },
-  { domain: 'xad.es', repo: 'p2nshooter/xad' },
+  { domain: 'xad.es', repo: 'p2nshooter/ulyah.com' },
   { domain: 'jai.lat', repo: 'p2nshooter/Jai' },
   { domain: 'lie.skin', repo: 'p2nshooter/Lie' },
   { domain: 'oldco.in', repo: 'p2nshooter/oldco.in' },
   { domain: 'profity.in', repo: 'p2nshooter/profity.in' },
-  { domain: '1fr.fr', repo: null },
-  { domain: 'tilawa.de', repo: null },
+  { domain: '1fr.fr', repo: 'p2nshooter/ulyah.com' },
+  { domain: 'tilawa.de', repo: 'p2nshooter/ulyah.com' },
+  // The article sites built by ulyah.com/sites/_engine (owner, 27 Oct 2026: "perbaiki dulu seluruh SEO
+  // websitenya … d seluruh situs"). dawa.es is no longer the owner's and is never audited.
+  ...['byodd.de', 'byoxy.de', 'byoy.de', 'nexvilo.de', 'qarf.de', 'qulen.de', 'qurm.de', 'rubiy.de', 'velnixo.de',
+    'zavik.de', 'zevok.de', 'zoevian.de', 'zolun.de', 'zufiq.de', 'zuvik.de', 'crone.skin', 'dai.lat', 'pab.lat',
+    'rough.lat', 'saved.lat', 'dawo.es', 'qkb.es', 'rough.es', 'xko.es', 'odaily.xyz', 'xdaily.xyz']
+    .map((domain) => ({ domain, repo: 'p2nshooter/ulyah.com' })),
 ];
 
-/** All of these are Domain properties in Search Console (owner's screenshot, 2026-09). */
-const GSC_VERIFIED = new Set(DOMAINS.map((d) => d.domain));
+/** Domain properties in Search Console the owner showed (screenshot, 2026-09; the five new sites, 25 Oct 2026).
+ *  Any other domain passes when its DNS carries a google-site-verification TXT record. */
+const GSC_VERIFIED = new Set(['xaa.es', 'axto.io', 'axto.dev', 'axto.us', 'ulyah.com', 'xad.es', 'jai.lat', 'lie.skin', 'oldco.in', 'profity.in', '1fr.fr', 'tilawa.de',
+  'velnixo.de', 'zoevian.de', 'nexvilo.de', 'odaily.xyz', 'xdaily.xyz']);
+
+async function gscTxt(domain) {
+  try {
+    const r = await fetch(`https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(domain)}&type=TXT`, { headers: { accept: 'application/dns-json' } });
+    const j = await r.json();
+    return (j.Answer ?? []).some((a) => /google-site-verification=/.test(a.data ?? ''));
+  } catch { return false; }
+}
 
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36 XAA-SEO-Audit/1.0 (+https://xaa.es/company)';
 const TIMEOUT = 25_000;
@@ -165,7 +181,8 @@ async function audit({ domain, repo }) {
   const sameHost = altHops.final && new URL(altHops.final).hostname === finalUrl.hostname;
   add('1', 'canonical_host', 'One canonical host (www ↔ apex redirect)', sameHost ? 'pass' : altHops.error ? 'warn' : 'fail',
     altHops.error ? `${alt}: ${altHops.error}` : `${alt} → ${altHops.final}`);
-  add('1', 'gsc', 'Google Search Console', GSC_VERIFIED.has(domain) ? 'pass' : 'fail', GSC_VERIFIED.has(domain) ? 'Domain property verified' : 'not verified');
+  const gsc = GSC_VERIFIED.has(domain) ? 'Domain property verified' : (await gscTxt(domain)) ? 'google-site-verification TXT in DNS' : '';
+  add('1', 'gsc', 'Google Search Console', gsc ? 'pass' : 'manual', gsc || 'no verification TXT found — add the domain in Search Console (Domain property) and its TXT record');
   const bingMeta = meta(head, 'msvalidate.01');
   const bingFile = bingMeta ? null : await get(`${origin}/BingSiteAuth.xml`);
   add('1', 'bing', 'Bing Webmaster Tools verification', bingMeta || (bingFile?.ok && bingFile.status === 200 && /<user>/i.test(bingFile.body)) ? 'pass' : 'manual',
@@ -224,7 +241,7 @@ async function audit({ domain, repo }) {
 
   // 3. On-page (home)
   const title = titleOf(head);
-  add('3', 'title', 'Title tag (10–65 chars)', !title ? 'fail' : title.length >= 10 && title.length <= 65 ? 'pass' : 'warn', title ? `${title.length}: ${title}` : 'missing');
+  add('3', 'title', 'Title tag (10–60 chars)', !title ? 'fail' : title.length >= 10 && title.length <= 60 ? 'pass' : 'warn', title ? `${title.length}: ${title}` : 'missing');
   const desc = meta(head, 'description');
   add('3', 'meta_description', 'Meta description (50–160 chars)', !desc ? 'fail' : desc.length >= 50 && desc.length <= 160 ? 'pass' : 'warn', desc ? `${desc.length}: ${desc.slice(0, 90)}…` : 'missing');
   const h1 = (html.match(/<h1\b/gi) ?? []).length;
@@ -285,6 +302,15 @@ async function audit({ domain, repo }) {
   const llms = await get(`${origin}/llms.txt`);
   add('18', 'llms_txt', 'llms.txt for AI assistants', llms.ok && llms.status === 200 && !/<html/i.test(llms.body) ? 'pass' : 'warn', llms.ok ? `HTTP ${llms.status}` : llms.error);
 
+  // Files phones, social apps and security researchers ask for (owner, 27 Oct 2026: "file2 lain yg d butuhkan").
+  const sec = await get(`${origin}/.well-known/security.txt`);
+  add('14', 'security_txt', 'security.txt (RFC 9116)', sec.ok && sec.status === 200 && /^contact:/im.test(sec.body) && !/<html/i.test(sec.body) ? 'pass' : 'warn', sec.ok ? `HTTP ${sec.status}` : sec.error);
+  const manifest = tags(head, 'link').find((a) => (a.rel || '').toLowerCase() === 'manifest');
+  add('2', 'manifest', 'Web app manifest', manifest ? 'pass' : 'warn', manifest?.href ?? 'no <link rel="manifest">');
+  add('6', 'touch_icon', 'apple-touch-icon (PNG)', tags(head, 'link').some((a) => /apple-touch-icon/i.test(a.rel || '')) ? 'pass' : 'warn');
+  const ogImage = meta(head, 'og:image');
+  add('17', 'og_image_raster', 'og:image is PNG / JPG / WebP (social apps ignore SVG)', !ogImage ? 'na' : /\.svg(\?|$)/i.test(ogImage) ? 'warn' : 'pass', ogImage ?? '');
+
   // Inner pages: titles/descriptions unique, H1, canonical, breadcrumbs.
   const sample = [...new Set(pageUrls.filter((u) => { try { return new URL(u).hostname === finalUrl.hostname && new URL(u).pathname !== '/'; } catch { return false; } }))].slice(0, 8);
   const pages = [{ url: home.url, title, desc, h1 }];
@@ -307,6 +333,10 @@ async function audit({ domain, repo }) {
     add('3', 'unique_titles', 'Unique title on every page', dupT || missT ? 'fail' : 'pass', `${ok.length} pages sampled; ${dupT} duplicate, ${missT} missing`);
     add('3', 'unique_descriptions', 'Unique meta description on every page', dupD || missD ? 'warn' : 'pass', `${dupD} duplicate, ${missD} missing`);
     add('3', 'h1_all', 'One H1 on every sampled page', badH1 ? 'warn' : 'pass', `${badH1} page(s) with 0 or several H1`);
+    const longT = ok.filter((p) => p.title && p.title.length > 60);
+    const longD = ok.filter((p) => p.desc && p.desc.length > 160);
+    add('3', 'title_length_all', 'Titles ≤ 60 characters on every sampled page', longT.length ? 'warn' : 'pass', longT.length ? `${longT.length}/${ok.length}, e.g. ${longT[0].title.length}: ${longT[0].title.slice(0, 70)}` : `${ok.length} pages`);
+    add('3', 'desc_length_all', 'Descriptions ≤ 160 characters on every sampled page', longD.length ? 'warn' : 'pass', `${longD.length}/${ok.length} longer`);
     add('2', 'canonical_all', 'Canonical on every sampled page', noCanon ? 'warn' : 'pass', `${noCanon} without`);
     add('3', 'breadcrumbs', 'Breadcrumbs on inner pages', crumbs >= Math.ceil(sample.length / 2) ? 'pass' : 'warn', `${crumbs}/${sample.length}`);
     add('2', 'broken', 'Sitemap URLs load (no broken pages)', broken ? 'fail' : 'pass', `${broken}/${sample.length} failing`);
