@@ -15,7 +15,7 @@ const BNI = {
   bankCountry: 'Indonesia',
 };
 
-/** wondr by BNI multicurrency accounts. The first six are switched on. */
+/** wondr by BNI multicurrency accounts — all 13 switched on (owner, 27 Oct 2026: request 61). */
 const BNI_ACCOUNTS: { ccy: string; number: string; active: boolean }[] = [
   { ccy: 'EUR', number: '2090571542', active: true },
   { ccy: 'USD', number: '2090571495', active: true },
@@ -23,13 +23,13 @@ const BNI_ACCOUNTS: { ccy: string; number: string; active: boolean }[] = [
   { ccy: 'GBP', number: '2090571520', active: true },
   { ccy: 'AUD', number: '2090571519', active: true },
   { ccy: 'SGD', number: '2090571508', active: true },
-  { ccy: 'CNY', number: '2090571531', active: false },
-  { ccy: 'HKD', number: '2090571553', active: false },
-  { ccy: 'JPY', number: '2090571564', active: false },
-  { ccy: 'MYR', number: '2090571575', active: false },
-  { ccy: 'SAR', number: '2090571586', active: false },
-  { ccy: 'KRW', number: '2090571597', active: false },
-  { ccy: 'THB', number: '2090571609', active: false },
+  { ccy: 'CNY', number: '2090571531', active: true },
+  { ccy: 'HKD', number: '2090571553', active: true },
+  { ccy: 'JPY', number: '2090571564', active: true },
+  { ccy: 'MYR', number: '2090571575', active: true },
+  { ccy: 'SAR', number: '2090571586', active: true },
+  { ccy: 'KRW', number: '2090571597', active: true },
+  { ccy: 'THB', number: '2090571609', active: true },
 ];
 
 export const COMPANY_PAYMENT_METHODS: PaymentMethodInput[] = [

@@ -66,9 +66,9 @@ export const SEO: Record<string, SeoCopy> = {
     id: { title: 'Investasi di xaa.es — bagi hasil dari studio yang sudah berjalan', description: 'Penawaran pemodal khusus xaa.es: bagi hasil bulanan dari setiap pendapatan xaa.es yang terkonfirmasi, sebanding dengan modal Anda, sampai akuisisi penuh mengembalikannya.' },
   },
   payments: {
-    en: { title: 'Payments by PayPal, bank wire or USDT, milestone-based', description: 'XAA invoices in euros. Pay by PayPal (card or balance, confirmed instantly), by SWIFT wire in EUR or USD, or in USDT. Milestones of 10%, 40% and 50%.' },
-    es: { title: 'Pagos con PayPal, transferencia o USDT, por hitos', description: 'XAA factura en euros. Paga con PayPal (tarjeta o saldo, confirmado al instante), por transferencia SWIFT en EUR o USD, o en USDT. Hitos del 10%, 40% y 50%.' },
-    id: { title: 'Pembayaran via PayPal, transfer bank, atau USDT, bertahap', description: 'XAA menagih dalam euro. Bayar via PayPal (kartu atau saldo, terkonfirmasi seketika), transfer SWIFT dalam EUR atau USD, atau USDT. Termin 10%, 40% dan 50%.' },
+    en: { title: 'Payments by PayPal, bank wire in 13 currencies or crypto', description: 'XAA invoices in euros. Pay by PayPal (instant), by bank wire in 13 currencies at the day\'s ECB rate, or in USDT, BTC, BNB, SOL or DOGE. Milestones 10/40/50 %.' },
+    es: { title: 'Pagos con PayPal, transferencia en 13 monedas o cripto', description: 'XAA factura en euros. Paga con PayPal (al instante), por transferencia en 13 monedas al tipo BCE del día, o en USDT, BTC, BNB, SOL o DOGE. Hitos 10/40/50 %.' },
+    id: { title: 'Bayar via PayPal, transfer bank 13 mata uang atau kripto', description: 'XAA menagih dalam euro. Bayar via PayPal (seketika), transfer bank 13 mata uang dengan kurs ECB hari itu, atau USDT, BTC, BNB, SOL, DOGE. Termin 10/40/50 %.' },
   },
   capabilities: {
     en: { title: 'Capabilities & tech stack for web and SaaS builds', description: 'What XAA builds with: modern web frameworks, edge deployment, relational data, payments, security and AI integration, and the standards behind every build.' },

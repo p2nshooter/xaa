@@ -2,18 +2,15 @@
 
 import { useActionState } from 'react';
 import {
-  buyTemplateAction, submitOrderPaymentAction, confirmOrderAction, uploadBundleAction,
+  buyTemplateAction, confirmOrderAction, orderAttentionAction, uploadBundleAction,
   type ActionState,
 } from '@/server/actions';
 import { Submit, Notice } from './Submit';
 import { PayPalPay, type PayPalOffer } from './PayPalForms';
-import { wireAmount } from './ProjectForms';
+import { ManualPay } from './ManualPay';
+import type { PayOption } from '@/server/manual-pay';
+import type { Lang } from '@/lib/i18n';
 
-type Dest = {
-  id: string; kind: string; label: string; network: string | null; currency: string;
-  address: string; memo: string | null; link: string | null; instructions: string | null;
-  holder?: string | null; bankName?: string | null; swift?: string | null; branch?: string | null; bankCountry?: string | null;
-};
 
 export function BuyButton({ slug, label, className = 'btn btn-primary' }: { slug: string; label: string; className?: string }) {
   const [state, action] = useActionState<ActionState, FormData>(buyTemplateAction, {});
@@ -28,107 +25,33 @@ export function BuyButton({ slug, label, className = 'btn btn-primary' }: { slug
 
 export function OrderPaymentForm({
   orderId,
+  orderRef,
   price,
-  destinations,
+  eurText,
+  options,
   paypal = null,
+  lang,
 }: {
   orderId: string;
+  orderRef: string;
   price: number;
-  destinations: Dest[];
+  eurText: string;
+  options: PayOption[];
   paypal?: PayPalOffer;
+  lang: Lang;
 }) {
-  const [state, action] = useActionState<ActionState, FormData>(submitOrderPaymentAction, {});
-  const crypto = destinations.filter((d) => d.kind === 'crypto');
-  // With PayPal Checkout on, a manual PayPal destination is a slower copy of it.
-  const paypalManual = paypal ? [] : destinations.filter((d) => d.kind === 'paypal');
-  const bank = destinations.filter((d) => d.kind === 'bank');
-  const manualCount = crypto.length + paypalManual.length + bank.length;
-  const method = crypto.length ? 'usdt' : paypalManual.length ? 'paypal' : bank.length ? 'bank' : 'usdt';
-
   return (
-    <div className="panel p-6">
-      <h2 className="font-display text-lg font-extrabold">Pay for your bundle</h2>
-
-      {paypal ? <PayPalPay target="order" id={orderId} amount={price} env={paypal.env} /> : null}
-
-      {manualCount === 0 && !paypal ? (
-        <p className="mt-3 text-sm text-steel-500">
-          Payment destinations are not configured yet. Please <a href="/contact" className="text-gold-500 underline">contact us</a> to complete the purchase.
-        </p>
+    <div className="space-y-4">
+      {paypal ? (
+        <div className="panel p-6">
+          <h2 className="font-display text-lg font-extrabold">PayPal · card</h2>
+          <PayPalPay target="order" id={orderId} amount={price} env={paypal.env} />
+        </div>
       ) : null}
-
-      {manualCount > 0 ? (
-        <form action={action}>
-          {paypal ? <p className="pay-divider">or pay by bank transfer{crypto.length ? ' or crypto' : ''}</p> : null}
-          <Notice error={state.error} ok={state.ok} />
-          <div className="mt-4 space-y-3">
-            {crypto.map((d) => (
-              <Dest key={d.id} title={`${d.currency}${d.network ? ` · ${d.network}` : ''}`} rows={[['Address', d.address], d.memo ? ['Memo/Tag', d.memo] : null]} instructions={d.instructions} />
-            ))}
-            {paypalManual.map((d) => (
-              <Dest key={d.id} title="PayPal" rows={[['Account', d.address], d.link ? ['Link', d.link] : null]} instructions={d.instructions} />
-            ))}
-            {bank.map((d) => {
-              const wire = wireAmount(price, d.currency);
-              return (
-                <Dest
-                  key={d.id}
-                  title={`Bank transfer · ${d.currency}${d.bankName ? ` · ${d.bankName}` : ''}`}
-                  rows={[
-                    ['Send', wire.main],
-                    ['Account', d.address],
-                    d.holder ? ['Holder', d.holder] : null,
-                    d.swift ? ['SWIFT/BIC', d.swift] : null,
-                    d.branch ? ['Branch', d.branch] : null,
-                  ]}
-                  instructions={[wire.note, d.instructions].filter(Boolean).join('\n') || null}
-                />
-              );
-            })}
-          </div>
-
-          <input type="hidden" name="orderId" value={orderId} />
-          <label className="field mt-4">
-            <span>Method</span>
-            <select name="method" className="select" defaultValue={method}>
-              {crypto.length ? <option value="usdt">Crypto</option> : null}
-              {paypalManual.length ? <option value="paypal">PayPal</option> : null}
-              {bank.length ? <option value="bank">Bank transfer</option> : null}
-            </select>
-          </label>
-          <label className="field">
-            <span>Transaction reference *</span>
-            <input name="reference" className="input" required placeholder="Transaction hash / PayPal ID / wire reference" />
-          </label>
-          <label className="field">
-            <span>Payment screenshot{bank.length ? ' (required for a bank transfer)' : ''}</span>
-            <input type="file" name="receipt" accept="image/png,image/jpeg,image/webp,application/pdf" className="text-sm" />
-          </label>
-          <label className="field">
-            <span>Note (optional)</span>
-            <input name="note" className="input" />
-          </label>
-          <Submit pendingLabel="Submitting…">I have paid — submit</Submit>
-          <p className="hint mt-2">We confirm within one business day from your screenshot and what you bought unlocks automatically.</p>
-        </form>
+      {paypal && options.length ? <p className="pay-divider">or pay by bank transfer or crypto</p> : null}
+      {options.length || !paypal ? (
+        <ManualPay lang={lang} options={options} reference={orderRef} amountEur={price} eurText={eurText} target="order" hidden={{ orderId }} />
       ) : null}
-    </div>
-  );
-}
-
-function Dest({ title, rows, instructions }: { title: string; rows: (readonly [string, string] | null)[]; instructions: string | null }) {
-  return (
-    <div className="rounded-lg bg-[color:var(--surface)] p-3 text-sm">
-      <p className="font-bold">{title}</p>
-      <dl className="mt-1 space-y-1">
-        {rows.filter(Boolean).map((r) => (
-          <div key={(r as [string, string])[0]} className="flex flex-wrap justify-between gap-2">
-            <dt className="text-xs uppercase tracking-wide text-steel-500">{(r as [string, string])[0]}</dt>
-            <dd className="break-all font-mono text-xs">{(r as [string, string])[1]}</dd>
-          </div>
-        ))}
-      </dl>
-      {instructions ? <pre className="mt-2 whitespace-pre-wrap font-sans text-xs text-steel-500">{instructions}</pre> : null}
     </div>
   );
 }
@@ -144,6 +67,23 @@ export function ConfirmOrderControls({ orderId }: { orderId: string }) {
         <Submit pendingLabel="Working…" className="btn btn-primary btn-sm">Mark paid — unlock download</Submit>
         <button type="submit" name="decision" value="cancel" className="btn btn-ghost btn-sm">Cancel order</button>
       </div>
+    </form>
+  );
+}
+
+/** Studio: send the payment back with what to fix — the buyer sees the note in their tracker. */
+export function OrderAttentionForm({ orderId }: { orderId: string }) {
+  const [state, action] = useActionState<ActionState, FormData>(orderAttentionAction, {});
+  return (
+    <form action={action} className="panel mt-3 p-5">
+      <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">Studio — needs attention</p>
+      <Notice error={state.error} ok={state.ok} />
+      <input type="hidden" name="orderId" value={orderId} />
+      <label className="field">
+        <span>What the buyer should do</span>
+        <input name="reason" className="input" placeholder="e.g. Rp 25.437 is missing — please transfer the difference and upload both receipts" />
+      </label>
+      <Submit pendingLabel="Sending…" className="btn btn-ghost btn-sm">Send back to the buyer</Submit>
     </form>
   );
 }

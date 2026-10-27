@@ -119,10 +119,41 @@ export async function ensureStarterMethods(): Promise<void> {
 export async function listPaymentMethods(onlyActive = false): Promise<PaymentMethod[]> {
   try {
     await ensureStarterMethods();
+    await ensureAllCompanyAccounts();
   } catch (err) {
     console.error('starter payment methods could not be prepared (continuing):', err);
   }
   return listStoredMethods(onlyActive);
+}
+
+const ALL_COMPANY = '__company_methods_all_13__';
+let allChecked = false;
+
+/**
+ * Owner, 27 Oct 2026 (request 61): every one of the 13 wondr by BNI currency accounts and the five company wallets
+ * is offered. Once per database: whatever of the company list is missing is imported, and a company account that
+ * an earlier version had left switched off is switched on. After that the admin's own switches stand.
+ */
+async function ensureAllCompanyAccounts(): Promise<void> {
+  if (allChecked) return;
+  const d = await data();
+  const marker = `secret/${ALL_COMPANY}`;
+  const claim = await d.store.createDoc<SecretDoc>(marker, { value: 'working', updated_at: nowIso() });
+  if (claim.created) {
+    try {
+      const { COMPANY_PAYMENT_METHODS } = await import('@/content/company-payments');
+      const company = new Set(COMPANY_PAYMENT_METHODS.map((m) => m.address.trim()));
+      await importCompanyMethods();
+      for (const m of await listStoredMethods(false)) {
+        if (!m.active && company.has(m.address.trim())) await setPaymentMethodActive(m.id, true);
+      }
+      await d.store.updateDoc<SecretDoc>(marker, claim.doc, () => ({ value: 'done', updated_at: nowIso() }));
+    } catch (err) {
+      await d.store.deleteDoc(marker).catch(() => undefined);
+      throw err;
+    }
+  }
+  allChecked = true;
 }
 
 async function listStoredMethods(onlyActive: boolean): Promise<PaymentMethod[]> {
@@ -263,7 +294,7 @@ export interface SettingDef {
   label: string;
   hint: string;
   secret: boolean;
-  group: 'company' | 'invoicing' | 'paypal' | 'sale' | 'invest' | 'integrations';
+  group: 'company' | 'invoicing' | 'payments' | 'paypal' | 'sale' | 'invest' | 'integrations';
   placeholder?: string;
   /** Fixed choices: rendered as a select instead of a text field. */
   options?: { value: string; label: string }[];
@@ -293,6 +324,10 @@ export const SETTING_DEFS: SettingDef[] = [
   { key: 'invoice_footer', label: 'Invoice footer note', hint: 'Payment terms or a thank-you line.', secret: false, group: 'invoicing' },
   { key: 'vat_note', label: 'VAT treatment note', hint: 'e.g. "Reverse charge — VAT to be accounted for by the recipient".', secret: false, group: 'invoicing' },
 
+  {
+    key: 'fx_margin_pct', label: 'Conversion margin (%)', hint: 'Added on top of the daily reference rate when a price in euros is converted into the currency of the BNI account or the coin the buyer chose. 0 by default, at most 5. Rates and prices themselves are fetched automatically (Studio desk → Payments).',
+    secret: false, group: 'payments', placeholder: '0',
+  },
   { key: 'notify_email', label: 'Notification inbox', hint: 'Where new leads and payments should be emailed.', secret: false, group: 'integrations' },
   { key: 'smtp_api_key', label: 'Email provider API key', hint: 'Resend, Postmark or similar. Encrypted at rest.', secret: true, group: 'integrations' },
   { key: 'telegram_bot_token', label: 'Telegram bot token', hint: 'Optional alerting channel. Encrypted at rest.', secret: true, group: 'integrations' },
@@ -352,6 +387,7 @@ export const SETTING_DEFS: SettingDef[] = [
 export const SETTING_GROUPS: { id: SettingDef['group']; title: string; blurb: string }[] = [
   { id: 'company', title: 'Company details', blurb: 'Who the invoice is from. Printed on every document the client receives.' },
   { id: 'invoicing', title: 'Invoicing', blurb: 'Numbering and the wording that appears beneath the totals.' },
+  { id: 'payments', title: 'Manual payments', blurb: 'How a euro price becomes the amount a buyer sends to a BNI currency account or a company wallet: the daily ECB reference rate (SAR at its 3.75 USD peg), hourly coin prices, rounded up, IDR with a unique 3-digit code, held 72 hours (coins one hour), with up to 2 % bank-fee shortfall accepted.' },
   {
     id: 'paypal', title: 'PayPal Checkout',
     blurb: 'Clients pay with their PayPal balance or any card through PayPal, and the payment confirms itself the moment PayPal captures it — no transaction ID to paste, nothing to check by hand. Paste a Live and a Sandbox set and save: each set is checked with PayPal and its webhook is created automatically. The switch decides which set checkout uses.',
@@ -469,6 +505,7 @@ export async function saveSetting(key: string, raw: string, updatedBy: string): 
   // back, so treating blank as a delete would wipe a key on every save.
   if (def.secret && !value) return;
   if (def.options && value && !def.options.some((o) => o.value === value)) throw new Error(`${def.label}: choose one of the listed options.`);
+  if (key === 'fx_margin_pct' && value && !(/^\d+(\.\d{1,2})?$/.test(value) && Number(value) <= 5)) throw new Error(`${def.label}: a number from 0 to 5.`);
 
   const doc: SettingDoc = { value: def.secret ? await encryptValue(value) : value, is_secret: def.secret ? 1 : 0, updated_at: nowIso(), updated_by: updatedBy };
   const d = await data();

@@ -8,7 +8,9 @@ import { listRecentCheckouts, paypalStatus } from '@/server/paypal';
 import { keySource, selfTest } from '@/server/crypto';
 import { countNewLeads } from '@/server/leads';
 import { AdminNav } from '@/components/AdminNav';
-import { PaymentMethodForm, PaymentMethodRow, ImportEnvMethods, ImportCompanyMethods, type MethodView } from '@/components/forms/AdminForms';
+import { PaymentMethodForm, PaymentMethodRow, ImportEnvMethods, ImportCompanyMethods, RefreshRates, type MethodView } from '@/components/forms/AdminForms';
+import { rateBoard } from '@/server/fx';
+import { COINS, COIN_INFO, FIAT, FIAT_INFO } from '@/lib/pay-money';
 import { soft, type Problems } from '@/server/soft';
 import { DbNotice } from '@/components/DbNotice';
 
@@ -37,14 +39,17 @@ export default async function AdminPaymentsPage() {
   if (user.role !== 'admin') redirect('/portal');
 
   const problems: Problems = [];
-  const [methods, source, ok, newLeads, pp, checkouts] = await Promise.all([
+  const [methods, source, ok, newLeads, pp, checkouts, board] = await Promise.all([
     soft(problems, () => listPaymentMethods(), [] as Awaited<ReturnType<typeof listPaymentMethods>>),
     soft<Awaited<ReturnType<typeof keySource>>>(problems, () => keySource(), 'database'),
     soft(problems, () => selfTest(), false),
     soft(problems, () => countNewLeads(), 0),
     soft(problems, () => paypalStatus(), { live: false, sandbox: false, mode: 'live' as const }),
     soft(problems, () => listRecentCheckouts(15), [] as Awaited<ReturnType<typeof listRecentCheckouts>>),
+    soft(problems, () => rateBoard(), { fiat: null, coins: null, margin: 0 } as Awaited<ReturnType<typeof rateBoard>>),
   ]);
+  const activeBni = methods.filter((m) => m.active && m.kind === 'bank' && (m.swift ?? '').toUpperCase() === 'BNINIDJA').length;
+  const activeWallets = methods.filter((m) => m.active && m.kind === 'crypto').length;
   const ppReady = pp.mode === 'sandbox' ? pp.sandbox : pp.live;
 
   const views: MethodView[] = methods.map((m) => ({
@@ -146,6 +151,55 @@ export default async function AdminPaymentsPage() {
         ) : (
           <p className="mt-3 text-xs text-steel-400">No PayPal checkouts yet.</p>
         )}
+      </section>
+
+      {/* Conversion: what a euro price becomes in the account's own currency (docs/BLUEPRINT.md §12.2). */}
+      <section className="panel mb-8 p-5" data-testid="rate-board">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-display text-lg font-extrabold">Currency conversion</h2>
+            <span className={`badge ${activeBni === 13 ? 'badge-green' : 'badge-amber'}`}>{activeBni}/13 BNI currency accounts active</span>
+            <span className={`badge ${activeWallets >= 5 ? 'badge-green' : 'badge-amber'}`}>{activeWallets} wallets</span>
+            {board.fiat ? <span className={`badge ${board.fiat.stale ? 'badge-amber' : 'badge-green'}`}>ECB {board.fiat.date}{board.fiat.stale ? ' — stale' : ''}</span> : <span className="badge badge-red">No reference rate yet</span>}
+            {board.coins ? <span className={`badge ${board.coins.stale ? 'badge-amber' : 'badge-green'}`}>Coins {board.coins.hour.slice(11)}:00 UTC{board.coins.stale ? ' — stale' : ''}</span> : <span className="badge badge-amber">No coin prices — BTC, BNB, SOL, DOGE hidden</span>}
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link href="/portal/admin/settings#settings-payments" className="btn btn-ghost btn-sm">Margin: {board.margin} %</Link>
+            <RefreshRates />
+          </div>
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-steel-500">
+          Each buyer sees the price converted into the currency of the BNI account (or the coin) they choose: ECB reference rate of the day
+          (SAR at the 3.75 USD peg), coins at the hourly market price, rounded up, IDR with a unique 3-digit code. The amount is held 72 hours
+          (coins one hour); up to 2 % short for bank fees is accepted and shown to you beside the screenshot.
+        </p>
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full min-w-[560px] text-left text-xs">
+            <thead className="text-steel-400"><tr><th className="py-1.5 pr-3">Currency</th><th className="py-1.5 pr-3">1 EUR =</th><th className="py-1.5 pr-3">€1,000 becomes</th></tr></thead>
+            <tbody>
+              {FIAT.filter((c) => c !== 'EUR').map((c) => {
+                const r = board.fiat?.rates[c];
+                return (
+                  <tr key={c} className="border-t border-[color:var(--line)]">
+                    <td className="py-1.5 pr-3">{FIAT_INFO[c].flag} <b>{c}</b> <span className="text-steel-400">{FIAT_INFO[c].name}</span></td>
+                    <td className="py-1.5 pr-3 font-mono">{r ? r.toLocaleString('en-GB', { maximumFractionDigits: 4 }) : '—'}</td>
+                    <td className="py-1.5 pr-3 font-mono">{r ? Math.ceil(1000 * r * (1 + board.margin / 100)).toLocaleString('en-GB') : '—'}</td>
+                  </tr>
+                );
+              })}
+              {COINS.filter((c) => !COIN_INFO[c].stable).map((c) => {
+                const p = board.coins?.eur[c];
+                return (
+                  <tr key={c} className="border-t border-[color:var(--line)]">
+                    <td className="py-1.5 pr-3"><b>{c}</b> <span className="text-steel-400">{COIN_INFO[c].name}</span></td>
+                    <td className="py-1.5 pr-3 font-mono">{p ? `${(1 / p).toPrecision(6)} (1 ${c} = €${p.toLocaleString('en-GB', { maximumFractionDigits: 2 })})` : '—'}</td>
+                    <td className="py-1.5 pr-3 font-mono">{p ? `${((1000 / p) * (1 + board.margin / 100)).toFixed(COIN_INFO[c].decimals)} ${c}` : '—'}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       {active === 0 && !ppReady ? (

@@ -4,7 +4,7 @@ import { startTransition, useActionState, useState } from 'react';
 import {
   savePaymentMethodAction, togglePaymentMethodAction, deletePaymentMethodAction,
   importEnvMethodsAction, importCompanyMethodsAction, saveSettingsAction, clearSettingAction,
-  updateLeadAction, deleteLeadAction, revealMethodAction, revealSettingAction,
+  updateLeadAction, deleteLeadAction, revealMethodAction, revealSettingAction, refreshRatesAction,
   type ActionState, type RevealState,
 } from '@/server/actions';
 import { Submit, Notice } from './Submit';
@@ -320,6 +320,17 @@ export function ImportCompanyMethods() {
     <form action={action}>
       <Notice error={state.error} ok={state.ok} />
       <Submit className="btn btn-primary btn-sm" pendingLabel="Importing…">Import company accounts (crypto + BNI)</Submit>
+    </form>
+  );
+}
+
+/** Fetch today's reference rates and this hour's coin prices now, instead of at the next buyer's page view. */
+export function RefreshRates() {
+  const [state, action] = useActionState<ActionState, FormData>(refreshRatesAction, {});
+  return (
+    <form action={action}>
+      <Notice error={state.error} ok={state.ok} />
+      <Submit className="btn btn-ghost btn-sm" pendingLabel="Fetching…">Refresh rates now</Submit>
     </form>
   );
 }

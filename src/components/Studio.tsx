@@ -152,7 +152,7 @@ export function CtaBand({
             <Link href={secondary.href} className="btn btn-ghost">{secondary.label}</Link>
           </div>
           <p className="mt-6 text-xs text-white/70">
-            USDT (TRC20 · ERC20 · BEP20) and PayPal accepted · invoices in EUR
+            PayPal, bank wire in 13 currencies and crypto (USDT · BTC · BNB · SOL · DOGE) · invoices in EUR
           </p>
         </div>
       </div>

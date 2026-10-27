@@ -105,9 +105,10 @@ Arti tanda:
 | 58 | (27 Okt 2026) „Jgn lupa lanjut lelang script web, website + domain dan domain saja di xaa.es" | 🔄 jenis lot keempat: **domain saja** (nama domain tanpa website); dibangun bersama lelang website setelah perbaikan SEO | §10.1, §10.3 |
 | 59 | (27 Okt 2026) „Untuk semua lelang di xaa.es juga berakhir selama 2 minggu di mulain saat lelang di jalankan, untuk produk milik xaa.es itu otomatis, start di harga 35%, dan kenaikan 5% berakhir di hari jumat jam 7. Client bisa ikut auction jual domain saja, selama 2 minggu dan harus verifikasi dns dulu … template husus auction seperti sedo.com yg menampilkan lelang domainya, milik xaa.es … domain saja client/member bisa ikut jual lelang dengan fee 30%, bisa yati lelang lg jika 2 minggu tidak laku, dan admin jg bisa jual, dan untuk website + domain, hanya admin yg bisa jual … Domain yang akan berakhir naik ke atas dan bisa di filter seperti situs2 lelang domain yg lain“ · „Tolong catat ini, rapihin dan kembangin lagi blueprint nya“ | ✅ 27 Okt dibangun (`/auction`, halaman lot, halaman penjual, portal `/portal/auction`, Studio desk → Auction; E2E `tests/e2e/auction.e2e.mjs` 40/40; sisa butir di §10 „Belum“). §10 ditulis ulang: setiap lot 14 hari sejak dijalankan; produk xaa.es otomatis (Jumat 07.00 WIB → Jumat 07.00 WIB, buka 35 %, tiap tawaran +5 % dari harga buka); anggota menjual **domain saja** setelah verifikasi DNS (TXT), **komisi penjualan 30 %** (permintaan 63), bisa dilelang ulang; admin menjual semua jenis, **website + domain hanya admin**; halaman penjual ala Sedo; daftar „segera berakhir“ di atas + filter domain | §10 |
 | 60 | (27 Okt 2026) „Menu company di xaa.es tolong di Hiden dan bisa di show dr portal admin“ | ✅ 27 Okt: setelan `company_visible` (bawaan **tersembunyi**) + tombol „Show/Hide the Company menu“ di Studio desk (log audit); saat tersembunyi tidak ada tautan di menu/footer, `/company` 404 + noindex, keluar dari sitemap dan llms.txt. Uji: `tests/e2e/company.e2e.mjs` 7/7, seo-verify, portal 41/41 | §11 |
-| 61 | (27 Okt 2026) „Baik axto.io dan xaa.es tolong ambil rek pembayaranya dari https://ulyah.com/donasi / dari repo termasuk jaringannya barcode nya … Pastikan konversi mata uang sesuai dengan rekening BNI untuk manual, dan pandu customer untuk pembayaran manual sampai sukses“ | 📝 13 rekening BNI wondr (per mata uang) + 5 dompet kripto (dengan jaringan & QR) dari sumber ulyah.com/donasi, disimpan terenkripsi, tampil hanya di checkout pembeli yang masuk; jumlah dikonversi ke mata uang rekening yang dipilih (kurs harian); panduan bayar manual langkah demi langkah sampai lunas. axto.io: guardian-ai REQUESTS 104 | §12 |
+| 61 | (27 Okt 2026) „Baik axto.io dan xaa.es tolong ambil rek pembayaranya dari https://ulyah.com/donasi / dari repo termasuk jaringannya barcode nya … Pastikan konversi mata uang sesuai dengan rekening BNI untuk manual, dan pandu customer untuk pembayaran manual sampai sukses“ | ✅ 27 Okt: dibangun — §12.4 (13 rekening wondr by BNI aktif + 5 dompet dengan QR dari server, konversi kurs ECB harian / koin per jam, pembulatan ke atas, kode unik IDR, dikunci 72 jam (koin 1 jam), toleransi 2 %, panduan bayar 6 langkah en/es/id + pelacak status + „perlu perhatian"). Belum: cek hash kripto otomatis. Rencana awal: 13 rekening BNI wondr (per mata uang) + 5 dompet kripto (dengan jaringan & QR) dari sumber ulyah.com/donasi, disimpan terenkripsi, tampil hanya di checkout pembeli yang masuk; jumlah dikonversi ke mata uang rekening yang dipilih (kurs harian); panduan bayar manual langkah demi langkah sampai lunas. axto.io: guardian-ai REQUESTS 104 | §12 |
 | 62 | (27 Okt 2026) „buatkan juga menu husus penjualan domain + website article husus pengajuan adsense dengan keterangan 40-100 article min 1500 kata per artikel berkualitas tinggi, hanya admin yg bisa ngisi, dengan berbagai macam bahasa untuk custom … tp ada yg sudah jadi tinggal pakai, start $350 untuk 40 article dan $500 untuk 100 article dengan SEO niche berkualitas“ · „tolong jual website2 saya yg ada, untuk 1fr.fr tilawa.de xad.es dawa.im harganya $30rb dengan puluhan ribu kitab, kasih tau jg bahasa yg d gunakan setiap websitenya, yg jgn d jual ulyah.com xaa.es dan axto.io … Tolong hitung ada berapa article, klo bisa penuhin semuanya biar total setiap website 45 artikel“ | 📝 menu **AdSense sites**: siap pakai (diisi admin), pesanan custom US$350 / 40 artikel dan US$500 / 100 artikel (≥ 1.500 kata, banyak bahasa), situs mapan 1fr.fr (Prancis), tilawa.de (Jerman), xad.es (Inggris), dawa.im (Spanyol) masing-masing US$30.000; ulyah.com, xaa.es, axto.io diblokir dari daftar jual. Hitungan 27 Okt: 0 artikel blog di keempat situs (isinya kisah, hadis, kitab) → bagian artikel baru + 45 artikel per situs | §13 |
 | 63 | (27 Okt 2026) „Bukan biaya 30%, tp komisi penjualan dari lelang domain sebesar 30%“ | ✅ dicatat: 30 % adalah **komisi penjualan** dari harga akhir domain anggota yang **terjual** (penjual menerima 70 %). Tidak ada biaya pasang, biaya verifikasi DNS, biaya lelang ulang, atau biaya apa pun bila domain tidak laku | §10.6 |
+| 64 | (27 Okt 2026) Dua unit AdSense (in-article slot `2546519628`, multiplex slot `5109103787`, pub-8991272269211824) di setiap situs penerbit yang sama, 4 iklan per halaman (2 + 2) tanpa mengganggu artikel — lalu „Kode iklan jgn d kerjain dulu“ | ⏸ **ditahan pemilik** — hanya dicatat, belum dipasang. Rencana: repo ulyah.com `docs/ADSENSE-BLUEPRINT.md` §16 (xaa.es termasuk; halaman portal, checkout dan admin tanpa iklan) | — |
 | 53 | (26 Okt 2026) Pelajari situs dan aplikasi dunia yang sejenis, kembangkan „1000 kali lebih canggih“; kemungkinan xaa.es satu akun Cloudflare dengan axto.io (dibahas dulu) | 📝 dicatat; dikerjakan setelah izin | §6 |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
@@ -533,6 +534,39 @@ Berlaku untuk xaa.es dan axto.io (axto.io: guardian-ai REQUESTS 104, BLUEPRINT-V
    belum diunggah 24 jam; tombol chat dukungan di setiap langkah.
 6. Admin menyetujui di Studio desk → Payments (satu klik, dengan bukti di samping jumlah yang diharapkan). Kripto:
    tahap berikutnya pengecekan hash otomatis lewat penjelajah publik (TronGrid, BscScan, mempool.space).
+
+### 12.4 Status (27 Okt 2026)
+
+✅ Dibangun dan diuji (unit 56/56, E2E pembayaran 30/30, lelang 40/40, portal 41/41, company 7/7, browser desktop + HP
+tanpa error, tanpa geser ke samping):
+
+- **13 rekening wondr by BNI aktif** + 5 dompet: `company-payments.ts` semuanya aktif; instalasi yang sudah berjalan
+  mengimpor yang belum ada dan menyalakan rekening perusahaan yang dulu mati — **sekali per database** (penanda
+  `__company_methods_all_13__`), setelah itu tombol admin yang berlaku.
+- **Konversi** (`src/server/fx.ts`, `fx-quote.ts`, `src/lib/pay-money.ts`): kurs ECB harian lewat Frankfurter
+  (`fx/day-<tanggal>`), SAR = USD × 3,75, harga koin per jam lewat CoinGecko (`fx/coins-<jam>`); sumber mati →
+  kurs tersimpan terakhir (10 hari / 6 jam) ditandai *stale*; tanpa kurs sama sekali mata uang itu tidak dikutip
+  (layar bilang bank yang mengonversi) — tidak menebak. Margin admin 0–5 % (Settings → Manual payments).
+- **Kutipan per tagihan** `payquote/<tagihan>`: dibulatkan ke atas (IDR ke ribuan + **kode unik 3 digit** yang
+  dijaga `payidr/<jumlah>` create-once, JPY/KRW tanpa desimal), **dikunci 72 jam** (BTC/BNB/SOL/DOGE 1 jam), USDT
+  = dolar dengan kurs ECB. Jumlah yang diharapkan dihitung ulang di server saat bukti dikirim, tidak diambil dari
+  formulir; kurang ≤ 2 % diterima, selisihnya dicatat dan tampil ke pembeli dan admin.
+- **QR** dibuat di server (`src/lib/qr.ts`, pustaka `uqr` tanpa dependensi) dari alamat tersimpan; BNB ditawarkan di
+  alamat BEP20 yang sama dengan USDT.
+- **Panduan bayar** (`ManualPay`, en/es/id): pilih rekening (13 mata uang) / kripto (6 pilihan) / PayPal manual
+  (hanya bila PayPal Checkout mati) → jumlah persis + tombol salin (nomor rekening, atas nama, SWIFT, kode bank 009,
+  berita transfer) + QR → cara kirim dari bank Indonesia / bank luar negeri (SWIFT, biaya OUR) / Wise-Revolut /
+  dompet → referensi + jumlah dikirim + screenshot (wajib untuk bank; ditolak server bila kosong) → **pelacak status**
+  (`PayTracker`: tagihan siap → dikirim → dicek → terbuka, atau „perlu perhatian" dengan catatan admin).
+- **Admin**: Studio desk → Payments menampilkan papan kurs (13 mata uang + koin, tanggal, stale, margin, tombol
+  „Refresh rates now"), jumlah yang diharapkan di samping screenshot pesanan dan di daftar pembayaran proyek, tombol
+  „Send back to the buyer" dengan catatan, alasan penolakan pembayaran proyek yang terlihat klien.
+- Salinan publik jujur: /payments, FAQ, /acquire, llms.txt, basis pengetahuan support — USDT hanya TRC20/BEP20
+  (tidak ada dompet ERC20), 13 mata uang, kripto lima koin.
+
+Belum: pengecekan hash kripto otomatis lewat penjelajah publik (TronGrid, BscScan, mempool.space) — sekarang admin
+menyetujui dari screenshot; pengingat e-mail 24 jam (xaa.es belum punya pengirim e-mail — pengingat tampil di
+halaman pesanan).
 
 ## 13. Menu situs AdSense: domain + website artikel (permintaan 62)
 
