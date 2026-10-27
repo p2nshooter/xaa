@@ -16,7 +16,7 @@ import type { BundleMeta, TemplateOrder } from '../store';
 import type { PayPalCheckout } from '../paypal';
 import type { Investor, Payout } from '../invest';
 import type { SupportThread } from '../support';
-import type { AuctionBid, AuctionBidder, AuctionCategoryDoc, AuctionLot } from '../auction';
+import type { AuctionBid, AuctionBidder, AuctionCategoryDoc, AuctionDomainClaim, AuctionLot, AuctionPayout } from '../auction';
 import type { Store } from './store.ts';
 import { newestFirst, oldestFirst } from './ulid.ts';
 import { bidSeqDesc, lotSummary } from '../auction-terms.ts';
@@ -136,12 +136,17 @@ export function collections(store: Store) {
     auctionCategories: store.collection<AuctionCategoryDoc>({ name: 'auction_categories' }),
     auctionLots: store.collection<AuctionLot>({
       name: 'auction_lots',
-      unique: [{ name: 'ref', value: (l) => l.ref }],
+      unique: [
+        { name: 'ref', value: (l) => l.ref },
+        // A domain is in one live lot at a time, whoever sells it (released when the lot ends unsold, sells or is cancelled).
+        { name: 'live_domain', value: (l) => (l.domain && ['draft', 'open', 'awaiting_payment'].includes(l.status) ? l.domain : null) },
+      ],
       indexes: [
-        { name: 'status', key: (l) => l.status, sort: (l) => oldestFirst(l.ends_at), meta: lotSummary },
+        { name: 'status', key: (l) => l.status, sort: (l) => oldestFirst(l.ends_at || l.created_at), meta: lotSummary },
         { name: 'all', key: () => 'all', meta: lotSummary },
         { name: 'won', key: (l) => (l.winner_user ? 'all' : null), sort: (l) => newestFirst(l.closed_at || l.updated_at), meta: lotSummary },
         { name: 'winner', key: (l) => l.winner_user || null, meta: lotSummary },
+        { name: 'seller', key: (l) => l.seller_user || null, meta: lotSummary },
       ],
     }),
     auctionBids: store.collection<AuctionBid>({
@@ -151,7 +156,21 @@ export function collections(store: Store) {
         { name: 'user', key: (b) => b.user_id },
       ],
     }),
-    auctionBidders: store.collection<AuctionBidder>({ name: 'auction_bidders' }),
+    auctionBidders: store.collection<AuctionBidder>({ name: 'auction_bidders', unique: [{ name: 'handle', value: (b) => b.handle }] }),
+    auctionDomains: store.collection<AuctionDomainClaim>({
+      name: 'auction_domains',
+      indexes: [
+        { name: 'user', key: (c) => c.user_id, meta: (c) => ({ domain: c.domain, status: c.status }) },
+        { name: 'domain', key: (c) => c.domain },
+      ],
+    }),
+    auctionPayouts: store.collection<AuctionPayout>({
+      name: 'auction_payouts',
+      indexes: [
+        { name: 'seller', key: (p) => p.seller_user },
+        { name: 'all', key: () => 'all', meta: (p) => ({ status: p.status, seller: p.seller_eur, domain: p.domain }) },
+      ],
+    }),
     threads: store.collection<SupportThread>({
       name: 'support_threads',
       unique: [{ name: 'token', value: (t) => t.token }],

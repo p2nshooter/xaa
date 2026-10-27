@@ -109,7 +109,9 @@ export async function submitOrderPayment(orderId: string, patch: { method: strin
 export async function confirmOrder(orderId: string): Promise<void> {
   const d = await data();
   if (!(await d.templateOrders.get(orderId))) return;
-  await d.templateOrders.update(orderId, (o) => (o.status === 'paid' ? null : { ...o, status: 'paid', confirmed_at: nowIso() }));
+  const paid = await d.templateOrders.update(orderId, (o) => (o.status === 'paid' ? null : { ...o, status: 'paid', confirmed_at: nowIso() }));
+  // An auction win: the lot is sold and its assets open (server/auction.ts). Idempotent, like the confirmation.
+  if (paid.auction_lot_id && paid.status === 'paid') await (await import('./auction')).auctionOrderPaid(paid);
 }
 
 export async function cancelOrder(orderId: string): Promise<void> {

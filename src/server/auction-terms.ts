@@ -1,19 +1,24 @@
 /**
- * The xaa.es auction — the rules (docs/BLUEPRINT.md §10, owner 27 Oct 2026, requests 55 and 58).
+ * The xaa.es auction — the rules (docs/BLUEPRINT.md §10; owner, 27 Oct 2026, requests 55, 58, 59 and 63).
  *
  * xaa.es sells no licences, so this is not axto.io's licence auction: what goes under the hammer is the
- * studio's work — a finished website, the web/script only, a website with its domain, or a domain only.
- * Every price is set by the owner in the Studio desk. The calendar is the same as axto.io's, so the
- * two sites run as one house: every auction lasts two weeks and ends on a Friday at 07:00 WIB
- * (Asia/Jakarta, 00:00 UTC); the next one starts the moment one ends. Every bid is exactly the next
- * price (the opening bid, then + the step), never above the lot's normal price; a bid in the last 5
- * minutes extends the lot; a reserve price, when set, is never shown and a lot that does not reach it
- * ends unsold. The winner pays through the normal checkout — a bank transfer needs the payment
- * screenshot and the admin's approval — and the assets open only once it is paid; until then the
- * win is shown as "not paid yet".
+ * studio's work — a finished website, the web/script only, a website with its domain — and domain names.
+ *
+ * Who sells what (request 59): xaa.es's own scripts go up automatically, every two weeks from Friday
+ * 07:00 WIB (00:00 UTC) to Friday 07:00 WIB, the next round opening the moment one ends; members sell
+ * domain names only, once a DNS TXT record proves the domain is theirs, and xaa.es takes a 30 % sales
+ * commission only when one sells (request 63); the admin sells every type, and a website with its
+ * domain is the admin's alone. Every other lot runs exactly 14 days from the moment it starts.
+ *
+ * Prices: bidding opens at 35 % of the lot's reference price (the catalogue price, the admin's price or
+ * the member's asking price) and every bid is exactly +5 % of the opening bid, never above the
+ * reference price. A bid in the last 5 minutes extends that lot; a reserve price, when set, is never
+ * shown and a lot that does not reach it ends unsold and may be relisted. The winner pays through the
+ * normal checkout — a bank transfer needs the payment screenshot and the admin's approval — and the
+ * assets open only once it is paid; until then the win is shown as "not paid yet".
  *
  * Pure (no storage) so the pages, the actions and the tests share one rule book; server/auction.ts
- * keeps the lots, bids and bidders in R2.
+ * keeps the lots, bids, bidders and domain claims in R2.
  */
 
 const DAY = 86_400_000;
@@ -47,6 +52,22 @@ export const hasDomain = (t: LotType) => t === 'website_domain' || t === 'domain
 export const hasCode = (t: LotType) => t !== 'domain';
 
 export type LotStatus = 'draft' | 'open' | 'awaiting_payment' | 'sold' | 'unsold' | 'cancelled';
+
+/** Who put a lot up: xaa.es itself (automatic products), the admin, or a member. */
+export const SELLERS = ['xaa', 'admin', 'member'] as const;
+export type Seller = (typeof SELLERS)[number];
+/** Request 59: members sell domain names only, xaa.es's automatic lots are its scripts, the admin sells every type (a website with its domain is the admin's alone). */
+export function sellerMaySell(seller: Seller, type: LotType): boolean {
+  if (seller === 'member') return type === 'domain';
+  if (seller === 'xaa') return type === 'script';
+  return true;
+}
+
+/** Every lot runs 14 days from its start; xaa.es's own products follow the Friday 07:00 WIB grid instead. */
+export const LOT_DAYS = 14;
+export function lotEndFor(seller: Seller, startMs: number): number {
+  return seller === 'xaa' ? cycleEndAfter(startMs) : startMs + LOT_DAYS * DAY;
+}
 
 /** The categories the owner asked for (article sites, SaaS, e-commerce: clothing, watches …). Admin adds or renames them. */
 export interface AuctionCategory { slug: string; group: 'articles' | 'saas' | 'ecommerce' | 'other'; en: string; es: string; id: string }
@@ -146,10 +167,45 @@ export function outcomeOf(l: LotState & { reserve_eur: number }): 'awaiting_paym
   return l.bids_count > 0 && l.high_eur >= (l.reserve_eur || 0) ? 'awaiting_payment' : 'unsold';
 }
 
-/** A domain as typed by the admin: lower case, letters/digits/hyphens and dots, one known shape. */
+/** A domain as typed: lower case, no scheme, path or leading "www.", letters/digits/hyphens and dots, one known shape. */
 export function cleanDomain(raw: unknown): string | null {
-  const d = String(raw ?? '').trim().toLowerCase().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
-  return /^(?=.{3,253}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,24}$/.test(d) ? d : null;
+  const d = String(raw ?? '').trim().toLowerCase().replace(/^https?:\/\//, '').replace(/[/?#].*$/, '').replace(/\.$/, '').replace(/^www\./, '');
+  return /^(?=.{3,253}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:[a-z]{2,24}|xn--[a-z0-9-]{1,59})$/.test(d) ? d : null;
+}
+
+/** "shop" and "co.uk" for "shop.co.uk": the name a buyer types and everything after its first dot. */
+export function domainParts(domain: string): { name: string; tld: string } {
+  const i = domain.indexOf('.');
+  return i < 0 ? { name: domain, tld: '' } : { name: domain.slice(0, i), tld: domain.slice(i + 1) };
+}
+
+/** The owner's own domains and their sister sites are never put up by a member (request 62: not for sale). */
+const NEVER_LISTED = ['xaa.es', 'axto.io', 'ulyah.com', 'axto.dev', 'axto.us'];
+export type DomainProblem = 'shape' | 'ours' | 'brand';
+export function domainProblem(raw: unknown): DomainProblem | null {
+  const d = cleanDomain(raw);
+  if (!d) return 'shape';
+  if (NEVER_LISTED.some((o) => d === o || d.endsWith(`.${o}`))) return 'ours';
+  const { name } = domainParts(d);
+  const joined = unleet(fold(name).replace(/[^a-z0-9]/g, ''));
+  if (BRANDS_INSIDE.some((b) => joined.includes(b)) || BRANDS.some((b) => !b.includes(' ') && b.length >= 4 && joined === b)) return 'brand';
+  return null;
+}
+
+/* ---- DNS ownership proof for a member's domain (request 59) ----------------- */
+
+/** The record a member adds: TXT _xaa-verify.<domain> = "xaa-verify=<token>". */
+export const DNS_LABEL = '_xaa-verify';
+export const dnsRecordName = (domain: string) => `${DNS_LABEL}.${domain}`;
+export const dnsRecordValue = (token: string) => `xaa-verify=${token}`;
+/** A token is offered for 7 days; a proof counts for 7 days before a lot starts or is relisted, then it is checked again. */
+export const DNS_TOKEN_DAYS = 7;
+export const DNS_PROOF_DAYS = 7;
+
+/** Whether DNS-over-HTTPS TXT answers carry the token (answers come quoted and may be split into 255-byte strings). */
+export function txtHasToken(answers: string[], token: string): boolean {
+  const want = dnsRecordValue(token);
+  return answers.some((a) => a.replace(/"\s+"/g, '').replace(/^"|"$/g, '').trim() === want);
 }
 
 /* ---- the name a winner shows (as on axto.io) ---------------------------------- */
@@ -197,17 +253,95 @@ export const maskName = (name: string) => {
   return n ? `${[...n][0]}${'•'.repeat(Math.min(5, Math.max(2, n.length - 1)))}` : '—';
 };
 
-/** What a lot's index entries carry, so lists read no lot documents (server/r2/schema.ts). */
+/** What a lot's index entries carry, so lists read no lot documents (server/r2/schema.ts; R2 allows 2 KB). */
 export interface LotSummarySource {
-  ref: string; type: LotType; category: string; title: string; status: LotStatus; cycle: string;
-  normal_eur: number; open_eur: number; high_eur: number; bids_count: number; ends_at: string;
-  winner_name: string; winner_eur: number; paid_at: string; closed_at: string;
+  ref: string; type: LotType; category: string; title: string; status: LotStatus; seller: Seller; seller_name: string;
+  normal_eur: number; open_eur: number; step_eur: number; high_eur: number; bids_count: number; reserve_eur: number; buy_now_eur: number;
+  starts_at: string; ends_at: string; domain: string; site_lang: string; images: string[];
+  winner_name: string; winner_eur: number; paid_at: string; closed_at: string; created_at: string;
 }
 export const lotSummary = (l: LotSummarySource) => ({
-  ref: l.ref, type: l.type, category: l.category, title: l.title.slice(0, 90), status: l.status, cycle: l.cycle,
-  normal: l.normal_eur, open: l.open_eur, high: l.high_eur, bids: l.bids_count, ends: l.ends_at,
-  winner: l.winner_name.slice(0, 48), win: l.winner_eur, paid: l.paid_at ? 1 : 0, closed: l.closed_at,
+  ref: l.ref, type: l.type, cat: l.category, title: l.title.slice(0, 90), status: l.status, seller: l.seller, sname: l.seller_name.slice(0, 40),
+  normal: l.normal_eur, open: l.open_eur, step: l.step_eur, high: l.high_eur, bids: l.bids_count,
+  bn: l.buy_now_eur && l.high_eur < l.buy_now_eur ? l.buy_now_eur : 0, rs: l.reserve_eur ? 1 : 0, rm: l.reserve_eur && l.high_eur >= l.reserve_eur ? 1 : 0,
+  starts: l.starts_at, ends: l.ends_at, dom: l.domain, lang: l.site_lang, img: l.images.length ? 1 : 0,
+  winner: l.winner_name.slice(0, 48), win: l.winner_eur, paid: l.paid_at ? 1 : 0, closed: l.closed_at, created: l.created_at,
 });
+export type LotCard = ReturnType<typeof lotSummary> & { id: string };
+
+/* ---- the public list: ending soonest first, with the filters of domain-auction sites (request 59) ---- */
+
+export const LOT_SORTS = ['ending', 'newest', 'price_asc', 'price_desc', 'bids', 'az', 'shortest'] as const;
+export type LotSort = (typeof LOT_SORTS)[number];
+export const ENDS_WITHIN = { '1h': 3_600_000, '24h': DAY, '7d': 7 * DAY } as const;
+
+export interface LotFilter {
+  type?: LotType; category?: string; seller?: 'xaa' | 'member'; tld?: string;
+  q?: string; qmode?: 'contains' | 'starts' | 'ends'; noHyphen?: boolean; noDigits?: boolean;
+  minLen?: number; maxLen?: number; minPrice?: number; maxPrice?: number; minBids?: number;
+  endsWithin?: keyof typeof ENDS_WITHIN; buyNow?: boolean; noReserve?: boolean; lang?: string; sort: LotSort;
+}
+
+const int = (v: string | null | undefined) => {
+  const n = Number(String(v ?? '').replace(/[^\d]/g, ''));
+  return v && Number.isFinite(n) && n > 0 ? Math.min(n, 100_000_000) : undefined;
+};
+/** Filters from the URL (?type=domain&tld=com&q=shop&qmode=starts&sort=ending …): anything unknown is ignored. */
+export function parseLotFilter(sp: { get(name: string): string | null }): LotFilter {
+  const pickOf = <T extends string>(v: string | null, all: readonly T[]) => (v && (all as readonly string[]).includes(v) ? (v as T) : undefined);
+  const on = (k: string) => sp.get(k) === '1';
+  const q = (sp.get('q') ?? '').toLowerCase().replace(/[^a-z0-9.-]/g, '').slice(0, 63) || undefined;
+  return {
+    type: pickOf(sp.get('type'), LOT_TYPES), category: (sp.get('cat') ?? '').match(CATEGORY_SLUG_RE)?.[0],
+    seller: pickOf(sp.get('seller'), ['xaa', 'member'] as const), tld: (sp.get('tld') ?? '').toLowerCase().replace(/^\./, '').replace(/[^a-z0-9.-]/g, '').slice(0, 30) || undefined,
+    q, qmode: pickOf(sp.get('qmode'), ['contains', 'starts', 'ends'] as const), noHyphen: on('nohyphen'), noDigits: on('nodigits'),
+    minLen: int(sp.get('minlen')), maxLen: int(sp.get('maxlen')), minPrice: int(sp.get('min')), maxPrice: int(sp.get('max')), minBids: int(sp.get('bids')),
+    endsWithin: pickOf(sp.get('ends'), Object.keys(ENDS_WITHIN) as (keyof typeof ENDS_WITHIN)[]), buyNow: on('buynow'), noReserve: on('noreserve'),
+    lang: (sp.get('lang_site') ?? '').match(/^[a-z]{2}$/)?.[0], sort: pickOf(sp.get('sort'), LOT_SORTS) ?? 'ending',
+  };
+}
+
+/** The current price shown on a card: the high bid, or the opening bid before anyone has bid. */
+export const cardPrice = (c: Pick<LotCard, 'bids' | 'high' | 'open'>) => (c.bids > 0 ? c.high : c.open);
+
+/** The running lots that match, in the chosen order (ending soonest first by default). */
+export function filterLots(cards: LotCard[], f: LotFilter, nowMs: number): LotCard[] {
+  const out = cards.filter((c) => {
+    if (c.status !== 'open' || Date.parse(c.starts) > nowMs || Date.parse(c.ends) <= nowMs) return false;
+    if (f.type && c.type !== f.type) return false;
+    if (f.category && c.cat !== f.category) return false;
+    if (f.seller === 'xaa' && c.seller === 'member') return false;
+    if (f.seller === 'member' && c.seller !== 'member') return false;
+    if (f.lang && c.lang !== f.lang) return false;
+    const { name, tld } = domainParts(c.dom || '');
+    if (f.tld && tld !== f.tld) return false;
+    const text = c.dom ? name : c.title.toLowerCase();
+    if (f.q && !(f.qmode === 'starts' ? text.startsWith(f.q) : f.qmode === 'ends' ? text.endsWith(f.q) : text.includes(f.q))) return false;
+    if (f.noHyphen && c.dom && name.includes('-')) return false;
+    if (f.noDigits && c.dom && /\d/.test(name)) return false;
+    if (f.minLen && (!c.dom || name.length < f.minLen)) return false;
+    if (f.maxLen && (!c.dom || name.length > f.maxLen)) return false;
+    const price = cardPrice(c);
+    if (f.minPrice && price < f.minPrice) return false;
+    if (f.maxPrice && price > f.maxPrice) return false;
+    if (f.minBids && c.bids < f.minBids) return false;
+    if (f.endsWithin && Date.parse(c.ends) - nowMs > ENDS_WITHIN[f.endsWithin]) return false;
+    if (f.buyNow && !c.bn) return false;
+    if (f.noReserve && c.rs) return false;
+    return true;
+  });
+  const byEnd = (a: LotCard, b: LotCard) => a.ends.localeCompare(b.ends) || a.ref.localeCompare(b.ref);
+  const sorters: Record<LotSort, (a: LotCard, b: LotCard) => number> = {
+    ending: byEnd,
+    newest: (a, b) => b.starts.localeCompare(a.starts) || byEnd(a, b),
+    price_asc: (a, b) => cardPrice(a) - cardPrice(b) || byEnd(a, b),
+    price_desc: (a, b) => cardPrice(b) - cardPrice(a) || byEnd(a, b),
+    bids: (a, b) => b.bids - a.bids || byEnd(a, b),
+    az: (a, b) => (a.dom || a.title).localeCompare(b.dom || b.title) || byEnd(a, b),
+    shortest: (a, b) => domainParts(a.dom || a.title).name.length - domainParts(b.dom || b.title).name.length || byEnd(a, b),
+  };
+  return out.sort(sorters[f.sort]);
+}
 
 /** Index order for a lot's bids: the latest (= highest) sequence number first. */
 export const bidSeqDesc = (bidId: string) => String(999_999 - Number(bidId.slice(bidId.lastIndexOf('.') + 1))).padStart(6, '0');
