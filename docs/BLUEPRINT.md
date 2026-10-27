@@ -99,6 +99,9 @@ Arti tanda:
 | 51 | (26 Okt 2026) „Kita berhenti dulu aplikasi xaa.es dan axto.io … focus isi minimal 45 artikel di seluruh situs“ (termasuk xaa.es); „jgn pernah mengerjakan aplikasi sebelum di perintahkan atau anda harus minta izin dulu“ | 🔄 aturan tetap: kode AdSense → DNS → situs baru → artikel → blueprint; aplikasi hanya dengan izin | §6 |
 | 52 | (26 Okt 2026) Penawaran investor (hingga 30 %) default tersembunyi di index dan portal member, tombol tampil/sembunyi di portal admin | ✅ diganti oleh permintaan 54 (default tampil); tombol tampil/sembunyi dibangun 27 Okt | §6 |
 | 54 | (27 Okt 2026) „Investor defoultnya ganti jadi show" (bersama perintah lelang axto.io, guardian-ai REQUESTS 94) | ✅ 27 Okt: setelan `invest_visible` (bawaan **tampil**) di Settings → Investor offering dan tombol „Hide/Show the investor offering" di Studio desk → Investors; saat disembunyikan: `/invest` 404 + noindex, tautan footer hilang, keluar dari sitemap, pengajuan ditolak; pemodal terverifikasi tetap melihat laporannya. Setiap perubahan setelan kini masuk log audit append-only `l/audit-settings/…` (nilai rahasia tidak pernah dicatat) | §6 |
+| 55 | (27 Okt 2026) „klo di xaa.es nanti ada lelang website + domainya names nya, mulai dari web artikel, web SaaS, web ecomerce baju, jam dll tolong bikinin karegorinya" · „Di xaa.es itu ga ada licensi, jd jgn ada lelang licensi, tp lelang website jadi, lelang web / script nya aja, dan lelang website + domainya... Harga di tentuin di portal admin" · „Coba kembangin dulu biar dapet blueprint yg luar biasa" | 📝 blueprint §10 (lelang website/script/domain, kategori, harga dari admin); dibangun setelah perbaikan SEO (permintaan 57) | §10 |
+| 56 | (27 Okt 2026) „Untuk email axto.io & xaa.es kirimnya ke hello@axto.io karena ini satu management" | 📝 semua notifikasi xaa.es (pesanan, dukungan, penawaran investor, lelang, kontak) dikirim ke hello@axto.io; alamat balas ke klien tetap hello@xaa.es | §10.9 |
+| 57 | (27 Okt 2026) „Tolong perbaiki dulu seluruh SEO websitenya, perkata, link xmlsitemap dan file2 lain yg d butuhkan dll, backlink yg tidak melanggar adsense d seluruh situs … setelah itu baru lanjutkan pekerjaan pembuatan auction xaa.es dan axto.io … rapikan blueprint nya menjadi HTML yg bisa d download" | 🔄 SEO dulu (semua situs, termasuk xaa.es: audit live `scripts/seo-audit.mjs` untuk semua domain), lalu lelang; blueprint HTML induk di repo ulyah.com `docs/BLUEPRINT.html` | ulyah.com ADSENSE-BLUEPRINT §15 |
 | 53 | (26 Okt 2026) Pelajari situs dan aplikasi dunia yang sejenis, kembangkan „1000 kali lebih canggih“; kemungkinan xaa.es satu akun Cloudflare dengan axto.io (dibahas dulu) | 📝 dicatat; dikerjakan setelah izin | §6 |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
@@ -279,3 +282,83 @@ Rencana lengkap per template (logika, menu, dashboard, demo, gambar animasi, sta
 - **14 Okt 2026**: permintaan 25 — PayPal Checkout otomatis (Live + Sandbox) dan rekening BNI EUR/USD siap pakai; webhook PayPal dibuat otomatis oleh situs.
 
 - **27 Sep 2026**: blueprint dibuat. Tercatat: chat support, pembayaran, diagnosis portal, judul SEO unik per bahasa, tes E2E masuk repo, status CV/Indeed.
+
+## 10. Lelang website, script dan domain (perintah 27 Okt 2026 — permintaan 55)
+
+xaa.es **tidak menjual lisensi**, jadi tidak ada lelang lisensi seperti axto.io. Yang dilelang adalah hasil karya
+studio: website yang sudah jadi, kode/script-nya saja, atau website lengkap beserta nama domainnya. Semua harga
+ditentukan pemilik di portal admin. Dibangun **setelah** perbaikan SEO seluruh situs (permintaan 57).
+
+### 10.1 Tiga jenis lot
+
+| Jenis | Yang diterima pemenang | Cara serah terima |
+|---|---|---|
+| **Website jadi** | situs yang berjalan di hosting pembeli: kode, isi (artikel/produk), desain, akun pendukung yang disebut di lot | arsip kode + basis data diunduh otomatis setelah lunas; panduan pindah hosting; bantuan pindah 14 hari |
+| **Web / script saja** | kode sumber lengkap + dokumentasi + hak pakai/ubah, tanpa domain dan tanpa isi pribadi | arsip kode bertanda tangan (SHA-256) diunduh otomatis setelah lunas |
+| **Website + domain** | semua di atas + nama domainnya | kode otomatis; domain dipindah oleh admin (kode EPP/push registrar) — satu-satunya langkah manual, karena registrar memerlukannya |
+
+### 10.2 Kategori (bisa ditambah/diubah di admin)
+
+- **Website artikel / blog / AdSense**: teknologi, kesehatan, keuangan, wisata, kuliner, parenting, sains, gaya hidup,
+  otomotif, olahraga, pendidikan, berita/portal.
+- **SaaS**: booking & reservasi, invoice & akuntansi, CRM, link-in-bio, waitlist, LMS/kursus, HR & absensi, POS,
+  helpdesk, form & survei, sistem pemilu/organisasi.
+- **E-commerce**: fashion/baju (pria, wanita, anak, muslim), jam tangan, sepatu & tas, kosmetik & skincare, elektronik
+  & gadget, perabot rumah, makanan & minuman, buku, mainan & hobi, perhiasan, produk digital.
+- **Marketplace & direktori**, **company profile & landing page**, **portal komunitas/forum**, **portofolio kreatif**,
+  **properti**, **restoran & katering**, **template xaa.es** (dari katalog `/templates`).
+- Setiap lot punya satu kategori utama, subkategori, bahasa, dan tag (stack, niche, negara).
+
+### 10.3 Isi setiap lot (form admin)
+
+Judul, kategori/subkategori, jenis lot (10.1), ringkasan, deskripsi lengkap, URL demo, tangkapan layar (R2
+`UPLOADS`), stack teknologi, jumlah halaman/artikel/produk, usia situs; **domain** (nama, TLD, usia, registrar,
+tanggal perpanjangan — hanya untuk jenis "website + domain"); **data trafik/pendapatan hanya bila terverifikasi**
+(tangkapan Search Console/Analytics, diberi tanda "terverifikasi admin"; tanpa bukti ditulis "belum ada data") — tidak
+ada janji penghasilan; isi paket serah terima (daftar centang); **harga**: harga normal/valuasi, harga buka, kenaikan
+per tawaran, harga cadangan (opsional, tidak diumumkan), harga beli-langsung (opsional) — **semua diisi admin**.
+
+### 10.4 Aturan lelang (bawaan, bisa diubah admin)
+
+Mengikuti aturan yang sama dengan axto.io agar satu manajemen: siklus 2 minggu yang selalu berakhir **Jumat 07.00 WIB**,
+sesi baru langsung dimulai saat sesi berakhir; harga buka dan kenaikan dari admin (bawaan: buka 25 % dari harga normal,
+setiap tawaran +10 % dari harga buka); anti-snipe 5 menit; hanya anggota terverifikasi (kode e-mail) yang menawar; nama
+tampilan pemenang disaring; **harga cadangan**: bila tidak tercapai lot "tidak terjual" dan bisa dilelang lagi.
+
+### 10.5 Bayar dan serah terima
+
+Pemenang membayar lewat checkout xaa.es yang sudah ada (PayPal, USDT, transfer bank). **Transfer bank wajib
+screenshot bukti bayar dan disetujui admin**. Aset (arsip kode, panduan, dokumen serah terima) baru terbuka setelah
+lunas; selama belum lunas, pemenang tampil dengan keterangan **"belum membayar"**. Perjanjian jual-beli aset
+(PDF, ditandatangani elektronik) dibuat otomatis berisi daftar aset, jaminan hak cipta, larangan klaim merek orang lain,
+dan kebijakan pengembalian. Domain: admin menandai "kode EPP dikirim" → "domain diterima pembeli" → lot selesai.
+
+### 10.6 Tampilan
+
+`/auction` (EN), `/es/subasta`, `/id/lelang`: lot berjalan, filter kategori/jenis/harga, hitung mundur, pemenang
+(lunas/belum membayar); halaman per kategori `/auction/<kategori>` (SEO: JSON-LD `Product`/`Offer`, breadcrumb, FAQ,
+sitemap, hreflang 3 bahasa); halaman lot dengan galeri, demo, daftar aset, riwayat tawaran (nama disamarkan). Portal
+klien: tawaran saya, kemenangan, bayar, unduh aset, status serah terima domain. Studio desk: kategori, buat/ubah lot,
+jadwal, harga, tawaran (nama & e-mail), persetujuan pembayaran manual, daftar centang serah terima, batal/alihkan,
+log audit. Pemenang tampil di beranda, portal klien dan Studio desk.
+
+### 10.7 Penyimpanan (R2 saja)
+
+Koleksi baru di `src/server/r2/schema.ts`: `auction_categories`, `auction_lots` (ringkasan di indeks), `auction_bids`
+(create-once `<lot>.<seq>`), `auction_bidders`, `auction_transfers` (langkah serah terima, log append-only); berkas di
+`UPLOADS`; tidak ada D1.
+
+### 10.8 Kejujuran & hukum
+
+Tidak menjual situs/domain yang memakai merek orang lain (cek kata terlarang seperti di axto.io); data trafik dan
+pendapatan hanya yang terverifikasi; konten bebas hak cipta pihak ketiga; pajak/faktur sesuai pengaturan Invoicing.
+
+### 10.9 Satu kotak surat
+
+Semua notifikasi xaa.es (lelang, pesanan, dukungan, investor, kontak) dikirim ke **hello@axto.io** (permintaan 56 —
+axto.io dan xaa.es satu manajemen). Alamat yang dilihat klien dan alamat balas tetap hello@xaa.es.
+
+### 10.10 Urutan kerja
+
+1. SEO seluruh situs (permintaan 57) → 2. kotak surat hello@axto.io → 3. kategori + form lot di Studio desk → 4. halaman
+publik + portal klien → 5. pembayaran, aset otomatis, serah terima domain → 6. uji unit + E2E + browser desktop & HP.
