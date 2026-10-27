@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { companyVisible } from '@/server/company';
 import Link from 'next/link';
 import { SITE } from '@/lib/site';
 import { SectionHead, CtaBand } from '@/components/Studio';
@@ -25,7 +27,9 @@ import { Breadcrumbs } from '@/components/Breadcrumbs';
 const PAGE_URL = `${SITE.url}/company`;
 
 export async function generateMetadata(): Promise<Metadata> {
-  return pageMetadata({ path: '/company', copy: SEO.company, type: 'profile', image: { url: '/company/og-company-profile.jpg', width: 1200, height: 630, alt: 'XAA.ES Digital Global partnership agreement' } });
+  // Hidden by default (request 60): a 404 that also asks search engines to drop it.
+  const shown = await companyVisible();
+  return pageMetadata({ path: '/company', copy: SEO.company, type: 'profile', noindex: !shown, image: { url: '/company/og-company-profile.jpg', width: 1200, height: 630, alt: 'XAA.ES Digital Global partnership agreement' } });
 }
 
 type Copy = {
@@ -205,6 +209,7 @@ function Portrait({ file, name, role, bio, eager = false }: { file: string; name
 }
 
 export default async function CompanyPage() {
+  if (!(await companyVisible())) notFound();
   const lang = await getLang();
   const c = pick(lang, COPY);
 

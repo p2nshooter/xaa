@@ -57,12 +57,17 @@ r = await get('/llms.txt'); const llms = await r.text();
 ok(r.status === 200 && llms.startsWith('# XAA') && /Landing Page\]\(https:\/\/xaa\.es\/services\/landing-page\) — €500/.test(llms), 'llms.txt', `${r.status}, ${llms.length} chars`);
 const sm = await (await get('/sitemap.xml')).text();
 ok(/xhtml:link[^>]+hreflang="es"[^>]+href="https:\/\/xaa\.es\/services\?lang=es"/.test(sm), 'sitemap carries hreflang alternates');
-ok(/<loc>https:\/\/xaa\.es\/company\?lang=id<\/loc>/.test(sm), 'sitemap lists language URLs');
+ok(/<loc>https:\/\/xaa\.es\/services\?lang=id<\/loc>/.test(sm), 'sitemap lists language URLs');
+// The Company menu is hidden until the admin shows it (request 60): no link, no sitemap entry, a 404.
+ok(!/xaa\.es\/company[?<"]/.test(sm), 'hidden Company page left out of the sitemap');
+r = await get('/company'); ok(r.status === 404, 'hidden /company answers 404', String(r.status));
+{ const h = await (await get('/faq')).text(); ok(!/href="\/company"/.test(h), 'no Company link in menu or footer'); }
+ok(!/xaa\.es\/company\)/.test(llms), 'hidden Company page left out of llms.txt');
 ok(!/\/portal|\/login|\/api\//.test(sm), 'sitemap has no private URLs');
 r = await get('/no-such-page-xyz'); ok(r.status === 404, 'real 404', String(r.status));
 
 // 5. Breadcrumbs: visible and as structured data.
-for (const p of ['/services/landing-page', '/templates/waitlist', '/faq', '/company', '/privacy']) {
+for (const p of ['/services/landing-page', '/templates/waitlist', '/faq', '/care', '/privacy']) {
   const h = await (await get(p + '?lang=id')).text();
   const ld = /"@type":"BreadcrumbList"/.test(h);
   const vis = /aria-label="Breadcrumb"/.test(h) && />Beranda</.test(h);
@@ -72,12 +77,13 @@ for (const p of ['/services/landing-page', '/templates/waitlist', '/faq', '/comp
 
 // 6. Unique titles across studio pages.
 const titles = {};
-for (const p of ['/', '/services', '/templates', '/portfolio', '/process', '/care', '/payments', '/capabilities', '/faq', '/about', '/contact', '/company', '/election-systems', '/privacy', '/terms', '/register']) {
+const studioPages = ['/', '/services', '/templates', '/portfolio', '/process', '/care', '/payments', '/capabilities', '/faq', '/about', '/contact', '/election-systems', '/privacy', '/terms', '/register'];
+for (const p of studioPages) {
   const h = head(await (await get(p, { 'user-agent': UA.google })).text());
   titles[p] = attr(h, /<title>([^<]*)/);
 }
 const vals = Object.values(titles);
-ok(new Set(vals).size === vals.length && vals.every((t) => t && t.length <= 70), 'unique titles ≤70 chars on 16 pages', Object.entries(titles).filter(([, t]) => !t || t.length > 70).map(([p, t]) => `${p}:${t?.length}`).join(' ') || 'all good');
+ok(new Set(vals).size === vals.length && vals.every((t) => t && t.length <= 70), `unique titles ≤70 chars on ${studioPages.length} pages`, Object.entries(titles).filter(([, t]) => !t || t.length > 70).map(([p, t]) => `${p}:${t?.length}`).join(' ') || 'all good');
 
 console.log(out.join('\n'));
 const f = out.filter((l) => l.startsWith('FAIL')).length;

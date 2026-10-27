@@ -860,6 +860,21 @@ export async function investVisibilityAction(_prev: ActionState, form: FormData)
   }
 }
 
+/** Admin: show or hide the Company menu and /company (request 60; hidden by default). Kept in the settings audit log. */
+export async function companyVisibilityAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    const show = str(form, 'visible') === 'yes';
+    await saveSetting('company_visible', show ? 'yes' : 'no', admin.name);
+    revalidatePath('/portal/admin');
+    revalidatePath('/company');
+    return { ok: show ? 'The Company menu is now shown on xaa.es.' : 'The Company menu is now hidden on xaa.es.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
 /** Admin: the capital has arrived — verify the stake. From now on its share of xaa.es revenue is computed. */
 export async function verifyInvestorAction(_prev: ActionState, form: FormData): Promise<ActionState> {
   try {
