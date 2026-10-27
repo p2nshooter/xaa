@@ -93,6 +93,21 @@ export function priceProblem(p: { normal: number; open: number; step: number; re
   return null;
 }
 
+/**
+ * The sales commission on a member's domain lot (owner, 27 Oct 2026, requests 59 and 63: "Bukan biaya 30%,
+ * tp komisi penjualan dari lelang domain sebesar 30%"): 30 % of the final price, taken only when the domain
+ * sells. Listing, DNS verification, running and relisting a lot cost nothing; an unsold domain is never charged.
+ * xaa.es's own lots and the admin's lots carry no commission.
+ */
+export const MEMBER_COMMISSION_PCT = 30;
+
+/** How a sold member lot's final price splits, in cents-exact euros: xaa.es's commission and the seller's 70 %. */
+export function saleSplit(finalEur: number): { commission: number; seller: number } {
+  const cents = Math.round(finalEur * 100);
+  const commission = Math.round((cents * MEMBER_COMMISSION_PCT) / 100);
+  return { commission: commission / 100, seller: (cents - commission) / 100 };
+}
+
 export interface LotState {
   status: string; starts_at: string; ends_at: string; normal_eur: number; open_eur: number; step_eur: number;
   bids_count: number; high_eur: number; high_user: string;

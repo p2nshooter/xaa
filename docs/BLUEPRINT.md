@@ -103,10 +103,11 @@ Arti tanda:
 | 56 | (27 Okt 2026) „Untuk email axto.io & xaa.es kirimnya ke hello@axto.io karena ini satu management" | 📝 semua notifikasi xaa.es (pesanan, dukungan, penawaran investor, lelang, kontak) dikirim ke hello@axto.io; alamat balas ke klien tetap hello@xaa.es | §10.9 |
 | 57 | (27 Okt 2026) „Tolong perbaiki dulu seluruh SEO websitenya, perkata, link xmlsitemap dan file2 lain yg d butuhkan dll, backlink yg tidak melanggar adsense d seluruh situs … setelah itu baru lanjutkan pekerjaan pembuatan auction xaa.es dan axto.io … rapikan blueprint nya menjadi HTML yg bisa d download" | 🔄 SEO dulu (semua situs, termasuk xaa.es: audit live `scripts/seo-audit.mjs` untuk semua domain), lalu lelang; blueprint HTML induk di repo ulyah.com `docs/BLUEPRINT.html` | ulyah.com ADSENSE-BLUEPRINT §15 |
 | 58 | (27 Okt 2026) „Jgn lupa lanjut lelang script web, website + domain dan domain saja di xaa.es" | 🔄 jenis lot keempat: **domain saja** (nama domain tanpa website); dibangun bersama lelang website setelah perbaikan SEO | §10.1, §10.3 |
-| 59 | (27 Okt 2026) „Untuk semua lelang di xaa.es juga berakhir selama 2 minggu di mulain saat lelang di jalankan, untuk produk milik xaa.es itu otomatis, start di harga 35%, dan kenaikan 5% berakhir di hari jumat jam 7. Client bisa ikut auction jual domain saja, selama 2 minggu dan harus verifikasi dns dulu … template husus auction seperti sedo.com yg menampilkan lelang domainya, milik xaa.es … domain saja client/member bisa ikut jual lelang dengan fee 30%, bisa yati lelang lg jika 2 minggu tidak laku, dan admin jg bisa jual, dan untuk website + domain, hanya admin yg bisa jual … Domain yang akan berakhir naik ke atas dan bisa di filter seperti situs2 lelang domain yg lain“ · „Tolong catat ini, rapihin dan kembangin lagi blueprint nya“ | 📝 §10 ditulis ulang: setiap lot 14 hari sejak dijalankan; produk xaa.es otomatis (Jumat 07.00 WIB → Jumat 07.00 WIB, buka 35 %, tiap tawaran +5 % dari harga buka); anggota menjual **domain saja** setelah verifikasi DNS (TXT), biaya 30 %, bisa dilelang ulang; admin menjual semua jenis, **website + domain hanya admin**; halaman penjual ala Sedo; daftar „segera berakhir“ di atas + filter domain | §10 |
+| 59 | (27 Okt 2026) „Untuk semua lelang di xaa.es juga berakhir selama 2 minggu di mulain saat lelang di jalankan, untuk produk milik xaa.es itu otomatis, start di harga 35%, dan kenaikan 5% berakhir di hari jumat jam 7. Client bisa ikut auction jual domain saja, selama 2 minggu dan harus verifikasi dns dulu … template husus auction seperti sedo.com yg menampilkan lelang domainya, milik xaa.es … domain saja client/member bisa ikut jual lelang dengan fee 30%, bisa yati lelang lg jika 2 minggu tidak laku, dan admin jg bisa jual, dan untuk website + domain, hanya admin yg bisa jual … Domain yang akan berakhir naik ke atas dan bisa di filter seperti situs2 lelang domain yg lain“ · „Tolong catat ini, rapihin dan kembangin lagi blueprint nya“ | 📝 §10 ditulis ulang: setiap lot 14 hari sejak dijalankan; produk xaa.es otomatis (Jumat 07.00 WIB → Jumat 07.00 WIB, buka 35 %, tiap tawaran +5 % dari harga buka); anggota menjual **domain saja** setelah verifikasi DNS (TXT), **komisi penjualan 30 %** (permintaan 63), bisa dilelang ulang; admin menjual semua jenis, **website + domain hanya admin**; halaman penjual ala Sedo; daftar „segera berakhir“ di atas + filter domain | §10 |
 | 60 | (27 Okt 2026) „Menu company di xaa.es tolong di Hiden dan bisa di show dr portal admin“ | ✅ 27 Okt: setelan `company_visible` (bawaan **tersembunyi**) + tombol „Show/Hide the Company menu“ di Studio desk (log audit); saat tersembunyi tidak ada tautan di menu/footer, `/company` 404 + noindex, keluar dari sitemap dan llms.txt. Uji: `tests/e2e/company.e2e.mjs` 7/7, seo-verify, portal 41/41 | §11 |
 | 61 | (27 Okt 2026) „Baik axto.io dan xaa.es tolong ambil rek pembayaranya dari https://ulyah.com/donasi / dari repo termasuk jaringannya barcode nya … Pastikan konversi mata uang sesuai dengan rekening BNI untuk manual, dan pandu customer untuk pembayaran manual sampai sukses“ | 📝 13 rekening BNI wondr (per mata uang) + 5 dompet kripto (dengan jaringan & QR) dari sumber ulyah.com/donasi, disimpan terenkripsi, tampil hanya di checkout pembeli yang masuk; jumlah dikonversi ke mata uang rekening yang dipilih (kurs harian); panduan bayar manual langkah demi langkah sampai lunas. axto.io: guardian-ai REQUESTS 104 | §12 |
 | 62 | (27 Okt 2026) „buatkan juga menu husus penjualan domain + website article husus pengajuan adsense dengan keterangan 40-100 article min 1500 kata per artikel berkualitas tinggi, hanya admin yg bisa ngisi, dengan berbagai macam bahasa untuk custom … tp ada yg sudah jadi tinggal pakai, start $350 untuk 40 article dan $500 untuk 100 article dengan SEO niche berkualitas“ · „tolong jual website2 saya yg ada, untuk 1fr.fr tilawa.de xad.es dawa.im harganya $30rb dengan puluhan ribu kitab, kasih tau jg bahasa yg d gunakan setiap websitenya, yg jgn d jual ulyah.com xaa.es dan axto.io … Tolong hitung ada berapa article, klo bisa penuhin semuanya biar total setiap website 45 artikel“ | 📝 menu **AdSense sites**: siap pakai (diisi admin), pesanan custom US$350 / 40 artikel dan US$500 / 100 artikel (≥ 1.500 kata, banyak bahasa), situs mapan 1fr.fr (Prancis), tilawa.de (Jerman), xad.es (Inggris), dawa.im (Spanyol) masing-masing US$30.000; ulyah.com, xaa.es, axto.io diblokir dari daftar jual. Hitungan 27 Okt: 0 artikel blog di keempat situs (isinya kisah, hadis, kitab) → bagian artikel baru + 45 artikel per situs | §13 |
+| 63 | (27 Okt 2026) „Bukan biaya 30%, tp komisi penjualan dari lelang domain sebesar 30%“ | ✅ dicatat: 30 % adalah **komisi penjualan** dari harga akhir domain anggota yang **terjual** (penjual menerima 70 %). Tidak ada biaya pasang, biaya verifikasi DNS, biaya lelang ulang, atau biaya apa pun bila domain tidak laku | §10.6 |
 | 53 | (26 Okt 2026) Pelajari situs dan aplikasi dunia yang sejenis, kembangkan „1000 kali lebih canggih“; kemungkinan xaa.es satu akun Cloudflare dengan axto.io (dibahas dulu) | 📝 dicatat; dikerjakan setelah izin | §6 |
 | 23 | Uji berulang sampai 100%, termasuk template SaaS | 🟡 | Tes otomatis ada di `tests/e2e/` (bagian 4). Template "super" belum punya produk untuk diuji |
 
@@ -269,7 +270,9 @@ Rencana lengkap per template (logika, menu, dashboard, demo, gambar animasi, sta
 
 ## 9. Changelog blueprint
 
-- **27 Okt 2026 (3)**: permintaan 59–62 dicatat; §10 ditulis ulang (14 hari per lot, produk xaa.es otomatis 35 % / +5 % Jumat 07.00 WIB, domain anggota dengan verifikasi DNS, biaya 30 %, lelang ulang, website + domain hanya admin, toko penjual ala Sedo, urutan segera berakhir + filter); §11 menu Company tersembunyi; §12 rekening ulyah.com/donasi + konversi + panduan bayar manual; §13 menu situs AdSense dan penjualan 1fr.fr, tilawa.de, xad.es, dawa.im.
+- **27 Okt 2026 (4)**: permintaan 63 — 30 % untuk domain anggota adalah komisi penjualan, hanya dari domain yang terjual (bukan biaya); §10.6 dan §10.14 diperbaiki.
+
+- **27 Okt 2026 (3)**: permintaan 59–62 dicatat; §10 ditulis ulang (14 hari per lot, produk xaa.es otomatis 35 % / +5 % Jumat 07.00 WIB, domain anggota dengan verifikasi DNS, komisi penjualan 30 %, lelang ulang, website + domain hanya admin, toko penjual ala Sedo, urutan segera berakhir + filter); §11 menu Company tersembunyi; §12 rekening ulyah.com/donasi + konversi + panduan bayar manual; §13 menu situs AdSense dan penjualan 1fr.fr, tilawa.de, xad.es, dawa.im.
 
 - **26 Okt 2026 (2)**: Next.js 15 habis masa dukungan (2 tahun sejak 21 Okt 2024); OpenNext menolak membangunnya, jadi deploy permintaan 50 gagal. xaa.es naik ke **Next.js 16.4.3** + `@opennextjs/cloudflare` 1.20.13 + wrangler 4.152.0 (versi yang didukung, bukan flag pengecualian). Diuji lokal: typecheck, 28 unit test, build OpenNext, crawl tanpa tautan rusak, portal e2e 41/41, desktop + ponsel tanpa error konsol.
 
@@ -360,10 +363,13 @@ harga buka. Bila pemilik menghendaki +5 % dari harga normal, cukup ubah satu ang
 6. Penjual juga mengisi registrar, tanggal kedaluwarsa (minimal 30 hari setelah lot berakhir) dan pernyataan bahwa
    domain tidak terkunci sengketa. Admin melihat semua data ini di Studio desk.
 
-### 10.6 Biaya, pembayaran ke penjual, dan lelang ulang (permintaan 59)
+### 10.6 Komisi penjualan, pembayaran ke penjual, dan lelang ulang (permintaan 59, 63)
 
-- **Biaya 30 %** dari harga akhir untuk setiap lot domain anggota; penjual menerima 70 %. Biaya tampil di formulir
-  jual, di halaman lot (untuk penjual) dan di laporan penjual. Lot milik xaa.es dan admin tidak berbiaya.
+- **Komisi penjualan 30 %** dari harga akhir, **hanya bila domain anggota terjual** (lunas dan sudah diterima
+  pembeli); penjual menerima 70 %. Contoh: terjual €1.000 → komisi xaa.es €300, penjual €700.
+- **Tanpa biaya lain**: mendaftarkan domain, verifikasi DNS, menjalankan lelang, dan lelang ulang gratis; domain yang
+  tidak laku tidak dikenai apa pun. Komisi dan contoh hitungannya tampil di formulir jual, di halaman lot (untuk
+  penjual) dan di laporan penjual. Lot milik xaa.es dan admin tanpa komisi.
 - Alur dana (escrow): pemenang membayar ke xaa.es → penjual mengirim kode EPP/push → pemenang mengonfirmasi domain
   sudah masuk (atau otomatis 5 hari setelah WHOIS/RDAP menunjukkan registrar/pemilik baru) → saldo penjual terbuka →
   admin mengirim 70 % lewat metode yang dipilih penjual (transfer bank, PayPal, USDT) dan mencatatnya; setiap langkah
@@ -441,7 +447,7 @@ penjual, jenis, TLD, harga), `auctionBids` (create-once `<lot>.<seq>`, CAS pada 
 ### 10.14 Kejujuran & hukum
 
 Tidak menjual situs/domain dengan merek orang lain; data trafik dan pendapatan hanya yang terverifikasi; konten bebas
-hak cipta pihak ketiga; biaya 30 % dan escrow dijelaskan sebelum anggota mendaftarkan domain; pajak/faktur sesuai
+hak cipta pihak ketiga; komisi penjualan 30 % (hanya bila terjual) dan escrow dijelaskan sebelum anggota mendaftarkan domain; pajak/faktur sesuai
 Settings → Invoicing.
 
 ### 10.15 Satu kotak surat
@@ -453,7 +459,7 @@ Alamat yang dilihat klien dan alamat balas tetap hello@xaa.es.
 
 1. SEO seluruh situs (permintaan 57) → 2. aturan & penyimpanan (10.2, 10.3, 10.13) → 3. Studio desk: kategori, lot,
 produk otomatis → 4. halaman publik dengan urutan & filter (10.8) + portal anggota → 5. verifikasi DNS + jual domain
-anggota + biaya + lelang ulang → 6. pembayaran (§12), aset otomatis, serah terima, pembayaran ke penjual → 7. toko
+anggota + komisi penjualan + lelang ulang → 6. pembayaran (§12), aset otomatis, serah terima, pembayaran ke penjual → 7. toko
 penjual & widget → 8. uji unit + E2E + browser desktop & HP.
 
 ## 11. Menu Company tersembunyi (permintaan 60) — ✅ dibangun 27 Okt
