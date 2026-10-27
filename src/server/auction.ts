@@ -79,12 +79,6 @@ export interface AuctionBid { id: string; lot_id: string; user_id: string; name:
 export interface AuctionBidder { id: string; display_name: string; created_at: string; updated_at: string }
 export interface AuctionCategoryDoc extends AuctionCategory { id: string; hidden: boolean; order: number; updated_at: string }
 
-/** A lot's summary on its index entries — lists read no lot documents. */
-export const lotSummary = (l: AuctionLot) => ({
-  ref: l.ref, type: l.type, category: l.category, title: l.title.slice(0, 90), status: l.status, cycle: l.cycle,
-  normal: l.normal_eur, open: l.open_eur, high: l.high_eur, bids: l.bids_count, ends: l.ends_at,
-  winner: l.winner_name.slice(0, 48), win: l.winner_eur, paid: l.paid_at ? 1 : 0, closed: l.closed_at,
-});
 
 const now = () => nowIso();
 const pad6 = (n: number) => String(n).padStart(6, '0');
@@ -308,7 +302,7 @@ export async function buyNow(user: Pick<User, 'id' | 'role'>, lotId: string, now
   const bidder = await db.auctionBidders.get(user.id);
   if (!bidder?.display_name) return { error: 'no_name' };
   if (!(await db.auctionLots.get(lotId))) return { error: 'not_found' };
-  let problem = null as BidResult extends { error: infer E } ? E | null : never;
+  let problem: BidProblem | 'no_buy_now' | null = null;
   let seq = 0;
   const after = await db.auctionLots.update(lotId, (l) => {
     problem = null;

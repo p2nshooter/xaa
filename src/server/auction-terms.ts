@@ -181,3 +181,19 @@ export const maskName = (name: string) => {
   const n = cleanDisplayName(name);
   return n ? `${[...n][0]}${'•'.repeat(Math.min(5, Math.max(2, n.length - 1)))}` : '—';
 };
+
+/** What a lot's index entries carry, so lists read no lot documents (server/r2/schema.ts). */
+export interface LotSummarySource {
+  ref: string; type: LotType; category: string; title: string; status: LotStatus; cycle: string;
+  normal_eur: number; open_eur: number; high_eur: number; bids_count: number; ends_at: string;
+  winner_name: string; winner_eur: number; paid_at: string; closed_at: string;
+}
+export const lotSummary = (l: LotSummarySource) => ({
+  ref: l.ref, type: l.type, category: l.category, title: l.title.slice(0, 90), status: l.status, cycle: l.cycle,
+  normal: l.normal_eur, open: l.open_eur, high: l.high_eur, bids: l.bids_count, ends: l.ends_at,
+  winner: l.winner_name.slice(0, 48), win: l.winner_eur, paid: l.paid_at ? 1 : 0, closed: l.closed_at,
+});
+
+/** Index order for a lot's bids: the latest (= highest) sequence number first. */
+export const bidSeqDesc = (bidId: string) => String(999_999 - Number(bidId.slice(bidId.lastIndexOf('.') + 1))).padStart(6, '0');
+
