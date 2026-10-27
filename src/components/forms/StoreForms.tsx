@@ -101,11 +101,15 @@ export function OrderPaymentForm({
             <input name="reference" className="input" required placeholder="Transaction hash / PayPal ID / wire reference" />
           </label>
           <label className="field">
+            <span>Payment screenshot{bank.length ? ' (required for a bank transfer)' : ''}</span>
+            <input type="file" name="receipt" accept="image/png,image/jpeg,image/webp,application/pdf" className="text-sm" />
+          </label>
+          <label className="field">
             <span>Note (optional)</span>
             <input name="note" className="input" />
           </label>
           <Submit pendingLabel="Submitting…">I have paid — submit</Submit>
-          <p className="hint mt-2">We confirm within one business day and your download unlocks automatically.</p>
+          <p className="hint mt-2">We confirm within one business day from your screenshot and what you bought unlocks automatically.</p>
         </form>
       ) : null}
     </div>

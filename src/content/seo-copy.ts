@@ -35,6 +35,11 @@ export const SEO: Record<string, SeoCopy> = {
     es: { title: 'Plantillas SaaS listas con código fuente completo', description: `SaaS listos para producción que compras una vez y personalizas: código fuente, base de datos y guía de instalación en una descarga. Desde ${tlo}.` },
     id: { title: 'Template SaaS siap pakai dengan source code lengkap', description: `SaaS siap produksi yang dibeli sekali lalu diganti merek: source code lengkap, database dan panduan setup dalam satu unduhan. Mulai ${tlo}.` },
   },
+  auction: {
+    en: { title: 'Auction: websites, scripts and domain names', description: 'Bid on finished websites, source code and domain names, every lot 14 days, ending soonest first. Members sell their own domains after a DNS check.' },
+    es: { title: 'Subasta: webs, scripts y nombres de dominio', description: 'Puja por webs terminadas, código fuente y dominios: cada lote dura 14 días, primero los que terminan antes. Vende tus dominios tras verificar el DNS.' },
+    id: { title: 'Lelang website, script dan nama domain', description: 'Tawar website jadi, source code dan nama domain: setiap lot 14 hari, yang segera berakhir di atas. Anggota menjual domainnya sendiri setelah verifikasi DNS.' },
+  },
   portfolio: {
     en: { title: 'Portfolio — platforms and software built by XAA', description: 'Systems XAA has built and runs: an AI and security platform, consumer platforms, production management software, web applications and an editorial network.' },
     es: { title: 'Portafolio — plataformas y software creados por XAA', description: 'Sistemas que XAA ha construido y opera: una plataforma de IA y seguridad, plataformas de consumo, software de gestión de producción y aplicaciones web.' },

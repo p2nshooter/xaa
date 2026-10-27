@@ -22,7 +22,7 @@ import {
   saveAiKey, clearAiKey, revealAiKey, setSchedule, runBackup, runOperation,
   restoreFromBackup, resetDatabase, CADENCES, PROVIDERS, type Cadence, type Provider,
 } from './recovery';
-import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle } from './store';
+import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle, storeReceipt } from './store';
 import { activePayPal, createPayPalOrder, ensureWebhook, insertCheckout, isPayPalEnv, newCheckoutId, paypalConfig, testPayPal, type PayPalEnv } from './paypal';
 import { applyInvestor, getInvest, getInvestor, recordPayout, setInvestorStatus, verifyInvestor, usd } from './invest';
 import { getTemplate } from '@/content/templates';
@@ -326,7 +326,12 @@ export async function submitOrderPaymentAction(_prev: ActionState, form: FormDat
     const method = rawMethod === 'paypal' ? 'paypal' : rawMethod === 'bank' ? 'bank' : 'usdt';
     const reference = str(form, 'reference');
     if (!reference) return { error: 'Paste the transaction reference from your payment.' };
-    await submitOrderPayment(order.id, { method, reference, note: str(form, 'note') });
+    const receipt = form.get('receipt');
+    const hasReceipt = receipt instanceof File && receipt.size > 0;
+    // A bank transfer is approved by hand from its screenshot (owner, 27 Oct 2026); crypto may add one.
+    if (method === 'bank' && !hasReceipt) return { error: 'Attach the payment screenshot (or the bank\'s PDF) — a bank transfer is approved from it.' };
+    const receiptKey = hasReceipt ? await storeReceipt(order.id, receipt) : null;
+    await submitOrderPayment(order.id, { method, reference, note: str(form, 'note'), receiptKey });
     revalidatePath(`/portal/orders/${order.id}`);
     return { ok: 'Payment submitted. We will confirm it and unlock your download.' };
   } catch (err) {

@@ -572,7 +572,9 @@ async function book(checkout: PayPalCheckout, captureId: string, state: 'complet
     const orderId = checkout.template_order_id;
     if (!(await d.templateOrders.get(orderId))) return null;
     if (state === 'completed') {
-      await d.templateOrders.update(orderId, (o) => (o.status === 'paid' ? null : { ...o, status: 'paid', method: 'paypal', reference: captureId, confirmed_at: nowIso() }));
+      const paid = await d.templateOrders.update(orderId, (o) => (o.status === 'paid' ? null : { ...o, status: 'paid', method: 'paypal', reference: captureId, confirmed_at: nowIso() }));
+      // An auction win: the lot is sold and its assets open (server/auction.ts).
+      if (paid.auction_lot_id) await (await import('./auction')).auctionOrderPaid(paid);
     } else {
       await d.templateOrders.update(orderId, (o) =>
         o.status === 'pending' || o.status === 'submitted'

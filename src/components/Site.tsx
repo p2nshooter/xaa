@@ -25,6 +25,7 @@ import { companyVisible } from '@/server/company';
 const NAV = [
   { href: '/services', key: 'nav.services' },
   { href: '/templates', key: 'nav.templates' },
+  { href: '/auction', key: 'nav.auction' },
   { href: '/portfolio', key: 'nav.work' },
   { href: '/process', key: 'nav.process' },
   { href: '/care', key: 'nav.care' },
@@ -167,6 +168,7 @@ export async function SiteFooter() {
             links={[
               ['/services', t('footer.allPackages')],
               ['/templates', t('footer.templates')],
+              ['/auction', t('footer.auction')],
               ['/portfolio', t('footer.workBuilt')],
               ['/portfolio#super-enterprise', t('footer.superEnterprise')],
               ['/election-systems', t('footer.election')],

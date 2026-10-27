@@ -27,6 +27,7 @@ export async function GET() {
     `- [How a project runs](${u('/process')}): the milestone process from deposit to handover`,
     `- [Setup & AI backup/recovery](${u('/care')}): one-time setup and a self-served backup and recovery system`,
     `- [Payments](${u('/payments')}): PayPal, bank wire (EUR/USD) and USDT, milestone schedule`,
+    `- [Auction](${u('/auction')}): websites, scripts and domain names, 14 days per lot, opening at 35 % with +5 % of the opening per bid; members sell their own domains after a DNS check (30 % sales commission only when one sells)`,
     `- [Portfolio](${u('/portfolio')}): systems the studio has built and runs`,
     `- [Election & civic systems](${u('/election-systems')}): voter-roll verification and vote tallying`,
     `- [FAQ](${u('/faq')}): pricing, timelines, ownership and payments`,

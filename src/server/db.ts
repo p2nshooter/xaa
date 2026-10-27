@@ -42,6 +42,8 @@ export interface AppEnv {
   APP_URL?: string;
   /** Local tests only: a stand-in for PayPal's Sandbox API (server/paypal.ts). */
   PAYPAL_SANDBOX_API?: string;
+  /** Local tests only: DNS-over-HTTPS resolvers (comma-separated) that replace Cloudflare and Google for the domain check (server/auction.ts). */
+  DOH_ENDPOINTS?: string;
 }
 
 export async function appEnv(): Promise<AppEnv> {
