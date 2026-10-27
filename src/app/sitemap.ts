@@ -19,8 +19,8 @@ type Freq = Entry['changeFrequency'];
  * hreflang alternates — the pattern search engines use to index and serve the
  * right language. The football archive is English only and is listed once.
  * Only canonical, indexable URLs are listed: no portal, login or API routes,
- * and /invest only when the owner has chosen to let search engines index it
- * (Settings → Investor offering; off by default).
+ * and /invest only when the owner shows the offering and lets search engines
+ * index it (Settings → Investor offering; both off by default).
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const invest = await getInvest();
@@ -48,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...multilingual('/faq', 0.6, 'monthly'),
     ...multilingual('/company', 0.7, 'monthly'),
     ...multilingual('/acquire', 0.7, 'monthly'),
-    ...(invest.indexed ? multilingual('/invest', 0.6, 'monthly') : []),
+    ...(invest.visible && invest.indexed ? multilingual('/invest', 0.6, 'monthly') : []),
     ...multilingual('/about', 0.5, 'yearly'),
     ...multilingual('/contact', 0.5, 'yearly'),
     ...multilingual('/register', 0.4, 'yearly'),

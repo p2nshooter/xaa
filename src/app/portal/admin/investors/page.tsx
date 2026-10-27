@@ -6,7 +6,8 @@ import { portalReady } from '@/server/db';
 import { countNewLeads } from '@/server/leads';
 import { formatDate } from '@/server/projects';
 import { AdminNav } from '@/components/AdminNav';
-import { InvestorDecision, PayoutForm } from '@/components/forms/InvestForms';
+import { InvestorDecision, InvestVisibility, PayoutForm } from '@/components/forms/InvestForms';
+import { settingAudit, type SettingAuditEntry } from '@/server/settings';
 import { getInvest, listInvestors, raisedUsd, statementFor, shareOf, pct, usd, eurAmount, INVEST_DEFAULTS, type Investor, type Statement } from '@/server/invest';
 import { soft, type Problems } from '@/server/soft';
 import { DbNotice } from '@/components/DbNotice';
@@ -39,6 +40,7 @@ export default async function InvestorsPage() {
     soft(problems, () => raisedUsd(), 0),
     soft(problems, () => countNewLeads(), 0),
   ]);
+  const visibilityLog = await soft<SettingAuditEntry[]>(problems, () => settingAudit(['invest_visible'], 10), []);
   const running = investors.filter((i) => i.status === 'verified' || i.status === 'returned');
   const statements = new Map<string, Statement>();
   await Promise.all(
@@ -71,6 +73,21 @@ export default async function InvestorsPage() {
         <AdminNav current="/portal/admin/investors" newLeads={newLeads} />
       </div>
       <DbNotice problems={problems} />
+
+      <section className="panel mb-6 p-5" data-testid="invest-visibility-panel">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-wider text-steel-400">Visibility on xaa.es</p>
+            <p className="mt-1 text-sm text-steel-500">Shown by default (owner, 27 Oct 2026). While hidden there is no footer link and no sitemap entry, /invest is a 404 and applications are refused; verified investors keep their statement in the portal.</p>
+          </div>
+          <InvestVisibility visible={offer.visible} />
+        </div>
+        {visibilityLog.length ? (
+          <ul className="mt-4 space-y-1 text-xs text-steel-500" data-testid="invest-visibility-log">
+            {visibilityLog.map((e, i) => <li key={i}>{e.at.slice(0, 16).replace('T', ' ')} UTC · {e.by || 'admin'} · {e.to === 'no' ? 'hidden' : 'shown'}</li>)}
+          </ul>
+        ) : null}
+      </section>
 
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-testid="invest-summary">
         <div className="panel p-5">

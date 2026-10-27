@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { SectionHead } from '@/components/Studio';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { InvestForm } from '@/components/forms/InvestForms';
@@ -17,15 +18,16 @@ import { getSale, waLink } from '@/server/sale';
  * Owner, 19 Oct 2026, on the old "joint offering for AXTO and XAA" line:
  * "Maksudnya masing2 web nyari investornya, bukan gabungan." xaa.es raises
  * from its own investors on its own revenue; axto.io raises separately on its
- * own site. Terms, status and whether search engines may index this page come
- * from Admin → Settings → Investor offering (server/invest.ts). Every statement
+ * own site. Terms, status, whether the offering is shown at all (hidden by
+ * default since 26 Oct 2026) and whether search engines may index this page
+ * come from Admin → Settings → Investor offering (server/invest.ts). Every statement
  * below describes the business as it is today and what the capital is for;
  * nothing promises a return.
  */
 
 export async function generateMetadata(): Promise<Metadata> {
   const offer = await getInvest();
-  return pageMetadata({ path: '/invest', copy: SEO.invest, noindex: !offer.indexed });
+  return pageMetadata({ path: '/invest', copy: SEO.invest, noindex: !offer.indexed || !offer.visible });
 }
 
 type Copy = {
@@ -250,6 +252,8 @@ export default async function InvestPage() {
   const lang = await getLang();
   const c = pick(lang, COPY);
   const [offer, sale] = await Promise.all([getInvest(), getSale()]);
+  // Hidden by default (§26.4): until the admin shows the offering, /invest is a 404 like any unknown URL.
+  if (!offer.visible) notFound();
   const raised = await raisedUsd().catch(() => 0);
   const open = offer.status === 'open';
   const url = absUrl('/invest');

@@ -14,7 +14,8 @@
 // for US$50,000; a recorded payout reduces the balance. The investor, signed
 // in with the email they applied with, sees the same statement in the portal.
 // Settings change the page: indexing on → in the sitemap and indexable;
-// paused → no form. No page throws.
+// paused → no form; the admin's show/hide switch (shown by default) hides the
+// page, the footer link and the sitemap entry, and is in the audit log. No page throws.
 
 import { chromium } from 'playwright';
 import { execFileSync } from 'node:child_process';
@@ -198,6 +199,22 @@ await sform.locator('select[name=invest_indexed]').selectOption('no');
 await sform.locator('select[name=invest_status]').selectOption('open');
 await sform.locator('button[type=submit]').click();
 await a.waitForTimeout(2500);
+
+// ── Show / hide (guardian-ai BLUEPRINT-V4 §26.4; shown by default since 27 Oct 2026) ──
+await a.goto('/portal/admin/investors', { waitUntil: 'networkidle' });
+check('the offering is shown by default', /Shown/.test(await a.locator('[data-testid=invest-visibility]').innerText()));
+await a.locator('[data-testid=invest-visibility] button[type=submit]').click();
+await a.locator('[data-testid=invest-visibility] [role=status]').waitFor({ timeout: 30000 }).catch(() => {});
+const hidden = await v.goto('/invest', { waitUntil: 'networkidle' });
+check('hidden → /invest is a 404', hidden?.status() === 404);
+await v.goto('/', { waitUntil: 'networkidle' });
+check('hidden → no footer link', (await v.locator('footer a[href="/invest"]').count()) === 0);
+check('hidden → not in the sitemap', !(await (await fetch(`${BASE}/sitemap.xml`)).text()).includes('/invest'));
+await a.goto('/portal/admin/investors', { waitUntil: 'networkidle' });
+check('the change is in the audit log', (await a.locator('[data-testid=invest-visibility-log] li').count()) > 0);
+await a.locator('[data-testid=invest-visibility] button[type=submit]').click();
+await a.waitForTimeout(2500);
+check('shown again → /invest renders', (await v.goto('/invest', { waitUntil: 'networkidle' }))?.status() === 200);
 
 // Leave the database as it was found.
 d1(`DELETE FROM paypal_checkouts WHERE id IN ('${ids.co1}', '${ids.co2}')`);

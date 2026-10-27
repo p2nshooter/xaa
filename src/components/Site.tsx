@@ -3,6 +3,7 @@ import { SITE } from '@/lib/site';
 import { translator } from '@/lib/i18n';
 import { getLang } from '@/lib/i18n.server';
 import { LangSwitcher } from '@/components/LangSwitcher';
+import { investVisible } from '@/server/invest';
 
 /**
  * Studio chrome — light, quiet, and out of the way. Mark, wordmark, what the
@@ -126,6 +127,8 @@ export async function SiteHeader() {
 export async function SiteFooter() {
   const lang = await getLang();
   const t = translator(lang);
+  // The investor offering is linked only while the admin shows it (shown by default, §26.4).
+  const invest = await investVisible().catch(() => true);
   return (
     <footer className="mt-24 border-t border-[color:var(--line)] bg-[color:var(--surface)]">
       <div className="mx-auto max-w-6xl px-4 py-14">
@@ -174,7 +177,7 @@ export async function SiteFooter() {
               ['/process', t('footer.processRuns')],
               ['/payments', t('footer.usdtPaypal')],
               ['/faq', t('footer.faqLong')],
-              ['/invest', t('footer.invest')],
+              ...(invest ? [['/invest', t('footer.invest')] as [string, string]] : []),
               ['/acquire', t('footer.acquire')],
               ['/register', t('footer.openProject')],
               ['/portal', t('nav.portal')],

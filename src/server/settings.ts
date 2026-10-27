@@ -2,6 +2,7 @@ import { newId, nowIso, appEnv } from './db';
 import { data } from './data';
 import type { SecretDoc, SettingDoc } from './r2/schema';
 import { encryptValue, decryptValue, maskSecret } from './crypto';
+import { ulid } from './r2/ulid';
 
 /**
  * Payment destinations and studio configuration, both maintained from the
@@ -324,6 +325,11 @@ export const SETTING_DEFS: SettingDef[] = [
   // 19 Oct 2026: "masing2 web nyari investornya, bukan gabungan". Blank fields
   // fall back to the defaults in server/invest.ts (the 14 Oct 2026 terms).
   {
+    key: 'invest_visible', label: 'Show the investor offering', hint: 'Shown by default (owner, 27 Oct 2026). While hidden there is no footer link and no sitemap entry, /invest is a 404 and applications are refused; verified investors still see their statement in the portal. Every change is kept in the settings audit log.',
+    secret: false, group: 'invest',
+    options: [{ value: 'yes', label: 'Shown — /invest, footer link, applications (default)' }, { value: 'no', label: 'Hidden — not shown anywhere' }],
+  },
+  {
     key: 'invest_status', label: 'Offering status', hint: 'Open takes applications on /invest. Paused keeps the page but stops new applications. Closed marks the raise as complete.',
     secret: false, group: 'invest',
     options: [{ value: 'open', label: 'Open — taking applications' }, { value: 'paused', label: 'Paused — page visible, no new applications' }, { value: 'closed', label: 'Closed — raise complete' }],
@@ -461,7 +467,27 @@ export async function saveSetting(key: string, raw: string, updatedBy: string): 
 
   const doc: SettingDoc = { value: def.secret ? await encryptValue(value) : value, is_secret: def.secret ? 1 : 0, updated_at: nowIso(), updated_by: updatedBy };
   const d = await data();
-  await d.store.updateDoc<SettingDoc | null>(settingName(key), null, () => doc);
+  let before: string | null = null;
+  await d.store.updateDoc<SettingDoc | null>(settingName(key), null, (cur) => { before = cur ? cur.value : null; return doc; });
+  // The audit log of settings: who changed what, when — never a secret's value. Unchanged values leave no entry.
+  const was = before as string | null;
+  if (def.secret ? true : was !== value) {
+    const at = nowIso();
+    await d.store.append<SettingAuditEntry>(AUDIT_STREAM, `${ulid()}_${key}`, {
+      key, from: def.secret ? (was ? '(set)' : '') : (was ?? ''), to: def.secret ? '(changed)' : value, by: updatedBy, at,
+    }).catch((e) => console.error('settings audit entry failed (setting saved):', e));
+  }
+}
+
+/** One change of a setting, kept in the append-only log `l/audit-settings/…`. */
+export interface SettingAuditEntry { key: string; from: string; to: string; by: string; at: string }
+const AUDIT_STREAM = 'audit-settings';
+
+/** The latest changes of some settings (newest first). */
+export async function settingAudit(keys?: string[], limit = 50): Promise<SettingAuditEntry[]> {
+  const d = await data();
+  const all = await d.store.readLog<SettingAuditEntry>(AUDIT_STREAM, { limit: 5000 });
+  return all.map((e) => e.value).filter((e) => !keys || keys.includes(e.key)).reverse().slice(0, limit);
 }
 
 export async function clearSetting(key: string): Promise<void> {
