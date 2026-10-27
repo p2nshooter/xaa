@@ -113,7 +113,8 @@ export default async function LotPage({ params }: { params: P }) {
           </section>
         </div>
 
-        <aside className="lg:sticky lg:top-28 lg:h-fit">
+        {/* On a phone the price and the bid form come first; on a wide screen they sit beside the details. */}
+        <aside className="order-first lg:order-none lg:sticky lg:top-28 lg:h-fit">
           <div className="panel p-5" data-testid="lot-price">
             <p className="text-xs font-bold uppercase tracking-wider text-steel-400">{lot.bids_count ? c.current : c.opening}</p>
             <p className="mt-1 font-display text-4xl font-extrabold">{euroIn(lot.bids_count ? lot.high_eur : lot.open_eur, lang)}</p>

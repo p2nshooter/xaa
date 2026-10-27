@@ -108,8 +108,11 @@ const seller = await page('seller');
 await register(seller, 'Seller Kopi');
 await setName(seller, 'Kopi Domains');
 const memberDomain = `kopi${STAMP}.com`;
+let claims = 0;
 async function claim(d) {
-  await seller.goto(BASE + '/portal/auction#sell', { waitUntil: 'networkidle' });
+  // A fresh load each time, so the notice read below is this claim's, not the previous one's.
+  claims += 1;
+  await seller.goto(BASE + `/portal/auction?c=${claims}`, { waitUntil: 'networkidle' });
   await seller.locator('[data-testid=domain-claim] input[name=domain]').fill(d);
   await seller.locator('[data-testid=domain-claim] button[type=submit]').click();
   await settle(seller, 'domain-claim');
@@ -146,11 +149,12 @@ ok(/is live until/i.test(await ml.innerText()), 'member lot starts at once', (aw
 
 await seller.goto(BASE + '/auction', { waitUntil: 'networkidle' });
 const sellerCard = seller.locator('[data-testid=lot-card]', { hasText: `kopi${STAMP}` }).first();
-ok((await sellerCard.count()) === 1 && /DNS verified/.test(await sellerCard.innerText()), 'member lot on /auction with its DNS badge');
+ok((await sellerCard.count()) === 1 && /DNS verified/i.test(await sellerCard.innerText()), 'member lot on /auction with its DNS badge', (await sellerCard.innerText().catch(() => 'no card')).slice(0, 160));
 await sellerCard.locator('a').first().click();
-await seller.waitForLoadState('networkidle');
+await seller.waitForURL(/\/auction\/AUC-/, { timeout: 20000 });
+await seller.locator('[data-testid=lot-price]').waitFor({ timeout: 20000 });
 const lotUrl = seller.url();
-ok(/This is your lot/.test(await bodyText(seller)), 'the seller cannot bid on their own lot');
+ok(/This is your lot/.test(await bodyText(seller)), 'the seller cannot bid on their own lot', (await seller.locator('aside').innerText().catch(() => '')).replace(/\s+/g, ' ').slice(0, 200));
 ok(/€350/.test(await seller.locator('[data-testid=lot-price]').innerText()), 'member lot opens at 35 % (€350)');
 
 // ── 3. the public list: ending soonest first, filters ─────────────────────
@@ -175,6 +179,7 @@ const bidder = await page('bidder');
 await register(bidder, 'Buyer Satu');
 await setName(bidder, 'Buyer Satu');
 await bidder.goto(lotUrl, { waitUntil: 'networkidle' });
+if (!(await bidder.locator('[data-testid=bid-box] button', { hasText: 'Bid €350' }).count())) console.log('BIDDER ASIDE:', (await bidder.locator('aside').innerText()).replace(/\s+/g, ' ').slice(0, 300), bidder.url());
 await bidder.locator('[data-testid=bid-box] button', { hasText: 'Bid €350' }).click();
 await settle(bidder, 'bid-box');
 await bidder.goto(lotUrl, { waitUntil: 'networkidle' });
