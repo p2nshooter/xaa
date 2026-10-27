@@ -11,6 +11,7 @@ import { jsonLdHtml } from '@/lib/json-ld';
 import { SEO } from '@/content/seo-copy';
 import { getInvest, raisedUsd, shareOf, pct, usd } from '@/server/invest';
 import { getSale, waLink } from '@/server/sale';
+import { companyVisible } from '@/server/company';
 
 /**
  * /invest — the investor offering of xaa.es, and of xaa.es alone.
@@ -250,6 +251,7 @@ const COPY: Record<Lang, Copy> = {
 
 export default async function InvestPage() {
   const lang = await getLang();
+  const company = await companyVisible();
   const c = pick(lang, COPY);
   const [offer, sale] = await Promise.all([getInvest(), getSale()]);
   // Hidden by default (§26.4): until the admin shows the offering, /invest is a 404 like any unknown URL.
@@ -450,7 +452,7 @@ export default async function InvestPage() {
           ))}
         </div>
         <p className="mt-10 text-sm text-steel-500">
-          <Link href="/company" className="underline">PT AXTO DIGITAL GLOBAL</Link> · <Link href="/terms" className="underline">Terms</Link> · <Link href="/privacy" className="underline">Privacy</Link> · <Link href="/disclaimer" className="underline">Disclaimer</Link>
+          {company ? <Link href="/company" className="underline">PT AXTO DIGITAL GLOBAL</Link> : 'PT AXTO DIGITAL GLOBAL'} · <Link href="/terms" className="underline">Terms</Link> · <Link href="/privacy" className="underline">Privacy</Link> · <Link href="/disclaimer" className="underline">Disclaimer</Link>
         </p>
       </section>
     </>

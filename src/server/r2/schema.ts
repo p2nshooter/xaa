@@ -16,8 +16,10 @@ import type { BundleMeta, TemplateOrder } from '../store';
 import type { PayPalCheckout } from '../paypal';
 import type { Investor, Payout } from '../invest';
 import type { SupportThread } from '../support';
+import type { AuctionBid, AuctionBidder, AuctionCategoryDoc, AuctionLot } from '../auction';
 import type { Store } from './store.ts';
 import { newestFirst, oldestFirst } from './ulid.ts';
+import { bidSeqDesc, lotSummary } from '../auction-terms.ts';
 
 export type UserDoc = User & { password_hash: string };
 export type BundleDoc = BundleMeta & { id: string; updated_by: string | null };
@@ -128,6 +130,28 @@ export function collections(store: Store) {
       ],
     }),
     bundles: store.collection<BundleDoc>({ name: 'template_bundles' }),
+    // The auction of websites, scripts and domains (docs/BLUEPRINT.md §10). Lots carry their summary on
+    // every index entry, so the public list and the Studio desk read no lot documents; a bid is a
+    // create-once document `<lot>.<seq>` after a compare-and-swap on its lot.
+    auctionCategories: store.collection<AuctionCategoryDoc>({ name: 'auction_categories' }),
+    auctionLots: store.collection<AuctionLot>({
+      name: 'auction_lots',
+      unique: [{ name: 'ref', value: (l) => l.ref }],
+      indexes: [
+        { name: 'status', key: (l) => l.status, sort: (l) => oldestFirst(l.ends_at), meta: lotSummary },
+        { name: 'all', key: () => 'all', meta: lotSummary },
+        { name: 'won', key: (l) => (l.winner_user ? 'all' : null), sort: (l) => newestFirst(l.closed_at || l.updated_at), meta: lotSummary },
+        { name: 'winner', key: (l) => l.winner_user || null, meta: lotSummary },
+      ],
+    }),
+    auctionBids: store.collection<AuctionBid>({
+      name: 'auction_bids',
+      indexes: [
+        { name: 'lot', key: (b) => b.lot_id, sort: (b) => bidSeqDesc(b.id) },
+        { name: 'user', key: (b) => b.user_id },
+      ],
+    }),
+    auctionBidders: store.collection<AuctionBidder>({ name: 'auction_bidders' }),
     threads: store.collection<SupportThread>({
       name: 'support_threads',
       unique: [{ name: 'token', value: (t) => t.token }],

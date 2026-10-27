@@ -70,7 +70,7 @@ export function knowledgeFor(topic: Topic): string {
     default:
       parts.push(packagesText(), PROCESS, PAYMENTS);
   }
-  parts.push(`CONTACT: ${SITE.email}. Company profile: ${SITE.url}/company.`);
+  parts.push(`CONTACT: ${SITE.email}. Company: PT AXTO DIGITAL GLOBAL (Indonesia).`);
   return parts.join('\n\n').slice(0, 5800);
 }
 

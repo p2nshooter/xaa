@@ -277,6 +277,11 @@ export interface SettingDef {
  * and versioned — a settings screen is the wrong place to edit a contract.
  */
 export const SETTING_DEFS: SettingDef[] = [
+  {
+    key: 'company_visible', label: 'Show the Company menu', hint: 'Hidden by default (owner, 27 Oct 2026). While hidden there is no Company link in the menu or footer, /company is a 404 and it is left out of the sitemap and llms.txt; the legal entity is still printed on invoices and the legal pages. Every change is kept in the settings audit log.',
+    secret: false, group: 'company',
+    options: [{ value: 'no', label: 'Hidden — no menu link, /company is a 404 (default)' }, { value: 'yes', label: 'Shown — Company in the menu and footer' }],
+  },
   { key: 'company_name', label: 'Legal entity name', hint: 'Appears on every invoice.', secret: false, group: 'company', placeholder: 'XAA' },
   { key: 'company_address', label: 'Registered address', hint: 'Full postal address, one per line.', secret: false, group: 'company' },
   { key: 'company_tax_id', label: 'VAT / tax number', hint: 'Shown on invoices; leave blank if not registered.', secret: false, group: 'company' },

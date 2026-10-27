@@ -4,6 +4,7 @@ import { translator } from '@/lib/i18n';
 import { getLang } from '@/lib/i18n.server';
 import { LangSwitcher } from '@/components/LangSwitcher';
 import { investVisible } from '@/server/invest';
+import { companyVisible } from '@/server/company';
 
 /**
  * Studio chrome — light, quiet, and out of the way. Mark, wordmark, what the
@@ -56,6 +57,9 @@ export function BrandMark({ size = 40, className = '', lazy = false }: { size?: 
 export async function SiteHeader() {
   const lang = await getLang();
   const t = translator(lang);
+  // The Company link appears only once the admin shows it (hidden by default, request 60).
+  const company = await companyVisible().catch(() => false);
+  const nav = company ? NAV : NAV.filter((n) => n.href !== '/company');
   return (
     <header id="top">
       {/* Positioning strip — the promise and the payment rails, one line. */}
@@ -106,7 +110,7 @@ export async function SiteHeader() {
             menu grew past eight items; here it scrolls on phones and fits on one
             line from tablet up, and nothing is ever hidden in a menu. */}
         <nav aria-label="Main" className="mx-auto flex max-w-6xl items-center gap-5 overflow-x-auto px-4 pb-2.5 text-sm font-medium text-ink-800 [scrollbar-width:none] lg:gap-6">
-          {NAV.map((n) => (
+          {nav.map((n) => (
             <Link key={n.href} href={n.href} className="mk-underline shrink-0 whitespace-nowrap transition hover:text-gold-500">
               {t(n.key)}
             </Link>
@@ -129,6 +133,7 @@ export async function SiteFooter() {
   const t = translator(lang);
   // The investor offering is linked only while the admin shows it (shown by default, §26.4).
   const invest = await investVisible().catch(() => true);
+  const company = await companyVisible().catch(() => false);
   return (
     <footer className="mt-24 border-t border-[color:var(--line)] bg-[color:var(--surface)]">
       <div className="mx-auto max-w-6xl px-4 py-14">
@@ -186,7 +191,7 @@ export async function SiteFooter() {
           <FooterColumn
             title={t('footer.studio')}
             links={[
-              ['/company', t('footer.company')],
+              ...(company ? [['/company', t('footer.company')] as [string, string]] : []),
               ['/about', t('footer.about')],
               ['/contact', t('footer.contact')],
               [SITE.magazine.path, t('footer.archive')],

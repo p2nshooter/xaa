@@ -30,6 +30,10 @@ export interface TemplateOrder {
   note: string | null;
   created_at: string;
   confirmed_at: string | null;
+  /** Set when the order pays an auction win (server/auction.ts): the lot it pays for. */
+  auction_lot_id?: string | null;
+  /** The payment screenshot a bank or USDT payment needs before the admin approves it (uploads bucket). */
+  receipt_key?: string | null;
 }
 
 export interface BundleMeta {

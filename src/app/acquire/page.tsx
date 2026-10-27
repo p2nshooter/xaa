@@ -10,6 +10,7 @@ import { jsonLdHtml } from '@/lib/json-ld';
 import { SEO } from '@/content/seo-copy';
 import { SITE } from '@/lib/site';
 import { getSale, usdWhole, waLink } from '@/server/sale';
+import { companyVisible } from '@/server/company';
 
 /**
  * /acquire — xaa.es itself is for sale.
@@ -236,6 +237,7 @@ const COPY: Record<Lang, Copy> = {
 
 export default async function AcquirePage() {
   const lang = await getLang();
+  const company = await companyVisible();
   const c = pick(lang, COPY);
   const sale = await getSale();
   const price = usdWhole(sale.priceUsd);
@@ -394,7 +396,7 @@ export default async function AcquirePage() {
           ))}
         </div>
         <p className="mt-10 text-sm text-steel-500">
-          <Link href="/company" className="underline">PT AXTO DIGITAL GLOBAL</Link> · <Link href="/terms" className="underline">Terms</Link> · <Link href="/privacy" className="underline">Privacy</Link>
+          {company ? <Link href="/company" className="underline">PT AXTO DIGITAL GLOBAL</Link> : 'PT AXTO DIGITAL GLOBAL'} · <Link href="/terms" className="underline">Terms</Link> · <Link href="/privacy" className="underline">Privacy</Link>
         </p>
       </section>
     </>

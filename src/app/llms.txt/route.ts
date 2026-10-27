@@ -1,4 +1,5 @@
 import { SITE } from '@/lib/site';
+import { companyVisible } from '@/server/company';
 import { PACKAGES, SETUP_PLANS, CARE_PLANS, eur, priceRange } from '@/content/packages';
 import { TEMPLATES } from '@/content/templates';
 
@@ -7,9 +8,11 @@ import { TEMPLATES } from '@/content/templates';
  * generative search (https://llmstxt.org). Built from the same catalogue the
  * pages render, so a price quoted by an assistant is the price on the site.
  */
-export const dynamic = 'force-static';
+// Read per request (a small text file, cached an hour): the Company line follows the admin's switch.
+export const dynamic = 'force-dynamic';
 
-export function GET() {
+export async function GET() {
+  const company = await companyVisible();
   const u = (p: string) => `${SITE.url}${p}`;
   const lines = [
     `# ${SITE.name} (${SITE.domain})`,
@@ -27,7 +30,7 @@ export function GET() {
     `- [Portfolio](${u('/portfolio')}): systems the studio has built and runs`,
     `- [Election & civic systems](${u('/election-systems')}): voter-roll verification and vote tallying`,
     `- [FAQ](${u('/faq')}): pricing, timelines, ownership and payments`,
-    `- [Company profile](${u('/company')}): legal entity, leadership and registered activities`,
+    ...(company ? [`- [Company profile](${u('/company')}): legal entity, leadership and registered activities`] : []),
     `- [Contact](${u('/contact')}): send a brief; reply within one business day`,
     '',
     '## Development packages',

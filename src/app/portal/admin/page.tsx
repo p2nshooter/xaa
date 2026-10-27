@@ -8,7 +8,9 @@ import { PaymentDecision } from '@/components/forms/ProjectForms';
 import { eur } from '@/content/packages';
 import { AdminNav } from '@/components/AdminNav';
 import { countNewLeads } from '@/server/leads';
-import { listPaymentMethods } from '@/server/settings';
+import { listPaymentMethods, settingAudit, type SettingAuditEntry } from '@/server/settings';
+import { companyVisible } from '@/server/company';
+import { CompanyVisibility } from '@/components/forms/SiteForms';
 import { soft, type Problems } from '@/server/soft';
 import { DbNotice } from '@/components/DbNotice';
 
@@ -28,11 +30,13 @@ export default async function AdminPage() {
   if (user.role !== 'admin') redirect('/portal');
 
   const problems: Problems = [];
-  const [pending, projects, newLeads, methods] = await Promise.all([
+  const [pending, projects, newLeads, methods, company, companyLog] = await Promise.all([
     soft(problems, () => listPendingPayments(), [] as Awaited<ReturnType<typeof listPendingPayments>>),
     soft(problems, () => listAllProjects(), [] as Awaited<ReturnType<typeof listAllProjects>>),
     soft(problems, () => countNewLeads(), 0),
     soft(problems, () => listPaymentMethods(true), [] as Awaited<ReturnType<typeof listPaymentMethods>>),
+    soft(problems, () => companyVisible(), false),
+    soft<SettingAuditEntry[]>(problems, () => settingAudit(['company_visible'], 5), []),
   ]);
   const payable = methods.filter((m) => !m.unreadable && m.address).length;
   const active = projects.filter((p) => p.status !== 'delivered' && p.status !== 'cancelled');
@@ -60,6 +64,22 @@ export default async function AdminPage() {
           <Link href="/portal/admin/payments" className="btn btn-primary btn-sm mt-3">Set one up</Link>
         </div>
       ) : null}
+
+      {/* Site menu: the Company page is hidden until the owner shows it (request 60). */}
+      <section className="panel mb-8 p-5" data-testid="company-visibility-panel">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-wider text-steel-400">Company menu</p>
+            <p className="mt-1 text-sm text-steel-500">Hidden by default (owner, 27 Oct 2026). While hidden there is no Company link in the menu or footer, /company is a 404 and it is left out of the sitemap and llms.txt. The legal entity stays on invoices and the legal pages.</p>
+          </div>
+          <CompanyVisibility visible={company} />
+        </div>
+        {companyLog.length ? (
+          <ul className="mt-4 space-y-1 text-xs text-steel-500" data-testid="company-visibility-log">
+            {companyLog.map((e, i) => <li key={i}>{e.at.slice(0, 16).replace('T', ' ')} UTC · {e.by || 'admin'} · {e.to === 'yes' ? 'shown' : 'hidden'}</li>)}
+          </ul>
+        ) : null}
+      </section>
 
       {/* Payments to verify */}
       <section className="panel mt-8 p-6">

@@ -6,6 +6,7 @@ import { SITE } from '@/lib/site';
 import { LANGS } from '@/lib/i18n';
 import { langPath } from '@/lib/seo';
 import { getInvest } from '@/server/invest';
+import { companyVisible } from '@/server/company';
 
 // Read at request time: whether /invest is listed is an admin setting.
 export const dynamic = 'force-dynamic';
@@ -23,7 +24,7 @@ type Freq = Entry['changeFrequency'];
  * index it (Settings → Investor offering; both off by default).
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const invest = await getInvest();
+  const [invest, company] = await Promise.all([getInvest(), companyVisible()]);
   const b = SITE.url;
   const abs = (p: string) => `${b}${p === '/' ? '' : p}`;
 
@@ -46,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...multilingual('/payments', 0.7, 'monthly'),
     ...multilingual('/capabilities', 0.7, 'monthly'),
     ...multilingual('/faq', 0.6, 'monthly'),
-    ...multilingual('/company', 0.7, 'monthly'),
+    ...(company ? multilingual('/company', 0.7, 'monthly') : []),
     ...multilingual('/acquire', 0.7, 'monthly'),
     ...(invest.visible && invest.indexed ? multilingual('/invest', 0.6, 'monthly') : []),
     ...multilingual('/about', 0.5, 'yearly'),
