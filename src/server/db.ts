@@ -44,6 +44,8 @@ export interface AppEnv {
   PAYPAL_SANDBOX_API?: string;
   /** Local tests only: DNS-over-HTTPS resolvers (comma-separated) that replace Cloudflare and Google for the domain check (server/auction.ts). */
   DOH_ENDPOINTS?: string;
+  /** Local test runs only: a stand-in for the rate sources on localhost (server/fx.ts). */
+  FX_ORIGIN?: string;
 }
 
 export async function appEnv(): Promise<AppEnv> {

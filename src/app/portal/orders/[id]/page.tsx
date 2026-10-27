@@ -8,7 +8,11 @@ import { getTemplate } from '@/content/templates';
 import { listPaymentMethods } from '@/server/settings';
 import { eur } from '@/content/packages';
 import { formatDate } from '@/server/projects';
-import { OrderPaymentForm, ConfirmOrderControls } from '@/components/forms/StoreForms';
+import { OrderPaymentForm, ConfirmOrderControls, OrderAttentionForm } from '@/components/forms/StoreForms';
+import { PayTracker, type PayStage } from '@/components/PayTracker';
+import { orderInvoice, payOptions, submissionLine } from '@/server/manual-pay';
+import { getLang } from '@/lib/i18n.server';
+import { pick } from '@/lib/i18n';
 import { PayPalOutcome } from '@/components/forms/PayPalForms';
 import { paypalOffer, refreshOpenCheckouts } from '@/server/paypal';
 
@@ -41,20 +45,18 @@ export default async function OrderPage({
     order = (await getOrder(id)) ?? order;
   }
 
-  const [tpl, bundle, methods, paypal] = await Promise.all([
+  const [tpl, bundle, methods, paypal, lang] = await Promise.all([
     Promise.resolve(getTemplate(order.slug)),
     getBundleMeta(order.slug),
     listPaymentMethods(true),
     paypalOffer(),
+    getLang(),
   ]);
-
-  const destinations = methods
-    .filter((m) => !m.unreadable && m.address)
-    .map((m) => ({
-      id: m.id, kind: m.kind, label: m.label, network: m.network, currency: m.currency,
-      address: m.address, memo: m.memo, link: m.link, instructions: m.instructions,
-      holder: m.holder, bankName: m.bankName, swift: m.swift, branch: m.branch, bankCountry: m.bankCountry,
-    }));
+  const open = order.status === 'pending' || order.status === 'submitted';
+  const inv = orderInvoice(order);
+  // Every active BNI currency account and wallet, quoted in its own currency and held for the buyer (server/fx.ts).
+  const options = open ? await payOptions(inv.key, inv.eur, methods, { manualPaypal: !paypal }) : [];
+  const stage: PayStage = order.status === 'paid' ? 'approved' : order.attention ? 'attention' : order.status === 'submitted' ? 'sent' : 'due';
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
@@ -88,6 +90,18 @@ export default async function OrderPage({
         </dl>
       </section>
 
+      {order.status !== 'cancelled' ? (
+        <PayTracker
+          lang={lang}
+          stage={stage}
+          note={order.attention}
+          sentLine={order.pay ? `${order.pay.label} · ${submissionLine(order.pay)}${order.reference ? ` · ${order.reference}` : ''}` : order.reference}
+          unlocked={order.auction_lot_id
+            ? pick(lang, { en: 'Win released', es: 'Lote entregado', id: 'Lot diserahkan' })
+            : pick(lang, { en: 'Download unlocked', es: 'Descarga abierta', id: 'Unduhan terbuka' })}
+        />
+      ) : null}
+
       {/* An auction win: what opens once it is paid (server/auction.ts). */}
       {order.auction_lot_id ? (
         <section className="panel mt-6 p-6" data-testid="auction-order">
@@ -118,14 +132,14 @@ export default async function OrderPage({
       ) : null}
 
       {/* Pending / submitted → pay */}
-      {order.status === 'pending' || order.status === 'submitted' ? (
+      {open ? (
         <div className="mt-6">
           {order.status === 'submitted' ? (
             <p className="mb-3 rounded-lg bg-[color:var(--surface)] p-3 text-sm text-steel-600">
               You submitted a payment ({order.reference}). We will confirm it within one business day and your download unlocks automatically. You can re-submit if you paid again.
             </p>
           ) : null}
-          <OrderPaymentForm orderId={order.id} price={order.price} destinations={destinations} paypal={paypal} />
+          <OrderPaymentForm orderId={order.id} orderRef={order.ref} price={order.price} eurText={eur(order.price)} options={options} paypal={paypal} lang={lang} />
         </div>
       ) : null}
 
@@ -139,7 +153,9 @@ export default async function OrderPage({
       {user.role === 'admin' ? (
         <div className="mt-6">
           {order.receipt_key ? <p className="mb-3 text-sm"><a href={`/api/orders/receipt/${order.id}`} className="font-semibold text-gold-500 underline" target="_blank" rel="noopener">View the payment screenshot</a> · {order.method} · {order.reference}</p> : order.status === 'submitted' ? <p className="mb-3 text-sm text-amber-700">No screenshot attached.</p> : null}
+          {order.pay ? <p className={`mb-3 text-sm ${order.pay.ok === false ? 'font-semibold text-amber-700' : 'text-steel-600'}`} data-testid="admin-expected">{order.pay.label} · {submissionLine(order.pay)}</p> : null}
           <ConfirmOrderControls orderId={order.id} />
+          {order.status === 'submitted' ? <OrderAttentionForm orderId={order.id} /> : null}
         </div>
       ) : null}
     </div>

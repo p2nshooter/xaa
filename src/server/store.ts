@@ -1,3 +1,4 @@
+import type { PaySubmission } from './manual-pay';
 import { bucket, newId, nowIso } from './db';
 import { data } from './data';
 import type { User } from './auth';
@@ -34,6 +35,11 @@ export interface TemplateOrder {
   auction_lot_id?: string | null;
   /** The payment screenshot a bank or USDT payment needs before the admin approves it (uploads bucket). */
   receipt_key?: string | null;
+  /** What the buyer paid with and the amount we expected in that currency (server/manual-pay.ts). */
+  pay?: PaySubmission | null;
+  /** Set when the admin sends the payment back with what to fix (amount short, unreadable screenshot …). */
+  attention?: string | null;
+  attention_at?: string | null;
 }
 
 export interface BundleMeta {
@@ -95,13 +101,25 @@ export async function listAllOrders(): Promise<(TemplateOrder & { client_email: 
 }
 
 /** The order changes only from pending/submitted — a paid or cancelled order is never reopened by a late form post. */
-export async function submitOrderPayment(orderId: string, patch: { method: string; reference: string; note?: string; receiptKey?: string | null }): Promise<void> {
+export async function submitOrderPayment(orderId: string, patch: { method: string; reference: string; note?: string; receiptKey?: string | null; pay?: PaySubmission | null }): Promise<void> {
   const d = await data();
   if (!(await d.templateOrders.get(orderId))) return;
   await d.templateOrders.update(orderId, (o) =>
     o.status === 'pending' || o.status === 'submitted'
-      ? { ...o, status: 'submitted', method: patch.method, reference: patch.reference.slice(0, 200), note: patch.note?.slice(0, 1000) ?? null, receipt_key: patch.receiptKey ?? o.receipt_key ?? null }
+      ? {
+          ...o, status: 'submitted', method: patch.method, reference: patch.reference.slice(0, 200), note: patch.note?.slice(0, 1000) ?? null,
+          receipt_key: patch.receiptKey ?? o.receipt_key ?? null, pay: patch.pay ?? o.pay ?? null, attention: null, attention_at: null,
+        }
       : null,
+  );
+}
+
+/** The admin sends a submitted payment back with what to fix; the buyer sees it in the tracker and submits again. */
+export async function orderNeedsAttention(orderId: string, reason: string): Promise<void> {
+  const d = await data();
+  if (!(await d.templateOrders.get(orderId))) return;
+  await d.templateOrders.update(orderId, (o) =>
+    o.status === 'submitted' || o.status === 'pending' ? { ...o, status: 'pending', attention: reason.slice(0, 500), attention_at: nowIso() } : null,
   );
 }
 

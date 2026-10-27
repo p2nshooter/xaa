@@ -1,3 +1,4 @@
+import type { PaySubmission } from './manual-pay';
 import { newId, nowIso } from './db';
 import { data } from './data';
 import { ConflictError } from './r2/store';
@@ -114,6 +115,10 @@ export interface Payment {
   invoice_no: string | null;
   /** Which stored payment destination the client said they sent to. */
   method_id: string | null;
+  /** The currency or coin paid and the amount we expected in it (server/manual-pay.ts). */
+  pay?: PaySubmission | null;
+  /** Why the studio rejected it, shown to the client with what to do next. */
+  reject_reason?: string | null;
 }
 
 export interface ProjectFile {
@@ -470,6 +475,7 @@ export async function recordPayment(input: {
   note?: string | null;
   proofFileId?: string | null;
   methodId?: string | null;
+  pay?: PaySubmission | null;
   /** Set by an automatic gateway that has already verified the money (PayPal). */
   status?: PaymentStatus;
   /** Who the project timeline credits; defaults to the client. */
@@ -493,6 +499,7 @@ export async function recordPayment(input: {
     confirmed_at: status === 'confirmed' ? nowIso() : null,
     invoice_no: null,
     method_id: input.methodId ?? null,
+    pay: input.pay ?? null,
   };
   await (await data()).payments.create(payment);
   const via = payment.method === 'usdt' ? `USDT ${payment.network ?? ''}`.trim() : payment.method === 'bank' ? 'bank transfer' : 'PayPal';
@@ -516,19 +523,19 @@ export async function recordPayment(input: {
  * moment, exactly one of them changes it and writes the timeline entry; the
  * other finds it already done.
  */
-export async function setPaymentStatus(paymentId: string, status: PaymentStatus, adminName: string): Promise<void> {
+export async function setPaymentStatus(paymentId: string, status: PaymentStatus, adminName: string, reason = ''): Promise<void> {
   const d = await data();
   const payment = await d.payments.get(paymentId);
   if (!payment) throw new Error('Payment not found.');
   let changed = false;
   await d.payments.update(paymentId, (p) => {
     changed = p.status !== status;
-    return changed ? { ...p, status, confirmed_at: status === 'confirmed' ? nowIso() : null } : null;
+    return changed ? { ...p, status, confirmed_at: status === 'confirmed' ? nowIso() : null, reject_reason: status === 'rejected' ? reason.slice(0, 500) || null : null } : null;
   });
   if (changed) {
     await addUpdate(payment.project_id, {
       title: status === 'confirmed' ? `Payment confirmed — €${payment.amount.toLocaleString('en-GB')}` : `Payment ${status}`,
-      body: payment.label,
+      body: status === 'rejected' && reason ? `${payment.label} — ${reason.slice(0, 500)}` : payment.label,
       author: adminName,
     });
   }

@@ -19,7 +19,7 @@ export async function GET() {
     '',
     `> ${SITE.description}`,
     '',
-    `${SITE.name} is the web development studio of PT AXTO DIGITAL GLOBAL (Bekasi, Indonesia), serving clients in Europe and internationally. Contracts are in euros; payment is by PayPal (card or balance, confirmed automatically), bank wire in EUR or USD, or USDT, in three milestones: 10% deposit, 40% at production start, 50% at 75–80% progress. The site is available in English, Spanish (?lang=es) and Indonesian (?lang=id).`,
+    `${SITE.name} is the web development studio of PT AXTO DIGITAL GLOBAL (Bekasi, Indonesia), serving clients in Europe and internationally. Contracts are in euros; payment is by PayPal (card or balance, confirmed automatically), bank wire in 13 currencies at the day's ECB reference rate, or crypto (USDT, BTC, BNB, SOL, DOGE), in three milestones: 10% deposit, 40% at production start, 50% at 75–80% progress. The site is available in English, Spanish (?lang=es) and Indonesian (?lang=id).`,
     '',
     '## Key pages',
     `- [Services & pricing](${u('/services')}): ten development packages with published price ranges`,

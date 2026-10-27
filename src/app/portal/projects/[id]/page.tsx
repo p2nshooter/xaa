@@ -17,6 +17,9 @@ import { ConceptUploadForm, PaymentForm, AdminProjectControls, BusinessDataForm 
 import { RecoveryPanel } from '@/components/forms/RecoveryForms';
 import { getAiConfig, listRecoveryEvents, listBackups } from '@/server/recovery';
 import { getLang } from '@/lib/i18n.server';
+import { pick } from '@/lib/i18n';
+import { PayTracker } from '@/components/PayTracker';
+import { milestoneInvoice, payOptions, submissionLine } from '@/server/manual-pay';
 
 export const metadata: Metadata = { title: 'Project', robots: { index: false, follow: false } };
 export const dynamic = 'force-dynamic';
@@ -65,26 +68,9 @@ export default async function ProjectPage({
   const deliverables = files.filter((f) => f.kind === 'deliverable');
   const businessData = files.filter((f) => f.kind === 'business-data');
 
-  // Only destinations that open with the current key are offered; a wallet
-  // address we cannot decrypt must never reach a client as a blank box.
-  const destinations = methods
-    .filter((m) => !m.unreadable && m.address)
-    .map((m) => ({
-      id: m.id,
-      kind: m.kind,
-      label: m.label,
-      network: m.network,
-      currency: m.currency,
-      address: m.address,
-      memo: m.memo,
-      link: m.link,
-      instructions: m.instructions,
-      holder: m.holder,
-      bankName: m.bankName,
-      swift: m.swift,
-      branch: m.branch,
-      bankCountry: m.bankCountry,
-    }));
+  // Every active BNI currency account and wallet, quoted in its own currency for the payment due now (server/fx.ts).
+  const options = action ? await payOptions(milestoneInvoice(project.id, action.milestone), action.amount, methods, { manualPaypal: !paypal }) : [];
+  const lastPay = [...payments].filter((p) => p.method !== 'paypal' || p.pay).sort((a, b) => b.created_at.localeCompare(a.created_at))[0];
 
   const capped = m.paidPct < FINAL_PCT;
 
@@ -171,15 +157,26 @@ export default async function ProjectPage({
       <div className="mt-10 grid gap-8 lg:grid-cols-[1.35fr_.65fr] lg:items-start">
         <div className="min-w-0 space-y-8">
           <PayPalOutcome outcome={paypalOutcome} reason={paypalReason} />
+          {lastPay && (lastPay.status !== 'confirmed' || action) ? (
+            <PayTracker
+              lang={lang}
+              stage={lastPay.status === 'rejected' ? 'attention' : lastPay.status === 'pending' ? 'sent' : action ? 'due' : 'approved'}
+              note={lastPay.reject_reason ?? null}
+              sentLine={`${lastPay.label} · €${lastPay.amount.toLocaleString('en-GB')}${lastPay.pay ? ` · ${lastPay.pay.label} · ${submissionLine(lastPay.pay)}` : ''}`}
+              unlocked={pick(lang, { en: 'Project moves on', es: 'El proyecto avanza', id: 'Proyek berlanjut' })}
+            />
+          ) : null}
           {/* Next action */}
           {action ? (
             <PaymentForm
               projectId={project.id}
+              projectRef={project.ref}
               milestone={action.milestone}
               label={action.label}
               amount={action.amount}
-              destinations={destinations}
+              options={options}
               paypal={paypal}
+              lang={lang}
             />
           ) : null}
 

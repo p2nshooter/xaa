@@ -22,7 +22,10 @@ import {
   saveAiKey, clearAiKey, revealAiKey, setSchedule, runBackup, runOperation,
   restoreFromBackup, resetDatabase, CADENCES, PROVIDERS, type Cadence, type Provider,
 } from './recovery';
-import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle, storeReceipt } from './store';
+import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle, storeReceipt, orderNeedsAttention } from './store';
+import { listPaymentMethods as activeMethods } from './settings';
+import { milestoneInvoice, orderInvoice, resolveSubmission, type PaySubmission } from './manual-pay';
+import { parseAmount } from '@/lib/pay-money';
 import { activePayPal, createPayPalOrder, ensureWebhook, insertCheckout, isPayPalEnv, newCheckoutId, paypalConfig, testPayPal, type PayPalEnv } from './paypal';
 import { applyInvestor, getInvest, getInvestor, recordPayout, setInvestorStatus, verifyInvestor, usd } from './invest';
 import { getTemplate } from '@/content/templates';
@@ -265,9 +268,21 @@ export async function submitPaymentAction(_prev: ActionState, form: FormData): P
       return { error: `The booking deposit is €${m.depositDue.toLocaleString('en-GB')} (10% of the current contract value).` };
     }
 
+    // The currency or coin paid and our expected amount in it — recomputed here, never read from the form.
+    let pay: PaySubmission | null = null;
+    const payKey = str(form, 'payKey');
+    if (payKey) {
+      const due = nextAction(project, payments);
+      const eurDue = due && due.milestone === milestone ? due.amount : amount;
+      const asset = payKey.split(':')[1] || '';
+      pay = await resolveSubmission(milestoneInvoice(project.id, milestone), eurDue, await activeMethods(true), payKey, parseAmount(str(form, 'paidAmount'), asset));
+    }
+
     let proofFileId: string | null = null;
     const proof = form.get('proof');
-    if (proof instanceof File && proof.size > 0) {
+    const hasProof = proof instanceof File && proof.size > 0;
+    if (method === 'bank' && !hasProof) return { error: 'Attach the payment screenshot (or the bank\'s PDF) — a bank transfer is approved from it.' };
+    if (hasProof) {
       const stored = await storeFile({ projectId: project.id, userId: project.user_id, uploadedBy: name, kind: 'proof', file: proof });
       proofFileId = stored.id;
     }
@@ -283,6 +298,8 @@ export async function submitPaymentAction(_prev: ActionState, form: FormData): P
       reference,
       note: str(form, 'note'),
       proofFileId,
+      methodId: pay?.method_id ?? (str(form, 'methodId') || null),
+      pay,
     });
     revalidatePath(`/portal/projects/${project.id}`);
     return { ok: 'Payment submitted. We verify transfers within one business day and your status updates automatically.' };
@@ -331,9 +348,14 @@ export async function submitOrderPaymentAction(_prev: ActionState, form: FormDat
     // A bank transfer is approved by hand from its screenshot (owner, 27 Oct 2026); crypto may add one.
     if (method === 'bank' && !hasReceipt) return { error: 'Attach the payment screenshot (or the bank\'s PDF) — a bank transfer is approved from it.' };
     const receiptKey = hasReceipt ? await storeReceipt(order.id, receipt) : null;
-    await submitOrderPayment(order.id, { method, reference, note: str(form, 'note'), receiptKey });
+    const payKey = str(form, 'payKey');
+    const inv = orderInvoice(order);
+    const pay = payKey ? await resolveSubmission(inv.key, inv.eur, await activeMethods(true), payKey, parseAmount(str(form, 'paidAmount'), payKey.split(':')[1] || '')) : null;
+    await submitOrderPayment(order.id, { method, reference, note: str(form, 'note'), receiptKey, pay });
     revalidatePath(`/portal/orders/${order.id}`);
-    return { ok: 'Payment submitted. We will confirm it and unlock your download.' };
+    return { ok: pay && pay.ok === false
+      ? 'Payment submitted. The amount you entered is below the invoice — if that is what arrived, please send the difference and submit again.'
+      : 'Payment submitted. We will confirm it and unlock your download.' };
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);
@@ -567,6 +589,36 @@ export async function revealAiKeyAction(_prev: RevealState, form: FormData): Pro
   }
 }
 
+/** Studio: send a submitted payment back to the buyer with what to fix (shown in their payment tracker). */
+export async function orderAttentionAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const orderId = str(form, 'orderId');
+    const reason = str(form, 'reason');
+    if (reason.length < 5) return { error: 'Say what the buyer should do — e.g. "Rp 25.437 is missing: please transfer the difference".' };
+    await orderNeedsAttention(orderId, reason);
+    revalidatePath(`/portal/orders/${orderId}`);
+    return { ok: 'Sent back to the buyer with your note.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/** Studio: refresh today's reference rates and coin prices now (Payments page). */
+export async function refreshRatesAction(_prev: ActionState): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const { rateBoard } = await import('./fx');
+    const b = await rateBoard({ refresh: true });
+    revalidatePath('/portal/admin/payments');
+    return b.fiat && !b.fiat.stale ? { ok: `Rates refreshed: ECB ${b.fiat.date}${b.coins && !b.coins.stale ? `, coins ${b.coins.hour}:00 UTC` : ' — coin prices unavailable'}.` } : { error: 'The rate source did not answer; the latest stored rates stay in use.' };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
 export async function confirmOrderAction(_prev: ActionState, form: FormData): Promise<ActionState> {
   try {
     await requireAdmin();
@@ -608,7 +660,7 @@ export async function confirmPaymentAction(_prev: ActionState, form: FormData): 
     const admin = await requireAdmin();
     const id = str(form, 'paymentId');
     const decision = str(form, 'decision') === 'reject' ? 'rejected' : 'confirmed';
-    await setPaymentStatus(id, decision, admin.name);
+    await setPaymentStatus(id, decision, admin.name, str(form, 'reason'));
     revalidatePath('/portal/admin');
     return { ok: decision === 'confirmed' ? 'Payment confirmed.' : 'Payment rejected.' };
   } catch (err) {

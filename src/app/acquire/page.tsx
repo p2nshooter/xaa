@@ -88,7 +88,7 @@ const COPY: Record<Lang, Copy> = {
     pay: [
       { t: 'SWIFT bank wire', b: 'USD or EUR to the owner’s business account at Bank Negara Indonesia (SWIFT BNINIDJA). Account details are shared inside the signed agreement, never on a public page.' },
       { t: 'Escrow', b: 'For your protection, the purchase can run through a licensed escrow service of your choice: funds are released only when the handover is complete.' },
-      { t: 'USDT', b: 'Part or all of the price can be settled in USDT on TRC20, ERC20 or BEP20, confirmed on-chain.' },
+      { t: 'USDT', b: 'Part or all of the price can be settled in USDT on TRC20 or BEP20, confirmed on-chain.' },
       { t: 'PayPal', b: 'Available for a reservation deposit within PayPal’s own limits; the balance moves by wire or escrow.' },
     ],
     payNote: 'Send proof of funds and payment proof on WhatsApp. Never act on payment details that reach you by email or chat without being confirmed in the signed agreement.',
@@ -152,7 +152,7 @@ const COPY: Record<Lang, Copy> = {
     pay: [
       { t: 'Transferencia SWIFT', b: 'En USD o EUR a la cuenta empresarial del propietario en Bank Negara Indonesia (SWIFT BNINIDJA). Los datos de la cuenta se comparten dentro del contrato firmado, nunca en una página pública.' },
       { t: 'Escrow', b: 'Para su protección, la compra puede pasar por un servicio de escrow autorizado de su elección: los fondos se liberan solo cuando el traspaso está completo.' },
-      { t: 'USDT', b: 'Parte o la totalidad del precio puede liquidarse en USDT en TRC20, ERC20 o BEP20, confirmado on-chain.' },
+      { t: 'USDT', b: 'Parte o la totalidad del precio puede liquidarse en USDT en TRC20 o BEP20, confirmado on-chain.' },
       { t: 'PayPal', b: 'Disponible para una señal de reserva dentro de los límites de PayPal; el resto se paga por transferencia o escrow.' },
     ],
     payNote: 'Envíe la prueba de fondos y los justificantes de pago por WhatsApp. Nunca actúe sobre datos de pago que le lleguen por email o chat sin estar confirmados en el contrato firmado.',
@@ -216,7 +216,7 @@ const COPY: Record<Lang, Copy> = {
     pay: [
       { t: 'Transfer bank SWIFT', b: 'USD atau EUR ke rekening bisnis pemilik di Bank Negara Indonesia (SWIFT BNINIDJA). Detail rekening dibagikan di dalam perjanjian yang sudah ditandatangani, tidak pernah di halaman publik.' },
       { t: 'Escrow', b: 'Demi keamanan Anda, pembelian dapat melalui layanan escrow berizin pilihan Anda: dana baru dilepas setelah serah terima selesai.' },
-      { t: 'USDT', b: 'Sebagian atau seluruh harga dapat dibayar dalam USDT di TRC20, ERC20 atau BEP20, terkonfirmasi on-chain.' },
+      { t: 'USDT', b: 'Sebagian atau seluruh harga dapat dibayar dalam USDT di TRC20 atau BEP20, terkonfirmasi on-chain.' },
       { t: 'PayPal', b: 'Tersedia untuk uang muka pemesanan dalam batas PayPal; sisanya lewat transfer atau escrow.' },
     ],
     payNote: 'Kirim bukti dana dan bukti pembayaran lewat WhatsApp. Jangan pernah mengikuti detail pembayaran yang datang lewat email atau chat tanpa dikonfirmasi di perjanjian yang sudah ditandatangani.',

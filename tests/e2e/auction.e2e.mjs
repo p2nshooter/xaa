@@ -206,17 +206,17 @@ await bidder.locator('[data-testid=pay-win]').first().click();
 await bidder.waitForURL(/\/portal\/orders\//, { timeout: 20000 });
 const orderUrl = bidder.url();
 ok((await bidder.locator('[data-testid=auction-order]').count()) === 1, 'the win opens a checkout order');
-const methodSel = bidder.locator('select[name=method]');
-if (await methodSel.count()) await methodSel.selectOption('bank');
+// The payment guide opens on a bank account; the browser asks for the screenshot, so check the server does too.
 await bidder.locator('input[name=reference]').fill('BNI-TEST-1');
-await bidder.getByRole('button', { name: /I have paid/ }).click();
+await bidder.locator('input[name=receipt]').evaluate((el) => el.removeAttribute('required'));
+await bidder.getByRole('button', { name: /I have sent it/ }).click();
 await bidder.locator('[role=alert]').first().waitFor({ timeout: 30000 }).catch(() => {});
 ok(/payment screenshot/i.test(await bodyText(bidder)), 'a bank transfer without a screenshot is refused');
 mkdirSync('/tmp/auction-e2e', { recursive: true });
 writeFileSync('/tmp/auction-e2e/receipt.png', Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==', 'base64'));
 await bidder.locator('input[name=reference]').fill('BNI-TEST-1');
 await bidder.locator('input[name=receipt]').setInputFiles('/tmp/auction-e2e/receipt.png');
-await bidder.getByRole('button', { name: /I have paid/ }).click();
+await bidder.getByRole('button', { name: /I have sent it/ }).click();
 await bidder.locator('[role=status]').first().waitFor({ timeout: 30000 }).catch(() => {});
 ok(/Payment submitted/i.test(await bodyText(bidder)), 'with the screenshot the payment is submitted');
 
