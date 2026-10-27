@@ -39,9 +39,17 @@ export interface InvestOffer {
   poolPct: number;
   /** Whether /invest may be indexed by search engines. Off unless the owner turns it on. */
   indexed: boolean;
+  /**
+   * Whether the offering is shown at all — the admin's show/hide switch
+   * (guardian-ai docs/BLUEPRINT-V4.md §26.4). Owner, 27 Oct 2026: "Investor
+   * defoultnya ganti jadi show" — shown by default. While hidden: no footer
+   * link, no sitemap entry, /invest is a 404 and applications are refused;
+   * investors already verified keep their statement in the portal.
+   */
+  visible: boolean;
 }
 
-export const INVEST_DEFAULTS: InvestOffer = { status: 'open', targetUsd: 2_000_000, minUsd: 50_000, poolPct: 30, indexed: false };
+export const INVEST_DEFAULTS: InvestOffer = { status: 'open', targetUsd: 2_000_000, minUsd: 50_000, poolPct: 30, indexed: false, visible: true };
 
 const digits = (v: unknown) => Number(String(v ?? '').replace(/[^\d.]/g, ''));
 
@@ -54,10 +62,10 @@ export function parseInvest(raw: Record<string, string>): InvestOffer {
   const targetUsd = Number.isFinite(target) && target >= 10_000 ? Math.round(target) : INVEST_DEFAULTS.targetUsd;
   const minUsd = Number.isFinite(min) && min >= 1_000 && min <= targetUsd ? Math.round(min) : Math.min(INVEST_DEFAULTS.minUsd, targetUsd);
   const poolPct = Number.isFinite(pool) && pool > 0 && pool <= 100 ? pool : INVEST_DEFAULTS.poolPct;
-  return { status, targetUsd, minUsd, poolPct, indexed: raw.invest_indexed === 'yes' };
+  return { status, targetUsd, minUsd, poolPct, indexed: raw.invest_indexed === 'yes', visible: raw.invest_visible !== 'no' };
 }
 
-export const INVEST_KEYS = ['invest_status', 'invest_target_usd', 'invest_min_usd', 'invest_pool_pct', 'invest_indexed'];
+export const INVEST_KEYS = ['invest_visible', 'invest_status', 'invest_target_usd', 'invest_min_usd', 'invest_pool_pct', 'invest_indexed'];
 
 /** Current terms. A database that cannot be read shows the defaults, never an error page. */
 export async function getInvest(): Promise<InvestOffer> {
@@ -65,6 +73,15 @@ export async function getInvest(): Promise<InvestOffer> {
     return parseInvest(await getSettings(INVEST_KEYS));
   } catch {
     return { ...INVEST_DEFAULTS };
+  }
+}
+
+/** Only the show/hide switch — what the footer on every page needs (one read instead of six). */
+export async function investVisible(): Promise<boolean> {
+  try {
+    return (await getSettings(['invest_visible'])).invest_visible !== 'no';
+  } catch {
+    return INVEST_DEFAULTS.visible;
   }
 }
 

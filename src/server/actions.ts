@@ -806,6 +806,7 @@ export async function investApplyAction(_prev: ActionState, form: FormData): Pro
     }
 
     const offer = await getInvest();
+    if (!offer.visible) return bad(T('The investor offering is not open.', 'La oferta para inversores no está abierta.', 'Penawaran investor tidak dibuka.'));
     if (offer.status === 'closed') return bad(T('The xaa.es raise is complete. Thank you for your interest.', 'La ronda de xaa.es está completa. Gracias por tu interés.', 'Penghimpunan modal xaa.es sudah selesai. Terima kasih atas minat Anda.'));
     if (offer.status === 'paused') return bad(T('Applications are paused at the moment. Please write to hello@xaa.es.', 'Las solicitudes están en pausa. Escribe a hello@xaa.es.', 'Pengajuan sedang dijeda. Silakan tulis ke hello@xaa.es.'));
 
@@ -838,6 +839,21 @@ export async function investApplyAction(_prev: ActionState, form: FormData): Pro
         `Terima kasih — pengajuan Anda sebesar ${usd(pledge)} sudah diterima pemilik. Memorandum pemodal dan draf perjanjian dikirim dalam satu hari kerja; modal baru dikirim setelah keduanya ditandatangani.`,
       ),
     };
+  } catch (err) {
+    if (isRedirect(err)) throw err;
+    return fail(err);
+  }
+}
+
+/** Admin: show or hide the whole investor offering (§26.4; shown by default). Kept in the settings audit log. */
+export async function investVisibilityAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    const admin = await requireAdmin();
+    const show = str(form, 'visible') === 'yes';
+    await saveSetting('invest_visible', show ? 'yes' : 'no', admin.name);
+    revalidatePath('/portal/admin/investors');
+    revalidatePath('/invest');
+    return { ok: show ? 'The investor offering is now shown on xaa.es.' : 'The investor offering is now hidden on xaa.es.' };
   } catch (err) {
     if (isRedirect(err)) throw err;
     return fail(err);

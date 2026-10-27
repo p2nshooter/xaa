@@ -2,7 +2,7 @@
 
 import { useActionState, useState } from 'react';
 import {
-  investApplyAction, verifyInvestorAction, investorStatusAction, recordPayoutAction, type ActionState,
+  investApplyAction, verifyInvestorAction, investorStatusAction, recordPayoutAction, investVisibilityAction, type ActionState,
 } from '@/server/actions';
 import { pick, type Lang } from '@/lib/i18n';
 import { Submit, Notice } from './Submit';
@@ -85,6 +85,19 @@ export function InvestForm({ lang = 'en', min, open = true }: { lang?: Lang; min
       </label>
       <Submit disabled={!open} pendingLabel={c.sending} className="btn btn-primary w-full sm:w-auto">{c.send}</Submit>
       <p id="invest-note" className="mt-3 text-xs text-steel-500">{c.footnote}</p>
+    </form>
+  );
+}
+
+/** Studio desk: the show / hide switch of the whole offering (shown by default). */
+export function InvestVisibility({ visible }: { visible: boolean }) {
+  const [state, act] = useActionState<ActionState, FormData>(investVisibilityAction, {});
+  return (
+    <form action={act} className="flex flex-wrap items-center gap-3" data-testid="invest-visibility">
+      <span className={visible ? 'badge badge-green' : 'badge badge-grey'}>{visible ? 'Shown' : 'Hidden'}</span>
+      <input type="hidden" name="visible" value={visible ? 'no' : 'yes'} />
+      <Submit className={visible ? 'btn btn-ghost btn-sm' : 'btn btn-dark btn-sm'} pendingLabel="Saving…">{visible ? 'Hide the investor offering' : 'Show the investor offering'}</Submit>
+      <Notice error={state.error} ok={state.ok} />
     </form>
   );
 }
