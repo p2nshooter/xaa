@@ -41,7 +41,7 @@ describe('sales commission on member domains (requests 59, 63)', () => {
 
 import {
   AUCTION_ANCHOR_MS, CYCLE_MS, LOT_DAYS, cleanDomain, domainParts, domainProblem, dnsRecordName, dnsRecordValue, filterLots, lotEndFor,
-  lotSummary, parseLotFilter, sellerMaySell, txtHasToken, type LotCard,
+  lotSummary, parseLotFilter, sellerMaySell, txtHasToken, type LotCard, type LotType, type Seller,
 } from '../../src/server/auction-terms.ts';
 
 describe('who sells what (request 59)', () => {
@@ -99,7 +99,7 @@ describe('a member\'s domain', () => {
 describe('the public list: ending soonest first, domain filters', () => {
   const now = Date.UTC(2026, 10, 1, 12);
   const base = {
-    ref: 'AUC-X', type: 'domain' as const, category: 'domains', title: '', status: 'open' as const, seller: 'member' as const, seller_name: 'Seller',
+    ref: 'AUC-X', type: 'domain' as LotType, category: 'domains', title: '', status: 'open' as const, seller: 'member' as Seller, seller_name: 'Seller',
     normal_eur: 1000, open_eur: 350, step_eur: 18, high_eur: 0, bids_count: 0, reserve_eur: 0, buy_now_eur: 0, starts_at: new Date(now - 3_600_000).toISOString(),
     ends_at: '', domain: '', site_lang: '', images: [], winner_name: '', winner_eur: 0, paid_at: '', closed_at: '', created_at: '',
   };

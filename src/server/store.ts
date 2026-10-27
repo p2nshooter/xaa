@@ -95,14 +95,26 @@ export async function listAllOrders(): Promise<(TemplateOrder & { client_email: 
 }
 
 /** The order changes only from pending/submitted — a paid or cancelled order is never reopened by a late form post. */
-export async function submitOrderPayment(orderId: string, patch: { method: string; reference: string; note?: string }): Promise<void> {
+export async function submitOrderPayment(orderId: string, patch: { method: string; reference: string; note?: string; receiptKey?: string | null }): Promise<void> {
   const d = await data();
   if (!(await d.templateOrders.get(orderId))) return;
   await d.templateOrders.update(orderId, (o) =>
     o.status === 'pending' || o.status === 'submitted'
-      ? { ...o, status: 'submitted', method: patch.method, reference: patch.reference.slice(0, 200), note: patch.note?.slice(0, 1000) ?? null }
+      ? { ...o, status: 'submitted', method: patch.method, reference: patch.reference.slice(0, 200), note: patch.note?.slice(0, 1000) ?? null, receipt_key: patch.receiptKey ?? o.receipt_key ?? null }
       : null,
   );
+}
+
+const RECEIPT_TYPES = new Set(['image/png', 'image/jpeg', 'image/webp', 'application/pdf']);
+/** The payment screenshot of a manual payment (bank transfer needs one — owner, 27 Oct 2026). Private: the buyer and the admin only. */
+export async function storeReceipt(orderId: string, file: File): Promise<string> {
+  if (!RECEIPT_TYPES.has(file.type)) throw new Error('Upload the payment screenshot as PNG, JPG, WebP or PDF.');
+  if (file.size > 8 * 1024 * 1024) throw new Error('The screenshot can be at most 8 MB.');
+  const store = await bucket();
+  if (!store) throw new Error('File storage is not configured on this deployment yet.');
+  const key = `receipts/${orderId}/${Date.now()}-${file.name.replace(/[^\w.\-]/g, '_').slice(0, 80)}`;
+  await store.put(key, await file.arrayBuffer(), { httpMetadata: { contentType: file.type } });
+  return key;
 }
 
 /** pending/submitted → paid, once: a second confirmation (admin + PayPal) keeps the first confirmation time. */

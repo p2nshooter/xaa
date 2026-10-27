@@ -1,4 +1,4 @@
-import { bucket, newId, nowIso } from './db';
+import { appEnv, bucket, newId, nowIso } from './db';
 import { data } from './data';
 import type { Data } from './r2/schema';
 import type { User } from './auth';
@@ -444,7 +444,13 @@ async function dohTxt(endpoint: string, name: string): Promise<string[]> {
 
 /** Both resolvers (Cloudflare and Google) must see the token. Injectable for the tests. */
 export type DnsLookup = (name: string) => Promise<string[][]>;
-const liveLookup: DnsLookup = (name) => Promise.all([dohTxt('https://cloudflare-dns.com/dns-query', name), dohTxt('https://dns.google/resolve', name)]);
+const RESOLVERS = ['https://cloudflare-dns.com/dns-query', 'https://dns.google/resolve'];
+const liveLookup: DnsLookup = async (name) => {
+  // A local test run points this at a stand-in resolver; production always asks Cloudflare and Google.
+  const local = (await appEnv().catch(() => ({}) as { DOH_ENDPOINTS?: string })).DOH_ENDPOINTS;
+  const endpoints = local ? local.split(',').map((s) => s.trim()).filter((s) => /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?\//.test(s)) : RESOLVERS;
+  return Promise.all((endpoints.length ? endpoints : RESOLVERS).map((e) => dohTxt(e, name)));
+};
 
 /** Check DNS now. A pass marks the claim verified; a miss keeps it pending (the member checks again). */
 export async function verifyDomain(user: Pick<User, 'id'>, rawDomain: unknown, lookup: DnsLookup = liveLookup): Promise<{ ok: true; verified: boolean; claim: AuctionDomainClaim } | { error: 'no_claim' }> {

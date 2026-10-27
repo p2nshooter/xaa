@@ -15,6 +15,7 @@ export default async function PortalLayout({ children }: { children: React.React
             {user ? (
               <>
                 <Link href="/portal/new" className="text-steel-500 transition hover:text-gold-500">New project</Link>
+                <Link href="/portal/auction" className="text-steel-500 transition hover:text-gold-500">Auction</Link>
                 {user.role === 'admin' ? (
                   <Link href="/portal/admin" className="text-steel-500 transition hover:text-gold-500">Studio desk</Link>
                 ) : null}

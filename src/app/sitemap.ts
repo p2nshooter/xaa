@@ -7,6 +7,7 @@ import { LANGS } from '@/lib/i18n';
 import { langPath } from '@/lib/seo';
 import { getInvest } from '@/server/invest';
 import { companyVisible } from '@/server/company';
+import { auctionCards } from '@/server/auction';
 
 // Read at request time: whether /invest is listed is an admin setting.
 export const dynamic = 'force-dynamic';
@@ -24,7 +25,7 @@ type Freq = Entry['changeFrequency'];
  * index it (Settings → Investor offering; both off by default).
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [invest, company] = await Promise.all([getInvest(), companyVisible()]);
+  const [invest, company, auction] = await Promise.all([getInvest(), companyVisible(), auctionCards().catch(() => ({ live: [] as Awaited<ReturnType<typeof auctionCards>>['live'] }))]);
   const b = SITE.url;
   const abs = (p: string) => `${b}${p === '/' ? '' : p}`;
 
@@ -39,6 +40,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...multilingual('/services', 0.9, 'weekly'),
     ...PACKAGES.flatMap((p) => multilingual(`/services/${p.slug}`, 0.85, 'monthly')),
     ...multilingual('/templates', 0.85, 'weekly'),
+    // The auction: the list, and every running lot (an ended lot drops out; its page turns noindex).
+    ...multilingual('/auction', 0.85, 'daily'),
+    ...auction.live.filter((l) => l.status === 'open').flatMap((l) => multilingual(`/auction/${l.ref}`, 0.6, 'daily')),
     ...TEMPLATES.flatMap((t) => multilingual(`/templates/${t.slug}`, 0.75, 'monthly')),
     ...multilingual('/portfolio', 0.9, 'monthly'),
     ...multilingual('/election-systems', 0.85, 'monthly'),

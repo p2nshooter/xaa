@@ -78,14 +78,31 @@ export default async function OrderPage({
             <dd className="mt-1 text-sm">{formatDate(order.created_at)}</dd>
           </div>
           <div>
-            <dt className="text-xs font-bold uppercase tracking-wide text-steel-500">Template</dt>
-            <dd className="mt-1 text-sm"><Link href={`/templates/${order.slug}`} className="text-gold-500 underline">{order.slug}</Link></dd>
+            <dt className="text-xs font-bold uppercase tracking-wide text-steel-500">{order.auction_lot_id ? 'Auction lot' : 'Template'}</dt>
+            <dd className="mt-1 text-sm">
+              {order.auction_lot_id
+                ? <Link href={`/auction/${order.ref}`} className="text-gold-500 underline">{order.ref}</Link>
+                : <Link href={`/templates/${order.slug}`} className="text-gold-500 underline">{order.slug}</Link>}
+            </dd>
           </div>
         </dl>
       </section>
 
+      {/* An auction win: what opens once it is paid (server/auction.ts). */}
+      {order.auction_lot_id ? (
+        <section className="panel mt-6 p-6" data-testid="auction-order">
+          <h2 className="font-display text-lg font-extrabold">{order.status === 'paid' ? 'Your win is paid' : 'Pay for your win'}</h2>
+          <p className="mt-1 text-sm text-steel-500">
+            {order.status === 'paid'
+              ? 'The files open in your auction page; a domain is pushed or transferred to you with the registrar\'s code — confirm there when it is in your account.'
+              : 'PayPal confirms at once. A bank transfer or USDT needs the payment screenshot; the admin approves it, and the win opens by itself.'}
+          </p>
+          <Link href="/portal/auction" className="btn btn-dark btn-sm mt-3">Open my auction page</Link>
+        </section>
+      ) : null}
+
       {/* Paid → download */}
-      {order.status === 'paid' ? (
+      {order.status === 'paid' && !order.auction_lot_id ? (
         <section className="panel mt-6 border-l-4 border-l-green-500 p-6">
           <h2 className="font-display text-lg font-extrabold">Your bundle is ready</h2>
           {bundle ? (
@@ -121,6 +138,7 @@ export default async function OrderPage({
       {/* Admin */}
       {user.role === 'admin' ? (
         <div className="mt-6">
+          {order.receipt_key ? <p className="mb-3 text-sm"><a href={`/api/orders/receipt/${order.id}`} className="font-semibold text-gold-500 underline" target="_blank" rel="noopener">View the payment screenshot</a> · {order.method} · {order.reference}</p> : order.status === 'submitted' ? <p className="mb-3 text-sm text-amber-700">No screenshot attached.</p> : null}
           <ConfirmOrderControls orderId={order.id} />
         </div>
       ) : null}
