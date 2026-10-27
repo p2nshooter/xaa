@@ -113,11 +113,23 @@ async function hops(url, max = 6) {
   return { chain, final: cur, status: 0, error: 'too many redirects' };
 }
 
+// Core Web Vitals are the slow part of a run: an unauthenticated PageSpeed API answers 429 after a few
+// calls, and each retry plus a Lighthouse fallback cost minutes per domain (38 domains came to hours on
+// 27 Oct 2026). So a run has one budget for them, stops calling the API once it is rate-limited, and runs
+// Lighthouse on at most a few domains; the rest are marked for the next run instead of holding this one.
+const CWV_BUDGET_MS = 20 * 60_000;
+const LIGHTHOUSE_MAX = 6;
+const cwvStart = Date.now();
+let psiLimited = false;
+let lighthouseRuns = 0;
+
 /** Lighthouse on the runner itself — used when the PageSpeed API rate-limits. */
 function lighthouse(url) {
   if (process.env.LIGHTHOUSE !== '1') return { error: 'Lighthouse fallback disabled' };
+  if (lighthouseRuns >= LIGHTHOUSE_MAX) return { error: `PageSpeed API rate-limited; Lighthouse ran on the first ${LIGHTHOUSE_MAX} domains of this run only` };
+  lighthouseRuns += 1;
   try {
-    execFileSync('npx', ['-y', 'lighthouse@12', url, '--only-categories=performance', '--form-factor=mobile', '--output=json', '--output-path=/tmp/lh.json', '--quiet', '--chrome-flags=--headless=new --no-sandbox'], { stdio: 'ignore', timeout: 180_000 });
+    execFileSync('npx', ['-y', 'lighthouse@12', url, '--only-categories=performance', '--form-factor=mobile', '--output=json', '--output-path=/tmp/lh.json', '--quiet', '--chrome-flags=--headless=new --no-sandbox'], { stdio: 'ignore', timeout: 120_000 });
     const j = JSON.parse(readFileSync('/tmp/lh.json', 'utf8'));
     const a = j.audits ?? {};
     return { score: Math.round((j.categories?.performance?.score ?? 0) * 100), lcp: a['largest-contentful-paint']?.numericValue, cls: a['cumulative-layout-shift']?.numericValue, tbt: a['total-blocking-time']?.numericValue, field: {}, source: 'Lighthouse (runner)' };
@@ -127,17 +139,21 @@ function lighthouse(url) {
 }
 
 async function pagespeed(url) {
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    const r = await pagespeedOnce(url);
-    if (!r.error || !/429/.test(r.error)) return r.error ? lighthouse(url) : r;
-    await new Promise((res) => setTimeout(res, 15_000 * (attempt + 1)));
+  if (Date.now() - cwvStart > CWV_BUDGET_MS) return { error: 'skipped: this run spent its 20-minute Core Web Vitals budget (checked again next run)' };
+  if (!psiLimited) {
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      const r = await pagespeedOnce(url);
+      if (!r.error || !/429/.test(r.error)) return r.error ? lighthouse(url) : r;
+      await new Promise((res) => setTimeout(res, 15_000));
+    }
+    psiLimited = true; // every later domain goes straight to the fallback
   }
   return lighthouse(url);
 }
 
 async function pagespeedOnce(url) {
   const api = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile&category=performance${process.env.PSI_KEY ? `&key=${process.env.PSI_KEY}` : ''}`;
-  const ctrl = new AbortController(); const timer = setTimeout(() => ctrl.abort(), 90_000);
+  const ctrl = new AbortController(); const timer = setTimeout(() => ctrl.abort(), 60_000);
   try {
     const r = await fetch(api, { signal: ctrl.signal });
     if (!r.ok) return { error: `PageSpeed API ${r.status}` };
