@@ -360,6 +360,29 @@ export const SETTING_DEFS: SettingDef[] = [
   },
   { key: 'sale_price_usd', label: 'Asking price (USD)', hint: 'Whole dollars, digits only. Shown on /acquire and in the structured data search engines read.', secret: false, group: 'sale', placeholder: '10000000' },
   { key: 'sale_whatsapp', label: 'WhatsApp for buyers', hint: 'Where buyers send proof of funds and payment proof. International format.', secret: false, group: 'sale', placeholder: '+6285691234561' },
+  // The auction (owner, 28 Oct 2026, request 66, docs/BLUEPRINT.md §14): rounds with a random opening bid between
+  // US$10M and US$100M, real bids and a real deadline. Rounds, bidders and bids are run in Studio desk → Site auction.
+  {
+    key: 'sale_mode', label: 'How xaa.es is sold', hint: 'Auction (default since 28 Oct 2026): rounds, real bids, the highest bid wins and closes by agreement and wire/escrow. Fixed: the asking price and the offer form.',
+    secret: false, group: 'sale', options: [{ value: 'auction', label: 'Auction — rounds and real bids' }, { value: 'fixed', label: 'Fixed asking price and offers' }],
+  },
+  {
+    key: 'sale_auction_random', label: 'Random opening bid every round', hint: 'Draw the opening bid at random between US$10,000,000 and US$100,000,000 (nearest $100,000) when each round opens. It is stored, so every visitor sees the same figure.',
+    secret: false, group: 'sale', options: [{ value: 'yes', label: 'Yes — draw it in US$10M–100M' }, { value: 'no', label: 'No — use the opening bid below' }],
+  },
+  { key: 'sale_auction_open_usd', label: 'Opening bid when not drawn (USD)', hint: 'Whole dollars between 10000000 and 100000000; used only when the random opening bid is off.', secret: false, group: 'sale', placeholder: '25000000' },
+  { key: 'sale_auction_step_usd', label: 'Minimum raise (USD)', hint: 'Every bid after the first is at least the high bid plus this amount.', secret: false, group: 'sale', placeholder: '250000' },
+  { key: 'sale_auction_days', label: 'Round length (days)', hint: 'Applies to the next round.', secret: false, group: 'sale', placeholder: '14' },
+  { key: 'sale_auction_snipe_minutes', label: 'Anti-snipe (minutes)', hint: 'A bid this close to the end extends the round by as much.', secret: false, group: 'sale', placeholder: '10' },
+  { key: 'sale_auction_pay_days', label: 'Winner closes within (days)', hint: 'Shown to the winner: NDA, proof of funds, then the SWIFT wire or escrow.', secret: false, group: 'sale', placeholder: '7' },
+  {
+    key: 'sale_auction_restart', label: 'New round after an unsold one', hint: 'A round that ends without a bid is followed by a new round at once.',
+    secret: false, group: 'sale', options: [{ value: 'yes', label: 'Yes' }, { value: 'no', label: 'No — start rounds by hand' }],
+  },
+  {
+    key: 'sale_auction_approval', label: 'Approve bidders', hint: 'You approve every bidder in Studio desk → Site auction before they can bid.',
+    secret: false, group: 'sale', options: [{ value: 'yes', label: 'Yes — I approve each bidder' }, { value: 'no', label: 'No — any signed-in member can bid' }],
+  },
 
   // The investor offering of xaa.es alone (/invest, server/invest.ts). Owner,
   // 19 Oct 2026: "masing2 web nyari investornya, bukan gabungan". Blank fields
@@ -394,7 +417,7 @@ export const SETTING_GROUPS: { id: SettingDef['group']; title: string; blurb: st
   },
   {
     id: 'sale', title: 'Sale of xaa.es',
-    blurb: 'The /acquire page: whether the site is for sale, the asking price and the WhatsApp number buyers use. Offers and purchase requests arrive in Leads and in Support.',
+    blurb: 'The /acquire page: whether the site is for sale, how (auction by default, or a fixed price), the auction settings and the WhatsApp number buyers use. Rounds, bidders and bids are run in Studio desk → Site auction; registrations, bids, offers and purchase requests also arrive in Leads and in Support.',
   },
   {
     id: 'invest', title: 'Investor offering (xaa.es only)',

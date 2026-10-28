@@ -108,6 +108,7 @@ Arti tanda:
 | 61 | (27 Okt 2026) „Baik axto.io dan xaa.es tolong ambil rek pembayaranya dari https://ulyah.com/donasi / dari repo termasuk jaringannya barcode nya … Pastikan konversi mata uang sesuai dengan rekening BNI untuk manual, dan pandu customer untuk pembayaran manual sampai sukses“ | ✅ 27 Okt: dibangun — §12.4 (13 rekening wondr by BNI aktif + 5 dompet dengan QR dari server, konversi kurs ECB harian / koin per jam, pembulatan ke atas, kode unik IDR, dikunci 72 jam (koin 1 jam), toleransi 2 %, panduan bayar 6 langkah en/es/id + pelacak status + „perlu perhatian"). Belum: cek hash kripto otomatis. Rencana awal: 13 rekening BNI wondr (per mata uang) + 5 dompet kripto (dengan jaringan & QR) dari sumber ulyah.com/donasi, disimpan terenkripsi, tampil hanya di checkout pembeli yang masuk; jumlah dikonversi ke mata uang rekening yang dipilih (kurs harian); panduan bayar manual langkah demi langkah sampai lunas. axto.io: guardian-ai REQUESTS 104 | §12 |
 | 62 | (27 Okt 2026) „buatkan juga menu husus penjualan domain + website article husus pengajuan adsense dengan keterangan 40-100 article min 1500 kata per artikel berkualitas tinggi, hanya admin yg bisa ngisi, dengan berbagai macam bahasa untuk custom … tp ada yg sudah jadi tinggal pakai, start $350 untuk 40 article dan $500 untuk 100 article dengan SEO niche berkualitas“ · „tolong jual website2 saya yg ada, untuk 1fr.fr tilawa.de xad.es dawa.im harganya $30rb dengan puluhan ribu kitab, kasih tau jg bahasa yg d gunakan setiap websitenya, yg jgn d jual ulyah.com xaa.es dan axto.io … Tolong hitung ada berapa article, klo bisa penuhin semuanya biar total setiap website 45 artikel“ | 📝 menu **AdSense sites**: siap pakai (diisi admin), pesanan custom US$350 / 40 artikel dan US$500 / 100 artikel (≥ 1.500 kata, banyak bahasa), situs mapan 1fr.fr (Prancis), tilawa.de (Jerman), xad.es (Inggris), dawa.im (Spanyol) masing-masing US$30.000; ulyah.com, xaa.es, axto.io diblokir dari daftar jual. Hitungan 27 Okt: 0 artikel blog di keempat situs (isinya kisah, hadis, kitab) → bagian artikel baru + 45 artikel per situs | §13 |
 | 63 | (27 Okt 2026) „Bukan biaya 30%, tp komisi penjualan dari lelang domain sebesar 30%“ | ✅ dicatat: 30 % adalah **komisi penjualan** dari harga akhir domain anggota yang **terjual** (penjual menerima 70 %). Tidak ada biaya pasang, biaya verifikasi DNS, biaya lelang ulang, atau biaya apa pun bila domain tidak laku | §10.6 |
+| 66 | (28 Okt 2026, guardian-ai REQUESTS 120) "Untuk axto.io & xaa.es minimal penawaran range random dari $10jt-$100jt, ubah bentuk penjualannya seperti lelang … seolah peluang mendapatkan harga terbaik … dan segera ambil" — dan (REQUESTS 124) tampilannya "high class, super premium, indah" | 🔄 penjualan xaa.es sendiri (/acquire) menjadi lelang sungguhan seperti axto.io (PR guardian-ai #95): tawaran pembuka diundi acak US$10–100 juta per putaran, tawaran nyata, tenggat nyata dengan anti-snipe, tanpa reserve tersembunyi, penawar disetujui pemilik; karena xaa.es tidak menerima pembayaran sebesar ini lewat checkout, pemenang menutup lewat kesepakatan, bukti dana dan wire/escrow, lalu admin menandai putaran terjual. Rinciannya di §14 | §14 |
 | 65 | (28 Okt 2026) "Lanjut pekerjaan xaa.es termasuk auction script template milik xaa.es lihat blueprint nya… Bikinin seluruh template SaaS nya, script yg di jual, dan link demi, pastikan seluruhnya 100% siap di beli customer, jgn ada satu huruf pun, satu fitur pun, satu link pun yg tidak d pastikan 100% siap produksi" | 🔄 dicatat 28 Okt: dikerjakan setelah axto.io siap produksi dan lelangnya di atas beranda (guardian-ai REQUESTS 112–114). Lingkup: §10 lelang (script, domain, website, penjual) dan `docs/TEMPLATES-BLUEPRINT.md` (semua templat SaaS dan script yang dijual, tautan unduh dan pembelian) |
 | 64 | (27 Okt 2026) Dua unit AdSense (in-article slot `2546519628`, multiplex slot `5109103787`, pub-8991272269211824) di setiap situs penerbit yang sama, 4 iklan per halaman (2 + 2) tanpa mengganggu artikel — lalu „Kode iklan jgn d kerjain dulu“ | ⏸ **ditahan pemilik** — hanya dicatat, belum dipasang. Rencana: repo ulyah.com `docs/ADSENSE-BLUEPRINT.md` §16 (xaa.es termasuk; halaman portal, checkout dan admin tanpa iklan) | — |
 | 53 | (26 Okt 2026) Pelajari situs dan aplikasi dunia yang sejenis, kembangkan „1000 kali lebih canggih“; kemungkinan xaa.es satu akun Cloudflare dengan axto.io (dibahas dulu) | 📝 dicatat; dikerjakan setelah izin | §6 |
@@ -625,3 +626,39 @@ US$30.000 dan diarahkan ke daftar di xaa.es; tilawa.de, xad.es dan dawa.im menda
 
 1. Menu + halaman 3 bahasa + SEO → 2. Studio desk: daftar siap pakai & situs mapan → 3. pesanan custom + checkout →
 4. empat daftar situs mapan → 5. bagian artikel di platform ulyah.com + 45 artikel per situs → 6. uji.
+
+## 14. Penjualan xaa.es menjadi lelang (permintaan 66) — 🔄 dibangun 28 Okt
+
+Pemilik, 28 Okt 2026 (bersama axto.io, guardian-ai REQUESTS 120 dan 124): penawaran minimum acak dalam rentang
+US$10–100 juta, bentuk penjualan seperti lelang, terasa sebagai peluang harga terbaik, dan tampilan super premium.
+
+- **Mode**: setelan `sale_mode` (Settings → Sale of xaa.es). Bawaannya `auction`; `fixed` mengembalikan harga tawar dan
+  formulir penawaran yang lama.
+- **Putaran** (R2 `sale_rounds`):
+  - Tawaran pembuka diundi acak antara US$10–100 juta (dibulatkan ke US$100.000) saat putaran dibuka, lalu disimpan,
+    sehingga sama untuk semua pengunjung. Admin boleh menetapkan angkanya sendiri dalam rentang itu.
+  - Lama putaran bawaan 14 hari. Tawaran dalam 10 menit terakhir memperpanjang putaran 10 menit.
+  - Tanpa reserve tersembunyi.
+  - Putaran ditutup saat halaman dibaca: xaa.es tidak punya detak per menit; lot lelangnya juga diselesaikan saat dibaca.
+  - Putaran tanpa tawaran langsung diganti putaran baru (bisa dimatikan).
+- **Penawar** (R2 `sale_bidders`):
+  - Member yang masuk mendaftar dengan nama tampil (filter kata kasar dan merek yang sama dengan lelang lot), perusahaan,
+    negara, telepon/WhatsApp dan keterangan bukti dana.
+  - Pemilik menyetujui setiap penawar; persetujuan bisa dimatikan. Admin tidak menawar.
+  - Nama disamarkan di halaman publik.
+- **Tawaran** (R2 `sale_bids`):
+  - Tawaran pertama minimal sebesar pembukaan, berikutnya minimal tawaran tertinggi + langkah (bawaan US$250.000).
+  - Setiap tawaran adalah compare-and-swap pada dokumen putaran.
+  - Pendaftaran dan setiap tawaran masuk ke Leads dan Support, tempat pemilik membaca penawaran selama ini.
+- **Penutupan**:
+  - Pemenang diminta menyelesaikan dalam 7 hari: NDA, bukti dana, lalu wire SWIFT atau escrow. xaa.es memang tidak pernah
+    menjual dirinya lewat checkout kartu.
+  - Admin menandai **terjual** (status penjualan menjadi `sold`), memberi putaran ke penawar berikutnya, atau membatalkan.
+- **Tampilan**:
+  - `/acquire` dalam mode lelang: hero menampilkan tawaran saat ini dan hitung mundur.
+  - Bagian lelang bergaya "rumah lelang" gelap dengan aksen emas (kaca, garis emas, angka besar, ubin hitung mundur).
+  - Teks tersedia dalam EN/ES/ID.
+  - Admin → Site auction (`/portal/admin/sale`): putaran, penawar, tawaran dan tindakan.
+- **Tes**: `tests/unit/sale-auction.test.ts` menguji aturan, undian dalam rentang, perlombaan tawaran, anti-snipe,
+  penutupan, putaran baru dan beri-ke-penawar-berikutnya, di atas R2 tiruan.
+
