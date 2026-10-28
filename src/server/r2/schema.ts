@@ -20,6 +20,7 @@ import type { AuctionBid, AuctionBidder, AuctionCategoryDoc, AuctionDomainClaim,
 import type { Store } from './store.ts';
 import { newestFirst, oldestFirst } from './ulid.ts';
 import { bidSeqDesc, lotSummary } from '../auction-terms.ts';
+import { roundSummary, type SaleBid, type SaleBidder, type SaleRound } from '../sale-auction-terms.ts';
 
 export type UserDoc = User & { password_hash: string };
 export type BundleDoc = BundleMeta & { id: string; updated_by: string | null };
@@ -170,6 +171,25 @@ export function collections(store: Store) {
         { name: 'seller', key: (p) => p.seller_user },
         { name: 'all', key: () => 'all', meta: (p) => ({ status: p.status, seller: p.seller_eur, domain: p.domain }) },
       ],
+    }),
+    // The auction of xaa.es itself (docs/BLUEPRINT.md §14, request 66).
+    saleRounds: store.collection<SaleRound>({
+      name: 'sale_rounds',
+      indexes: [
+        { name: 'all', key: () => 'all', sort: (r) => String(9_999_999 - r.no).padStart(7, '0'), meta: roundSummary },
+      ],
+    }),
+    saleBids: store.collection<SaleBid>({
+      name: 'sale_bids',
+      indexes: [
+        // Highest first: whole dollars fill 12 digits, inverted; the earlier bid wins a tie.
+        { name: 'round', key: (b) => b.round_id, sort: (b) => `${String(999_999_999_999 - Math.round(b.amount_usd)).padStart(12, '0')}_${String(b.seq).padStart(6, '0')}` },
+        { name: 'user', key: (b) => b.user_id, sort: (b) => newestFirst(b.created_at) },
+      ],
+    }),
+    saleBidders: store.collection<SaleBidder>({
+      name: 'sale_bidders',
+      indexes: [{ name: 'status', key: (b) => b.status, sort: (b) => newestFirst(b.created_at), meta: (b) => ({ email: b.email, display_name: b.display_name, company: b.company, country: b.country, phone: b.phone, funds: b.funds.slice(0, 200), message: b.message.slice(0, 300), created_at: b.created_at }) }],
     }),
     threads: store.collection<SupportThread>({
       name: 'support_threads',

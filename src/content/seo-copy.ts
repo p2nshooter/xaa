@@ -60,6 +60,12 @@ export const SEO: Record<string, SeoCopy> = {
     es: { title: 'xaa.es en venta — dominio .es premium y estudio activo', description: 'xaa.es está en venta: dominio .es de tres letras con un estudio multilingüe en marcha, portal de clientes, pagos reales y catálogo SaaS. Precio solicitado: 10 millones de USD.' },
     id: { title: 'xaa.es dijual — domain .es premium dan studio aktif', description: 'xaa.es dijual: domain .es tiga huruf dengan studio multibahasa yang sudah berjalan, portal klien, pembayaran live dan katalog SaaS. Harga yang diminta US$10 juta.' },
   },
+  /** /acquire while the sale runs as an auction (docs/BLUEPRINT.md §14): an opening bid from US$10M that rises every week, no fixed price. */
+  acquireAuction: {
+    en: { title: 'xaa.es at auction — premium .es domain and live studio', description: 'xaa.es at auction: a three-letter .es domain with a live studio, client portal, real payments and SaaS catalogue. Opening bid US$10M, +US$100K a week.' },
+    es: { title: 'xaa.es en subasta — dominio .es premium y estudio activo', description: 'xaa.es en subasta: dominio .es de tres letras con estudio activo, portal de clientes, pagos reales y catálogo SaaS. Salida 10 M USD, +100.000 USD/semana.' },
+    id: { title: 'xaa.es dilelang — domain .es premium dan studio aktif', description: 'xaa.es dilelang: domain .es tiga huruf dengan studio aktif, portal klien, pembayaran live dan katalog SaaS. Pembuka US$10 juta, naik US$100 ribu/minggu.' },
+  },
   invest: {
     en: { title: 'Invest in xaa.es — revenue share from a live studio', description: 'The investor offering of xaa.es alone: a monthly share of every confirmed xaa.es revenue transaction, pro rata to your capital, until a full acquisition returns it.' },
     es: { title: 'Invertir en xaa.es — participación en los ingresos de un estudio activo', description: 'La oferta para inversores de xaa.es: una participación mensual en cada ingreso confirmado de xaa.es, proporcional a tu capital, hasta una adquisición completa que lo devuelve.' },

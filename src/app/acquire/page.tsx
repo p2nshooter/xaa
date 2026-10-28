@@ -11,6 +11,10 @@ import { SEO } from '@/content/seo-copy';
 import { SITE } from '@/lib/site';
 import { getSale, usdWhole, waLink } from '@/server/sale';
 import { companyVisible } from '@/server/company';
+import { currentUser } from '@/server/auth';
+import { saleAuctionView } from '@/server/sale-auction';
+import { ladderPrice, nextRiseAt, riseDate } from '@/server/sale-auction-terms';
+import { GoldCountdown, SaleAuction } from '@/components/SaleAuction';
 
 /**
  * /acquire — xaa.es itself is for sale.
@@ -24,7 +28,8 @@ import { companyVisible } from '@/server/company';
  */
 
 export async function generateMetadata(): Promise<Metadata> {
-  return pageMetadata({ path: '/acquire', copy: SEO.acquire });
+  const sale = await getSale();
+  return pageMetadata({ path: '/acquire', copy: sale.mode === 'auction' ? SEO.acquireAuction : SEO.acquire });
 }
 
 type Copy = {
@@ -235,14 +240,62 @@ const COPY: Record<Lang, Copy> = {
   },
 };
 
+/** What changes on this page while xaa.es is sold by auction (docs/BLUEPRINT.md §14, request 66). */
+type AucCopy = {
+  chip: string; from: string; opening: string; current: string; winning: string; endsIn: string; note: string; rises: string; cta: string;
+  step1: { t: string; b: string }; priceQ: string; priceA: string;
+};
+
+const AUC: Record<Lang, AucCopy> = {
+  en: {
+    chip: 'Live auction · Round {n}', from: 'Bids from', opening: 'Opening bid', current: 'Current bid', winning: 'Winning bid', endsIn: 'Ends in',
+    note: 'No hidden reserve: the highest bid when the clock stops buys xaa.es.', rises: 'The opening bid rises by {weekly} every week — next on {date}.', cta: 'Place a bid',
+    step1: { t: 'Register and bid', b: 'Register as a bidder, and bid before the clock stops. The highest bid at the deadline wins — there is no hidden reserve.' },
+    priceQ: 'How is the price set?',
+    priceA: 'By the auction. The opening bid started at US$10 million on 28 October 2026 and rises by US$100,000 every week, the same for every bidder, and the highest bid when the clock stops buys xaa.es. A bid in the last minutes extends the round, so nobody is outbid by a last-second snipe.',
+  },
+  es: {
+    chip: 'Subasta en directo · Ronda {n}', from: 'Pujas desde', opening: 'Puja de salida', current: 'Puja actual', winning: 'Puja ganadora', endsIn: 'Termina en',
+    note: 'Sin precio de reserva oculto: la puja más alta al terminar el tiempo compra xaa.es.', rises: 'La puja de salida sube {weekly} cada semana: la próxima vez, el {date}.', cta: 'Pujar',
+    step1: { t: 'Registro y puja', b: 'Regístrese como pujador y puje antes de que termine el tiempo. Gana la puja más alta al cierre: no hay precio de reserva oculto.' },
+    priceQ: '¿Cómo se fija el precio?',
+    priceA: 'Con la subasta. La puja de salida empezó en 10 millones de dólares el 28 de octubre de 2026 y sube 100.000 dólares cada semana, igual para todos, y la puja más alta al terminar el tiempo compra xaa.es. Una puja en los últimos minutos amplía la ronda, así que nadie pierde por una puja de último segundo.',
+  },
+  id: {
+    chip: 'Lelang langsung · Putaran {n}', from: 'Tawaran mulai', opening: 'Tawaran pembuka', current: 'Tawaran saat ini', winning: 'Tawaran menang', endsIn: 'Berakhir dalam',
+    note: 'Tanpa reserve tersembunyi: tawaran tertinggi saat waktu habis membeli xaa.es.', rises: 'Tawaran pembuka naik {weekly} setiap minggu — berikutnya pada {date}.', cta: 'Ajukan tawaran',
+    step1: { t: 'Daftar dan menawar', b: 'Daftar sebagai penawar, lalu menawar sebelum waktu habis. Tawaran tertinggi saat tenggat menang — tanpa reserve tersembunyi.' },
+    priceQ: 'Bagaimana harga ditentukan?',
+    priceA: 'Lewat lelang. Tawaran pembuka dimulai dari US$10 juta pada 28 Oktober 2026 dan naik US$100.000 setiap minggu, sama untuk semua penawar, dan tawaran tertinggi saat waktu habis membeli xaa.es. Tawaran di menit-menit terakhir memperpanjang putaran, jadi tidak ada yang kalah oleh tawaran detik terakhir.',
+  },
+};
+
+const UNITS: Record<Lang, [string, string, string, string]> = { en: ['d', 'h', 'm', 's'], es: ['d', 'h', 'm', 's'], id: ['h', 'j', 'm', 'd'] };
+
 export default async function AcquirePage() {
   const lang = await getLang();
   const company = await companyVisible();
-  const c = pick(lang, COPY);
-  const sale = await getSale();
+  const base = pick(lang, COPY);
+  const viewer = await currentUser();
+  // A storage hiccup never takes the page down: it then shows the sale without the live board.
+  const { sale, round, me, approval } = await saleAuctionView(viewer).catch(async (err) => {
+    console.error('acquire: auction view failed:', err);
+    const s = await getSale();
+    return { sale: s, round: null, me: null, approval: s.auction.approval };
+  });
+  const auction = sale.mode === 'auction';
+  const a = pick(lang, AUC);
+  // In an auction the first step is to bid, and the price is the auction's, not an asking price.
+  const c = auction
+    ? { ...base, steps: [a.step1, ...base.steps.slice(1)], faq: base.faq.map((f, i) => (i === 1 ? { q: a.priceQ, a: a.priceA } : f)) }
+    : base;
   const price = usdWhole(sale.priceUsd);
   const open = sale.status === 'open';
   const url = absUrl('/acquire');
+  const live = auction && round?.status === 'open';
+  const won = auction && (round?.status === 'awaiting_payment' || round?.status === 'sold');
+  const shown = !round ? 0 : won ? round.winnerUsd : round.bidsCount ? round.highUsd : round.openUsd;
+  const rise = auction ? nextRiseAt(sale.auction) : '';
 
   const ld = [
     {
@@ -252,14 +305,24 @@ export default async function AcquirePage() {
       description: SEO.acquire.en.description,
       brand: { '@type': 'Brand', name: SITE.name },
       url,
-      offers: {
-        '@type': 'Offer',
-        price: sale.priceUsd,
-        priceCurrency: 'USD',
-        availability: sale.status === 'sold' ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
-        url,
-        seller: { '@type': 'Organization', name: 'PT AXTO DIGITAL GLOBAL', url: SITE.url },
-      },
+      offers: auction
+        ? {
+          // Sold by auction (§14): the lowest bid accepted today is the weekly ladder's opening bid.
+          '@type': 'Offer',
+          priceCurrency: 'USD',
+          priceSpecification: { '@type': 'PriceSpecification', minPrice: ladderPrice(sale.auction), priceCurrency: 'USD' },
+          availability: sale.status === 'sold' ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
+          url: `${url}#bid`,
+          seller: { '@type': 'Organization', name: 'PT AXTO DIGITAL GLOBAL', url: SITE.url },
+        }
+        : {
+          '@type': 'Offer',
+          price: sale.priceUsd,
+          priceCurrency: 'USD',
+          availability: sale.status === 'sold' ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
+          url,
+          seller: { '@type': 'Organization', name: 'PT AXTO DIGITAL GLOBAL', url: SITE.url },
+        },
     },
     {
       '@context': 'https://schema.org',
@@ -273,21 +336,54 @@ export default async function AcquirePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml(ld) }} />
 
       <Breadcrumbs trail={[{ label: c.chip }]} className="pb-4" />
-      <section className="acq-hero relative overflow-hidden border-b border-[color:var(--line)] text-white">
-        <div className="mk-grid-bg absolute inset-0 opacity-15" aria-hidden />
-        <div className="acq-glow" aria-hidden />
+      <section className={`${auction ? 'sauc-house' : 'acq-hero'} relative overflow-hidden border-b border-[color:var(--line)] text-white`}>
+        {auction ? <div className="sauc-grid pointer-events-none absolute inset-0" aria-hidden /> : <div className="mk-grid-bg absolute inset-0 opacity-15" aria-hidden />}
+        <div className={auction ? 'sauc-glow pointer-events-none absolute inset-0' : 'acq-glow'} aria-hidden />
         <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-12 sm:pb-20">
           <div className="grid items-center gap-10 lg:grid-cols-[1.25fr_1fr]">
             <div>
-              <p className="inline-flex items-center gap-2 rounded-full border border-white/25 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white/80">
-                <span className="mk-live-dot" /> {c.chip}
+              <p className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] ${auction ? 'border-[#e0b44d]/40 text-[#f3d98b]' : 'border-white/25 text-white/80'}`}>
+                <span className="mk-live-dot" /> {live && round ? a.chip.replace('{n}', String(round.no)) : c.chip}
               </p>
-              <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] sm:text-6xl">
-                {c.h1a}
-                <span className="mt-2 block text-2xl font-bold leading-snug text-white/85 sm:text-3xl">{c.h1b}</span>
-              </h1>
+              {auction ? (
+                <h1 className="sauc-serif mt-5 text-4xl font-semibold leading-[1.05] sm:text-6xl">
+                  <span className="sauc-gold italic">{c.h1a}</span>
+                  <span className="mt-3 block text-2xl font-normal leading-snug text-[#f9eccb]/85 sm:text-3xl">{c.h1b}</span>
+                </h1>
+              ) : (
+                <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] sm:text-6xl">
+                  {c.h1a}
+                  <span className="mt-2 block text-2xl font-bold leading-snug text-white/85 sm:text-3xl">{c.h1b}</span>
+                </h1>
+              )}
               <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-white/85">{c.lead}</p>
             </div>
+            {auction ? (
+              <div className="sauc-glass relative rounded-[28px] p-7" data-testid="sale-hero">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#f3d98b]/75">{!round ? a.from : won ? a.winning : round.bidsCount ? a.current : a.opening}</p>
+                <p className="sauc-gold sauc-shimmer sauc-serif sauc-nums mt-2 text-4xl font-semibold leading-none tracking-tight sm:text-5xl">{usdWhole(shown || ladderPrice(sale.auction))}</p>
+                {live && round ? (
+                  <div className="mt-5">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#f3d98b]/75">{a.endsIn}</p>
+                    <div className="mt-2"><GoldCountdown to={round.endsAt} units={UNITS[lang] || UNITS.en} /></div>
+                  </div>
+                ) : null}
+                {live && rise ? <p className="mt-5 text-sm font-semibold text-[#f3d98b]" data-testid="sale-hero-rise"><span className="mr-1.5" aria-hidden>▲</span>{a.rises.replace('{weekly}', usdWhole(sale.auction.weeklyUsd)).replace('{date}', riseDate(rise, lang))}</p> : null}
+                <p className="mt-3 text-sm leading-relaxed text-[#f9eccb]/85"><span className="mr-1.5 text-[#ecc96a]" aria-hidden>✦</span>{a.note}</p>
+                {sale.status === 'sold' ? (
+                  <p className="mt-6 rounded-xl border border-white/10 bg-white/[0.04] p-4 text-sm"><strong>{c.soldTitle}.</strong> {c.soldBody}</p>
+                ) : sale.status === 'paused' ? (
+                  <p className="mt-6 rounded-xl border border-white/10 bg-white/[0.04] p-4 text-sm"><strong>{c.pausedTitle}.</strong> {c.pausedBody}</p>
+                ) : (
+                  <div className="mt-6 flex flex-col gap-2.5">
+                    <a href="#bid" className="sauc-btn">{a.cta}</a>
+                    <a href={waLink(sale.whatsapp, c.waText)} className="sauc-btn-ghost text-center" rel="noopener" target="_blank">
+                      {c.ctaWhatsapp} · {sale.whatsapp}
+                    </a>
+                  </div>
+                )}
+              </div>
+            ) : (
             <div className="acq-price rounded-3xl border border-white/20 bg-white/10 p-7 backdrop-blur-md">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/75">{c.priceLabel}</p>
               <p className="mt-2 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">{price}</p>
@@ -305,9 +401,14 @@ export default async function AcquirePage() {
                 </div>
               )}
             </div>
+            )}
           </div>
         </div>
       </section>
+
+      {auction && sale.status !== 'paused' ? (
+        <SaleAuction lang={lang} round={round} me={me} approval={approval} signedIn={!!viewer} />
+      ) : null}
 
       <section className="mx-auto max-w-6xl px-4 py-16">
         <SectionHead eyebrow={c.whyEyebrow} title={c.whyTitle} lead={c.whyLead} />
@@ -364,6 +465,15 @@ export default async function AcquirePage() {
         </p>
       </section>
 
+      {auction ? (
+        <section className="mx-auto max-w-6xl px-4 py-6">
+          <div className="panel p-6">
+            <p className="font-display text-lg font-extrabold">{c.investT}</p>
+            <p className="mt-2 text-sm text-steel-500">{c.investB}</p>
+            <Link href="/invest" className="mt-3 inline-block text-sm font-semibold underline">{c.investLink} →</Link>
+          </div>
+        </section>
+      ) : (
       <section id="offer" className="mx-auto grid max-w-6xl scroll-mt-28 gap-10 px-4 py-6 lg:grid-cols-[1fr_1.2fr]">
         <div>
           <SectionHead eyebrow={c.offerEyebrow} title={c.offerTitle} lead={c.offerLead} />
@@ -382,6 +492,7 @@ export default async function AcquirePage() {
           </div>
         )}
       </section>
+      )}
 
       <section className="mx-auto max-w-4xl px-4 py-16">
         <h2 className="font-display text-3xl font-extrabold">{c.faqTitle}</h2>

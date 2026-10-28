@@ -37,8 +37,10 @@ const COPY: Record<Lang, Copy> = {
   },
 };
 
-export default async function RegisterPage() {
-  if (await currentUser()) redirect('/portal');
+export default async function RegisterPage({ searchParams }: { searchParams: Promise<{ next?: string }> }) {
+  const { next: asked } = await searchParams;
+  const next = asked && /^\/(?![/\\])/.test(asked) ? asked : '/portal';
+  if (await currentUser()) redirect(next);
   const lang = await getLang();
   const c = pick(lang, COPY);
   const stages = localisedStages(lang);
@@ -51,10 +53,10 @@ export default async function RegisterPage() {
           <h1 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">{c.title}</h1>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-steel-500">{c.lead}</p>
           <div className="mt-8">
-            <RegisterForm lang={lang} />
+            <RegisterForm lang={lang} next={next} />
           </div>
           <p className="mt-4 text-sm text-steel-500">
-            {c.already}<Link href="/login" className="text-gold-500 underline">{c.signIn}</Link>.
+            {c.already}<Link href={next === '/portal' ? '/login' : `/login?next=${encodeURIComponent(next)}`} className="text-gold-500 underline">{c.signIn}</Link>.
           </p>
         </div>
 
