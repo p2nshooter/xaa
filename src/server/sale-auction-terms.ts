@@ -1,11 +1,11 @@
 /**
- * The auction of xaa.es itself — the rules (docs/BLUEPRINT.md §14, request 66; owner, 28 Oct 2026, with axto.io:
- * "minimal penawaran range random dari $10jt-$100jt, ubah bentuk penjualannya seperti lelang … segera ambil").
+ * The auction of xaa.es itself — the rules (docs/BLUEPRINT.md §14, requests 66 and 67; owner, 28 Oct 2026, with
+ * axto.io: "ubah bentuk penjualannya seperti lelang … segera ambil", then "Start $10jt, setiap minggu naikin $100k").
  *
- *   opening bid  drawn at random between US$10 million and US$100 million (to the nearest US$100,000) when a round
- *                opens, or set by the admin in that range; stored on the round, so every visitor sees the same figure
- *   bids         the first at least the opening bid, every later one at least the high bid plus one step; jump bids
- *                allowed; never against yourself
+ *   opening bid  a weekly ladder, the same for everyone: US$10 million from 28 Oct 2026 (00:00 WIB), plus US$100,000
+ *                for every full week since — through every round, so the price never starts over
+ *   bids         every bid at least the opening bid of the moment; after the first, also at least the high bid plus
+ *                one step; jump bids allowed; never against yourself
  *   anti-snipe   a bid in the last N minutes moves the end to N minutes after it
  *   no reserve   the highest valid bid at the deadline wins; the winner closes by agreement, proof of funds and a
  *                SWIFT wire or escrow (xaa.es is never sold through a card checkout), then the admin marks it sold
@@ -18,18 +18,23 @@ import { cleanDisplayName, displayNameProblem, extendedEnd, maskName, type NameP
 
 export { cleanDisplayName, displayNameProblem, extendedEnd, maskName, type NameProblem };
 
+/** The owner's floor: the ladder never starts below US$10 million. */
 export const OPEN_MIN_USD = 10_000_000;
 export const OPEN_MAX_USD = 100_000_000;
-export const OPEN_ROUND_TO = 100_000;
 /** A sanity ceiling on one bid: a typo with three extra zeros is refused, not recorded. */
 export const MAX_BID_USD = 5_000_000_000;
 const DAY = 86_400_000;
+const WEEK = 7 * DAY;
+/** Day one of the ladder, 00:00 in Jakarta (WIB, UTC+7), where the owner is. */
+const WIB_MS = 7 * 3_600_000;
 
 export interface SaleAuctionSettings {
-  /** Draw a new random opening bid between US$10M and US$100M for every round. */
-  randomOpen: boolean;
-  /** The admin's own opening bid (used when randomOpen is off). */
-  openUsd: number;
+  /** The opening bid on day one of the ladder. */
+  startUsd: number;
+  /** Added to the opening bid at the end of every full week. */
+  weeklyUsd: number;
+  /** Day one of the ladder (YYYY-MM-DD, from 00:00 WIB). */
+  from: string;
   stepUsd: number;
   days: number;
   snipeMinutes: number;
@@ -41,7 +46,7 @@ export interface SaleAuctionSettings {
 }
 
 export const SALE_AUCTION_DEFAULTS: SaleAuctionSettings = {
-  randomOpen: true, openUsd: 0, stepUsd: 250_000, days: 14, snipeMinutes: 10, payDays: 7, autoRestart: true, approval: true,
+  startUsd: 10_000_000, weeklyUsd: 100_000, from: '2026-10-28', stepUsd: 250_000, days: 14, snipeMinutes: 10, payDays: 7, autoRestart: true, approval: true,
 };
 
 const digits = (v: unknown) => Number(String(v ?? '').replace(/[^\d]/g, ''));
@@ -50,15 +55,16 @@ const within = (v: unknown, lo: number, hi: number, fallback: number) => {
   return String(v ?? '').trim() !== '' && Number.isFinite(n) && n >= lo && n <= hi ? n : fallback;
 };
 const yes = (v: unknown, fallback: boolean) => (v === 'yes' ? true : v === 'no' ? false : fallback);
-const roundOpen = (n: number) => Math.min(OPEN_MAX_USD, Math.max(OPEN_MIN_USD, Math.round(n / OPEN_ROUND_TO) * OPEN_ROUND_TO));
+const isDay = (v: unknown) => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(`${v}T00:00:00Z`));
 
 /** The auction settings from the stored strings (Settings → Sale of xaa.es); anything unusable falls back to the default. */
 export function parseSaleAuction(raw: Record<string, string>): SaleAuctionSettings {
   const d = SALE_AUCTION_DEFAULTS;
-  const open = digits(raw.sale_auction_open_usd);
+  const from = String(raw.sale_auction_from ?? '').trim();
   return {
-    randomOpen: yes(raw.sale_auction_random, d.randomOpen),
-    openUsd: open >= OPEN_MIN_USD && open <= OPEN_MAX_USD ? roundOpen(open) : 0,
+    startUsd: within(raw.sale_auction_start_usd, OPEN_MIN_USD, OPEN_MAX_USD, d.startUsd),
+    weeklyUsd: within(raw.sale_auction_weekly_usd, 0, 10_000_000, d.weeklyUsd),
+    from: isDay(from) ? from : d.from,
     stepUsd: within(raw.sale_auction_step_usd, 1_000, 10_000_000, d.stepUsd),
     days: within(raw.sale_auction_days, 1, 90, d.days),
     snipeMinutes: within(raw.sale_auction_snipe_minutes, 0, 120, d.snipeMinutes),
@@ -68,10 +74,19 @@ export function parseSaleAuction(raw: Record<string, string>): SaleAuctionSettin
   };
 }
 
-/** A random opening bid in the owner's range, to the nearest US$100,000. */
-export const randomOpening = (rand: () => number = Math.random) => roundOpen(OPEN_MIN_USD + rand() * (OPEN_MAX_USD - OPEN_MIN_USD));
-/** The opening bid of a new round: drawn, or the admin's own figure. */
-export const openingFor = (s: SaleAuctionSettings, rand: () => number = Math.random) => (s.randomOpen || !s.openUsd ? randomOpening(rand) : roundOpen(s.openUsd));
+type Ladder = Pick<SaleAuctionSettings, 'startUsd' | 'weeklyUsd' | 'from'>;
+/** 00:00 WIB on day one of the ladder. */
+export const ladderStart = (s: Pick<Ladder, 'from'>) => Date.parse(`${s.from}T00:00:00Z`) - WIB_MS;
+const weeksIn = (s: Ladder, nowMs: number) => Math.max(0, Math.floor((nowMs - ladderStart(s)) / WEEK));
+/** The opening bid at a moment: the start plus one weekly rise for every full week since day one. */
+export const ladderPrice = (s: Ladder, nowMs = Date.now()) => s.startUsd + s.weeklyUsd * weeksIn(s, nowMs);
+/** When the opening bid next rises ('' when it does not). */
+export const nextRiseAt = (s: Ladder, nowMs = Date.now()) =>
+  s.weeklyUsd > 0 ? new Date(ladderStart(s) + (weeksIn(s, nowMs) + 1) * WEEK).toISOString() : '';
+const LOCALE: Record<string, string> = { en: 'en-GB', es: 'es-ES', id: 'id-ID' };
+/** The day of a rise in Jakarta time, where the ladder is counted — the same on the server and in every browser. */
+export const riseDate = (iso: string, lang: string) =>
+  new Date(iso).toLocaleDateString(LOCALE[lang] || 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' });
 export const roundEnd = (startMs: number, s: Pick<SaleAuctionSettings, 'days'>) => startMs + s.days * DAY;
 export const payBy = (closedMs: number, payDays: number) => new Date(closedMs + payDays * DAY).toISOString();
 
@@ -103,20 +118,21 @@ export const bidId = (round: string, seq: number) => `${round}.${String(seq).pad
 /* ---- bidding ---------------------------------------------------------------------- */
 
 export type RoundState = Pick<SaleRound, 'status' | 'starts_at' | 'ends_at' | 'open_usd' | 'step_usd' | 'bids_count' | 'high_usd' | 'high_user'>;
-/** The lowest bid accepted now. */
-export const nextMinBid = (r: Pick<RoundState, 'bids_count' | 'high_usd' | 'open_usd' | 'step_usd'>) => (r.bids_count > 0 ? r.high_usd + r.step_usd : r.open_usd);
+/** The lowest bid accepted now: the opening bid of the moment (`floorUsd`, the ladder), and after the first bid also the high bid plus a step. */
+export const nextMinBid = (r: Pick<RoundState, 'bids_count' | 'high_usd' | 'step_usd'>, floorUsd: number) =>
+  Math.max(floorUsd, r.bids_count > 0 ? r.high_usd + r.step_usd : 0);
 
 export type SaleBidProblem = 'closed' | 'not_started' | 'ended' | 'bad_amount' | 'too_low' | 'too_high' | 'already_highest';
 
 /** Why a bid cannot be placed (null = it can). Decided again on every compare-and-swap attempt. */
-export function saleBidProblem(r: RoundState, amount: number, userId: string, nowMs: number): SaleBidProblem | null {
+export function saleBidProblem(r: RoundState, amount: number, userId: string, nowMs: number, floorUsd: number): SaleBidProblem | null {
   if (r.status !== 'open') return 'closed';
   if (nowMs < Date.parse(r.starts_at)) return 'not_started';
   if (nowMs >= Date.parse(r.ends_at)) return 'ended';
   if (!Number.isInteger(amount) || amount < 1) return 'bad_amount';
   if (r.bids_count > 0 && r.high_user === userId) return 'already_highest';
   if (amount > MAX_BID_USD) return 'too_high';
-  if (amount < nextMinBid(r)) return 'too_low';
+  if (amount < nextMinBid(r, floorUsd)) return 'too_low';
   return null;
 }
 
@@ -129,16 +145,18 @@ export const parseBid = (v: unknown) => {
 /* ---- what people see -------------------------------------------------------------- */
 
 export interface PublicRound {
-  no: number; status: SaleRoundStatus; openUsd: number; stepUsd: number; startsAt: string; endsAt: string; snipeMinutes: number; payDays: number;
+  /** openUsd is the opening bid of the moment (the ladder); weeklyUsd and nextRiseAt say when and by how much it rises. */
+  no: number; status: SaleRoundStatus; openUsd: number; weeklyUsd: number; nextRiseAt: string; stepUsd: number; startsAt: string; endsAt: string; snipeMinutes: number; payDays: number;
   bidsCount: number; highUsd: number; nextMinUsd: number; leader: string; winnerName: string; winnerUsd: number;
   bids: { name: string; amountUsd: number; at: string }[];
 }
 /** The round as everyone sees it: no e-mail, no user id; names masked. */
-export function publicRound(r: SaleRound, bids: SaleBid[]): PublicRound {
+export function publicRound(r: SaleRound, bids: SaleBid[], s: Ladder, nowMs = Date.now()): PublicRound {
   const won = r.status === 'awaiting_payment' || r.status === 'sold';
+  const floor = ladderPrice(s, nowMs);
   return {
-    no: r.no, status: r.status, openUsd: r.open_usd, stepUsd: r.step_usd, startsAt: r.starts_at, endsAt: r.ends_at, snipeMinutes: r.snipe_minutes,
-    payDays: r.pay_days, bidsCount: r.bids_count, highUsd: r.high_usd, nextMinUsd: nextMinBid(r), leader: r.bids_count ? maskName(r.high_name) : '',
+    no: r.no, status: r.status, openUsd: floor, weeklyUsd: s.weeklyUsd, nextRiseAt: nextRiseAt(s, nowMs), stepUsd: r.step_usd, startsAt: r.starts_at, endsAt: r.ends_at, snipeMinutes: r.snipe_minutes,
+    payDays: r.pay_days, bidsCount: r.bids_count, highUsd: r.high_usd, nextMinUsd: nextMinBid(r, floor), leader: r.bids_count ? maskName(r.high_name) : '',
     winnerName: won ? maskName(r.winner_name) : '', winnerUsd: won ? r.winner_usd : 0,
     bids: bids.map((b) => ({ name: maskName(b.display_name), amountUsd: b.amount_usd, at: b.created_at })),
   };

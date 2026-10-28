@@ -3,7 +3,7 @@ import { addLead } from './leads';
 import { createThread } from './support';
 import { getSale, usdWhole, type Sale } from './sale';
 import { latestRound, myAuction, roundBids, settle, type MySaleAuction } from './sale-auction-store';
-import { publicRound, type PublicRound } from './sale-auction-terms';
+import { publicRound, roundSummary, type PublicRound, type SaleBid, type SaleBidder, type SaleRound } from './sale-auction-terms';
 
 /**
  * The auction of xaa.es — what the pages read (docs/BLUEPRINT.md §14, request 66). Every read first brings the
@@ -26,7 +26,29 @@ export async function saleAuctionView(viewer: Viewer): Promise<SaleAuctionView> 
     round ? roundBids(d, round.id, 10) : Promise.resolve([]),
     viewer ? myAuction(d, viewer, round) : Promise.resolve(null),
   ]);
-  return { sale, round: round ? publicRound(round, bids) : null, me, approval: sale.auction.approval };
+  return { sale, round: round ? publicRound(round, bids, sale.auction) : null, me, approval: sale.auction.approval };
+}
+
+export interface SaleAuctionDesk {
+  sale: Sale; round: SaleRound | null; bids: SaleBid[];
+  rounds: (ReturnType<typeof roundSummary> & { id: string })[];
+  bidders: { pending: SaleBidder[]; approved: SaleBidder[]; rejected: SaleBidder[] };
+}
+
+/** Studio desk → Site auction: everything the owner runs the sale with, contact details included (admin only). */
+export async function saleAuctionDesk(): Promise<SaleAuctionDesk> {
+  const sale = await getSale();
+  if (sale.mode === 'auction') await settleAndReport(sale);
+  const d = await data();
+  const round = await latestRound(d);
+  const [bids, rounds, pending, approved, rejected] = await Promise.all([
+    round ? roundBids(d, round.id, 100) : Promise.resolve([]),
+    d.saleRounds.list('all', 'all', { limit: 50 }).then((p) => p.entries.map((e) => ({ ...(e.meta as ReturnType<typeof roundSummary>), id: e.id }))),
+    d.saleBidders.listDocs('status', 'pending', { limit: 200 }).then((p) => p.docs),
+    d.saleBidders.listDocs('status', 'approved', { limit: 200 }).then((p) => p.docs),
+    d.saleBidders.listDocs('status', 'rejected', { limit: 50 }).then((p) => p.docs),
+  ]);
+  return { sale, round, bids, rounds, bidders: { pending, approved, rejected } };
 }
 
 /** Settle, and tell the owner when a round has just closed with a winner. */

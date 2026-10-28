@@ -446,6 +446,74 @@ h1 { letter-spacing: -0.032em; }
 }
 .acq-hero { background: radial-gradient(900px 420px at 85% 10%, rgba(77, 139, 255, 0.35), transparent 60%), linear-gradient(135deg, #070f24 0%, #0f2350 55%, #173a8a 100%); }
 
+/* ── /acquire as an auction (owner, 28 Oct 2026: "warna, font, background bikin high class, super premium, indah") ──
+   A dark auction house in royal gold. Literal gold values: the Tailwind `gold` palette here is the brand blue. */
+.sauc-house {
+  background:
+    radial-gradient(900px 480px at 15% -10%, rgba(224, 180, 77, 0.16), transparent 60%),
+    radial-gradient(800px 520px at 100% 110%, rgba(201, 162, 74, 0.12), transparent 60%),
+    linear-gradient(180deg, #04060c 0%, #070a14 45%, #05070e 100%);
+  border-top: 1px solid rgba(224, 180, 77, 0.22); border-bottom: 1px solid rgba(224, 180, 77, 0.22);
+}
+.sauc-glow { background: radial-gradient(520px 320px at 50% 0%, rgba(243, 217, 139, 0.14), transparent 70%); }
+.sauc-grid {
+  background-image: linear-gradient(rgba(224, 180, 77, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(224, 180, 77, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px; -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 0%, transparent 70%); mask-image: radial-gradient(ellipse at 50% 30%, #000 0%, transparent 70%);
+}
+.sauc-glass {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015) 60%);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 40px 90px -50px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.sauc-glass::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(135deg, rgba(243, 217, 139, 0.55), rgba(224, 180, 77, 0.08) 35%, rgba(224, 180, 77, 0.05) 65%, rgba(243, 217, 139, 0.4));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.sauc-serif { font-family: var(--font-serif), Georgia, 'Times New Roman', serif; }
+/* Playfair draws old-style figures by default: prices and clocks use lining, equal-width figures. */
+.sauc-nums { font-variant-numeric: lining-nums tabular-nums; font-feature-settings: 'lnum' 1, 'tnum' 1; }
+.sauc-gold {
+  background: linear-gradient(100deg, #c9a24a 0%, #f3d98b 30%, #fff4d6 50%, #e0b44d 70%, #c9a24a 100%);
+  background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.sauc-tile {
+  background: linear-gradient(180deg, rgba(243, 217, 139, 0.12), rgba(224, 180, 77, 0.03));
+  border: 1px solid rgba(224, 180, 77, 0.3); box-shadow: inset 0 1px 0 rgba(255, 244, 214, 0.12), 0 10px 24px -16px rgba(0, 0, 0, 0.8);
+}
+.sauc-input {
+  width: 100%; min-width: 0; border-radius: 0.9rem; border: 1px solid rgba(224, 180, 77, 0.25); background: rgba(4, 6, 12, 0.6);
+  padding: 0.75rem 1rem; color: #f9eccb; font-size: 0.95rem; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.sauc-input::placeholder { color: rgba(203, 213, 225, 0.45); }
+.sauc-input:focus { border-color: #e0b44d; box-shadow: 0 0 0 3px rgba(224, 180, 77, 0.22); }
+.sauc-chip {
+  border-radius: 9999px; border: 1px solid rgba(224, 180, 77, 0.3); background: rgba(224, 180, 77, 0.06); padding: 0.35rem 0.85rem;
+  font-size: 0.8rem; font-weight: 600; color: #f3d98b; font-variant-numeric: lining-nums tabular-nums; transition: background 0.2s ease, border-color 0.2s ease;
+}
+.sauc-chip:hover { background: rgba(224, 180, 77, 0.14); }
+.sauc-chip-on { background: linear-gradient(100deg, #e0b44d, #f3d98b); border-color: transparent; color: #1a1205; }
+.sauc-btn, .sauc-btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 9999px; padding: 0.85rem 1.6rem;
+  font-weight: 700; font-size: 0.95rem; letter-spacing: 0.01em; transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.sauc-btn {
+  color: #1a1205; background: linear-gradient(100deg, #c9a24a 0%, #f3d98b 45%, #e0b44d 100%);
+  box-shadow: 0 14px 34px -14px rgba(224, 180, 77, 0.75), inset 0 1px 0 rgba(255, 244, 214, 0.7);
+}
+.sauc-btn:hover { transform: translateY(-1px); filter: brightness(1.06); box-shadow: 0 18px 40px -14px rgba(224, 180, 77, 0.9), inset 0 1px 0 rgba(255, 244, 214, 0.7); }
+/* A disabled gold button would read as muddy brass: show it as a gilded outline instead. */
+.sauc-btn:disabled { cursor: not-allowed; transform: none; filter: none; color: #e0b44d; background: transparent; box-shadow: inset 0 0 0 1px rgba(224, 180, 77, 0.45); }
+.sauc-btn-ghost { color: #f3d98b; border: 1px solid rgba(224, 180, 77, 0.45); background: rgba(224, 180, 77, 0.05); }
+.sauc-btn-ghost:hover { background: rgba(224, 180, 77, 0.12); }
+.sauc-btn:focus-visible, .sauc-btn-ghost:focus-visible, .sauc-chip:focus-visible { outline: 2px solid #f3d98b; outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .sauc-shimmer { animation: sauc-shimmer 7s ease-in-out infinite; }
+  .sauc-glow { animation: sauc-breathe 9s ease-in-out infinite alternate; }
+}
+@keyframes sauc-shimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes sauc-breathe { from { opacity: 0.7; } to { opacity: 1; } }
+
 /* The ✦ link to AXTO in the footer (owner, 18 Oct 2026): a slow accent glow, still for anyone who asks for less motion. */
 @media (prefers-reduced-motion: no-preference) {
   .eco-promo { animation: eco-promo-glow 3.2s ease-in-out infinite; }

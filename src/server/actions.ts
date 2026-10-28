@@ -77,7 +77,14 @@ function isRedirect(err: unknown): boolean {
 
 /* ───────────────────────── Accounts ───────────────────────── */
 
+/** A same-site path to return to after signing in or up (never another host: no `//` or `/\`). */
+function localNext(form: FormData): string {
+  const next = str(form, 'next');
+  return /^\/(?![/\\])/.test(next) ? next : '/portal';
+}
+
 export async function registerAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  const next = localNext(form);
   try {
     const email = str(form, 'email');
     const password = str(form, 'password');
@@ -100,7 +107,7 @@ export async function registerAction(_prev: ActionState, form: FormData): Promis
     if (isRedirect(err)) throw err;
     return fail(err);
   }
-  redirect('/portal');
+  redirect(next);
 }
 
 export async function loginAction(_prev: ActionState, form: FormData): Promise<ActionState> {

@@ -360,17 +360,17 @@ export const SETTING_DEFS: SettingDef[] = [
   },
   { key: 'sale_price_usd', label: 'Asking price (USD)', hint: 'Whole dollars, digits only. Shown on /acquire and in the structured data search engines read.', secret: false, group: 'sale', placeholder: '10000000' },
   { key: 'sale_whatsapp', label: 'WhatsApp for buyers', hint: 'Where buyers send proof of funds and payment proof. International format.', secret: false, group: 'sale', placeholder: '+6285691234561' },
-  // The auction (owner, 28 Oct 2026, request 66, docs/BLUEPRINT.md §14): rounds with a random opening bid between
-  // US$10M and US$100M, real bids and a real deadline. Rounds, bidders and bids are run in Studio desk → Site auction.
+  // The auction (owner, 28 Oct 2026, requests 66 and 67, docs/BLUEPRINT.md §14): rounds with an opening bid that
+  // starts at US$10M and rises every week, real bids and a real deadline. Rounds, bidders and bids are run in
+  // Studio desk → Site auction.
   {
     key: 'sale_mode', label: 'How xaa.es is sold', hint: 'Auction (default since 28 Oct 2026): rounds, real bids, the highest bid wins and closes by agreement and wire/escrow. Fixed: the asking price and the offer form.',
     secret: false, group: 'sale', options: [{ value: 'auction', label: 'Auction — rounds and real bids' }, { value: 'fixed', label: 'Fixed asking price and offers' }],
   },
-  {
-    key: 'sale_auction_random', label: 'Random opening bid every round', hint: 'Draw the opening bid at random between US$10,000,000 and US$100,000,000 (nearest $100,000) when each round opens. It is stored, so every visitor sees the same figure.',
-    secret: false, group: 'sale', options: [{ value: 'yes', label: 'Yes — draw it in US$10M–100M' }, { value: 'no', label: 'No — use the opening bid below' }],
-  },
-  { key: 'sale_auction_open_usd', label: 'Opening bid when not drawn (USD)', hint: 'Whole dollars between 10000000 and 100000000; used only when the random opening bid is off.', secret: false, group: 'sale', placeholder: '25000000' },
+  // Owner, 28 Oct 2026 (request 67): "Start $10jt, setiap minggu naikin $100k" — a weekly ladder through every round.
+  { key: 'sale_auction_start_usd', label: 'Opening bid on day one (USD)', hint: 'Whole dollars between 10000000 and 100000000. Default 10000000.', secret: false, group: 'sale', placeholder: '10000000' },
+  { key: 'sale_auction_weekly_usd', label: 'Weekly rise of the opening bid (USD)', hint: 'Added at the end of every full week since day one, through every round. 0 keeps the opening bid flat. Default 100000.', secret: false, group: 'sale', placeholder: '100000' },
+  { key: 'sale_auction_from', label: 'Day one of the weekly rise', hint: 'YYYY-MM-DD, counted from 00:00 WIB. Default 2026-10-28.', secret: false, group: 'sale', placeholder: '2026-10-28' },
   { key: 'sale_auction_step_usd', label: 'Minimum raise (USD)', hint: 'Every bid after the first is at least the high bid plus this amount.', secret: false, group: 'sale', placeholder: '250000' },
   { key: 'sale_auction_days', label: 'Round length (days)', hint: 'Applies to the next round.', secret: false, group: 'sale', placeholder: '14' },
   { key: 'sale_auction_snipe_minutes', label: 'Anti-snipe (minutes)', hint: 'A bid this close to the end extends the round by as much.', secret: false, group: 'sale', placeholder: '10' },

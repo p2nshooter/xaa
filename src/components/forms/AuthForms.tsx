@@ -159,12 +159,13 @@ function AdminLoginForm({ c }: { c: AuthCopy }) {
   );
 }
 
-export function RegisterForm({ lang = 'en' }: { lang?: Lang }) {
+export function RegisterForm({ lang = 'en', next = '/portal' }: { lang?: Lang; next?: string }) {
   const [state, action] = useActionState<ActionState, FormData>(registerAction, {});
   const c = pick(lang, AUTH);
   return (
     <form action={action} className="panel p-6">
       <Notice error={state.error} ok={state.ok} />
+      <input type="hidden" name="next" value={next} />
       <div className="grid gap-x-5 sm:grid-cols-2">
         <label className="field">
           <span>{c.fullName}</span>

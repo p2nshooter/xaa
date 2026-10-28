@@ -13,7 +13,7 @@ import { parseSaleAuction, type SaleAuctionSettings } from './sale-auction-terms
  * the page collects offers and purchase requests into Leads and Support.
  *
  * Since 28 Oct 2026 (request 66, docs/BLUEPRINT.md §14) it is sold by AUCTION by
- * default: rounds with a random opening bid between US$10M and US$100M, real bids
+ * default: rounds with an opening bid from US$10M that rises US$100,000 every week, real bids
  * and a real deadline (server/sale-auction.ts). The winner still closes by
  * agreement and wire or escrow; "fixed" keeps the asking price and offers.
  */
@@ -35,7 +35,7 @@ export interface Sale {
 
 export const SALE_DEFAULTS: Sale = { status: 'open', mode: 'auction', priceUsd: SALE_DEFAULT_PRICE_USD, whatsapp: SALE_DEFAULT_WHATSAPP, auction: parseSaleAuction({}) };
 export const SALE_KEYS = [
-  'sale_status', 'sale_price_usd', 'sale_whatsapp', 'sale_mode', 'sale_auction_random', 'sale_auction_open_usd', 'sale_auction_step_usd',
+  'sale_status', 'sale_price_usd', 'sale_whatsapp', 'sale_mode', 'sale_auction_start_usd', 'sale_auction_weekly_usd', 'sale_auction_from', 'sale_auction_step_usd',
   'sale_auction_days', 'sale_auction_snipe_minutes', 'sale_auction_pay_days', 'sale_auction_restart', 'sale_auction_approval',
 ];
 

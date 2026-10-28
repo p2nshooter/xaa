@@ -1,7 +1,7 @@
 /**
  * The auction of xaa.es — storage (docs/BLUEPRINT.md §14; the rules are in sale-auction-terms.ts).
  *
- *   round    "sr_<no>", created once with a claim nonce and its opening bid drawn in the owner's range; one at a time
+ *   round    "sr_<no>", created once with a claim nonce; it records the ladder's opening bid of the day; one at a time
  *   bidder   registers; the owner approves unless approval is off
  *   bid      one compare-and-swap on the round (validated again on every retry), then the bid created once
  *   settle   run whenever the auction is read: an ended round closes — to "awaiting_payment" by the top bidder, or
@@ -13,7 +13,7 @@
  */
 import type { Collection } from './r2/store.ts';
 import {
-  bidId, cleanDisplayName, displayNameProblem, extendedEnd, nextMinBid, openingFor, parseBid, payBy, roundEnd, roundId, saleBidProblem,
+  bidId, cleanDisplayName, displayNameProblem, extendedEnd, ladderPrice, nextMinBid, parseBid, payBy, roundEnd, roundId, saleBidProblem,
   type NameProblem, type SaleAuctionSettings, type SaleBid, type SaleBidder, type SaleBidProblem, type SaleRound,
 } from './sale-auction-terms.ts';
 
@@ -31,11 +31,12 @@ export async function latestRound(d: SaleData): Promise<SaleRound | null> {
 }
 
 /** Open the next round. Two callers racing for the same number make one round; the loser gets null. */
-export async function startRound(d: SaleData, s: SaleAuctionSettings, by: string, nowMs = Date.now(), opts: { openUsd?: number; rand?: () => number } = {}): Promise<SaleRound | null> {
+export async function startRound(d: SaleData, s: SaleAuctionSettings, by: string, nowMs = Date.now()): Promise<SaleRound | null> {
   const last = await latestRound(d);
   if (last && (last.status === 'open' || last.status === 'awaiting_payment')) return null;
   const no = (last?.no || 0) + 1;
-  const open = opts.openUsd ? openingFor({ ...s, randomOpen: false, openUsd: opts.openUsd }) : openingFor(s, opts.rand);
+  // For the record: the opening bid when the round opened. The bids themselves follow the ladder of the moment.
+  const open = ladderPrice(s, nowMs);
   const at = iso(nowMs);
   const doc: SaleRound = {
     id: roundId(no), no, status: 'open', open_usd: open, step_usd: s.stepUsd, snipe_minutes: s.snipeMinutes, pay_days: s.payDays,
@@ -132,7 +133,7 @@ export async function placeSaleBid(d: SaleData, user: Actor, amountIn: unknown, 
   let seq = 0, extended = false as boolean, prev = { user: '', usd: 0 };
   const after = await d.saleRounds.update(cur.id, (r) => {
     // Decided again on every compare-and-swap attempt: a bid that lost a race is checked against the new high bid.
-    problem = saleBidProblem(r, amount, user.id, nowMs);
+    problem = saleBidProblem(r, amount, user.id, nowMs, ladderPrice(sale.auction, nowMs));
     if (problem) return null;
     seq = r.bids_count + 1;
     prev = { user: r.high_user, usd: r.high_usd };

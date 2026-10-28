@@ -7,7 +7,7 @@ import { getSale, usdWhole } from './sale';
 import { saveSetting } from './settings';
 import type { ActionState } from './actions';
 import { cancelRound, decideBidder, latestRound, markRoundSold, passRound, placeSaleBid, registerBidder, startRound, type BidderProblem, type SaleBidError } from './sale-auction-store';
-import { OPEN_MAX_USD, OPEN_MIN_USD, nextMinBid } from './sale-auction-terms';
+import { ladderPrice, nextMinBid } from './sale-auction-terms';
 import { settleAndReport, tellOwner } from './sale-auction';
 
 /**
@@ -95,7 +95,8 @@ export async function placeSaleBidAction(_prev: ActionState, form: FormData): Pr
     if ('error' in r) {
       if (r.error === 'too_low') {
         const cur = await latestRound(d);
-        return { error: T(lang, `The lowest bid accepted now is ${usdWhole(cur ? nextMinBid(cur) : 0)}.`, `La puja mínima aceptada ahora es ${usdWhole(cur ? nextMinBid(cur) : 0)}.`, `Tawaran terendah yang diterima sekarang ${usdWhole(cur ? nextMinBid(cur) : 0)}.`) };
+        const min = usdWhole(cur ? nextMinBid(cur, ladderPrice(sale.auction)) : ladderPrice(sale.auction));
+        return { error: T(lang, `The lowest bid accepted now is ${min}.`, `La puja mínima aceptada ahora es ${min}.`, `Tawaran terendah yang diterima sekarang ${min}.`) };
       }
       return { error: BID_ERR[r.error][L] };
     }
@@ -127,9 +128,7 @@ export async function saleAuctionAdminAction(_prev: ActionState, form: FormData)
     if (action === 'start') {
       const sale = await getSale();
       if (sale.mode !== 'auction' || sale.status !== 'open') return { error: 'Set the sale to auction and open first (Settings → Sale of xaa.es).' };
-      const open = Number(str(form, 'openUsd').replace(/[^\d]/g, '')) || 0;
-      if (open && (open < OPEN_MIN_USD || open > OPEN_MAX_USD)) return { error: 'The opening bid must be between US$10,000,000 and US$100,000,000.' };
-      const r = await startRound(d, sale.auction, me.email, Date.now(), { openUsd: open || undefined });
+      const r = await startRound(d, sale.auction, me.email, Date.now());
       if (!r) return { error: 'A round is already running or awaiting the winner — cancel or finish it first.' };
       refresh();
       return { ok: `Round ${r.no} is open with an opening bid of ${usdWhole(r.open_usd)}.` };
