@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { SiteBeacon } from '@/components/SiteBeacon';
-import { Plus_Jakarta_Sans, Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import './copa2026.css';
 import { SITE } from '@/lib/site';
@@ -16,13 +16,10 @@ import { InstallBar } from '@/components/InstallBar';
 import { PWA_EARLY } from '@/lib/pwa-early';
 import { translator } from '@/lib/i18n';
 
-// Display face for headings. A clean grotesk rather than the old Playfair:
-// the serif read as ornamental next to a pricing table.
-const display = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['500', '600', '700', '800'], variable: '--font-display', display: 'swap' });
+// Display face for headings: Playfair Display, the serif of the palace (owner, 28 Oct 2026, request 69,
+// docs/BLUEPRINT.md §15). It replaces Plus Jakarta Sans everywhere `font-display` / `font-serif` is used.
+const display = Playfair_Display({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-display', display: 'swap' });
 const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
-// The serif of the xaa.es auction house on /acquire only (owner, 28 Oct 2026: "high class, super premium"). Not
-// preloaded: the browser fetches it when that section asks for it, so no other page pays for it.
-const serif = Playfair_Display({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-serif', display: 'swap', preload: false });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -47,7 +44,7 @@ export const metadata: Metadata = {
   other: { 'google-adsense-account': SITE.adClient },
 };
 
-export const viewport: Viewport = { themeColor: '#07112a', width: 'device-width', initialScale: 1, viewportFit: 'cover' };
+export const viewport: Viewport = { themeColor: '#0b1533', width: 'device-width', initialScale: 1, viewportFit: 'cover' };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const lang = await getLang();
@@ -58,7 +55,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     androidTitle: t('pwa.androidTitle'), android: [t('pwa.android1'), t('pwa.android2'), t('pwa.android3')] as [string, string, string],
   };
   return (
-    <html lang={lang} className={`${display.variable} ${sans.variable} ${serif.variable}`}>
+    <html lang={lang} className={`${display.variable} ${sans.variable}`}>
       <head>
         {/* Catches the browser's install offer before React starts (lib/pwa-early.ts). */}
         <script dangerouslySetInnerHTML={{ __html: PWA_EARLY }} />

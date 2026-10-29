@@ -64,13 +64,13 @@ export async function SiteHeader() {
   return (
     <header id="top">
       {/* Positioning strip — the promise and the payment rails, one line. */}
-      <div className="bg-[color:var(--accent-ink)] text-white">
+      <div className="site-strip">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-1.5 text-[11px] font-medium">
           <span className="flex items-center gap-2">
             <span className="mk-live-dot" />
             {t('promo.slot')}
           </span>
-          <span className="hidden items-center gap-3 text-white/75 sm:flex">
+          <span className="hidden items-center gap-3 text-[#e9dcbb]/80 sm:flex">
             <span>{t('promo.paid')}</span>
             <span aria-hidden>·</span>
             <span>{t('promo.milestone')}</span>
@@ -80,7 +80,7 @@ export async function SiteHeader() {
 
       {/* Masthead + navigation on one bar. Only this part sticks, so the
           promo strip scrolls away instead of eating the viewport. */}
-      <div className="sticky top-0 z-40 border-b border-[color:var(--line)] bg-white/85 backdrop-blur-md">
+      <div className="site-masthead sticky top-0 z-40">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4">
           <Link href="/" className="flex shrink-0 items-center gap-2.5">
             <BrandMark size={38} />
@@ -136,18 +136,18 @@ export async function SiteFooter() {
   const invest = await investVisible().catch(() => true);
   const company = await companyVisible().catch(() => false);
   return (
-    <footer className="mt-24 border-t border-[color:var(--line)] bg-[color:var(--surface)]">
+    <footer className="site-footer mt-24">
       <div className="mx-auto max-w-6xl px-4 py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5">
               <BrandMark size={36} lazy />
-              <p className="font-display text-xl font-extrabold tracking-tight">
+              <p className="font-display text-xl font-extrabold tracking-tight text-[#fbf3df]">
                 XAA<span className="accent-text">.es</span>
               </p>
             </div>
-            <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-gold-500">{SITE.expansion}</p>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-steel-500">
+            <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.22em] text-gold-300">{SITE.expansion}</p>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-[#d9cfbd]">
               {t('footer.tagline')}
             </p>
             {/* Owner, 18 Oct 2026: promote axto.io and xaa.es on every site — the company's own platform, from here. */}
@@ -155,7 +155,7 @@ export async function SiteFooter() {
               <a
                 href="https://axto.io/?utm_source=xaa.es&utm_medium=referral&utm_campaign=ecosystem"
                 rel="noopener"
-                className="eco-promo font-semibold text-gold-500 transition hover:text-gold-600"
+                className="eco-promo font-semibold text-gold-300 transition hover:text-white"
                 data-testid="footer-axto"
               >
                 {t('footer.axto')}
@@ -206,12 +206,12 @@ export async function SiteFooter() {
           />
         </div>
 
-        <p className="mt-12 border-t border-[color:var(--line)] pt-6 text-xs leading-relaxed text-steel-500">
+        <p className="mt-12 border-t border-[#e0b44d]/20 pt-6 text-xs leading-relaxed text-[#b5a88f]">
           {t('footer.legal')}
         </p>
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-steel-400">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-[#a3957c]">
           <p>© {new Date().getFullYear()} {SITE.domain} — {SITE.expansionPlain}</p>
-          <a href="#top" className="transition hover:text-gold-500">{t('footer.backToTop')}</a>
+          <a href="#top" className="transition hover:text-gold-300">{t('footer.backToTop')}</a>
         </div>
       </div>
     </footer>
@@ -221,11 +221,11 @@ export async function SiteFooter() {
 function FooterColumn({ title, links }: { title: string; links: [string, string][] }) {
   return (
     <div>
-      <p className="text-xs font-bold uppercase tracking-[0.12em] text-ink-900">{title}</p>
-      <ul className="mt-3.5 space-y-2.5 text-sm text-steel-500">
+      <p className="text-xs font-bold uppercase tracking-[0.18em] text-gold-300">{title}</p>
+      <ul className="mt-3.5 space-y-2.5 text-sm text-[#d9cfbd]">
         {links.map(([href, label]) => (
           <li key={href}>
-            <Link href={href} className="transition hover:text-gold-500">{label}</Link>
+            <Link href={href} className="transition hover:text-white">{label}</Link>
           </li>
         ))}
       </ul>

@@ -45,8 +45,8 @@ export default async function HomePage() {
       {/* ───────────────── Hero ───────────────── */}
       <section className="hero relative overflow-hidden">
         <div className="hero-grid absolute inset-0" />
-        <div className="mk-orb" style={{ width: 420, height: 420, left: -160, top: -200, background: '#bcd6ff', opacity: 0.55 }} />
-        <div className="mk-orb mk-orb-2" style={{ width: 340, height: 340, right: -130, bottom: -200, background: '#b8f1fb', opacity: 0.55 }} />
+        <div className="mk-orb" style={{ width: 420, height: 420, left: -160, top: -200, background: '#f3e2b0', opacity: 0.55 }} />
+        <div className="mk-orb mk-orb-2" style={{ width: 340, height: 340, right: -130, bottom: -200, background: '#bfe3d5', opacity: 0.55 }} />
         <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:py-20 lg:grid-cols-[1.15fr_.85fr] lg:py-28">
           <div className="mk-fade-up">
             <span className="chip max-w-full text-[9px] sm:text-[0.7rem]">
@@ -97,7 +97,7 @@ export default async function HomePage() {
               { letter: 'A', word: t('home.mean.a2Word'), body: t('home.mean.a2Body') },
               { letter: 'ES', word: t('home.mean.esWord'), body: t('home.mean.esBody') },
             ].map((x, i) => (
-              <div key={i} className="bg-white p-8">
+              <div key={i} className="bg-[color:var(--paper)] p-8">
                 <p className="font-display text-5xl font-extrabold accent-text">{x.letter}</p>
                 <p className="mt-2 font-display text-xl font-extrabold">{x.word}</p>
                 <p className="mt-3 text-sm leading-relaxed text-steel-500">{x.body}</p>
