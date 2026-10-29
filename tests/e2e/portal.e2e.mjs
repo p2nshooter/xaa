@@ -154,13 +154,23 @@ try {
     : fail('client opens a project', `${projectUrl} — ${(await page.locator('body').innerText()).slice(0, 300)}`);
   if (/\/portal\/projects\//.test(projectUrl)) await checkPage(page, 'client project page', new URL(projectUrl).pathname);
 
-  // Buy a template.
+  // Buy a template — only one whose bundle is uploaded is sold (BLUEPRINT request 72).
   await page.goto(BASE + '/templates', { waitUntil: 'networkidle' });
-  const tplLink = page.locator('a[href^="/templates/"]').first();
-  const tplHref = await tplLink.getAttribute('href');
+  const readySlug = await page.locator('[data-testid=template-state][data-ready="1"]').first().getAttribute('data-slug', { timeout: 3000 }).catch(() => null);
+  const buildingSlug = await page.locator('[data-testid=template-state][data-ready="0"]').first().getAttribute('data-slug', { timeout: 3000 }).catch(() => null);
+  if (buildingSlug) {
+    await page.goto(BASE + `/templates/${buildingSlug}`, { waitUntil: 'networkidle' });
+    const noBuy = (await page.getByRole('button', { name: /buy|order|beli|comprar/i }).count()) === 0;
+    noBuy && (await page.locator('[data-testid=notify-ready]').count()) === 1
+      ? pass('a template still in development is not sold', buildingSlug)
+      : fail('a template still in development is not sold', buildingSlug);
+  }
+  const tplHref = `/templates/${readySlug ?? buildingSlug ?? 'waitlist'}`;
   await checkPage(page, `template detail ${tplHref}`, tplHref);
   const buy = page.getByRole('button', { name: /buy|order|beli|comprar/i }).first();
-  if (await buy.count()) {
+  if (!readySlug) {
+    pass('client buys a template', 'no bundle uploaded on this database yet — payments.e2e uploads one and buys it');
+  } else if (await buy.count()) {
     await buy.click();
     await page.waitForURL(/\/portal\/orders\//, { timeout: 15000 }).catch(() => {});
     /\/portal\/orders\//.test(page.url())

@@ -8,6 +8,7 @@ import { pick, type Lang } from '@/lib/i18n';
 import { pageMetadata } from '@/lib/seo';
 import { SEO } from '@/content/seo-copy';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { readyTemplateSlugs } from '@/server/store';
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({ path: '/templates', copy: SEO.templates });
@@ -21,7 +22,7 @@ type Copy = {
   chip: string; h1a: string; h1b: string; heroLead: string;
   howBuy: string; whatGet: string;
   incBundle: string; incRebrand: string; incDemo: string; incZip: string;
-  from: string; view: string; popular: string;
+  from: string; view: string; popular: string; ready: string; building: string; status: string;
   tierBlurb: Record<TemplateTier, string>;
   ctaTitle: string; ctaLead: string; ctaPrimary: string; ctaSecondary: string;
 };
@@ -32,7 +33,8 @@ const COPY: Record<Lang, Copy> = {
     heroLead: 'Complete, production-ready applications. You buy once, change the logo and name, and launch. You get the full source code, the database and a setup guide — delivered as a single downloadable bundle after payment. Prices run from cheap starters to super-enterprise platforms whose source alone is worth hundreds of thousands to millions.',
     howBuy: 'How buying works', whatGet: 'What you get',
     incBundle: 'Full 100% source code + database', incRebrand: 'Step-by-step rebrand guide (logo, name, colours)', incDemo: 'A live demo where one exists', incZip: 'One ZIP bundle to download after payment',
-    from: 'from', view: 'View', popular: 'Popular',
+    from: 'from', view: 'View', popular: 'Popular', ready: 'Ready to download', building: 'In development',
+    status: 'Templates marked “Ready to download” can be bought and downloaded today. The others are in development and go on sale one by one, each on the day its bundle is finished and tested.',
     tierBlurb: {
       starter: 'Cheap, single-purpose apps you can ship this week.',
       business: 'Complete products for a real business, ready to rebrand.',
@@ -48,7 +50,8 @@ const COPY: Record<Lang, Copy> = {
     heroLead: 'Aplicaciones completas y listas para producción. Compras una vez, cambias el logo y el nombre, y lanzas. Recibes el código fuente completo, la base de datos y una guía de instalación — entregados como un único paquete descargable tras el pago. Los precios van desde starters económicos hasta plataformas super-enterprise cuyo código por sí solo vale de cientos de miles a millones.',
     howBuy: 'Cómo comprar', whatGet: 'Qué recibes',
     incBundle: 'Código fuente 100% + base de datos', incRebrand: 'Guía de rebranding paso a paso (logo, nombre, colores)', incDemo: 'Una demo en vivo cuando existe', incZip: 'Un paquete ZIP para descargar tras el pago',
-    from: 'desde', view: 'Ver', popular: 'Popular',
+    from: 'desde', view: 'Ver', popular: 'Popular', ready: 'Lista para descargar', building: 'En desarrollo',
+    status: 'Las plantillas marcadas “Lista para descargar” se compran y descargan hoy. Las demás están en desarrollo y salen a la venta una a una, cada una el día en que su paquete está terminado y probado.',
     tierBlurb: {
       starter: 'Apps económicas de un solo propósito que lanzas esta semana.',
       business: 'Productos completos para un negocio real, listos para renombrar.',
@@ -64,7 +67,8 @@ const COPY: Record<Lang, Copy> = {
     heroLead: 'Aplikasi lengkap dan siap produksi. Anda beli sekali, ganti logo dan nama, lalu luncurkan. Anda mendapat kode sumber penuh, database, dan panduan setup — dikirim sebagai satu bundel yang bisa diunduh setelah pembayaran. Harga mulai dari starter murah hingga platform super-enterprise yang kode-nya saja bernilai ratusan ribu hingga jutaan.',
     howBuy: 'Cara membeli', whatGet: 'Yang Anda dapat',
     incBundle: 'Kode sumber 100% + database', incRebrand: 'Panduan ganti merek langkah demi langkah (logo, nama, warna)', incDemo: 'Demo langsung bila tersedia', incZip: 'Satu bundel ZIP untuk diunduh setelah bayar',
-    from: 'mulai', view: 'Lihat', popular: 'Populer',
+    from: 'mulai', view: 'Lihat', popular: 'Populer', ready: 'Siap diunduh', building: 'Masih dikembangkan',
+    status: 'Template bertanda “Siap diunduh” bisa dibeli dan diunduh hari ini. Yang lain masih dikembangkan dan mulai dijual satu per satu, masing-masing pada hari bundelnya selesai dan lolos uji.',
     tierBlurb: {
       starter: 'Aplikasi murah satu tujuan yang bisa Anda luncurkan minggu ini.',
       business: 'Produk lengkap untuk bisnis nyata, siap diganti merek.',
@@ -78,7 +82,7 @@ const COPY: Record<Lang, Copy> = {
 };
 
 export default async function TemplatesPage() {
-  const lang = await getLang();
+  const [lang, ready] = await Promise.all([getLang(), readyTemplateSlugs().catch(() => new Set<string>())]);
   const c = pick(lang, COPY);
   return (
     <>
@@ -96,6 +100,7 @@ export default async function TemplatesPage() {
               <li key={x} className="flex gap-2 text-sm text-steel-600"><span className="tick">✓</span>{x}</li>
             ))}
           </ul>
+          <p className="mt-6 max-w-2xl rounded-lg bg-[color:var(--surface)] p-3 text-xs leading-relaxed text-steel-500" data-testid="templates-status">{c.status}</p>
         </div>
       </section>
 
@@ -116,6 +121,9 @@ export default async function TemplatesPage() {
                 <article key={t.slug} className={`premium-card flex h-full flex-col p-6 ${t.popular ? 'ring-2 ring-[color:var(--accent)]' : ''}`}>
                   {t.popular ? <span className="badge badge-blue absolute right-5 top-5">{c.popular}</span> : null}
                   <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-steel-400">{t.category}</p>
+                  <p className={`mt-2 w-fit rounded-full px-2 py-0.5 text-[10px] font-bold ${ready.has(t.slug) ? 'bg-green-100 text-green-800' : 'bg-[color:var(--surface)] text-steel-500'}`} data-testid="template-state" data-slug={t.slug} data-ready={ready.has(t.slug) ? '1' : '0'}>
+                    {ready.has(t.slug) ? c.ready : c.building}
+                  </p>
                   <h3 className="mt-1 font-display text-lg font-bold leading-tight">{t.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-steel-500">{t.tagline}</p>
                   <div className="mt-4 border-t border-[color:var(--line)] pt-3">

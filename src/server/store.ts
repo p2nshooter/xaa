@@ -165,6 +165,14 @@ export async function getBundleMeta(slug: string): Promise<BundleMeta | null> {
   return meta;
 }
 
+/**
+ * The templates whose bundle is uploaded. Only these can be bought (a template still in
+ * development is shown as such, never sold as ready — the auction lots the same set).
+ */
+export async function readyTemplateSlugs(): Promise<Set<string>> {
+  return new Set((await (await data()).bundles.all(500)).map((b) => b.slug));
+}
+
 export async function saveBundle(slug: string, file: File, actor: string): Promise<void> {
   if (!getTemplate(slug)) throw new Error('Unknown template.');
   const store = await bucket();

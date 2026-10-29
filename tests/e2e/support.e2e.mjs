@@ -23,6 +23,25 @@ async function adminLogin() {
 }
 
 try {
+  // ── 0. Templates: the AI knows which are on sale and which are still being built (request 72) ─
+  const asker = await (await browser.newContext()).newPage();
+  await asker.goto(BASE + '/templates', { waitUntil: 'networkidle' });
+  await asker.getByRole('button', { name: /Chat with us/ }).click();
+  const dlg2 = asker.getByRole('dialog');
+  await dlg2.locator('select').selectOption('templates');
+  await dlg2.getByLabel('Your name').fill('Template Buyer');
+  await dlg2.getByLabel('Email (for our reply)').fill('templates@example.com');
+  await dlg2.getByLabel('Your message').fill('Is the CRM template ready to download today?');
+  const linesBefore = readFileSync(LOG, 'utf8').split('\n').filter(Boolean).length;
+  await dlg2.getByRole('button', { name: 'Start chat' }).click();
+  await dlg2.getByText(/We accept USDT/).first().waitFor({ timeout: 40000 }).catch(() => {});
+  const tplCtx = readFileSync(LOG, 'utf8').split('\n').filter(Boolean).slice(linesBefore).join('\n');
+  ok(/READY TO BUY AND DOWNLOAD NOW/.test(tplCtx) && /IN DEVELOPMENT, NOT ON SALE YET/.test(tplCtx), 'AI context for templates separates ready templates from those in development');
+  const readyPart = tplCtx.split('READY TO BUY AND DOWNLOAD NOW')[1]?.split('IN DEVELOPMENT, NOT ON SALE YET')[0] ?? '';
+  const buildingPart = tplCtx.split('IN DEVELOPMENT, NOT ON SALE YET')[1]?.split('PAYMENTS:')[0] ?? '';
+  ok(!/CRM/.test(readyPart) && /CRM/.test(buildingPart), 'a template without its bundle is never described as ready', readyPart.slice(0, 160));
+  await asker.context().close();
+
   // ── 1. Visitor chats while nobody is online → AI answers, scrubbed ─────────
   await visitor.goto(BASE + '/services', { waitUntil: 'networkidle' });
   await visitor.getByRole('button', { name: /Chat with us/ }).click();

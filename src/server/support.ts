@@ -2,6 +2,7 @@ import { appEnv, newId, nowIso } from './db';
 import { data } from './data';
 import { messageId, messageStream, messagesAfter } from './r2/schema';
 import { knowledgeFor, scrub, type Topic } from './support-kb';
+import { readyTemplateSlugs } from './store';
 
 /**
  * Live support chat.
@@ -168,7 +169,8 @@ async function askAi(thread: SupportThread, question: string): Promise<string | 
   const url = env.SUPPORT_AI_URL || DEFAULT_AI_URL;
   const history = (await listMessages(thread.id)).slice(-6)
     .map((m) => `${m.sender === 'visitor' ? 'Visitor' : m.sender === 'admin' ? 'Studio' : 'Assistant'}: ${m.body}`).join('\n');
-  const context = `${knowledgeFor(thread.topic)}\n\nCONVERSATION SO FAR (topic: ${TOPIC_LABEL[thread.topic]}):\n${history}`.slice(-6000);
+  const ready = thread.topic === 'templates' ? await readyTemplateSlugs().catch(() => undefined) : undefined;
+  const context = `${knowledgeFor(thread.topic, ready)}\n\nCONVERSATION SO FAR (topic: ${TOPIC_LABEL[thread.topic]}):\n${history}`.slice(-6000);
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 25_000);
   try {

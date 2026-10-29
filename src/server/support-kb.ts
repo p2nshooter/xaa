@@ -35,9 +35,20 @@ function packagesText(): string {
     PACKAGES.map((p) => `${p.name} ${priceRange(p.priceMin, p.priceMax, p.openEnded)}, ${p.timeline}`).join('; ') + '.';
 }
 
-function templatesText(): string {
-  return 'READY-MADE SAAS TEMPLATES (one-time price, full source code + database + setup guide in one download after payment): ' +
-    TEMPLATES.map((t) => `${t.name} ${t.priceMax ? `${eur(t.price)}–${eur(t.priceMax)}` : eur(t.price)}`).join('; ') + '.';
+/**
+ * The template catalogue as the AI may describe it. Only a template whose bundle is uploaded
+ * is on sale (docs/BLUEPRINT.md request 72); the rest are in development and must never be
+ * promised as ready. Without the list the AI points to each template page instead.
+ */
+function templatesText(ready?: ReadonlySet<string>): string {
+  const label = (t: (typeof TEMPLATES)[number]) => `${t.name} ${t.priceMax ? `${eur(t.price)}–${eur(t.priceMax)}` : eur(t.price)}`;
+  const head = 'SAAS TEMPLATES (one-time price, full source code + database + setup guide in one download after payment). ';
+  if (!ready) return head + 'Each template page at ' + SITE.url + '/templates says whether it is ready to download or still in development; only a ready one can be bought. Catalogue: ' + TEMPLATES.map(label).join('; ') + '.';
+  const onSale = TEMPLATES.filter((t) => ready.has(t.slug));
+  const building = TEMPLATES.filter((t) => !ready.has(t.slug));
+  return head +
+    `READY TO BUY AND DOWNLOAD NOW: ${onSale.length ? onSale.map(label).join('; ') : 'none yet'}. ` +
+    `IN DEVELOPMENT, NOT ON SALE YET (never promise a date; each goes on sale the day its bundle is finished and tested): ${building.length ? building.map(label).join('; ') : 'none'}.`;
 }
 
 function careText(): string {
@@ -48,7 +59,7 @@ function careText(): string {
 const NEGOTIATION = `PRICE NEGOTIATION: Published prices are ranges; the final contract amount is fixed after a scope review. The team can adjust scope (fewer pages or features, phased delivery) to fit a budget. Any change to a price is confirmed in writing by the team in this chat — the assistant cannot approve it.`;
 
 /** The context for one reply: rules + the facts relevant to the topic, kept under the model's budget. */
-export function knowledgeFor(topic: Topic): string {
+export function knowledgeFor(topic: Topic, readyTemplates?: ReadonlySet<string>): string {
   const parts: string[] = [RULES];
   switch (topic) {
     case 'crypto':
@@ -59,7 +70,7 @@ export function knowledgeFor(topic: Topic): string {
       parts.push(NEGOTIATION, packagesText(), PAYMENTS);
       break;
     case 'templates':
-      parts.push(templatesText(), PAYMENTS);
+      parts.push(templatesText(readyTemplates), PAYMENTS);
       break;
     case 'project':
       parts.push(PROCESS, PAYMENTS);

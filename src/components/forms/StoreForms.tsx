@@ -93,7 +93,7 @@ export function BundleUploadForm({ slug, hasBundle }: { slug: string; hasBundle:
   return (
     <form action={action} className="panel p-5">
       <p className="text-xs font-extrabold uppercase tracking-wide text-steel-500">Studio — bundle (.zip)</p>
-      <p className="mt-1 text-xs text-steel-500">{hasBundle ? 'A bundle is uploaded. Uploading again replaces it.' : 'No bundle uploaded yet — buyers see a "preparing" state until you add one.'}</p>
+      <p className="mt-1 text-xs text-steel-500">{hasBundle ? 'A bundle is uploaded. Uploading again replaces it.' : 'No bundle uploaded yet — the template shows "In development" and cannot be bought until you add one.'}</p>
       <Notice error={state.error} ok={state.ok} />
       <input type="hidden" name="slug" value={slug} />
       <input type="file" name="bundle" accept=".zip,application/zip" className="mt-2 block w-full text-sm" />

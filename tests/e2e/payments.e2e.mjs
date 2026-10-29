@@ -76,9 +76,26 @@ ok(/5 wallets/i.test(board), 'the 5 company wallets are active');
 ok(/ECB 2026-10-27/i.test(board) && !/stale/i.test(board), 'the day\'s reference rate is on the board');
 ok(/17,512\.35/.test(board) && /4\.0545/.test(board), 'IDR from the ECB and SAR from the 3.75 USD peg (1.0812 × 3.75)');
 
-// ── 2. a buyer's order: every currency, converted, IDR code, coins with QR ─
+// ── 1b. only a template with its bundle is sold (owner, 29 Oct 2026; BLUEPRINT request 72) ─
 const buyer = await page('buyer');
 await register(buyer, 'Pembeli Satu');
+await buyer.goto(BASE + '/templates/crm-starter', { waitUntil: 'networkidle' });
+ok((await buyer.locator('[data-testid=bundle-state]').getAttribute('data-ready')) === '0', 'a template without its bundle says it is in development');
+ok((await buyer.locator('form button[type=submit]', { hasText: /buy|order|get/i }).count()) === 0 && (await buyer.locator('[data-testid=notify-ready]').count()) === 1, 'it has no buy button, only "tell me when it is ready"');
+await admin.goto(BASE + '/templates/waitlist', { waitUntil: 'networkidle' });
+if ((await admin.locator('[data-testid=bundle-state]').getAttribute('data-ready')) !== '1') {
+  const emptyZip = Buffer.from([0x50, 0x4b, 0x05, 0x06, ...new Array(18).fill(0)]);
+  await admin.locator('input[name=bundle]').setInputFiles({ name: 'waitlist.zip', mimeType: 'application/zip', buffer: emptyZip });
+  await admin.getByRole('button', { name: /Upload bundle/ }).click();
+  await admin.locator('form [role=status], form [role=alert]').first().waitFor({ timeout: 20000 }).catch(() => {});
+  await admin.goto(BASE + '/templates/waitlist', { waitUntil: 'networkidle' });
+}
+ok((await admin.locator('[data-testid=bundle-state]').getAttribute('data-ready')) === '1', 'the studio uploads the bundle and the template is ready');
+await buyer.goto(BASE + '/templates', { waitUntil: 'networkidle' });
+ok((await buyer.locator('[data-testid=template-state][data-slug=waitlist]').getAttribute('data-ready')) === '1'
+  && (await buyer.locator('[data-testid=template-state][data-slug=crm-starter]').getAttribute('data-ready')) === '0', 'the catalogue marks ready and in-development templates');
+
+// ── 2. a buyer's order: every currency, converted, IDR code, coins with QR ─
 await buyer.goto(BASE + '/templates/waitlist', { waitUntil: 'networkidle' });
 await buyer.locator('form button[type=submit]', { hasText: /buy|order|get/i }).first().click();
 await buyer.waitForURL(/\/portal\/orders\//, { timeout: 20000 });
@@ -161,7 +178,7 @@ ok((await buyer.locator('[data-testid=pay-tracker]').getAttribute('data-stage'))
 // ── 4. phone width, Indonesian ─────────────────────────────────────────────
 const phone = await page('phone', { width: 390, height: 844 });
 await register(phone, 'Pembeli Dua');
-await phone.goto(BASE + '/templates/linkinbio?lang=id', { waitUntil: 'networkidle' });
+await phone.goto(BASE + '/templates/waitlist?lang=id', { waitUntil: 'networkidle' });
 await phone.locator('form button[type=submit]').first().click();
 await phone.waitForURL(/\/portal\/orders\//, { timeout: 20000 });
 await phone.goto(phone.url().split('?')[0] + '?lang=id', { waitUntil: 'networkidle' });
