@@ -108,6 +108,9 @@ Arti tanda:
 | 61 | (27 Okt 2026) „Baik axto.io dan xaa.es tolong ambil rek pembayaranya dari https://ulyah.com/donasi / dari repo termasuk jaringannya barcode nya … Pastikan konversi mata uang sesuai dengan rekening BNI untuk manual, dan pandu customer untuk pembayaran manual sampai sukses“ | ✅ 27 Okt: dibangun — §12.4 (13 rekening wondr by BNI aktif + 5 dompet dengan QR dari server, konversi kurs ECB harian / koin per jam, pembulatan ke atas, kode unik IDR, dikunci 72 jam (koin 1 jam), toleransi 2 %, panduan bayar 6 langkah en/es/id + pelacak status + „perlu perhatian"). Belum: cek hash kripto otomatis. Rencana awal: 13 rekening BNI wondr (per mata uang) + 5 dompet kripto (dengan jaringan & QR) dari sumber ulyah.com/donasi, disimpan terenkripsi, tampil hanya di checkout pembeli yang masuk; jumlah dikonversi ke mata uang rekening yang dipilih (kurs harian); panduan bayar manual langkah demi langkah sampai lunas. axto.io: guardian-ai REQUESTS 104 | §12 |
 | 62 | (27 Okt 2026) „buatkan juga menu husus penjualan domain + website article husus pengajuan adsense dengan keterangan 40-100 article min 1500 kata per artikel berkualitas tinggi, hanya admin yg bisa ngisi, dengan berbagai macam bahasa untuk custom … tp ada yg sudah jadi tinggal pakai, start $350 untuk 40 article dan $500 untuk 100 article dengan SEO niche berkualitas“ · „tolong jual website2 saya yg ada, untuk 1fr.fr tilawa.de xad.es dawa.im harganya $30rb dengan puluhan ribu kitab, kasih tau jg bahasa yg d gunakan setiap websitenya, yg jgn d jual ulyah.com xaa.es dan axto.io … Tolong hitung ada berapa article, klo bisa penuhin semuanya biar total setiap website 45 artikel“ | 📝 menu **AdSense sites**: siap pakai (diisi admin), pesanan custom US$350 / 40 artikel dan US$500 / 100 artikel (≥ 1.500 kata, banyak bahasa), situs mapan 1fr.fr (Prancis), tilawa.de (Jerman), xad.es (Inggris), dawa.im (Spanyol) masing-masing US$30.000; ulyah.com, xaa.es, axto.io diblokir dari daftar jual. Hitungan 27 Okt: 0 artikel blog di keempat situs (isinya kisah, hadis, kitab) → bagian artikel baru + 45 artikel per situs | §13 |
 | 63 | (27 Okt 2026) „Bukan biaya 30%, tp komisi penjualan dari lelang domain sebesar 30%“ | ✅ dicatat: 30 % adalah **komisi penjualan** dari harga akhir domain anggota yang **terjual** (penjual menerima 70 %). Tidak ada biaya pasang, biaya verifikasi DNS, biaya lelang ulang, atau biaya apa pun bila domain tidak laku | §10.6 |
+| 70 | (28 Okt 2026, guardian-ai REQUESTS 129) "Jika sudah selesai semua dan sudah d test dan di pastikan 100% siap produksi zero bug, error dan tanpa miss, baru lanjut template saas untuk di lelang di xaa.es dengan link demo" | ⏳ urutan: permintaan 68 dan 69 selesai, dites dan tayang → baru templat SaaS untuk dilelang dengan tautan demo (permintaan 65, §10) | §10 |
+| 69 | (28 Okt 2026, guardian-ai REQUESTS 128) "Tolong CSS xaa.es di rombak warnanya font nya background nya agar lebih premium, high class, indah, cantik selayaknya istana raja nabi sulaiman dan seperti di syurga website dengan animasi2 aliran sungai syurga" | ✅ 29 Okt: istana kristal di atas air yang mengalir — token warna, Playfair Display, pola bintang, sungai bergerak di hero, aula gelap dan footer (§15) | §15 |
+| 68 | (28 Okt 2026, guardian-ai REQUESTS 126–127) White label: "Bikin bisnis white label axto.io, 100% white label bisa menggunakan brand sendiri … Biaya white label $500k … 30% … tahun ke dua dan seterusnya biaya tahunan turun menjadi $100k … 20% dari setiap transaksi" dan "Xaa.es juga dengan sistem yg sama" | 🔄 rancangan bersama di guardian-ai `docs/BLUEPRINT-V4.md` §36 (instans khusus per mitra, rekonsiliasi otomatis, uang langsung ke mitra, buku besar bertanda tangan, tagihan bagi hasil otomatis); xaa.es menyusul setelah axto.io (fase WL7). Bahasa instans mitra (guardian-ai REQUESTS 130): Inggris ditambah satu bahasa mitra; di xaa.es pilihannya bahasa yang sudah ada (Spanyol atau Indonesia) sampai kamus bahasa lain ditambahkan | guardian-ai §36 |
 | 67 | (28 Okt 2026, guardian-ai REQUESTS 125) "Harga akuisis axto dan xaa jgn start langsung gede gitu, start $10, setiap minggu naikin $250k", lalu dikonfirmasi pemilik: US$10 juta (bukan US$10), dihitung sejak 28 Okt melewati semua putaran, dan "Start $10jt, setiap minggu naikin $100k" | ✅ tawaran pembuka tidak lagi diundi US$10–100 juta: tangga mingguan, US$10.000.000 sejak 28 Okt 2026 00:00 WIB ditambah US$100.000 setiap minggu penuh, sama untuk semua dan tidak mulai ulang di putaran baru; setiap tawaran minimal tangga hari itu; papan dan hero menyebut kenaikan berikutnya | §14 |
 | 66 | (28 Okt 2026, guardian-ai REQUESTS 120) "Untuk axto.io & xaa.es minimal penawaran range random dari $10jt-$100jt, ubah bentuk penjualannya seperti lelang … seolah peluang mendapatkan harga terbaik … dan segera ambil" — dan (REQUESTS 124) tampilannya "high class, super premium, indah" | ✅ penjualan xaa.es sendiri (/acquire) menjadi lelang sungguhan seperti axto.io (PR guardian-ai #95): tawaran pembuka kini tangga mingguan (permintaan 67; semula diundi acak US$10–100 juta per putaran), tawaran nyata, tenggat nyata dengan anti-snipe, tanpa reserve tersembunyi, penawar disetujui pemilik; karena xaa.es tidak menerima pembayaran sebesar ini lewat checkout, pemenang menutup lewat kesepakatan, bukti dana dan wire/escrow, lalu admin menandai putaran terjual. Rinciannya di §14 | §14 |
 | 65 | (28 Okt 2026) "Lanjut pekerjaan xaa.es termasuk auction script template milik xaa.es lihat blueprint nya… Bikinin seluruh template SaaS nya, script yg di jual, dan link demi, pastikan seluruhnya 100% siap di beli customer, jgn ada satu huruf pun, satu fitur pun, satu link pun yg tidak d pastikan 100% siap produksi" | 🔄 dicatat 28 Okt: dikerjakan setelah axto.io siap produksi dan lelangnya di atas beranda (guardian-ai REQUESTS 112–114). Lingkup: §10 lelang (script, domain, website, penjual) dan `docs/TEMPLATES-BLUEPRINT.md` (semua templat SaaS dan script yang dijual, tautan unduh dan pembelian) |
@@ -693,4 +696,64 @@ pembuka (menggantikan undian acak US$10–100 juta).
     pemimpin dan yang terlampaui diberi tahu, tanpa email/telepon di halaman publik, meja admin melihat kontak, admin
     tidak bisa menawar, pembatalan, putaran baru di harga tangga yang sama, lebar 390 px tanpa gulir samping, tanpa
     galat halaman.
+
+## 15. Tampilan baru xaa.es: istana kristal di atas sungai yang mengalir (permintaan 69) — ✅ 29 Okt
+
+Pemilik, 28 Okt 2026: "Tolong CSS xaa.es di rombak warnanya font nya background nya agar lebih premium, high class, indah,
+cantik selayaknya istana raja nabi sulaiman dan seperti di syurga website dengan animasi2 aliran sungai syurga".
+
+**Gagasan.** Dua gambaran menjadi bahasa rupa situs. Pertama, istana Nabi Sulaiman yang lantainya kaca bening di atas air
+(QS An-Naml 27:44). Kedua, taman yang di bawahnya mengalir sungai-sungai. Ornamen hanya arsitektur dan pola: lengkung,
+bintang delapan geometris, marmer, emas, air, cahaya. Tidak ada gambar makhluk.
+
+**Bahasa rupa.**
+- **Warna** (token di `:root`, dipakai semua komponen):
+  - gading marmer `#fbf8f1` untuk latar terang; lapis malam `#0b1533` untuk bagian gelap;
+  - emas kerajaan `#c9a24a`, `#e0b44d`, `#f3d98b` sebagai aksen utama;
+  - zamrud `#0f5c4a`, `#1f8a70` untuk aksen kedua; mutiara `#f4efe6` dan teks tinta `#1b1a17`.
+  - Palet Tailwind `gold` yang selama ini biru menjadi emas sungguhan; biru merek tidak dipakai lagi sebagai aksen.
+- **Huruf**: judul dalam Playfair Display (serif istana, angka lining), teks dalam Inter, label huruf kapital berspasi
+  lebar dalam emas.
+- **Latar**:
+  - marmer gading dengan urat halus (gradien CSS, tanpa gambar berat);
+  - pola bintang delapan sangat tipis (SVG inline);
+  - bagian gelap bernuansa lapis dengan cahaya emas.
+- **Sungai yang mengalir**:
+  - gelombang air berlapis (SVG) yang mengalir pelan di bawah hero dan sebagai pembatas antarbagian;
+  - kilau cahaya bergerak di permukaan air;
+  - "lantai kaca" pada kartu: pantulan dan tepi kristal.
+  - Semua animasi hanya transform dan opacity (ringan untuk GPU) dan berhenti di `prefers-reduced-motion`.
+- **Komponen**: tombol emas berlapis (garis emas saat nonaktif), kartu kaca bertepi emas, header gading tembus pandang
+  dengan garis emas, footer lapis malam dengan sungai di atasnya, ikon WhatsApp/chat tetap terbaca.
+
+**Cakupan dan uji.**
+- Seluruh halaman publik, portal klien dan meja admin memakai token yang sama, tanpa mengubah teks atau alur.
+- Lelang situs (§14) sudah bergaya emas dan tetap selaras.
+- Kontras teks memenuhi WCAG AA (diperiksa di browser).
+- Diperiksa di 1440 px dan 390 px pada beranda, layanan, templat, lelang, acquire, portal dan admin: tanpa gulir samping,
+  tanpa galat konsol.
+- `npm test`, e2e portal, lelang lot dan lelang situs tetap lulus.
+
+**Dibangun (29 Okt).**
+- `tailwind.config.ts`: palet `gold` menjadi emas sungguhan (500/600 untuk teks), `ink` lapis malam, `jade` zamrud,
+  `steel` dan `slate` abu marmer hangat, sehingga kelas utilitas di semua halaman ikut tanpa mengubah tiap pemanggil.
+- `layout.tsx`: Playfair Display menjadi huruf judul untuk `font-display`/`font-serif` (menggantikan Plus Jakarta Sans);
+  warna tema lapis.
+- `globals.css`:
+  - token warna istana dan latar marmer gading;
+  - pola bintang delapan di hero dan `band`;
+  - sungai tiga lapis yang mengalir: arus zamrud, arus pirus, dan riak emas. Ada di bawah setiap `.hero`, di aula gelap
+    (`.panel-dark`, `.metal-wash`), dan masuk ke footer dari atas. Setiap lapis bergeser sepanjang gelombang penuh,
+    jadi tidak ada sambungan yang terlihat di lebar layar mana pun;
+  - kilau cahaya di hero; kartu kaca yang disapu kilau saat disentuh; tombol emas, tombol hantu bertepi emas, chip,
+    lencana dan fokus emas; masthead gading tembus pandang bergaris emas; aula footer lapis.
+  - Semua animasi berhenti di `prefers-reduced-motion`.
+- Warna biru yang tersisa di bilah PWA, halaman acquire, bola cahaya hero dan manifest diganti emas dan lapis.
+- **Kontras**: teks emas tua `#8a6514` 5,0:1 di atas gading; abu `#6b604f` 5,8:1; tombol emas bertinta gelap 7,7:1;
+  teks footer di atas lapis 11,6:1.
+- **Uji**:
+  - `npm test` 63/63;
+  - e2e lelang situs 39/39, portal 41/41, lelang lot 40/40;
+  - browser 1440 px dan 390 px di beranda, layanan, lelang, acquire, templat, masuk, daftar, portal, meja admin,
+    lelang situs dan pengaturan: tanpa gulir samping, tanpa galat konsol.
 

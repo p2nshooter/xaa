@@ -73,8 +73,8 @@ export function HomeContent() {
       <section className="relative overflow-hidden border-b border-[color:var(--accent-soft)]">
         <div className="pitch-stripes absolute inset-0" aria-hidden />
         <div className="pitch-motif absolute inset-0 opacity-40" aria-hidden />
-        <div className="mk-orb" style={{ width: 360, height: 360, left: -130, top: -90, background: '#bcd6ff', opacity: 0.5 }} aria-hidden />
-        <div className="mk-orb mk-orb-2" style={{ width: 300, height: 300, right: -70, bottom: -130, background: '#b8f1fb', opacity: 0.5 }} aria-hidden />
+        <div className="mk-orb" style={{ width: 360, height: 360, left: -130, top: -90, background: '#f3e2b0', opacity: 0.5 }} aria-hidden />
+        <div className="mk-orb mk-orb-2" style={{ width: 300, height: 300, right: -70, bottom: -130, background: '#bfe3d5', opacity: 0.5 }} aria-hidden />
         <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-20">
           <div className="mk-fade-up">
             <span className="trophy-chip"><span className="wc-ball" aria-hidden>⚽</span> World Cup 2026 · USA · Canada · Mexico</span>
