@@ -1,5 +1,17 @@
 # xaa.es — standing rules
 
+## 0. ★ READ FIRST: THE BUSINESS MASTER BLUEPRINT ★
+The whole business of xaa.es and axto.io follows **`docs/BUSINESS-MASTER-BLUEPRINT.md` in the guardian-ai repository**
+(owner, 29 Oct 2026, guardian-ai REQUESTS 131; request 71 here). Read it before any work. In one breath:
+- **Everything runs by itself.**
+- **The company is paid first** (prepaid partner credits).
+- **Partners own their clients completely.**
+- **One strict Licence Authority** issues every licence.
+- **Admin controls every member.**
+- **Affiliate, Reseller and White Label can each be shown or hidden in Admin** (default shown).
+- **The AI chat answers everything public and never reveals company secrets.**
+- **Build phase by phase.** xaa.es's own terms are §4.2 there; its phase is P9.
+
 These rules come from the owner and apply to every change in this repository. Record each new owner command in
 `docs/BLUEPRINT.md` before building it.
 
