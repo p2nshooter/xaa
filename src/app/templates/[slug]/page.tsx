@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 type Copy = {
   store: string; buy: string; demo: string; noDemo: string; price: string;
   featTitle: string; incTitle: string; rebrandTitle: string; rebrandLead: string;
-  bundleReady: string; bundlePrep: string; howTitle: string; how: string[];
+  bundleReady: string; bundlePrep: string; notify: string; howTitle: string; how: string[];
   ctaTitle: string; ctaLead: string;
   admin: string; account: string; email: string; password: string; accountNote: string;
   galleryEyebrow: string; galleryTitle: string; galleryLead: string; phone: string;
@@ -46,7 +46,7 @@ const COPY: Record<Lang, Copy> = {
   en: {
     store: 'SaaS templates', buy: 'Buy — get the bundle', demo: 'Live demo', noDemo: 'Demo on request', price: 'One-time price',
     featTitle: 'What it does', incTitle: 'What you get in the bundle', rebrandTitle: 'Make it yours', rebrandLead: 'After download, these are the only things you change to rebrand it.',
-    bundleReady: 'Bundle ready — download unlocks after payment', bundlePrep: 'Bundle is being prepared — you can still buy; we deliver it on confirmation',
+    bundleReady: 'Bundle ready — download unlocks after payment', bundlePrep: 'In development — not on sale yet. It goes on sale the day its bundle is finished and tested.', notify: 'Tell me when it is ready',
     howTitle: 'How buying works', how: ['Click buy — an order opens in your portal.', 'Pay the one-time price (USDT, PayPal or bank).', 'We confirm the payment.', 'Download the single ZIP bundle — full source, database and setup guide.'],
     ctaTitle: 'Want it customised first?', ctaLead: 'We can rebrand, extend or deploy it for you as a fixed-price add-on. Tell us what you need.',
     admin: 'Open the admin console', account: 'Demo account', email: 'Email', password: 'Password',
@@ -56,7 +56,7 @@ const COPY: Record<Lang, Copy> = {
   es: {
     store: 'Plantillas SaaS', buy: 'Comprar — obtener el paquete', demo: 'Demo en vivo', noDemo: 'Demo a petición', price: 'Precio único',
     featTitle: 'Qué hace', incTitle: 'Qué incluye el paquete', rebrandTitle: 'Hazlo tuyo', rebrandLead: 'Tras descargar, esto es lo único que cambias para renombrarlo.',
-    bundleReady: 'Paquete listo — la descarga se desbloquea tras el pago', bundlePrep: 'El paquete se está preparando — puedes comprar; lo entregamos al confirmar',
+    bundleReady: 'Paquete listo — la descarga se desbloquea tras el pago', bundlePrep: 'En desarrollo — aún no está a la venta. Sale a la venta el día en que su paquete esté terminado y probado.', notify: 'Avísame cuando esté lista',
     howTitle: 'Cómo comprar', how: ['Haz clic en comprar — se abre un pedido en tu portal.', 'Paga el precio único (USDT, PayPal o banco).', 'Confirmamos el pago.', 'Descarga el único paquete ZIP — código, base de datos y guía.'],
     ctaTitle: '¿Lo quieres personalizado antes?', ctaLead: 'Podemos renombrarlo, ampliarlo o desplegarlo por ti como un adicional a precio fijo. Dinos qué necesitas.',
     admin: 'Abrir la consola de administración', account: 'Cuenta de demostración', email: 'Correo', password: 'Contraseña',
@@ -66,7 +66,7 @@ const COPY: Record<Lang, Copy> = {
   id: {
     store: 'Template SaaS', buy: 'Beli — dapatkan bundel', demo: 'Demo langsung', noDemo: 'Demo sesuai permintaan', price: 'Harga sekali bayar',
     featTitle: 'Apa fungsinya', incTitle: 'Yang Anda dapat dalam bundel', rebrandTitle: 'Jadikan milik Anda', rebrandLead: 'Setelah diunduh, ini saja yang Anda ubah untuk mengganti merek.',
-    bundleReady: 'Bundel siap — unduhan terbuka setelah pembayaran', bundlePrep: 'Bundel sedang disiapkan — Anda tetap bisa membeli; kami kirim saat dikonfirmasi',
+    bundleReady: 'Bundel siap — unduhan terbuka setelah pembayaran', bundlePrep: 'Masih dikembangkan — belum dijual. Mulai dijual pada hari bundelnya selesai dan lolos uji.', notify: 'Kabari saya saat siap',
     howTitle: 'Cara membeli', how: ['Klik beli — pesanan terbuka di portal Anda.', 'Bayar harga sekali (USDT, PayPal, atau bank).', 'Kami konfirmasi pembayaran.', 'Unduh satu bundel ZIP — kode penuh, database, dan panduan setup.'],
     ctaTitle: 'Ingin dikustomisasi dulu?', ctaLead: 'Kami bisa mengganti merek, memperluas, atau men-deploy-kannya untuk Anda sebagai tambahan harga tetap. Beri tahu kebutuhan Anda.',
     admin: 'Buka konsol admin', account: 'Akun demo', email: 'Email', password: 'Kata sandi',
@@ -90,7 +90,7 @@ export default async function TemplateDetail({ params }: { params: Promise<{ slu
       <Breadcrumbs trail={[{ k: 'nav.templates', href: '/templates' }, { label: t.name }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml({
         '@context': 'https://schema.org', '@type': 'Product', name: t.name, description: t.summary,
-        offers: { '@type': 'Offer', price: t.price, priceCurrency: 'EUR', url: `${SITE.url}/templates/${t.slug}` },
+        offers: { '@type': 'Offer', price: t.price, priceCurrency: 'EUR', url: `${SITE.url}/templates/${t.slug}`, availability: bundle ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' },
         ...(demo ? { image: demo.shots.map((x) => `${SITE.url}${x.poster}`) } : {}),
       }) }} />
 
@@ -114,9 +114,13 @@ export default async function TemplateDetail({ params }: { params: Promise<{ slu
             <aside className="panel h-fit p-6">
               <p className="text-xs font-bold uppercase tracking-wide text-steel-500">{c.price}</p>
               <p className="mt-1 font-display text-3xl font-extrabold tracking-tight">{priceLabel}</p>
-              <p className={`mt-2 text-xs ${bundle ? 'text-green-700' : 'text-steel-500'}`}>{bundle ? c.bundleReady : c.bundlePrep}</p>
+              <p className={`mt-2 text-xs ${bundle ? 'text-green-700' : 'text-steel-500'}`} data-testid="bundle-state" data-ready={bundle ? '1' : '0'}>{bundle ? c.bundleReady : c.bundlePrep}</p>
               <div className="mt-4 flex flex-col gap-2">
-                <BuyButton slug={t.slug} label={c.buy} className="btn btn-primary w-full" />
+                {bundle ? (
+                  <BuyButton slug={t.slug} label={c.buy} className="btn btn-primary w-full" />
+                ) : (
+                  <Link href="/contact" className="btn btn-primary w-full" data-testid="notify-ready">{c.notify}</Link>
+                )}
                 {t.demoUrl ? (
                   <a href={t.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost w-full" data-testid="demo-link">{c.demo} ↗</a>
                 ) : (

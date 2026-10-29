@@ -22,7 +22,7 @@ import {
   saveAiKey, clearAiKey, revealAiKey, setSchedule, runBackup, runOperation,
   restoreFromBackup, resetDatabase, CADENCES, PROVIDERS, type Cadence, type Provider,
 } from './recovery';
-import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle, storeReceipt, orderNeedsAttention } from './store';
+import { createOrder, getOrder, submitOrderPayment, confirmOrder, cancelOrder, saveBundle, getBundleMeta, storeReceipt, orderNeedsAttention } from './store';
 import { listPaymentMethods as activeMethods } from './settings';
 import { milestoneInvoice, orderInvoice, resolveSubmission, type PaySubmission } from './manual-pay';
 import { parseAmount } from '@/lib/pay-money';
@@ -325,6 +325,8 @@ export async function buyTemplateAction(_prev: ActionState, form: FormData): Pro
     if (!user) redirect(`/login?next=${encodeURIComponent(`/templates/${slug}`)}`);
     const tpl = getTemplate(slug);
     if (!tpl) return { error: 'Unknown template.' };
+    // Only a template whose bundle is uploaded is sold: nobody pays for code that is not there yet.
+    if (!(await getBundleMeta(slug))) return { error: 'This template is still in development — it goes on sale the day its bundle is ready.' };
     const order = await createOrder(user, slug);
     redirect(`/portal/orders/${order.id}`);
   } catch (err) {
