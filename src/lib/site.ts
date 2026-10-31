@@ -26,10 +26,11 @@ export const SITE = {
   heroLead: 'Custom websites and platforms,',
   heroAccent: 'engineered to scale',
   /**
-   * AdSense publisher (owner, 26 Oct 2026; before: 6908951782430508): loader, meta tag and
-   * public/ads.txt all name this account, shared with axto.io, ulyah.com, 1fr.fr and tilawa.de.
+   * AdSense publisher (owner, 31 Oct 2026: "xaa.es google.com, pub-6284085719914185, DIRECT,
+   * f08c47fec0942fa0"; before: 8991272269211824, shared with axto.io until then): the loader, the
+   * google-adsense-account meta tag and public/ads.txt all name this account.
    */
-  adClient: 'ca-pub-8991272269211824',
+  adClient: 'ca-pub-6284085719914185',
   analyticsEndpoint: 'https://api.ulyah.com/track',
   /**
    * Editorial archive kept from the original site. Named plainly: calling
