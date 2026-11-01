@@ -810,7 +810,7 @@ export async function acquireAction(_prev: ActionState, form: FormData): Promise
 
     const sale = await getSale();
     if (sale.status === 'sold') return { error: 'xaa.es has been sold. Thank you for your interest.' };
-    if (sale.status === 'paused') return { error: 'The sale is paused at the moment. Please write to hello@xaa.es.' };
+    if (sale.status === 'paused') return { error: 'The sale is paused at the moment. Please write to hello@axto.io.' };
 
     const amount = kind === 'buy' ? sale.priceUsd : Number(str(form, 'amount').replace(/[^\d]/g, ''));
     if (!Number.isFinite(amount) || amount < 100_000) return { error: 'Please enter your offer in US dollars (at least $100,000).' };
@@ -874,7 +874,7 @@ export async function investApplyAction(_prev: ActionState, form: FormData): Pro
     const offer = await getInvest();
     if (!offer.visible) return bad(T('The investor offering is not open.', 'La oferta para inversores no está abierta.', 'Penawaran investor tidak dibuka.'));
     if (offer.status === 'closed') return bad(T('The xaa.es raise is complete. Thank you for your interest.', 'La ronda de xaa.es está completa. Gracias por tu interés.', 'Penghimpunan modal xaa.es sudah selesai. Terima kasih atas minat Anda.'));
-    if (offer.status === 'paused') return bad(T('Applications are paused at the moment. Please write to hello@xaa.es.', 'Las solicitudes están en pausa. Escribe a hello@xaa.es.', 'Pengajuan sedang dijeda. Silakan tulis ke hello@xaa.es.'));
+    if (offer.status === 'paused') return bad(T('Applications are paused at the moment. Please write to hello@axto.io.', 'Las solicitudes están en pausa. Escribe a hello@axto.io.', 'Pengajuan sedang dijeda. Silakan tulis ke hello@axto.io.'));
 
     const pledge = Number(str(form, 'amount').replace(/[^\d]/g, ''));
     if (!Number.isFinite(pledge) || pledge < offer.minUsd) {

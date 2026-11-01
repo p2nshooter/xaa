@@ -55,7 +55,7 @@ const COPY: Record<Lang, Copy> = {
     ctaOffer: 'Make an offer', ctaWhatsapp: 'Talk to the owner on WhatsApp',
     waText: 'Hello, I am interested in acquiring xaa.es.',
     soldTitle: 'xaa.es has been sold', soldBody: 'Thank you to everyone who expressed interest. The studio continues under its new owner.',
-    pausedTitle: 'The sale is paused', pausedBody: 'The owner is not taking new offers at the moment. You can still write to hello@xaa.es.',
+    pausedTitle: 'The sale is paused', pausedBody: 'The owner is not taking new offers at the moment. You can still write to hello@axto.io.',
     whyEyebrow: 'Why xaa.es', whyTitle: 'An asset that is already working',
     whyLead: 'Most domains for sale are a name and a promise. xaa.es is a name with a business already standing on it.',
     why: [
@@ -119,7 +119,7 @@ const COPY: Record<Lang, Copy> = {
     ctaOffer: 'Hacer una oferta', ctaWhatsapp: 'Hablar con el propietario por WhatsApp',
     waText: 'Hola, me interesa adquirir xaa.es.',
     soldTitle: 'xaa.es ha sido vendido', soldBody: 'Gracias a todas las personas interesadas. El estudio continúa con su nuevo propietario.',
-    pausedTitle: 'La venta está en pausa', pausedBody: 'El propietario no acepta nuevas ofertas por ahora. Puede escribir a hello@xaa.es.',
+    pausedTitle: 'La venta está en pausa', pausedBody: 'El propietario no acepta nuevas ofertas por ahora. Puede escribir a hello@axto.io.',
     whyEyebrow: 'Por qué xaa.es', whyTitle: 'Un activo que ya funciona',
     whyLead: 'La mayoría de dominios en venta son un nombre y una promesa. xaa.es es un nombre con un negocio ya construido encima.',
     why: [
@@ -183,7 +183,7 @@ const COPY: Record<Lang, Copy> = {
     ctaOffer: 'Ajukan penawaran', ctaWhatsapp: 'Bicara dengan pemilik lewat WhatsApp',
     waText: 'Halo, saya tertarik mengakuisisi xaa.es.',
     soldTitle: 'xaa.es telah terjual', soldBody: 'Terima kasih kepada semua yang berminat. Studio berlanjut di bawah pemilik barunya.',
-    pausedTitle: 'Penjualan sedang dijeda', pausedBody: 'Pemilik sedang tidak menerima penawaran baru. Anda tetap bisa menulis ke hello@xaa.es.',
+    pausedTitle: 'Penjualan sedang dijeda', pausedBody: 'Pemilik sedang tidak menerima penawaran baru. Anda tetap bisa menulis ke hello@axto.io.',
     whyEyebrow: 'Mengapa xaa.es', whyTitle: 'Aset yang sudah bekerja',
     whyLead: 'Kebanyakan domain yang dijual hanyalah nama dan janji. xaa.es adalah nama dengan bisnis yang sudah berdiri di atasnya.',
     why: [

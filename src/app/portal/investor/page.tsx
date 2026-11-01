@@ -102,7 +102,7 @@ export default async function InvestorPortalPage() {
 
       <p className="mt-10 text-xs leading-relaxed text-steel-500">
         Figures are computed from the studio&rsquo;s confirmed payments and are not audited accounts. Your written agreement
-        governs; questions to hello@xaa.es.
+        governs; questions to hello@axto.io.
       </p>
     </div>
   );
