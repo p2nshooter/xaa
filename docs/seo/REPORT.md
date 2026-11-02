@@ -1,21 +1,21 @@
 # SEO audit — all domains
 
-Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
+Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
 
 | Domain | Score | ✅ | ❌ | ⚠️ | 📝 | Repo |
 |---|---|---|---|---|---|---|
-| [xaa.es](https://xaa.es) | 94% | 65 | 1 | 7 | 9 | p2nshooter/xaa |
-| [axto.io](https://axto.io) | 94% | 61 | 2 | 4 | 10 | p2nshooter/guardian-ai |
+| [xaa.es](https://xaa.es) | 95% | 66 | 1 | 6 | 9 | p2nshooter/xaa |
+| [axto.io](https://axto.io) | 94% | 64 | 1 | 6 | 10 | p2nshooter/guardian-ai |
 | [axto.dev](https://axto.dev) | 80% | 48 | 8 | 10 | 10 | p2nshooter/axtodev |
-| [axto.us](https://axto.us) | 95% | 62 | 2 | 3 | 10 | p2nshooter/axto.us |
-| [ulyah.com](https://ulyah.com) | 88% | 59 | 4 | 9 | 10 | p2nshooter/ulyah.com |
-| [xad.es](https://xad.es) | 89% | 58 | 2 | 12 | 10 | p2nshooter/ulyah.com |
-| [jai.lat](https://jai.lat) | 81% | 46 | 7 | 9 | 11 | p2nshooter/Jai |
-| [lie.skin](https://lie.skin) | 81% | 46 | 7 | 9 | 11 | p2nshooter/Lie |
-| [oldco.in](https://oldco.in) | 81% | 45 | 7 | 10 | 11 | p2nshooter/oldco.in |
-| [profity.in](https://profity.in) | 81% | 45 | 7 | 10 | 11 | p2nshooter/profity.in |
-| [1fr.fr](https://1fr.fr) | 85% | 53 | 5 | 10 | 11 | p2nshooter/ulyah.com |
-| [tilawa.de](https://tilawa.de) | 85% | 54 | 6 | 8 | 11 | p2nshooter/ulyah.com |
+| [axto.us](https://axto.us) | 96% | 62 | 1 | 4 | 10 | p2nshooter/axto.us |
+| [ulyah.com](https://ulyah.com) | 92% | 62 | 2 | 8 | 10 | p2nshooter/ulyah.com |
+| [xad.es](https://xad.es) | 90% | 59 | 2 | 11 | 10 | p2nshooter/ulyah.com |
+| [jai.lat](https://jai.lat) | 87% | 53 | 6 | 4 | 11 | p2nshooter/Jai |
+| [lie.skin](https://lie.skin) | 87% | 53 | 6 | 4 | 11 | p2nshooter/Lie |
+| [oldco.in](https://oldco.in) | 81% | 46 | 7 | 9 | 11 | p2nshooter/oldco.in |
+| [profity.in](https://profity.in) | 81% | 46 | 7 | 9 | 11 | p2nshooter/profity.in |
+| [1fr.fr](https://1fr.fr) | 88% | 56 | 4 | 8 | 11 | p2nshooter/ulyah.com |
+| [tilawa.de](https://tilawa.de) | 88% | 56 | 4 | 8 | 11 | p2nshooter/ulyah.com |
 | [byodd.de](https://byodd.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
 | [byoxy.de](https://byoxy.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
 | [byoy.de](https://byoy.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
@@ -43,9 +43,9 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | [odaily.xyz](https://odaily.xyz) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
 | [xdaily.xyz](https://xdaily.xyz) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
 
-## xaa.es — 94%
+## xaa.es — 95%
 
-**Not done yet (8):** Server response time; Fonts optimised (preload / font-display: swap); Meta description (50–160 chars); Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (7):** Fonts optimised (preload / font-display: swap); Meta description (50–160 chars); Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -70,17 +70,17 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 1721 ms (from a GitHub runner) |
+| ✅ | Server response time | 788 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | private, no-cache, no-store, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ⚠️ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 69/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 4.04 s lab |
+| ⚠️ | Performance score (mobile) | 56/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 7.57 s lab |
 | ✅ | CLS ≤ 0.1 | 0.061 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 490 ms lab (no field data yet) |
+| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 356 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -134,7 +134,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 40 unique |
+| ✅ | Internal links from the home page | 41 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -185,7 +185,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://xaa.es/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://xaa.es/sitemap.xml — 233 URLs |
+| ✅ | XML sitemap | HTTP 200 https://xaa.es/sitemap.xml — 236 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -222,7 +222,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## axto.io — 94%
 
-**Not done yet (6):** One canonical host (www ↔ apex redirect); Server response time; Content-Security-Policy; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (7):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; Performance score (mobile); LCP ≤ 2.5 s; CLS ≤ 0.1; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -234,7 +234,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.axto.io → https://www.axto.io/ |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 16 lines |
+| ✅ | robots.txt present | 31 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -247,26 +247,26 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 1045 ms (from a GitHub runner) |
+| ✅ | Server response time | 656 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 78/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 4.20 s lab |
-| ✅ | CLS ≤ 0.1 | 0.058 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 241 ms lab (no field data yet) |
+| ⚠️ | Performance score (mobile) | 71/100 — Lighthouse (runner) |
+| ⚠️ | LCP ≤ 2.5 s | 3.48 s lab |
+| ⚠️ | CLS ≤ 0.1 | 0.138 lab |
+| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 467 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | Title tag (10–60 chars) | 56: AXTO — AI workspace for legal, security & business teams |
-| ✅ | Meta description (50–160 chars) | 157: One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Studio, Clipper, Pri… |
+| ✅ | Meta description (50–160 chars) | 158: One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Chat, Clipper, Priva… |
 | ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 6 H2 |
+| ✅ | H2–H6 structure | 7 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
@@ -294,10 +294,10 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -311,7 +311,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 48 unique |
+| ✅ | Internal links from the home page | 49 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -362,7 +362,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://axto.io/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://axto.io/sitemap.xml — 554 URLs |
+| ✅ | XML sitemap | HTTP 200 https://axto.io/sitemap.xml — 558 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -370,7 +370,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | og:title | AXTO — AI workspace for legal, security & business teams |
-| ✅ | og:description | One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Studio, Clipper, Pri |
+| ✅ | og:description | One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Chat, Clipper, Priva |
 | ✅ | og:image | https://axto.io/og-image.png |
 | ✅ | og:url | https://axto.io |
 | ✅ | og:type | website |
@@ -424,17 +424,17 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 547 ms (from a GitHub runner) |
+| ✅ | Server response time | 459 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ⚠️ | Web app manifest | no <link rel="manifest"> |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 79/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 4.15 s lab |
+| ⚠️ | Performance score (mobile) | 65/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 7.11 s lab |
 | ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 195 ms lab (no field data yet) |
+| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 95 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -574,7 +574,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## axto.us — 95%
+## axto.us — 96%
 
 **Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; Performance score (mobile); LCP ≤ 2.5 s; CLS ≤ 0.1
 
@@ -588,7 +588,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.axto.us → https://www.axto.us/ |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -601,17 +601,17 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 240 ms (from a GitHub runner) |
+| ✅ | Server response time | 74 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /site.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 57/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 6.73 s lab |
+| ⚠️ | Performance score (mobile) | 83/100 — Lighthouse (runner) |
+| ⚠️ | LCP ≤ 2.5 s | 2.77 s lab |
 | ⚠️ | CLS ≤ 0.1 | 0.163 lab |
-| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 51 ms lab (no field data yet) |
+| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 133 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -751,9 +751,9 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## ulyah.com — 88%
+## ulyah.com — 92%
 
-**Not done yet (13):** robots.txt lets crawlers reach the site; AI / generative-search crawlers allowed; Canonical URL on the home page; Server response time; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages; Sitemap URLs load (no broken pages); Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (10):** Canonical URL on the home page; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -765,7 +765,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | One canonical host (www ↔ apex redirect) | www.ulyah.com → https://ulyah.com/ |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 150 lines |
+| ✅ | robots.txt present | 27 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -778,17 +778,17 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 1708 ms (from a GitHub runner) |
+| ✅ | Server response time | 606 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest?locale=id |
-| ✅ | Canonical on every sampled page | 0 without |
-| ❌ | Sitemap URLs load (no broken pages) | 2/8 failing |
-| ⚠️ | Performance score (mobile) | 52/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 10.61 s lab |
-| ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 566 ms lab (no field data yet) |
+| ⚠️ | Canonical on every sampled page | 1 without |
+| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
+| ⚠️ | Performance score (mobile) | 66/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 4.84 s lab |
+| ✅ | CLS ≤ 0.1 | 0.029 lab |
+| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 448 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -798,11 +798,11 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ⚠️ | Meta description (50–160 chars) | 208: Ulyah adalah platform digital Islam modern yang menghadirkan Al-Qur'an, tafsir, hadits, au… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 5 H2 |
-| ✅ | Unique title on every page | 7 pages sampled; 0 duplicate, 0 missing |
+| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ✅ | Titles ≤ 60 characters on every sampled page | 7 pages |
-| ⚠️ | Descriptions ≤ 160 characters on every sampled page | 3/7 longer |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ⚠️ | Descriptions ≤ 160 characters on every sampled page | 4/9 longer |
 | ⚠️ | Breadcrumbs on inner pages | 0/8 |
 
 **4. Content SEO**
@@ -842,7 +842,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 53 unique |
+| ✅ | Internal links from the home page | 39 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -885,7 +885,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ❌ | robots.txt lets crawlers reach the site | Disallow: / for * |
+| ✅ | robots.txt lets crawlers reach the site |  |
 | ✅ | Home page is indexable (no noindex) | index, follow |
 
 **16. Sitemap**
@@ -912,7 +912,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ⚠️ | AI / generative-search crawlers allowed | blocked: GPTBot, ClaudeBot, Google-Extended, CCBot |
+| ✅ | AI / generative-search crawlers allowed |  |
 | ✅ | llms.txt for AI assistants | HTTP 200 |
 
 **19. Analytics & monitoring**
@@ -928,9 +928,9 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## xad.es — 89%
+## xad.es — 90%
 
-**Not done yet (14):** Canonical URL on the home page; Server response time; WebP / AVIF images; Title tag (10–60 chars); Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (13):** Canonical URL on the home page; WebP / AVIF images; Title tag (10–60 chars); Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -942,7 +942,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | One canonical host (www ↔ apex redirect) | www.xad.es → https://xad.es/ |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 20 lines |
+| ✅ | robots.txt present | 27 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -955,7 +955,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 924 ms (from a GitHub runner) |
+| ✅ | Server response time | 171 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -963,9 +963,9 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ⚠️ | Canonical on every sampled page | 1 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
 | ⚠️ | Performance score (mobile) | 54/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 9.43 s lab |
+| ❌ | LCP ≤ 2.5 s | 11.08 s lab |
 | ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 337 ms lab (no field data yet) |
+| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 298 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -1019,7 +1019,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 54 unique |
+| ✅ | Internal links from the home page | 39 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -1105,9 +1105,9 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## jai.lat — 81%
+## jai.lat — 87%
 
-**Not done yet (16):** One canonical host (www ↔ apex redirect); Meta description (50–160 chars); og:image; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; llms.txt for AI assistants; security.txt (RFC 9116); Web app manifest; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages
+**Not done yet (10):** One canonical host (www ↔ apex redirect); og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1132,11 +1132,11 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 562 ms (from a GitHub runner) |
+| ✅ | Server response time | 758 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ⚠️ | Web app manifest | no <link rel="manifest"> |
+| ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
 | 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
@@ -1146,14 +1146,14 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | Title tag (10–60 chars) | 22: Jai — Money that grows |
-| ⚠️ | Meta description (50–160 chars) | 172: Independent, plain-English guides to investing, saving and building lasting wealth — the s… |
+| ✅ | Meta description (50–160 chars) | 155: Independent, plain-English guides to investing, saving and building lasting wealth: the sl… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 3 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ⚠️ | Titles ≤ 60 characters on every sampled page | 2/9, e.g. 65: Pay Yourself First: The One Rule That Quietly Builds Wealth · Jai |
-| ⚠️ | Descriptions ≤ 160 characters on every sampled page | 3/9 longer |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
 | ⚠️ | Breadcrumbs on inner pages | 2/8 |
 
 **4. Content SEO**
@@ -1180,7 +1180,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | — | Images carry width & height (no layout shift) | 0/0 |
 | — | Alt text on images | 0/0 missing alt |
 | — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
+| ⚠️ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
 
@@ -1230,7 +1230,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ⚠️ | Permissions-Policy |  |
 | ⚠️ | Content-Security-Policy | none (optional, but recommended) |
 | ✅ | No mixed content |  |
-| ⚠️ | security.txt (RFC 9116) | HTTP 404 |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
 
 **15. Crawl & indexing**
 
@@ -1252,19 +1252,19 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | og:title | Jai — Money that grows |
-| ✅ | og:description | Independent, plain-English guides to investing, saving and building lasting wealth — the s |
-| ❌ | og:image | missing |
+| ✅ | og:description | Independent, plain-English guides to investing, saving and building lasting wealth: the sl |
+| ✅ | og:image | https://jai.lat/opengraph-image.png?opengraph-image.1wtm_c6tll1hg.png |
 | ❌ | og:url | missing |
 | ✅ | og:type | website |
-| ✅ | Twitter / X card | summary |
-| — | og:image is PNG / JPG / WebP (social apps ignore SVG) |  |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://jai.lat/opengraph-image.png?opengraph-image.1wtm_c6tll1hg.png |
 
 **18. AI / generative search**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | AI / generative-search crawlers allowed |  |
-| ⚠️ | llms.txt for AI assistants | HTTP 404 |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
 
 **19. Analytics & monitoring**
 
@@ -1279,9 +1279,9 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## lie.skin — 81%
+## lie.skin — 87%
 
-**Not done yet (16):** One canonical host (www ↔ apex redirect); Meta description (50–160 chars); og:image; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; llms.txt for AI assistants; security.txt (RFC 9116); Web app manifest; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages
+**Not done yet (10):** One canonical host (www ↔ apex redirect); og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1306,11 +1306,11 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 647 ms (from a GitHub runner) |
+| ✅ | Server response time | 482 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ⚠️ | Web app manifest | no <link rel="manifest"> |
+| ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
 | 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
@@ -1320,14 +1320,14 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | Title tag (10–60 chars) | 30: Lie — Skincare, evidence-first |
-| ⚠️ | Meta description (50–160 chars) | 169: Independent, dermatology-informed skincare guides — what the evidence actually says about … |
+| ✅ | Meta description (50–160 chars) | 155: Independent, dermatology-informed skincare guides: what the evidence says about ingredient… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 3 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ⚠️ | Titles ≤ 60 characters on every sampled page | 2/9, e.g. 71: Sunscreen: The Most Effective Anti-Ageing Product You Already Own · Li |
-| ⚠️ | Descriptions ≤ 160 characters on every sampled page | 3/9 longer |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
 | ⚠️ | Breadcrumbs on inner pages | 3/8 |
 
 **4. Content SEO**
@@ -1354,7 +1354,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | — | Images carry width & height (no layout shift) | 0/0 |
 | — | Alt text on images | 0/0 missing alt |
 | — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
+| ⚠️ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
 
@@ -1404,7 +1404,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ⚠️ | Permissions-Policy |  |
 | ⚠️ | Content-Security-Policy | none (optional, but recommended) |
 | ✅ | No mixed content |  |
-| ⚠️ | security.txt (RFC 9116) | HTTP 404 |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
 
 **15. Crawl & indexing**
 
@@ -1426,19 +1426,19 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | og:title | Lie — Skincare, evidence-first |
-| ✅ | og:description | Independent, dermatology-informed skincare guides — what the evidence actually says about  |
-| ❌ | og:image | missing |
+| ✅ | og:description | Independent, dermatology-informed skincare guides: what the evidence says about ingredient |
+| ✅ | og:image | https://lie.skin/opengraph-image.png?opengraph-image.3mys5z9puz6y8.png |
 | ❌ | og:url | missing |
 | ✅ | og:type | website |
-| ✅ | Twitter / X card | summary |
-| — | og:image is PNG / JPG / WebP (social apps ignore SVG) |  |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://lie.skin/opengraph-image.png?opengraph-image.3mys5z9puz6y8.png |
 
 **18. AI / generative search**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | AI / generative-search crawlers allowed |  |
-| ⚠️ | llms.txt for AI assistants | HTTP 404 |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
 
 **19. Analytics & monitoring**
 
@@ -1455,7 +1455,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## oldco.in — 81%
 
-**Not done yet (17):** One canonical host (www ↔ apex redirect); Server response time; Meta description (50–160 chars); og:image; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; llms.txt for AI assistants; security.txt (RFC 9116); Web app manifest; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages
+**Not done yet (16):** One canonical host (www ↔ apex redirect); Meta description (50–160 chars); og:image; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; llms.txt for AI assistants; security.txt (RFC 9116); Web app manifest; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1480,7 +1480,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 1440 ms (from a GitHub runner) |
+| ✅ | Server response time | 679 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1629,7 +1629,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## profity.in — 81%
 
-**Not done yet (17):** One canonical host (www ↔ apex redirect); Server response time; Meta description (50–160 chars); og:image; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; llms.txt for AI assistants; security.txt (RFC 9116); Web app manifest; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages
+**Not done yet (16):** One canonical host (www ↔ apex redirect); Meta description (50–160 chars); og:image; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; llms.txt for AI assistants; security.txt (RFC 9116); Web app manifest; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1654,7 +1654,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 1285 ms (from a GitHub runner) |
+| ✅ | Server response time | 569 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1801,9 +1801,9 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## 1fr.fr — 85%
+## 1fr.fr — 88%
 
-**Not done yet (15):** robots.txt lets crawlers reach the site; AI / generative-search crawlers allowed; Canonical URL on the home page; Server response time; WebP / AVIF images; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; About page; Privacy policy; Terms & conditions; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages
+**Not done yet (12):** Canonical URL on the home page; WebP / AVIF images; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; About page; Privacy policy; Terms & conditions; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1815,7 +1815,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | One canonical host (www ↔ apex redirect) | www.1fr.fr → https://1fr.fr/ |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 150 lines |
+| ✅ | robots.txt present | 27 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -1828,7 +1828,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 996 ms (from a GitHub runner) |
+| ✅ | Server response time | 751 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1889,7 +1889,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 55 unique |
+| ✅ | Internal links from the home page | 39 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -1932,7 +1932,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ❌ | robots.txt lets crawlers reach the site | Disallow: / for * |
+| ✅ | robots.txt lets crawlers reach the site |  |
 | ✅ | Home page is indexable (no noindex) | index, follow |
 
 **16. Sitemap**
@@ -1959,7 +1959,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ⚠️ | AI / generative-search crawlers allowed | blocked: GPTBot, ClaudeBot, Google-Extended, CCBot |
+| ✅ | AI / generative-search crawlers allowed |  |
 | ✅ | llms.txt for AI assistants | HTTP 200 |
 
 **19. Analytics & monitoring**
@@ -1975,9 +1975,9 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## tilawa.de — 85%
+## tilawa.de — 88%
 
-**Not done yet (14):** robots.txt lets crawlers reach the site; AI / generative-search crawlers allowed; Canonical URL on the home page; Server response time; WebP / AVIF images; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; About page; Privacy policy; Terms & conditions; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages; Sitemap URLs load (no broken pages)
+**Not done yet (12):** Canonical URL on the home page; WebP / AVIF images; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; About page; Privacy policy; Terms & conditions; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1989,7 +1989,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | One canonical host (www ↔ apex redirect) | www.tilawa.de → https://tilawa.de/ |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 150 lines |
+| ✅ | robots.txt present | 27 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -2002,13 +2002,13 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 1571 ms (from a GitHub runner) |
+| ✅ | Server response time | 613 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest?locale=de |
-| ✅ | Canonical on every sampled page | 0 without |
-| ❌ | Sitemap URLs load (no broken pages) | 2/8 failing |
+| ⚠️ | Canonical on every sampled page | 1 without |
+| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
 | 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
 
 **3. On-page SEO**
@@ -2019,11 +2019,11 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ⚠️ | Meta description (50–160 chars) | 209: Tilawa ist eine moderne islamische digitale Plattform, die Koran, Tafsir, Hadith, Hörbüche… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 5 H2 |
-| ✅ | Unique title on every page | 7 pages sampled; 0 duplicate, 0 missing |
+| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ✅ | Titles ≤ 60 characters on every sampled page | 7 pages |
-| ⚠️ | Descriptions ≤ 160 characters on every sampled page | 3/7 longer |
+| ⚠️ | Titles ≤ 60 characters on every sampled page | 1/9, e.g. 69: Tägliche Praktiken — Bittgebete, Dhikr, Prophetische Medizin — Tilawa |
+| ⚠️ | Descriptions ≤ 160 characters on every sampled page | 5/9 longer |
 | ⚠️ | Breadcrumbs on inner pages | 0/8 |
 
 **4. Content SEO**
@@ -2063,7 +2063,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 55 unique |
+| ✅ | Internal links from the home page | 39 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2106,7 +2106,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ❌ | robots.txt lets crawlers reach the site | Disallow: / for * |
+| ✅ | robots.txt lets crawlers reach the site |  |
 | ✅ | Home page is indexable (no noindex) | index, follow |
 
 **16. Sitemap**
@@ -2133,7 +2133,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ⚠️ | AI / generative-search crawlers allowed | blocked: GPTBot, ClaudeBot, Google-Extended, CCBot |
+| ✅ | AI / generative-search crawlers allowed |  |
 | ✅ | llms.txt for AI assistants | HTTP 200 |
 
 **19. Analytics & monitoring**
@@ -2163,7 +2163,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.byodd.de → https://www.byodd.de/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -2176,7 +2176,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 303 ms (from a GitHub runner) |
+| ✅ | Server response time | 179 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2237,7 +2237,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 58 unique |
+| ✅ | Internal links from the home page | 59 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2288,7 +2288,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://byodd.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://byodd.de/sitemap.xml — 57 URLs |
+| ✅ | XML sitemap | HTTP 200 https://byodd.de/sitemap.xml — 58 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -2337,7 +2337,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.byoxy.de → https://www.byoxy.de/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -2350,7 +2350,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 313 ms (from a GitHub runner) |
+| ✅ | Server response time | 144 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2411,7 +2411,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 63 unique |
+| ✅ | Internal links from the home page | 64 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2462,7 +2462,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://byoxy.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://byoxy.de/sitemap.xml — 62 URLs |
+| ✅ | XML sitemap | HTTP 200 https://byoxy.de/sitemap.xml — 63 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -2511,7 +2511,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.byoy.de → https://www.byoy.de/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -2524,7 +2524,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 304 ms (from a GitHub runner) |
+| ✅ | Server response time | 97 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2585,7 +2585,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 63 unique |
+| ✅ | Internal links from the home page | 64 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2636,7 +2636,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://byoy.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://byoy.de/sitemap.xml — 62 URLs |
+| ✅ | XML sitemap | HTTP 200 https://byoy.de/sitemap.xml — 63 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -2685,7 +2685,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.nexvilo.de → https://www.nexvilo.de/ |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -2698,7 +2698,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 296 ms (from a GitHub runner) |
+| ✅ | Server response time | 89 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2759,7 +2759,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 62 unique |
+| ✅ | Internal links from the home page | 63 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2810,7 +2810,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://nexvilo.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://nexvilo.de/sitemap.xml — 61 URLs |
+| ✅ | XML sitemap | HTTP 200 https://nexvilo.de/sitemap.xml — 62 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -2859,7 +2859,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.qarf.de → https://www.qarf.de/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -2872,7 +2872,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 324 ms (from a GitHub runner) |
+| ✅ | Server response time | 68 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2933,7 +2933,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 58 unique |
+| ✅ | Internal links from the home page | 59 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2984,7 +2984,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://qarf.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://qarf.de/sitemap.xml — 57 URLs |
+| ✅ | XML sitemap | HTTP 200 https://qarf.de/sitemap.xml — 58 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -3033,7 +3033,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.qulen.de → https://www.qulen.de/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -3046,7 +3046,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 327 ms (from a GitHub runner) |
+| ✅ | Server response time | 167 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3107,7 +3107,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 59 unique |
+| ✅ | Internal links from the home page | 60 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -3158,7 +3158,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://qulen.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://qulen.de/sitemap.xml — 57 URLs |
+| ✅ | XML sitemap | HTTP 200 https://qulen.de/sitemap.xml — 58 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -3207,7 +3207,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.qurm.de → https://www.qurm.de/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -3220,7 +3220,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 312 ms (from a GitHub runner) |
+| ✅ | Server response time | 79 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3281,7 +3281,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 63 unique |
+| ✅ | Internal links from the home page | 64 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -3332,7 +3332,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://qurm.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://qurm.de/sitemap.xml — 62 URLs |
+| ✅ | XML sitemap | HTTP 200 https://qurm.de/sitemap.xml — 63 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -3381,7 +3381,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.rubiy.de → https://www.rubiy.de/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -3394,7 +3394,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 315 ms (from a GitHub runner) |
+| ✅ | Server response time | 81 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3411,1050 +3411,6 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Meta description (50–160 chars) | 149: RUBIY ist ein Ratgeber für saisonales Kochen in Deutschland: Was im Frühling, Sommer, Herb… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 3 H2 |
-| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
-| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
-| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
-| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
-| ✅ | Breadcrumbs on inner pages | 8/8 |
-
-**4. Content SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Original, useful content that answers search intent |  |
-| 📝 | Old content updated; thin/duplicate content removed |  |
-
-**5. Structured data**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | JSON-LD structured data | Organization, WebSite |
-| ✅ | Organization schema |  |
-| ✅ | WebSite schema |  |
-
-**6. Image SEO**
-
-| | Check | Detail |
-|---|---|---|
-| — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
-
-**8. Multilingual SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Language declared (<html lang>) | de |
-| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
-
-**9. Internal linking**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Internal links from the home page | 58 unique |
-| 📝 | Topic clusters: pillar pages + supporting articles |  |
-
-**10. Off-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Quality, relevant backlinks; no spam/PBN |  |
-| 📝 | Digital PR, brand mentions, official social profiles |  |
-
-**11. Local SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
-
-**13. E-E-A-T**
-
-| | Check | Detail |
-|---|---|---|
-| ❌ | About page |  |
-| ✅ | Contact page |  |
-| ❌ | Privacy policy |  |
-| ❌ | Terms & conditions |  |
-| 📝 | Author profiles, publish/update dates, sources |  |
-
-**14. Security**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HSTS header | max-age=31536000 |
-| ✅ | X-Content-Type-Options: nosniff |  |
-| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
-| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
-| ✅ | Permissions-Policy |  |
-| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
-| ✅ | No mixed content |  |
-| ✅ | security.txt (RFC 9116) | HTTP 200 |
-
-**15. Crawl & indexing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt lets crawlers reach the site |  |
-| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
-
-**16. Sitemap**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt declares the sitemap | https://rubiy.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://rubiy.de/sitemap.xml — 57 URLs |
-| ✅ | Sitemap lists only canonical-host URLs |  |
-
-**17. Social / sharing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | og:title | RUBIY — Rübe, Birne & Jahreszeit: saisonal kochen |
-| ✅ | og:description | RUBIY ist ein Ratgeber für saisonales Kochen in Deutschland: Was im Frühling, Sommer, Herb |
-| ✅ | og:image | https://rubiy.de/og.png |
-| ✅ | og:url | https://rubiy.de/ |
-| ✅ | og:type | website |
-| ✅ | Twitter / X card | summary_large_image |
-| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://rubiy.de/og.png |
-
-**18. AI / generative search**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | AI / generative-search crawlers allowed |  |
-| ✅ | llms.txt for AI assistants | HTTP 200 |
-
-**19. Analytics & monitoring**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Analytics installed | other analytics |
-| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
-
-**20. Periodic audit**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Periodic automated SEO audit | this weekly audit |
-
-## velnixo.de — 93%
-
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
-
-
-**1. Foundation**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HTTPS with a valid SSL certificate | 200 https://velnixo.de/ |
-| ✅ | HTTP redirects to HTTPS | 301 http://velnixo.de/ → 200 https://velnixo.de/ → https://velnixo.de/ |
-| ❌ | One canonical host (www ↔ apex redirect) | www.velnixo.de → https://www.velnixo.de/ |
-| ✅ | Google Search Console | Domain property verified |
-| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
-| ✅ | Clean, readable URLs |  |
-| ✅ | Missing pages return a real 404 | HTTP 404 |
-
-**2. Technical SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://velnixo.de/ |
-| ✅ | Canonical URL on the home page | https://velnixo.de/ |
-| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
-| ✅ | GZIP / Brotli compression | br |
-| ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 292 ms (from a GitHub runner) |
-| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
-| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
-| ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ✅ | Web app manifest | /site.webmanifest |
-| ✅ | Canonical on every sampled page | 0 without |
-| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
-
-**3. On-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Title tag (10–60 chars) | 29: VELNIXO – Radfahren im Alltag |
-| ✅ | Meta description (50–160 chars) | 157: VELNIXO ist ein Ratgeber für alle, die in Deutschland Fahrrad fahren: Fahrrad und E-Bike r… |
-| ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 3 H2 |
-| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
-| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
-| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
-| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
-| ✅ | Breadcrumbs on inner pages | 8/8 |
-
-**4. Content SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Original, useful content that answers search intent |  |
-| 📝 | Old content updated; thin/duplicate content removed |  |
-
-**5. Structured data**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | JSON-LD structured data | Organization, WebSite |
-| ✅ | Organization schema |  |
-| ✅ | WebSite schema |  |
-
-**6. Image SEO**
-
-| | Check | Detail |
-|---|---|---|
-| — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
-
-**8. Multilingual SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Language declared (<html lang>) | de |
-| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
-
-**9. Internal linking**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Internal links from the home page | 62 unique |
-| 📝 | Topic clusters: pillar pages + supporting articles |  |
-
-**10. Off-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Quality, relevant backlinks; no spam/PBN |  |
-| 📝 | Digital PR, brand mentions, official social profiles |  |
-
-**11. Local SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
-
-**13. E-E-A-T**
-
-| | Check | Detail |
-|---|---|---|
-| ❌ | About page |  |
-| ✅ | Contact page |  |
-| ❌ | Privacy policy |  |
-| ❌ | Terms & conditions |  |
-| 📝 | Author profiles, publish/update dates, sources |  |
-
-**14. Security**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HSTS header | max-age=31536000 |
-| ✅ | X-Content-Type-Options: nosniff |  |
-| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
-| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
-| ✅ | Permissions-Policy |  |
-| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
-| ✅ | No mixed content |  |
-| ✅ | security.txt (RFC 9116) | HTTP 200 |
-
-**15. Crawl & indexing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt lets crawlers reach the site |  |
-| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
-
-**16. Sitemap**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt declares the sitemap | https://velnixo.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://velnixo.de/sitemap.xml — 61 URLs |
-| ✅ | Sitemap lists only canonical-host URLs |  |
-
-**17. Social / sharing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | og:title | VELNIXO – Radfahren im Alltag: das richtige Fahrrad, gute Pflege und sichere Wege, verstän |
-| ✅ | og:description | VELNIXO ist ein Ratgeber für alle, die in Deutschland Fahrrad fahren: Fahrrad und E-Bike r |
-| ✅ | og:image | https://velnixo.de/og.png |
-| ✅ | og:url | https://velnixo.de/ |
-| ✅ | og:type | website |
-| ✅ | Twitter / X card | summary_large_image |
-| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://velnixo.de/og.png |
-
-**18. AI / generative search**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | AI / generative-search crawlers allowed |  |
-| ✅ | llms.txt for AI assistants | HTTP 200 |
-
-**19. Analytics & monitoring**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Analytics installed | other analytics |
-| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
-
-**20. Periodic audit**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Periodic automated SEO audit | this weekly audit |
-
-## zavik.de — 93%
-
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
-
-
-**1. Foundation**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HTTPS with a valid SSL certificate | 200 https://zavik.de/ |
-| ✅ | HTTP redirects to HTTPS | 301 http://zavik.de/ → 200 https://zavik.de/ → https://zavik.de/ |
-| ❌ | One canonical host (www ↔ apex redirect) | www.zavik.de → https://www.zavik.de/ |
-| ✅ | Google Search Console | google-site-verification TXT in DNS |
-| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
-| ✅ | Clean, readable URLs |  |
-| ✅ | Missing pages return a real 404 | HTTP 404 |
-
-**2. Technical SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://zavik.de/ |
-| ✅ | Canonical URL on the home page | https://zavik.de/ |
-| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
-| ✅ | GZIP / Brotli compression | br |
-| ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 379 ms (from a GitHub runner) |
-| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
-| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
-| ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ✅ | Web app manifest | /site.webmanifest |
-| ✅ | Canonical on every sampled page | 0 without |
-| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
-
-**3. On-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Title tag (10–60 chars) | 44: ZAVIK — Zarte Vierbeiner, kluge Katzenpflege |
-| ✅ | Meta description (50–160 chars) | 158: ZAVIK ist ein Ratgeber für Katzenhalterinnen und Katzenhalter: Einzug und Eingewöhnung, Er… |
-| ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 3 H2 |
-| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
-| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
-| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
-| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
-| ✅ | Breadcrumbs on inner pages | 8/8 |
-
-**4. Content SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Original, useful content that answers search intent |  |
-| 📝 | Old content updated; thin/duplicate content removed |  |
-
-**5. Structured data**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | JSON-LD structured data | Organization, WebSite |
-| ✅ | Organization schema |  |
-| ✅ | WebSite schema |  |
-
-**6. Image SEO**
-
-| | Check | Detail |
-|---|---|---|
-| — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
-
-**8. Multilingual SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Language declared (<html lang>) | de |
-| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
-
-**9. Internal linking**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Internal links from the home page | 63 unique |
-| 📝 | Topic clusters: pillar pages + supporting articles |  |
-
-**10. Off-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Quality, relevant backlinks; no spam/PBN |  |
-| 📝 | Digital PR, brand mentions, official social profiles |  |
-
-**11. Local SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
-
-**13. E-E-A-T**
-
-| | Check | Detail |
-|---|---|---|
-| ❌ | About page |  |
-| ✅ | Contact page |  |
-| ❌ | Privacy policy |  |
-| ❌ | Terms & conditions |  |
-| 📝 | Author profiles, publish/update dates, sources |  |
-
-**14. Security**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HSTS header | max-age=31536000 |
-| ✅ | X-Content-Type-Options: nosniff |  |
-| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
-| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
-| ✅ | Permissions-Policy |  |
-| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
-| ✅ | No mixed content |  |
-| ✅ | security.txt (RFC 9116) | HTTP 200 |
-
-**15. Crawl & indexing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt lets crawlers reach the site |  |
-| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
-
-**16. Sitemap**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt declares the sitemap | https://zavik.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://zavik.de/sitemap.xml — 62 URLs |
-| ✅ | Sitemap lists only canonical-host URLs |  |
-
-**17. Social / sharing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | og:title | ZAVIK — Zarte Vierbeiner, kluge Katzenpflege: der Katzen-Ratgeber |
-| ✅ | og:description | ZAVIK ist ein Ratgeber für Katzenhalterinnen und Katzenhalter: Einzug und Eingewöhnung, Er |
-| ✅ | og:image | https://zavik.de/og.png |
-| ✅ | og:url | https://zavik.de/ |
-| ✅ | og:type | website |
-| ✅ | Twitter / X card | summary_large_image |
-| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://zavik.de/og.png |
-
-**18. AI / generative search**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | AI / generative-search crawlers allowed |  |
-| ✅ | llms.txt for AI assistants | HTTP 200 |
-
-**19. Analytics & monitoring**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Analytics installed | other analytics |
-| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
-
-**20. Periodic audit**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Periodic automated SEO audit | this weekly audit |
-
-## zevok.de — 93%
-
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
-
-
-**1. Foundation**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HTTPS with a valid SSL certificate | 200 https://zevok.de/ |
-| ✅ | HTTP redirects to HTTPS | 301 http://zevok.de/ → 200 https://zevok.de/ → https://zevok.de/ |
-| ❌ | One canonical host (www ↔ apex redirect) | www.zevok.de → https://www.zevok.de/ |
-| ✅ | Google Search Console | google-site-verification TXT in DNS |
-| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
-| ✅ | Clean, readable URLs |  |
-| ✅ | Missing pages return a real 404 | HTTP 404 |
-
-**2. Technical SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://zevok.de/ |
-| ✅ | Canonical URL on the home page | https://zevok.de/ |
-| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
-| ✅ | GZIP / Brotli compression | br |
-| ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 326 ms (from a GitHub runner) |
-| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
-| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
-| ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ✅ | Web app manifest | /site.webmanifest |
-| ✅ | Canonical on every sampled page | 0 without |
-| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
-
-**3. On-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Title tag (10–60 chars) | 56: ZEVOK: Haushalt leicht gemacht – Putzen, Flecken, Wäsche |
-| ✅ | Meta description (50–160 chars) | 157: ZEVOK ist ein Haushalts-Ratgeber: Putzen mit System und Putzpläne, Flecken entfernen nach … |
-| ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 5 H2 |
-| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
-| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
-| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
-| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
-| ✅ | Breadcrumbs on inner pages | 8/8 |
-
-**4. Content SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Original, useful content that answers search intent |  |
-| 📝 | Old content updated; thin/duplicate content removed |  |
-
-**5. Structured data**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | JSON-LD structured data | Organization, WebSite, ItemList, ListItem |
-| ✅ | Organization schema |  |
-| ✅ | WebSite schema |  |
-
-**6. Image SEO**
-
-| | Check | Detail |
-|---|---|---|
-| — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
-
-**8. Multilingual SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Language declared (<html lang>) | de |
-| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
-
-**9. Internal linking**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Internal links from the home page | 58 unique |
-| 📝 | Topic clusters: pillar pages + supporting articles |  |
-
-**10. Off-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Quality, relevant backlinks; no spam/PBN |  |
-| 📝 | Digital PR, brand mentions, official social profiles |  |
-
-**11. Local SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
-
-**13. E-E-A-T**
-
-| | Check | Detail |
-|---|---|---|
-| ❌ | About page |  |
-| ✅ | Contact page |  |
-| ❌ | Privacy policy |  |
-| ❌ | Terms & conditions |  |
-| 📝 | Author profiles, publish/update dates, sources |  |
-
-**14. Security**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HSTS header | max-age=31536000 |
-| ✅ | X-Content-Type-Options: nosniff |  |
-| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
-| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
-| ✅ | Permissions-Policy |  |
-| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
-| ✅ | No mixed content |  |
-| ✅ | security.txt (RFC 9116) | HTTP 200 |
-
-**15. Crawl & indexing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt lets crawlers reach the site |  |
-| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
-
-**16. Sitemap**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt declares the sitemap | https://zevok.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://zevok.de/sitemap.xml — 57 URLs |
-| ✅ | Sitemap lists only canonical-host URLs |  |
-
-**17. Social / sharing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | og:title | ZEVOK: Haushalt leicht gemacht – Putzen, Flecken, Wäsche |
-| ✅ | og:description | ZEVOK ist ein Haushalts-Ratgeber: Putzen mit System und Putzpläne, Flecken entfernen nach  |
-| ✅ | og:image | https://zevok.de/og.png |
-| ✅ | og:url | https://zevok.de/ |
-| ✅ | og:type | website |
-| ✅ | Twitter / X card | summary_large_image |
-| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://zevok.de/og.png |
-
-**18. AI / generative search**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | AI / generative-search crawlers allowed |  |
-| ✅ | llms.txt for AI assistants | HTTP 200 |
-
-**19. Analytics & monitoring**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Analytics installed | other analytics |
-| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
-
-**20. Periodic audit**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Periodic automated SEO audit | this weekly audit |
-
-## zoevian.de — 93%
-
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
-
-
-**1. Foundation**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HTTPS with a valid SSL certificate | 200 https://zoevian.de/ |
-| ✅ | HTTP redirects to HTTPS | 301 http://zoevian.de/ → 200 https://zoevian.de/ → https://zoevian.de/ |
-| ❌ | One canonical host (www ↔ apex redirect) | www.zoevian.de → https://www.zoevian.de/ |
-| ✅ | Google Search Console | Domain property verified |
-| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
-| ✅ | Clean, readable URLs |  |
-| ✅ | Missing pages return a real 404 | HTTP 404 |
-
-**2. Technical SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://zoevian.de/ |
-| ✅ | Canonical URL on the home page | https://zoevian.de/ |
-| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
-| ✅ | GZIP / Brotli compression | br |
-| ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 271 ms (from a GitHub runner) |
-| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
-| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
-| ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ✅ | Web app manifest | /site.webmanifest |
-| ✅ | Canonical on every sampled page | 0 without |
-| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
-
-**3. On-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Title tag (10–60 chars) | 50: ZOEVIAN – Vögel beobachten, verstehen und schützen |
-| ✅ | Meta description (50–160 chars) | 155: ZOEVIAN ist ein Ratgeber über Vögel in Deutschland: Gartenvögel erkennen, richtig füttern … |
-| ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 3 H2 |
-| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
-| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
-| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
-| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
-| ✅ | Breadcrumbs on inner pages | 8/8 |
-
-**4. Content SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Original, useful content that answers search intent |  |
-| 📝 | Old content updated; thin/duplicate content removed |  |
-
-**5. Structured data**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | JSON-LD structured data | Organization, WebSite |
-| ✅ | Organization schema |  |
-| ✅ | WebSite schema |  |
-
-**6. Image SEO**
-
-| | Check | Detail |
-|---|---|---|
-| — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
-
-**8. Multilingual SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Language declared (<html lang>) | de |
-| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
-
-**9. Internal linking**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Internal links from the home page | 62 unique |
-| 📝 | Topic clusters: pillar pages + supporting articles |  |
-
-**10. Off-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Quality, relevant backlinks; no spam/PBN |  |
-| 📝 | Digital PR, brand mentions, official social profiles |  |
-
-**11. Local SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
-
-**13. E-E-A-T**
-
-| | Check | Detail |
-|---|---|---|
-| ❌ | About page |  |
-| ✅ | Contact page |  |
-| ❌ | Privacy policy |  |
-| ❌ | Terms & conditions |  |
-| 📝 | Author profiles, publish/update dates, sources |  |
-
-**14. Security**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HSTS header | max-age=31536000 |
-| ✅ | X-Content-Type-Options: nosniff |  |
-| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
-| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
-| ✅ | Permissions-Policy |  |
-| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
-| ✅ | No mixed content |  |
-| ✅ | security.txt (RFC 9116) | HTTP 200 |
-
-**15. Crawl & indexing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt lets crawlers reach the site |  |
-| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
-
-**16. Sitemap**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt declares the sitemap | https://zoevian.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://zoevian.de/sitemap.xml — 61 URLs |
-| ✅ | Sitemap lists only canonical-host URLs |  |
-
-**17. Social / sharing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | og:title | ZOEVIAN – Vögel beobachten, verstehen und schützen: vom Futterhaus im Garten bis zur artge |
-| ✅ | og:description | ZOEVIAN ist ein Ratgeber über Vögel in Deutschland: Gartenvögel erkennen, richtig füttern  |
-| ✅ | og:image | https://zoevian.de/og.png |
-| ✅ | og:url | https://zoevian.de/ |
-| ✅ | og:type | website |
-| ✅ | Twitter / X card | summary_large_image |
-| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://zoevian.de/og.png |
-
-**18. AI / generative search**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | AI / generative-search crawlers allowed |  |
-| ✅ | llms.txt for AI assistants | HTTP 200 |
-
-**19. Analytics & monitoring**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Analytics installed | other analytics |
-| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
-
-**20. Periodic audit**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Periodic automated SEO audit | this weekly audit |
-
-## zolun.de — 93%
-
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
-
-
-**1. Foundation**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HTTPS with a valid SSL certificate | 200 https://zolun.de/ |
-| ✅ | HTTP redirects to HTTPS | 301 http://zolun.de/ → 200 https://zolun.de/ → https://zolun.de/ |
-| ❌ | One canonical host (www ↔ apex redirect) | www.zolun.de → https://www.zolun.de/ |
-| ✅ | Google Search Console | google-site-verification TXT in DNS |
-| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
-| ✅ | Clean, readable URLs |  |
-| ✅ | Missing pages return a real 404 | HTTP 404 |
-
-**2. Technical SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://zolun.de/ |
-| ✅ | Canonical URL on the home page | https://zolun.de/ |
-| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
-| ✅ | GZIP / Brotli compression | br |
-| ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 301 ms (from a GitHub runner) |
-| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
-| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
-| ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ✅ | Web app manifest | /site.webmanifest |
-| ✅ | Canonical on every sampled page | 0 without |
-| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
-
-**3. On-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Title tag (10–60 chars) | 41: ZOLUN · Zwischen Ostsee, Land und Nordsee |
-| ✅ | Meta description (50–160 chars) | 157: ZOLUN ist ein Ratgeber für Urlaub in Deutschland: Nordsee und Ostsee, Inseln, Seen und Stä… |
-| ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 4 H2 |
-| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
-| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
-| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
-| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
-| ✅ | Breadcrumbs on inner pages | 8/8 |
-
-**4. Content SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Original, useful content that answers search intent |  |
-| 📝 | Old content updated; thin/duplicate content removed |  |
-
-**5. Structured data**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | JSON-LD structured data | Organization, WebSite, ItemList, ListItem |
-| ✅ | Organization schema |  |
-| ✅ | WebSite schema |  |
-
-**6. Image SEO**
-
-| | Check | Detail |
-|---|---|---|
-| — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
-
-**8. Multilingual SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Language declared (<html lang>) | de |
-| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
-
-**9. Internal linking**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Internal links from the home page | 58 unique |
-| 📝 | Topic clusters: pillar pages + supporting articles |  |
-
-**10. Off-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Quality, relevant backlinks; no spam/PBN |  |
-| 📝 | Digital PR, brand mentions, official social profiles |  |
-
-**11. Local SEO**
-
-| | Check | Detail |
-|---|---|---|
-| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
-
-**13. E-E-A-T**
-
-| | Check | Detail |
-|---|---|---|
-| ❌ | About page |  |
-| ✅ | Contact page |  |
-| ❌ | Privacy policy |  |
-| ❌ | Terms & conditions |  |
-| 📝 | Author profiles, publish/update dates, sources |  |
-
-**14. Security**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HSTS header | max-age=31536000 |
-| ✅ | X-Content-Type-Options: nosniff |  |
-| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
-| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
-| ✅ | Permissions-Policy |  |
-| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
-| ✅ | No mixed content |  |
-| ✅ | security.txt (RFC 9116) | HTTP 200 |
-
-**15. Crawl & indexing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt lets crawlers reach the site |  |
-| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
-
-**16. Sitemap**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | robots.txt declares the sitemap | https://zolun.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://zolun.de/sitemap.xml — 57 URLs |
-| ✅ | Sitemap lists only canonical-host URLs |  |
-
-**17. Social / sharing**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | og:title | ZOLUN · Zwischen Ostsee, Land und Nordsee: Urlaub in Deutschland |
-| ✅ | og:description | ZOLUN ist ein Ratgeber für Urlaub in Deutschland: Nordsee und Ostsee, Inseln, Seen und Stä |
-| ✅ | og:image | https://zolun.de/og.png |
-| ✅ | og:url | https://zolun.de/ |
-| ✅ | og:type | website |
-| ✅ | Twitter / X card | summary_large_image |
-| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://zolun.de/og.png |
-
-**18. AI / generative search**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | AI / generative-search crawlers allowed |  |
-| ✅ | llms.txt for AI assistants | HTTP 200 |
-
-**19. Analytics & monitoring**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Analytics installed | other analytics |
-| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
-
-**20. Periodic audit**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Periodic automated SEO audit | this weekly audit |
-
-## zufiq.de — 93%
-
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
-
-
-**1. Foundation**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | HTTPS with a valid SSL certificate | 200 https://zufiq.de/ |
-| ✅ | HTTP redirects to HTTPS | 301 http://zufiq.de/ → 200 https://zufiq.de/ → https://zufiq.de/ |
-| ❌ | One canonical host (www ↔ apex redirect) | www.zufiq.de → https://www.zufiq.de/ |
-| ✅ | Google Search Console | google-site-verification TXT in DNS |
-| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
-| ✅ | Clean, readable URLs |  |
-| ✅ | Missing pages return a real 404 | HTTP 404 |
-
-**2. Technical SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://zufiq.de/ |
-| ✅ | Canonical URL on the home page | https://zufiq.de/ |
-| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
-| ✅ | GZIP / Brotli compression | br |
-| ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 297 ms (from a GitHub runner) |
-| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
-| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
-| ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ✅ | Web app manifest | /site.webmanifest |
-| ✅ | Canonical on every sampled page | 0 without |
-| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
-
-**3. On-page SEO**
-
-| | Check | Detail |
-|---|---|---|
-| ✅ | Title tag (10–60 chars) | 38: ZUFIQ – Ratgeber für gute Gewohnheiten |
-| ✅ | Meta description (50–160 chars) | 153: ZUFIQ ist ein Ratgeber für ein ruhiges, zufriedenes Leben: Routinen für Morgen und Abend, … |
-| ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 4 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
@@ -4549,8 +3505,1052 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
+| ✅ | robots.txt declares the sitemap | https://rubiy.de/sitemap.xml |
+| ✅ | XML sitemap | HTTP 200 https://rubiy.de/sitemap.xml — 58 URLs |
+| ✅ | Sitemap lists only canonical-host URLs |  |
+
+**17. Social / sharing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | og:title | RUBIY — Rübe, Birne & Jahreszeit: saisonal kochen |
+| ✅ | og:description | RUBIY ist ein Ratgeber für saisonales Kochen in Deutschland: Was im Frühling, Sommer, Herb |
+| ✅ | og:image | https://rubiy.de/og.png |
+| ✅ | og:url | https://rubiy.de/ |
+| ✅ | og:type | website |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://rubiy.de/og.png |
+
+**18. AI / generative search**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | AI / generative-search crawlers allowed |  |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
+
+**19. Analytics & monitoring**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Analytics installed | other analytics |
+| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
+
+**20. Periodic audit**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Periodic automated SEO audit | this weekly audit |
+
+## velnixo.de — 93%
+
+**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+
+
+**1. Foundation**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HTTPS with a valid SSL certificate | 200 https://velnixo.de/ |
+| ✅ | HTTP redirects to HTTPS | 301 http://velnixo.de/ → 200 https://velnixo.de/ → https://velnixo.de/ |
+| ❌ | One canonical host (www ↔ apex redirect) | www.velnixo.de → https://www.velnixo.de/ |
+| ✅ | Google Search Console | Domain property verified |
+| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
+| ✅ | robots.txt present | 10 lines |
+| ✅ | Clean, readable URLs |  |
+| ✅ | Missing pages return a real 404 | HTTP 404 |
+
+**2. Technical SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://velnixo.de/ |
+| ✅ | Canonical URL on the home page | https://velnixo.de/ |
+| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
+| ✅ | GZIP / Brotli compression | br |
+| ✅ | Served through a CDN | Cloudflare |
+| ✅ | Server response time | 154 ms (from a GitHub runner) |
+| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
+| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
+| ✅ | Fonts optimised (preload / font-display: swap) |  |
+| ✅ | Web app manifest | /site.webmanifest |
+| ✅ | Canonical on every sampled page | 0 without |
+| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
+| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
+
+**3. On-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Title tag (10–60 chars) | 29: VELNIXO – Radfahren im Alltag |
+| ✅ | Meta description (50–160 chars) | 157: VELNIXO ist ein Ratgeber für alle, die in Deutschland Fahrrad fahren: Fahrrad und E-Bike r… |
+| ✅ | Exactly one H1 | 1 H1 |
+| ✅ | H2–H6 structure | 3 H2 |
+| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
+| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
+| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
+| ✅ | Breadcrumbs on inner pages | 8/8 |
+
+**4. Content SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Original, useful content that answers search intent |  |
+| 📝 | Old content updated; thin/duplicate content removed |  |
+
+**5. Structured data**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | JSON-LD structured data | Organization, WebSite |
+| ✅ | Organization schema |  |
+| ✅ | WebSite schema |  |
+
+**6. Image SEO**
+
+| | Check | Detail |
+|---|---|---|
+| — | Lazy-loading below-the-fold images | 0/0 lazy |
+| — | WebP / AVIF images | no WebP/AVIF found on the home page |
+| — | Images carry width & height (no layout shift) | 0/0 |
+| — | Alt text on images | 0/0 missing alt |
+| — | Descriptive image file names |  |
+| ✅ | apple-touch-icon (PNG) |  |
+
+**8. Multilingual SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Language declared (<html lang>) | de |
+| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
+
+**9. Internal linking**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Internal links from the home page | 63 unique |
+| 📝 | Topic clusters: pillar pages + supporting articles |  |
+
+**10. Off-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Quality, relevant backlinks; no spam/PBN |  |
+| 📝 | Digital PR, brand mentions, official social profiles |  |
+
+**11. Local SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
+
+**13. E-E-A-T**
+
+| | Check | Detail |
+|---|---|---|
+| ❌ | About page |  |
+| ✅ | Contact page |  |
+| ❌ | Privacy policy |  |
+| ❌ | Terms & conditions |  |
+| 📝 | Author profiles, publish/update dates, sources |  |
+
+**14. Security**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HSTS header | max-age=31536000 |
+| ✅ | X-Content-Type-Options: nosniff |  |
+| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
+| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
+| ✅ | Permissions-Policy |  |
+| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
+| ✅ | No mixed content |  |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
+
+**15. Crawl & indexing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt lets crawlers reach the site |  |
+| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
+
+**16. Sitemap**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt declares the sitemap | https://velnixo.de/sitemap.xml |
+| ✅ | XML sitemap | HTTP 200 https://velnixo.de/sitemap.xml — 62 URLs |
+| ✅ | Sitemap lists only canonical-host URLs |  |
+
+**17. Social / sharing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | og:title | VELNIXO – Radfahren im Alltag: das richtige Fahrrad, gute Pflege und sichere Wege, verstän |
+| ✅ | og:description | VELNIXO ist ein Ratgeber für alle, die in Deutschland Fahrrad fahren: Fahrrad und E-Bike r |
+| ✅ | og:image | https://velnixo.de/og.png |
+| ✅ | og:url | https://velnixo.de/ |
+| ✅ | og:type | website |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://velnixo.de/og.png |
+
+**18. AI / generative search**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | AI / generative-search crawlers allowed |  |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
+
+**19. Analytics & monitoring**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Analytics installed | other analytics |
+| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
+
+**20. Periodic audit**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Periodic automated SEO audit | this weekly audit |
+
+## zavik.de — 93%
+
+**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+
+
+**1. Foundation**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HTTPS with a valid SSL certificate | 200 https://zavik.de/ |
+| ✅ | HTTP redirects to HTTPS | 301 http://zavik.de/ → 200 https://zavik.de/ → https://zavik.de/ |
+| ❌ | One canonical host (www ↔ apex redirect) | www.zavik.de → https://www.zavik.de/ |
+| ✅ | Google Search Console | google-site-verification TXT in DNS |
+| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
+| ✅ | robots.txt present | 10 lines |
+| ✅ | Clean, readable URLs |  |
+| ✅ | Missing pages return a real 404 | HTTP 404 |
+
+**2. Technical SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://zavik.de/ |
+| ✅ | Canonical URL on the home page | https://zavik.de/ |
+| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
+| ✅ | GZIP / Brotli compression | br |
+| ✅ | Served through a CDN | Cloudflare |
+| ✅ | Server response time | 114 ms (from a GitHub runner) |
+| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
+| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
+| ✅ | Fonts optimised (preload / font-display: swap) |  |
+| ✅ | Web app manifest | /site.webmanifest |
+| ✅ | Canonical on every sampled page | 0 without |
+| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
+| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
+
+**3. On-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Title tag (10–60 chars) | 44: ZAVIK — Zarte Vierbeiner, kluge Katzenpflege |
+| ✅ | Meta description (50–160 chars) | 158: ZAVIK ist ein Ratgeber für Katzenhalterinnen und Katzenhalter: Einzug und Eingewöhnung, Er… |
+| ✅ | Exactly one H1 | 1 H1 |
+| ✅ | H2–H6 structure | 3 H2 |
+| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
+| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
+| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
+| ✅ | Breadcrumbs on inner pages | 8/8 |
+
+**4. Content SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Original, useful content that answers search intent |  |
+| 📝 | Old content updated; thin/duplicate content removed |  |
+
+**5. Structured data**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | JSON-LD structured data | Organization, WebSite |
+| ✅ | Organization schema |  |
+| ✅ | WebSite schema |  |
+
+**6. Image SEO**
+
+| | Check | Detail |
+|---|---|---|
+| — | Lazy-loading below-the-fold images | 0/0 lazy |
+| — | WebP / AVIF images | no WebP/AVIF found on the home page |
+| — | Images carry width & height (no layout shift) | 0/0 |
+| — | Alt text on images | 0/0 missing alt |
+| — | Descriptive image file names |  |
+| ✅ | apple-touch-icon (PNG) |  |
+
+**8. Multilingual SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Language declared (<html lang>) | de |
+| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
+
+**9. Internal linking**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Internal links from the home page | 64 unique |
+| 📝 | Topic clusters: pillar pages + supporting articles |  |
+
+**10. Off-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Quality, relevant backlinks; no spam/PBN |  |
+| 📝 | Digital PR, brand mentions, official social profiles |  |
+
+**11. Local SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
+
+**13. E-E-A-T**
+
+| | Check | Detail |
+|---|---|---|
+| ❌ | About page |  |
+| ✅ | Contact page |  |
+| ❌ | Privacy policy |  |
+| ❌ | Terms & conditions |  |
+| 📝 | Author profiles, publish/update dates, sources |  |
+
+**14. Security**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HSTS header | max-age=31536000 |
+| ✅ | X-Content-Type-Options: nosniff |  |
+| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
+| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
+| ✅ | Permissions-Policy |  |
+| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
+| ✅ | No mixed content |  |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
+
+**15. Crawl & indexing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt lets crawlers reach the site |  |
+| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
+
+**16. Sitemap**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt declares the sitemap | https://zavik.de/sitemap.xml |
+| ✅ | XML sitemap | HTTP 200 https://zavik.de/sitemap.xml — 63 URLs |
+| ✅ | Sitemap lists only canonical-host URLs |  |
+
+**17. Social / sharing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | og:title | ZAVIK — Zarte Vierbeiner, kluge Katzenpflege: der Katzen-Ratgeber |
+| ✅ | og:description | ZAVIK ist ein Ratgeber für Katzenhalterinnen und Katzenhalter: Einzug und Eingewöhnung, Er |
+| ✅ | og:image | https://zavik.de/og.png |
+| ✅ | og:url | https://zavik.de/ |
+| ✅ | og:type | website |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://zavik.de/og.png |
+
+**18. AI / generative search**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | AI / generative-search crawlers allowed |  |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
+
+**19. Analytics & monitoring**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Analytics installed | other analytics |
+| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
+
+**20. Periodic audit**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Periodic automated SEO audit | this weekly audit |
+
+## zevok.de — 93%
+
+**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+
+
+**1. Foundation**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HTTPS with a valid SSL certificate | 200 https://zevok.de/ |
+| ✅ | HTTP redirects to HTTPS | 301 http://zevok.de/ → 200 https://zevok.de/ → https://zevok.de/ |
+| ❌ | One canonical host (www ↔ apex redirect) | www.zevok.de → https://www.zevok.de/ |
+| ✅ | Google Search Console | google-site-verification TXT in DNS |
+| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
+| ✅ | robots.txt present | 10 lines |
+| ✅ | Clean, readable URLs |  |
+| ✅ | Missing pages return a real 404 | HTTP 404 |
+
+**2. Technical SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://zevok.de/ |
+| ✅ | Canonical URL on the home page | https://zevok.de/ |
+| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
+| ✅ | GZIP / Brotli compression | br |
+| ✅ | Served through a CDN | Cloudflare |
+| ✅ | Server response time | 91 ms (from a GitHub runner) |
+| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
+| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
+| ✅ | Fonts optimised (preload / font-display: swap) |  |
+| ✅ | Web app manifest | /site.webmanifest |
+| ✅ | Canonical on every sampled page | 0 without |
+| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
+| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
+
+**3. On-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Title tag (10–60 chars) | 56: ZEVOK: Haushalt leicht gemacht – Putzen, Flecken, Wäsche |
+| ✅ | Meta description (50–160 chars) | 157: ZEVOK ist ein Haushalts-Ratgeber: Putzen mit System und Putzpläne, Flecken entfernen nach … |
+| ✅ | Exactly one H1 | 1 H1 |
+| ✅ | H2–H6 structure | 6 H2 |
+| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
+| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
+| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
+| ✅ | Breadcrumbs on inner pages | 8/8 |
+
+**4. Content SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Original, useful content that answers search intent |  |
+| 📝 | Old content updated; thin/duplicate content removed |  |
+
+**5. Structured data**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | JSON-LD structured data | Organization, WebSite, ItemList, ListItem |
+| ✅ | Organization schema |  |
+| ✅ | WebSite schema |  |
+
+**6. Image SEO**
+
+| | Check | Detail |
+|---|---|---|
+| — | Lazy-loading below-the-fold images | 0/0 lazy |
+| — | WebP / AVIF images | no WebP/AVIF found on the home page |
+| — | Images carry width & height (no layout shift) | 0/0 |
+| — | Alt text on images | 0/0 missing alt |
+| — | Descriptive image file names |  |
+| ✅ | apple-touch-icon (PNG) |  |
+
+**8. Multilingual SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Language declared (<html lang>) | de |
+| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
+
+**9. Internal linking**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Internal links from the home page | 64 unique |
+| 📝 | Topic clusters: pillar pages + supporting articles |  |
+
+**10. Off-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Quality, relevant backlinks; no spam/PBN |  |
+| 📝 | Digital PR, brand mentions, official social profiles |  |
+
+**11. Local SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
+
+**13. E-E-A-T**
+
+| | Check | Detail |
+|---|---|---|
+| ❌ | About page |  |
+| ✅ | Contact page |  |
+| ❌ | Privacy policy |  |
+| ❌ | Terms & conditions |  |
+| 📝 | Author profiles, publish/update dates, sources |  |
+
+**14. Security**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HSTS header | max-age=31536000 |
+| ✅ | X-Content-Type-Options: nosniff |  |
+| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
+| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
+| ✅ | Permissions-Policy |  |
+| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
+| ✅ | No mixed content |  |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
+
+**15. Crawl & indexing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt lets crawlers reach the site |  |
+| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
+
+**16. Sitemap**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt declares the sitemap | https://zevok.de/sitemap.xml |
+| ✅ | XML sitemap | HTTP 200 https://zevok.de/sitemap.xml — 63 URLs |
+| ✅ | Sitemap lists only canonical-host URLs |  |
+
+**17. Social / sharing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | og:title | ZEVOK: Haushalt leicht gemacht – Putzen, Flecken, Wäsche |
+| ✅ | og:description | ZEVOK ist ein Haushalts-Ratgeber: Putzen mit System und Putzpläne, Flecken entfernen nach  |
+| ✅ | og:image | https://zevok.de/og.png |
+| ✅ | og:url | https://zevok.de/ |
+| ✅ | og:type | website |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://zevok.de/og.png |
+
+**18. AI / generative search**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | AI / generative-search crawlers allowed |  |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
+
+**19. Analytics & monitoring**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Analytics installed | other analytics |
+| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
+
+**20. Periodic audit**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Periodic automated SEO audit | this weekly audit |
+
+## zoevian.de — 93%
+
+**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+
+
+**1. Foundation**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HTTPS with a valid SSL certificate | 200 https://zoevian.de/ |
+| ✅ | HTTP redirects to HTTPS | 301 http://zoevian.de/ → 200 https://zoevian.de/ → https://zoevian.de/ |
+| ❌ | One canonical host (www ↔ apex redirect) | www.zoevian.de → https://www.zoevian.de/ |
+| ✅ | Google Search Console | Domain property verified |
+| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
+| ✅ | robots.txt present | 10 lines |
+| ✅ | Clean, readable URLs |  |
+| ✅ | Missing pages return a real 404 | HTTP 404 |
+
+**2. Technical SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://zoevian.de/ |
+| ✅ | Canonical URL on the home page | https://zoevian.de/ |
+| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
+| ✅ | GZIP / Brotli compression | br |
+| ✅ | Served through a CDN | Cloudflare |
+| ✅ | Server response time | 154 ms (from a GitHub runner) |
+| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
+| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
+| ✅ | Fonts optimised (preload / font-display: swap) |  |
+| ✅ | Web app manifest | /site.webmanifest |
+| ✅ | Canonical on every sampled page | 0 without |
+| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
+| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
+
+**3. On-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Title tag (10–60 chars) | 50: ZOEVIAN – Vögel beobachten, verstehen und schützen |
+| ✅ | Meta description (50–160 chars) | 155: ZOEVIAN ist ein Ratgeber über Vögel in Deutschland: Gartenvögel erkennen, richtig füttern … |
+| ✅ | Exactly one H1 | 1 H1 |
+| ✅ | H2–H6 structure | 3 H2 |
+| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
+| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
+| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
+| ✅ | Breadcrumbs on inner pages | 8/8 |
+
+**4. Content SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Original, useful content that answers search intent |  |
+| 📝 | Old content updated; thin/duplicate content removed |  |
+
+**5. Structured data**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | JSON-LD structured data | Organization, WebSite |
+| ✅ | Organization schema |  |
+| ✅ | WebSite schema |  |
+
+**6. Image SEO**
+
+| | Check | Detail |
+|---|---|---|
+| — | Lazy-loading below-the-fold images | 0/0 lazy |
+| — | WebP / AVIF images | no WebP/AVIF found on the home page |
+| — | Images carry width & height (no layout shift) | 0/0 |
+| — | Alt text on images | 0/0 missing alt |
+| — | Descriptive image file names |  |
+| ✅ | apple-touch-icon (PNG) |  |
+
+**8. Multilingual SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Language declared (<html lang>) | de |
+| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
+
+**9. Internal linking**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Internal links from the home page | 63 unique |
+| 📝 | Topic clusters: pillar pages + supporting articles |  |
+
+**10. Off-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Quality, relevant backlinks; no spam/PBN |  |
+| 📝 | Digital PR, brand mentions, official social profiles |  |
+
+**11. Local SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
+
+**13. E-E-A-T**
+
+| | Check | Detail |
+|---|---|---|
+| ❌ | About page |  |
+| ✅ | Contact page |  |
+| ❌ | Privacy policy |  |
+| ❌ | Terms & conditions |  |
+| 📝 | Author profiles, publish/update dates, sources |  |
+
+**14. Security**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HSTS header | max-age=31536000 |
+| ✅ | X-Content-Type-Options: nosniff |  |
+| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
+| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
+| ✅ | Permissions-Policy |  |
+| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
+| ✅ | No mixed content |  |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
+
+**15. Crawl & indexing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt lets crawlers reach the site |  |
+| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
+
+**16. Sitemap**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt declares the sitemap | https://zoevian.de/sitemap.xml |
+| ✅ | XML sitemap | HTTP 200 https://zoevian.de/sitemap.xml — 62 URLs |
+| ✅ | Sitemap lists only canonical-host URLs |  |
+
+**17. Social / sharing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | og:title | ZOEVIAN – Vögel beobachten, verstehen und schützen: vom Futterhaus im Garten bis zur artge |
+| ✅ | og:description | ZOEVIAN ist ein Ratgeber über Vögel in Deutschland: Gartenvögel erkennen, richtig füttern  |
+| ✅ | og:image | https://zoevian.de/og.png |
+| ✅ | og:url | https://zoevian.de/ |
+| ✅ | og:type | website |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://zoevian.de/og.png |
+
+**18. AI / generative search**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | AI / generative-search crawlers allowed |  |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
+
+**19. Analytics & monitoring**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Analytics installed | other analytics |
+| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
+
+**20. Periodic audit**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Periodic automated SEO audit | this weekly audit |
+
+## zolun.de — 93%
+
+**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+
+
+**1. Foundation**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HTTPS with a valid SSL certificate | 200 https://zolun.de/ |
+| ✅ | HTTP redirects to HTTPS | 301 http://zolun.de/ → 200 https://zolun.de/ → https://zolun.de/ |
+| ❌ | One canonical host (www ↔ apex redirect) | www.zolun.de → https://www.zolun.de/ |
+| ✅ | Google Search Console | google-site-verification TXT in DNS |
+| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
+| ✅ | robots.txt present | 10 lines |
+| ✅ | Clean, readable URLs |  |
+| ✅ | Missing pages return a real 404 | HTTP 404 |
+
+**2. Technical SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://zolun.de/ |
+| ✅ | Canonical URL on the home page | https://zolun.de/ |
+| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
+| ✅ | GZIP / Brotli compression | br |
+| ✅ | Served through a CDN | Cloudflare |
+| ✅ | Server response time | 145 ms (from a GitHub runner) |
+| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
+| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
+| ✅ | Fonts optimised (preload / font-display: swap) |  |
+| ✅ | Web app manifest | /site.webmanifest |
+| ✅ | Canonical on every sampled page | 0 without |
+| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
+| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
+
+**3. On-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Title tag (10–60 chars) | 41: ZOLUN · Zwischen Ostsee, Land und Nordsee |
+| ✅ | Meta description (50–160 chars) | 157: ZOLUN ist ein Ratgeber für Urlaub in Deutschland: Nordsee und Ostsee, Inseln, Seen und Stä… |
+| ✅ | Exactly one H1 | 1 H1 |
+| ✅ | H2–H6 structure | 4 H2 |
+| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
+| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
+| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
+| ✅ | Breadcrumbs on inner pages | 8/8 |
+
+**4. Content SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Original, useful content that answers search intent |  |
+| 📝 | Old content updated; thin/duplicate content removed |  |
+
+**5. Structured data**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | JSON-LD structured data | Organization, WebSite, ItemList, ListItem |
+| ✅ | Organization schema |  |
+| ✅ | WebSite schema |  |
+
+**6. Image SEO**
+
+| | Check | Detail |
+|---|---|---|
+| — | Lazy-loading below-the-fold images | 0/0 lazy |
+| — | WebP / AVIF images | no WebP/AVIF found on the home page |
+| — | Images carry width & height (no layout shift) | 0/0 |
+| — | Alt text on images | 0/0 missing alt |
+| — | Descriptive image file names |  |
+| ✅ | apple-touch-icon (PNG) |  |
+
+**8. Multilingual SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Language declared (<html lang>) | de |
+| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
+
+**9. Internal linking**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Internal links from the home page | 59 unique |
+| 📝 | Topic clusters: pillar pages + supporting articles |  |
+
+**10. Off-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Quality, relevant backlinks; no spam/PBN |  |
+| 📝 | Digital PR, brand mentions, official social profiles |  |
+
+**11. Local SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
+
+**13. E-E-A-T**
+
+| | Check | Detail |
+|---|---|---|
+| ❌ | About page |  |
+| ✅ | Contact page |  |
+| ❌ | Privacy policy |  |
+| ❌ | Terms & conditions |  |
+| 📝 | Author profiles, publish/update dates, sources |  |
+
+**14. Security**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HSTS header | max-age=31536000 |
+| ✅ | X-Content-Type-Options: nosniff |  |
+| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
+| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
+| ✅ | Permissions-Policy |  |
+| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
+| ✅ | No mixed content |  |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
+
+**15. Crawl & indexing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt lets crawlers reach the site |  |
+| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
+
+**16. Sitemap**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt declares the sitemap | https://zolun.de/sitemap.xml |
+| ✅ | XML sitemap | HTTP 200 https://zolun.de/sitemap.xml — 58 URLs |
+| ✅ | Sitemap lists only canonical-host URLs |  |
+
+**17. Social / sharing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | og:title | ZOLUN · Zwischen Ostsee, Land und Nordsee: Urlaub in Deutschland |
+| ✅ | og:description | ZOLUN ist ein Ratgeber für Urlaub in Deutschland: Nordsee und Ostsee, Inseln, Seen und Stä |
+| ✅ | og:image | https://zolun.de/og.png |
+| ✅ | og:url | https://zolun.de/ |
+| ✅ | og:type | website |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://zolun.de/og.png |
+
+**18. AI / generative search**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | AI / generative-search crawlers allowed |  |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
+
+**19. Analytics & monitoring**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Analytics installed | other analytics |
+| 📝 | Monitor clicks, CTR, position, indexed pages in Search Console |  |
+
+**20. Periodic audit**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Periodic automated SEO audit | this weekly audit |
+
+## zufiq.de — 93%
+
+**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+
+
+**1. Foundation**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HTTPS with a valid SSL certificate | 200 https://zufiq.de/ |
+| ✅ | HTTP redirects to HTTPS | 301 http://zufiq.de/ → 200 https://zufiq.de/ → https://zufiq.de/ |
+| ❌ | One canonical host (www ↔ apex redirect) | www.zufiq.de → https://www.zufiq.de/ |
+| ✅ | Google Search Console | google-site-verification TXT in DNS |
+| 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
+| ✅ | robots.txt present | 10 lines |
+| ✅ | Clean, readable URLs |  |
+| ✅ | Missing pages return a real 404 | HTTP 404 |
+
+**2. Technical SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://zufiq.de/ |
+| ✅ | Canonical URL on the home page | https://zufiq.de/ |
+| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
+| ✅ | GZIP / Brotli compression | br |
+| ✅ | Served through a CDN | Cloudflare |
+| ✅ | Server response time | 84 ms (from a GitHub runner) |
+| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
+| ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
+| ✅ | Fonts optimised (preload / font-display: swap) |  |
+| ✅ | Web app manifest | /site.webmanifest |
+| ✅ | Canonical on every sampled page | 0 without |
+| ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
+| 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
+
+**3. On-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Title tag (10–60 chars) | 38: ZUFIQ – Ratgeber für gute Gewohnheiten |
+| ✅ | Meta description (50–160 chars) | 153: ZUFIQ ist ein Ratgeber für ein ruhiges, zufriedenes Leben: Routinen für Morgen und Abend, … |
+| ✅ | Exactly one H1 | 1 H1 |
+| ✅ | H2–H6 structure | 4 H2 |
+| ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
+| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
+| ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
+| ✅ | Breadcrumbs on inner pages | 8/8 |
+
+**4. Content SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Original, useful content that answers search intent |  |
+| 📝 | Old content updated; thin/duplicate content removed |  |
+
+**5. Structured data**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | JSON-LD structured data | Organization, WebSite |
+| ✅ | Organization schema |  |
+| ✅ | WebSite schema |  |
+
+**6. Image SEO**
+
+| | Check | Detail |
+|---|---|---|
+| — | Lazy-loading below-the-fold images | 0/0 lazy |
+| — | WebP / AVIF images | no WebP/AVIF found on the home page |
+| — | Images carry width & height (no layout shift) | 0/0 |
+| — | Alt text on images | 0/0 missing alt |
+| — | Descriptive image file names |  |
+| ✅ | apple-touch-icon (PNG) |  |
+
+**8. Multilingual SEO**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Language declared (<html lang>) | de |
+| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
+
+**9. Internal linking**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | Internal links from the home page | 60 unique |
+| 📝 | Topic clusters: pillar pages + supporting articles |  |
+
+**10. Off-page SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Quality, relevant backlinks; no spam/PBN |  |
+| 📝 | Digital PR, brand mentions, official social profiles |  |
+
+**11. Local SEO**
+
+| | Check | Detail |
+|---|---|---|
+| 📝 | Google Business Profile + consistent NAP (if a physical location) |  |
+
+**13. E-E-A-T**
+
+| | Check | Detail |
+|---|---|---|
+| ❌ | About page |  |
+| ✅ | Contact page |  |
+| ❌ | Privacy policy |  |
+| ❌ | Terms & conditions |  |
+| 📝 | Author profiles, publish/update dates, sources |  |
+
+**14. Security**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | HSTS header | max-age=31536000 |
+| ✅ | X-Content-Type-Options: nosniff |  |
+| ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
+| ✅ | Referrer-Policy | strict-origin-when-cross-origin |
+| ✅ | Permissions-Policy |  |
+| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
+| ✅ | No mixed content |  |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
+
+**15. Crawl & indexing**
+
+| | Check | Detail |
+|---|---|---|
+| ✅ | robots.txt lets crawlers reach the site |  |
+| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
+
+**16. Sitemap**
+
+| | Check | Detail |
+|---|---|---|
 | ✅ | robots.txt declares the sitemap | https://zufiq.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://zufiq.de/sitemap.xml — 57 URLs |
+| ✅ | XML sitemap | HTTP 200 https://zufiq.de/sitemap.xml — 58 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -4599,7 +4599,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.zuvik.de → https://www.zuvik.de/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -4612,7 +4612,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 289 ms (from a GitHub runner) |
+| ✅ | Server response time | 84 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4673,7 +4673,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 57 unique |
+| ✅ | Internal links from the home page | 58 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -4724,7 +4724,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://zuvik.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://zuvik.de/sitemap.xml — 56 URLs |
+| ✅ | XML sitemap | HTTP 200 https://zuvik.de/sitemap.xml — 57 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -4773,7 +4773,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.crone.skin → https://www.crone.skin/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -4786,7 +4786,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 385 ms (from a GitHub runner) |
+| ✅ | Server response time | 104 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4847,7 +4847,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 56 unique |
+| ✅ | Internal links from the home page | 77 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -4898,7 +4898,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://crone.skin/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://crone.skin/sitemap.xml — 55 URLs |
+| ✅ | XML sitemap | HTTP 200 https://crone.skin/sitemap.xml — 76 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -4947,7 +4947,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.dai.lat → https://www.dai.lat/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -4960,7 +4960,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 216 ms (from a GitHub runner) |
+| ✅ | Server response time | 81 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5021,7 +5021,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 57 unique |
+| ✅ | Internal links from the home page | 58 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -5072,7 +5072,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://dai.lat/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://dai.lat/sitemap.xml — 56 URLs |
+| ✅ | XML sitemap | HTTP 200 https://dai.lat/sitemap.xml — 57 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -5121,7 +5121,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.pab.lat → https://www.pab.lat/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -5134,7 +5134,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 240 ms (from a GitHub runner) |
+| ✅ | Server response time | 72 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5195,7 +5195,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 57 unique |
+| ✅ | Internal links from the home page | 58 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -5246,7 +5246,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://pab.lat/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://pab.lat/sitemap.xml — 56 URLs |
+| ✅ | XML sitemap | HTTP 200 https://pab.lat/sitemap.xml — 57 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -5295,7 +5295,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.rough.lat → https://www.rough.lat/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -5308,7 +5308,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 214 ms (from a GitHub runner) |
+| ✅ | Server response time | 89 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5369,7 +5369,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 56 unique |
+| ✅ | Internal links from the home page | 77 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -5420,7 +5420,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://rough.lat/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://rough.lat/sitemap.xml — 55 URLs |
+| ✅ | XML sitemap | HTTP 200 https://rough.lat/sitemap.xml — 76 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -5469,7 +5469,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.saved.lat → https://www.saved.lat/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -5482,7 +5482,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 238 ms (from a GitHub runner) |
+| ✅ | Server response time | 246 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5543,7 +5543,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 56 unique |
+| ✅ | Internal links from the home page | 77 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -5594,7 +5594,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://saved.lat/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://saved.lat/sitemap.xml — 55 URLs |
+| ✅ | XML sitemap | HTTP 200 https://saved.lat/sitemap.xml — 76 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -5643,7 +5643,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.dawo.es → https://www.dawo.es/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -5656,7 +5656,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 173 ms (from a GitHub runner) |
+| ✅ | Server response time | 58 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5717,7 +5717,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 57 unique |
+| ✅ | Internal links from the home page | 58 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -5768,7 +5768,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://dawo.es/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://dawo.es/sitemap.xml — 56 URLs |
+| ✅ | XML sitemap | HTTP 200 https://dawo.es/sitemap.xml — 57 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -5817,7 +5817,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.qkb.es → https://www.qkb.es/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -5830,7 +5830,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 187 ms (from a GitHub runner) |
+| ✅ | Server response time | 69 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5891,7 +5891,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 57 unique |
+| ✅ | Internal links from the home page | 58 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -5942,7 +5942,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://qkb.es/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://qkb.es/sitemap.xml — 56 URLs |
+| ✅ | XML sitemap | HTTP 200 https://qkb.es/sitemap.xml — 57 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -5991,7 +5991,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.rough.es → https://www.rough.es/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -6004,7 +6004,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 172 ms (from a GitHub runner) |
+| ✅ | Server response time | 86 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6065,7 +6065,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 57 unique |
+| ✅ | Internal links from the home page | 58 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -6116,7 +6116,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://rough.es/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://rough.es/sitemap.xml — 56 URLs |
+| ✅ | XML sitemap | HTTP 200 https://rough.es/sitemap.xml — 57 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -6165,7 +6165,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.xko.es → https://www.xko.es/ |
 | ✅ | Google Search Console | google-site-verification TXT in DNS |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -6178,7 +6178,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 221 ms (from a GitHub runner) |
+| ✅ | Server response time | 60 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6239,7 +6239,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 57 unique |
+| ✅ | Internal links from the home page | 58 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -6290,7 +6290,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://xko.es/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://xko.es/sitemap.xml — 56 URLs |
+| ✅ | XML sitemap | HTTP 200 https://xko.es/sitemap.xml — 57 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -6339,7 +6339,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.odaily.xyz → https://www.odaily.xyz/ |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -6352,7 +6352,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 241 ms (from a GitHub runner) |
+| ✅ | Server response time | 56 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6413,7 +6413,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 61 unique |
+| ✅ | Internal links from the home page | 77 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -6464,7 +6464,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://odaily.xyz/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://odaily.xyz/sitemap.xml — 60 URLs |
+| ✅ | XML sitemap | HTTP 200 https://odaily.xyz/sitemap.xml — 76 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -6513,7 +6513,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ❌ | One canonical host (www ↔ apex redirect) | www.xdaily.xyz → https://www.xdaily.xyz/ |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 5 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
 | ✅ | Missing pages return a real 404 | HTTP 404 |
 
@@ -6526,7 +6526,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 177 ms (from a GitHub runner) |
+| ✅ | Server response time | 88 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6587,7 +6587,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 61 unique |
+| ✅ | Internal links from the home page | 62 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -6638,7 +6638,7 @@ Generated 2026-10-27T14:50:56.523Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://xdaily.xyz/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://xdaily.xyz/sitemap.xml — 60 URLs |
+| ✅ | XML sitemap | HTTP 200 https://xdaily.xyz/sitemap.xml — 61 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**

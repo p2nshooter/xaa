@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-27T14:50:56.523Z",
+ "generatedAt": "2026-11-02T10:53:13.314Z",
  "sites": [
   {
    "domain": "xaa.es",
@@ -82,7 +82,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://xaa.es/sitemap.xml — 233 URLs"
+     "detail": "HTTP 200 https://xaa.es/sitemap.xml — 236 URLs"
     },
     {
      "section": "16",
@@ -137,8 +137,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "1721 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "788 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -236,7 +236,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "40 unique"
+     "detail": "41 unique"
     },
     {
      "section": "8",
@@ -502,14 +502,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "69/100 — Lighthouse (runner)"
+     "detail": "56/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "4.04 s lab"
+     "detail": "7.57 s lab"
     },
     {
      "section": "2",
@@ -523,7 +523,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "warn",
-     "detail": "TBT 490 ms lab (no field data yet)"
+     "detail": "TBT 356 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -646,10 +646,10 @@
      "h1": 1
     }
    ],
-   "score": 94,
-   "pass": 65,
+   "score": 95,
+   "pass": 66,
    "fail": 1,
-   "warn": 7,
+   "warn": 6,
    "manual": 9
   },
   {
@@ -705,7 +705,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "16 lines"
+     "detail": "31 lines"
     },
     {
      "section": "16",
@@ -733,7 +733,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://axto.io/sitemap.xml — 554 URLs"
+     "detail": "HTTP 200 https://axto.io/sitemap.xml — 558 URLs"
     },
     {
      "section": "16",
@@ -788,8 +788,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "1045 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "656 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -816,15 +816,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -852,7 +852,7 @@
      "id": "meta_description",
      "label": "Meta description (50–160 chars)",
      "status": "pass",
-     "detail": "157: One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Studio, Clipper, Pri…"
+     "detail": "158: One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Chat, Clipper, Priva…"
     },
     {
      "section": "3",
@@ -866,20 +866,20 @@
      "id": "h2",
      "label": "H2–H6 structure",
      "status": "pass",
-     "detail": "6 H2"
+     "detail": "7 H2"
     },
     {
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -887,7 +887,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "48 unique"
+     "detail": "49 unique"
     },
     {
      "section": "8",
@@ -936,7 +936,7 @@
      "id": "og_description",
      "label": "og:description",
      "status": "pass",
-     "detail": "One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Studio, Clipper, Pri"
+     "detail": "One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Chat, Clipper, Priva"
     },
     {
      "section": "17",
@@ -1153,28 +1153,28 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "78/100 — Lighthouse (runner)"
+     "detail": "71/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "fail",
-     "detail": "4.20 s lab"
+     "status": "warn",
+     "detail": "3.48 s lab"
     },
     {
      "section": "2",
      "id": "cls",
      "label": "CLS ≤ 0.1",
-     "status": "pass",
-     "detail": "0.058 lab"
+     "status": "warn",
+     "detail": "0.138 lab"
     },
     {
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "warn",
-     "detail": "TBT 241 ms lab (no field data yet)"
+     "detail": "TBT 467 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -1237,7 +1237,7 @@
     {
      "url": "https://axto.io/",
      "title": "AXTO — AI workspace for legal, security & business teams",
-     "desc": "One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Studio, Clipper, Privacy Vault, Compliance Center and Security Analyst in your browser…",
+     "desc": "One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Chat, Clipper, Privacy Vault, Compliance Center and Security Analyst in your browser on…",
      "h1": 1
     },
     {
@@ -1250,8 +1250,8 @@
     {
      "url": "https://axto.io/acquire",
      "status": 200,
-     "title": "Acquire AXTO — enterprise AI platform for sale (US$10M)",
-     "desc": "Acquire AXTO outright: the axto.io domain, full source code, seven live cloud AI apps (Legal AI, AI Studio, Clipper, Privacy Vault, Compliance Center…",
+     "title": "Acquire AXTO",
+     "desc": "Acquire AXTO outright: the axto.io domain, full source code, seven live cloud AI apps (Legal AI, AI Chat, Clipper, Privacy Vault, Compliance Center, Security…",
      "h1": 1
     },
     {
@@ -1265,42 +1265,42 @@
      "url": "https://axto.io/invest",
      "status": 200,
      "title": "Invest in AXTO — revenue-sharing investor round",
-     "desc": "Invest in AXTO, the AI platform behind Legal AI, AI Studio, Clipper and a self-hosted product line for Linux and Windows: a proportional monthly share of…",
+     "desc": "Invest in AXTO, the AI platform behind Legal AI, AI Chat, Clipper and a self-hosted product line for Linux and Windows: a proportional monthly share of every…",
      "h1": 1
     },
     {
-     "url": "https://axto.io/apps",
+     "url": "https://axto.io/partners",
      "status": 200,
-     "title": "Apps — Legal AI, Prompt Library, AI Studio, Clipper and more",
-     "desc": "Seven professional AI apps in your browser: Legal AI, Prompt Library, AI Studio, Clipper, Privacy Vault, Compliance Center and Security Analyst — on your own…",
+     "title": "AXTO partner programmes",
+     "desc": "AXTO partner programmes: earn a commission as an affiliate, resell AXTO at a wholesale discount from prepaid credit, or run the whole AI platform under your…",
      "h1": 1
     },
     {
-     "url": "https://axto.io/apps/legal",
+     "url": "https://axto.io/affiliate",
      "status": 200,
-     "title": "Legal AI | AXTO",
-     "desc": "A private AI legal team in your browser. Pick any country, state or province, upload the case file, and get it rebuilt against current law — from the…",
+     "title": "AXTO affiliate programme — earn 20% for 12 months",
+     "desc": "Join the AXTO affiliate programme for free: 20% of every paid order of the customers you refer for 12 months, 10% of a referred partner's entry fee, monthly…",
      "h1": 1
     },
     {
-     "url": "https://axto.io/apps/prompts",
+     "url": "https://axto.io/resellers",
      "status": 200,
-     "title": "Prompt Library | AXTO",
-     "desc": "240 expert prompts organised by profession and level — Basic, Pro, Premium and Elite.",
+     "title": "Become an AXTO reseller — up to 35% off list price",
+     "desc": "Resell AXTO's AI platform to your clients: a wholesale discount of up to 35% from prepaid credit, entry $5,000 including $2,500 of credit, your own prices and…",
      "h1": 1
     },
     {
-     "url": "https://axto.io/apps/studio",
+     "url": "https://axto.io/white-label",
      "status": 200,
-     "title": "AI Studio | AXTO",
-     "desc": "One private workspace for every leading model, on your own keys. Attach documents and images, dictate by voice, preview the pages and diagrams the AI writes…",
+     "title": "White-label AI platform — your brand, powered by AXTO",
+     "desc": "Launch a complete AI platform under your own brand, domain and languages: cloud apps, self-hosted editions, licences and Manage AI for your clients.",
      "h1": 1
     }
    ],
    "score": 94,
-   "pass": 61,
-   "fail": 2,
-   "warn": 4,
+   "pass": 64,
+   "fail": 1,
+   "warn": 6,
    "manual": 10
   },
   {
@@ -1440,7 +1440,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "547 ms (from a GitHub runner)"
+     "detail": "459 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -1804,14 +1804,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "79/100 — Lighthouse (runner)"
+     "detail": "65/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "4.15 s lab"
+     "detail": "7.11 s lab"
     },
     {
      "section": "2",
@@ -1825,7 +1825,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "pass",
-     "detail": "TBT 195 ms lab (no field data yet)"
+     "detail": "TBT 95 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -2007,7 +2007,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -2091,7 +2091,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "240 ms (from a GitHub runner)"
+     "detail": "74 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -2455,14 +2455,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "57/100 — Lighthouse (runner)"
+     "detail": "83/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "fail",
-     "detail": "6.73 s lab"
+     "status": "warn",
+     "detail": "2.77 s lab"
     },
     {
      "section": "2",
@@ -2476,7 +2476,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "pass",
-     "detail": "TBT 51 ms lab (no field data yet)"
+     "detail": "TBT 133 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -2599,10 +2599,10 @@
      "h1": 1
     }
    ],
-   "score": 95,
+   "score": 96,
    "pass": 62,
-   "fail": 2,
-   "warn": 3,
+   "fail": 1,
+   "warn": 4,
    "manual": 10
   },
   {
@@ -2658,7 +2658,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "150 lines"
+     "detail": "27 lines"
     },
     {
      "section": "16",
@@ -2671,15 +2671,15 @@
      "section": "15",
      "id": "robots_open",
      "label": "robots.txt lets crawlers reach the site",
-     "status": "fail",
-     "detail": "Disallow: / for *"
+     "status": "pass",
+     "detail": ""
     },
     {
      "section": "18",
      "id": "ai_crawlers",
      "label": "AI / generative-search crawlers allowed",
-     "status": "warn",
-     "detail": "blocked: GPTBot, ClaudeBot, Google-Extended, CCBot"
+     "status": "pass",
+     "detail": ""
     },
     {
      "section": "16",
@@ -2741,8 +2741,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "1708 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "606 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -2840,7 +2840,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "53 unique"
+     "detail": "39 unique"
     },
     {
      "section": "8",
@@ -3050,7 +3050,7 @@
      "id": "unique_titles",
      "label": "Unique title on every page",
      "status": "pass",
-     "detail": "7 pages sampled; 0 duplicate, 0 missing"
+     "detail": "9 pages sampled; 0 duplicate, 0 missing"
     },
     {
      "section": "3",
@@ -3071,21 +3071,21 @@
      "id": "title_length_all",
      "label": "Titles ≤ 60 characters on every sampled page",
      "status": "pass",
-     "detail": "7 pages"
+     "detail": "9 pages"
     },
     {
      "section": "3",
      "id": "desc_length_all",
      "label": "Descriptions ≤ 160 characters on every sampled page",
      "status": "warn",
-     "detail": "3/7 longer"
+     "detail": "4/9 longer"
     },
     {
      "section": "2",
      "id": "canonical_all",
      "label": "Canonical on every sampled page",
-     "status": "pass",
-     "detail": "0 without"
+     "status": "warn",
+     "detail": "1 without"
     },
     {
      "section": "3",
@@ -3098,36 +3098,36 @@
      "section": "2",
      "id": "broken",
      "label": "Sitemap URLs load (no broken pages)",
-     "status": "fail",
-     "detail": "2/8 failing"
+     "status": "pass",
+     "detail": "0/8 failing"
     },
     {
      "section": "2",
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "52/100 — Lighthouse (runner)"
+     "detail": "66/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "10.61 s lab"
+     "detail": "4.84 s lab"
     },
     {
      "section": "2",
      "id": "cls",
      "label": "CLS ≤ 0.1",
      "status": "pass",
-     "detail": "0.000 lab"
+     "detail": "0.029 lab"
     },
     {
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "warn",
-     "detail": "TBT 566 ms lab (no field data yet)"
+     "detail": "TBT 448 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -3223,7 +3223,10 @@
     },
     {
      "url": "https://ulyah.com/kitab",
-     "status": 503
+     "status": 200,
+     "title": "Perpustakaan Islam — ULYAH.COM",
+     "desc": "Kitab-kitab klasik khazanah Islam — tafsir, hadits, empat madzhab, sirah, sejarah, dan kisah para ulama. Setiap ringkasan bisa didengarkan dengan suara.",
+     "h1": 1
     },
     {
      "url": "https://ulyah.com/kitab-pesantren",
@@ -3234,20 +3237,23 @@
     },
     {
      "url": "https://ulyah.com/amalan",
-     "status": 503
+     "status": 200,
+     "title": "Amalan Harian — Doa, Dzikir, Thibbun Nabawi — ULYAH.COM",
+     "desc": "Kumpulan amalan harian tersusun rapi: doa dari bangun tidur sampai tidur lagi, dzikir pagi-petang, pengobatan ala Nabi (thibbun nabawi) yang sahih, serta adab kebersihan & keindahan diri — lengkap Arab, latin, terjemah, dan suara.",
+     "h1": 1
     },
     {
      "url": "https://ulyah.com/haji-umroh",
      "status": 200,
      "title": "Haji & Umroh — Paket & Bimbingan — ULYAH.COM",
-     "desc": "Paket haji dan umroh pilihan di ULYAH.COM: durasi, harga, dan keberangkatan yang jelas.",
+     "desc": "Paket haji dan umroh di ULYAH.COM: durasi dan keberangkatan yang jelas, langsung hubungi penyelenggara. Slot promosi untuk biro perjalanan tersedia.",
      "h1": 1
     }
    ],
-   "score": 88,
-   "pass": 59,
-   "fail": 4,
-   "warn": 9,
+   "score": 92,
+   "pass": 62,
+   "fail": 2,
+   "warn": 8,
    "manual": 10
   },
   {
@@ -3303,7 +3309,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "20 lines"
+     "detail": "27 lines"
     },
     {
      "section": "16",
@@ -3386,8 +3392,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "924 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "171 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -3485,7 +3491,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "54 unique"
+     "detail": "39 unique"
     },
     {
      "section": "8",
@@ -3758,7 +3764,7 @@
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "9.43 s lab"
+     "detail": "11.08 s lab"
     },
     {
      "section": "2",
@@ -3772,7 +3778,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "warn",
-     "detail": "TBT 337 ms lab (no field data yet)"
+     "detail": "TBT 298 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -3891,14 +3897,14 @@
      "url": "https://xad.es/hajj-umrah",
      "status": 200,
      "title": "Hajj & Umrah — Packages & Guidance — XAD",
-     "desc": "Curated Hajj and Umrah packages on XAD: clear duration, pricing and departures.",
+     "desc": "Hajj and Umrah packages on XAD: clear duration and departures, contact the organiser directly. Promotion slots for travel agents are available.",
      "h1": 1
     }
    ],
-   "score": 89,
-   "pass": 58,
+   "score": 90,
+   "pass": 59,
    "fail": 2,
-   "warn": 12,
+   "warn": 11,
    "manual": 10
   },
   {
@@ -4038,7 +4044,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "562 ms (from a GitHub runner)"
+     "detail": "758 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -4100,8 +4106,8 @@
      "section": "3",
      "id": "meta_description",
      "label": "Meta description (50–160 chars)",
-     "status": "warn",
-     "detail": "172: Independent, plain-English guides to investing, saving and building lasting wealth — the s…"
+     "status": "pass",
+     "detail": "155: Independent, plain-English guides to investing, saving and building lasting wealth: the sl…"
     },
     {
      "section": "3",
@@ -4185,14 +4191,14 @@
      "id": "og_description",
      "label": "og:description",
      "status": "pass",
-     "detail": "Independent, plain-English guides to investing, saving and building lasting wealth — the s"
+     "detail": "Independent, plain-English guides to investing, saving and building lasting wealth: the sl"
     },
     {
      "section": "17",
      "id": "og_image",
      "label": "og:image",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "https://jai.lat/opengraph-image.png?opengraph-image.1wtm_c6tll1hg.png"
     },
     {
      "section": "17",
@@ -4213,7 +4219,7 @@
      "id": "twitter_card",
      "label": "Twitter / X card",
      "status": "pass",
-     "detail": "summary"
+     "detail": "summary_large_image"
     },
     {
      "section": "14",
@@ -4310,36 +4316,36 @@
      "section": "18",
      "id": "llms_txt",
      "label": "llms.txt for AI assistants",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "14",
      "id": "security_txt",
      "label": "security.txt (RFC 9116)",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "2",
      "id": "manifest",
      "label": "Web app manifest",
-     "status": "warn",
-     "detail": "no <link rel=\"manifest\">"
+     "status": "pass",
+     "detail": "/manifest.webmanifest"
     },
     {
      "section": "6",
      "id": "touch_icon",
      "label": "apple-touch-icon (PNG)",
-     "status": "pass",
+     "status": "warn",
      "detail": ""
     },
     {
      "section": "17",
      "id": "og_image_raster",
      "label": "og:image is PNG / JPG / WebP (social apps ignore SVG)",
-     "status": "na",
-     "detail": ""
+     "status": "pass",
+     "detail": "https://jai.lat/opengraph-image.png?opengraph-image.1wtm_c6tll1hg.png"
     },
     {
      "section": "3",
@@ -4366,15 +4372,15 @@
      "section": "3",
      "id": "title_length_all",
      "label": "Titles ≤ 60 characters on every sampled page",
-     "status": "warn",
-     "detail": "2/9, e.g. 65: Pay Yourself First: The One Rule That Quietly Builds Wealth · Jai"
+     "status": "pass",
+     "detail": "9 pages"
     },
     {
      "section": "3",
      "id": "desc_length_all",
      "label": "Descriptions ≤ 160 characters on every sampled page",
-     "status": "warn",
-     "detail": "3/9 longer"
+     "status": "pass",
+     "detail": "0/9 longer"
     },
     {
      "section": "2",
@@ -4465,7 +4471,7 @@
     {
      "url": "https://jai.lat/",
      "title": "Jai — Money that grows",
-     "desc": "Independent, plain-English guides to investing, saving and building lasting wealth — the slow, evidence-based moves that compound over a lifetime, with no tips and no hype.",
+     "desc": "Independent, plain-English guides to investing, saving and building lasting wealth: the slow, evidence-based moves that compound, with no tips and no hype.",
      "h1": 1
     },
     {
@@ -4513,22 +4519,22 @@
     {
      "url": "https://jai.lat/articles/pay-yourself-first",
      "status": 200,
-     "title": "Pay Yourself First: The One Rule That Quietly Builds Wealth · Jai",
-     "desc": "Most people save whatever is left at the end of the month, and nothing is left. Reversing the order — saving before you spend — is the single habit that changes everything.",
+     "title": "Pay Yourself First: The One Rule That Quietly Builds Wealth",
+     "desc": "Most people save whatever is left at the end of the month, and nothing is left.",
      "h1": 1
     },
     {
      "url": "https://jai.lat/articles/index-fund-investing-basics",
      "status": 200,
-     "title": "Index Fund Investing: The Boring Strategy That Beats Most Experts · Jai",
-     "desc": "The most evidence-backed idea in investing, explained from scratch — why owning everything cheaply tends to beat trying to pick winners, and the discipline that makes it work.",
+     "title": "Index Fund Investing · Jai",
+     "desc": "The most evidence-backed idea in investing, explained from scratch — why owning everything cheaply tends to beat trying to pick winners, and the discipline…",
      "h1": 1
     }
    ],
-   "score": 81,
-   "pass": 46,
-   "fail": 7,
-   "warn": 9,
+   "score": 87,
+   "pass": 53,
+   "fail": 6,
+   "warn": 4,
    "manual": 11
   },
   {
@@ -4668,7 +4674,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "647 ms (from a GitHub runner)"
+     "detail": "482 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -4730,8 +4736,8 @@
      "section": "3",
      "id": "meta_description",
      "label": "Meta description (50–160 chars)",
-     "status": "warn",
-     "detail": "169: Independent, dermatology-informed skincare guides — what the evidence actually says about …"
+     "status": "pass",
+     "detail": "155: Independent, dermatology-informed skincare guides: what the evidence says about ingredient…"
     },
     {
      "section": "3",
@@ -4815,14 +4821,14 @@
      "id": "og_description",
      "label": "og:description",
      "status": "pass",
-     "detail": "Independent, dermatology-informed skincare guides — what the evidence actually says about "
+     "detail": "Independent, dermatology-informed skincare guides: what the evidence says about ingredient"
     },
     {
      "section": "17",
      "id": "og_image",
      "label": "og:image",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "https://lie.skin/opengraph-image.png?opengraph-image.3mys5z9puz6y8.png"
     },
     {
      "section": "17",
@@ -4843,7 +4849,7 @@
      "id": "twitter_card",
      "label": "Twitter / X card",
      "status": "pass",
-     "detail": "summary"
+     "detail": "summary_large_image"
     },
     {
      "section": "14",
@@ -4940,36 +4946,36 @@
      "section": "18",
      "id": "llms_txt",
      "label": "llms.txt for AI assistants",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "14",
      "id": "security_txt",
      "label": "security.txt (RFC 9116)",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "2",
      "id": "manifest",
      "label": "Web app manifest",
-     "status": "warn",
-     "detail": "no <link rel=\"manifest\">"
+     "status": "pass",
+     "detail": "/manifest.webmanifest"
     },
     {
      "section": "6",
      "id": "touch_icon",
      "label": "apple-touch-icon (PNG)",
-     "status": "pass",
+     "status": "warn",
      "detail": ""
     },
     {
      "section": "17",
      "id": "og_image_raster",
      "label": "og:image is PNG / JPG / WebP (social apps ignore SVG)",
-     "status": "na",
-     "detail": ""
+     "status": "pass",
+     "detail": "https://lie.skin/opengraph-image.png?opengraph-image.3mys5z9puz6y8.png"
     },
     {
      "section": "3",
@@ -4996,15 +5002,15 @@
      "section": "3",
      "id": "title_length_all",
      "label": "Titles ≤ 60 characters on every sampled page",
-     "status": "warn",
-     "detail": "2/9, e.g. 71: Sunscreen: The Most Effective Anti-Ageing Product You Already Own · Li"
+     "status": "pass",
+     "detail": "9 pages"
     },
     {
      "section": "3",
      "id": "desc_length_all",
      "label": "Descriptions ≤ 160 characters on every sampled page",
-     "status": "warn",
-     "detail": "3/9 longer"
+     "status": "pass",
+     "detail": "0/9 longer"
     },
     {
      "section": "2",
@@ -5095,7 +5101,7 @@
     {
      "url": "https://lie.skin/",
      "title": "Lie — Skincare, evidence-first",
-     "desc": "Independent, dermatology-informed skincare guides — what the evidence actually says about ingredients, routines and conditions, with no brand spin and no miracle claims.",
+     "desc": "Independent, dermatology-informed skincare guides: what the evidence says about ingredients, routines and conditions, with no brand spin or miracle claims.",
      "h1": 1
     },
     {
@@ -5137,28 +5143,28 @@
      "url": "https://lie.skin/articles/skincare-routine-basics",
      "status": 200,
      "title": "The Only Three Steps a Skincare Routine Really Needs · Lie",
-     "desc": "The industry sells ten-step routines; the evidence supports three. What a genuinely effective, minimal routine looks like — and why more products often mean worse skin.",
+     "desc": "The industry sells ten-step routines; the evidence supports three. What a genuinely effective, minimal routine looks like — and why more products often mean…",
      "h1": 1
     },
     {
      "url": "https://lie.skin/articles/sunscreen-guide",
      "status": 200,
-     "title": "Sunscreen: The Most Effective Anti-Ageing Product You Already Own · Lie",
+     "title": "Sunscreen · Lie",
      "desc": "No serum comes close. Why daily sun protection is the best-supported skincare step of all, how much to use, and the myths that stop people wearing it.",
      "h1": 1
     },
     {
      "url": "https://lie.skin/articles/retinoids-explained",
      "status": 200,
-     "title": "Retinoids: The Most Studied Anti-Ageing Ingredient, Explained Simply · Lie",
-     "desc": "Behind the confusing names sits one of the few skincare ingredients with decades of evidence. What retinoids do, how to start without wrecking your skin, and who should be careful.",
+     "title": "Retinoids · Lie",
+     "desc": "Behind the confusing names sits one of the few skincare ingredients with decades of evidence.",
      "h1": 1
     }
    ],
-   "score": 81,
-   "pass": 46,
-   "fail": 7,
-   "warn": 9,
+   "score": 87,
+   "pass": 53,
+   "fail": 6,
+   "warn": 4,
    "manual": 11
   },
   {
@@ -5297,8 +5303,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "1440 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "679 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -5786,9 +5792,9 @@
     }
    ],
    "score": 81,
-   "pass": 45,
+   "pass": 46,
    "fail": 7,
-   "warn": 10,
+   "warn": 9,
    "manual": 11
   },
   {
@@ -5927,8 +5933,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "1285 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "569 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -6416,9 +6422,9 @@
     }
    ],
    "score": 81,
-   "pass": 45,
+   "pass": 46,
    "fail": 7,
-   "warn": 10,
+   "warn": 9,
    "manual": 11
   },
   {
@@ -6474,7 +6480,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "150 lines"
+     "detail": "27 lines"
     },
     {
      "section": "16",
@@ -6487,15 +6493,15 @@
      "section": "15",
      "id": "robots_open",
      "label": "robots.txt lets crawlers reach the site",
-     "status": "fail",
-     "detail": "Disallow: / for *"
+     "status": "pass",
+     "detail": ""
     },
     {
      "section": "18",
      "id": "ai_crawlers",
      "label": "AI / generative-search crawlers allowed",
-     "status": "warn",
-     "detail": "blocked: GPTBot, ClaudeBot, Google-Extended, CCBot"
+     "status": "pass",
+     "detail": ""
     },
     {
      "section": "16",
@@ -6557,8 +6563,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "996 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "751 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -6656,7 +6662,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "55 unique"
+     "detail": "39 unique"
     },
     {
      "section": "8",
@@ -7041,14 +7047,14 @@
      "url": "https://1fr.fr/hajj-omra",
      "status": 200,
      "title": "Hajj & Omra — Forfaits & accompagnement — One Faith France",
-     "desc": "Forfaits Hajj et Omra sélectionnés sur One Faith France : durée, prix et départs clairs.",
+     "desc": "Forfaits Hajj et Omra sur One Faith France : durée et départs clairs, contact direct avec l'organisateur. Emplacements à louer pour les agences de voyage.",
      "h1": 1
     }
    ],
-   "score": 85,
-   "pass": 53,
-   "fail": 5,
-   "warn": 10,
+   "score": 88,
+   "pass": 56,
+   "fail": 4,
+   "warn": 8,
    "manual": 11
   },
   {
@@ -7104,7 +7110,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "150 lines"
+     "detail": "27 lines"
     },
     {
      "section": "16",
@@ -7117,15 +7123,15 @@
      "section": "15",
      "id": "robots_open",
      "label": "robots.txt lets crawlers reach the site",
-     "status": "fail",
-     "detail": "Disallow: / for *"
+     "status": "pass",
+     "detail": ""
     },
     {
      "section": "18",
      "id": "ai_crawlers",
      "label": "AI / generative-search crawlers allowed",
-     "status": "warn",
-     "detail": "blocked: GPTBot, ClaudeBot, Google-Extended, CCBot"
+     "status": "pass",
+     "detail": ""
     },
     {
      "section": "16",
@@ -7187,8 +7193,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "1571 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "613 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -7286,7 +7292,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "55 unique"
+     "detail": "39 unique"
     },
     {
      "section": "8",
@@ -7496,7 +7502,7 @@
      "id": "unique_titles",
      "label": "Unique title on every page",
      "status": "pass",
-     "detail": "7 pages sampled; 0 duplicate, 0 missing"
+     "detail": "9 pages sampled; 0 duplicate, 0 missing"
     },
     {
      "section": "3",
@@ -7516,22 +7522,22 @@
      "section": "3",
      "id": "title_length_all",
      "label": "Titles ≤ 60 characters on every sampled page",
-     "status": "pass",
-     "detail": "7 pages"
+     "status": "warn",
+     "detail": "1/9, e.g. 69: Tägliche Praktiken — Bittgebete, Dhikr, Prophetische Medizin — Tilawa"
     },
     {
      "section": "3",
      "id": "desc_length_all",
      "label": "Descriptions ≤ 160 characters on every sampled page",
      "status": "warn",
-     "detail": "3/7 longer"
+     "detail": "5/9 longer"
     },
     {
      "section": "2",
      "id": "canonical_all",
      "label": "Canonical on every sampled page",
-     "status": "pass",
-     "detail": "0 without"
+     "status": "warn",
+     "detail": "1 without"
     },
     {
      "section": "3",
@@ -7544,8 +7550,8 @@
      "section": "2",
      "id": "broken",
      "label": "Sitemap URLs load (no broken pages)",
-     "status": "fail",
-     "detail": "2/8 failing"
+     "status": "pass",
+     "detail": "0/8 failing"
     },
     {
      "section": "2",
@@ -7648,7 +7654,10 @@
     },
     {
      "url": "https://tilawa.de/buecher",
-     "status": 503
+     "status": 200,
+     "title": "Islamische Bibliothek — Tilawa",
+     "desc": "Die klassischen Werke der islamischen Tradition — Tafsir, Hadith, die vier Madhhab, Sīra, Geschichte und die Lebensläufe der Gelehrten. Jede Zusammenfassung kann laut vorgelesen werden.",
+     "h1": 1
     },
     {
      "url": "https://tilawa.de/klassische-buecher",
@@ -7659,19 +7668,22 @@
     },
     {
      "url": "https://tilawa.de/tagespraxis",
-     "status": 503
+     "status": 200,
+     "title": "Tägliche Praktiken — Bittgebete, Dhikr, Prophetische Medizin — Tilawa",
+     "desc": "Eine übersichtliche Sammlung täglicher Praktiken: Bittgebete vom Aufwachen bis zum Schlafengehen, Morgen- & Abend-Dhikr, authentische prophetische Medizin und die Etikette von Sauberkeit & Selbstpflege — mit Arabisch, Umschrift, Übersetzung und Audio.",
+     "h1": 1
     },
     {
      "url": "https://tilawa.de/hadsch-umra",
      "status": 200,
      "title": "Hadsch & Umrah — Pakete & Begleitung — Tilawa",
-     "desc": "Ausgewählte Hadsch- und Umrah-Pakete auf Tilawa: klare Dauer, Preise und Abflüge.",
+     "desc": "Hadsch- und Umrah-Pakete auf Tilawa: klare Dauer und Abflüge, direkter Kontakt zum Veranstalter. Werbeplätze für Reiseveranstalter zu vermieten.",
      "h1": 1
     }
    ],
-   "score": 85,
-   "pass": 54,
-   "fail": 6,
+   "score": 88,
+   "pass": 56,
+   "fail": 4,
    "warn": 8,
    "manual": 11
   },
@@ -7728,7 +7740,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -7756,7 +7768,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://byodd.de/sitemap.xml — 57 URLs"
+     "detail": "HTTP 200 https://byodd.de/sitemap.xml — 58 URLs"
     },
     {
      "section": "16",
@@ -7812,7 +7824,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "303 ms (from a GitHub runner)"
+     "detail": "179 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -7910,7 +7922,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "58 unique"
+     "detail": "59 unique"
     },
     {
      "section": "8",
@@ -8285,17 +8297,17 @@
      "h1": 1
     },
     {
-     "url": "https://byodd.de/anleitungen/fliesen-streichen-oder-bekleben/",
+     "url": "https://byodd.de/anleitungen/abfluss-verstopft-was-tun/",
      "status": 200,
-     "title": "Alte Fliesen streichen oder bekleben · BYODD",
-     "desc": "Wann Fliesenlack, Fliesenfolie, Fliesenaufkleber oder Wandpaneele sinnvoll sind, wie du Fliesen richtig vorbereitest und streichst, was im Spritzwasserbereich…",
+     "title": "Abfluss verstopft: Was tun? · BYODD",
+     "desc": "Wie du verstopfte Abflüsse in Waschbecken, Dusche, Badewanne und Küche ohne aggressive Chemie befreist, den Siphon reinigst, eine Rohrreinigungsspirale…",
      "h1": 1
     },
     {
-     "url": "https://byodd.de/anleitungen/bilder-aufhaengen-ohne-bohren/",
+     "url": "https://byodd.de/anleitungen/akkuschrauber-kaufen-und-benutzen/",
      "status": 200,
-     "title": "Bilder aufhängen ohne Bohren · BYODD",
-     "desc": "Welche Methoden es gibt, Bilder und Spiegel ohne Bohrmaschine aufzuhängen, wie viel Gewicht sie tragen, auf welchen Wänden sie halten und wie du Rückstände…",
+     "title": "Akkuschrauber kaufen und richtig benutzen · BYODD",
+     "desc": "Worauf es beim Kauf eines Akkuschraubers ankommt, was Volt, Newtonmeter und Gänge bedeuten, wie du Drehmomentkupplung und Bits richtig nutzt und wie der Akku…",
      "h1": 1
     }
    ],
@@ -8358,7 +8370,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -8386,7 +8398,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://byoxy.de/sitemap.xml — 62 URLs"
+     "detail": "HTTP 200 https://byoxy.de/sitemap.xml — 63 URLs"
     },
     {
      "section": "16",
@@ -8442,7 +8454,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "313 ms (from a GitHub runner)"
+     "detail": "144 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -8540,7 +8552,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "63 unique"
+     "detail": "64 unique"
     },
     {
      "section": "8",
@@ -8988,7 +9000,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -9016,7 +9028,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://byoy.de/sitemap.xml — 62 URLs"
+     "detail": "HTTP 200 https://byoy.de/sitemap.xml — 63 URLs"
     },
     {
      "section": "16",
@@ -9072,7 +9084,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "304 ms (from a GitHub runner)"
+     "detail": "97 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -9170,7 +9182,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "63 unique"
+     "detail": "64 unique"
     },
     {
      "section": "8",
@@ -9618,7 +9630,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -9646,7 +9658,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://nexvilo.de/sitemap.xml — 61 URLs"
+     "detail": "HTTP 200 https://nexvilo.de/sitemap.xml — 62 URLs"
     },
     {
      "section": "16",
@@ -9702,7 +9714,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "296 ms (from a GitHub runner)"
+     "detail": "89 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -9800,7 +9812,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "62 unique"
+     "detail": "63 unique"
     },
     {
      "section": "8",
@@ -10248,7 +10260,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -10276,7 +10288,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://qarf.de/sitemap.xml — 57 URLs"
+     "detail": "HTTP 200 https://qarf.de/sitemap.xml — 58 URLs"
     },
     {
      "section": "16",
@@ -10332,7 +10344,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "324 ms (from a GitHub runner)"
+     "detail": "68 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -10430,7 +10442,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "58 unique"
+     "detail": "59 unique"
     },
     {
      "section": "8",
@@ -10805,17 +10817,17 @@
      "h1": 1
     },
     {
-     "url": "https://qarf.de/ratgeber/siebtraeger-espresso-grundlagen/",
+     "url": "https://qarf.de/ratgeber/arabica-und-robusta/",
      "status": 200,
-     "title": "Espresso mit dem Siebträger · QARF",
-     "desc": "Die Grundlagen für Espresso aus der Siebträgermaschine: Brührezept mit Dosis, Ausbeute und Zeit, Mahlgrad einstellen, verteilen und tampen, Vorheizen…",
+     "title": "Arabica und Robusta: die zwei Kaffeearten im Vergleich",
+     "desc": "Arabica gilt als fein, Robusta als kräftig. Was die beiden Kaffeearten wirklich unterscheidet, von Anbau und Koffein bis Geschmack, und wann eine Mischung…",
      "h1": 1
     },
     {
-     "url": "https://qarf.de/ratgeber/filterkaffeemaschine-richtig-nutzen/",
+     "url": "https://qarf.de/ratgeber/aufbereitung-gewaschen-natural-honey/",
      "status": 200,
-     "title": "Filterkaffeemaschine richtig nutzen · QARF",
-     "desc": "Mehr Geschmack aus der Filterkaffeemaschine: die richtige Kaffeemenge, passender Mahlgrad, Filterpapier vorbereiten, Wasser, Warmhalteplatte oder…",
+     "title": "Aufbereitung von Kaffee · QARF",
+     "desc": "Wie aus der Kaffeekirsche die Rohbohne wird: nasse, trockene und Honey-Aufbereitung, Wet Hulling aus Indonesien und neue Fermentationen, mit ihrem Einfluss…",
      "h1": 1
     }
    ],
@@ -10878,7 +10890,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -10906,7 +10918,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://qulen.de/sitemap.xml — 57 URLs"
+     "detail": "HTTP 200 https://qulen.de/sitemap.xml — 58 URLs"
     },
     {
      "section": "16",
@@ -10962,7 +10974,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "327 ms (from a GitHub runner)"
+     "detail": "167 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -11060,7 +11072,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "59 unique"
+     "detail": "60 unique"
     },
     {
      "section": "8",
@@ -11435,17 +11447,17 @@
      "h1": 1
     },
     {
-     "url": "https://qulen.de/lerngeschichten/prozentrechnung-verstehen/",
+     "url": "https://qulen.de/lerngeschichten/abiturvorbereitung-planen/",
      "status": 200,
-     "title": "Prozentrechnung verstehen · QULEN",
-     "desc": "Finja verwechselt in Prozentaufgaben ständig, was gesucht ist. Wie du Grundwert, Prozentwert und Prozentsatz erkennst und Rabatte, Steigerungen und Zinsen…",
+     "title": "Abiturvorbereitung planen · QULEN",
+     "desc": "Milan hat vier Prüfungsfächer und zwei Jahre Stoff vor sich. Wie du die Abiturvorbereitung in drei Phasen planst, Lücken findest, alte Prüfungen nutzt und…",
      "h1": 1
     },
     {
-     "url": "https://qulen.de/lerngeschichten/ueberschlag-und-kopfrechnen/",
+     "url": "https://qulen.de/lerngeschichten/handy-ablenkung-beim-lernen/",
      "status": 200,
-     "title": "Überschlag und Kopfrechnen · QULEN",
-     "desc": "Lea vertraut dem Taschenrechner blind und übersieht falsche Ergebnisse.",
+     "title": "Ablenkung durchs Handy beim Lernen · QULEN",
+     "desc": "Ben greift beim Lernen alle paar Minuten zum Smartphone und behält am Ende nichts.",
      "h1": 1
     }
    ],
@@ -11508,7 +11520,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -11536,7 +11548,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://qurm.de/sitemap.xml — 62 URLs"
+     "detail": "HTTP 200 https://qurm.de/sitemap.xml — 63 URLs"
     },
     {
      "section": "16",
@@ -11592,7 +11604,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "312 ms (from a GitHub runner)"
+     "detail": "79 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -11690,7 +11702,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "63 unique"
+     "detail": "64 unique"
     },
     {
      "section": "8",
@@ -12065,10 +12077,10 @@
      "h1": 1
     },
     {
-     "url": "https://qurm.de/ratgeber/wandern-im-herbst/",
+     "url": "https://qurm.de/ratgeber/fraenkische-schweiz-wandern/",
      "status": 200,
-     "title": "Wandern im Herbst · QURM",
-     "desc": "Klare Fernsicht, bunte Wälder und leere Wege: wie du Herbsttouren mit kürzeren Tagen, nassem Laub, Nebel, Jagden und geschlossenen Hütten sicher und entspannt…",
+     "title": "Fränkische Schweiz · QURM",
+     "desc": "Felsentürme, Burgen, Schauhöhlen und Kirschblüte: die schönsten Wanderziele der Fränkischen Schweiz, Anreise mit Bahn und Bus, Jahreszeiten und Tipps für…",
      "h1": 1
     },
     {
@@ -12138,7 +12150,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -12166,7 +12178,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://rubiy.de/sitemap.xml — 57 URLs"
+     "detail": "HTTP 200 https://rubiy.de/sitemap.xml — 58 URLs"
     },
     {
      "section": "16",
@@ -12222,7 +12234,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "315 ms (from a GitHub runner)"
+     "detail": "81 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -12320,7 +12332,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "58 unique"
+     "detail": "59 unique"
     },
     {
      "section": "8",
@@ -12768,7 +12780,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -12796,7 +12808,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://velnixo.de/sitemap.xml — 61 URLs"
+     "detail": "HTTP 200 https://velnixo.de/sitemap.xml — 62 URLs"
     },
     {
      "section": "16",
@@ -12852,7 +12864,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "292 ms (from a GitHub runner)"
+     "detail": "154 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -12950,7 +12962,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "62 unique"
+     "detail": "63 unique"
     },
     {
      "section": "8",
@@ -13398,7 +13410,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -13426,7 +13438,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://zavik.de/sitemap.xml — 62 URLs"
+     "detail": "HTTP 200 https://zavik.de/sitemap.xml — 63 URLs"
     },
     {
      "section": "16",
@@ -13482,7 +13494,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "379 ms (from a GitHub runner)"
+     "detail": "114 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -13580,7 +13592,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "63 unique"
+     "detail": "64 unique"
     },
     {
      "section": "8",
@@ -13955,17 +13967,17 @@
      "h1": 1
     },
     {
-     "url": "https://zavik.de/katzenwissen/katzenrassen-im-ueberblick/",
-     "status": 200,
-     "title": "Katzenrassen im Überblick · ZAVIK",
-     "desc": "Britisch Kurzhaar, Maine Coon, Perser, Siam, Ragdoll, Bengal und mehr: was die beliebten Rassen ausmacht, welche Gesundheitsthemen wichtig sind und woran du…",
-     "h1": 1
-    },
-    {
      "url": "https://zavik.de/katzenwissen/angst-und-stress-bei-katzen/",
      "status": 200,
      "title": "Angst und Stress bei Katzen · ZAVIK",
      "desc": "Woran du Stress bei Katzen erkennst, welche Auslöser häufig sind, wie du Silvester, Gewitter und Besuch entspannt meisterst und wann tierärztliche Hilfe nötig…",
+     "h1": 1
+    },
+    {
+     "url": "https://zavik.de/katzenwissen/erste-hilfe-bei-katzen/",
+     "status": 200,
+     "title": "Erste Hilfe bei Katzen · ZAVIK",
+     "desc": "Was in die Notfallapotheke für Katzen gehört, wie du Puls, Atmung und Temperatur prüfst und wie du bei Wunden, Hitze, Vergiftung, Sturz oder Krampfanfall…",
      "h1": 1
     }
    ],
@@ -14028,7 +14040,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -14056,7 +14068,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://zevok.de/sitemap.xml — 57 URLs"
+     "detail": "HTTP 200 https://zevok.de/sitemap.xml — 63 URLs"
     },
     {
      "section": "16",
@@ -14112,7 +14124,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "326 ms (from a GitHub runner)"
+     "detail": "91 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -14189,7 +14201,7 @@
      "id": "h2",
      "label": "H2–H6 structure",
      "status": "pass",
-     "detail": "5 H2"
+     "detail": "6 H2"
     },
     {
      "section": "6",
@@ -14210,7 +14222,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "58 unique"
+     "detail": "64 unique"
     },
     {
      "section": "8",
@@ -14585,17 +14597,17 @@
      "h1": 1
     },
     {
-     "url": "https://zevok.de/ratgeber/kernseife-schmierseife/",
+     "url": "https://zevok.de/ratgeber/backofen-reinigen/",
      "status": 200,
-     "title": "Kernseife und Schmierseife · ZEVOK",
-     "desc": "Kernseife und Schmierseife unterscheiden, Böden und Wäsche richtig damit pflegen, Kalkseife bei hartem Wasser verstehen und wissen, wann Seife nicht die beste…",
+     "title": "Backofen reinigen · ZEVOK",
+     "desc": "Backofen reinigen ohne Schaden: Emaille, Pyrolyse und Katalyse unterscheiden, Natron-Paste oder Backofenreiniger sicher nutzen und Glastür, Bleche und Roste…",
      "h1": 1
     },
     {
-     "url": "https://zevok.de/ratgeber/zitronensaeure/",
+     "url": "https://zevok.de/ratgeber/bad-putzen/",
      "status": 200,
-     "title": "Zitronensäure im Haushalt · ZEVOK",
-     "desc": "Zitronensäure als geruchsarmer Kalklöser: richtig dosieren, warum sie nicht heiß werden sollte, wo sie hilft, wo sie schadet und warum Zitronensaft kein…",
+     "title": "Bad putzen · ZEVOK",
+     "desc": "Bad putzen in der richtigen Reihenfolge: vom Spiegel über Waschbecken und Dusche bis zum WC und Boden, mit passenden Mitteln, täglichen Handgriffen und…",
      "h1": 1
     }
    ],
@@ -14658,7 +14670,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -14686,7 +14698,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://zoevian.de/sitemap.xml — 61 URLs"
+     "detail": "HTTP 200 https://zoevian.de/sitemap.xml — 62 URLs"
     },
     {
      "section": "16",
@@ -14742,7 +14754,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "271 ms (from a GitHub runner)"
+     "detail": "154 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -14840,7 +14852,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "62 unique"
+     "detail": "63 unique"
     },
     {
      "section": "8",
@@ -15288,7 +15300,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -15316,7 +15328,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://zolun.de/sitemap.xml — 57 URLs"
+     "detail": "HTTP 200 https://zolun.de/sitemap.xml — 58 URLs"
     },
     {
      "section": "16",
@@ -15372,7 +15384,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "301 ms (from a GitHub runner)"
+     "detail": "145 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -15470,7 +15482,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "58 unique"
+     "detail": "59 unique"
     },
     {
      "section": "8",
@@ -15845,17 +15857,17 @@
      "h1": 1
     },
     {
-     "url": "https://zolun.de/reisen/kurzurlaub-und-brueckentage/",
+     "url": "https://zolun.de/reisen/baden-in-seen-und-fluessen/",
      "status": 200,
-     "title": "Kurzurlaub und Brückentage clever planen · ZOLUN",
-     "desc": "Mehr freie Tage aus wenigen Urlaubstagen: welche Feiertage wo gelten, warum Himmelfahrt und Fronleichnam so beliebt sind, wie du Staus umgehst und welche…",
+     "title": "Baden in Seen und Flüssen · ZOLUN",
+     "desc": "So badest du sicher in Seen und Flüssen: offizielle Badestellen und Wasserqualität prüfen, Blaualgen und Zerkarien erkennen, Strömung, Kälte und Baggerseen…",
      "h1": 1
     },
     {
-     "url": "https://zolun.de/reisen/packliste-urlaub/",
+     "url": "https://zolun.de/reisen/bayerische-seen/",
      "status": 200,
-     "title": "Packliste für den Urlaub in Deutschland · ZOLUN",
-     "desc": "Die ehrliche Packliste für Deutschland: Dokumente, Kleidung nach dem Zwiebelprinzip, Reiseapotheke, Technik und Extras für Strand, Berge, Stadt, Kinder und…",
+     "title": "Bayerische Seen · ZOLUN",
+     "desc": "Welcher See in Bayern passt zu dir? Chiemsee, Königssee, Tegernsee, Starnberger See, Walchensee, Eibsee und das Fränkische Seenland im Vergleich, mit…",
      "h1": 1
     }
    ],
@@ -15918,7 +15930,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -15946,7 +15958,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://zufiq.de/sitemap.xml — 57 URLs"
+     "detail": "HTTP 200 https://zufiq.de/sitemap.xml — 58 URLs"
     },
     {
      "section": "16",
@@ -16002,7 +16014,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "297 ms (from a GitHub runner)"
+     "detail": "84 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -16100,7 +16112,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "59 unique"
+     "detail": "60 unique"
     },
     {
      "section": "8",
@@ -16475,17 +16487,17 @@
      "h1": 1
     },
     {
-     "url": "https://zufiq.de/ratgeber/kleiderschrank-ausmisten/",
-     "status": 200,
-     "title": "Kleiderschrank ausmisten · ZUFIQ",
-     "desc": "Kleiderschrank ausmisten ohne Chaos: Mit dieser Anleitung, klaren Fragen und einem Plan fürs Weitergeben behältst du die Kleidung, die du wirklich trägst.",
-     "h1": 1
-    },
-    {
      "url": "https://zufiq.de/ratgeber/abendroutine-entwickeln/",
      "status": 200,
      "title": "Abendroutine entwickeln · ZUFIQ",
      "desc": "Eine Abendroutine hilft, den Tag abzuschließen und ruhiger einzuschlafen. So baust du sie Schritt für Schritt auf, passend zu Job, Familie und Energie.",
+     "h1": 1
+    },
+    {
+     "url": "https://zufiq.de/ratgeber/ablagesystem-fuer-papiere/",
+     "status": 200,
+     "title": "Ablagesystem für Papiere · ZUFIQ",
+     "desc": "Ablagesystem für Papiere: Mit Eingangskorb, acht klaren Kategorien, getrennter Dauer- und Jahresablage und einer wöchentlichen Post-Routine findest du jedes…",
      "h1": 1
     }
    ],
@@ -16548,7 +16560,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -16576,7 +16588,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://zuvik.de/sitemap.xml — 56 URLs"
+     "detail": "HTTP 200 https://zuvik.de/sitemap.xml — 57 URLs"
     },
     {
      "section": "16",
@@ -16632,7 +16644,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "289 ms (from a GitHub runner)"
+     "detail": "84 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -16730,7 +16742,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "57 unique"
+     "detail": "58 unique"
     },
     {
      "section": "8",
@@ -17178,7 +17190,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -17206,7 +17218,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://crone.skin/sitemap.xml — 55 URLs"
+     "detail": "HTTP 200 https://crone.skin/sitemap.xml — 76 URLs"
     },
     {
      "section": "16",
@@ -17262,7 +17274,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "385 ms (from a GitHub runner)"
+     "detail": "104 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -17360,7 +17372,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "56 unique"
+     "detail": "77 unique"
     },
     {
      "section": "8",
@@ -17696,56 +17708,56 @@
      "url": "https://crone.skin/chapters/beauty-after-fifty/",
      "status": 200,
      "title": "Beauty After Fifty: stories and guides for women over 50",
-     "desc": "Makeup that flatters a changing face, going grey with style, hair that thins, nails, fragrance and a calm daily routine. 7 stories from CRONE.",
+     "desc": "Makeup that flatters a changing face, going grey with style, hair that thins, nails, fragrance and a calm daily routine. 10 stories from CRONE.",
      "h1": 1
     },
     {
      "url": "https://crone.skin/chapters/style-and-wardrobe/",
      "status": 200,
      "title": "Style & Wardrobe: stories and guides for women over 50",
-     "desc": "Dressing the body you have now: fit, colour, capsule wardrobes, comfortable shoes that still look good and shopping with intention. 7 stories from CRONE.",
+     "desc": "Dressing the body you have now: fit, colour, capsule wardrobes, comfortable shoes that still look good and shopping with intention. 11 stories from CRONE.",
      "h1": 1
     },
     {
      "url": "https://crone.skin/chapters/move-and-thrive/",
      "status": 200,
      "title": "Move & Thrive: stories and guides for women over 50 · CRONE",
-     "desc": "Walking, strength, balance, flexibility and restful sleep habits for everyday energy, explained simply and safely. 7 stories from CRONE.",
+     "desc": "Walking, strength, balance, flexibility and restful sleep habits for everyday energy, explained simply and safely. 10 stories from CRONE.",
      "h1": 1
     },
     {
      "url": "https://crone.skin/chapters/home-and-garden/",
      "status": 200,
      "title": "Home & Garden: stories and guides for women over 50 · CRONE",
-     "desc": "Decluttering, downsizing, a home that ages with you, and gardens and balconies that are a joy rather than a chore. 6 stories from CRONE.",
+     "desc": "Decluttering, downsizing, a home that ages with you, and gardens and balconies that are a joy rather than a chore. 10 stories from CRONE.",
      "h1": 1
     },
     {
      "url": "https://crone.skin/chapters/purpose-and-connection/",
      "status": 200,
      "title": "Purpose & Connection: stories and guides for women over 50",
-     "desc": "Friendship, family, grandparenting, volunteering, learning new skills and finding meaning after work and child-raising. 7 stories from CRONE.",
+     "desc": "Friendship, family, grandparenting, volunteering, learning new skills and finding meaning after work and child-raising. 10 stories from CRONE.",
      "h1": 1
     },
     {
      "url": "https://crone.skin/chapters/travel-and-discovery/",
      "status": 200,
      "title": "Travel & Discovery: stories and guides for women over 50",
-     "desc": "Solo trips, slow travel, packing light, travelling comfortably and planning journeys that suit your pace and curiosity. 6 stories from CRONE.",
+     "desc": "Solo trips, slow travel, packing light, travelling comfortably and planning journeys that suit your pace and curiosity. 9 stories from CRONE.",
      "h1": 1
     },
     {
-     "url": "https://crone.skin/journal/a-home-that-ages-with-you/",
+     "url": "https://crone.skin/journal/a-kitchen-that-works-for-you/",
      "status": 200,
-     "title": "A Home That Ages With You · CRONE",
-     "desc": "Practical, good-looking adaptations room by room — lighting, flooring, bathrooms, kitchens, stairs and technology — that make a home safer and easier to live…",
+     "title": "A Kitchen That Works for You · CRONE",
+     "desc": "How to reorganise your kitchen so it is easier on the back, hands and knees: zones, the right height for everything, lighting, lighter tools, safer habits and…",
      "h1": 1
     },
     {
-     "url": "https://crone.skin/journal/simple-skincare-routine-after-fifty/",
+     "url": "https://crone.skin/journal/raised-bed-vegetable-garden/",
      "status": 200,
-     "title": "A Simple Skincare Routine After Fifty · CRONE",
-     "desc": "A calm, realistic morning and evening skincare routine for women over fifty — gentle cleansing, moisture, daily sun protection and a few proven extras…",
+     "title": "A Raised-Bed Vegetable Garden · CRONE",
+     "desc": "How to plan, build and plant raised beds for easier vegetable growing after fifty: height and site, filling the bed, what to grow, watering, back-friendly…",
      "h1": 1
     }
    ],
@@ -17808,7 +17820,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -17836,7 +17848,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://dai.lat/sitemap.xml — 56 URLs"
+     "detail": "HTTP 200 https://dai.lat/sitemap.xml — 57 URLs"
     },
     {
      "section": "16",
@@ -17892,7 +17904,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "216 ms (from a GitHub runner)"
+     "detail": "81 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -17990,7 +18002,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "57 unique"
+     "detail": "58 unique"
     },
     {
      "section": "8",
@@ -18365,17 +18377,17 @@
      "h1": 1
     },
     {
-     "url": "https://dai.lat/articulos/ahorro-de-energia-en-casa/",
+     "url": "https://dai.lat/articulos/ceramica-o-porcelanato/",
      "status": 200,
-     "title": "Ahorro de energía en casa · DAI",
-     "desc": "Cómo leer la factura, medir el consumo de cada aparato y ahorrar en refrigerador, agua caliente, luz, aire acondicionado, cocina y lavado, más lo que conviene…",
+     "title": "¿Cerámica o porcelanato? · DAI",
+     "desc": "Absorción de agua, resistencia al desgaste PEI, piezas rectificadas, grandes formatos, adhesivos y juntas: cómo elegir entre cerámica y porcelanato y cómo…",
      "h1": 1
     },
     {
-     "url": "https://dai.lat/articulos/aislamiento-acustico-en-casa/",
+     "url": "https://dai.lat/articulos/adobe-y-construccion-con-tierra/",
      "status": 200,
-     "title": "Aislamiento acústico en casa · DAI",
-     "desc": "Diferencia entre aislar y absorber, por qué ventanas, puertas y rendijas dejan pasar el ruido, cómo mejorar muros y techos, reducir el eco y dormir mejor en…",
+     "title": "Adobe, tapial y bahareque · DAI",
+     "desc": "Cómo funcionan el adobe, el tapial, el bahareque o quincha y el bloque de tierra comprimida, por qué son frescos, qué los hace vulnerables a sismos y humedad…",
      "h1": 1
     }
    ],
@@ -18438,7 +18450,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -18466,7 +18478,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://pab.lat/sitemap.xml — 56 URLs"
+     "detail": "HTTP 200 https://pab.lat/sitemap.xml — 57 URLs"
     },
     {
      "section": "16",
@@ -18522,7 +18534,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "240 ms (from a GitHub runner)"
+     "detail": "72 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -18620,7 +18632,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "57 unique"
+     "detail": "58 unique"
     },
     {
      "section": "8",
@@ -18995,17 +19007,17 @@
      "h1": 1
     },
     {
-     "url": "https://pab.lat/bitacora/turismo-comunitario-y-respeto-cultural/",
+     "url": "https://pab.lat/bitacora/arquitectura-para-viajeros/",
      "status": 200,
-     "title": "Turismo comunitario y respeto cultural en América Latina",
-     "desc": "Qué es el turismo comunitario, cómo reconocer una oferta genuina, fotos con permiso, artesanías a precio justo, estancias con familias, niños y regalos…",
+     "title": "Arquitectura para viajeros · PAB",
+     "desc": "Claves para entender la arquitectura de la región: técnicas prehispánicas, la ciudad en damero, el barroco mestizo, fortalezas, casas con patio, teatros…",
      "h1": 1
     },
     {
-     "url": "https://pab.lat/bitacora/elegir-alojamiento-seguro/",
+     "url": "https://pab.lat/bitacora/avistamiento-de-ballenas-y-tortugas/",
      "status": 200,
-     "title": "Cómo elegir un alojamiento seguro en América Latina · PAB",
-     "desc": "Qué alojamiento elegir, cómo valorar el barrio, leer opiniones, evitar estafas al reservar, revisar la habitación al llegar, calentadores a gas y duchas…",
+     "title": "Avistamiento de ballenas y tortugas en América Latina · PAB",
+     "desc": "Ballenas jorobadas, grises, francas y azules, tiburones ballena y desoves de tortugas marinas: lugares y temporadas aproximadas, cómo elegir una excursión…",
      "h1": 1
     }
    ],
@@ -19068,7 +19080,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -19096,7 +19108,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://rough.lat/sitemap.xml — 55 URLs"
+     "detail": "HTTP 200 https://rough.lat/sitemap.xml — 76 URLs"
     },
     {
      "section": "16",
@@ -19152,7 +19164,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "214 ms (from a GitHub runner)"
+     "detail": "89 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -19250,7 +19262,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "56 unique"
+     "detail": "77 unique"
     },
     {
      "section": "8",
@@ -19618,24 +19630,24 @@
      "h1": 1
     },
     {
-     "url": "https://rough.lat/es/anillos-de-compromiso/",
+     "url": "https://rough.lat/es/alianzas-de-matrimonio/",
      "status": 200,
-     "title": "Anillos de compromiso · ROUGH.LAT",
-     "desc": "Cómo elegir un anillo de compromiso: costumbres, estilos, diamante o gema de color, metal y engaste, la talla sin arruinar la sorpresa, presupuesto sin mitos…",
+     "title": "Alianzas de matrimonio · ROUGH.LAT",
+     "desc": "Cómo elegir las argollas o alianzas de boda: perfil plano, media caña o confort, ancho, metal, acabado, grabado, alianzas con piedras y cómo hacerlas encajar…",
      "h1": 1
     },
     {
-     "url": "https://rough.lat/es/aprender-lapidaria-con-seguridad/",
+     "url": "https://rough.lat/es/aretes-collares-y-pulseras/",
      "status": 200,
-     "title": "Aprender lapidaria con seguridad · ROUGH.LAT",
-     "desc": "Cómo empezar en la lapidaria: equipo básico, el riesgo del polvo de sílice, minerales tóxicos, máquinas, agua y electricidad, protección personal, un primer…",
+     "title": "Aretes, collares y pulseras · ROUGH.LAT",
+     "desc": "Guía práctica para elegir aretes, collares, cadenas y pulseras: estilos, cierres seguros, largos según el escote, tipos de eslabón, macizo o hueco, baños y…",
      "h1": 1
     },
     {
-     "url": "https://rough.lat/es/brillo-ventanas-y-extincion/",
+     "url": "https://rough.lat/es/fotografiar-joyas-y-gemas/",
      "status": 200,
-     "title": "Brillo, ventanas y extinción · ROUGH.LAT",
-     "desc": "Qué le pasa a la luz dentro de una gema, el índice de refracción y el ángulo crítico, brillo, fuego y centelleo, por qué aparecen ventanas y zonas oscuras, el…",
+     "title": "Cómo fotografiar joyas y gemas · ROUGH.LAT",
+     "desc": "Guía práctica para hacer fotos honestas y bonitas de joyas, gemas y minerales con un teléfono o una cámara: luz difusa, fondos, enfoque, color, video, edición…",
      "h1": 1
     }
    ],
@@ -19698,7 +19710,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -19726,7 +19738,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://saved.lat/sitemap.xml — 55 URLs"
+     "detail": "HTTP 200 https://saved.lat/sitemap.xml — 76 URLs"
     },
     {
      "section": "16",
@@ -19782,7 +19794,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "238 ms (from a GitHub runner)"
+     "detail": "246 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -19880,7 +19892,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "56 unique"
+     "detail": "77 unique"
     },
     {
      "section": "8",
@@ -20216,56 +20228,56 @@
      "url": "https://saved.lat/topics/kitchen-and-groceries/",
      "status": 200,
      "title": "Kitchen & Groceries: practical guides to spending less",
-     "desc": "Meal planning, pantry staples, batch cooking and food storage: eating well while spending less and wasting almost nothing. 7 guides from SAVED.",
+     "desc": "Meal planning, pantry staples, batch cooking and food storage: eating well while spending less and wasting almost nothing. 11 guides from SAVED.",
      "h1": 1
     },
     {
      "url": "https://saved.lat/topics/home-and-energy/",
      "status": 200,
      "title": "Home & Energy: practical guides to spending less · SAVED",
-     "desc": "Heating, cooling, lighting, water and laundry: the everyday habits and small upgrades that bring household bills down. 7 guides from SAVED.",
+     "desc": "Heating, cooling, lighting, water and laundry: the everyday habits and small upgrades that bring household bills down. 10 guides from SAVED.",
      "h1": 1
     },
     {
      "url": "https://saved.lat/topics/repair-and-reuse/",
      "status": 200,
      "title": "Repair & Reuse: practical guides to spending less · SAVED",
-     "desc": "Basic tools, mending, simple plumbing and appliance care: fixing things yourself safely, and knowing when to call a professional. 7 guides from SAVED.",
+     "desc": "Basic tools, mending, simple plumbing and appliance care: fixing things yourself safely, and knowing when to call a professional. 10 guides from SAVED.",
      "h1": 1
     },
     {
      "url": "https://saved.lat/topics/smart-shopping/",
      "status": 200,
      "title": "Smart Shopping: practical guides to spending less · SAVED",
-     "desc": "Second-hand buying, sales seasons, warranties, subscriptions and scams: getting real value every time you pay for something. 7 guides from SAVED.",
+     "desc": "Second-hand buying, sales seasons, warranties, subscriptions and scams: getting real value every time you pay for something. 11 guides from SAVED.",
      "h1": 1
     },
     {
      "url": "https://saved.lat/topics/budget-basics/",
      "status": 200,
      "title": "Budget Basics: practical guides to spending less · SAVED",
-     "desc": "Budgets, sinking funds, emergency savings, paperwork and how interest works, explained clearly and without personal financial advice. 6 guides from SAVED.",
+     "desc": "Budgets, sinking funds, emergency savings, paperwork and how interest works, explained clearly and without personal financial advice. 9 guides from SAVED.",
      "h1": 1
     },
     {
      "url": "https://saved.lat/topics/family-and-leisure/",
      "status": 200,
      "title": "Family & Leisure: practical guides to spending less · SAVED",
-     "desc": "Children's activities, parties, pets, gifts, school costs and holidays: a full family life on a sensible budget. 6 guides from SAVED.",
+     "desc": "Children's activities, parties, pets, gifts, school costs and holidays: a full family life on a sensible budget. 9 guides from SAVED.",
      "h1": 1
     },
     {
-     "url": "https://saved.lat/guides/household-paperwork-system/",
+     "url": "https://saved.lat/guides/baby-costs-first-year/",
      "status": 200,
-     "title": "A Simple Household Paperwork System · SAVED",
-     "desc": "How to organise bills, receipts, warranties, contracts and personal documents on paper or digitally, how long to keep different records, and how to dispose of…",
+     "title": "Baby on a Budget · SAVED",
+     "desc": "How to prepare for a new baby without overspending: the true essentials, what is safe to buy second-hand and what is not, nappies and feeding costs, clothes…",
      "h1": 1
     },
     {
-     "url": "https://saved.lat/guides/cheap-protein-sources/",
+     "url": "https://saved.lat/guides/budgeting-on-an-irregular-income/",
      "status": 200,
-     "title": "Cheap Protein Sources: Beans, Lentils, Eggs and Meat",
-     "desc": "The most economical protein foods, how to cook dried pulses in batches, how to stretch meat further, and simple meals that keep everyone full for less.",
+     "title": "Budgeting on an Irregular Income · SAVED",
+     "desc": "How to budget when income changes month to month: find your baseline, pay yourself a steady salary from a holding account, build a buffer, save for tax and…",
      "h1": 1
     }
    ],
@@ -20328,7 +20340,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -20356,7 +20368,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://dawo.es/sitemap.xml — 56 URLs"
+     "detail": "HTTP 200 https://dawo.es/sitemap.xml — 57 URLs"
     },
     {
      "section": "16",
@@ -20412,7 +20424,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "173 ms (from a GitHub runner)"
+     "detail": "58 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -20510,7 +20522,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "57 unique"
+     "detail": "58 unique"
     },
     {
      "section": "8",
@@ -20958,7 +20970,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -20986,7 +20998,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://qkb.es/sitemap.xml — 56 URLs"
+     "detail": "HTTP 200 https://qkb.es/sitemap.xml — 57 URLs"
     },
     {
      "section": "16",
@@ -21042,7 +21054,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "187 ms (from a GitHub runner)"
+     "detail": "69 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -21140,7 +21152,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "57 unique"
+     "detail": "58 unique"
     },
     {
      "section": "8",
@@ -21588,7 +21600,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -21616,7 +21628,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://rough.es/sitemap.xml — 56 URLs"
+     "detail": "HTTP 200 https://rough.es/sitemap.xml — 57 URLs"
     },
     {
      "section": "16",
@@ -21672,7 +21684,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "172 ms (from a GitHub runner)"
+     "detail": "86 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -21770,7 +21782,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "57 unique"
+     "detail": "58 unique"
     },
     {
      "section": "8",
@@ -22152,10 +22164,10 @@
      "h1": 1
     },
     {
-     "url": "https://rough.es/es/anillos-y-joyas-masculinas/",
+     "url": "https://rough.es/es/alejandrita-y-cambio-de-color/",
      "status": 200,
-     "title": "Anillos y joyas masculinas · ROUGH",
-     "desc": "Guía de joyería masculina: anillo de sello, alianza y anillos con piedra, metales como oro, platino, titanio o wolframio, gemelos, pasadores, cadenas y…",
+     "title": "Alejandrita y gemas de cambio de color · ROUGH",
+     "desc": "Qué es la alejandrita, por qué pasa del verde al rojo según la luz, qué otras gemas cambian de color, cómo distinguirla de sintéticos e imitaciones y cómo…",
      "h1": 1
     }
    ],
@@ -22218,7 +22230,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -22246,7 +22258,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://xko.es/sitemap.xml — 56 URLs"
+     "detail": "HTTP 200 https://xko.es/sitemap.xml — 57 URLs"
     },
     {
      "section": "16",
@@ -22302,7 +22314,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "221 ms (from a GitHub runner)"
+     "detail": "60 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -22400,7 +22412,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "57 unique"
+     "detail": "58 unique"
     },
     {
      "section": "8",
@@ -22775,17 +22787,17 @@
      "h1": 1
     },
     {
-     "url": "https://xko.es/guias/como-leer-la-factura-de-la-luz/",
+     "url": "https://xko.es/guias/aerotermia/",
      "status": 200,
-     "title": "Cómo leer la factura de la luz línea a línea y saber qué…",
-     "desc": "Guía completa para entender tu factura eléctrica en España: potencia, energía, peajes, impuestos, alquiler del contador, CUPS, tramos horarios y los datos que…",
+     "title": "Aerotermia en casa · XKO",
+     "desc": "Qué es la aerotermia, cómo produce calefacción, agua caliente y refrigeración, qué significan COP y SCOP, cuánto cuesta frente a gas y gasóleo, qué emisores…",
      "h1": 1
     },
     {
-     "url": "https://xko.es/guias/termino-de-potencia-y-termino-de-energia/",
+     "url": "https://xko.es/guias/agua-caliente-termo-electrico-y-alternativas/",
      "status": 200,
-     "title": "Término de potencia y término de energía · XKO",
-     "desc": "La diferencia entre la parte fija y la parte variable de la factura de la luz, cómo se calculan con ejemplos, qué peso tiene cada una y qué medidas reducen…",
+     "title": "Agua caliente en casa · XKO",
+     "desc": "Cuánta energía gasta el agua caliente de un hogar, cómo ahorrar con el termo eléctrico que ya tienes, y comparativa de costes entre termo, caldera, bomba de…",
      "h1": 1
     }
    ],
@@ -22848,7 +22860,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -22876,7 +22888,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://odaily.xyz/sitemap.xml — 60 URLs"
+     "detail": "HTTP 200 https://odaily.xyz/sitemap.xml — 76 URLs"
     },
     {
      "section": "16",
@@ -22932,7 +22944,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "241 ms (from a GitHub runner)"
+     "detail": "56 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -23030,7 +23042,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "61 unique"
+     "detail": "77 unique"
     },
     {
      "section": "8",
@@ -23366,56 +23378,56 @@
      "url": "https://odaily.xyz/table/kitchen-basics/",
      "status": 200,
      "title": "Kitchen Basics: home cooking guides · ODAILY",
-     "desc": "Knife skills, heat control, seasoning, reading a recipe and the handful of techniques that make every other dish easier. 8 guides from ODAILY.",
+     "desc": "Knife skills, heat control, seasoning, reading a recipe and the handful of techniques that make every other dish easier. 11 guides from ODAILY.",
      "h1": 1
     },
     {
      "url": "https://odaily.xyz/table/weeknight-cooking/",
      "status": 200,
      "title": "Weeknight Cooking: home cooking guides · ODAILY",
-     "desc": "Dinners on the table in thirty to forty minutes: one-pan meals, pasta, stir-fries, soups and eggs, with ingredients you can actually find. 8 guides from ODAILY.",
+     "desc": "Dinners on the table in thirty to forty minutes: one-pan meals, pasta, stir-fries, soups and eggs, with ingredients you can actually find. 10 guides from ODAILY",
      "h1": 1
     },
     {
      "url": "https://odaily.xyz/table/meal-prep-and-planning/",
      "status": 200,
      "title": "Meal Prep & Planning: home cooking guides · ODAILY",
-     "desc": "Plan a week of meals, shop with a list, cook once and eat twice, pack lunches and feed a family on a sensible budget. 7 guides from ODAILY.",
+     "desc": "Plan a week of meals, shop with a list, cook once and eat twice, pack lunches and feed a family on a sensible budget. 9 guides from ODAILY.",
      "h1": 1
     },
     {
      "url": "https://odaily.xyz/table/baking/",
      "status": 200,
      "title": "Baking: home cooking guides · ODAILY",
-     "desc": "Bread, biscuits, cakes and pastry without guesswork: measuring, mixing, proofing, oven temperatures and fixing what went wrong. 8 guides from ODAILY.",
+     "desc": "Bread, biscuits, cakes and pastry without guesswork: measuring, mixing, proofing, oven temperatures and fixing what went wrong. 11 guides from ODAILY.",
      "h1": 1
     },
     {
      "url": "https://odaily.xyz/table/kitchen-science/",
      "status": 200,
      "title": "Kitchen Science: home cooking guides · ODAILY",
-     "desc": "Why onions brown, why bread rises, why salt matters and why sauces split: the chemistry and physics behind good cooking. 7 guides from ODAILY.",
+     "desc": "Why onions brown, why bread rises, why salt matters and why sauces split: the chemistry and physics behind good cooking. 10 guides from ODAILY.",
      "h1": 1
     },
     {
      "url": "https://odaily.xyz/table/pantry-and-storage/",
      "status": 200,
      "title": "Pantry & Storage: home cooking guides · ODAILY",
-     "desc": "Stock a useful pantry, read dates, store food safely in the fridge and freezer, use leftovers and throw less away. 7 guides from ODAILY.",
+     "desc": "Stock a useful pantry, read dates, store food safely in the fridge and freezer, use leftovers and throw less away. 9 guides from ODAILY.",
      "h1": 1
     },
     {
-     "url": "https://odaily.xyz/kitchen/how-to-plan-a-week-of-meals/",
+     "url": "https://odaily.xyz/kitchen/batch-cooking-sauces-and-bases/",
      "status": 200,
-     "title": "How to Plan a Week of Meals · ODAILY",
-     "desc": "A step-by-step meal planning routine: check the calendar and fridge, use theme nights, plan leftovers on purpose, write a smart list and keep a backup dinner…",
+     "title": "Batch-Cooking Sauces and Flavor Bases · ODAILY",
+     "desc": "Which sauces and bases are worth batch-cooking, how to cool, portion and freeze them safely, and how to turn tomato sauce, soffritto, curry base, pesto and…",
      "h1": 1
     },
     {
-     "url": "https://odaily.xyz/kitchen/how-to-stock-a-pantry/",
+     "url": "https://odaily.xyz/kitchen/cooking-from-what-you-have/",
      "status": 200,
-     "title": "How to Stock a Pantry · ODAILY",
-     "desc": "A practical pantry list of grains, legumes, canned goods, oils, vinegars, spices and condiments, how to build it gradually on a budget, store it well, rotate…",
+     "title": "Cooking From What You Have · ODAILY",
+     "desc": "How to plan meals from the food you already own: a quick fridge and pantry check, use-it-first lists, flexible dishes for leftovers, substitutions and…",
      "h1": 1
     }
    ],
@@ -23478,7 +23490,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "5 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -23506,7 +23518,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://xdaily.xyz/sitemap.xml — 60 URLs"
+     "detail": "HTTP 200 https://xdaily.xyz/sitemap.xml — 61 URLs"
     },
     {
      "section": "16",
@@ -23562,7 +23574,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "177 ms (from a GitHub runner)"
+     "detail": "88 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -23660,7 +23672,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "61 unique"
+     "detail": "62 unique"
     },
     {
      "section": "8",
