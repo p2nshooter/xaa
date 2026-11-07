@@ -16,6 +16,7 @@ jobs:
           node-version: 22
       - run: npm install --no-audit --no-fund
       - run: npm run typecheck
+      - run: node scripts/check-adsense.mjs
       # The R2 data layer (store, compare-and-swap, uniqueness, races, repair) against an exact in-memory R2.
       - run: npm test
       - name: Check Cloudflare secrets
