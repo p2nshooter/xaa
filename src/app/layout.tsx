@@ -4,6 +4,7 @@ import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import './copa2026.css';
 import { SITE } from '@/lib/site';
+import { AD_ACCOUNTS } from '@/lib/adsense';
 import { SiteHeader, SiteFooter } from '@/components/Site';
 import { Copa2026 } from '@/components/Copa2026';
 import { Analytics } from '@/components/Analytics';
@@ -41,7 +42,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   openGraph: { siteName: SITE.name, type: 'website', locale: 'en_US', images: [DEFAULT_OG_IMAGE] },
   twitter: { card: 'summary_large_image', images: [DEFAULT_OG_IMAGE.url] },
-  other: { 'google-adsense-account': SITE.adClient },
 };
 
 export const viewport: Viewport = { themeColor: '#0b1533', width: 'device-width', initialScale: 1, viewportFit: 'cover' };
@@ -59,7 +59,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         {/* Catches the browser's install offer before React starts (lib/pwa-early.ts). */}
         <script dangerouslySetInnerHTML={{ __html: PWA_EARLY }} />
-        <meta name="google-adsense-account" content={SITE.adClient} />
+        {/* One google-adsense-account meta tag per authorised account (src/lib/adsense.ts); one loader, the primary. */}
+        {AD_ACCOUNTS.map((account) => (
+          <meta key={account} name="google-adsense-account" content={account} />
+        ))}
         <script
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.adClient}`}

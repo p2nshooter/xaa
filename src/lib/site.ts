@@ -30,7 +30,9 @@ export const SITE = {
    * f08c47fec0942fa0"; before: 8991272269211824, shared with axto.io until then): the loader, the
    * google-adsense-account meta tag and public/ads.txt all name this account.
    */
-  adClient: 'ca-pub-6284085719914185',
+  // 7 Nov 2026 (owner): sixteen accounts stacked (src/lib/adsense.ts); ca-pub-9354298681597606 is the primary account — the only
+  // loader — and ca-pub-6284085719914185 is removed („Domain yg lain kode adsensenya boleh di hapus ikuti dengan perintah terbaru“).
+  adClient: 'ca-pub-9354298681597606',
   analyticsEndpoint: 'https://api.ulyah.com/track',
   /**
    * Editorial archive kept from the original site. Named plainly: calling
