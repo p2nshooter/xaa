@@ -13,7 +13,7 @@ const want = accounts.map((a) => `google.com, ${a.replace(/^ca-/, '')}, DIRECT, 
 let bad = 0;
 const ok = (c, what) => { console.log(`${c ? 'ok  ' : 'FAIL'}  ${what}`); if (!c) bad++; };
 ok(Boolean(primary), `primary account ${primary}`);
-ok(stack.length === 17 && new Set(stack).size === 17, `seventeen distinct stacked accounts, 8 Nov 2026 (${stack.length})`);
+ok(stack.length === 21 && new Set(stack).size === 21, `twenty-one distinct stacked accounts, 8 Nov 2026 (${stack.length})`);
 ok(read('public/ads.txt') === want, `public/ads.txt has exactly the ${accounts.length} lines, primary first`);
 ok(/AD_ACCOUNTS\.map\(\(account\) => \(\s*<meta key=\{account\} name="google-adsense-account" content=\{account\} \/>/.test(layout), 'layout renders one meta tag per account');
 ok((layout.match(/adsbygoogle\.js\?client=/g) || []).length === 1 && layout.includes('adsbygoogle.js?client=${SITE.adClient}'), 'layout has exactly one loader, the primary account');
