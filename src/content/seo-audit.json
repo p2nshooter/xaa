@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T10:53:13.314Z",
+ "generatedAt": "2026-11-09T11:17:40.428Z",
  "sites": [
   {
    "domain": "xaa.es",
@@ -137,8 +137,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "pass",
-     "detail": "788 ms (from a GitHub runner)"
+     "status": "warn",
+     "detail": "1211 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -501,15 +501,15 @@
      "section": "2",
      "id": "perf_score",
      "label": "Performance score (mobile)",
-     "status": "warn",
-     "detail": "56/100 — Lighthouse (runner)"
+     "status": "fail",
+     "detail": "46/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "7.57 s lab"
+     "detail": "4.61 s lab"
     },
     {
      "section": "2",
@@ -522,8 +522,8 @@
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
-     "status": "warn",
-     "detail": "TBT 356 ms lab (no field data yet)"
+     "status": "fail",
+     "detail": "TBT 1875 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -646,10 +646,10 @@
      "h1": 1
     }
    ],
-   "score": 95,
-   "pass": 66,
-   "fail": 1,
-   "warn": 6,
+   "score": 92,
+   "pass": 65,
+   "fail": 3,
+   "warn": 5,
    "manual": 9
   },
   {
@@ -789,7 +789,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "656 ms (from a GitHub runner)"
+     "detail": "790 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -1153,14 +1153,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "71/100 — Lighthouse (runner)"
+     "detail": "56/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "warn",
-     "detail": "3.48 s lab"
+     "detail": "2.95 s lab"
     },
     {
      "section": "2",
@@ -1173,8 +1173,8 @@
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
-     "status": "warn",
-     "detail": "TBT 467 ms lab (no field data yet)"
+     "status": "fail",
+     "detail": "TBT 2306 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -1299,8 +1299,8 @@
    ],
    "score": 94,
    "pass": 64,
-   "fail": 1,
-   "warn": 6,
+   "fail": 2,
+   "warn": 5,
    "manual": 10
   },
   {
@@ -1440,7 +1440,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "459 ms (from a GitHub runner)"
+     "detail": "545 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -1502,8 +1502,8 @@
      "section": "3",
      "id": "meta_description",
      "label": "Meta description (50–160 chars)",
-     "status": "warn",
-     "detail": "181: Practical, hype-free guides for developers — programming languages, developer tooling, web…"
+     "status": "pass",
+     "detail": "158: Practical, hype-free guides for developers: languages, tooling, web performance, DevOps an…"
     },
     {
      "section": "3",
@@ -1587,14 +1587,14 @@
      "id": "og_description",
      "label": "og:description",
      "status": "pass",
-     "detail": "Practical, hype-free guides for developers — programming languages, developer tooling, web"
+     "detail": "Practical, hype-free guides for developers: languages, tooling, web performance, DevOps an"
     },
     {
      "section": "17",
      "id": "og_image",
      "label": "og:image",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "https://axto.dev/opengraph-image.png?opengraph-image.3k139c_2sxkbp.png"
     },
     {
      "section": "17",
@@ -1615,7 +1615,7 @@
      "id": "twitter_card",
      "label": "Twitter / X card",
      "status": "pass",
-     "detail": "summary"
+     "detail": "summary_large_image"
     },
     {
      "section": "14",
@@ -1712,36 +1712,36 @@
      "section": "18",
      "id": "llms_txt",
      "label": "llms.txt for AI assistants",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "14",
      "id": "security_txt",
      "label": "security.txt (RFC 9116)",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "2",
      "id": "manifest",
      "label": "Web app manifest",
-     "status": "warn",
-     "detail": "no <link rel=\"manifest\">"
+     "status": "pass",
+     "detail": "/manifest.webmanifest"
     },
     {
      "section": "6",
      "id": "touch_icon",
      "label": "apple-touch-icon (PNG)",
-     "status": "pass",
+     "status": "warn",
      "detail": ""
     },
     {
      "section": "17",
      "id": "og_image_raster",
      "label": "og:image is PNG / JPG / WebP (social apps ignore SVG)",
-     "status": "na",
-     "detail": ""
+     "status": "pass",
+     "detail": "https://axto.dev/opengraph-image.png?opengraph-image.3k139c_2sxkbp.png"
     },
     {
      "section": "3",
@@ -1768,15 +1768,15 @@
      "section": "3",
      "id": "title_length_all",
      "label": "Titles ≤ 60 characters on every sampled page",
-     "status": "warn",
-     "detail": "3/9, e.g. 69: Big-O Notation in Plain English (No Maths Degree Required) · AXTO.dev"
+     "status": "pass",
+     "detail": "9 pages"
     },
     {
      "section": "3",
      "id": "desc_length_all",
      "label": "Descriptions ≤ 160 characters on every sampled page",
-     "status": "warn",
-     "detail": "2/9 longer"
+     "status": "pass",
+     "detail": "0/9 longer"
     },
     {
      "section": "2",
@@ -1804,14 +1804,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "65/100 — Lighthouse (runner)"
+     "detail": "68/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "7.11 s lab"
+     "detail": "5.12 s lab"
     },
     {
      "section": "2",
@@ -1824,8 +1824,8 @@
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
-     "status": "pass",
-     "detail": "TBT 95 ms lab (no field data yet)"
+     "status": "warn",
+     "detail": "TBT 264 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -1888,7 +1888,7 @@
     {
      "url": "https://axto.dev/",
      "title": "AXTO.dev — Build better software",
-     "desc": "Practical, hype-free guides for developers — programming languages, developer tooling, web performance, DevOps and the craft of shipping real software. Written for people who build.",
+     "desc": "Practical, hype-free guides for developers: languages, tooling, web performance, DevOps and the craft of shipping real software. Written for people who build.",
      "h1": 1
     },
     {
@@ -1929,29 +1929,29 @@
     {
      "url": "https://axto.dev/articles/big-o-notation-plain-english",
      "status": 200,
-     "title": "Big-O Notation in Plain English (No Maths Degree Required) · AXTO.dev",
-     "desc": "Big-O is just a way to describe how slow your code gets as the data grows. A practical guide to reading it, why it matters, and the handful of classes you meet in real work.",
+     "title": "Big-O Notation in Plain English (No Maths Degree Required)",
+     "desc": "Big-O is just a way to describe how slow your code gets as the data grows.",
      "h1": 1
     },
     {
      "url": "https://axto.dev/articles/value-vs-reference-bugs",
      "status": 200,
-     "title": "Value vs Reference: The Bug Behind Half Your Surprises · AXTO.dev",
+     "title": "Value vs Reference: The Bug Behind Half Your Surprises",
      "desc": "Why changing one variable mysteriously changes another. Understanding how languages copy values versus share references explains a huge share of confusing bugs.",
      "h1": 1
     },
     {
      "url": "https://axto.dev/articles/why-your-web-page-is-slow",
      "status": 200,
-     "title": "Why Your Web Page Is Slow (and the Metrics That Actually Matter) · AXTO.dev",
+     "title": "Why Your Web Page Is Slow (and the Metrics That Actually…",
      "desc": "Speed is not one number. A practical tour of what makes pages feel slow, the Core Web Vitals worth watching, and the highest-return fixes for real sites.",
      "h1": 1
     }
    ],
-   "score": 80,
-   "pass": 48,
-   "fail": 8,
-   "warn": 10,
+   "score": 85,
+   "pass": 54,
+   "fail": 7,
+   "warn": 6,
    "manual": 10
   },
   {
@@ -2091,7 +2091,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "74 ms (from a GitHub runner)"
+     "detail": "153 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -2454,15 +2454,15 @@
      "section": "2",
      "id": "perf_score",
      "label": "Performance score (mobile)",
-     "status": "warn",
-     "detail": "83/100 — Lighthouse (runner)"
+     "status": "pass",
+     "detail": "91/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "warn",
-     "detail": "2.77 s lab"
+     "status": "pass",
+     "detail": "2.18 s lab"
     },
     {
      "section": "2",
@@ -2476,7 +2476,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "pass",
-     "detail": "TBT 133 ms lab (no field data yet)"
+     "detail": "TBT 54 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -2599,10 +2599,10 @@
      "h1": 1
     }
    ],
-   "score": 96,
-   "pass": 62,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 4,
+   "warn": 2,
    "manual": 10
   },
   {
@@ -2741,8 +2741,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "pass",
-     "detail": "606 ms (from a GitHub runner)"
+     "status": "warn",
+     "detail": "955 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -3105,29 +3105,29 @@
      "section": "2",
      "id": "perf_score",
      "label": "Performance score (mobile)",
-     "status": "warn",
-     "detail": "66/100 — Lighthouse (runner)"
+     "status": "fail",
+     "detail": "48/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "4.84 s lab"
+     "detail": "11.56 s lab"
     },
     {
      "section": "2",
      "id": "cls",
      "label": "CLS ≤ 0.1",
      "status": "pass",
-     "detail": "0.029 lab"
+     "detail": "0.000 lab"
     },
     {
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
-     "status": "warn",
-     "detail": "TBT 448 ms lab (no field data yet)"
+     "status": "fail",
+     "detail": "TBT 821 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -3250,10 +3250,10 @@
      "h1": 1
     }
    ],
-   "score": 92,
-   "pass": 62,
-   "fail": 2,
-   "warn": 8,
+   "score": 90,
+   "pass": 61,
+   "fail": 4,
+   "warn": 7,
    "manual": 10
   },
   {
@@ -3392,8 +3392,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "pass",
-     "detail": "171 ms (from a GitHub runner)"
+     "status": "warn",
+     "detail": "928 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -3757,14 +3757,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "54/100 — Lighthouse (runner)"
+     "detail": "87/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "fail",
-     "detail": "11.08 s lab"
+     "status": "warn",
+     "detail": "3.39 s lab"
     },
     {
      "section": "2",
@@ -3778,7 +3778,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "warn",
-     "detail": "TBT 298 ms lab (no field data yet)"
+     "detail": "TBT 209 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -3902,9 +3902,9 @@
     }
    ],
    "score": 90,
-   "pass": 59,
-   "fail": 2,
-   "warn": 11,
+   "pass": 58,
+   "fail": 1,
+   "warn": 13,
    "manual": 10
   },
   {
@@ -4044,7 +4044,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "758 ms (from a GitHub runner)"
+     "detail": "770 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -4674,7 +4674,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "482 ms (from a GitHub runner)"
+     "detail": "530 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -5303,8 +5303,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "pass",
-     "detail": "679 ms (from a GitHub runner)"
+     "status": "warn",
+     "detail": "1108 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -5366,8 +5366,8 @@
      "section": "3",
      "id": "meta_description",
      "label": "Meta description (50–160 chars)",
-     "status": "warn",
-     "detail": "205: पुराने भारतीय सिक्कों का इतिहास, असली क़ीमत, ग्रेडिंग और संग्रह की कला — हिन्दी और अंग्रेज…"
+     "status": "pass",
+     "detail": "141: पुराने भारतीय सिक्कों का इतिहास, असली क़ीमत और ग्रेडिंग — हिन्दी और अंग्रेज़ी में, मुफ़्त।…"
     },
     {
      "section": "3",
@@ -5451,14 +5451,14 @@
      "id": "og_description",
      "label": "og:description",
      "status": "pass",
-     "detail": "पुराने भारतीय सिक्कों का इतिहास, असली क़ीमत, ग्रेडिंग और संग्रह की कला — हिन्दी और अंग्रेज"
+     "detail": "पुराने भारतीय सिक्कों का इतिहास, असली क़ीमत और ग्रेडिंग — हिन्दी और अंग्रेज़ी में, मुफ़्त।"
     },
     {
      "section": "17",
      "id": "og_image",
      "label": "og:image",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "https://oldco.in/opengraph-image.png?opengraph-image.3gooswbb80use.png"
     },
     {
      "section": "17",
@@ -5479,7 +5479,7 @@
      "id": "twitter_card",
      "label": "Twitter / X card",
      "status": "pass",
-     "detail": "summary"
+     "detail": "summary_large_image"
     },
     {
      "section": "14",
@@ -5576,36 +5576,36 @@
      "section": "18",
      "id": "llms_txt",
      "label": "llms.txt for AI assistants",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "14",
      "id": "security_txt",
      "label": "security.txt (RFC 9116)",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "2",
      "id": "manifest",
      "label": "Web app manifest",
-     "status": "warn",
-     "detail": "no <link rel=\"manifest\">"
+     "status": "pass",
+     "detail": "/manifest.webmanifest"
     },
     {
      "section": "6",
      "id": "touch_icon",
      "label": "apple-touch-icon (PNG)",
-     "status": "pass",
+     "status": "warn",
      "detail": ""
     },
     {
      "section": "17",
      "id": "og_image_raster",
      "label": "og:image is PNG / JPG / WebP (social apps ignore SVG)",
-     "status": "na",
-     "detail": ""
+     "status": "pass",
+     "detail": "https://oldco.in/opengraph-image.png?opengraph-image.3gooswbb80use.png"
     },
     {
      "section": "3",
@@ -5632,15 +5632,15 @@
      "section": "3",
      "id": "title_length_all",
      "label": "Titles ≤ 60 characters on every sampled page",
-     "status": "warn",
-     "detail": "2/9, e.g. 76: 1947 का एक रुपया: असली क़ीमत क्या है, और “लाखों में बिकेगा” का सच · Ol"
+     "status": "pass",
+     "detail": "9 pages"
     },
     {
      "section": "3",
      "id": "desc_length_all",
      "label": "Descriptions ≤ 160 characters on every sampled page",
-     "status": "warn",
-     "detail": "1/9 longer"
+     "status": "pass",
+     "detail": "0/9 longer"
     },
     {
      "section": "2",
@@ -5731,7 +5731,7 @@
     {
      "url": "https://oldco.in/",
      "title": "OldCo.in — पुराने सिक्कों की दुनिया, आपकी भाषा में",
-     "desc": "पुराने भारतीय सिक्कों का इतिहास, असली क़ीमत, ग्रेडिंग और संग्रह की कला — हिन्दी और अंग्रेज़ी में, मुफ़्त, बिना रजिस्ट्रेशन। Honest guides to old Indian coins, their history and value, in Hindi and English.",
+     "desc": "पुराने भारतीय सिक्कों का इतिहास, असली क़ीमत और ग्रेडिंग — हिन्दी और अंग्रेज़ी में, मुफ़्त। Honest guides to old Indian coins and their value.",
      "h1": 1
     },
     {
@@ -5772,14 +5772,14 @@
     {
      "url": "https://oldco.in/articles/one-rupee-1947-value",
      "status": 200,
-     "title": "1947 का एक रुपया: असली क़ीमत क्या है, और “लाखों में बिकेगा” का सच · OldCo.in",
+     "title": "1947 का एक रुपया · OldCo.in",
      "desc": "आज़ादी के साल का सिक्का हर दूसरे घर में मिलता है — और इंटरनेट पर उसकी “करोड़ों की क़ीमत” के किस्से भी। सच्ची क़ीमत किन बातों से तय होती है, और ठगी कहाँ छिपी है।",
      "h1": 1
     },
     {
      "url": "https://oldco.in/articles/british-india-coins-guide",
      "status": 200,
-     "title": "ब्रिटिश भारत के सिक्के: 1835 से 1947 तक की पूरी कहानी · OldCo.in",
+     "title": "ब्रिटिश भारत के सिक्के: 1835 से 1947 तक की पूरी कहानी",
      "desc": "ईस्ट इंडिया कंपनी के एकरूप सिक्कों से लेकर “एम्प्रेस विक्टोरिया” और जॉर्ज VI के आख़िरी रुपये तक — संग्राहकों के सबसे चहेते दौर की सैर।",
      "h1": 1
     },
@@ -5791,10 +5791,10 @@
      "h1": 1
     }
    ],
-   "score": 81,
-   "pass": 46,
-   "fail": 7,
-   "warn": 9,
+   "score": 87,
+   "pass": 52,
+   "fail": 6,
+   "warn": 5,
    "manual": 11
   },
   {
@@ -5934,7 +5934,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "569 ms (from a GitHub runner)"
+     "detail": "745 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -5996,8 +5996,8 @@
      "section": "3",
      "id": "meta_description",
      "label": "Meta description (50–160 chars)",
-     "status": "warn",
-     "detail": "178: निवेश, बचत, टैक्स, बीमा और डिजिटल पैसे पर गहरे और ईमानदार लेख — हिन्दी और अंग्रेज़ी में, म…"
+     "status": "pass",
+     "detail": "152: निवेश, बचत, टैक्स, बीमा और डिजिटल पैसे पर ईमानदार लेख — हिन्दी और अंग्रेज़ी में, मुफ़्त। H…"
     },
     {
      "section": "3",
@@ -6081,14 +6081,14 @@
      "id": "og_description",
      "label": "og:description",
      "status": "pass",
-     "detail": "निवेश, बचत, टैक्स, बीमा और डिजिटल पैसे पर गहरे और ईमानदार लेख — हिन्दी और अंग्रेज़ी में, म"
+     "detail": "निवेश, बचत, टैक्स, बीमा और डिजिटल पैसे पर ईमानदार लेख — हिन्दी और अंग्रेज़ी में, मुफ़्त। H"
     },
     {
      "section": "17",
      "id": "og_image",
      "label": "og:image",
-     "status": "fail",
-     "detail": "missing"
+     "status": "pass",
+     "detail": "https://profity.in/opengraph-image.png?opengraph-image.00a4rx8eec0n2.png"
     },
     {
      "section": "17",
@@ -6109,7 +6109,7 @@
      "id": "twitter_card",
      "label": "Twitter / X card",
      "status": "pass",
-     "detail": "summary"
+     "detail": "summary_large_image"
     },
     {
      "section": "14",
@@ -6206,36 +6206,36 @@
      "section": "18",
      "id": "llms_txt",
      "label": "llms.txt for AI assistants",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "14",
      "id": "security_txt",
      "label": "security.txt (RFC 9116)",
-     "status": "warn",
-     "detail": "HTTP 404"
+     "status": "pass",
+     "detail": "HTTP 200"
     },
     {
      "section": "2",
      "id": "manifest",
      "label": "Web app manifest",
-     "status": "warn",
-     "detail": "no <link rel=\"manifest\">"
+     "status": "pass",
+     "detail": "/manifest.webmanifest"
     },
     {
      "section": "6",
      "id": "touch_icon",
      "label": "apple-touch-icon (PNG)",
-     "status": "pass",
+     "status": "warn",
      "detail": ""
     },
     {
      "section": "17",
      "id": "og_image_raster",
      "label": "og:image is PNG / JPG / WebP (social apps ignore SVG)",
-     "status": "na",
-     "detail": ""
+     "status": "pass",
+     "detail": "https://profity.in/opengraph-image.png?opengraph-image.00a4rx8eec0n2.png"
     },
     {
      "section": "3",
@@ -6262,15 +6262,15 @@
      "section": "3",
      "id": "title_length_all",
      "label": "Titles ≤ 60 characters on every sampled page",
-     "status": "warn",
-     "detail": "2/9, e.g. 73: SIP से म्यूचुअल फंड निवेश: शुरुआत से समझें, ग़लतियों से बचें · Profity"
+     "status": "pass",
+     "detail": "9 pages"
     },
     {
      "section": "3",
      "id": "desc_length_all",
      "label": "Descriptions ≤ 160 characters on every sampled page",
-     "status": "warn",
-     "detail": "1/9 longer"
+     "status": "pass",
+     "detail": "0/9 longer"
     },
     {
      "section": "2",
@@ -6361,7 +6361,7 @@
     {
      "url": "https://profity.in/",
      "title": "Profity.in — पैसे की समझ, आपकी भाषा में",
-     "desc": "निवेश, बचत, टैक्स, बीमा और डिजिटल पैसे पर गहरे और ईमानदार लेख — हिन्दी और अंग्रेज़ी में, मुफ़्त, बिना रजिस्ट्रेशन। Honest personal-finance guides for India, in Hindi and English.",
+     "desc": "निवेश, बचत, टैक्स, बीमा और डिजिटल पैसे पर ईमानदार लेख — हिन्दी और अंग्रेज़ी में, मुफ़्त। Honest personal-finance guides for India, in Hindi and English.",
      "h1": 1
     },
     {
@@ -6409,22 +6409,22 @@
     {
      "url": "https://profity.in/articles/sip-mutual-fund-guide",
      "status": 200,
-     "title": "SIP से म्यूचुअल फंड निवेश: शुरुआत से समझें, ग़लतियों से बचें · Profity.in",
+     "title": "SIP से म्यूचुअल फंड निवेश: शुरुआत से समझें, ग़लतियों से बचें",
      "desc": "हर महीने ₹500 से भी शुरू हो सकने वाला SIP भारत में संपत्ति बनाने का सबसे लोकप्रिय रास्ता क्यों बन गया है — और इसमें की जाने वाली पाँच आम ग़लतियाँ कौन-सी हैं।",
      "h1": 1
     },
     {
      "url": "https://profity.in/articles/ppf-account-complete-guide",
      "status": 200,
-     "title": "PPF खाता: 15 साल की सबसे भरोसेमंद टैक्स-फ्री बचत, पूरी गाइड · Profity.in",
+     "title": "PPF खाता: 15 साल की सबसे भरोसेमंद टैक्स-फ्री बचत, पूरी गाइड",
      "desc": "सरकारी गारंटी, टैक्स-फ्री ब्याज और अनुशासन — पब्लिक प्रोविडेंट फंड आज भी हर भारतीय पोर्टफोलियो की नींव क्यों है, नियम-दर-नियम समझिए।",
      "h1": 1
     }
    ],
-   "score": 81,
-   "pass": 46,
-   "fail": 7,
-   "warn": 9,
+   "score": 87,
+   "pass": 53,
+   "fail": 6,
+   "warn": 4,
    "manual": 11
   },
   {
@@ -6563,8 +6563,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "pass",
-     "detail": "751 ms (from a GitHub runner)"
+     "status": "warn",
+     "detail": "858 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -7052,9 +7052,9 @@
     }
    ],
    "score": 88,
-   "pass": 56,
+   "pass": 55,
    "fail": 4,
-   "warn": 8,
+   "warn": 9,
    "manual": 11
   },
   {
@@ -7193,8 +7193,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "pass",
-     "detail": "613 ms (from a GitHub runner)"
+     "status": "warn",
+     "detail": "1090 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -7682,9 +7682,9 @@
     }
    ],
    "score": 88,
-   "pass": 56,
+   "pass": 55,
    "fail": 4,
-   "warn": 8,
+   "warn": 9,
    "manual": 11
   },
   {
@@ -7768,7 +7768,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://byodd.de/sitemap.xml — 58 URLs"
+     "detail": "HTTP 200 https://byodd.de/sitemap.xml — 63 URLs"
     },
     {
      "section": "16",
@@ -7824,7 +7824,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "179 ms (from a GitHub runner)"
+     "detail": "210 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -7901,7 +7901,7 @@
      "id": "h2",
      "label": "H2–H6 structure",
      "status": "pass",
-     "detail": "3 H2"
+     "detail": "4 H2"
     },
     {
      "section": "6",
@@ -7922,7 +7922,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "59 unique"
+     "detail": "64 unique"
     },
     {
      "section": "8",
@@ -8398,7 +8398,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://byoxy.de/sitemap.xml — 63 URLs"
+     "detail": "HTTP 200 https://byoxy.de/sitemap.xml — 68 URLs"
     },
     {
      "section": "16",
@@ -8454,7 +8454,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "144 ms (from a GitHub runner)"
+     "detail": "209 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -8531,7 +8531,7 @@
      "id": "h2",
      "label": "H2–H6 structure",
      "status": "pass",
-     "detail": "3 H2"
+     "detail": "4 H2"
     },
     {
      "section": "6",
@@ -8552,7 +8552,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "64 unique"
+     "detail": "69 unique"
     },
     {
      "section": "8",
@@ -9028,7 +9028,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://byoy.de/sitemap.xml — 63 URLs"
+     "detail": "HTTP 200 https://byoy.de/sitemap.xml — 68 URLs"
     },
     {
      "section": "16",
@@ -9084,7 +9084,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "97 ms (from a GitHub runner)"
+     "detail": "246 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -9161,7 +9161,7 @@
      "id": "h2",
      "label": "H2–H6 structure",
      "status": "pass",
-     "detail": "3 H2"
+     "detail": "4 H2"
     },
     {
      "section": "6",
@@ -9182,7 +9182,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "64 unique"
+     "detail": "69 unique"
     },
     {
      "section": "8",
@@ -9714,7 +9714,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "89 ms (from a GitHub runner)"
+     "detail": "332 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -10344,7 +10344,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "68 ms (from a GitHub runner)"
+     "detail": "228 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -10974,7 +10974,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "167 ms (from a GitHub runner)"
+     "detail": "237 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -11604,7 +11604,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "79 ms (from a GitHub runner)"
+     "detail": "290 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -12234,7 +12234,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "81 ms (from a GitHub runner)"
+     "detail": "272 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -12864,7 +12864,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "154 ms (from a GitHub runner)"
+     "detail": "236 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -13494,7 +13494,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "114 ms (from a GitHub runner)"
+     "detail": "254 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -14124,7 +14124,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "91 ms (from a GitHub runner)"
+     "detail": "221 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -14754,7 +14754,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "154 ms (from a GitHub runner)"
+     "detail": "229 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -15384,7 +15384,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "145 ms (from a GitHub runner)"
+     "detail": "175 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -16014,7 +16014,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "84 ms (from a GitHub runner)"
+     "detail": "250 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -16644,7 +16644,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "84 ms (from a GitHub runner)"
+     "detail": "263 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -17274,7 +17274,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "104 ms (from a GitHub runner)"
+     "detail": "191 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -17904,7 +17904,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "81 ms (from a GitHub runner)"
+     "detail": "175 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -18534,7 +18534,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "72 ms (from a GitHub runner)"
+     "detail": "210 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -19108,7 +19108,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://rough.lat/sitemap.xml — 76 URLs"
+     "detail": "HTTP 200 https://rough.lat/sitemap.xml — 81 URLs"
     },
     {
      "section": "16",
@@ -19164,7 +19164,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "89 ms (from a GitHub runner)"
+     "detail": "260 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -19241,7 +19241,7 @@
      "id": "h2",
      "label": "H2–H6 structure",
      "status": "pass",
-     "detail": "3 H2"
+     "detail": "4 H2"
     },
     {
      "section": "6",
@@ -19262,7 +19262,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "77 unique"
+     "detail": "82 unique"
     },
     {
      "section": "8",
@@ -19738,7 +19738,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://saved.lat/sitemap.xml — 76 URLs"
+     "detail": "HTTP 200 https://saved.lat/sitemap.xml — 81 URLs"
     },
     {
      "section": "16",
@@ -19794,7 +19794,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "246 ms (from a GitHub runner)"
+     "detail": "201 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -19871,7 +19871,7 @@
      "id": "h2",
      "label": "H2–H6 structure",
      "status": "pass",
-     "detail": "3 H2"
+     "detail": "4 H2"
     },
     {
      "section": "6",
@@ -19892,7 +19892,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "77 unique"
+     "detail": "82 unique"
     },
     {
      "section": "8",
@@ -20424,7 +20424,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "58 ms (from a GitHub runner)"
+     "detail": "204 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -21054,7 +21054,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "69 ms (from a GitHub runner)"
+     "detail": "216 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -21684,7 +21684,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "86 ms (from a GitHub runner)"
+     "detail": "149 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -22258,7 +22258,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://xko.es/sitemap.xml — 57 URLs"
+     "detail": "HTTP 200 https://xko.es/sitemap.xml — 114 URLs"
     },
     {
      "section": "16",
@@ -22314,7 +22314,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "60 ms (from a GitHub runner)"
+     "detail": "292 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -22412,7 +22412,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "58 unique"
+     "detail": "59 unique"
     },
     {
      "section": "8",
@@ -22425,8 +22425,8 @@
      "section": "8",
      "id": "hreflang",
      "label": "hreflang for language versions",
-     "status": "manual",
-     "detail": "none — needed only if the site serves several languages"
+     "status": "pass",
+     "detail": "es, en, x-default"
     },
     {
      "section": "5",
@@ -22802,10 +22802,10 @@
     }
    ],
    "score": 98,
-   "pass": 61,
+   "pass": 62,
    "fail": 1,
    "warn": 1,
-   "manual": 11
+   "manual": 10
   },
   {
    "domain": "odaily.xyz",
@@ -22944,7 +22944,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "56 ms (from a GitHub runner)"
+     "detail": "174 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -23574,7 +23574,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "88 ms (from a GitHub runner)"
+     "detail": "179 ms (from a GitHub runner)"
     },
     {
      "section": "2",

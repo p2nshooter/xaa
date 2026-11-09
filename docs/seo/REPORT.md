@@ -1,21 +1,21 @@
 # SEO audit — all domains
 
-Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
+Generated 2026-11-09T11:17:40.428Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
 
 | Domain | Score | ✅ | ❌ | ⚠️ | 📝 | Repo |
 |---|---|---|---|---|---|---|
-| [xaa.es](https://xaa.es) | 95% | 66 | 1 | 6 | 9 | p2nshooter/xaa |
-| [axto.io](https://axto.io) | 94% | 64 | 1 | 6 | 10 | p2nshooter/guardian-ai |
-| [axto.dev](https://axto.dev) | 80% | 48 | 8 | 10 | 10 | p2nshooter/axtodev |
-| [axto.us](https://axto.us) | 96% | 62 | 1 | 4 | 10 | p2nshooter/axto.us |
-| [ulyah.com](https://ulyah.com) | 92% | 62 | 2 | 8 | 10 | p2nshooter/ulyah.com |
-| [xad.es](https://xad.es) | 90% | 59 | 2 | 11 | 10 | p2nshooter/ulyah.com |
+| [xaa.es](https://xaa.es) | 92% | 65 | 3 | 5 | 9 | p2nshooter/xaa |
+| [axto.io](https://axto.io) | 94% | 64 | 2 | 5 | 10 | p2nshooter/guardian-ai |
+| [axto.dev](https://axto.dev) | 85% | 54 | 7 | 6 | 10 | p2nshooter/axtodev |
+| [axto.us](https://axto.us) | 97% | 64 | 1 | 2 | 10 | p2nshooter/axto.us |
+| [ulyah.com](https://ulyah.com) | 90% | 61 | 4 | 7 | 10 | p2nshooter/ulyah.com |
+| [xad.es](https://xad.es) | 90% | 58 | 1 | 13 | 10 | p2nshooter/ulyah.com |
 | [jai.lat](https://jai.lat) | 87% | 53 | 6 | 4 | 11 | p2nshooter/Jai |
 | [lie.skin](https://lie.skin) | 87% | 53 | 6 | 4 | 11 | p2nshooter/Lie |
-| [oldco.in](https://oldco.in) | 81% | 46 | 7 | 9 | 11 | p2nshooter/oldco.in |
-| [profity.in](https://profity.in) | 81% | 46 | 7 | 9 | 11 | p2nshooter/profity.in |
-| [1fr.fr](https://1fr.fr) | 88% | 56 | 4 | 8 | 11 | p2nshooter/ulyah.com |
-| [tilawa.de](https://tilawa.de) | 88% | 56 | 4 | 8 | 11 | p2nshooter/ulyah.com |
+| [oldco.in](https://oldco.in) | 87% | 52 | 6 | 5 | 11 | p2nshooter/oldco.in |
+| [profity.in](https://profity.in) | 87% | 53 | 6 | 4 | 11 | p2nshooter/profity.in |
+| [1fr.fr](https://1fr.fr) | 88% | 55 | 4 | 9 | 11 | p2nshooter/ulyah.com |
+| [tilawa.de](https://tilawa.de) | 88% | 55 | 4 | 9 | 11 | p2nshooter/ulyah.com |
 | [byodd.de](https://byodd.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
 | [byoxy.de](https://byoxy.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
 | [byoy.de](https://byoy.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
@@ -39,13 +39,13 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | [dawo.es](https://dawo.es) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
 | [qkb.es](https://qkb.es) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
 | [rough.es](https://rough.es) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
-| [xko.es](https://xko.es) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
+| [xko.es](https://xko.es) | 98% | 62 | 1 | 1 | 10 | p2nshooter/ulyah.com |
 | [odaily.xyz](https://odaily.xyz) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
 | [xdaily.xyz](https://xdaily.xyz) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
 
-## xaa.es — 95%
+## xaa.es — 92%
 
-**Not done yet (7):** Fonts optimised (preload / font-display: swap); Meta description (50–160 chars); Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (8):** Server response time; Fonts optimised (preload / font-display: swap); Meta description (50–160 chars); Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -70,17 +70,17 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 788 ms (from a GitHub runner) |
+| ⚠️ | Server response time | 1211 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | private, no-cache, no-store, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ⚠️ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 56/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 7.57 s lab |
+| ❌ | Performance score (mobile) | 46/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 4.61 s lab |
 | ✅ | CLS ≤ 0.1 | 0.061 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 356 ms lab (no field data yet) |
+| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 1875 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -247,17 +247,17 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 656 ms (from a GitHub runner) |
+| ✅ | Server response time | 790 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 71/100 — Lighthouse (runner) |
-| ⚠️ | LCP ≤ 2.5 s | 3.48 s lab |
+| ⚠️ | Performance score (mobile) | 56/100 — Lighthouse (runner) |
+| ⚠️ | LCP ≤ 2.5 s | 2.95 s lab |
 | ⚠️ | CLS ≤ 0.1 | 0.138 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 467 ms lab (no field data yet) |
+| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 2306 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -397,9 +397,9 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## axto.dev — 80%
+## axto.dev — 85%
 
-**Not done yet (18):** One canonical host (www ↔ apex redirect); Meta description (50–160 chars); og:image; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; llms.txt for AI assistants; security.txt (RFC 9116); Web app manifest; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s
+**Not done yet (13):** One canonical host (www ↔ apex redirect); og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -424,31 +424,31 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 459 ms (from a GitHub runner) |
+| ✅ | Server response time | 545 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ⚠️ | Web app manifest | no <link rel="manifest"> |
+| ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 65/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 7.11 s lab |
+| ⚠️ | Performance score (mobile) | 68/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 5.12 s lab |
 | ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 95 ms lab (no field data yet) |
+| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 264 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | Title tag (10–60 chars) | 32: AXTO.dev — Build better software |
-| ⚠️ | Meta description (50–160 chars) | 181: Practical, hype-free guides for developers — programming languages, developer tooling, web… |
+| ✅ | Meta description (50–160 chars) | 158: Practical, hype-free guides for developers: languages, tooling, web performance, DevOps an… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 3 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ⚠️ | Titles ≤ 60 characters on every sampled page | 3/9, e.g. 69: Big-O Notation in Plain English (No Maths Degree Required) · AXTO.dev |
-| ⚠️ | Descriptions ≤ 160 characters on every sampled page | 2/9 longer |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
 | ⚠️ | Breadcrumbs on inner pages | 3/8 |
 
 **4. Content SEO**
@@ -475,7 +475,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | — | Images carry width & height (no layout shift) | 0/0 |
 | — | Alt text on images | 0/0 missing alt |
 | — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
+| ⚠️ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
 
@@ -525,7 +525,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ⚠️ | Permissions-Policy |  |
 | ⚠️ | Content-Security-Policy | none (optional, but recommended) |
 | ✅ | No mixed content |  |
-| ⚠️ | security.txt (RFC 9116) | HTTP 404 |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
 
 **15. Crawl & indexing**
 
@@ -547,19 +547,19 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | og:title | AXTO.dev — Build better software |
-| ✅ | og:description | Practical, hype-free guides for developers — programming languages, developer tooling, web |
-| ❌ | og:image | missing |
+| ✅ | og:description | Practical, hype-free guides for developers: languages, tooling, web performance, DevOps an |
+| ✅ | og:image | https://axto.dev/opengraph-image.png?opengraph-image.3k139c_2sxkbp.png |
 | ❌ | og:url | missing |
 | ✅ | og:type | website |
-| ✅ | Twitter / X card | summary |
-| — | og:image is PNG / JPG / WebP (social apps ignore SVG) |  |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://axto.dev/opengraph-image.png?opengraph-image.3k139c_2sxkbp.png |
 
 **18. AI / generative search**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | AI / generative-search crawlers allowed |  |
-| ⚠️ | llms.txt for AI assistants | HTTP 404 |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
 
 **19. Analytics & monitoring**
 
@@ -574,9 +574,9 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## axto.us — 96%
+## axto.us — 97%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; Performance score (mobile); LCP ≤ 2.5 s; CLS ≤ 0.1
+**Not done yet (3):** One canonical host (www ↔ apex redirect); Content-Security-Policy; CLS ≤ 0.1
 
 
 **1. Foundation**
@@ -601,17 +601,17 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 74 ms (from a GitHub runner) |
+| ✅ | Server response time | 153 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /site.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 83/100 — Lighthouse (runner) |
-| ⚠️ | LCP ≤ 2.5 s | 2.77 s lab |
+| ✅ | Performance score (mobile) | 91/100 — Lighthouse (runner) |
+| ✅ | LCP ≤ 2.5 s | 2.18 s lab |
 | ⚠️ | CLS ≤ 0.1 | 0.163 lab |
-| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 133 ms lab (no field data yet) |
+| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 54 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -751,9 +751,9 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## ulyah.com — 92%
+## ulyah.com — 90%
 
-**Not done yet (10):** Canonical URL on the home page; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (11):** Canonical URL on the home page; Server response time; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -778,17 +778,17 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 606 ms (from a GitHub runner) |
+| ⚠️ | Server response time | 955 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest?locale=id |
 | ⚠️ | Canonical on every sampled page | 1 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 66/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 4.84 s lab |
-| ✅ | CLS ≤ 0.1 | 0.029 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 448 ms lab (no field data yet) |
+| ❌ | Performance score (mobile) | 48/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 11.56 s lab |
+| ✅ | CLS ≤ 0.1 | 0.000 lab |
+| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 821 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -930,7 +930,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## xad.es — 90%
 
-**Not done yet (13):** Canonical URL on the home page; WebP / AVIF images; Title tag (10–60 chars); Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (14):** Canonical URL on the home page; Server response time; WebP / AVIF images; Title tag (10–60 chars); Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -955,17 +955,17 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 171 ms (from a GitHub runner) |
+| ⚠️ | Server response time | 928 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest?locale=en |
 | ⚠️ | Canonical on every sampled page | 1 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 54/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 11.08 s lab |
+| ⚠️ | Performance score (mobile) | 87/100 — Lighthouse (runner) |
+| ⚠️ | LCP ≤ 2.5 s | 3.39 s lab |
 | ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 298 ms lab (no field data yet) |
+| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 209 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -1132,7 +1132,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 758 ms (from a GitHub runner) |
+| ✅ | Server response time | 770 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1306,7 +1306,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 482 ms (from a GitHub runner) |
+| ✅ | Server response time | 530 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1453,9 +1453,9 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## oldco.in — 81%
+## oldco.in — 87%
 
-**Not done yet (16):** One canonical host (www ↔ apex redirect); Meta description (50–160 chars); og:image; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; llms.txt for AI assistants; security.txt (RFC 9116); Web app manifest; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages
+**Not done yet (11):** One canonical host (www ↔ apex redirect); Server response time; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1480,11 +1480,11 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 679 ms (from a GitHub runner) |
+| ⚠️ | Server response time | 1108 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ⚠️ | Web app manifest | no <link rel="manifest"> |
+| ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
 | 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
@@ -1494,14 +1494,14 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | Title tag (10–60 chars) | 50: OldCo.in — पुराने सिक्कों की दुनिया, आपकी भाषा में |
-| ⚠️ | Meta description (50–160 chars) | 205: पुराने भारतीय सिक्कों का इतिहास, असली क़ीमत, ग्रेडिंग और संग्रह की कला — हिन्दी और अंग्रेज… |
+| ✅ | Meta description (50–160 chars) | 141: पुराने भारतीय सिक्कों का इतिहास, असली क़ीमत और ग्रेडिंग — हिन्दी और अंग्रेज़ी में, मुफ़्त।… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 3 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ⚠️ | Titles ≤ 60 characters on every sampled page | 2/9, e.g. 76: 1947 का एक रुपया: असली क़ीमत क्या है, और “लाखों में बिकेगा” का सच · Ol |
-| ⚠️ | Descriptions ≤ 160 characters on every sampled page | 1/9 longer |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
 | ⚠️ | Breadcrumbs on inner pages | 3/8 |
 
 **4. Content SEO**
@@ -1528,7 +1528,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | — | Images carry width & height (no layout shift) | 0/0 |
 | — | Alt text on images | 0/0 missing alt |
 | — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
+| ⚠️ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
 
@@ -1578,7 +1578,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ⚠️ | Permissions-Policy |  |
 | ⚠️ | Content-Security-Policy | none (optional, but recommended) |
 | ✅ | No mixed content |  |
-| ⚠️ | security.txt (RFC 9116) | HTTP 404 |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
 
 **15. Crawl & indexing**
 
@@ -1600,19 +1600,19 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | og:title | OldCo.in — पुराने सिक्कों की दुनिया, आपकी भाषा में |
-| ✅ | og:description | पुराने भारतीय सिक्कों का इतिहास, असली क़ीमत, ग्रेडिंग और संग्रह की कला — हिन्दी और अंग्रेज |
-| ❌ | og:image | missing |
+| ✅ | og:description | पुराने भारतीय सिक्कों का इतिहास, असली क़ीमत और ग्रेडिंग — हिन्दी और अंग्रेज़ी में, मुफ़्त। |
+| ✅ | og:image | https://oldco.in/opengraph-image.png?opengraph-image.3gooswbb80use.png |
 | ❌ | og:url | missing |
 | ✅ | og:type | website |
-| ✅ | Twitter / X card | summary |
-| — | og:image is PNG / JPG / WebP (social apps ignore SVG) |  |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://oldco.in/opengraph-image.png?opengraph-image.3gooswbb80use.png |
 
 **18. AI / generative search**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | AI / generative-search crawlers allowed |  |
-| ⚠️ | llms.txt for AI assistants | HTTP 404 |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
 
 **19. Analytics & monitoring**
 
@@ -1627,9 +1627,9 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## profity.in — 81%
+## profity.in — 87%
 
-**Not done yet (16):** One canonical host (www ↔ apex redirect); Meta description (50–160 chars); og:image; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; llms.txt for AI assistants; security.txt (RFC 9116); Web app manifest; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Breadcrumbs on inner pages
+**Not done yet (10):** One canonical host (www ↔ apex redirect); og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1654,11 +1654,11 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 569 ms (from a GitHub runner) |
+| ✅ | Server response time | 745 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
-| ⚠️ | Web app manifest | no <link rel="manifest"> |
+| ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
 | 📝 | Core Web Vitals (PageSpeed, mobile) | PageSpeed API rate-limited; Lighthouse ran on the first 6 domains of this run only |
@@ -1668,14 +1668,14 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | Title tag (10–60 chars) | 39: Profity.in — पैसे की समझ, आपकी भाषा में |
-| ⚠️ | Meta description (50–160 chars) | 178: निवेश, बचत, टैक्स, बीमा और डिजिटल पैसे पर गहरे और ईमानदार लेख — हिन्दी और अंग्रेज़ी में, म… |
+| ✅ | Meta description (50–160 chars) | 152: निवेश, बचत, टैक्स, बीमा और डिजिटल पैसे पर ईमानदार लेख — हिन्दी और अंग्रेज़ी में, मुफ़्त। H… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 3 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ⚠️ | Titles ≤ 60 characters on every sampled page | 2/9, e.g. 73: SIP से म्यूचुअल फंड निवेश: शुरुआत से समझें, ग़लतियों से बचें · Profity |
-| ⚠️ | Descriptions ≤ 160 characters on every sampled page | 1/9 longer |
+| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
+| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
 | ⚠️ | Breadcrumbs on inner pages | 2/8 |
 
 **4. Content SEO**
@@ -1702,7 +1702,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | — | Images carry width & height (no layout shift) | 0/0 |
 | — | Alt text on images | 0/0 missing alt |
 | — | Descriptive image file names |  |
-| ✅ | apple-touch-icon (PNG) |  |
+| ⚠️ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
 
@@ -1752,7 +1752,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ⚠️ | Permissions-Policy |  |
 | ⚠️ | Content-Security-Policy | none (optional, but recommended) |
 | ✅ | No mixed content |  |
-| ⚠️ | security.txt (RFC 9116) | HTTP 404 |
+| ✅ | security.txt (RFC 9116) | HTTP 200 |
 
 **15. Crawl & indexing**
 
@@ -1774,19 +1774,19 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | og:title | Profity.in — पैसे की समझ, आपकी भाषा में |
-| ✅ | og:description | निवेश, बचत, टैक्स, बीमा और डिजिटल पैसे पर गहरे और ईमानदार लेख — हिन्दी और अंग्रेज़ी में, म |
-| ❌ | og:image | missing |
+| ✅ | og:description | निवेश, बचत, टैक्स, बीमा और डिजिटल पैसे पर ईमानदार लेख — हिन्दी और अंग्रेज़ी में, मुफ़्त। H |
+| ✅ | og:image | https://profity.in/opengraph-image.png?opengraph-image.00a4rx8eec0n2.png |
 | ❌ | og:url | missing |
 | ✅ | og:type | website |
-| ✅ | Twitter / X card | summary |
-| — | og:image is PNG / JPG / WebP (social apps ignore SVG) |  |
+| ✅ | Twitter / X card | summary_large_image |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://profity.in/opengraph-image.png?opengraph-image.00a4rx8eec0n2.png |
 
 **18. AI / generative search**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | AI / generative-search crawlers allowed |  |
-| ⚠️ | llms.txt for AI assistants | HTTP 404 |
+| ✅ | llms.txt for AI assistants | HTTP 200 |
 
 **19. Analytics & monitoring**
 
@@ -1803,7 +1803,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## 1fr.fr — 88%
 
-**Not done yet (12):** Canonical URL on the home page; WebP / AVIF images; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; About page; Privacy policy; Terms & conditions; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages
+**Not done yet (13):** Canonical URL on the home page; Server response time; WebP / AVIF images; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; About page; Privacy policy; Terms & conditions; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1828,7 +1828,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 751 ms (from a GitHub runner) |
+| ⚠️ | Server response time | 858 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1977,7 +1977,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## tilawa.de — 88%
 
-**Not done yet (12):** Canonical URL on the home page; WebP / AVIF images; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; About page; Privacy policy; Terms & conditions; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages
+**Not done yet (13):** Canonical URL on the home page; Server response time; WebP / AVIF images; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; About page; Privacy policy; Terms & conditions; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -2002,7 +2002,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 613 ms (from a GitHub runner) |
+| ⚠️ | Server response time | 1090 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2176,7 +2176,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 179 ms (from a GitHub runner) |
+| ✅ | Server response time | 210 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2192,7 +2192,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Title tag (10–60 chars) | 33: BYODD — Bring Your Own DIY & Deko |
 | ✅ | Meta description (50–160 chars) | 156: BYODD erklärt Heimwerken und Renovieren für Mieter und Eigentümer: Werkzeug und Grundlagen… |
 | ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 3 H2 |
+| ✅ | H2–H6 structure | 4 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
@@ -2237,7 +2237,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 59 unique |
+| ✅ | Internal links from the home page | 64 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2288,7 +2288,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://byodd.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://byodd.de/sitemap.xml — 58 URLs |
+| ✅ | XML sitemap | HTTP 200 https://byodd.de/sitemap.xml — 63 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -2350,7 +2350,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 144 ms (from a GitHub runner) |
+| ✅ | Server response time | 209 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2366,7 +2366,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Title tag (10–60 chars) | 30: BYOXY — Bring Your OXYgen home |
 | ✅ | Meta description (50–160 chars) | 158: BYOXY ist ein Ratgeber für grünes Wohnen: Zimmerpflanzen auswählen und pflegen, Gießen, Li… |
 | ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 3 H2 |
+| ✅ | H2–H6 structure | 4 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
@@ -2411,7 +2411,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 64 unique |
+| ✅ | Internal links from the home page | 69 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2462,7 +2462,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://byoxy.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://byoxy.de/sitemap.xml — 63 URLs |
+| ✅ | XML sitemap | HTTP 200 https://byoxy.de/sitemap.xml — 68 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -2524,7 +2524,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 97 ms (from a GitHub runner) |
+| ✅ | Server response time | 246 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2540,7 +2540,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Title tag (10–60 chars) | 44: BYOY: Biologisch, ohne Gift: Garten mit Herz |
 | ✅ | Meta description (50–160 chars) | 156: BYOY ist ein Ratgeber für den biologischen Nutzgarten in Deutschland: Gemüsebeet und Hochb… |
 | ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 3 H2 |
+| ✅ | H2–H6 structure | 4 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
@@ -2585,7 +2585,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 64 unique |
+| ✅ | Internal links from the home page | 69 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2636,7 +2636,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://byoy.de/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://byoy.de/sitemap.xml — 63 URLs |
+| ✅ | XML sitemap | HTTP 200 https://byoy.de/sitemap.xml — 68 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -2698,7 +2698,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 89 ms (from a GitHub runner) |
+| ✅ | Server response time | 332 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2872,7 +2872,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 68 ms (from a GitHub runner) |
+| ✅ | Server response time | 228 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3046,7 +3046,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 167 ms (from a GitHub runner) |
+| ✅ | Server response time | 237 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3220,7 +3220,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 79 ms (from a GitHub runner) |
+| ✅ | Server response time | 290 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3394,7 +3394,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 81 ms (from a GitHub runner) |
+| ✅ | Server response time | 272 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3568,7 +3568,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 154 ms (from a GitHub runner) |
+| ✅ | Server response time | 236 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3742,7 +3742,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 114 ms (from a GitHub runner) |
+| ✅ | Server response time | 254 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3916,7 +3916,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 91 ms (from a GitHub runner) |
+| ✅ | Server response time | 221 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4090,7 +4090,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 154 ms (from a GitHub runner) |
+| ✅ | Server response time | 229 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4264,7 +4264,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 145 ms (from a GitHub runner) |
+| ✅ | Server response time | 175 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4438,7 +4438,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 84 ms (from a GitHub runner) |
+| ✅ | Server response time | 250 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4612,7 +4612,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 84 ms (from a GitHub runner) |
+| ✅ | Server response time | 263 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4786,7 +4786,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 104 ms (from a GitHub runner) |
+| ✅ | Server response time | 191 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4960,7 +4960,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 81 ms (from a GitHub runner) |
+| ✅ | Server response time | 175 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5134,7 +5134,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 72 ms (from a GitHub runner) |
+| ✅ | Server response time | 210 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5308,7 +5308,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 89 ms (from a GitHub runner) |
+| ✅ | Server response time | 260 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5324,7 +5324,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Title tag (10–60 chars) | 17: ROUGH.LAT — Gemas |
 | ✅ | Meta description (50–160 chars) | 154: ROUGH.LAT es una revista editorial sobre gemas en bruto, piedras preciosas, joyería, talla… |
 | ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 3 H2 |
+| ✅ | H2–H6 structure | 4 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
@@ -5369,7 +5369,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 77 unique |
+| ✅ | Internal links from the home page | 82 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -5420,7 +5420,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://rough.lat/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://rough.lat/sitemap.xml — 76 URLs |
+| ✅ | XML sitemap | HTTP 200 https://rough.lat/sitemap.xml — 81 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -5482,7 +5482,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 246 ms (from a GitHub runner) |
+| ✅ | Server response time | 201 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5498,7 +5498,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Title tag (10–60 chars) | 54: SAVED — Smart, Affordable Value for Everyday Decisions |
 | ✅ | Meta description (50–160 chars) | 156: SAVED is a practical guide to running a household for less: cooking and groceries, home en… |
 | ✅ | Exactly one H1 | 1 H1 |
-| ✅ | H2–H6 structure | 3 H2 |
+| ✅ | H2–H6 structure | 4 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
 | ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
@@ -5543,7 +5543,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 77 unique |
+| ✅ | Internal links from the home page | 82 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -5594,7 +5594,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://saved.lat/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://saved.lat/sitemap.xml — 76 URLs |
+| ✅ | XML sitemap | HTTP 200 https://saved.lat/sitemap.xml — 81 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -5656,7 +5656,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 58 ms (from a GitHub runner) |
+| ✅ | Server response time | 204 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5830,7 +5830,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 69 ms (from a GitHub runner) |
+| ✅ | Server response time | 216 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6004,7 +6004,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 86 ms (from a GitHub runner) |
+| ✅ | Server response time | 149 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6178,7 +6178,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 60 ms (from a GitHub runner) |
+| ✅ | Server response time | 292 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6233,13 +6233,13 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | Language declared (<html lang>) | es |
-| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
+| ✅ | hreflang for language versions | es, en, x-default |
 
 **9. Internal linking**
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 58 unique |
+| ✅ | Internal links from the home page | 59 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -6290,7 +6290,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://xko.es/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://xko.es/sitemap.xml — 57 URLs |
+| ✅ | XML sitemap | HTTP 200 https://xko.es/sitemap.xml — 114 URLs |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
@@ -6352,7 +6352,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 56 ms (from a GitHub runner) |
+| ✅ | Server response time | 174 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6526,7 +6526,7 @@ Generated 2026-11-02T10:53:13.314Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 88 ms (from a GitHub runner) |
+| ✅ | Server response time | 179 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
