@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-09T11:17:40.428Z",
+ "generatedAt": "2026-11-16T10:57:18.642Z",
  "sites": [
   {
    "domain": "xaa.es",
@@ -138,7 +138,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "warn",
-     "detail": "1211 ms (from a GitHub runner)"
+     "detail": "1323 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -501,29 +501,29 @@
      "section": "2",
      "id": "perf_score",
      "label": "Performance score (mobile)",
-     "status": "fail",
-     "detail": "46/100 — Lighthouse (runner)"
+     "status": "warn",
+     "detail": "80/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "fail",
-     "detail": "4.61 s lab"
+     "status": "warn",
+     "detail": "3.16 s lab"
     },
     {
      "section": "2",
      "id": "cls",
      "label": "CLS ≤ 0.1",
      "status": "pass",
-     "detail": "0.061 lab"
+     "detail": "0.000 lab"
     },
     {
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
-     "status": "fail",
-     "detail": "TBT 1875 ms lab (no field data yet)"
+     "status": "warn",
+     "detail": "TBT 456 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -646,10 +646,10 @@
      "h1": 1
     }
    ],
-   "score": 92,
+   "score": 95,
    "pass": 65,
-   "fail": 3,
-   "warn": 5,
+   "fail": 0,
+   "warn": 8,
    "manual": 9
   },
   {
@@ -789,7 +789,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "790 ms (from a GitHub runner)"
+     "detail": "597 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -1153,14 +1153,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "56/100 — Lighthouse (runner)"
+     "detail": "72/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "warn",
-     "detail": "2.95 s lab"
+     "detail": "3.79 s lab"
     },
     {
      "section": "2",
@@ -1173,8 +1173,8 @@
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
-     "status": "fail",
-     "detail": "TBT 2306 ms lab (no field data yet)"
+     "status": "warn",
+     "detail": "TBT 407 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -1299,8 +1299,8 @@
    ],
    "score": 94,
    "pass": 64,
-   "fail": 2,
-   "warn": 5,
+   "fail": 1,
+   "warn": 6,
    "manual": 10
   },
   {
@@ -1440,7 +1440,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "545 ms (from a GitHub runner)"
+     "detail": "551 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -1803,15 +1803,15 @@
      "section": "2",
      "id": "perf_score",
      "label": "Performance score (mobile)",
-     "status": "warn",
-     "detail": "68/100 — Lighthouse (runner)"
+     "status": "pass",
+     "detail": "93/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "fail",
-     "detail": "5.12 s lab"
+     "status": "warn",
+     "detail": "2.91 s lab"
     },
     {
      "section": "2",
@@ -1824,8 +1824,8 @@
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
-     "status": "warn",
-     "detail": "TBT 264 ms lab (no field data yet)"
+     "status": "pass",
+     "detail": "TBT 117 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -1948,10 +1948,10 @@
      "h1": 1
     }
    ],
-   "score": 85,
-   "pass": 54,
-   "fail": 7,
-   "warn": 6,
+   "score": 87,
+   "pass": 56,
+   "fail": 6,
+   "warn": 5,
    "manual": 10
   },
   {
@@ -2091,7 +2091,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "153 ms (from a GitHub runner)"
+     "detail": "201 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -2454,15 +2454,15 @@
      "section": "2",
      "id": "perf_score",
      "label": "Performance score (mobile)",
-     "status": "pass",
-     "detail": "91/100 — Lighthouse (runner)"
+     "status": "warn",
+     "detail": "69/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "pass",
-     "detail": "2.18 s lab"
+     "status": "fail",
+     "detail": "4.14 s lab"
     },
     {
      "section": "2",
@@ -2476,7 +2476,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "pass",
-     "detail": "TBT 54 ms lab (no field data yet)"
+     "detail": "TBT 18 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -2599,10 +2599,10 @@
      "h1": 1
     }
    ],
-   "score": 97,
-   "pass": 64,
-   "fail": 1,
-   "warn": 2,
+   "score": 95,
+   "pass": 62,
+   "fail": 2,
+   "warn": 3,
    "manual": 10
   },
   {
@@ -2741,8 +2741,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "955 ms (from a GitHub runner)"
+     "status": "fail",
+     "detail": "2166 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -3105,15 +3105,15 @@
      "section": "2",
      "id": "perf_score",
      "label": "Performance score (mobile)",
-     "status": "fail",
-     "detail": "48/100 — Lighthouse (runner)"
+     "status": "warn",
+     "detail": "50/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "11.56 s lab"
+     "detail": "10.78 s lab"
     },
     {
      "section": "2",
@@ -3127,7 +3127,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "fail",
-     "detail": "TBT 821 ms lab (no field data yet)"
+     "detail": "TBT 685 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -3392,8 +3392,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "928 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "665 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -3757,14 +3757,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "87/100 — Lighthouse (runner)"
+     "detail": "76/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "warn",
-     "detail": "3.39 s lab"
+     "status": "fail",
+     "detail": "4.43 s lab"
     },
     {
      "section": "2",
@@ -3778,7 +3778,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "warn",
-     "detail": "TBT 209 ms lab (no field data yet)"
+     "detail": "TBT 261 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -3902,9 +3902,9 @@
     }
    ],
    "score": 90,
-   "pass": 58,
-   "fail": 1,
-   "warn": 13,
+   "pass": 59,
+   "fail": 2,
+   "warn": 11,
    "manual": 10
   },
   {
@@ -4044,7 +4044,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "770 ms (from a GitHub runner)"
+     "detail": "430 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -4674,7 +4674,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "530 ms (from a GitHub runner)"
+     "detail": "654 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -5303,8 +5303,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "1108 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "725 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -5792,9 +5792,9 @@
     }
    ],
    "score": 87,
-   "pass": 52,
+   "pass": 53,
    "fail": 6,
-   "warn": 5,
+   "warn": 4,
    "manual": 11
   },
   {
@@ -5934,7 +5934,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "745 ms (from a GitHub runner)"
+     "detail": "595 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -6564,7 +6564,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "warn",
-     "detail": "858 ms (from a GitHub runner)"
+     "detail": "1100 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -7193,8 +7193,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "1090 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "772 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -7682,9 +7682,9 @@
     }
    ],
    "score": 88,
-   "pass": 55,
+   "pass": 56,
    "fail": 4,
-   "warn": 9,
+   "warn": 8,
    "manual": 11
   },
   {
@@ -7824,7 +7824,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "210 ms (from a GitHub runner)"
+     "detail": "268 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -8454,7 +8454,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "209 ms (from a GitHub runner)"
+     "detail": "309 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -9084,7 +9084,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "246 ms (from a GitHub runner)"
+     "detail": "135 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -9714,7 +9714,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "332 ms (from a GitHub runner)"
+     "detail": "248 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -10344,7 +10344,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "228 ms (from a GitHub runner)"
+     "detail": "324 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -10974,7 +10974,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "237 ms (from a GitHub runner)"
+     "detail": "282 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -11604,7 +11604,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "290 ms (from a GitHub runner)"
+     "detail": "347 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -12234,7 +12234,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "272 ms (from a GitHub runner)"
+     "detail": "190 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -12808,7 +12808,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://velnixo.de/sitemap.xml — 62 URLs"
+     "detail": "HTTP 200 https://velnixo.de/sitemap.xml — 67 URLs"
     },
     {
      "section": "16",
@@ -12864,7 +12864,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "236 ms (from a GitHub runner)"
+     "detail": "231 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -12941,7 +12941,7 @@
      "id": "h2",
      "label": "H2–H6 structure",
      "status": "pass",
-     "detail": "3 H2"
+     "detail": "4 H2"
     },
     {
      "section": "6",
@@ -12962,7 +12962,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "63 unique"
+     "detail": "68 unique"
     },
     {
      "section": "8",
@@ -13494,7 +13494,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "254 ms (from a GitHub runner)"
+     "detail": "204 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -14124,7 +14124,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "221 ms (from a GitHub runner)"
+     "detail": "282 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -14754,7 +14754,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "229 ms (from a GitHub runner)"
+     "detail": "304 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -15384,7 +15384,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "175 ms (from a GitHub runner)"
+     "detail": "242 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -16014,7 +16014,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "250 ms (from a GitHub runner)"
+     "detail": "185 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -16644,7 +16644,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "263 ms (from a GitHub runner)"
+     "detail": "247 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -17274,7 +17274,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "191 ms (from a GitHub runner)"
+     "detail": "182 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -17904,7 +17904,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "175 ms (from a GitHub runner)"
+     "detail": "95 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -18534,7 +18534,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "210 ms (from a GitHub runner)"
+     "detail": "156 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -19164,7 +19164,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "260 ms (from a GitHub runner)"
+     "detail": "181 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -19794,7 +19794,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "201 ms (from a GitHub runner)"
+     "detail": "159 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -20368,7 +20368,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://dawo.es/sitemap.xml — 57 URLs"
+     "detail": "HTTP 200 https://dawo.es/sitemap.xml — 62 URLs"
     },
     {
      "section": "16",
@@ -20424,7 +20424,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "204 ms (from a GitHub runner)"
+     "detail": "190 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -20501,7 +20501,7 @@
      "id": "h2",
      "label": "H2–H6 structure",
      "status": "pass",
-     "detail": "4 H2"
+     "detail": "5 H2"
     },
     {
      "section": "6",
@@ -20522,7 +20522,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "58 unique"
+     "detail": "63 unique"
     },
     {
      "section": "8",
@@ -21054,7 +21054,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "216 ms (from a GitHub runner)"
+     "detail": "203 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -21684,7 +21684,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "149 ms (from a GitHub runner)"
+     "detail": "202 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -22258,7 +22258,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://xko.es/sitemap.xml — 114 URLs"
+     "detail": "HTTP 200 https://xko.es/sitemap.xml — 124 URLs"
     },
     {
      "section": "16",
@@ -22314,7 +22314,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "292 ms (from a GitHub runner)"
+     "detail": "163 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -22391,7 +22391,7 @@
      "id": "h2",
      "label": "H2–H6 structure",
      "status": "pass",
-     "detail": "3 H2"
+     "detail": "4 H2"
     },
     {
      "section": "6",
@@ -22412,7 +22412,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "59 unique"
+     "detail": "64 unique"
     },
     {
      "section": "8",
@@ -22944,7 +22944,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "174 ms (from a GitHub runner)"
+     "detail": "95 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -23574,7 +23574,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "179 ms (from a GitHub runner)"
+     "detail": "162 ms (from a GitHub runner)"
     },
     {
      "section": "2",
