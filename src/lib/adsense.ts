@@ -16,6 +16,7 @@ export const ADSENSE_STACK = [
   'ca-pub-6560360898389273',
   'ca-pub-4906992051458194',
   'ca-pub-5928074389292014',
+  'ca-pub-6701063918838796',
 ] as const;
 
 export const AD_ACCOUNTS: readonly string[] = [...new Set<string>([SITE.adClient, ...ADSENSE_STACK])];
