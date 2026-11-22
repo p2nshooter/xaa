@@ -25,14 +25,8 @@ export const SITE = {
   billingEmail: 'billing@xaa.es',
   heroLead: 'Custom websites and platforms,',
   heroAccent: 'engineered to scale',
-  /**
-   * AdSense publisher (owner, 31 Oct 2026: "xaa.es google.com, pub-6284085719914185, DIRECT,
-   * f08c47fec0942fa0"; before: 8991272269211824, shared with axto.io until then): the loader, the
-   * google-adsense-account meta tag and public/ads.txt all name this account.
-   */
-  // 7 Nov 2026 (owner): sixteen accounts stacked (src/lib/adsense.ts); ca-pub-9354298681597606 is the primary account — the only
-  // loader — and ca-pub-6284085719914185 is removed („Domain yg lain kode adsensenya boleh di hapus ikuti dengan perintah terbaru“).
-  adClient: 'ca-pub-9354298681597606',
+  // 22 Nov 2026 (pemilik): „hapus seluruh kode adsense tumpuk dan meta tag nya … sisakan 3 adsense saja“: akun utama = ca-pub-5928074389292014 (adsense-stack.json di ulyah.com).
+  adClient: 'ca-pub-5928074389292014',
   analyticsEndpoint: 'https://api.ulyah.com/track',
   /**
    * Editorial archive kept from the original site. Named plainly: calling
