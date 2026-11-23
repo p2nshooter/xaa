@@ -1,49 +1,49 @@
 # SEO audit — all domains
 
-Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
+Generated 2026-11-23T12:09:58.101Z by `scripts/seo-audit.mjs` (weekly, GitHub Actions). ✅ done · ❌ not done · ⚠️ partly done · 📝 manual work for a person · — not applicable.
 
 | Domain | Score | ✅ | ❌ | ⚠️ | 📝 | Repo |
 |---|---|---|---|---|---|---|
-| [xaa.es](https://xaa.es) | 95% | 65 | 0 | 8 | 9 | p2nshooter/xaa |
-| [axto.io](https://axto.io) | 94% | 64 | 1 | 6 | 10 | p2nshooter/guardian-ai |
-| [axto.dev](https://axto.dev) | 87% | 56 | 6 | 5 | 10 | p2nshooter/axtodev |
-| [axto.us](https://axto.us) | 95% | 62 | 2 | 3 | 10 | p2nshooter/axto.us |
-| [ulyah.com](https://ulyah.com) | 90% | 61 | 4 | 7 | 10 | p2nshooter/ulyah.com |
+| [xaa.es](https://xaa.es) | 94% | 65 | 1 | 7 | 9 | p2nshooter/xaa |
+| [axto.io](https://axto.io) | 84% | 55 | 6 | 12 | 9 | p2nshooter/guardian-ai |
+| [axto.dev](https://axto.dev) | 87% | 59 | 6 | 6 | 10 | p2nshooter/axtodev |
+| [axto.us](https://axto.us) | 95% | 65 | 1 | 5 | 10 | p2nshooter/axto.us |
+| [ulyah.com](https://ulyah.com) | 90% | 62 | 4 | 6 | 10 | p2nshooter/ulyah.com |
 | [xad.es](https://xad.es) | 90% | 59 | 2 | 11 | 10 | p2nshooter/ulyah.com |
-| [jai.lat](https://jai.lat) | 87% | 53 | 6 | 4 | 11 | p2nshooter/Jai |
-| [lie.skin](https://lie.skin) | 87% | 53 | 6 | 4 | 11 | p2nshooter/Lie |
-| [oldco.in](https://oldco.in) | 87% | 53 | 6 | 4 | 11 | p2nshooter/oldco.in |
-| [profity.in](https://profity.in) | 87% | 53 | 6 | 4 | 11 | p2nshooter/profity.in |
-| [1fr.fr](https://1fr.fr) | 88% | 55 | 4 | 9 | 11 | p2nshooter/ulyah.com |
+| [jai.lat](https://jai.lat) | 87% | 56 | 6 | 5 | 11 | p2nshooter/Jai |
+| [lie.skin](https://lie.skin) | 87% | 56 | 6 | 5 | 11 | p2nshooter/Lie |
+| [oldco.in](https://oldco.in) | 87% | 56 | 6 | 5 | 11 | p2nshooter/oldco.in |
+| [profity.in](https://profity.in) | 87% | 55 | 6 | 6 | 11 | p2nshooter/profity.in |
+| [1fr.fr](https://1fr.fr) | 88% | 56 | 4 | 8 | 11 | p2nshooter/ulyah.com |
 | [tilawa.de](https://tilawa.de) | 88% | 56 | 4 | 8 | 11 | p2nshooter/ulyah.com |
-| [byodd.de](https://byodd.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [byoxy.de](https://byoxy.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [byoy.de](https://byoy.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [nexvilo.de](https://nexvilo.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [qarf.de](https://qarf.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [qulen.de](https://qulen.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [qurm.de](https://qurm.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [rubiy.de](https://rubiy.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [velnixo.de](https://velnixo.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [zavik.de](https://zavik.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [zevok.de](https://zevok.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [zoevian.de](https://zoevian.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [zolun.de](https://zolun.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [zufiq.de](https://zufiq.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [zuvik.de](https://zuvik.de) | 93% | 58 | 4 | 1 | 11 | p2nshooter/ulyah.com |
-| [crone.skin](https://crone.skin) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
-| [dai.lat](https://dai.lat) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
-| [pab.lat](https://pab.lat) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
-| [rough.lat](https://rough.lat) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
-| [saved.lat](https://saved.lat) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
-| [dawo.es](https://dawo.es) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
-| [qkb.es](https://qkb.es) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
-| [rough.es](https://rough.es) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
-| [xko.es](https://xko.es) | 98% | 62 | 1 | 1 | 10 | p2nshooter/ulyah.com |
-| [odaily.xyz](https://odaily.xyz) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
-| [xdaily.xyz](https://xdaily.xyz) | 98% | 61 | 1 | 1 | 11 | p2nshooter/ulyah.com |
+| [byodd.de](https://byodd.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [byoxy.de](https://byoxy.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [byoy.de](https://byoy.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [nexvilo.de](https://nexvilo.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [qarf.de](https://qarf.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [qulen.de](https://qulen.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [qurm.de](https://qurm.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [rubiy.de](https://rubiy.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [velnixo.de](https://velnixo.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [zavik.de](https://zavik.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [zevok.de](https://zevok.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [zoevian.de](https://zoevian.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [zolun.de](https://zolun.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [zufiq.de](https://zufiq.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [zuvik.de](https://zuvik.de) | 93% | 61 | 4 | 2 | 11 | p2nshooter/ulyah.com |
+| [crone.skin](https://crone.skin) | 97% | 64 | 1 | 2 | 11 | p2nshooter/ulyah.com |
+| [dai.lat](https://dai.lat) | 97% | 64 | 1 | 2 | 11 | p2nshooter/ulyah.com |
+| [pab.lat](https://pab.lat) | 97% | 64 | 1 | 2 | 11 | p2nshooter/ulyah.com |
+| [rough.lat](https://rough.lat) | 97% | 64 | 1 | 2 | 11 | p2nshooter/ulyah.com |
+| [saved.lat](https://saved.lat) | 97% | 64 | 1 | 2 | 11 | p2nshooter/ulyah.com |
+| [dawo.es](https://dawo.es) | 97% | 64 | 1 | 2 | 11 | p2nshooter/ulyah.com |
+| [qkb.es](https://qkb.es) | 97% | 64 | 1 | 2 | 11 | p2nshooter/ulyah.com |
+| [rough.es](https://rough.es) | 97% | 64 | 1 | 2 | 11 | p2nshooter/ulyah.com |
+| [xko.es](https://xko.es) | 97% | 65 | 1 | 2 | 10 | p2nshooter/ulyah.com |
+| [odaily.xyz](https://odaily.xyz) | 97% | 64 | 1 | 2 | 11 | p2nshooter/ulyah.com |
+| [xdaily.xyz](https://xdaily.xyz) | 97% | 64 | 1 | 2 | 11 | p2nshooter/ulyah.com |
 
-## xaa.es — 95%
+## xaa.es — 94%
 
 **Not done yet (8):** Server response time; Fonts optimised (preload / font-display: swap); Meta description (50–160 chars); Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
@@ -70,17 +70,17 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 1323 ms (from a GitHub runner) |
+| ⚠️ | Server response time | 959 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | private, no-cache, no-store, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ⚠️ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 80/100 — Lighthouse (runner) |
-| ⚠️ | LCP ≤ 2.5 s | 3.16 s lab |
+| ⚠️ | Performance score (mobile) | 69/100 — Lighthouse (runner) |
+| ⚠️ | LCP ≤ 2.5 s | 3.35 s lab |
 | ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 456 ms lab (no field data yet) |
+| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 811 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -220,59 +220,59 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## axto.io — 94%
+## axto.io — 84%
 
-**Not done yet (7):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; Performance score (mobile); LCP ≤ 2.5 s; CLS ≤ 0.1; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (18):** No redirect chains (≤1 hop to the final URL); Missing pages return a real 404; Server response time; WebP / AVIF images; Fonts optimised (preload / font-display: swap); Title tag (10–60 chars); Meta description (50–160 chars); About page; Contact page; Privacy policy; Terms & conditions; llms.txt for AI assistants; security.txt (RFC 9116); Unique meta description on every page; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Performance score (mobile); LCP ≤ 2.5 s
 
 
 **1. Foundation**
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | HTTPS with a valid SSL certificate | 200 https://axto.io/ |
-| ✅ | HTTP redirects to HTTPS | 301 http://axto.io/ → 200 https://axto.io/ → https://axto.io/ |
-| ❌ | One canonical host (www ↔ apex redirect) | www.axto.io → https://www.axto.io/ |
+| ✅ | HTTPS with a valid SSL certificate | 200 https://axto.io/en |
+| ✅ | HTTP redirects to HTTPS | 301 http://axto.io/ → 302 https://axto.io/ → 200 https://axto.io/en → https://axto.io/en |
+| ✅ | One canonical host (www ↔ apex redirect) | www.axto.io → https://axto.io/en |
 | ✅ | Google Search Console | Domain property verified |
 | 📝 | Bing Webmaster Tools verification | No meta/BingSiteAuth.xml — import the site from Search Console in Bing Webmaster Tools (DNS verification also works) |
-| ✅ | robots.txt present | 31 lines |
+| ✅ | robots.txt present | 10 lines |
 | ✅ | Clean, readable URLs |  |
-| ✅ | Missing pages return a real 404 | HTTP 404 |
+| ❌ | Missing pages return a real 404 | HTTP 200 (soft 404) |
 
 **2. Technical SEO**
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | No redirect chains (≤1 hop to the final URL) | 1 hop(s) from http://axto.io/ |
-| ✅ | Canonical URL on the home page | https://axto.io |
-| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
+| ⚠️ | No redirect chains (≤1 hop to the final URL) | 2 hop(s) from http://axto.io/ |
+| ✅ | Canonical URL on the home page | https://axto.io/en |
+| ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 597 ms (from a GitHub runner) |
-| ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
+| ⚠️ | Server response time | 814 ms (from a GitHub runner) |
+| ✅ | Browser/edge caching headers | public, max-age=60 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
-| ✅ | Fonts optimised (preload / font-display: swap) |  |
+| ⚠️ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 72/100 — Lighthouse (runner) |
-| ⚠️ | LCP ≤ 2.5 s | 3.79 s lab |
-| ⚠️ | CLS ≤ 0.1 | 0.138 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 407 ms lab (no field data yet) |
+| ⚠️ | Performance score (mobile) | 80/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 4.90 s lab |
+| ✅ | CLS ≤ 0.1 | 0.000 lab |
+| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 113 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Title tag (10–60 chars) | 56: AXTO — AI workspace for legal, security & business teams |
-| ✅ | Meta description (50–160 chars) | 158: One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Chat, Clipper, Priva… |
+| ⚠️ | Title tag (10–60 chars) | 63: AXTO — A living digital museum — moving works, limited editions |
+| ⚠️ | Meta description (50–160 chars) | 272: $1 exclusive NFTs for gifts & communities: Qur'an & hadith calligraphy, living digital clo… |
 | ✅ | Exactly one H1 | 1 H1 |
 | ✅ | H2–H6 structure | 7 H2 |
 | ✅ | Unique title on every page | 9 pages sampled; 0 duplicate, 0 missing |
-| ✅ | Unique meta description on every page | 0 duplicate, 0 missing |
+| ⚠️ | Unique meta description on every page | 1 duplicate, 0 missing |
 | ✅ | One H1 on every sampled page | 0 page(s) with 0 or several H1 |
-| ✅ | Titles ≤ 60 characters on every sampled page | 9 pages |
-| ✅ | Descriptions ≤ 160 characters on every sampled page | 0/9 longer |
-| ✅ | Breadcrumbs on inner pages | 8/8 |
+| ⚠️ | Titles ≤ 60 characters on every sampled page | 2/9, e.g. 63: AXTO — A living digital museum — moving works, limited editions |
+| ⚠️ | Descriptions ≤ 160 characters on every sampled page | 7/9 longer |
+| ✅ | Breadcrumbs on inner pages | 6/8 |
 
 **4. Content SEO**
 
@@ -285,7 +285,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | JSON-LD structured data | Organization, ContactPoint, WebSite, SearchAction, EntryPoint, FAQPage, Question, Answer, SoftwareApplication, Offer, UnitPriceSpecification |
+| ✅ | JSON-LD structured data | Organization, WebSite, FAQPage, Question, Answer |
 | ✅ | Organization schema |  |
 | ✅ | WebSite schema |  |
 
@@ -293,10 +293,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| — | Lazy-loading below-the-fold images | 0/0 lazy |
+| ✅ | Lazy-loading below-the-fold images | 8/14 lazy |
 | ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
-| ✅ | Images carry width & height (no layout shift) | 1/1 |
-| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Images carry width & height (no layout shift) | 15/15 |
+| ✅ | Alt text on images | 0/15 missing alt |
 | ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
@@ -305,13 +305,13 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | ✅ | Language declared (<html lang>) | en |
-| 📝 | hreflang for language versions | none — needed only if the site serves several languages |
+| ✅ | hreflang for language versions | id, en, x-default |
 
 **9. Internal linking**
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 49 unique |
+| ✅ | Internal links from the home page | 23 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -331,10 +331,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | About page |  |
-| ✅ | Contact page |  |
-| ✅ | Privacy policy |  |
-| ✅ | Terms & conditions |  |
+| ❌ | About page |  |
+| ❌ | Contact page |  |
+| ❌ | Privacy policy |  |
+| ❌ | Terms & conditions |  |
 | 📝 | Author profiles, publish/update dates, sources |  |
 
 **14. Security**
@@ -346,43 +346,43 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Clickjacking protection (X-Frame-Options / frame-ancestors) |  |
 | ✅ | Referrer-Policy | strict-origin-when-cross-origin |
 | ✅ | Permissions-Policy |  |
-| ⚠️ | Content-Security-Policy | none (optional, but recommended) |
+| ✅ | Content-Security-Policy | default-src 'self'; script-src 'nonce-P7Ger2uU0NdT0/yqGSkNDw==' 'strict-dynamic' |
 | ✅ | No mixed content |  |
-| ✅ | security.txt (RFC 9116) | HTTP 200 |
+| ⚠️ | security.txt (RFC 9116) | HTTP 200 |
 
 **15. Crawl & indexing**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt lets crawlers reach the site |  |
-| ✅ | Home page is indexable (no noindex) | index, follow |
+| ✅ | Home page is indexable (no noindex) | index, follow, max-image-preview:large |
 
 **16. Sitemap**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | robots.txt declares the sitemap | https://axto.io/sitemap.xml |
-| ✅ | XML sitemap | HTTP 200 https://axto.io/sitemap.xml — 558 URLs |
+| ✅ | XML sitemap | HTTP 200 https://axto.io/sitemap.xml — 12 child sitemaps |
 | ✅ | Sitemap lists only canonical-host URLs |  |
 
 **17. Social / sharing**
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | og:title | AXTO — AI workspace for legal, security & business teams |
-| ✅ | og:description | One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Chat, Clipper, Priva |
-| ✅ | og:image | https://axto.io/og-image.png |
-| ✅ | og:url | https://axto.io |
+| ✅ | og:title | AXTO — A living digital museum — moving works, limited editions |
+| ✅ | og:description | $1 exclusive NFTs for gifts & communities: Qur'an & hadith calligraphy, living digital clo |
+| ✅ | og:image | https://axto.io/logo-512.png |
+| ✅ | og:url | https://axto.io/en |
 | ✅ | og:type | website |
 | ✅ | Twitter / X card | summary_large_image |
-| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://axto.io/og-image.png |
+| ✅ | og:image is PNG / JPG / WebP (social apps ignore SVG) | https://axto.io/logo-512.png |
 
 **18. AI / generative search**
 
 | | Check | Detail |
 |---|---|---|
 | ✅ | AI / generative-search crawlers allowed |  |
-| ✅ | llms.txt for AI assistants | HTTP 200 |
+| ⚠️ | llms.txt for AI assistants | HTTP 200 |
 
 **19. Analytics & monitoring**
 
@@ -399,7 +399,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## axto.dev — 87%
 
-**Not done yet (11):** One canonical host (www ↔ apex redirect); og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages; LCP ≤ 2.5 s
+**Not done yet (12):** One canonical host (www ↔ apex redirect); WebP / AVIF images; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages; LCP ≤ 2.5 s
 
 
 **1. Foundation**
@@ -424,17 +424,17 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 551 ms (from a GitHub runner) |
+| ✅ | Server response time | 406 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ✅ | Performance score (mobile) | 93/100 — Lighthouse (runner) |
-| ⚠️ | LCP ≤ 2.5 s | 2.91 s lab |
+| ✅ | Performance score (mobile) | 92/100 — Lighthouse (runner) |
+| ⚠️ | LCP ≤ 2.5 s | 2.90 s lab |
 | ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 117 ms lab (no field data yet) |
+| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 167 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -471,10 +471,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ⚠️ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -576,7 +576,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## axto.us — 95%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; Performance score (mobile); LCP ≤ 2.5 s; CLS ≤ 0.1
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; Performance score (mobile); LCP ≤ 2.5 s; CLS ≤ 0.1
 
 
 **1. Foundation**
@@ -601,17 +601,17 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 201 ms (from a GitHub runner) |
+| ✅ | Server response time | 72 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /site.webmanifest |
 | ✅ | Canonical on every sampled page | 0 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 69/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 4.14 s lab |
+| ⚠️ | Performance score (mobile) | 84/100 — Lighthouse (runner) |
+| ⚠️ | LCP ≤ 2.5 s | 2.77 s lab |
 | ⚠️ | CLS ≤ 0.1 | 0.163 lab |
-| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 18 ms lab (no field data yet) |
+| ✅ | INP ≤ 200 ms (TBT as lab proxy) | TBT 77 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -648,10 +648,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -753,7 +753,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## ulyah.com — 90%
 
-**Not done yet (11):** Canonical URL on the home page; Server response time; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
+**Not done yet (10):** Canonical URL on the home page; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages; Performance score (mobile); LCP ≤ 2.5 s; INP ≤ 200 ms (TBT as lab proxy)
 
 
 **1. Foundation**
@@ -778,17 +778,17 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ❌ | Server response time | 2166 ms (from a GitHub runner) |
+| ✅ | Server response time | 547 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest?locale=id |
 | ⚠️ | Canonical on every sampled page | 1 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 50/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 10.78 s lab |
+| ❌ | Performance score (mobile) | 47/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 13.23 s lab |
 | ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 685 ms lab (no field data yet) |
+| ❌ | INP ≤ 200 ms (TBT as lab proxy) | TBT 873 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -955,17 +955,17 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 665 ms (from a GitHub runner) |
+| ✅ | Server response time | 672 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
 | ✅ | Web app manifest | /manifest.webmanifest?locale=en |
 | ⚠️ | Canonical on every sampled page | 1 without |
 | ✅ | Sitemap URLs load (no broken pages) | 0/8 failing |
-| ⚠️ | Performance score (mobile) | 76/100 — Lighthouse (runner) |
-| ❌ | LCP ≤ 2.5 s | 4.43 s lab |
+| ⚠️ | Performance score (mobile) | 75/100 — Lighthouse (runner) |
+| ❌ | LCP ≤ 2.5 s | 4.78 s lab |
 | ✅ | CLS ≤ 0.1 | 0.000 lab |
-| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 261 ms lab (no field data yet) |
+| ⚠️ | INP ≤ 200 ms (TBT as lab proxy) | TBT 279 ms lab (no field data yet) |
 
 **3. On-page SEO**
 
@@ -1019,7 +1019,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 39 unique |
+| ✅ | Internal links from the home page | 38 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -1107,7 +1107,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## jai.lat — 87%
 
-**Not done yet (10):** One canonical host (www ↔ apex redirect); og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
+**Not done yet (11):** One canonical host (www ↔ apex redirect); WebP / AVIF images; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1132,7 +1132,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 430 ms (from a GitHub runner) |
+| ✅ | Server response time | 582 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1176,10 +1176,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ⚠️ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -1281,7 +1281,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## lie.skin — 87%
 
-**Not done yet (10):** One canonical host (www ↔ apex redirect); og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
+**Not done yet (11):** One canonical host (www ↔ apex redirect); WebP / AVIF images; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1306,7 +1306,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 654 ms (from a GitHub runner) |
+| ✅ | Server response time | 730 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1350,10 +1350,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ⚠️ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -1455,7 +1455,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## oldco.in — 87%
 
-**Not done yet (10):** One canonical host (www ↔ apex redirect); og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
+**Not done yet (11):** One canonical host (www ↔ apex redirect); WebP / AVIF images; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1480,7 +1480,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 725 ms (from a GitHub runner) |
+| ✅ | Server response time | 658 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1524,10 +1524,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ⚠️ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -1629,7 +1629,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## profity.in — 87%
 
-**Not done yet (10):** One canonical host (www ↔ apex redirect); og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
+**Not done yet (12):** One canonical host (www ↔ apex redirect); Server response time; WebP / AVIF images; og:url; HSTS header; X-Content-Type-Options: nosniff; Clickjacking protection (X-Frame-Options / frame-ancestors); Referrer-Policy; Permissions-Policy; Content-Security-Policy; apple-touch-icon (PNG); Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1654,7 +1654,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 595 ms (from a GitHub runner) |
+| ⚠️ | Server response time | 806 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | s-maxage=31536000 |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1698,10 +1698,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ⚠️ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -1803,7 +1803,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## 1fr.fr — 88%
 
-**Not done yet (13):** Canonical URL on the home page; Server response time; WebP / AVIF images; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; About page; Privacy policy; Terms & conditions; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages
+**Not done yet (12):** Canonical URL on the home page; WebP / AVIF images; Meta description (50–160 chars); Permissions-Policy; Content-Security-Policy; About page; Privacy policy; Terms & conditions; Titles ≤ 60 characters on every sampled page; Descriptions ≤ 160 characters on every sampled page; Canonical on every sampled page; Breadcrumbs on inner pages
 
 
 **1. Foundation**
@@ -1828,7 +1828,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ⚠️ | Server response time | 1100 ms (from a GitHub runner) |
+| ✅ | Server response time | 580 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -1889,7 +1889,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 39 unique |
+| ✅ | Internal links from the home page | 38 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2002,7 +2002,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1 |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 772 ms (from a GitHub runner) |
+| ✅ | Server response time | 785 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | no-cache, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2063,7 +2063,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 | | Check | Detail |
 |---|---|---|
-| ✅ | Internal links from the home page | 39 unique |
+| ✅ | Internal links from the home page | 38 unique |
 | 📝 | Topic clusters: pillar pages + supporting articles |  |
 
 **10. Off-page SEO**
@@ -2151,7 +2151,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## byodd.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -2176,7 +2176,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 268 ms (from a GitHub runner) |
+| ✅ | Server response time | 181 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2220,10 +2220,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -2325,7 +2325,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## byoxy.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -2350,7 +2350,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 309 ms (from a GitHub runner) |
+| ✅ | Server response time | 150 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2394,10 +2394,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -2499,7 +2499,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## byoy.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -2524,7 +2524,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 135 ms (from a GitHub runner) |
+| ✅ | Server response time | 326 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2568,10 +2568,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -2673,7 +2673,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## nexvilo.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -2698,7 +2698,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 248 ms (from a GitHub runner) |
+| ✅ | Server response time | 164 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2742,10 +2742,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -2847,7 +2847,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## qarf.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -2872,7 +2872,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 324 ms (from a GitHub runner) |
+| ✅ | Server response time | 486 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -2916,10 +2916,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -3021,7 +3021,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## qulen.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -3046,7 +3046,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 282 ms (from a GitHub runner) |
+| ✅ | Server response time | 203 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3090,10 +3090,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -3195,7 +3195,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## qurm.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -3220,7 +3220,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 347 ms (from a GitHub runner) |
+| ✅ | Server response time | 323 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3264,10 +3264,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -3369,7 +3369,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## rubiy.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -3394,7 +3394,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 190 ms (from a GitHub runner) |
+| ✅ | Server response time | 149 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3438,10 +3438,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -3543,7 +3543,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## velnixo.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -3568,7 +3568,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 231 ms (from a GitHub runner) |
+| ✅ | Server response time | 198 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3612,10 +3612,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -3717,7 +3717,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## zavik.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -3742,7 +3742,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 204 ms (from a GitHub runner) |
+| ✅ | Server response time | 267 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3786,10 +3786,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -3891,7 +3891,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## zevok.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -3916,7 +3916,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 282 ms (from a GitHub runner) |
+| ✅ | Server response time | 206 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -3960,10 +3960,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -4065,7 +4065,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## zoevian.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -4090,7 +4090,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 304 ms (from a GitHub runner) |
+| ✅ | Server response time | 152 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4134,10 +4134,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -4239,7 +4239,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## zolun.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -4264,7 +4264,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 242 ms (from a GitHub runner) |
+| ✅ | Server response time | 158 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4308,10 +4308,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -4413,7 +4413,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## zufiq.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -4438,7 +4438,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 185 ms (from a GitHub runner) |
+| ✅ | Server response time | 160 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4482,10 +4482,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -4587,7 +4587,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 
 ## zuvik.de — 93%
 
-**Not done yet (5):** One canonical host (www ↔ apex redirect); Content-Security-Policy; About page; Privacy policy; Terms & conditions
+**Not done yet (6):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy; About page; Privacy policy; Terms & conditions
 
 
 **1. Foundation**
@@ -4612,7 +4612,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 247 ms (from a GitHub runner) |
+| ✅ | Server response time | 164 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4656,10 +4656,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -4759,9 +4759,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## crone.skin — 98%
+## crone.skin — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -4786,7 +4786,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 182 ms (from a GitHub runner) |
+| ✅ | Server response time | 241 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -4830,10 +4830,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -4933,9 +4933,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## dai.lat — 98%
+## dai.lat — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -4960,7 +4960,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 95 ms (from a GitHub runner) |
+| ✅ | Server response time | 93 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5004,10 +5004,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -5107,9 +5107,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## pab.lat — 98%
+## pab.lat — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -5134,7 +5134,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 156 ms (from a GitHub runner) |
+| ✅ | Server response time | 75 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5178,10 +5178,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -5281,9 +5281,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## rough.lat — 98%
+## rough.lat — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -5308,7 +5308,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 181 ms (from a GitHub runner) |
+| ✅ | Server response time | 399 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5352,10 +5352,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -5455,9 +5455,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## saved.lat — 98%
+## saved.lat — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -5482,7 +5482,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 159 ms (from a GitHub runner) |
+| ✅ | Server response time | 107 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5526,10 +5526,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -5629,9 +5629,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## dawo.es — 98%
+## dawo.es — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -5656,7 +5656,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 190 ms (from a GitHub runner) |
+| ✅ | Server response time | 85 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5700,10 +5700,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -5803,9 +5803,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## qkb.es — 98%
+## qkb.es — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -5830,7 +5830,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 203 ms (from a GitHub runner) |
+| ✅ | Server response time | 82 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -5874,10 +5874,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -5977,9 +5977,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## rough.es — 98%
+## rough.es — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -6004,7 +6004,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 202 ms (from a GitHub runner) |
+| ✅ | Server response time | 84 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6048,10 +6048,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -6151,9 +6151,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## xko.es — 98%
+## xko.es — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -6178,7 +6178,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 163 ms (from a GitHub runner) |
+| ✅ | Server response time | 102 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6222,10 +6222,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -6325,9 +6325,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## odaily.xyz — 98%
+## odaily.xyz — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -6352,7 +6352,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 95 ms (from a GitHub runner) |
+| ✅ | Server response time | 70 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6396,10 +6396,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**
@@ -6499,9 +6499,9 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 |---|---|---|
 | ✅ | Periodic automated SEO audit | this weekly audit |
 
-## xdaily.xyz — 98%
+## xdaily.xyz — 97%
 
-**Not done yet (2):** One canonical host (www ↔ apex redirect); Content-Security-Policy
+**Not done yet (3):** One canonical host (www ↔ apex redirect); WebP / AVIF images; Content-Security-Policy
 
 
 **1. Foundation**
@@ -6526,7 +6526,7 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | ✅ | Mobile-friendly viewport | width=device-width, initial-scale=1, viewport-fit=cover |
 | ✅ | GZIP / Brotli compression | br |
 | ✅ | Served through a CDN | Cloudflare |
-| ✅ | Server response time | 162 ms (from a GitHub runner) |
+| ✅ | Server response time | 91 ms (from a GitHub runner) |
 | ✅ | Browser/edge caching headers | public, max-age=0, must-revalidate |
 | ✅ | No render-blocking scripts in <head> | 0 blocking script(s) |
 | ✅ | Fonts optimised (preload / font-display: swap) |  |
@@ -6570,10 +6570,10 @@ Generated 2026-11-16T10:57:18.642Z by `scripts/seo-audit.mjs` (weekly, GitHub Ac
 | | Check | Detail |
 |---|---|---|
 | — | Lazy-loading below-the-fold images | 0/0 lazy |
-| — | WebP / AVIF images | no WebP/AVIF found on the home page |
-| — | Images carry width & height (no layout shift) | 0/0 |
-| — | Alt text on images | 0/0 missing alt |
-| — | Descriptive image file names |  |
+| ⚠️ | WebP / AVIF images | no WebP/AVIF found on the home page |
+| ✅ | Images carry width & height (no layout shift) | 1/1 |
+| ✅ | Alt text on images | 0/1 missing alt |
+| ✅ | Descriptive image file names |  |
 | ✅ | apple-touch-icon (PNG) |  |
 
 **8. Multilingual SEO**

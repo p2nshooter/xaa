@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T10:57:18.642Z",
+ "generatedAt": "2026-11-23T12:09:58.101Z",
  "sites": [
   {
    "domain": "xaa.es",
@@ -138,7 +138,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "warn",
-     "detail": "1323 ms (from a GitHub runner)"
+     "detail": "959 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -502,14 +502,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "80/100 — Lighthouse (runner)"
+     "detail": "69/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "warn",
-     "detail": "3.16 s lab"
+     "detail": "3.35 s lab"
     },
     {
      "section": "2",
@@ -522,8 +522,8 @@
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
-     "status": "warn",
-     "detail": "TBT 456 ms lab (no field data yet)"
+     "status": "fail",
+     "detail": "TBT 811 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -646,45 +646,45 @@
      "h1": 1
     }
    ],
-   "score": 95,
+   "score": 94,
    "pass": 65,
-   "fail": 0,
-   "warn": 8,
+   "fail": 1,
+   "warn": 7,
    "manual": 9
   },
   {
    "domain": "axto.io",
    "repo": "p2nshooter/guardian-ai",
    "reachable": true,
-   "finalUrl": "https://axto.io/",
+   "finalUrl": "https://axto.io/en",
    "checks": [
     {
      "section": "1",
      "id": "https",
      "label": "HTTPS with a valid SSL certificate",
      "status": "pass",
-     "detail": "200 https://axto.io/"
+     "detail": "200 https://axto.io/en"
     },
     {
      "section": "1",
      "id": "http_redirect",
      "label": "HTTP redirects to HTTPS",
      "status": "pass",
-     "detail": "301 http://axto.io/ → 200 https://axto.io/ → https://axto.io/"
+     "detail": "301 http://axto.io/ → 302 https://axto.io/ → 200 https://axto.io/en → https://axto.io/en"
     },
     {
      "section": "2",
      "id": "redirect_chain",
      "label": "No redirect chains (≤1 hop to the final URL)",
-     "status": "pass",
-     "detail": "1 hop(s) from http://axto.io/"
+     "status": "warn",
+     "detail": "2 hop(s) from http://axto.io/"
     },
     {
      "section": "1",
      "id": "canonical_host",
      "label": "One canonical host (www ↔ apex redirect)",
-     "status": "fail",
-     "detail": "www.axto.io → https://www.axto.io/"
+     "status": "pass",
+     "detail": "www.axto.io → https://axto.io/en"
     },
     {
      "section": "1",
@@ -705,7 +705,7 @@
      "id": "robots",
      "label": "robots.txt present",
      "status": "pass",
-     "detail": "31 lines"
+     "detail": "10 lines"
     },
     {
      "section": "16",
@@ -733,7 +733,7 @@
      "id": "sitemap",
      "label": "XML sitemap",
      "status": "pass",
-     "detail": "HTTP 200 https://axto.io/sitemap.xml — 558 URLs"
+     "detail": "HTTP 200 https://axto.io/sitemap.xml — 12 child sitemaps"
     },
     {
      "section": "16",
@@ -753,22 +753,22 @@
      "section": "1",
      "id": "real_404",
      "label": "Missing pages return a real 404",
-     "status": "pass",
-     "detail": "HTTP 404"
+     "status": "fail",
+     "detail": "HTTP 200 (soft 404)"
     },
     {
      "section": "2",
      "id": "canonical",
      "label": "Canonical URL on the home page",
      "status": "pass",
-     "detail": "https://axto.io"
+     "detail": "https://axto.io/en"
     },
     {
      "section": "2",
      "id": "mobile",
      "label": "Mobile-friendly viewport",
      "status": "pass",
-     "detail": "width=device-width, initial-scale=1, viewport-fit=cover"
+     "detail": "width=device-width, initial-scale=1"
     },
     {
      "section": "2",
@@ -788,15 +788,15 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "pass",
-     "detail": "597 ms (from a GitHub runner)"
+     "status": "warn",
+     "detail": "814 ms (from a GitHub runner)"
     },
     {
      "section": "2",
      "id": "html_cache",
      "label": "Browser/edge caching headers",
      "status": "pass",
-     "detail": "public, max-age=0, must-revalidate"
+     "detail": "public, max-age=60"
     },
     {
      "section": "2",
@@ -809,8 +809,8 @@
      "section": "6",
      "id": "lazy",
      "label": "Lazy-loading below-the-fold images",
-     "status": "na",
-     "detail": "0/0 lazy"
+     "status": "pass",
+     "detail": "8/14 lazy"
     },
     {
      "section": "6",
@@ -824,13 +824,13 @@
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
      "status": "pass",
-     "detail": "1/1"
+     "detail": "15/15"
     },
     {
      "section": "2",
      "id": "fonts",
      "label": "Fonts optimised (preload / font-display: swap)",
-     "status": "pass",
+     "status": "warn",
      "detail": ""
     },
     {
@@ -838,21 +838,21 @@
      "id": "indexable",
      "label": "Home page is indexable (no noindex)",
      "status": "pass",
-     "detail": "index, follow"
+     "detail": "index, follow, max-image-preview:large"
     },
     {
      "section": "3",
      "id": "title",
      "label": "Title tag (10–60 chars)",
-     "status": "pass",
-     "detail": "56: AXTO — AI workspace for legal, security & business teams"
+     "status": "warn",
+     "detail": "63: AXTO — A living digital museum — moving works, limited editions"
     },
     {
      "section": "3",
      "id": "meta_description",
      "label": "Meta description (50–160 chars)",
-     "status": "pass",
-     "detail": "158: One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Chat, Clipper, Priva…"
+     "status": "warn",
+     "detail": "272: $1 exclusive NFTs for gifts & communities: Qur'an & hadith calligraphy, living digital clo…"
     },
     {
      "section": "3",
@@ -873,7 +873,7 @@
      "id": "alt",
      "label": "Alt text on images",
      "status": "pass",
-     "detail": "0/1 missing alt"
+     "detail": "0/15 missing alt"
     },
     {
      "section": "6",
@@ -887,7 +887,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "49 unique"
+     "detail": "23 unique"
     },
     {
      "section": "8",
@@ -900,15 +900,15 @@
      "section": "8",
      "id": "hreflang",
      "label": "hreflang for language versions",
-     "status": "manual",
-     "detail": "none — needed only if the site serves several languages"
+     "status": "pass",
+     "detail": "id, en, x-default"
     },
     {
      "section": "5",
      "id": "jsonld",
      "label": "JSON-LD structured data",
      "status": "pass",
-     "detail": "Organization, ContactPoint, WebSite, SearchAction, EntryPoint, FAQPage, Question, Answer, SoftwareApplication, Offer, UnitPriceSpecification"
+     "detail": "Organization, WebSite, FAQPage, Question, Answer"
     },
     {
      "section": "5",
@@ -929,28 +929,28 @@
      "id": "og_title",
      "label": "og:title",
      "status": "pass",
-     "detail": "AXTO — AI workspace for legal, security & business teams"
+     "detail": "AXTO — A living digital museum — moving works, limited editions"
     },
     {
      "section": "17",
      "id": "og_description",
      "label": "og:description",
      "status": "pass",
-     "detail": "One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Chat, Clipper, Priva"
+     "detail": "$1 exclusive NFTs for gifts & communities: Qur'an & hadith calligraphy, living digital clo"
     },
     {
      "section": "17",
      "id": "og_image",
      "label": "og:image",
      "status": "pass",
-     "detail": "https://axto.io/og-image.png"
+     "detail": "https://axto.io/logo-512.png"
     },
     {
      "section": "17",
      "id": "og_url",
      "label": "og:url",
      "status": "pass",
-     "detail": "https://axto.io"
+     "detail": "https://axto.io/en"
     },
     {
      "section": "17",
@@ -1005,8 +1005,8 @@
      "section": "14",
      "id": "csp",
      "label": "Content-Security-Policy",
-     "status": "warn",
-     "detail": "none (optional, but recommended)"
+     "status": "pass",
+     "detail": "default-src 'self'; script-src 'nonce-P7Ger2uU0NdT0/yqGSkNDw==' 'strict-dynamic'"
     },
     {
      "section": "14",
@@ -1019,28 +1019,28 @@
      "section": "13",
      "id": "about",
      "label": "About page",
-     "status": "pass",
+     "status": "fail",
      "detail": ""
     },
     {
      "section": "13",
      "id": "contact",
      "label": "Contact page",
-     "status": "pass",
+     "status": "fail",
      "detail": ""
     },
     {
      "section": "13",
      "id": "privacy",
      "label": "Privacy policy",
-     "status": "pass",
+     "status": "fail",
      "detail": ""
     },
     {
      "section": "13",
      "id": "terms",
      "label": "Terms & conditions",
-     "status": "pass",
+     "status": "fail",
      "detail": ""
     },
     {
@@ -1061,14 +1061,14 @@
      "section": "18",
      "id": "llms_txt",
      "label": "llms.txt for AI assistants",
-     "status": "pass",
+     "status": "warn",
      "detail": "HTTP 200"
     },
     {
      "section": "14",
      "id": "security_txt",
      "label": "security.txt (RFC 9116)",
-     "status": "pass",
+     "status": "warn",
      "detail": "HTTP 200"
     },
     {
@@ -1090,7 +1090,7 @@
      "id": "og_image_raster",
      "label": "og:image is PNG / JPG / WebP (social apps ignore SVG)",
      "status": "pass",
-     "detail": "https://axto.io/og-image.png"
+     "detail": "https://axto.io/logo-512.png"
     },
     {
      "section": "3",
@@ -1103,8 +1103,8 @@
      "section": "3",
      "id": "unique_descriptions",
      "label": "Unique meta description on every page",
-     "status": "pass",
-     "detail": "0 duplicate, 0 missing"
+     "status": "warn",
+     "detail": "1 duplicate, 0 missing"
     },
     {
      "section": "3",
@@ -1117,15 +1117,15 @@
      "section": "3",
      "id": "title_length_all",
      "label": "Titles ≤ 60 characters on every sampled page",
-     "status": "pass",
-     "detail": "9 pages"
+     "status": "warn",
+     "detail": "2/9, e.g. 63: AXTO — A living digital museum — moving works, limited editions"
     },
     {
      "section": "3",
      "id": "desc_length_all",
      "label": "Descriptions ≤ 160 characters on every sampled page",
-     "status": "pass",
-     "detail": "0/9 longer"
+     "status": "warn",
+     "detail": "7/9 longer"
     },
     {
      "section": "2",
@@ -1139,7 +1139,7 @@
      "id": "breadcrumbs",
      "label": "Breadcrumbs on inner pages",
      "status": "pass",
-     "detail": "8/8"
+     "detail": "6/8"
     },
     {
      "section": "2",
@@ -1153,28 +1153,28 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "72/100 — Lighthouse (runner)"
+     "detail": "80/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "warn",
-     "detail": "3.79 s lab"
+     "status": "fail",
+     "detail": "4.90 s lab"
     },
     {
      "section": "2",
      "id": "cls",
      "label": "CLS ≤ 0.1",
-     "status": "warn",
-     "detail": "0.138 lab"
+     "status": "pass",
+     "detail": "0.000 lab"
     },
     {
      "section": "2",
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
-     "status": "warn",
-     "detail": "TBT 407 ms lab (no field data yet)"
+     "status": "pass",
+     "detail": "TBT 113 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -1235,73 +1235,73 @@
    ],
    "pages": [
     {
-     "url": "https://axto.io/",
-     "title": "AXTO — AI workspace for legal, security & business teams",
-     "desc": "One AI ecosystem: Legal AI for 200+ jurisdictions, Prompt Library, AI Chat, Clipper, Privacy Vault, Compliance Center and Security Analyst in your browser on…",
+     "url": "https://axto.io/en",
+     "title": "AXTO — A living digital museum — moving works, limited editions",
+     "desc": "$1 exclusive NFTs for gifts & communities: Qur'an & hadith calligraphy, living digital clocks, stamps & figures on Base. Pay in AXTO coin, send to many wallets with no gas, withdraw one by one or in bulk. A member market & public collections from $1 to $10,000 on OpenSea.",
      "h1": 1
     },
     {
-     "url": "https://axto.io/pricing",
+     "url": "https://axto.io/id",
      "status": 200,
-     "title": "Pricing — plans from $19/month | AXTO",
-     "desc": "AXTO plans: Starter, Pro, Business and Enterprise. Unlimited AI on your own keys, Legal AI, Prompt Library, Clipper, Compliance Center, Security Analyst…",
+     "title": "AXTO — Museum digital hidup — karya bergerak, edisi terbatas",
+     "desc": "NFT eksklusif $1 untuk hadiah & komunitas: kaligrafi Al-Qur'an & hadits, jam digital hidup, prangko & figur di jaringan Base. Bayar koin AXTO, kirim ke banyak wallet tanpa gas, WD satuan atau massal. Pasar member & koleksi publik $1–$10.000 di OpenSea.",
      "h1": 1
     },
     {
-     "url": "https://axto.io/acquire",
+     "url": "https://axto.io/id/eksklusif",
      "status": 200,
-     "title": "Acquire AXTO",
-     "desc": "Acquire AXTO outright: the axto.io domain, full source code, seven live cloud AI apps (Legal AI, AI Chat, Clipper, Privacy Vault, Compliance Center, Security…",
+     "title": "Marketplace Eksklusif axto.io · AXTO",
+     "desc": "Toko resmi axto.io: 5 koleksi × 10.000 karya, setiap karya 10 edisi. Harga tetap $1 per edisi, dibayar koin AXTO — hadiah kecil yang bermakna, mudah dibagikan k",
      "h1": 1
     },
     {
-     "url": "https://axto.io/auction",
+     "url": "https://axto.io/id/pasar-member",
      "status": 200,
-     "title": "Licence auction — AXTO apps from 25 % of the price",
-     "desc": "Bid on AXTO self-hosted licences every two weeks: bidding opens at 25 % of the normal price, every auction ends on Friday at 07:00 WIB (UTC+7) and the next…",
+     "title": "Pasar Member · AXTO",
+     "desc": "Jual-beli edisi eksklusif antar member dengan koin AXTO. Penjual memilih: harga tetap, lelang, penawaran, atau harga tetap + penawaran. Penjual menerima 90%, fe",
      "h1": 1
     },
     {
-     "url": "https://axto.io/invest",
+     "url": "https://axto.io/id/opensea",
      "status": 200,
-     "title": "Invest in AXTO — revenue-sharing investor round",
-     "desc": "Invest in AXTO, the AI platform behind Legal AI, AI Chat, Clipper and a self-hosted product line for Linux and Windows: a proportional monthly share of every…",
+     "title": "Marketplace OpenSea AXTO — NFT jam, prangko, kaligrafi Al-Qur'an & hadits, figur · AXTO",
+     "desc": "Koleksi publik NFT AXTO di jaringan Base: jam digital hidup, prangko, kaligrafi Al-Qur'an per surah, kaligrafi hadits & figur animasi — edisi 1–10 per karya, harga tetap $1–$10.000 menurut kelangkaan, segera hadir di OpenSea (jaringan Base).",
      "h1": 1
     },
     {
-     "url": "https://axto.io/partners",
+     "url": "https://axto.io/id/koin",
      "status": 200,
-     "title": "AXTO partner programmes",
-     "desc": "AXTO partner programmes: earn a commission as an affiliate, resell AXTO at a wholesale discount from prepaid credit, or run the whole AI platform under your…",
+     "title": "Koin AXTO · AXTO",
+     "desc": "NFT eksklusif $1 untuk hadiah & komunitas: kaligrafi Al-Qur'an & hadits, jam digital hidup, prangko & figur di jaringan Base. Bayar koin AXTO, kirim ke banyak wallet tanpa gas, WD satuan atau massal. Pasar member & koleksi publik $1–$10.000 di OpenSea.",
      "h1": 1
     },
     {
-     "url": "https://axto.io/affiliate",
+     "url": "https://axto.io/id/c/time",
      "status": 200,
-     "title": "AXTO affiliate programme — earn 20% for 12 months",
-     "desc": "Join the AXTO affiliate programme for free: 20% of every paid order of the customers you refer for 12 months, 10% of a referred partner's entry fee, monthly…",
+     "title": "NFT Jam Digital Hidup — 5.000 karya edisi terbatas · AXTO",
+     "desc": "NFT Jam Digital Hidup di jaringan Base: 5.000 karya pilihan, jam digital yang menunjukkan waktu nyata, edisi 1–10 per karya, harga tetap $1–$10.000 menurut kelangkaan, segera hadir di OpenSea (jaringan Base). Telusuri per galeri & seri.",
      "h1": 1
     },
     {
-     "url": "https://axto.io/resellers",
+     "url": "https://axto.io/id/c/stamp",
      "status": 200,
-     "title": "Become an AXTO reseller — up to 35% off list price",
-     "desc": "Resell AXTO's AI platform to your clients: a wholesale discount of up to 35% from prepaid credit, entry $5,000 including $2,500 of credit, your own prices and…",
+     "title": "NFT Prangko Digital — 5.000 karya edisi terbatas · AXTO",
+     "desc": "NFT Prangko Digital di jaringan Base: 5.000 karya pilihan, prangko digital dari negeri imajiner, diukir vektor, edisi 1–10 per karya, harga tetap $1–$10.000 menurut kelangkaan, segera hadir di OpenSea (jaringan Base). Telusuri per galeri & seri.",
      "h1": 1
     },
     {
-     "url": "https://axto.io/white-label",
+     "url": "https://axto.io/id/c/quran",
      "status": 200,
-     "title": "White-label AI platform — your brand, powered by AXTO",
-     "desc": "Launch a complete AI platform under your own brand, domain and languages: cloud apps, self-hosted editions, licences and Manage AI for your clients.",
+     "title": "NFT Kaligrafi Al-Qur'an — 5.000 karya edisi terbatas · AXTO",
+     "desc": "NFT Kaligrafi Al-Qur'an di jaringan Base: 5.000 karya pilihan, kaligrafi Al-Qur'an 3D dengan bacaan qari dan penunjuk kata, edisi 1–10 per karya, harga tetap $1–$10.000 menurut kelangkaan, segera hadir di OpenSea (jaringan Base). Telusuri per galeri & seri.",
      "h1": 1
     }
    ],
-   "score": 94,
-   "pass": 64,
-   "fail": 1,
-   "warn": 6,
-   "manual": 10
+   "score": 84,
+   "pass": 55,
+   "fail": 6,
+   "warn": 12,
+   "manual": 9
   },
   {
    "domain": "axto.dev",
@@ -1440,7 +1440,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "551 ms (from a GitHub runner)"
+     "detail": "406 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -1467,15 +1467,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -1523,14 +1523,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -1804,14 +1804,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "pass",
-     "detail": "93/100 — Lighthouse (runner)"
+     "detail": "92/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "warn",
-     "detail": "2.91 s lab"
+     "detail": "2.90 s lab"
     },
     {
      "section": "2",
@@ -1825,7 +1825,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "pass",
-     "detail": "TBT 117 ms lab (no field data yet)"
+     "detail": "TBT 167 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -1949,9 +1949,9 @@
     }
    ],
    "score": 87,
-   "pass": 56,
+   "pass": 59,
    "fail": 6,
-   "warn": 5,
+   "warn": 6,
    "manual": 10
   },
   {
@@ -2091,7 +2091,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "201 ms (from a GitHub runner)"
+     "detail": "72 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -2118,15 +2118,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -2174,14 +2174,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -2455,14 +2455,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "69/100 — Lighthouse (runner)"
+     "detail": "84/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
-     "status": "fail",
-     "detail": "4.14 s lab"
+     "status": "warn",
+     "detail": "2.77 s lab"
     },
     {
      "section": "2",
@@ -2476,7 +2476,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "pass",
-     "detail": "TBT 18 ms lab (no field data yet)"
+     "detail": "TBT 77 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -2600,9 +2600,9 @@
     }
    ],
    "score": 95,
-   "pass": 62,
-   "fail": 2,
-   "warn": 3,
+   "pass": 65,
+   "fail": 1,
+   "warn": 5,
    "manual": 10
   },
   {
@@ -2741,8 +2741,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "fail",
-     "detail": "2166 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "547 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -3105,15 +3105,15 @@
      "section": "2",
      "id": "perf_score",
      "label": "Performance score (mobile)",
-     "status": "warn",
-     "detail": "50/100 — Lighthouse (runner)"
+     "status": "fail",
+     "detail": "47/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "10.78 s lab"
+     "detail": "13.23 s lab"
     },
     {
      "section": "2",
@@ -3127,7 +3127,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "fail",
-     "detail": "TBT 685 ms lab (no field data yet)"
+     "detail": "TBT 873 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -3251,9 +3251,9 @@
     }
    ],
    "score": 90,
-   "pass": 61,
+   "pass": 62,
    "fail": 4,
-   "warn": 7,
+   "warn": 6,
    "manual": 10
   },
   {
@@ -3393,7 +3393,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "665 ms (from a GitHub runner)"
+     "detail": "672 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -3491,7 +3491,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "39 unique"
+     "detail": "38 unique"
     },
     {
      "section": "8",
@@ -3757,14 +3757,14 @@
      "id": "perf_score",
      "label": "Performance score (mobile)",
      "status": "warn",
-     "detail": "76/100 — Lighthouse (runner)"
+     "detail": "75/100 — Lighthouse (runner)"
     },
     {
      "section": "2",
      "id": "lcp",
      "label": "LCP ≤ 2.5 s",
      "status": "fail",
-     "detail": "4.43 s lab"
+     "detail": "4.78 s lab"
     },
     {
      "section": "2",
@@ -3778,7 +3778,7 @@
      "id": "inp",
      "label": "INP ≤ 200 ms (TBT as lab proxy)",
      "status": "warn",
-     "detail": "TBT 261 ms lab (no field data yet)"
+     "detail": "TBT 279 ms lab (no field data yet)"
     },
     {
      "section": "4",
@@ -4044,7 +4044,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "430 ms (from a GitHub runner)"
+     "detail": "582 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -4071,15 +4071,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -4127,14 +4127,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -4532,9 +4532,9 @@
     }
    ],
    "score": 87,
-   "pass": 53,
+   "pass": 56,
    "fail": 6,
-   "warn": 4,
+   "warn": 5,
    "manual": 11
   },
   {
@@ -4674,7 +4674,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "654 ms (from a GitHub runner)"
+     "detail": "730 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -4701,15 +4701,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -4757,14 +4757,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -5162,9 +5162,9 @@
     }
    ],
    "score": 87,
-   "pass": 53,
+   "pass": 56,
    "fail": 6,
-   "warn": 4,
+   "warn": 5,
    "manual": 11
   },
   {
@@ -5304,7 +5304,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "725 ms (from a GitHub runner)"
+     "detail": "658 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -5331,15 +5331,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -5387,14 +5387,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -5792,9 +5792,9 @@
     }
    ],
    "score": 87,
-   "pass": 53,
+   "pass": 56,
    "fail": 6,
-   "warn": 4,
+   "warn": 5,
    "manual": 11
   },
   {
@@ -5933,8 +5933,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "pass",
-     "detail": "595 ms (from a GitHub runner)"
+     "status": "warn",
+     "detail": "806 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -5961,15 +5961,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -6017,14 +6017,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -6422,9 +6422,9 @@
     }
    ],
    "score": 87,
-   "pass": 53,
+   "pass": 55,
    "fail": 6,
-   "warn": 4,
+   "warn": 6,
    "manual": 11
   },
   {
@@ -6563,8 +6563,8 @@
      "section": "2",
      "id": "ttfb",
      "label": "Server response time",
-     "status": "warn",
-     "detail": "1100 ms (from a GitHub runner)"
+     "status": "pass",
+     "detail": "580 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -6662,7 +6662,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "39 unique"
+     "detail": "38 unique"
     },
     {
      "section": "8",
@@ -7052,9 +7052,9 @@
     }
    ],
    "score": 88,
-   "pass": 55,
+   "pass": 56,
    "fail": 4,
-   "warn": 9,
+   "warn": 8,
    "manual": 11
   },
   {
@@ -7194,7 +7194,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "772 ms (from a GitHub runner)"
+     "detail": "785 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -7292,7 +7292,7 @@
      "id": "internal_links",
      "label": "Internal links from the home page",
      "status": "pass",
-     "detail": "39 unique"
+     "detail": "38 unique"
     },
     {
      "section": "8",
@@ -7824,7 +7824,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "268 ms (from a GitHub runner)"
+     "detail": "181 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -7851,15 +7851,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -7907,14 +7907,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -8312,9 +8312,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -8454,7 +8454,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "309 ms (from a GitHub runner)"
+     "detail": "150 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -8481,15 +8481,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -8537,14 +8537,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -8942,9 +8942,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -9084,7 +9084,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "135 ms (from a GitHub runner)"
+     "detail": "326 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -9111,15 +9111,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -9167,14 +9167,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -9572,9 +9572,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -9714,7 +9714,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "248 ms (from a GitHub runner)"
+     "detail": "164 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -9741,15 +9741,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -9797,14 +9797,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -10202,9 +10202,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -10344,7 +10344,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "324 ms (from a GitHub runner)"
+     "detail": "486 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -10371,15 +10371,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -10427,14 +10427,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -10832,9 +10832,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -10974,7 +10974,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "282 ms (from a GitHub runner)"
+     "detail": "203 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -11001,15 +11001,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -11057,14 +11057,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -11462,9 +11462,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -11604,7 +11604,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "347 ms (from a GitHub runner)"
+     "detail": "323 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -11631,15 +11631,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -11687,14 +11687,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -12092,9 +12092,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -12234,7 +12234,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "190 ms (from a GitHub runner)"
+     "detail": "149 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -12261,15 +12261,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -12317,14 +12317,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -12722,9 +12722,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -12864,7 +12864,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "231 ms (from a GitHub runner)"
+     "detail": "198 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -12891,15 +12891,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -12947,14 +12947,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -13352,9 +13352,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -13494,7 +13494,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "204 ms (from a GitHub runner)"
+     "detail": "267 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -13521,15 +13521,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -13577,14 +13577,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -13982,9 +13982,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -14124,7 +14124,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "282 ms (from a GitHub runner)"
+     "detail": "206 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -14151,15 +14151,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -14207,14 +14207,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -14612,9 +14612,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -14754,7 +14754,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "304 ms (from a GitHub runner)"
+     "detail": "152 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -14781,15 +14781,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -14837,14 +14837,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -15242,9 +15242,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -15384,7 +15384,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "242 ms (from a GitHub runner)"
+     "detail": "158 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -15411,15 +15411,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -15467,14 +15467,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -15872,9 +15872,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -16014,7 +16014,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "185 ms (from a GitHub runner)"
+     "detail": "160 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -16041,15 +16041,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -16097,14 +16097,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -16502,9 +16502,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -16644,7 +16644,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "247 ms (from a GitHub runner)"
+     "detail": "164 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -16671,15 +16671,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -16727,14 +16727,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -17132,9 +17132,9 @@
     }
    ],
    "score": 93,
-   "pass": 58,
+   "pass": 61,
    "fail": 4,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -17274,7 +17274,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "182 ms (from a GitHub runner)"
+     "detail": "241 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -17301,15 +17301,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -17357,14 +17357,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -17761,10 +17761,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 61,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -17904,7 +17904,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "95 ms (from a GitHub runner)"
+     "detail": "93 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -17931,15 +17931,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -17987,14 +17987,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -18391,10 +18391,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 61,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -18534,7 +18534,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "156 ms (from a GitHub runner)"
+     "detail": "75 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -18561,15 +18561,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -18617,14 +18617,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -19021,10 +19021,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 61,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -19164,7 +19164,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "181 ms (from a GitHub runner)"
+     "detail": "399 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -19191,15 +19191,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -19247,14 +19247,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -19651,10 +19651,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 61,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -19794,7 +19794,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "159 ms (from a GitHub runner)"
+     "detail": "107 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -19821,15 +19821,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -19877,14 +19877,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -20281,10 +20281,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 61,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -20424,7 +20424,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "190 ms (from a GitHub runner)"
+     "detail": "85 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -20451,15 +20451,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -20507,14 +20507,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -20911,10 +20911,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 61,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -21054,7 +21054,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "203 ms (from a GitHub runner)"
+     "detail": "82 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -21081,15 +21081,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -21137,14 +21137,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -21541,10 +21541,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 61,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -21684,7 +21684,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "202 ms (from a GitHub runner)"
+     "detail": "84 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -21711,15 +21711,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -21767,14 +21767,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -22171,10 +22171,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 61,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -22314,7 +22314,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "163 ms (from a GitHub runner)"
+     "detail": "102 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -22341,15 +22341,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -22397,14 +22397,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -22801,10 +22801,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 62,
+   "score": 97,
+   "pass": 65,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 10
   },
   {
@@ -22944,7 +22944,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "95 ms (from a GitHub runner)"
+     "detail": "70 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -22971,15 +22971,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -23027,14 +23027,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -23431,10 +23431,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 61,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   },
   {
@@ -23574,7 +23574,7 @@
      "id": "ttfb",
      "label": "Server response time",
      "status": "pass",
-     "detail": "162 ms (from a GitHub runner)"
+     "detail": "91 ms (from a GitHub runner)"
     },
     {
      "section": "2",
@@ -23601,15 +23601,15 @@
      "section": "6",
      "id": "webp",
      "label": "WebP / AVIF images",
-     "status": "na",
+     "status": "warn",
      "detail": "no WebP/AVIF found on the home page"
     },
     {
      "section": "6",
      "id": "img_dims",
      "label": "Images carry width & height (no layout shift)",
-     "status": "na",
-     "detail": "0/0"
+     "status": "pass",
+     "detail": "1/1"
     },
     {
      "section": "2",
@@ -23657,14 +23657,14 @@
      "section": "6",
      "id": "alt",
      "label": "Alt text on images",
-     "status": "na",
-     "detail": "0/0 missing alt"
+     "status": "pass",
+     "detail": "0/1 missing alt"
     },
     {
      "section": "6",
      "id": "img_names",
      "label": "Descriptive image file names",
-     "status": "na",
+     "status": "pass",
      "detail": ""
     },
     {
@@ -24061,10 +24061,10 @@
      "h1": 1
     }
    ],
-   "score": 98,
-   "pass": 61,
+   "score": 97,
+   "pass": 64,
    "fail": 1,
-   "warn": 1,
+   "warn": 2,
    "manual": 11
   }
  ]
