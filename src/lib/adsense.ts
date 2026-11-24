@@ -10,6 +10,8 @@
 //   verify the site. scripts/check-adsense.mjs fails the deploy when public/ads.txt and this list differ.
 // - Auto ads only: no manual ad unit anywhere.
 // 22 Nov 2026 (pemilik): „hapus seluruh kode adsense tumpuk dan meta tag nya … sisakan 3 adsense saja“ — tiga akun saja, akun lama dihapus semua.
+// 24 Nov 2026 (pemilik): „setiap domain pasang 5 kode adsense ini aja + bikinin tag meta nya, hapus kode adsense yg lain“ —
+// lima akun: 6560360898389273, 4906992051458194, 5928074389292014, 6701063918838796, 5092800160376210 (baru).
 import { SITE } from './site';
 
 export const ADSENSE_STACK = [
@@ -17,6 +19,7 @@ export const ADSENSE_STACK = [
   'ca-pub-4906992051458194',
   'ca-pub-5928074389292014',
   'ca-pub-6701063918838796',
+  'ca-pub-5092800160376210',
 ] as const;
 
 export const AD_ACCOUNTS: readonly string[] = [...new Set<string>([SITE.adClient, ...ADSENSE_STACK])];

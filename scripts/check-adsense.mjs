@@ -1,5 +1,5 @@
 // Fails when public/ads.txt, the meta tags and the loader would name different AdSense accounts (src/lib/adsense.ts).
-// Owner, 22 Nov 2026: four accounts on every site (the three kept + pub-6701063918838796) — one ads.txt line and one meta tag per account, ONE loader.
+// Owner, 24 Nov 2026: five accounts on every site (+ pub-5092800160376210) — one ads.txt line and one meta tag per account, ONE loader.
 //   node scripts/check-adsense.mjs
 import { readFileSync } from 'node:fs';
 const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
@@ -13,7 +13,7 @@ const want = accounts.map((a) => `google.com, ${a.replace(/^ca-/, '')}, DIRECT, 
 let bad = 0;
 const ok = (c, what) => { console.log(`${c ? 'ok  ' : 'FAIL'}  ${what}`); if (!c) bad++; };
 ok(Boolean(primary), `primary account ${primary}`);
-ok(stack.length === 4 && new Set(stack).size === 4 && stack.includes("ca-pub-6701063918838796"), `four distinct accounts, 22 Nov 2026 (${stack.length})`);
+ok(stack.length === 5 && new Set(stack).size === 5 && stack.includes("ca-pub-6701063918838796") && stack.includes("ca-pub-5092800160376210"), `five distinct accounts, 24 Nov 2026 (${stack.length})`);
 ok(read('public/ads.txt') === want, `public/ads.txt has exactly the ${accounts.length} lines, primary first`);
 ok(/AD_ACCOUNTS\.map\(\(account\) => \(\s*<meta key=\{account\} name="google-adsense-account" content=\{account\} \/>/.test(layout), 'layout renders one meta tag per account');
 ok((layout.match(/adsbygoogle\.js\?client=/g) || []).length === 1 && layout.includes('adsbygoogle.js?client=${SITE.adClient}'), 'layout has exactly one loader, the primary account');
